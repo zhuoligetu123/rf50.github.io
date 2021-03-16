@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.629
+Awesome. You've learned some very applicable search algorithms
+
+00:00:03.629 --> 00:00:06.105
+for path planning in a discretized space.
+
+00:00:06.105 --> 00:00:08.700
+Using this knowledge, you'll be able to direct
+
+00:00:08.699 --> 00:00:11.910
+your robot to get from one point on a map to another.
+
+00:00:11.910 --> 00:00:15.224
+Hopefully, prove itself useful in one way or another.
+
+00:00:15.224 --> 00:00:19.035
+The search algorithms are also relevant in many other fields,
+
+00:00:19.035 --> 00:00:23.714
+from planning routes for your next drive to finding your friends on social media sites.
+
+00:00:23.714 --> 00:00:27.434
+Graph search is widely used in today's digital society.
+
+00:00:27.434 --> 00:00:30.103
+In addition to learning the algorithms themselves,
+
+00:00:30.103 --> 00:00:32.670
+you've also learned some essential vocabulary.
+
+00:00:32.670 --> 00:00:35.700
+You should now be able to assess an algorithms completeness,
+
+00:00:35.700 --> 00:00:39.080
+optimality, efficiency, and other qualities.
+

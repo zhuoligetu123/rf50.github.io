@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.645
+Here is a search tree with all of its values filled in.
+
+00:00:03.645 --> 00:00:05.070
+As you can see,
+
+00:00:05.070 --> 00:00:09.285
+the depth-first search algorithm would have reached node A on the 20th step,
+
+00:00:09.285 --> 00:00:13.725
+node B on the 18th and note C on a 32nd.
+
+00:00:13.724 --> 00:00:19.109
+Let's return to our discretized environment to see how depth-first search would perform.
+
+00:00:19.109 --> 00:00:24.539
+Our start and goal nodes will remain the same and so will our rules for breaking ties.
+
+00:00:24.539 --> 00:00:27.059
+However, our frontier will change.
+
+00:00:27.059 --> 00:00:29.459
+In breadth-first search, we use the queue for
+
+00:00:29.460 --> 00:00:33.734
+our frontier which supported expanding the oldest nodes first.
+
+00:00:33.734 --> 00:00:38.149
+In depth-first search, we wish to expand newly visited nodes first.
+
+00:00:38.149 --> 00:00:42.049
+To accommodate this, the data structure underlying the frontier will be
+
+00:00:42.049 --> 00:00:45.169
+a stack and so the four nodes visible
+
+00:00:45.170 --> 00:00:48.725
+from the start location will be added to the frontier stack.
+
+00:00:48.725 --> 00:00:54.050
+They are ordered in a way that would have the node above expanded before the right node,
+
+00:00:54.049 --> 00:00:56.164
+left node and node below.
+
+00:00:56.164 --> 00:00:59.045
+After adding these nodes to the frontier,
+
+00:00:59.045 --> 00:01:03.725
+DFS would pop the top element off the stack and explore it next.
+
+00:01:03.725 --> 00:01:09.280
+From C6, three more nodes are visible so we add them to the top of the stack.
+
+00:01:09.280 --> 00:01:11.239
+This process continues.
+
+00:01:11.239 --> 00:01:13.684
+Remove the top element from the frontier,
+
+00:01:13.685 --> 00:01:17.515
+explore it and then add any new nodes to the frontier.
+
+00:01:17.515 --> 00:01:19.290
+As you can see here,
+
+00:01:19.290 --> 00:01:22.400
+DFS is exploring deep on the upwards direction.
+
+00:01:22.400 --> 00:01:25.145
+Simply because that's the way that ties are broken.
+
+00:01:25.144 --> 00:01:30.579
+The DFS algorithm continues searching and soon enough finds itself at the goal.
+
+00:01:30.579 --> 00:01:34.730
+Now, if we were to number the nodes in the order that they were explored,
+
+00:01:34.730 --> 00:01:36.785
+the goal would be node number five.
+
+00:01:36.784 --> 00:01:39.109
+Much better than breadth-first search.
+
+00:01:39.109 --> 00:01:40.939
+Will that always be the case?
+
+00:01:40.939 --> 00:01:43.189
+No. It's certainly not guaranteed.
+
+00:01:43.189 --> 00:01:47.239
+Let's see what would happen if the goal node was placed here instead.
+
+00:01:47.239 --> 00:01:50.899
+It would take DFS 30 moves to find the goal.
+
+00:01:50.900 --> 00:01:54.695
+In comparison, BFS would have found it in 29.
+
+00:01:54.694 --> 00:01:58.769
+Seems like neither of these algorithms are too efficient.
+

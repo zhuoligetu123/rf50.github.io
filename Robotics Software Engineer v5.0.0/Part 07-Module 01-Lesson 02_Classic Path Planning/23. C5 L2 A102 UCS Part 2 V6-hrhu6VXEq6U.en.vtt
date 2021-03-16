@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.624
+Of all the nodes on the frontier.
+
+00:00:02.624 --> 00:00:06.209
+Most would be explored with the exception of nodes B,
+
+00:00:06.209 --> 00:00:10.349
+D, and F, which all have a path cost of six.
+
+00:00:10.349 --> 00:00:15.074
+They and a few other nodes would be explored in the following steps.
+
+00:00:15.074 --> 00:00:18.929
+Now, let's explore a more complicated example.
+
+00:00:18.929 --> 00:00:23.570
+This is a graph where each node is labeled with a letter A through N,
+
+00:00:23.570 --> 00:00:25.714
+and each edge has a cost.
+
+00:00:25.714 --> 00:00:30.320
+We'd like to apply uniform cost search to find a path from the start node
+
+00:00:30.320 --> 00:00:35.005
+E to the goal node K. Recall that in breadth-first search,
+
+00:00:35.005 --> 00:00:37.594
+the frontier was represented by a queue.
+
+00:00:37.594 --> 00:00:41.750
+In depth-first search, the frontier was represented by a stack.
+
+00:00:41.750 --> 00:00:45.880
+Each accommodated the corresponding algorithms desired search order,
+
+00:00:45.880 --> 00:00:49.905
+first-in first-out or last-in first-out.
+
+00:00:49.905 --> 00:00:51.810
+In uniform cost search,
+
+00:00:51.810 --> 00:00:55.400
+we wish to explore nodes with lowest path costs first.
+
+00:00:55.399 --> 00:00:58.899
+To accommodate this, we can use a priority queue,
+
+00:00:58.899 --> 00:01:04.054
+that is a queue that is organized by the path cost. Let's take a look.
+
+00:01:04.055 --> 00:01:09.889
+At the start, there are four nodes and their corresponding paths on the frontier.
+
+00:01:09.888 --> 00:01:15.259
+They're organized as such with nodes G and F at the top of the queue as they
+
+00:01:15.260 --> 00:01:20.450
+have the lowest path cost followed by nodes A and D. Next,
+
+00:01:20.450 --> 00:01:23.740
+we removed the top node from the frontier to explore it.
+
+00:01:23.739 --> 00:01:27.409
+As a result two more nodes are added to the frontier.
+
+00:01:27.409 --> 00:01:31.269
+They assume their appropriate positions in the prioritize queue.
+
+00:01:31.269 --> 00:01:35.899
+Node H has a path cost of two plus three which is five,
+
+00:01:35.900 --> 00:01:40.790
+and node I has a path cost of two plus five which is equal to seven.
+
+00:01:40.790 --> 00:01:46.075
+These are the shortest paths to these nodes that we are aware of at this time.
+
+00:01:46.075 --> 00:01:50.219
+Next, we explore note F. In this process,
+
+00:01:50.219 --> 00:01:54.685
+node M is added to the queue and another interesting thing happens.
+
+00:01:54.685 --> 00:01:58.710
+The path cost of node I is reduced to six.
+
+00:01:58.709 --> 00:02:02.524
+This is because a shorter route has been found to this node.
+
+00:02:02.525 --> 00:02:04.730
+The algorithm continue searching,
+
+00:02:04.730 --> 00:02:08.705
+exploring the node on the frontier that has the lowest path cost.
+
+00:02:08.705 --> 00:02:10.700
+Adding new nodes to the frontier,
+
+00:02:10.699 --> 00:02:15.034
+and updating the path costs for a node if a shorter path has been found.
+
+00:02:15.034 --> 00:02:17.990
+After some time, the goal is found.
+
+00:02:17.990 --> 00:02:22.159
+It has a path costs of nine following the path E,
+
+00:02:22.159 --> 00:02:25.389
+F, I, J, and K.
+

@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.589
+Great. We're on to the last step of discreet planning, graph search.
+
+00:00:04.589 --> 00:00:07.439
+Graph search is used to find a finite sequence of
+
+00:00:07.440 --> 00:00:11.460
+discrete actions to connect a start state to a goal state.
+
+00:00:11.460 --> 00:00:13.515
+It does so by searching.
+
+00:00:13.515 --> 00:00:16.875
+Visiting states sequentially asking every state,
+
+00:00:16.875 --> 00:00:19.379
+"Hey, are you the goal state?"
+
+00:00:19.379 --> 00:00:23.910
+As a human, you may find it easy to pick out a solution to search problem
+
+00:00:23.910 --> 00:00:25.920
+when the search problem is two-dimensional and
+
+00:00:25.920 --> 00:00:28.725
+manageable in size. For instance, this one.
+
+00:00:28.725 --> 00:00:32.399
+However, a computer must conduct the search manually.
+
+00:00:32.399 --> 00:00:35.310
+It goes through node by node and doesn't see
+
+00:00:35.310 --> 00:00:39.200
+the goal node until it is one node away, like so.
+
+00:00:39.200 --> 00:00:42.880
+As the size of the space grows and dimensions are added,
+
+00:00:42.880 --> 00:00:45.725
+the problem naturally becomes less trivial.
+
+00:00:45.725 --> 00:00:48.950
+It becomes imperative to choose the appropriate algorithm
+
+00:00:48.950 --> 00:00:52.554
+for the task to achieve satisfactory results.
+
+00:00:52.554 --> 00:00:56.990
+There are two different types of search algorithms; informed and uninformed.
+
+00:00:56.990 --> 00:00:59.450
+Uninformed algorithms search blindly.
+
+00:00:59.450 --> 00:01:03.230
+They're not given any contextual information about how close they are to
+
+00:01:03.229 --> 00:01:07.459
+the goal or how much of an effect every consequent action has.
+
+00:01:07.459 --> 00:01:09.739
+Informed searches, on the other hand,
+
+00:01:09.739 --> 00:01:13.354
+can guide the search algorithm to make more intelligent decisions,
+
+00:01:13.355 --> 00:01:16.825
+ideally, getting them to the goal faster.
+
+00:01:16.825 --> 00:01:18.984
+By the end of the section,
+
+00:01:18.984 --> 00:01:22.280
+you'll be able to apply several different graph search algorithms
+
+00:01:22.280 --> 00:01:23.689
+and in the following lab,
+
+00:01:23.689 --> 00:01:28.620
+you will have the opportunity to implement one of the algorithms in C++.
+

@@ -1,0 +1,166 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.530
+Let's look at an application of path blinding to gain a better understanding of
+
+00:00:04.530 --> 00:00:06.270
+the problem at hand and to learn
+
+00:00:06.269 --> 00:00:09.524
+some relevant terminology that we will use throughout the lesson.
+
+00:00:09.525 --> 00:00:12.495
+An exploratory robot may find itself dropped off
+
+00:00:12.494 --> 00:00:15.599
+at a starting position and need to traverse the land,
+
+00:00:15.599 --> 00:00:18.375
+water, or air to get to its goal position.
+
+00:00:18.375 --> 00:00:21.164
+In between its start and goal locations,
+
+00:00:21.164 --> 00:00:23.655
+there will inevitably be some obstacles.
+
+00:00:23.655 --> 00:00:26.070
+Let's assume that our rover on land,
+
+00:00:26.070 --> 00:00:29.774
+performing a recovery operation after a natural disaster.
+
+00:00:29.774 --> 00:00:33.269
+The rover was dropped off at one position and needs to get to
+
+00:00:33.270 --> 00:00:37.830
+another position to evaluate whether it's safe for humans to follow this path.
+
+00:00:37.829 --> 00:00:42.679
+From the map, the robot knows that there's rubble present along its path.
+
+00:00:42.679 --> 00:00:46.204
+Using GPS data and aerial photographs of the environment,
+
+00:00:46.204 --> 00:00:50.435
+the rover must plan a path through the rubble to get to its destination.
+
+00:00:50.435 --> 00:00:54.600
+One option that the rover has is to follow the shortest path,
+
+00:00:54.600 --> 00:00:58.064
+the straight line between a start and goal locations.
+
+00:00:58.064 --> 00:01:01.219
+However, due to the large amount of rubble present,
+
+00:01:01.219 --> 00:01:05.719
+the rover might have to slow down considerably to safely navigate this path.
+
+00:01:05.719 --> 00:01:07.594
+If time is of the essence,
+
+00:01:07.594 --> 00:01:10.715
+this is likely not the ideal path to take.
+
+00:01:10.715 --> 00:01:14.299
+Taking the direct route may not even be possible if there are
+
+00:01:14.299 --> 00:01:18.155
+large obstacles in the way that the rover is unable to overcome.
+
+00:01:18.155 --> 00:01:19.909
+The rover will need a solution to
+
+00:01:19.909 --> 00:01:23.194
+this problem instead of just stopping dead in its tracks.
+
+00:01:23.194 --> 00:01:27.424
+One algorithm that the robot can apply would have the rover traverse
+
+00:01:27.424 --> 00:01:33.159
+any encountered obstacles clockwise until it reaches its intended path once again.
+
+00:01:33.159 --> 00:01:37.099
+This algorithm is often referred to as the bug algorithm.
+
+00:01:37.099 --> 00:01:41.809
+An alternate route altogether would be to go around as much rubble as possible.
+
+00:01:41.810 --> 00:01:44.629
+To accomplish this, the path planning algorithm
+
+00:01:44.629 --> 00:01:47.030
+would need a way to evaluate how long it takes to
+
+00:01:47.030 --> 00:01:49.790
+traverse different types of land and to
+
+00:01:49.790 --> 00:01:53.255
+take this information into account when planning a path.
+
+00:01:53.254 --> 00:01:56.030
+The resulting path may look like this.
+
+00:01:56.030 --> 00:01:57.560
+Although it is longer,
+
+00:01:57.560 --> 00:02:02.990
+the rover would get to the goal location faster because it can move quicker on flat land.
+
+00:02:02.989 --> 00:02:08.284
+More sophisticated algorithms may take into account the risk that the rover faces.
+
+00:02:08.284 --> 00:02:10.174
+Rovers are expensive tools.
+
+00:02:10.175 --> 00:02:14.094
+So, it'd be wise to avoid unnecessary danger in their operation.
+
+00:02:14.094 --> 00:02:17.175
+The rover's path planning algorithm may have it avoid
+
+00:02:17.175 --> 00:02:20.660
+unstable terrain or moving too closely to a cliff.
+
+00:02:20.659 --> 00:02:23.719
+Two methods of evaluating algorithms are to
+
+00:02:23.719 --> 00:02:27.129
+assess whether they are complete and whether they are optimal.
+
+00:02:27.129 --> 00:02:30.049
+An algorithm is complete if it is able to find
+
+00:02:30.050 --> 00:02:33.880
+a path between the start and the goal when one exists.
+
+00:02:33.879 --> 00:02:36.275
+A complete algorithm is able to solve
+
+00:02:36.275 --> 00:02:42.025
+all solvable problems and return no solution found to unsolvable problems.
+
+00:02:42.025 --> 00:02:46.265
+An algorithm is optimal if it is able to find the best solution.
+
+00:02:46.264 --> 00:02:48.274
+Best may mean different things.
+
+00:02:48.275 --> 00:02:49.550
+In the simplest case,
+
+00:02:49.550 --> 00:02:51.605
+best refers to the shortest path.
+
+00:02:51.604 --> 00:02:53.750
+But as you saw on the rover example,
+
+00:02:53.750 --> 00:02:56.719
+best may mean quickest or the path that minimizes
+
+00:02:56.719 --> 00:03:00.039
+the risk the most or a combination of factors.
+

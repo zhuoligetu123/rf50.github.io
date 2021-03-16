@@ -1,0 +1,221 @@
+{
+  "id": 2396,
+  "project_id": 469,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(css|docx|gradle|htm|html|java|js|markdown|md|pdf|py|rmd|rst|sql|swift|txt|xml|yaml|yml)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "",
+  "hide_criteria": false,
+  "created_at": "2018-11-08T00:55:12.044Z",
+  "updated_at": "2019-08-30T14:32:36.928Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 780888,
+  "classroom_project_key": "ccf640a8-0522-457a-8557-107444d805f5",
+  "language": "en-us",
+  "ndkeys": [
+    "nd209-beta",
+    "nd209",
+    "nd209-cn"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 5243,
+      "name": "Basic Requirements",
+      "created_at": "2018-12-14T00:11:33.650Z",
+      "updated_at": "2018-12-14T00:12:26.062Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2396,
+      "rubric_items": [
+        {
+          "id": 15170,
+          "section_id": 5243,
+          "passed_description": "Student submitted all required files:\nROS Packages\nShell scripts",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:12:32.142Z",
+          "updated_at": "2018-12-17T20:08:56.831Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student submit all required files?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5244,
+      "name": "Simulation Setup",
+      "created_at": "2018-12-14T00:11:37.571Z",
+      "updated_at": "2018-12-14T00:12:26.073Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 2396,
+      "rubric_items": [
+        {
+          "id": 15171,
+          "section_id": 5244,
+          "passed_description": "Student's simulation world and robot could properly load in Gazebo.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:12:54.807Z",
+          "updated_at": "2018-12-14T00:13:04.757Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student set up the simulation environment properly?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5245,
+      "name": "Mapping",
+      "created_at": "2018-12-14T00:11:39.246Z",
+      "updated_at": "2018-12-14T00:12:26.081Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2396,
+      "rubric_items": [
+        {
+          "id": 15172,
+          "section_id": 5245,
+          "passed_description": "The student should write a test_slam.sh script file and launch it to manually test SLAM.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:13:04.913Z",
+          "updated_at": "2018-12-14T00:13:24.703Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student's mapping function work properly?",
+          "exceedable": false
+        },
+        {
+          "id": 15173,
+          "section_id": 5245,
+          "passed_description": "Student created a functional map of the environment which would be used for localization and navigation tasks.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:13:24.968Z",
+          "updated_at": "2018-12-14T00:14:25.218Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Did the student create a map using SLAM?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5246,
+      "name": "Localization and Navigation",
+      "created_at": "2018-12-14T00:11:41.273Z",
+      "updated_at": "2018-12-14T00:12:26.089Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 2396,
+      "rubric_items": [
+        {
+          "id": 15174,
+          "section_id": 5246,
+          "passed_description": "The student's robot could navigate in the environment after a 2D Nav Goal command is issued. The student created a test_navigation.sh script file to launch it for manual navigation test.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:14:25.410Z",
+          "updated_at": "2018-12-14T00:14:40.273Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Was the student's navigation stack configured properly?",
+          "exceedable": false
+        },
+        {
+          "id": 15175,
+          "section_id": 5246,
+          "passed_description": "\"The student created a pick_objects.sh file that will send multiple goals for the robot to reach.\nThe robot travels to the desired pickup zone, displays a message that it reached its destination, waits 5 seconds, travels to the desired drop off zone, and displays a message that it reached the drop off zone.\"",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:14:40.701Z",
+          "updated_at": "2018-12-14T00:14:55.158Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Did the student's goal node function properly?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5247,
+      "name": "Home Service Functions",
+      "created_at": "2018-12-14T00:11:43.344Z",
+      "updated_at": "2018-12-14T00:12:26.096Z",
+      "deleted_at": null,
+      "position": 4,
+      "rubric_id": 2396,
+      "rubric_items": [
+        {
+          "id": 15176,
+          "section_id": 5247,
+          "passed_description": "The student should write a add_marker.sh file that will publish a marker to rviz.\nThe marker should initially be published at the pickup zone. After 5 seconds it should be hidden. Then after another 5 seconds it should appear at the drop off zone.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:14:55.366Z",
+          "updated_at": "2019-02-26T00:24:28.413Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student create virtual object with markers?",
+          "exceedable": false
+        },
+        {
+          "id": 15177,
+          "section_id": 5247,
+          "passed_description": "The student should write a home_service.sh file that will run all the nodes in this project.\nThe student's home service robot should be simulated as follow:\nInitially show the marker at the pickup zone.\nHide the marker once your robot reach the pickup zone.\nWait 5 seconds to simulate a pickup.\nShow the marker at the drop off zone once your robot reaches it.",
+          "exceeded_description": null,
+          "created_at": "2018-12-14T00:15:09.785Z",
+          "updated_at": "2019-02-26T00:24:28.433Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Does the student's robot perform home service tasks correctly?",
+          "exceedable": false
+        },
+        {
+          "id": 15580,
+          "section_id": 5247,
+          "passed_description": "The student should include a brief write-up explaining the packages used for this project, covering localization, mapping and navigation.",
+          "exceeded_description": null,
+          "created_at": "2019-02-26T00:22:40.602Z",
+          "updated_at": "2019-02-26T00:24:28.437Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Did the student include a write-up explaining the packages used to achieve home service functionalities?",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 469,
+    "name": "Home Service Robot",
+    "nanodegree_key": "nd209",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": 1144,
+    "entitlement_required": null,
+    "is_career": null,
+    "recruitment_family_id": 9,
+    "created_at": "2018-04-04T15:50:18.611Z",
+    "updated_at": "2020-05-25T23:47:56.419Z",
+    "price": "5.0",
+    "ungradeable_price": "3.0",
+    "audit_price": "0.0"
+  }
+}

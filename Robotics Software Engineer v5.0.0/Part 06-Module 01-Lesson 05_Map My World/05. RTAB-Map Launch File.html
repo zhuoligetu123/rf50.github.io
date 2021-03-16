@@ -1,0 +1,416 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   RTAB-Map Launch File
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Map My World
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Simulation Setup.html">
+       02. Simulation Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="03. RTAB-Map Package.html">
+       03. RTAB-Map Package
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Sensor Upgrade.html">
+       04. Sensor Upgrade
+      </a>
+     </li>
+     <li class="">
+      <a href="05. RTAB-Map Launch File.html">
+       05. RTAB-Map Launch File
+      </a>
+     </li>
+     <li class="">
+      <a href="06. RTAB-Map Real Time Visualization.html">
+       06. RTAB-Map Real Time Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Teleop Package.html">
+       07. ROS Teleop Package
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mapping Map My World.html">
+       08. Mapping: Map My World
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Mapping Database Viewer.html">
+       09. Mapping: Database Viewer
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Optional RTAB-Map Localization.html">
+       10. Optional: RTAB-Map Localization
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace.html">
+       11. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Map My World.html">
+       Project Description - Map My World
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Map My World.html">
+       Project Rubric - Map My World
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          05. RTAB-Map Launch File
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="launch-file">
+          Launch File
+         </h1>
+         <p>
+          We have the
+          <code>
+           launch
+          </code>
+          file to launch Gazebo and Rviz. Now, similar to what we did to create the
+          <code>
+           amcl.launch
+          </code>
+          in last project, we need to add the
+          <code>
+           launch
+          </code>
+          file for RTAB-Map!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="mappinglaunch">
+          <code>
+           mapping.launch
+          </code>
+         </h3>
+         <p>
+          Our mapping launch file acts as the main node that interfaces with all the required parts to be able to perform SLAM with
+          <code>
+           RTAB-Map
+          </code>
+          . A labeled template for the
+          <code>
+           mapping.launch
+          </code>
+          file has been provided below. Create
+          <code>
+           mapping.launch
+          </code>
+          file in the
+          <code>
+           launch
+          </code>
+          folder.
+         </p>
+         <p>
+          Read through the code and the comments to understand what each part is accomplishing and why. Feel free to reach beyond this template with the documentation of RTAB-Map. You task here is to assign the correct topic to be remapped to the topics required by
+          <code>
+           rtabmap
+          </code>
+          .
+         </p>
+         <ul>
+          <li>
+           <code>
+            scan
+           </code>
+          </li>
+          <li>
+           <code>
+            rgb/image
+           </code>
+          </li>
+          <li>
+           <code>
+            depth/image
+           </code>
+          </li>
+          <li>
+           <code>
+            rgb/camera_info
+           </code>
+          </li>
+         </ul>
+         <p>
+          You should find the actual topics that your robot is publishing to, in the robot's
+          <code>
+           urdf
+          </code>
+          file. When you find the correct ones, substitute them in the
+          <code>
+           &lt;arg&gt;
+          </code>
+          tags at the beginning of this launch file. Then your mapping node could find all required information to perform RTAB-Mapping!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;launch&gt;
+  &lt;!-- Arguments for launch file with defaults provided --&gt;
+  &lt;arg name="database_path"     default="rtabmap.db"/&gt;
+  &lt;arg name="rgb_topic"   default="/camera/rgb/image_raw"/&gt;
+  &lt;arg name="depth_topic" default="/camera/depth/image_raw"/&gt;
+  &lt;arg name="camera_info_topic" default="/camera/rgb/camera_info"/&gt;  
+
+
+  &lt;!-- Mapping Node --&gt;
+  &lt;group ns="rtabmap"&gt;
+    &lt;node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start"&gt;
+
+      &lt;!-- Basic RTAB-Map Parameters --&gt;
+      &lt;param name="database_path"       type="string" value="$(arg database_path)"/&gt;
+      &lt;param name="frame_id"            type="string" value="base_footprint"/&gt;
+      &lt;param name="odom_frame_id"       type="string" value="odom"/&gt;
+      &lt;param name="subscribe_depth"     type="bool"   value="true"/&gt;
+      &lt;param name="subscribe_scan"      type="bool"   value="true"/&gt;
+
+      &lt;!-- RTAB-Map Inputs --&gt;
+      &lt;remap from="scan" to="/scan"/&gt;
+      &lt;remap from="rgb/image" to="$(arg rgb_topic)"/&gt;
+      &lt;remap from="depth/image" to="$(arg depth_topic)"/&gt;
+      &lt;remap from="rgb/camera_info" to="$(arg camera_info_topic)"/&gt;
+
+      &lt;!-- RTAB-Map Output --&gt;
+      &lt;remap from="grid_map" to="/map"/&gt;
+
+      &lt;!-- Rate (Hz) at which new nodes are added to map --&gt;
+      &lt;param name="Rtabmap/DetectionRate" type="string" value="1"/&gt;
+
+      &lt;!-- 2D SLAM --&gt;
+      &lt;param name="Reg/Force3DoF" type="string" value="true"/&gt;
+
+      &lt;!-- Loop Closure Detection --&gt;
+      &lt;!-- 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 9=KAZE --&gt;
+      &lt;param name="Kp/DetectorStrategy" type="string" value="0"/&gt;
+
+      &lt;!-- Maximum visual words per image (bag-of-words) --&gt;
+      &lt;param name="Kp/MaxFeatures" type="string" value="400"/&gt;
+
+      &lt;!-- Used to extract more or less SURF features --&gt;
+      &lt;param name="SURF/HessianThreshold" type="string" value="100"/&gt;
+
+      &lt;!-- Loop Closure Constraint --&gt;
+      &lt;!-- 0=Visual, 1=ICP (1 requires scan)--&gt;
+      &lt;param name="Reg/Strategy" type="string" value="0"/&gt;
+
+      &lt;!-- Minimum visual inliers to accept loop closure --&gt;
+      &lt;param name="Vis/MinInliers" type="string" value="15"/&gt;
+
+      &lt;!-- Set to false to avoid saving data when robot is not moving --&gt;
+      &lt;param name="Mem/NotLinkedNodesKept" type="string" value="false"/&gt;
+    &lt;/node&gt;
+  &lt;/group&gt;
+&lt;/launch&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="_further-resources_">
+          <em>
+           Further Resources:
+          </em>
+         </h3>
+         <ul>
+          <li>
+           <a href="http://wiki.ros.org/rtabmap_ros/Tutorials/Advanced%20Parameter%20Tuning" rel="noopener noreferrer" target="_blank">
+            RTAB-Map Parameter Tutorial
+           </a>
+          </li>
+          <li>
+           <a href="https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h" rel="noopener noreferrer" target="_blank">
+            List of RTAB-Map Parameters
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="06. RTAB-Map Real Time Visualization.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. RTAB-Map Launch File')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

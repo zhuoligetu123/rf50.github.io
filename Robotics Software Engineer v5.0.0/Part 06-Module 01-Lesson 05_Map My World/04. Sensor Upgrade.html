@@ -1,0 +1,436 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Sensor Upgrade
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Map My World
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Simulation Setup.html">
+       02. Simulation Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="03. RTAB-Map Package.html">
+       03. RTAB-Map Package
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Sensor Upgrade.html">
+       04. Sensor Upgrade
+      </a>
+     </li>
+     <li class="">
+      <a href="05. RTAB-Map Launch File.html">
+       05. RTAB-Map Launch File
+      </a>
+     </li>
+     <li class="">
+      <a href="06. RTAB-Map Real Time Visualization.html">
+       06. RTAB-Map Real Time Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Teleop Package.html">
+       07. ROS Teleop Package
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mapping Map My World.html">
+       08. Mapping: Map My World
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Mapping Database Viewer.html">
+       09. Mapping: Database Viewer
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Optional RTAB-Map Localization.html">
+       10. Optional: RTAB-Map Localization
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace.html">
+       11. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Map My World.html">
+       Project Description - Map My World
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Map My World.html">
+       Project Rubric - Map My World
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          04. Sensor Upgrade
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="sensor-upgrade">
+          Sensor Upgrade
+         </h1>
+         <p>
+          In the previous projects you have been using an RGB camera; now it's time to give your robot an upgrade. Specifically, we will use a simulated Kinect camera for RTAB-Map.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Upgrade your sensor!
+         </p>
+        </h3>
+        <div>
+         <div>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="1afecb2b-2838-4e95-8fe2-88dba734cdc4--0" type="checkbox"/>
+            <label for="1afecb2b-2838-4e95-8fe2-88dba734cdc4--0">
+             <p>
+              Add
+              <code>
+               optical
+              </code>
+              camera link
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1afecb2b-2838-4e95-8fe2-88dba734cdc4--1" type="checkbox"/>
+            <label for="1afecb2b-2838-4e95-8fe2-88dba734cdc4--1">
+             <p>
+              Change the plugin file
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1afecb2b-2838-4e95-8fe2-88dba734cdc4--2" type="checkbox"/>
+            <label for="1afecb2b-2838-4e95-8fe2-88dba734cdc4--2">
+             <p>
+              Verify Gazebo reference
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Good job upgrading your sensor!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="add-optical-camera-link">
+          Add
+          <code>
+           optical
+          </code>
+          camera link
+         </h3>
+         <p>
+          For RGB-D camera in URDF file, we need to add an extra link and an extra joint to the camera link in order to align the camera image in Gazebo properly with the robot. Note that the parent link of
+          <code>
+           camera_optical_joint
+          </code>
+          should be properly configured to the original camera link.
+         </p>
+         <p>
+          Add the following joint and link to the robot's
+          <code>
+           .xacro
+          </code>
+          file:
+         </p>
+         <pre><code>  &lt;joint name="camera_optical_joint" type="fixed"&gt;
+    &lt;origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/&gt;
+    &lt;parent link="camera_link"/&gt;
+    &lt;child link="camera_link_optical"/&gt;
+  &lt;/joint&gt;
+
+  &lt;link name="camera_link_optical"&gt;
+  &lt;/link&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="configuring-the-rgb-d-camera">
+          Configuring the RGB-D Camera
+         </h3>
+         <p>
+          To do this we will need to replace the existing camera and its shared object file:
+          <code>
+           libgazebo_ros_camera.so
+          </code>
+          to that of the Kinect shared object file:
+          <code>
+           libgazebo_ros_openni_kinect.so
+          </code>
+          . Also, update the
+          <code>
+           &lt;frameName&gt;
+          </code>
+          to be the
+          <code>
+           camera_link_optical
+          </code>
+          link you created just now.
+         </p>
+         <p>
+          On top of this, additional parameters need to be set for the RGB-D camera as well as matching the topics published by the drivers of its real world counterpart. We have provided an example for the camera code below. Substitute that in your robot's
+          <code>
+           .gazebo
+          </code>
+          file!
+         </p>
+         <p>
+          <em>
+           Note: You could use the Classroom Workspace editor instead of the VNC Desktop to edit the
+           <code>
+            gazebo
+           </code>
+           file.
+          </em>
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          A snippet of camera code is provided below:
+         </p>
+         <pre><code>&lt;!-- RGBD Camera --&gt;
+  &lt;gazebo reference="camera_link"&gt;
+    &lt;sensor type="depth" name="camera1"&gt;
+        &lt;always_on&gt;1&lt;/always_on&gt;
+        &lt;update_rate&gt;20.0&lt;/update_rate&gt;
+        &lt;visualize&gt;true&lt;/visualize&gt;             
+        &lt;camera&gt;
+            &lt;horizontal_fov&gt;1.047&lt;/horizontal_fov&gt;  
+            &lt;image&gt;
+                &lt;width&gt;640&lt;/width&gt;
+                &lt;height&gt;480&lt;/height&gt;
+                &lt;format&gt;R8G8B8&lt;/format&gt;
+            &lt;/image&gt;
+            &lt;depth_camera&gt;
+
+            &lt;/depth_camera&gt;
+            &lt;clip&gt;
+                &lt;near&gt;0.1&lt;/near&gt;
+                &lt;far&gt;20&lt;/far&gt;
+            &lt;/clip&gt;
+        &lt;/camera&gt;
+         &lt;plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so"&gt;
+            &lt;alwaysOn&gt;true&lt;/alwaysOn&gt;
+            &lt;updateRate&gt;10.0&lt;/updateRate&gt;
+            &lt;cameraName&gt;camera&lt;/cameraName&gt;
+            &lt;frameName&gt;camera_link_optical&lt;/frameName&gt;                   
+            &lt;imageTopicName&gt;rgb/image_raw&lt;/imageTopicName&gt;
+            &lt;depthImageTopicName&gt;depth/image_raw&lt;/depthImageTopicName&gt;
+            &lt;pointCloudTopicName&gt;depth/points&lt;/pointCloudTopicName&gt;
+            &lt;cameraInfoTopicName&gt;rgb/camera_info&lt;/cameraInfoTopicName&gt;              
+            &lt;depthImageCameraInfoTopicName&gt;depth/camera_info&lt;/depthImageCameraInfoTopicName&gt;            
+            &lt;pointCloudCutoff&gt;0.4&lt;/pointCloudCutoff&gt;                
+                &lt;hackBaseline&gt;0.07&lt;/hackBaseline&gt;
+                &lt;distortionK1&gt;0.0&lt;/distortionK1&gt;
+                &lt;distortionK2&gt;0.0&lt;/distortionK2&gt;
+                &lt;distortionK3&gt;0.0&lt;/distortionK3&gt;
+                &lt;distortionT1&gt;0.0&lt;/distortionT1&gt;
+                &lt;distortionT2&gt;0.0&lt;/distortionT2&gt;
+            &lt;CxPrime&gt;0.0&lt;/CxPrime&gt;
+            &lt;Cx&gt;0.0&lt;/Cx&gt;
+            &lt;Cy&gt;0.0&lt;/Cy&gt;
+            &lt;focalLength&gt;0.0&lt;/focalLength&gt;
+            &lt;/plugin&gt;
+    &lt;/sensor&gt;
+  &lt;/gazebo&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="05. RTAB-Map Launch File.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Sensor Upgrade')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

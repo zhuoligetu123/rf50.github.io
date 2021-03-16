@@ -1,0 +1,778 @@
+{
+  "data": {
+    "lesson": {
+      "id": 737599,
+      "key": "1ccf2893-a07b-41c5-b2ed-7cdc48bd26fc",
+      "title": "Home Service Robot",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Program a home service robot that will autonomously map an environment and navigate to pickup and deliver objects!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/1ccf2893-a07b-41c5-b2ed-7cdc48bd26fc/737599/1556050337377/Home+Service+Robot+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/1ccf2893-a07b-41c5-b2ed-7cdc48bd26fc/737599/1556050334499/Home+Service+Robot+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "ccf640a8-0522-457a-8557-107444d805f5",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Home Service Robot",
+        "description": "Once you have completed your project, use the [**Project Rubric**](https://review.udacity.com/#!/rubrics/2396/view) to review the project. If you have covered all of the points in the rubric, then you are ready to submit! If you see room for improvement in **any** category in which you do not meet specifications, keep working! ",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2396",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5b0d82d7_2-33-project-home-service-robot-copy1x/2-33-project-home-service-robot-copy1x.png",
+          "width": 500,
+          "height": 500
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 737603,
+          "key": "888512e4-0163-41c5-97d9-e4545c386b1c",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "888512e4-0163-41c5-97d9-e4545c386b1c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 737621,
+              "key": "42f5e943-16ca-49c4-a8a8-d1038c7e1d4b",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WchXpePVMuI",
+                "china_cdn_id": "WchXpePVMuI.mp4"
+              }
+            },
+            {
+              "id": 737622,
+              "key": "8b7ffdc1-3032-47af-9648-e0da7bc444ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Welcome to the final project: `Home Service Robot`! In this project, you will use everything you learned in the Nanodegree Program to build a Home Service Robot in ROS. Let's get started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 737623,
+              "key": "9bd80eb3-726a-447d-b95f-c3590dc43999",
+              "title": "Home Service Robot Tasks",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9bd80eb3-726a-447d-b95f-c3590dc43999",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Simulation Setup",
+                "SLAM Testing",
+                "Wall Follower Node",
+                "Navigation Testing",
+                "Waypoint Node",
+                "Virtual Objects",
+                "Put it all Together"
+              ],
+              "positive_feedback": "Good job completing your home service robot project!",
+              "video_feedback": null,
+              "description": "Here's a list of the steps in this project - use it to track your progress!"
+            }
+          ]
+        },
+        {
+          "id": 737629,
+          "key": "869cdf2a-add6-4eac-9154-5c1819035421",
+          "title": "Working Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "869cdf2a-add6-4eac-9154-5c1819035421",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 737633,
+              "key": "7cdeea28-2a18-418a-985a-fdaf1e2c7ceb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Working Environment\n\nIn this project, Udacity provides you a in Classroom Workspace with ROS set up for you in the [Project Workspace concept](https://classroom.udacity.com/nanodegrees/nd209/parts/75c8f42b-c844-4f61-b3c6-521956c5cf70/modules/de8554d1-78db-4d1d-9a78-9b9a93d2879e/lessons/1ccf2893-a07b-41c5-b2ed-7cdc48bd26fc/concepts/acd9e789-8460-48a7-ace8-9f6b2aea25c9). If you are not familiar with the Workspace, please review the [Workspace Introduction lessons](https://classroom.udacity.com/nanodegrees/nd209/parts/0778207d-f34a-4178-8ccf-9e06b5bd2203/modules/48156d08-abb1-4c03-a18d-9db738a0b92b/lessons/e0c61e8d-7eac-4807-8737-d2bd321ae7a2/concepts/47784838-aea6-4834-9ebb-79fbb3e135af?contentVersion=2.0.0&contentLocale=en-us)!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 770425,
+              "key": "976c09dd-daae-4022-8918-e6bb289c78d7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bd35f16_udacity-workspace/udacity-workspace.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/976c09dd-daae-4022-8918-e6bb289c78d7",
+              "caption": "",
+              "alt": "",
+              "width": 3096,
+              "height": 1978,
+              "instructor_notes": null
+            },
+            {
+              "id": 737637,
+              "key": "7d464946-723c-48ef-a2a8-974e211a699c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After you enter the Workspace Desktop, please upgrade the system using the command\n\n```\nsudo apt-get update && apt-get upgrade\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 770514,
+          "key": "2a3d1694-44a3-487a-8361-da6c0e8056cb",
+          "title": "Shell Scripts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2a3d1694-44a3-487a-8361-da6c0e8056cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 770538,
+              "key": "8cd9074e-f49f-486d-aa88-44f47c4d5dbe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Shell Scripts\n\nA shell script is a file containing a series of commands and could be executed. It is commonly used to set up environment, run a program, etc. \n\nYou already know how to build a `roslaunch` file. It is very convenient to launch multiple ROS nodes and set parameters from a single `roslaunch` command. However, when developing robotic software with different packages, it might get harder to track errors and bugs generated from different nodes.\n\nThat's when shell scripts come in handy! After you create a shell script file to launch one or many nodes each in separate terminals, you will have the power to track the output of different nodes and keep the convenience of running a single command to launch all nodes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 770539,
+              "key": "1294b58d-6e77-4c92-a2dd-bc43a9e1cfbf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Your `launch.sh` Script\n\nLet us start by creating this `launch.sh` script in the Udacity Workspace. Its goal is to launch Gazebo and Rviz in separate instances of terminals. Note that we are using `xterm` terminal in the script here.\n\n```\n#!/bin/sh\nxterm  -e  \" gazebo \" &\nsleep 5\nxterm  -e  \" source /opt/ros/kinetic/setup.bash; roscore\" & \nsleep 5\nxterm  -e  \" rosrun rviz rviz\" \n```\n\nThe `launch.sh` shell script launches three terminals and issues one or multiple commands in each terminal. Let’s break down this script to understand the meaning of each line.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 770667,
+              "key": "29c40799-8d08-4ba5-9129-a5fe4455db7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Code Breakdown\n\n`#!/bin/sh`\n\nThis statement is called a `shebang`. It must be included in every shell script you write since it specifies the full path of the UNIX interpreter to execute it.\n\n`xterm -e \" gazebo \" &`\n\nWith the `xterm -e` statement, we launch a new instance of an `xterminal`. Inside this terminal, we launch gazebo using the command `\"gazebo\"`. Then we add an ampersand `&` to indicate that another instance of an xterm terminal will be created in a separate statement.\n\n`sleep 5`\n\nWe pause this script for 5 seconds using `sleep`.\n\n`xterm -e \" source /opt/ros/kinetic/setup.bash; roscore\" &`\n\nWe launch a second instance of the xterm terminal. Inside this terminal, we source the ROS workspace and launch the ROS master node.\n\n`sleep 5`\n\nWe pause this script for another 5 seconds.\n\n`xterm -e \" rosrun rviz rviz\"`\n\nWe are launching a third instance of the xterm terminal, and running rviz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 770668,
+              "key": "cc81f7d6-1e4b-4cb3-b54d-f12b5ed41dac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Save your script file and give it `execute` pemission by `chmod +x launch.sh`. Then launch the shell script with `./launch.sh`.\n\nAfter launching this script, we’ll have three open xterm terminals, and we will be able to track any errors or bugs that occur. To recap, this script will open the first terminal and launch gazebo. Then it will pause for 5 seconds and open a second terminal to launch the ROS master. It will pause for another 5 seconds and, finally, open a third terminal to launch RVIZ.\n\nTry to launch your script in the Workspace and verify its functions!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831571,
+              "key": "79e82f86-0cfd-442b-966b-e398f709ac3f",
+              "title": "Shell Script",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "79e82f86-0cfd-442b-966b-e398f709ac3f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Install xterm with `sudo apt-get install xterm`",
+                "Create a **launch.sh** file",
+                "Write one or multiple commands to be executed by the terminals",
+                "Turn your script into an executable one with `chmod +x launch.sh`",
+                "Launch the shell script file with `./launch.sh`"
+              ],
+              "positive_feedback": "Good job!",
+              "video_feedback": null,
+              "description": "Now it's your turn to experiment with shell scripts and customize them by following these steps:"
+            }
+          ]
+        },
+        {
+          "id": 770720,
+          "key": "e9817b8f-25da-476f-b1d1-5f5a0ef8115e",
+          "title": "Simulation Set Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e9817b8f-25da-476f-b1d1-5f5a0ef8115e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780453,
+              "key": "6193f5e9-fdf0-4be9-ba27-ef89e141a0e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simulation Setup\n\n### Catkin Workspace\n\nTo program your home service robot, you will need to interface it with different ROS packages. Some of these packages are **official ROS packages** which offer great tools and others are **packages that you’ll create**. The goal of this section is to prepare and build your `catkin workspace`.  \n\nHere’s the list of the official ROS packages that you will need to grab, and other packages and directories that you’ll need to create at a later stage as you go through the project. Your `catkin_ws/src` directory should look as follows:  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780455,
+              "key": "db63eca2-2cb4-4303-a635-eb4b311e2a74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Official ROS packages\nImport these packages now and install them in the `src` directory of your `catkin workspace`. Be sure to clone the full GitHub directory and not just the package itself. \n1. [gmapping:](http://wiki.ros.org/gmapping) With the **gmapping_demo.launch** file, you can easily perform SLAM and build a map of the environment with a robot equipped with laser range finder sensors or RGB-D cameras.\n2. [turtlebot_teleop:](http://wiki.ros.org/turtlebot_teleop) With the **keyboard_teleop.launch** file, you can manually control a robot using keyboard commands.\n3. [turtlebot_rviz_launchers:](http://wiki.ros.org/turtlebot_rviz_launchers) With the **view_navigation.launch** file, you can load a preconfigured rviz workspace. You’ll save a lot of time by launching this file, because it will automatically load the robot model, trajectories, and map for you. \n4. [turtlebot_gazebo:](http://wiki.ros.org/turtlebot_gazebo) With the **turtlebot_world.launch** you can deploy a turtlebot in a gazebo environment by linking the world file to it. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780456,
+              "key": "c5a00add-66a5-459d-bc35-7c8e141e79db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Your Packages and Directories\nYou’ll install these packages and create the directories as you go through the project.\n1. **map:** Inside this directory, you will store your gazebo world file and the map generated from SLAM.\n2. **scripts:** Inside this directory, you’ll store your shell scripts. \n3. **rvizConfig:** Inside this directory, you’ll store your customized rviz configuration files.\n4. **pick_objects:** You will write a node that commands your robot to drive to the pickup and drop off zones. \n5. **add_markers:** You will write a node that model the object with a marker in rviz.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780458,
+              "key": "fc9e2b93-2b32-43c8-8da4-b58bad97b620",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your package should look like this now:\n\n```\n    ├──                                # Official ROS packages\n    |\n    ├── slam_gmapping                  # gmapping_demo.launch file                   \n    │   ├── gmapping\n    │   ├── ...\n    ├── turtlebot                      # keyboard_teleop.launch file\n    │   ├── turtlebot_teleop\n    │   ├── ...\n    ├── turtlebot_interactions         # view_navigation.launch file      \n    │   ├── turtlebot_rviz_launchers\n    │   ├── ...\n    ├── turtlebot_simulator            # turtlebot_world.launch file \n    │   ├── turtlebot_gazebo\n    │   ├── ...\n    ├──                                # Your packages and direcotries\n    |\n    ├── map                          # map files\n    │   ├── ...\n    ├── scripts                   # shell scripts files\n    │   ├── ...\n    ├──rvizConfig                      # rviz configuration files\n    │   ├── ...\n    ├──pick_objects                    # pick_objects C++ node\n    │   ├── src/pick_objects.cpp\n    │   ├── ...\n    ├──add_markers                     # add_marker C++ node\n    │   ├── src/add_markers.cpp\n    │   ├── ...\n    └──\n    \n  ```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 737641,
+          "key": "32636918-ef85-4ebb-b738-a3aaca4a36d9",
+          "title": "SLAM Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "32636918-ef85-4ebb-b738-a3aaca4a36d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 770773,
+              "key": "f1637e7a-ffa6-4060-9e97-2dcea3757309",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# SLAM Testing\n\nThe next task of this project is to autonomously map the environment you designed earlier with the Building Editor in Gazebo. But before you tackle autonomous mapping, it’s important to test if you are able to manually perform SLAM by teleoperating your robot. The goal of this step is to manually test SLAM.\n\nWrite a shell script `test_slam.sh` that will deploy a turtlebot inside your environment, control it with keyboard commands, interface it with a SLAM package, and visualize the map in `rviz`. We will be using turtlebot for this project but feel free to use your personalized robot to make your project stand out!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 770774,
+              "key": "6a2c7fc7-5ce5-4394-911b-ce8bcb820e9d",
+              "title": "SLAM Testing Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6a2c7fc7-5ce5-4394-911b-ce8bcb820e9d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "The **turtlebot_world.launch** file to deploy a turtlebot in your environment",
+                "The **gmapping_demo.launch** or run **slam_gmapping** to perform SLAM",
+                "The **view_navigation.launch** to observe the map in rviz",
+                "The **keyboard_teleop.launch** to manually control the robot with keyboard commands"
+              ],
+              "positive_feedback": "Nice job building your SLAM testing script!",
+              "video_feedback": null,
+              "description": "To manually test SLAM, create a `test_slam.sh` shell script that launches these files:"
+            },
+            {
+              "id": 770775,
+              "key": "ea56624a-95cc-4122-bce9-602bf676f7c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Run and Test\n\nLaunch your test_slam.sh file, search for the `xterminal` running the `keyboard_teleop`node, and start controlling your robot. You are not required to fully map your environment but just make sure everything is working fine. You might notice that the map is low quality, but don’t worry about that for now. If everything seems to be working fine, move on to the next concept!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831572,
+              "key": "09120243-ca9b-476e-8067-e31b82d87f56",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab0249a_l6-c6-testing-slam/l6-c6-testing-slam.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/09120243-ca9b-476e-8067-e31b82d87f56",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 737699,
+          "key": "04000b16-3994-4988-a0d0-099563ade0de",
+          "title": "Localization and Navigation Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04000b16-3994-4988-a0d0-099563ade0de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 770777,
+              "key": "90b94af1-8721-4631-84ec-7e2a6c24725d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Localization and Navigation Testing\n\nThe next task of this project is to pick two different goals and test your robot's ability to reach them and orient itself with respect to them. We will refer to these goals as the pickup and drop off zones. This section is only for testing purposes to make sure our robot is able to reach these positions before autonomously commanding it to travel towards them.\n\nWe will be using the ROS Navigation stack, which is based on the Dijkstra's, a variant of the Uniform Cost Search algorithm, to plan our robot trajectory from start to goal position. The ROS navigation stack permits your robot to avoid any obstacle on its path by re-planning a new trajectory once your robot encounters them. You are familiar with this navigation stack from the localization project where you interfaced with it and sent a specific goal for your robot to reach while localizing itself with AMCL. If you are planning to modify the ROS navigation algorithm or you are curious to know how it's done, take a look at this official tutorial which teaches you how to write a global path planner as a plugin in ROS.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782000,
+              "key": "a745cad5-e412-4272-ad25-5d4aecd88f0e",
+              "title": "Testing Navigation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "t-0li7H131A",
+                "china_cdn_id": "t-0li7H131A.mp4"
+              }
+            },
+            {
+              "id": 770778,
+              "key": "72a3b765-8549-47b2-a0c4-af09c6900188",
+              "title": "Navigation Test Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "72a3b765-8549-47b2-a0c4-af09c6900188",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Add **turtlebot_world.launch** to deploy a turtlebot in your environment",
+                "Add **amcl_demo.launch** to localize the turtlebot",
+                "Add  **view_navigation.launch** to observe the map in rviz"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Write a **test_navigation.sh** shell script that launches these files:"
+            },
+            {
+              "id": 831573,
+              "key": "4c265147-bc33-480e-a851-b0d51a3ab92b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Test it\nOnce you launch all the nodes, you will initially see the particles around your robot, which means that AMCL recognizes the initial robot pose. Now, manually point out to two different goals, one at a time, and direct your robot to reach them and orient itself with respect to them. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 737700,
+          "key": "3e2ceb7d-ee6e-4e9d-90a2-6834cf869677",
+          "title": "Navigation Goal Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e2ceb7d-ee6e-4e9d-90a2-6834cf869677",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780466,
+              "key": "27549802-7e49-4410-8e24-011893b726a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Reaching Multiple Goals\nEarlier, you tested your robot capabilities in reaching multiple goals by manually commanding it to travel with the 2D NAV Goal arrow in rviz. Now, you will write a node that will communicate with the ROS navigation stack and autonomously send successive goals for your robot to reach. As mentioned earlier, the ROS navigation stack creates a path for your robot based on **Dijkstra's** algorithm, a variant of the **Uniform Cost Search** algorithm, while avoiding obstacles on its path.\n\nThere is an official ROS tutorial that teaches you how to send a single goal position and orientation to the navigation stack. You are already familiar with this code from the Localization project where you used it to send your robot to a pre-defined goal. Check out the [tutorial](http://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals) and go through its documentation.  \n\nHere’s the C++ code of this node which sends a **single goal** for the robot to reach. I included some extra comments to help you understand it:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831574,
+              "key": "93a25fd1-c657-42b2-bd34-a9a190a0562f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```C++\n#include <ros/ros.h>\n#include <move_base_msgs/MoveBaseAction.h>\n#include <actionlib/client/simple_action_client.h>\n \n// Define a client for to send goal requests to the move_base server through a SimpleActionClient\ntypedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;\n\nint main(int argc, char** argv){\n  // Initialize the simple_navigation_goals node\n  ros::init(argc, argv, \"simple_navigation_goals\");\n\n  //tell the action client that we want to spin a thread by default\n  MoveBaseClient ac(\"move_base\", true);\n\n  // Wait 5 sec for move_base action server to come up\n  while(!ac.waitForServer(ros::Duration(5.0))){\n    ROS_INFO(\"Waiting for the move_base action server to come up\");\n  }\n\n  move_base_msgs::MoveBaseGoal goal;\n\n  // set up the frame parameters\n  goal.target_pose.header.frame_id = \"base_link\";\n  goal.target_pose.header.stamp = ros::Time::now();\n  \n  // Define a position and orientation for the robot to reach\n  goal.target_pose.pose.position.x = 1.0;\n  goal.target_pose.pose.orientation.w = 1.0;\n\n   // Send the goal position and orientation for the robot to reach\n  ROS_INFO(\"Sending goal\");\n  ac.sendGoal(goal);\n  \n  // Wait an infinite time for the results\n  ac.waitForResult();\n  \n  // Check if the robot reached its goal\n  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)\n    ROS_INFO(\"Hooray, the base moved 1 meter forward\");\n  else\n    ROS_INFO(\"The base failed to move forward 1 meter for some reason\");\n\n  return 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782001,
+              "key": "f9fca21d-d645-4005-85f2-97fe5ecea122",
+              "title": "Reaching Multiple Goals",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RcbjN6KFJq8",
+                "china_cdn_id": "RcbjN6KFJq8.mp4"
+              }
+            },
+            {
+              "id": 831575,
+              "key": "9caac064-a0f8-480d-8717-0bc0f756d091",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Customize the code\nYou will need to modify this code and edit its node name to **pick_objects**. Then, edit the **frame_id** to `map`, since your fixed frame is the map and not base_link. After that, you will need to modify the code and include an extra goal position and orientation for your robot to reach. \n\nThe first goal should be your desired pickup goal and the second goal should be your desired drop off goal. The robot has to travel to the desired pickup zone, display a message that it reached its destination, wait 5 seconds, travel to the desired drop off zone, and display a message that it reached the drop off zone. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831577,
+              "key": "6c8cd979-193d-4718-bb34-d1c665ca05a9",
+              "title": "Reaching Multiple Goals",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6c8cd979-193d-4718-bb34-d1c665ca05a9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a **pick_objects** package with `move_base_msgs`, `actionlib`, and `roscpp` dependencies",
+                "Create a **pick_objects** C++ node",
+                "Edit the C++ node and modify it's **node name** and **frame_id**",
+                "Modify the C++ node and publish a second goal for the robot to reach",
+                "Display messages to track if robot successfully reached both zones",
+                "Pause 5 seconds after reaching the pickup zone",
+                "Edit the **CMakeLists.txt** file and add `directories`, `executable`, and `target link libraries`",
+                "Build your `catkin_ws`",
+                "Create a **pick_objects.sh** script file that launches the **turtlebot**, **AMCL**, **rviz** and your **pick_objects** node."
+              ],
+              "positive_feedback": "Nicely done!",
+              "video_feedback": null,
+              "description": "Follow these instructions to autonomously command the robot to travel to both desired pickup and drop off zones:"
+            }
+          ]
+        },
+        {
+          "id": 737701,
+          "key": "95f86ccf-73c0-486d-b2d6-8945e6fde3e1",
+          "title": "Virtual Objects",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "95f86ccf-73c0-486d-b2d6-8945e6fde3e1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780463,
+              "key": "46dd7255-0305-42e1-803c-f2f4cf7f380e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Modeling Virtual Objects\nThe final task of this project is to model a virtual object with markers in rviz. The virtual object is the one being picked and delivered by the robot, thus it should first appear in its pickup zone, and then in its drop off zone once the robot reaches it. \n\nFirst, let’s see how markers can be drawn in rviz. Luckily, there’s an official ROS tutorial that teaches you how to do it. The tutorial is an excellent reference and includes a C++ node capable of drawing basic shapes like arrows, cubes, cylinders, and spheres in rviz. You will learn how to define a marker, scale it, define its position and orientation, and finally publish it to rviz. The node included in the tutorial will publish a different shape each second at the same position and orientation. Check out the [tutorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) and go through the documentation to get started. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780464,
+              "key": "bf330a32-8dc5-49f9-b551-7dbb2ed3e660",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will need to first run this node and visualize the markers in rviz. Then you’ll need to modify the code and publish a single shape example: a cube. Your code should follow this **algorithm**:\n* Publish the marker at the pickup zone \n* Pause 5 seconds\n* Hide the marker \n* Pause 5 seconds \n* Publish the marker at the drop off zone \n\nLater you will be able to combine this node with the pick_objects node coded earlier to simulate the full home service robot. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780465,
+              "key": "a311b05b-e1fc-4933-b940-b490a69da37b",
+              "title": "Modeling Virtual Objects",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Gq_FTu48ytc",
+                "china_cdn_id": "Gq_FTu48ytc.mp4"
+              }
+            },
+            {
+              "id": 831579,
+              "key": "c7b5e977-8ad1-431e-afd9-c359e8069364",
+              "title": "Modeling Virtual Objects",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c7b5e977-8ad1-431e-afd9-c359e8069364",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create an **add_markers** package with `roscpp` and `visualization_msgs` dependencies",
+                "Create an **add_markers** C++ node",
+                "Copy the C++ code and edit the node name to **add_markers**",
+                "Edit the **frame_id**",
+                "Modify the C++ code to publish a single shape as describer earlier",
+                "Edit the **CMakeLists.txt** file and add the `executable`, and `libraries`",
+                "Build the `catkin_ws`",
+                "Create an **add_marker.sh** shell script that launches the `turtlebot`, `AMCL`, `rviz`, and your `add_markers` node.",
+                "Launch your shell script and manually add a **Marker** in rviz"
+              ],
+              "positive_feedback": "Good job building the virtual objects!",
+              "video_feedback": null,
+              "description": "Follow these steps to create a virtual object in rviz:"
+            }
+          ]
+        },
+        {
+          "id": 737702,
+          "key": "969b75e8-548b-4f82-9d38-8b23b335d57f",
+          "title": "Your Home Service Robot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "969b75e8-548b-4f82-9d38-8b23b335d57f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780471,
+              "key": "5d00e76b-0673-42f5-bd84-fc8f8dd8d248",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Your Home Service Robot\nNow it’s time to simulate a full home service robot capable of navigating to pick up and deliver virtual objects. To do so, the **add_markers** and **pick_objects** node should be communicating. Or, more precisely, the **add_markers** node should subscribe to your **odometry** to keep track of your robot pose. \n\nModify the **add_markers** node as follows:\n* Initially show the marker at the pickup zone\n* Hide the marker once your robot reaches the pickup zone \n* Wait 5 seconds to simulate a pickup\n* Show the marker at the drop off zone once your robot reaches it  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780473,
+              "key": "f25ccea2-8659-4a82-8566-e7183d79ce19",
+              "title": "Putting it all Together",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f25ccea2-8659-4a82-8566-e7183d79ce19",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Edit the **add_markers** node and subscribe to odometry values",
+                "Modify the C++ node as described earlier",
+                "Build your `catkin_ws`",
+                "Add **markers** to the **view_navigation.launch** file and save it as a new rviz configuration",
+                "Create a **home_service.sh** file that launches the `turtlebot`, `AMCL`, `rviz config file`,  `pick_objects` and `add_markers` nodes"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to successfully simulate a home service robot:"
+            },
+            {
+              "id": 780472,
+              "key": "9d88972e-c21c-4925-b420-e1e7bc229db6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Note \nThere are many ways to solve this problem. To establish communications between the robot and the markers, one method already mentioned is to let your `add_markers` node subscribe to your robot odometry and keep track of your robot pose. \n\nOther solutions to this problem might be to \nuse ROS [parameters](http://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams), subscribe to the AMCL pose, or even to publish a new variable that indicates whether or not your robot is at the pickup or drop off zone. Feel free to solve this problem in any way you wish.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831580,
+              "key": "85016dea-1be8-4e2b-898c-61c5bfdc7479",
+              "title": "Putting It All Together",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MSiU6SB__Dk",
+                "china_cdn_id": "MSiU6SB__Dk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780887,
+          "key": "acd9e789-8460-48a7-ace8-9f6b2aea25c9",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "acd9e789-8460-48a7-ace8-9f6b2aea25c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841961,
+              "key": "a395a394-da26-4ec8-ad25-bb2fea497f42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# _Note: This workspace is being deprecated. Please use the Workspace in the next concept instead!_",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831585,
+              "key": "01a6e93f-6324-4f1a-95f3-f070c25a8bbf",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r713980c780887xREACTLIVkjvi762q",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-live-hbj40",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "daemons": [
+                      {
+                        "id": "daemon",
+                        "cmd": ""
+                      }
+                    ],
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false
+                  },
+                  "kind": "react-live"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 841959,
+          "key": "d0588ba1-6dd1-4dc6-b095-67a05257901c",
+          "title": "Project Workspace: Home Service Robot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d0588ba1-6dd1-4dc6-b095-67a05257901c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841960,
+              "key": "12f831b9-0348-440c-ab16-9ee4b0b7dcbb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r713980c841959xREACTeg2h91uh",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-ttwn2",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "GO TO DESKTOP",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

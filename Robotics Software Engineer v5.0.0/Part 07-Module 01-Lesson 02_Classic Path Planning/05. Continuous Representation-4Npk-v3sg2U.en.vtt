@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.855
+Here we have an environment with several obstacles.
+
+00:00:03.855 --> 00:00:06.044
+We can call this the workspace.
+
+00:00:06.043 --> 00:00:09.299
+Our goal path planning is to find a path between
+
+00:00:09.300 --> 00:00:14.295
+some start location and some end location that avoids collision with obstacles.
+
+00:00:14.294 --> 00:00:17.100
+If we treat the robot as a single point,
+
+00:00:17.100 --> 00:00:19.320
+then the task of path planning is quite simple.
+
+00:00:19.320 --> 00:00:23.789
+Within this workspace, the robot can move anywhere in the free space.
+
+00:00:23.789 --> 00:00:26.980
+That is the space not occupied by obstacles.
+
+00:00:26.980 --> 00:00:30.500
+The robot can even travel along the wall of an obstacle.
+
+00:00:30.500 --> 00:00:34.354
+After all, we're representing it as a dimensionless point.
+
+00:00:34.354 --> 00:00:38.554
+In such a case, the path planning problem is relatively simple.
+
+00:00:38.554 --> 00:00:42.439
+Find a curved or piece wise linear path connecting the robot
+
+00:00:42.439 --> 00:00:46.820
+start pose to the goalpost that does not collide with any obstacles.
+
+00:00:46.820 --> 00:00:50.155
+Here are just two examples of such possible paths.
+
+00:00:50.155 --> 00:00:54.875
+As long as there is an infinitesimally small gap between two obstacles,
+
+00:00:54.875 --> 00:00:57.770
+a point robot would be able to squeeze through.
+
+00:00:57.770 --> 00:01:02.500
+However, in reality robots have more dimensions than a point.
+
+00:01:02.500 --> 00:01:05.719
+If we model a robot as a two-dimensional disc,
+
+00:01:05.719 --> 00:01:09.155
+and try to attempt to follow the same paths that we developed earlier,
+
+00:01:09.155 --> 00:01:10.820
+we may run into trouble.
+
+00:01:10.819 --> 00:01:14.179
+Some of the paths may have the robot collide with obstacles.
+
+00:01:14.180 --> 00:01:15.700
+So, what do we do?
+
+00:01:15.700 --> 00:01:17.575
+For every step of the path,
+
+00:01:17.575 --> 00:01:22.310
+we could compute the distance from the robot center to every obstacle,
+
+00:01:22.310 --> 00:01:25.969
+and ensure that the space is greater than the radius of the robot.
+
+00:01:25.969 --> 00:01:27.834
+But that would be a lot of work.
+
+00:01:27.834 --> 00:01:30.904
+The same can be accomplished in an easier manner.
+
+00:01:30.905 --> 00:01:36.424
+We can inflate every single obstacle by the radius of the robot,
+
+00:01:36.424 --> 00:01:39.129
+and then treat the robot as a point.
+
+00:01:39.129 --> 00:01:42.289
+Doing so, has shown us that the upper path is
+
+00:01:42.290 --> 00:01:45.380
+no longer an option for the robot of this size.
+
+00:01:45.379 --> 00:01:49.444
+The robot would not be able to fit in between the two obstacles.
+
+00:01:49.444 --> 00:01:51.594
+The other path is still viable.
+
+00:01:51.594 --> 00:01:54.590
+This representation of the environment is called
+
+00:01:54.590 --> 00:01:57.710
+the configuration space or the C space for short.
+
+00:01:57.709 --> 00:02:01.854
+A configuration space is a set of all robot poses.
+
+00:02:01.855 --> 00:02:05.954
+The C space is divided into C Free and C Obstacle.
+
+00:02:05.954 --> 00:02:08.509
+C Free represents the set of poses in
+
+00:02:08.509 --> 00:02:11.824
+the free space that do not collide with any obstacles.
+
+00:02:11.824 --> 00:02:14.060
+Seen here in dark blue,
+
+00:02:14.060 --> 00:02:17.664
+and C Obstacle is the compliment to C Free,
+
+00:02:17.664 --> 00:02:23.150
+representing the set of robot pauses that are in collision with obstacles or walls,
+
+00:02:23.150 --> 00:02:25.480
+represented here in gray.
+

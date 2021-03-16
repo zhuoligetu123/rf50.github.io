@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.410
+One of the simplest types of search is called breadth-first search,
+
+00:00:04.410 --> 00:00:06.179
+or BFS for short.
+
+00:00:06.179 --> 00:00:12.149
+It has its name because the algorithm searches a space broadly before it searches deeply.
+
+00:00:12.150 --> 00:00:14.160
+Let's look at a search tree.
+
+00:00:14.160 --> 00:00:15.780
+Here, we have a number of
+
+00:00:15.779 --> 00:00:19.919
+interconnected nodes with the start node at the top of the tree.
+
+00:00:19.920 --> 00:00:25.020
+Breadth-first search traverses the tree exploring at one level at a time.
+
+00:00:25.019 --> 00:00:28.169
+It will traverse all the nodes at this level,
+
+00:00:28.170 --> 00:00:33.840
+the children nodes, before it moves on to traverse the grandchildren nodes and so-forth.
+
+00:00:33.840 --> 00:00:39.075
+How the algorithm breaks ties changes from implementation to implementation.
+
+00:00:39.075 --> 00:00:41.065
+But on a search tree like this,
+
+00:00:41.064 --> 00:00:44.299
+it is usually implied that you move left to right.
+
+00:00:44.299 --> 00:00:47.759
+So, after a few steps of searching through this tree,
+
+00:00:47.759 --> 00:00:50.420
+the nodes would have been searched in this order,
+
+00:00:50.420 --> 00:00:53.335
+starting with node number one at the top of the tree.
+
+00:00:53.335 --> 00:00:55.380
+If you were to continue searching,
+
+00:00:55.380 --> 00:00:57.620
+can you identify on which steps
+
+00:00:57.619 --> 00:01:02.369
+the search algorithm would reach the nodes labeled A, B, and C?
+

@@ -1,0 +1,137 @@
+{
+  "data": {
+    "lesson": {
+      "id": 790771,
+      "key": "8b4d9c0d-d4de-410b-8f2a-655be26da6b5",
+      "title": "Intro to Path Planning and Navigation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn what the lessons in Path Planning and Navigation will cover.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/8b4d9c0d-d4de-410b-8f2a-655be26da6b5/790771/1556050329151/Intro+to+Path+Planning+and+Navigation+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/8b4d9c0d-d4de-410b-8f2a-655be26da6b5/790771/1556050326642/Intro+to+Path+Planning+and+Navigation+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 790766,
+          "key": "ad612e7a-099a-455b-b771-118031d68265",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad612e7a-099a-455b-b771-118031d68265",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 790763,
+              "key": "3e4ad5a0-13aa-4755-ab19-c931b42cd7ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790764,
+              "key": "058b83d6-87c4-456b-a62b-72a5da13e49b",
+              "title": "Intro To Path Planning And Navigation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "W3N6nXyv948",
+                "china_cdn_id": "W3N6nXyv948.mp4"
+              }
+            },
+            {
+              "id": 790765,
+              "key": "9e6f8239-f158-48ce-ae33-3d9af0bec003",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\nIn this lesson, we'll focus on the decision making aspects of mobile robotics, i.e. path planning and navigation.  **Path planning** is a strategic solution to the problem of \"How do I get there?\", while **obstacle avoidance** is a series of tactical decisions the robot must make as it moves along its path. \n\n## Lesson Roadmap\n* Classic Path Planning\n* Sample-Based and Probabilistic Path Planning\n* Lab: Path Planning\n* Project: Home Service Robot",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 790770,
+          "key": "db38269a-2c99-4900-9206-246c2f98b15c",
+          "title": "Applications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db38269a-2c99-4900-9206-246c2f98b15c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 790767,
+              "key": "47e17990-b061-46d6-b341-4d838aedd564",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Applications\n\nBefore we dive into the details - let’s look at where path planning can be applied! \n\nSitting in your home or office, some environment-specific examples come to mind right away - vacuum robots plan their paths around a house to ensure that every square inch of space gets cleaned. Self-driving cars are starting to appear around us. These vehicles can accept a destination as an input from a human and plan an efficient path that avoids collisions and obeys all traffic regulations. \n\nMore peculiar applications of path planning in robotics include assistive robotics. Whether working with the disabled or elderly, robots are starting to appear in care homes and hospitals to assist humans with their everyday tasks. Such robots must be mindful of their surroundings when planning paths - some obstacles stay put over time, such as walls and large pieces of furniture, while others may move around from day to day. Path planning in dynamic environments is undoubtedly more difficult. \n\nAnother robotic application of path planning is the planning of paths by exploratory rovers, such as Curiosity on Mars. The rover must safely navigate the surface of Mars (which is between 55 and 400 million kilometers away!). Accurate problem-free planning that avoids risks is incredibly important. \n\nPath planning is not limited to robotics applications, in fact it is widely used in several other disciplines. Computer graphics and animation use path planning to generate the motion of characters. While computational biology applies path planning to the folding of protein chains. \n\nWith many different applications, there are naturally many different approaches. In the next few lessons you will gain the knowledge required to implement several different path planning algorithms.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790768,
+              "key": "7d05f89d-15a4-49ad-b503-87dbd95cdfc1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c06d490_robots/robots.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7d05f89d-15a4-49ad-b503-87dbd95cdfc1",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 790769,
+              "key": "7811d49e-a0a0-4a20-a151-40648da0b97f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Outcomes: \n\n- Understand real-world applications of path planning.\n- Select the appropriate path planning algorithm for a given application.\n- Be able to successfully implement path planning algorithms in code.\n- Interface a path planning package with ROS",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

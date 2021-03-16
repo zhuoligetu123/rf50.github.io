@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.299
+Depth-first search, or DFS for short,
+
+00:00:03.299 --> 00:00:05.699
+is another uninformed search algorithm.
+
+00:00:05.700 --> 00:00:07.470
+Like the name suggests,
+
+00:00:07.469 --> 00:00:11.489
+depth-first search searches deep before it searches broadly.
+
+00:00:11.490 --> 00:00:13.410
+If we go back to our search tree,
+
+00:00:13.410 --> 00:00:14.984
+you can see this in action.
+
+00:00:14.984 --> 00:00:19.589
+Instead of commencing at the top node and searching level by level,
+
+00:00:19.589 --> 00:00:23.910
+DFS will explore the start nodes first child and then that nodes
+
+00:00:23.910 --> 00:00:28.980
+first child and so on until it hits the lowest leaf in this branch.
+
+00:00:28.980 --> 00:00:32.250
+Only then will DFS backup to a node which had
+
+00:00:32.250 --> 00:00:35.865
+more than one child and explore this node second child.
+
+00:00:35.865 --> 00:00:38.910
+After a few steps of searching through the tree,
+
+00:00:38.909 --> 00:00:41.129
+the nodes would have been searched in this order,
+
+00:00:41.130 --> 00:00:44.960
+once again, starting with node number one at the top of the tree.
+
+00:00:44.960 --> 00:00:48.980
+If you were to continue searching with a depth-first search algorithm,
+
+00:00:48.979 --> 00:00:52.069
+can you identify on which steps the search algorithm would
+
+00:00:52.070 --> 00:00:56.189
+reach the nodes labeled A, B, and C?
+

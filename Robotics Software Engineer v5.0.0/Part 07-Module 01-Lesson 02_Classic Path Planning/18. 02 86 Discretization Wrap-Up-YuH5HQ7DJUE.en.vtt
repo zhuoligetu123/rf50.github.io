@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.810
+In this lesson, we are studying Discrete Path Planning,
+
+00:00:03.810 --> 00:00:07.980
+which we've broken down into three steps: continuous representation,
+
+00:00:07.980 --> 00:00:10.650
+discretization, and graph search.
+
+00:00:10.650 --> 00:00:15.179
+In continuous representation, we learned how to create a configuration space.
+
+00:00:15.179 --> 00:00:17.460
+In our study of discretization,
+
+00:00:17.460 --> 00:00:20.850
+we learned about three different types of methods that can be used to
+
+00:00:20.850 --> 00:00:24.405
+represent a configuration space with discrete segments.
+
+00:00:24.405 --> 00:00:28.095
+The first of these methods is the roadmap group of methods.
+
+00:00:28.094 --> 00:00:32.219
+Here, we modeled the configuration space as a simple graph by
+
+00:00:32.219 --> 00:00:36.839
+either connecting the vertices of the obstacles or building a Voronoi diagram.
+
+00:00:36.840 --> 00:00:39.630
+Next, we looked at cell decomposition,
+
+00:00:39.630 --> 00:00:42.725
+which broke the space into a finite number of cells,
+
+00:00:42.725 --> 00:00:46.715
+each of which was assessed to be empty, full, or mixed.
+
+00:00:46.715 --> 00:00:50.240
+The empty cells were then linked together to create a graph.
+
+00:00:50.240 --> 00:00:55.429
+Lastly, gradient field is a method that models the configuration space using
+
+00:00:55.429 --> 00:01:01.130
+a 3D function that has the goal as global minimum and obstacles as tall structures.
+
+00:01:01.130 --> 00:01:05.480
+Now, most of these methods left us with a graph representations of the space.
+
+00:01:05.480 --> 00:01:08.275
+In the upcoming section on graph search,
+
+00:01:08.275 --> 00:01:13.240
+you will learn how to traverse the graph to find the best path for your robot.
+

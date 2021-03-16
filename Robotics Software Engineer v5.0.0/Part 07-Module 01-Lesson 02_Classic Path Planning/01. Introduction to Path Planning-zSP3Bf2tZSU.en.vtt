@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.725
+Welcome to path planning,
+
+00:00:01.725 --> 00:00:03.254
+the final piece of the puzzle,
+
+00:00:03.254 --> 00:00:07.259
+as it relates to teaching our robot friends to operate in the real world.
+
+00:00:07.259 --> 00:00:09.539
+Just like in localization and slam,
+
+00:00:09.539 --> 00:00:12.959
+there isn't one correct way to accomplish the task of path planning.
+
+00:00:12.960 --> 00:00:17.714
+A path planning algorithm takes in as inputs the provided environment geometry,
+
+00:00:17.714 --> 00:00:20.670
+the robots geometry, and the robots start and
+
+00:00:20.670 --> 00:00:25.530
+goal poses and uses this information to produce a path from start to goal.
+
+00:00:25.530 --> 00:00:29.970
+The workings of this box is what we'll spend the rest of the lesson examining.
+
+00:00:29.969 --> 00:00:31.529
+By the end of this lesson,
+
+00:00:31.530 --> 00:00:35.475
+you will be able to: recognize different types of path planning algorithms,
+
+00:00:35.475 --> 00:00:38.834
+comprehend the inner workings of a collection of algorithms,
+
+00:00:38.834 --> 00:00:42.905
+evaluate the suitability of an algorithm for a particular application,
+
+00:00:42.905 --> 00:00:46.475
+and be ready to implement one of the algorithms in the lab.
+
+00:00:46.475 --> 00:00:48.530
+Well, what are we waiting for?
+
+00:00:48.530 --> 00:00:50.120
+Let's get started.
+

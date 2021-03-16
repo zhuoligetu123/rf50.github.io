@@ -1,0 +1,1059 @@
+{
+  "data": {
+    "lesson": {
+      "id": 598968,
+      "key": "601ccd60-0005-4f5e-ba0f-18c36ef08c7c",
+      "title": "Sample-Based and Probabilistic Path Planning",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about sample-based and probabilistic path planning and how they can improve on the classic approach. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/601ccd60-0005-4f5e-ba0f-18c36ef08c7c/598968/1544270837949/Sample-Based+and+Probabilistic+Path+Planning+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/601ccd60-0005-4f5e-ba0f-18c36ef08c7c/598968/1544270835642/Sample-Based+and+Probabilistic+Path+Planning+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 613100,
+          "key": "ea337c9f-c195-4e73-a6d3-d1f8d0175554",
+          "title": "Introduction to Sample-Based & Probabilistic Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ea337c9f-c195-4e73-a6d3-d1f8d0175554",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614663,
+              "key": "c31319a1-0bd1-44af-b5ed-a1172c53fe31",
+              "title": "Introduction To Probabilistic Path Planning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "msgVwQCM2C8",
+                "china_cdn_id": "msgVwQCM2C8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613101,
+          "key": "b0882c7f-64c0-4c28-8522-c33ecd78155c",
+          "title": "Why Sample-Based Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0882c7f-64c0-4c28-8522-c33ecd78155c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613103,
+              "key": "f32a4ca3-0cc6-4aad-af05-4f162a6f1c25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why Sample-Based Planning?\n\nSo why exactly can’t we use discrete planning for higher dimensional problems? Well, it’s incredibly hard to discretize such a large space. The complexity of the path planning problem increases exponentially with the number of dimensions in the C-space. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626384,
+              "key": "dcae3451-75aa-40e5-a3e5-dee49f8a0442",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Increased Dimensionality\nFor a 2-dimensional 8-connected space, every node has 8 successors (8-connected means that from every cell you can move laterally or diagonally). Imagine a 3-dimensional 8-connected space, how many successors would every node have? 26. As the dimension of the C-space grows, the number of successors that every cell has increases substantially. In fact, for an n-dimensional space, it is equal to  <span class=\"mathquill\">3^n - 1</span>. \n\nIt is not uncommon for robots and robotic systems to have large numbers of dimensions. Recall the robotic arm that you worked with in the pick-and-place project - that was a 6-DOF arm. If multiple 6-DOF arms work in a common space, the computation required to perform path planning to avoid collisions increases substantially. Then, think about the complexity of planning for humanoid robots such as the one depicted below. Such problems may take intolerably long to solve using the combinatorial approach. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614664,
+              "key": "e908b8b7-9e19-464c-ac0c-fe33edc3da32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad28b70_c5-l3-img-real-robots-v2/c5-l3-img-real-robots-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e908b8b7-9e19-464c-ac0c-fe33edc3da32",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 613334,
+              "key": "58c4b870-7457-454c-9f17-d87ac4c9624d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Constrained Dynamics\nAside from robots with many degrees of freedom and multi-robot systems, another computational difficulty involves working with robots that have constrained dynamics. For instance, a car is limited in its motion - it can move forward and backward, and it can turn with a limited turning radius - as you can see in the image below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621532,
+              "key": "88cc50bd-9e62-4def-a99b-f08d4f0ecc7e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aeb9170_pic1/pic1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88cc50bd-9e62-4def-a99b-f08d4f0ecc7e",
+              "caption": "",
+              "alt": "",
+              "width": 1545,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 621534,
+              "key": "07c3019f-2003-4ea4-b367-567ee1983ca1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "However, the car is _not_ able to move laterally - as depicted in the following image. _(As unfortunate as it is for those of us that struggle to parallel park!)_",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621535,
+              "key": "ed039085-5575-4e61-bc4b-6eda5060c263",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aeb91fa_pic2/pic2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ed039085-5575-4e61-bc4b-6eda5060c263",
+              "caption": "",
+              "alt": "",
+              "width": 1543,
+              "height": 867,
+              "instructor_notes": null
+            },
+            {
+              "id": 621531,
+              "key": "f9c0d394-881b-4509-8b87-882d81c15dfc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the case of the car, more complex motion dynamics must be considered when path planning - including the derivatives of the state variables such as velocity.  For example,  a car's safe turning radius is dependent on it's velocity.\n\nRobotic systems can be classified into two different categories - holonomic and non-holonomic. **Holonomic systems** can be defined as systems where every constraint depends exclusively on the current pose and time, and not on any derivatives with respect to time. **Nonholonomic systems**, on the other hand, are dependent on derivatives. Path planning for nonholonomic systems is more difficult due to the added constraints.\n\nIn this section, you will learn two different path planning algorithms, and understand how to tune their parameters for varying applications.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613102,
+          "key": "b1ff68cf-965e-4bde-bc33-7aae50fa4697",
+          "title": "Weakening Requirements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1ff68cf-965e-4bde-bc33-7aae50fa4697",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613104,
+              "key": "f384cec6-4884-4403-9f31-c328d48d8ce5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Weakening Requirements\n\nCombinatorial path planning algorithms are too inefficient to apply in high-dimensional environments, which means that some practical compromise is required to solve the problem! Instead of looking for a path planning algorithm that is both complete and optimal, what if the requirements of the algorithm were weakened? \n\nInstead of aspiring to use an algorithm that is complete, the requirement can be weakened to use an algorithm that is probabilistically complete. A **probabilistically complete** algorithm is one who’s probability of finding a path, if one exists, increases to 1 as time goes to infinity.\n\nSimilarly, the requirement of an optimal path can be weakened to that of a feasible path. A **feasible path** is one that obeys all environmental and robot constraints such as obstacles and motion constraints. For high-dimensional problems with long computational times, it may take unacceptably long to find the optimal path, whereas a feasible path can be found with relative ease. Finding a feasible path proves that a path from start to goal exists, and if needed, the path can be optimized locally to improve performance.\n\nSample-based planning is probabilistically complete and looks for a feasible path instead of the optimal path.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613105,
+          "key": "e98838d7-37dc-42ba-b7b8-beceb4ccaa4d",
+          "title": "Sample-Based Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e98838d7-37dc-42ba-b7b8-beceb4ccaa4d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613106,
+              "key": "b2119d93-8e87-4745-9ae5-28efee6e8ba9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sample-Based Path Planning\n\nSample-based path planning differs from combinatorial path planning in that it does not try to systematically discretize the entire configuration space. Instead, it samples the configuration space randomly (or semi-randomly) to build up a representation of the space. The resultant graph is not as precise as one created using combinatorial planning, but it is much quicker to construct because of the relatively small number of samples used.\n\nSuch a method is probabilistically complete because as time passes and the number of samples approaches infinity, the probability of finding a path, if one exists, approaches 1. \n\nSuch an approach is very effective in high-dimensional spaces, however it does have some downfalls. Sampling a space uniformly is not likely to reach small or narrow areas, such as the passage depicted in the image below. Since the passage is the only way to move from start to goal, it is critical that a sufficient number of samples occupy the passage, or the algorithm will return ‘no solution found’ to a problem that clearly has a solution. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614665,
+              "key": "328a1d07-c508-4df7-aa5e-3228aece7730",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad28b70_c5-l3-img-sample-based-planning-v2/c5-l3-img-sample-based-planning-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/328a1d07-c508-4df7-aa5e-3228aece7730",
+              "caption": "",
+              "alt": "",
+              "width": 500,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 613107,
+              "key": "251ed37e-e104-4758-bda4-a02615c53f83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Different sample-based planning approaches exist, each with their own benefits and downfalls. In the next few pages you will learn about,\n\n- Probabilistic Roadmap Method\n- Rapidly Exploring Random Tree Method\n\nYou will also learn about Path Smoothing - one improvement that can make resultant paths more efficient. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613108,
+          "key": "402f850c-3b74-4691-86bd-b842aa0f647d",
+          "title": "Probabilistic Roadmap (PRM)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "402f850c-3b74-4691-86bd-b842aa0f647d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614667,
+              "key": "569eaab0-cd9b-4878-af8c-f5bf46d7db63",
+              "title": "Probabilistic Roadmap (PRM)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hs9Xkujs-5M",
+                "china_cdn_id": "hs9Xkujs-5M.mp4"
+              }
+            },
+            {
+              "id": 619976,
+              "key": "f7d1cf74-6c26-494c-a921-79ee53a89c23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithm \n\nThe pseudocode for the PRM learning phase is provided below.\n\n<pre>\n<strong>Initialize</strong> an empty graph\n<strong>For</strong> n iterations:\n\n   <strong>Generate</strong> a random configuration.\n   <strong>If</strong> the configuration is collision free: \n\n      <strong>Add</strong> the configuration to the graph.\n      <strong>Find</strong> the k-nearest neighbours of the configuration.\n      <strong>For</strong> each of the k neighbours:\n\n         <strong>Try to find</strong> a collision-free path between \n            the neighbour and original configuration. \n            <strong>If</strong> edge is collision-free: \n                <strong>Add</strong> it to the graph. \n</pre>\n\nAfter the learning phase, comes the query phase.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615201,
+              "key": "20a166f7-2e10-4aca-8f33-6daf99d2b6bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting Parameters\n\nThere are several parameters in the PRM algorithm that require tweaking to achieve success in a particular application. Firstly, the **number of iterations** can be adjusted - the parameter controls between how detailed the resultant graph is and how long the computation takes. For path planning problems in wide-open spaces, additional detail is unlikely to significantly improve the resultant path. However, the additional computation is required in complicated environments with narrow passages between obstacles. Beware, setting an insufficient number of iterations can result in a ‘path not found’ if the samples do not adequately represent the space.  \n\nAnother decision that a robotics engineer would need to make is **how to find neighbors** for a randomly generated configuration. One option is to look for the k-nearest neighbors to a node. To do so efficiently, a [k-d](https://xlinux.nist.gov/dads/HTML/kdtree.html) tree can be utilized - to break up the space into ‘bins’ with nodes, and then search the bins for the nearest nodes. Another option is to search for any nodes within a certain distance of the goal. Ultimately, knowledge of the environment and the solution requirements will drive this decision-making process. \n\nThe choice for what type of **local planner** to use is another decision that needs to be made by the robotics engineer. The local planner demonstrated in the video is an example of a very simple planner. For most scenarios, a simple planner is preferred, as the process of checking an edge for collisions is repeated many times (k*n times, to be exact) and efficiency is key. However, more powerful planners may be required in certain problems. In such a case, the local planner could even be another PRM. \n\n## Probabilistically Complete \n\nAs discussed before, sample-based path planning algorithms are probabilistically complete. Now that you have seen one such algorithm in action, you can see why this is the case. As the number of iterations approaches infinity, the graph approaches completeness and the optimal path through the graph approaches the optimal path in reality.\n\n## Variants \n\nThe algorithm that you learned here is the vanilla version of PRM, but many other variations to it exist. The following link discusses several alternative strategies for implementing a PRM that may produce a more optimal path in a more efficient manner. \n\n- [A Comparative Study of Probabilistic Roadmap Planners](http://www.staff.science.uu.nl/~gerae101/pdf/compare.pdf)\n\n## PRM is a Multi-Query Planner\n\nThe Learning Phase takes significantly longer to implement than the Query Phase, which only has to connect the start and goal nodes, and then search for a path. However, the graph created by the Learning Phase can be reused for many subsequent queries. For this reason, PRM is called a **multi-query planner**.\n\nThis is very beneficial in static or mildly-changing environments. However, some environments change so quickly that PRM’s multi-query property cannot be exploited. In such situations, PRM’s additional detail and computational slow nature is not appreciated. A quicker algorithm would be preferred - one that doesn’t spend time going in _all_ directions without influence by the start and goal.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615202,
+              "key": "713e3732-5c7c-42d2-ba6c-019974e88241",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "713e3732-5c7c-42d2-ba6c-019974e88241",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements are true about Probabilistic Roadmaps?",
+                "answers": [
+                  {
+                    "id": "a1524581907058",
+                    "text": " PRM is a multi-query method (ie. the resultant graph can be used for multiple queries). ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524581915055",
+                    "text": "If an insufficient iterations of the PRM algorithm are run, there is a risk of finding an inefficient path or not finding a path at all.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524581916135",
+                    "text": "When A* is applied to the graph generated by PRM, the optimal path is found.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613110,
+          "key": "45d3b436-51dc-4b1d-968b-16f830e43cd3",
+          "title": "Rapidly Exploring Random Tree Method (RRT)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "45d3b436-51dc-4b1d-968b-16f830e43cd3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614898,
+              "key": "4103e355-82af-49d4-91db-c600fc16f652",
+              "title": "Rapidly Exploring Random Tree(PRT)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kOS76UR7Fo8",
+                "china_cdn_id": "kOS76UR7Fo8.mp4"
+              }
+            },
+            {
+              "id": 619979,
+              "key": "3c2229f4-03a2-461e-8da3-1aa44f8cebd8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithm \n\nThe pseudocode for the RRT learning phase is provided below.\n\n<pre>\n<strong>Initialize</strong> two empty trees.\n<strong>Add</strong> start node to tree #1.\n<strong>Add</strong> goal node to tree #2.\n<strong>For</strong> n iterations, or until an edge connects trees #1 & #2:\n\n    <strong>Generate</strong> a random configuration (alternating trees).\n    <strong>If</strong> the configuration is collision free: \n        <strong>Find</strong> the closest neighbour on the tree to the configuration \n        <strong>If</strong> the configuration is less than a distance <span class='mathquill'>\\delta</span> away from the neighbour:\n            <strong>Try to connect</strong> the two with a local planner.\n    <strong>Else</strong>:\n        <strong>Replace</strong> the randomly generated configuration \n            with a new configuration that falls along the same path, \n            but a distance <span class='mathquill'>\\delta</span> from the neighbour.\n        <strong>Try to connect</strong> the two with a local planner. \n\n    <strong>If</strong> node is added successfully: \n        <strong>Try to connect</strong> the new node to the closest neighbour.\n</pre>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615203,
+              "key": "5aa4fa29-1d81-418a-9740-c00ae051c5e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting Parameters\n\nJust like with PRM, there are a few parameters that can be tuned to make RRT more efficient for a given application. \n\nThe first of these parameters is the **sampling method** (ie. how a random configuration is generated). As discussed in the video, you can sample uniformly - which would favour wide unexplored spaces, or you can sample with a bias - which would cause the search to advance greedily in the direction of the goal. Greediness can be beneficial in simple planning problems, however in some environments it can cause the robot to get stuck in a local minima. It is common to utilize a uniform sampling method with a _small_ hint of bias.  \n\nThe next parameter that can be tuned is <span class=\"mathquill\">\\delta</span>. As RRT starts to generate random configurations, a large proportion of these configurations will lie further than a distance <span class='mathquill'>\\delta </span> from the closest configuration in the graph. In such a situation, a randomly generated node will dictate the direction of growth, while <span class='mathquill'>\\delta </span> is the growth rate. \n\nChoosing a small <span class='mathquill'>\\delta </span> will result in a large density of nodes and small growth rate. On the other hand, choosing a large <span class='mathquill'>\\delta</span> may result in lost detail, as well as an increasing number of nodes being unable to connect to the graph due to the greater chance of collisions with obstacles. <span class='mathquill'>\\delta </span> must be chosen carefully, with knowledge of the environment and requirements of the solution.\n\n## Single-Query Planner\n\nSince the RRT method explores the graph starting with the start and goal nodes, the resultant graph cannot be applied to solve additional queries. RRT is a single-query planner. \n\nRRT is, however, much quicker than PRM at solving a path planning problem. This is so _because_ it takes into account the start and end nodes, and limits growth to the area surrounding the existing graph instead of reaching out into all distant corners, the way PRM does. RRT is more efficient than PRM at solving large path planning problems (ex. ones with hundreds of dimensions) in dynamic environments. \n\nGenerally speaking, RRT is able to solve problems with 7 dimensions in a matter of milliseconds, and may take several minutes to solve problems with over 20 dimensions. In comparison, such problems would be impossible to solve with the combinatorial path planning method.\n\n## RRT & Non-holonomic Systems\n\nWhile we will not go into significant detail on this topic, the RRT method supports planning for non-holonomic systems, while the PRM method does not. This is so because the RRT method can take into consideration the additional constraints (such as a car’s turning radius at a particular speed) when adding nodes to a graph, the same way it already takes into consideration how far away a new node is from an existing tree.\n\n## Quiz",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615204,
+              "key": "d8325446-5508-4a0b-87d0-cd4676f0cbdc",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d8325446-5508-4a0b-87d0-cd4676f0cbdc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements are true about the Rapidly Exploring Random Tree method?",
+                "answers": [
+                  {
+                    "id": "a1524582021592",
+                    "text": "When a randomly generated configuration is greater than a distance, <span class='mathquill'>\\delta </span>, from its closest neighbour, then the configuration is abandoned.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524582053992",
+                    "text": "RRT can be applied to path planning with non-holonomic systems.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524599571119",
+                    "text": "If <span class='mathquill'>\\delta </span> is set to a large value, the algorithm’s efficiency will drop, as the local planner is more likely to encounter collisions along a longer path.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613111,
+          "key": "4855b785-427b-4181-beb2-2492b97be7c2",
+          "title": "Path Smoothing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4855b785-427b-4181-beb2-2492b97be7c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614706,
+              "key": "8752cb8d-d418-48bc-ad71-5d159de210a8",
+              "title": "Path Smoothing ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "R20Mpz5y7-w",
+                "china_cdn_id": "R20Mpz5y7-w.mp4"
+              }
+            },
+            {
+              "id": 619980,
+              "key": "721b0583-ccf4-4d99-9fa7-e1a5cb269d63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithm:\nThe following algorithm provides a method for smoothing the path by shortcutting.\n<pre>\n<strong>For</strong> n iterations:\n\n <span class=\"mathquill\">\\quad</span><strong>Select</strong> two nodes from the graph\n <span class=\"mathquill\">\\quad</span><strong>If</strong> the edge between the two nodes is shorter than the existing path \n     between the nodes:\n\n     <span class=\"mathquill\">\\quad\\quad</span><strong>Use local planner</strong> to see if edge is collision-free. \n         <strong>If</strong> collision-free:\n\n      <span class=\"mathquill\">\\quad\\quad\\quad</span><strong>Replace</strong> existing path with edge between the two nodes.\n</pre>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613112,
+              "key": "b396a717-5aa1-4a8e-8a32-21da1b0df943",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nKeep in mind that the path’s distance is not the only thing that can be optimized by the Path Shortcutter algorithm - it could optimize for path smoothness, expected energy use by the robot, safety, or any other measurable factor. \n\nAfter the Path Shortcutting algorithm is applied, the result is a more optimized path. It may still not be _the optimal path_, but it should have at the very least moved towards a local minimum. There exist more complex, informed algorithms that can improve the performance of the Path Shortcutter. These are able to use information about the workspace to better guide the algorithm to a more optimal solution.\n\nFor large multi-dimensional problems, it is not uncommon for the time taken to optimize a path to exceed the time taken to search for a feasible solution in the first place.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615401,
+              "key": "f033e436-54b8-4661-9ca2-060bca82ab01",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613113,
+          "key": "6f1979b7-2e6f-4af1-8680-b3630f99e75f",
+          "title": "Overall Concerns",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f1979b7-2e6f-4af1-8680-b3630f99e75f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615205,
+              "key": "22670614-6e25-4fab-bed9-75cf873b886d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overall Concerns\n\n## Not Complete \n\nSample-based planning is not complete, it is probabilistically complete. In applications where decisions need to be made quickly, PRM & RRT may fail to find a path in difficult environments, such as the one shown below.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613837,
+              "key": "c0bbf25f-34e3-4032-b300-0d5fe9229642",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ada3108_c5-l3-image-for-above-v4/c5-l3-image-for-above-v4.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c0bbf25f-34e3-4032-b300-0d5fe9229642",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 615382,
+              "key": "80ef5eee-3160-4c9d-9e8d-f82f7810b9d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To path plan in an environment such as the one presented above, alternate means of sampling can be introduced (such as Gaussian or Bridge sampling). Alternate methods bias their placement of samples to obstacle edges or vertices of the open space. \n\n## Not Optimal\n\nSample-based path planning isn’t optimal either - while an algorithm such as A* will find the most optimal path within the graph, the graph is not a thorough representation of the space, and so the true optimal path is unlikely to be represented in the graph. \n\n## Conclusion\n\nOverall, there is no silver bullet algorithm for sample-based path planning. The PRM & RRT algorithms perform acceptably in most environments, while others require customized solutions. An algorithm that sees a performance improvement in one application, is not guaranteed to perform better in others.\n\nUltimately, sample-based path planning makes multi-dimensional path planning feasible!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613114,
+          "key": "5e635175-fe87-4321-9141-7f130ef46781",
+          "title": "Sample-Based Planning Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e635175-fe87-4321-9141-7f130ef46781",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614708,
+              "key": "6c6d27b6-5cb9-441e-bb19-8bb910af31d9",
+              "title": "Sample-Based Path Planning Wrap-Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TMefU2S7ass",
+                "china_cdn_id": "TMefU2S7ass.mp4"
+              }
+            },
+            {
+              "id": 626600,
+              "key": "d40f05a3-6f88-474c-aa40-29b14c755cec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Extended Reading\n\nAt this point, you have the knowledge to read through a paper on path planning. The following paper, [Path Planning for Non-Circular Micro Aerial Vehicles in Constrained Environments](https://www.cs.cmu.edu/~maxim/files/pathplanforMAV_icra13.pdf), addresses the problem of path planning for a quadrotor. \n\nIt is an enjoyable read that culminates the past two sections of path planning, as it references a number of planning methods that you have learned, and introduces a present-day application of path planning. Reading the paper will help you gain an appreciation of this branch of robotics, as well as help you gain confidence in the subject.\n\nSome additional definitions that you may find helpful while reading the paper:\n\n- **Anytime algorithm**: an anytime algorithm is an algorithm that will return a solution even if it's computation is halted before it finishes searching the entire space. The longer the algorithm plans, the more optimal the solution will be. \n\n- **RRT\\***: RRT\\* is a variant of RRT that tries to smooth the tree branches at every step. It does so by looking to see whether a child node can be swapped with it's parent (or it's parent's parent, etc) to produce a more direct path. The result is a less zig-zaggy and more optimal path. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626597,
+              "key": "437fc8f8-9dd5-42ba-93da-2358a96abd26",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613115,
+          "key": "04d74540-6bce-42bf-8d8f-91743ff05e93",
+          "title": "Introduction to Probabilistic Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04d74540-6bce-42bf-8d8f-91743ff05e93",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614906,
+              "key": "09bc46c5-09db-4cd0-9b9a-b1a8b43e28f7",
+              "title": "Intro To Probabilistic Path Planning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CF6kz2H00ZU",
+                "china_cdn_id": "CF6kz2H00ZU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613327,
+          "key": "6124680e-2099-41f2-be93-bbe5910867f4",
+          "title": "Markov Decision Process",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6124680e-2099-41f2-be93-bbe5910867f4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613811,
+              "key": "af945535-76c7-4085-abe3-902535d81231",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Markov Decision Process\n\n## Recycling Robot Example\n\nLet's say we have a recycling robot, as an example. The robot’s goal is to drive around its environment and pick up as many cans as possible. It has a set of **states** that it could be in, and a set of **actions** that it could take. The robot receives a **reward** for picking up cans; however, it can also receive a negative reward (a penalty) if it runs out of battery and get stranded. \n\nThe robot has a non-deterministic **transition model** (sometimes called the _one-step dynamics_). This means that an action cannot guarantee to lead a robot from one state to another state. Instead, there is a probability associated with resulting in each state.\n\nSay at an arbitrary time step t, the state of the robot's battery is high (<span class=\"mathquill\">S_t = high</span>). In response, the agent decides to search for cans (<span class=\"mathquill\">A_t = search</span>). In such a case, there is a 70% chance of the robot’s battery charge remaining high and a 30% chance that it will drop to low. \n\nLet’s revisit the definition of an MDP before moving forward.\n\n## MDP Definition \n\nA Markov Decision Process is defined by:\n\n- A set of states: <span class=\"mathquill\">\\mathcal{S}</span>,\n- Initial state: <span class=\"mathquill\">\\mathcal{s_0}</span>,\n- A set of actions: <span class=\"mathquill\">\\mathcal{A}</span>,\n- The transition model: <span class=\"mathquill\">T(s,a,s')</span>,\n- A set of rewards: <span class=\"mathquill\">\\mathcal{R}</span>.\n\nThe transition model is the probability of reaching a state <span class=\"mathquill\">s'</span> from a state <span class=\"mathquill\">s</span> by executing action <span class=\"mathquill\">a</span>. It is often written as <span class=\"mathquill\">T(s,a,s')</span>. \n\nThe Markov assumption states that the probability of transitioning from <span class=\"mathquill\">s</span> to <span class=\"mathquill\">s'</span> is only dependent on the present state, <span class=\"mathquill\">s</span>, and not on the path taken to get to <span class=\"mathquill\">s</span>.\n\nOne notable difference between MDPs in probabilistic path planning and MDPs in reinforcement learning, is that in path planning the robot is fully aware of all of the items listed above (state, actions, transition model, rewards). Whereas in RL, the robot was aware of its state and what actions it had available, but it was not aware of the rewards or the transition model.\n\n## Mobile Robot Example\n\nIn our mobile robot example, movement actions are non-deterministic. Every action will have a probability less than 1 of being successfully executed. This can be due to a number of reasons such as wheel slip, internal errors, difficult terrain, etc. The image below showcases a possible transition model for our exploratory rover, for a scenario where it is trying to move forward one cell.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614890,
+              "key": "4c8d0bf5-c7e6-4f0b-8c64-8e305b508cb4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade814e_artboard-1/artboard-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4c8d0bf5-c7e6-4f0b-8c64-8e305b508cb4",
+              "caption": "",
+              "alt": "",
+              "width": 500,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 613823,
+              "key": "5505e8de-5459-49ce-8076-b871e17bce7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you can see, the intended action of moving forward one cell is only executed with a probability of 0.8 (80%). With a probability of 0.1 (10%), the rover will move left, or right. Let’s also say that bumping into a wall will cause the robot to remain in its present cell.\n\nLet’s provide the rover with a simple example of an environment for it to plan a path in. The environment shown below has the robot starting in the top left cell, and the robot’s goal is in the bottom right cell. The mountains represent terrain that is more difficult to pass, while the pond is a hazard to the robot. Moving across the mountains will take the rover longer than moving on flat land, and moving into the pond may drown and short circuit the robot. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613836,
+              "key": "7cdb20ec-9bbd-4f34-9aad-5e8ec4b00ecf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ada3012_mdpimage-v5/mdpimage-v5.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7cdb20ec-9bbd-4f34-9aad-5e8ec4b00ecf",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 613822,
+              "key": "707d6c62-02da-4afa-98ab-45b46721461d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Combinatorial Path Planning Solution\n\nIf we were to apply A* search to this discretized 4-connected environment, the resultant path would have the robot move right 2 cells, then down 2 cells, and right once more to reach the goal (or R-R-D-R-D, which is an equally optimal path). This truly is the shortest path, however, it takes the robot right by a very dangerous area (the pond). There is a significant chance that the robot will end up in the pond, failing its mission.\n\nIf we are to path plan using MDPs, we might be able to get a better result! \n\n### Probabilistic Path Planning Solution\n\nIn each state (cell), the robot will receive a certain reward, <span class=\"mathquill\">R(s)</span>. This reward could be positive or negative, but it cannot be infinite. It is common to provide the following rewards,\n\n- small negative rewards to states that are not the goal state(s) - to represent the cost of time passing (a slow moving robot would incur a greater penalty than a speedy robot),\n- large positive rewards for the goal state(s), and \n- large negative rewards for hazardous states - in hopes of convincing the robot to avoid them. \n\nThese rewards will help guide the rover to a path that is efficient, but also safe - taking into account the uncertainty of the rover’s motion. \n\nThe image below displays the environment with appropriate rewards assigned. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615199,
+              "key": "e6aeba08-6ea5-49dc-9eb0-6d0691c60ba5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf4523_mdpimage-39-v1/mdpimage-39-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e6aeba08-6ea5-49dc-9eb0-6d0691c60ba5",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 615306,
+              "key": "840078bc-c87d-4a3a-89e5-8b2e68c24585",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you can see, entering a state that is not the goal state has a reward of -1 if it is a flat-land tile, and -3 if it is a mountainous tile. The hazardous pond has a reward of -50, and the goal has a reward of 100. \n\nWith the robot’s transition model identified and appropriate rewards assigned to all areas of the environment, we can now construct a policy. Read on to see how that’s done in probabilistic path planning! ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613330,
+          "key": "ff50f46f-5e1c-4ca7-8c1f-259a42da76e7",
+          "title": "Policies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ff50f46f-5e1c-4ca7-8c1f-259a42da76e7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614891,
+              "key": "d9fe827d-812d-4125-a926-ba7f6b969de7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Policies\n\nRecall from the Reinforcement Learning lesson that a solution to a Markov Decision Process is called a policy, and is denoted with the letter <span class=\"mathquill\">\\pi</span>. \n\n## Definition\n\nA **policy** is a mapping from states to actions. For every state, a policy will inform the robot of which action it should take. \nAn **optimal policy**, denoted <span class=\"mathquill\">\\pi^*</span>, informs the robot of the _best_ action to take from any state, to maximize the overall reward. We’ll study optimal policies in more detail below.\n\nIf you aren’t comfortable with policies, it is highly recommended that you return to the RL lesson and re-visit the sections that take you through the Gridworld Example, State-Value Functions, and Bellman Equations. These lessons demonstrate what a policy is, how state-value is calculated, and how the Bellman equations can be used to compute the optimal policy. These lessons also step you through a gridworld example that is _simpler_ than the one you will be working with here, so it is wise to get acquainted with the RL example first. \n\n## Developing a Policy\n\nThe image below displays the set of actions that the robot can take in its environment. Note that there are no arrows leading away from the pond, as the robot is considered DOA (dead on arrival) after entering the pond. As well, no arrows leave the goal as the path planning problem is complete once the robot reaches the goal - after all, this is an _episodic task_. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 624922,
+              "key": "7a3373e3-cec5-44b5-a5c4-730f46047dbb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5af0b070_mdpimage-43-v3/mdpimage-43-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7a3373e3-cec5-44b5-a5c4-730f46047dbb",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614022,
+              "key": "00d4d610-7264-4d13-bd61-db1eec652694",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "From this set of actions, a policy can be generated by selecting one action per state. Before we revisit the process of selecting the appropriate action for each policy, let’s look at how some of the values above were calculated. After all, -5.9 seems like quite an odd number! \n\n### Calculating Expected Rewards\n\nRecall that the reward for entering an empty cell is -1, a mountainous cell -3, the pond -50, and the goal +100. These are the rewards defined according to the environment. However, if our robot wanted to move from one cell to another, it it not guaranteed to succeed. Therefore, we must calculate the **expected reward**, which takes into account not just the rewards set by the environment, but the robot's transition model too.\n\nLet’s look at the bottom mountain cell first. From here, it is intuitively obvious that moving right is the best action to take, so let’s calculate that one. If the robot’s movements were deterministic, the cost of this movement would be trivial (moving to an open cell has a reward of -1). However, since our movements are non-deterministic, we need to evaluate the _expected_ reward of this movement. The robot has a probability of 0.8 of successfully moving to the open cell, a probability of 0.1 of moving to the cell above, and a probability of 0.1 of bumping into the wall and remaining in its present cell. \n\n<div class=\"mathquill\">expected \\ reward = 0.8 * (-1) + 0.1 * (-3) + 0.1 * (-3)</div>\n<div class=\"mathquill\">expected \\ reward = -1.4</div>\n\nAll of the expected rewards are calculated in this way, taking into account the transition model for this particular robot. \n\nYou may have noticed that a few expected rewards are missing in the image above. Can you calculate their values?\n\n### Expected Reward Quiz\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614064,
+              "key": "6c90141f-9baf-4c2f-972a-01f18e867fe1",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6c90141f-9baf-4c2f-972a-01f18e867fe1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the expected reward for moving from the bottom-left cell to the cell above it?",
+                "matchers": [
+                  {
+                    "expression": "-1.2"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 614065,
+              "key": "ddbab08b-b10e-4db1-8178-f2701dc28505",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ddbab08b-b10e-4db1-8178-f2701dc28505",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the expected reward for moving from the empty cell on the right to the goal,one cell below it?",
+                "matchers": [
+                  {
+                    "expression": "79.8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 614068,
+              "key": "c6d47f2a-bba6-41ec-a0e3-cd4f13cb908f",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c6d47f2a-bba6-41ec-a0e3-cd4f13cb908f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the expected reward for moving from the empty cell on the right to the cell to its left?",
+                "matchers": [
+                  {
+                    "expression": "4.2"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 614893,
+              "key": "5cfd1ebc-8dc2-4121-9639-8782aa040f44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Hopefully, after completing the quizzes, you are more comfortable with how the expected rewards are calculated. The image below has all of the expected rewards filled in.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614894,
+              "key": "2c1566e0-fb1e-441b-b59d-0e925107b5d5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade81c8_mdpimage-73-v2/mdpimage-73-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2c1566e0-fb1e-441b-b59d-0e925107b5d5",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614895,
+              "key": "417016b9-7f69-401c-aab2-53a84c0f7733",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Selecting a Policy\n\nNow that we have an understanding of our expected rewards, we can select a policy and evaluate how efficient it is. Once again, a policy is just a mapping from states to actions. If we review the set of actions depicted in the image above, and select just one action for each state - i.e. exactly one arrow leaving each cell (with the exception of the hazard and goal states) - then we have ourselves a policy. \n\nHowever, we’re not looking for _any_ policy, we’d like to find the _optimal_ policy. For this reason, we’ll need to study the utility of each state to then determine the _best_ action to take from each state. That’s what the next concept is all about!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613331,
+          "key": "44ef7577-6e65-44eb-891c-287b21f51ef5",
+          "title": "State Utility",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44ef7577-6e65-44eb-891c-287b21f51ef5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614087,
+              "key": "172f9bd5-4244-4ac8-ab3a-39f72f8491eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# State Utility \n\n## Definition\n\nThe **utility of a state** (otherwise known as the **state-value**) represents how attractive the state is with respect to the goal. Recall that for each state, the state-value function yields the expected return, if the agent (robot) starts in that state and then follows the policy for all time steps. In mathematical notation, this can be represented as so:\n\n<div class=\"mathquill\">U^{\\pi}(s) = E[\\sum_{t=0}^{\\infty}R(s_t)|\\pi , s_0 = s]</div>\n\nThe notation used in path planning differs slightly from what you saw in Reinforcement Learning. But the result is identical.\n\nHere,\n\n- <span class=\"mathquill\">U^{\\pi}(s)</span> represents the utility of a state <span class=\"mathquill\">s</span>,\n- <span class=\"mathquill\">E</span> represents the _expected_ value, and\n- <span class=\"mathquill\">R(s)</span> represents the reward for state <span class=\"mathquill\">s</span>.\n\nThe utility of a state is the sum of the rewards that an agent would encounter if it started at that state and followed the policy to the goal.\n\n## Calculation\n\nWe can break the equation down, to further understand it. \n\n<div class=\"mathquill\">U^{\\pi}(s) = E[\\sum_{t=0}^{\\infty}R(s_t)|\\pi , s_0 = s]</div>\n\nLet’s start by breaking up the summation and explicitly adding all states.\n\n<div class=\"mathquill\">U^{\\pi}(s) = E[R(s_0) + R(s_1) + R(s_2) + ... \\ |\\pi , s_0 = s]</div>\n\nThen, we can pull out the first term. The expected reward for the first state is independent of the policy. While the expected reward of all future states (those between the state and the goal) depend on the policy.\n\n<div class=\"mathquill\">U^{\\pi}(s) = E[R(s_0)|s_0 = s] + E[R(s_1) + R(s_2) + ... \\ |\\pi]</div>\n\nRe-arranging the equation results in the following. (Recall that the prime symbol, as on <span class=\"mathquill\">s'</span>, represents the next state - like <span class=\"mathquill\">s_2</span> would be to <span class=\"mathquill\">s_1</span>).\n\n<div class=\"mathquill\">U^{\\pi}(s) = R(s) + E[\\sum_{t=0}^{\\infty}R(s_t)|\\pi , s_0 = s']</div>\n\nUltimately, the result is the following.\n\n<div class=\"mathquill\">U^{\\pi}(s) = R(s) + U^{\\pi}(s')</div>\n\nAs you see here, calculating the utility of a state is an iterative process. It involves all of the states that the agent would visit between the present state and the goal, as dictated by the policy. \n\nAs well, it should be clear that the utility of a state depends on the policy. If you change the policy, the utility of each state will change, since the sequence of states that would be visited prior to the goal may change. \n\n## Determining the Optimal Policy\n\nRecall that the **optimal policy**, denoted <span class=\"mathquill\">\\pi^*</span>, informs the robot of the _best_ action to take from any state, to maximize the overall reward. That is, \n\n<div class=\"mathquill\">\\pi^*(s) = \\underset{a}{argmax} E [U^{\\pi}(s)]</div>\n\nIn a state <span class=\"mathquill\">s</span>, the optimal policy <span class=\"mathquill\">\\pi^*</span> will choose the action <span class=\"mathquill\">a</span> that maximizes the utility of <span class=\"mathquill\">s</span> (which, due to its iterative nature, maximizes the utilities of all future states too).\n\nWhile the math may make it seem intimidating, it’s as easy as looking at the set of actions and choosing the best action for every state. The image below displays the set of all actions once more.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614896,
+              "key": "23ee61f3-d7ff-43b2-899a-05bd3e1b6e1b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade81f4_mdpimage-73-v2/mdpimage-73-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23ee61f3-d7ff-43b2-899a-05bd3e1b6e1b",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614088,
+              "key": "edd947b6-16b3-441f-832d-6be8f7d6fcd2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It may not be clear from the get-go which action is optimal for every state, especially for states far away from the goal which have many paths available to them. It’s often helpful to start at the goal and work your way backwards. \n\nIf you look at the two cells adjacent to the goal, their best action is trivial - go to the goal! Recall from your learning in RL that the goal state’s utility is 0. This is because if the agent starts at the goal, the task is complete and no reward is received. Thus, the expected reward from either of the goal’s adjacent cells is 79.8. Therefore, the state’s utility is, 79.8 + 0 = 79.8 (based on <span class=\"mathquill\">U^{\\pi}(s) = R(s) + U^{\\pi}(s')</span>).\n\nIf we look at the lower mountain cell, it is also easy to guess which action should be performed in this state. With an expected reward of -1.2, moving right is going to be much more rewarding than taking any indirect route (up or left). This state will have a utility of -1.2 + 79.8 = 78.6.\n\nNow it's your turn!\n\n## Quiz\n\nCan you calculate what would the utility of the state to the right of the center mountain be, if the most rewarding action is chosen?\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614897,
+              "key": "8fb66d54-ed7f-45a1-a41f-d80beac324de",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade8205_mdpimage-74-v2/mdpimage-74-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8fb66d54-ed7f-45a1-a41f-d80beac324de",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614089,
+              "key": "686e1028-01ca-4236-97eb-bbbb16b4bc8d",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "686e1028-01ca-4236-97eb-bbbb16b4bc8d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the utility of the state to the right of the center mountain following the optimal policy?",
+                "matchers": [
+                  {
+                    "expression": "78.8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 614090,
+              "key": "8ef52c1e-e4c7-4e13-a51b-76c3c3cdf7f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The process of selecting each state’s most rewarding action continues, until every state is mapped to an action. These mappings are precisely what make up the policy. \n\nIt is highly suggested that you pause this lesson here, and work out the optimal policy on your own using the action set seen above. Working through the example yourself will give you a better understanding of the challenges that are faced in the process, and will help you remember this content more effectively. When you are done, you can compare your results with the images below.  \n\n## Applying the Policy\n\nOnce this process is complete, the agent (our robot) will be able to make the best path planning decision from every state, and successfully navigate the environment from any start position to the goal. The optimal policy for this environment and this robot is provided below. \n\nThe image below that shows the set of actions with just the optimal actions remaining. Note that from the top left cell, the agent could either go down or right, as both options have equal rewards.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615197,
+              "key": "944ff616-7584-467e-8626-10dbdd0af33d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf44a8_mdpimage-47-v1/mdpimage-47-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/944ff616-7584-467e-8626-10dbdd0af33d",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614899,
+              "key": "1b204de3-2969-4c7a-bf05-4647bccf22b0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade8224_mdpimage-53-v2/mdpimage-53-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1b204de3-2969-4c7a-bf05-4647bccf22b0",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 614091,
+              "key": "8103491b-3b03-48c8-85c0-fc6a99e679d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Discounting\n\nOne simplification that you may have noticed us make, is omit the discounting rate <span class=\"mathquill\">\\gamma</span>. In the above example, <span class=\"mathquill\">\\gamma = 1</span> and all future actions were considered to be just as significant as the present action. This was done solely to simplify the example. After all, you have already been introduced to <span class=\"mathquill\">\\gamma</span> through the lessons on Reinforcement Learning.\n\nIn reality, discounting is often applied in robotic path planning, since the future can be quite uncertain. The complete equation for the utility of a state is provided below:\n\n<div class=\"mathquill\">U^{\\pi}(s) = E[\\sum_{t=0}^{\\infty}\\gamma^tR(s_t)|\\pi , s_0 = s]</div>\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 615368,
+          "key": "c8eb9b7c-c616-4f9c-9272-4a1709a7c2a0",
+          "title": "Value Iteration Algorithm",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c8eb9b7c-c616-4f9c-9272-4a1709a7c2a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615371,
+              "key": "b320a2d1-dd60-4388-997c-4013d18010e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Value Iteration Algorithm\n\nThe process that we went through to determine the optimal policy for the mountainous environment was fairly straightforward, but it did take some intuition to identify which action was optimal for every state. In larger more complex environments, intuition may not be sufficient. In such environments, an algorithm should be applied to handle all computations and find the optimal solution to an MDP. One such algorithm is called the Value Iteration algorithm. _Iteration_ is a key word here, and you’ll see just why!\n\nThe Value Iteration algorithm will initialize all state utilities to some arbitrary value - say, zero. Then, it will iteratively calculate a more accurate state utility for each state, using <span class=\"mathquill\">U(s) = R(s) + \\gamma max_a \\Sigma_{s'} T(s,a,s') U(s')</span>\n\n## Algorithm\n\n> <span class=\"mathquill\">U' = 0</span>\n\n> <span class=\"mathquill\">\\text{loop until } \\textit{close-enough}(U,U')</span>\n\n> <span class=\"mathquill\">\\quad U = U'</span> \n\n> <span class=\"mathquill\">\\quad \\text{for }s \\text{ in }S\\text{, do:}</span>\n\n> <span class=\"mathquill\">\\quad\\quad U(s) = R(s) + \\gamma max_a \\Sigma_{s'} T(s,a,s') U(s')</span>\n\n> <span class=\"mathquill\">\\text{return }U</span>\n\nWith every iteration, the algorithm will have a more and more accurate estimate of each state’s utility. The number of iterations of the algorithm is dictated by a function <span class=\"mathquill\">\\textit{close-enough}</span> which detects convergence. One way to accomplish this is to evaluate the root mean square error, \n\n<div class=\"mathquill\">RMS = \\frac{1}{|S|} \\sqrt{\\sum_{s}(U(s) - U'(s))^2}</div>\n\nOnce this error is below a predetermined threshold, the result has converged sufficiently.\n\n<div class=\"mathquill\">RMS(U,U') < \\epsilon</div>\n\nThis algorithm finds the optimal policy to the MDP, regardless of what <span class=\"mathquill\">U'</span> is initialized to (although the efficiency of the algorithm will be affected by a poor <span class=\"mathquill\">U'</span>). \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613333,
+          "key": "0705770e-99e8-439d-b63a-7560944f6dea",
+          "title": "Probabilistic Path Planning Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0705770e-99e8-439d-b63a-7560944f6dea",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614908,
+              "key": "fddae716-c1f6-434b-815d-1afe4bbee4b4",
+              "title": "Probabilistic Path Planning Wrap-Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6HqAXjlA3no",
+                "china_cdn_id": "6HqAXjlA3no.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

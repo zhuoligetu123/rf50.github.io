@@ -1,0 +1,205 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.455
+The algorithms that you've learned thus far have been uninformed.
+
+00:00:04.455 --> 00:00:07.650
+Their search was sprawled in all directions because they
+
+00:00:07.650 --> 00:00:11.285
+lacked any information regarding the whereabouts of the goal.
+
+00:00:11.285 --> 00:00:14.339
+The last search algorithm that you will learn in this lesson
+
+00:00:14.339 --> 00:00:17.969
+and the mightiest of them all, this A* Search.
+
+00:00:17.969 --> 00:00:20.759
+A* Search is an informed search.
+
+00:00:20.760 --> 00:00:23.910
+This means that it takes into account information about
+
+00:00:23.910 --> 00:00:27.179
+the goal's location as it goes about its search.
+
+00:00:27.179 --> 00:00:30.989
+A Desso by using something called a heuristic function.
+
+00:00:30.989 --> 00:00:33.534
+A heuristic function, h of n,
+
+00:00:33.534 --> 00:00:36.804
+represents the distance from a node to the goal.
+
+00:00:36.804 --> 00:00:39.634
+H of n is only an estimate of the distance,
+
+00:00:39.634 --> 00:00:44.104
+as the only way to know the true distance would be to traverse the graph.
+
+00:00:44.104 --> 00:00:46.309
+However, even an estimate is
+
+00:00:46.310 --> 00:00:50.035
+beneficial as it steers a search in the appropriate direction.
+
+00:00:50.034 --> 00:00:54.319
+A* uses more than just a heuristic function in its search strategy.
+
+00:00:54.320 --> 00:00:57.289
+It also takes into account the path cost,
+
+00:00:57.289 --> 00:01:00.619
+g of n. A* chooses the pass that
+
+00:01:00.619 --> 00:01:04.465
+minimize the sum of the path cost and the heuristic function.
+
+00:01:04.465 --> 00:01:08.594
+The sum is denoted f of n. By doing so,
+
+00:01:08.594 --> 00:01:11.084
+it accomplishes two things at once,
+
+00:01:11.084 --> 00:01:14.959
+minimizing g of n favors shorter paths and
+
+00:01:14.959 --> 00:01:19.434
+minimizing h of n favors paths in the direction of the goal.
+
+00:01:19.435 --> 00:01:24.049
+A* searches for the shortest path in the direction of the goal.
+
+00:01:24.049 --> 00:01:27.319
+Let's go back to our graph to see this in action.
+
+00:01:27.319 --> 00:01:31.594
+The objective we have is to find the shortest path from node E
+
+00:01:31.594 --> 00:01:35.679
+to node K. Let's try to search this graph once more,
+
+00:01:35.680 --> 00:01:40.445
+this time with the help of the heuristic to guide the algorithm to the goal.
+
+00:01:40.444 --> 00:01:43.309
+For two-dimensional graph like this one,
+
+00:01:43.310 --> 00:01:47.905
+a valid heuristic would be the Euclidean distance from a node to the goal.
+
+00:01:47.905 --> 00:01:50.849
+That is the distance as the crow flies.
+
+00:01:50.849 --> 00:01:52.394
+As you see here,
+
+00:01:52.394 --> 00:01:55.390
+nodes close to the goal have a low heuristic value,
+
+00:01:55.390 --> 00:01:59.109
+and nodes further away from the goal have a higher heuristic value.
+
+00:01:59.109 --> 00:02:02.525
+The goal itself has a heuristic of zero.
+
+00:02:02.525 --> 00:02:05.859
+If we wanted to calculate f of n for a node,
+
+00:02:05.859 --> 00:02:07.689
+we would add the path cost,
+
+00:02:07.689 --> 00:02:09.715
+g of n, to the heuristic,
+
+00:02:09.715 --> 00:02:12.094
+h of n. For instance,
+
+00:02:12.094 --> 00:02:15.055
+this node would have a value of two plus five,
+
+00:02:15.055 --> 00:02:17.155
+which is seven, and this node,
+
+00:02:17.155 --> 00:02:20.305
+a value of five plus eight, which is 13.
+
+00:02:20.305 --> 00:02:23.300
+Now, let's go through the algorithm steps.
+
+00:02:23.300 --> 00:02:25.425
+Just like in uniform cost search,
+
+00:02:25.425 --> 00:02:28.420
+we will be using a priority queue for the frontier.
+
+00:02:28.419 --> 00:02:33.909
+For A* Search, we will order it by f of n. At the start,
+
+00:02:33.909 --> 00:02:38.120
+we have four nodes and their corresponding paths on the frontier.
+
+00:02:38.120 --> 00:02:41.280
+The path to node G has the lowest f of n,
+
+00:02:41.280 --> 00:02:43.349
+so we will explore it first.
+
+00:02:43.349 --> 00:02:45.884
+As new nodes are added to the frontier,
+
+00:02:45.884 --> 00:02:48.519
+they are inserted into the appropriate location in
+
+00:02:48.520 --> 00:02:52.205
+the priority queue based on f of n. Once again,
+
+00:02:52.205 --> 00:02:54.820
+if a shorter route is found to a node,
+
+00:02:54.819 --> 00:02:58.959
+the path and the value of f of n for that node will be updated.
+
+00:02:58.960 --> 00:03:02.705
+You can see this happening with node I in this step.
+
+00:03:02.705 --> 00:03:05.710
+The A* Search algorithm continues.
+
+00:03:05.710 --> 00:03:07.645
+Unlike uniform cost search,
+
+00:03:07.645 --> 00:03:11.500
+you can see that A* Search is directed towards the goal.
+
+00:03:11.500 --> 00:03:15.469
+The nodes on the left hand side of the graph have not been explored.
+
+00:03:15.469 --> 00:03:18.639
+However, A* will still explore what it believes
+
+00:03:18.639 --> 00:03:21.519
+to be promising sections like the dead end at
+
+00:03:21.520 --> 00:03:27.865
+node N. Here's another instance where nodes' path and f of n value are updated.
+
+00:03:27.865 --> 00:03:33.510
+As a result, node J gets bumped up to the top of the frontier and explored next,
+
+00:03:33.509 --> 00:03:35.340
+leading us straight to the goal.
+
+00:03:35.340 --> 00:03:40.625
+Once again, the shortest path has been found with a total path cost of nine.
+
+00:03:40.625 --> 00:03:45.449
+Note that A* Search took less steps to complete than Uniform Cost Search
+
+00:03:45.449 --> 00:03:51.679
+as it used a heuristic value for each node to keep itself oriented toward the goal.
+

@@ -1,0 +1,157 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.790
+Great. Hopefully, you feel as though you have
+
+00:00:02.790 --> 00:00:05.639
+a clear understanding of configuration spaces,
+
+00:00:05.639 --> 00:00:09.120
+and if not, you can practice creating a few more from
+
+00:00:09.119 --> 00:00:12.824
+some drawn-out obstacles and an imaginary robot shape.
+
+00:00:12.824 --> 00:00:16.759
+It's important to have a strong foundation because in this next section,
+
+00:00:16.760 --> 00:00:19.304
+we're going to take things to the next level.
+
+00:00:19.304 --> 00:00:21.195
+In the first few examples,
+
+00:00:21.195 --> 00:00:23.475
+the robot was represented by a circle.
+
+00:00:23.475 --> 00:00:26.370
+This was a very easy shaped to use because
+
+00:00:26.370 --> 00:00:30.705
+its rotation did not affect the geometry of the configuration space.
+
+00:00:30.704 --> 00:00:34.799
+Our most recent representation of a robot has been a triangle.
+
+00:00:34.799 --> 00:00:36.494
+As you saw in the quiz,
+
+00:00:36.494 --> 00:00:37.859
+the configuration space for
+
+00:00:37.859 --> 00:00:42.460
+a triangular robot moving around a rectangular shape looks like so.
+
+00:00:42.460 --> 00:00:48.545
+Now, what would happen if we were to rotate our robot by, say, 38 degrees?
+
+00:00:48.545 --> 00:00:51.649
+Well, the configuration would look quite different.
+
+00:00:51.649 --> 00:00:53.469
+So, what do we do?
+
+00:00:53.469 --> 00:00:58.354
+The configuration space changes depending on the orientation of the robot.
+
+00:00:58.354 --> 00:01:01.219
+One way to standardize the configuration space for
+
+00:01:01.219 --> 00:01:05.890
+an odd shape robot would be to enclose the robot in a bounding circle.
+
+00:01:05.890 --> 00:01:09.239
+The circle represents the worst-case scenario.
+
+00:01:09.239 --> 00:01:11.489
+For some orientations of the robot,
+
+00:01:11.489 --> 00:01:15.704
+it is a relatively accurate representation of the bounds of its vertices.
+
+00:01:15.704 --> 00:01:19.489
+But for others, it may be significant exaggeration.
+
+00:01:19.489 --> 00:01:21.545
+However, at all times,
+
+00:01:21.545 --> 00:01:26.960
+the bounding circle is equal to or larger than the robot and is current configuration.
+
+00:01:26.959 --> 00:01:30.019
+So, if a path is found for the bounding circle,
+
+00:01:30.019 --> 00:01:31.685
+it will work for the robot.
+
+00:01:31.685 --> 00:01:33.365
+This method is simple,
+
+00:01:33.364 --> 00:01:35.899
+but it does come with a significant drawback.
+
+00:01:35.900 --> 00:01:40.430
+An algorithm applied to this generalization would not be complete.
+
+00:01:40.430 --> 00:01:44.000
+Let's look at a particular example to understand this.
+
+00:01:44.000 --> 00:01:47.329
+Here, the robot is represented by this triangle.
+
+00:01:47.329 --> 00:01:51.064
+It must navigate a tight corridor and get to its goal.
+
+00:01:51.064 --> 00:01:53.884
+As you see here, the task is possible,
+
+00:01:53.885 --> 00:01:55.415
+and with two rotations,
+
+00:01:55.415 --> 00:01:59.530
+the robot can navigate the corner and make it to the other end of the corridor.
+
+00:01:59.530 --> 00:02:05.299
+However, if we were to enclose a triangular robot representation into a bounding circle,
+
+00:02:05.299 --> 00:02:08.074
+the algorithm would not be able to find a solution
+
+00:02:08.074 --> 00:02:11.794
+since the circle's diameter is larger than the width of the corridor.
+
+00:02:11.794 --> 00:02:15.849
+Any algorithm applied here will return no solution found.
+
+00:02:15.849 --> 00:02:21.229
+So, while bounding circles can be an acceptable solution to some path planning problems,
+
+00:02:21.229 --> 00:02:24.424
+for instance, ones in wide open environments,
+
+00:02:24.425 --> 00:02:26.350
+they are not a complete solution.
+
+00:02:26.349 --> 00:02:30.049
+Really, when you add the ability for the robot to rotate,
+
+00:02:30.050 --> 00:02:31.805
+you are adding a degree of freedom.
+
+00:02:31.805 --> 00:02:37.495
+The appropriate way to represent this in the configuration space is to add a dimension.
+
+00:02:37.495 --> 00:02:42.395
+The x-y plane would continue to represent the translation of the robot in the workspace,
+
+00:02:42.395 --> 00:02:45.935
+while the vertical axis would represent rotation of the robot.
+
+00:02:45.935 --> 00:02:47.840
+Continue on to learn more about
+
+00:02:47.840 --> 00:02:52.640
+3D configuration spaces and see a very helpful visualization of one.
+

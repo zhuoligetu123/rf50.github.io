@@ -1,0 +1,2481 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462530,
+      "key": "02c52248-68e5-4710-9099-306dbc26861c",
+      "title": "Classic Path Planning",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn a number of classic path planning approaches that can be applied to low-dimensional robotic systems.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/02c52248-68e5-4710-9099-306dbc26861c/462530/1544270342652/Classic+Path+Planning+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/02c52248-68e5-4710-9099-306dbc26861c/462530/1544270337760/Classic+Path+Planning+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 598940,
+          "key": "6606ba3d-89a5-4a93-978a-9f7e2b217bb6",
+          "title": "Introduction to Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6606ba3d-89a5-4a93-978a-9f7e2b217bb6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598982,
+              "key": "d1bb1f8e-ac7a-4118-a099-ec74e8d03222",
+              "title": "Introduction to Path Planning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zSP3Bf2tZSU",
+                "china_cdn_id": "zSP3Bf2tZSU.mp4"
+              }
+            },
+            {
+              "id": 620113,
+              "key": "e2641a1f-364a-4dbc-899b-6a807d694373",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outcomes\n- Recognize different types of path planning algorithms\n- Comprehend the inner workings of a collection of algorithms\n- Evaluate the suitability of an algorithm for a particular application\n- Be ready to implement search algorithms in the upcoming lab",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598941,
+          "key": "560238a1-82fa-445f-a5bf-23879fadc8d9",
+          "title": "Examples of Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "560238a1-82fa-445f-a5bf-23879fadc8d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 601481,
+              "key": "53f0b101-f826-406d-9e73-14d608f38cd3",
+              "title": "Examples Of Path Planning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uIHSZ6N7Xok",
+                "china_cdn_id": "uIHSZ6N7Xok.mp4"
+              }
+            },
+            {
+              "id": 599024,
+              "key": "f884d61a-c633-470b-91d6-824c024e657a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Terminology\n\n**Complete** - An algorithm is complete if it is able to find a path between the start and the goal when one exists.\n\n**Optimal** - An algorithm is optimal if it is able to find the best solution. \n\n## Bug Algorithm Quiz\n\nIn the video above you were introduced to the bug algorithm. The idea behind the algorithm is presented below:\n\n\n>Head directly towards the goal,\n\n>If an obstacle is encountered:\n\n><span class=\"mathquill\">\\quad</span>Traverse the obstacle clockwise until you can follow the original path towards the goal again,\n\n>Repeat until arrived at goal.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599022,
+              "key": "52602b19-9655-4acc-8be6-ce3bf9b95b25",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "52602b19-9655-4acc-8be6-ce3bf9b95b25",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the bug algorithm complete? Optimal?",
+                "answers": [
+                  {
+                    "id": "a1523748652670",
+                    "text": "Complete",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523748657444",
+                    "text": "Optimal",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523748701435",
+                    "text": "Neither",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 599021,
+              "key": "3c2e611c-9671-49d6-b38e-6e463ac60cb1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The problem below will demonstrate one instance where a solution exists, but the bug algorithm is unable to find it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598983,
+              "key": "2491f740-8199-419b-bd06-d64bd21fe4c1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27866_l206-classic-path-planning-07-t-01-v3-1/l206-classic-path-planning-07-t-01-v3-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2491f740-8199-419b-bd06-d64bd21fe4c1",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599023,
+              "key": "acad0a7a-4832-4c48-97f2-2b47da8ed86c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above example, the robot would end up traversing the outer wall of the obstacle endlessly. There exist variants to the bug algorithm that will remedy this error, but the bulk of path planning algorithms rely on other principles that you will be introduced to throughout this lesson. In studying new algorithms, we will revisit the notion of Completeness and Optimality in analyzing the applicability of an algorithm to a task. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598942,
+          "key": "4a8e7dff-9c53-427a-bbb7-65fa24e33220",
+          "title": "Approaches to Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a8e7dff-9c53-427a-bbb7-65fa24e33220",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599025,
+              "key": "83c35e8a-394f-4f27-991d-d3a0f409f33b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Approaches to Path Planning\n\nIn this lesson, you will be studying three different approaches to path planning. The first, called **discrete** (or **combinatorial**) **path planning**, is the most straightforward of the three approaches. The other two approaches, called **sample-based path planning** and **probabilistic path planning**, will build on the foundation of discrete planning to develop more widely applicable path planning solutions.\n\n## Discrete Planning\n\nDiscrete planning looks to explicitly discretize the robot’s workspace into a connected graph, and apply a graph-search algorithm to calculate the best path. This procedure is very precise (in fact, the precision can be adjusted explicitly by changing how fine you choose to discretize the space) and very thorough, as it discretizes the _complete_ workspace. As a result, discrete planning can be very computationally expensive - possibly prohibitively so for large path planning problems. \n\nThe image below displays one possible implementation of discrete path planning applied to a 2-dimensional workspace. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598984,
+              "key": "a1dadbcd-422e-43a7-8abc-2440e50046a2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27859_c5-l2-09-img-image-of-discrete-v1/c5-l2-09-img-image-of-discrete-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a1dadbcd-422e-43a7-8abc-2440e50046a2",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599026,
+              "key": "b8150739-78ac-4db1-80c4-116ebf3f90a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Discrete path planning is elegant in its preciseness, but is best suited for low-dimensional problems. For high-dimensional problems, sample-based path planning is a more appropriate approach. \n\n## Sample-Based Planning\n\nSample-based path planning probes the workspace to incrementally construct a graph. Instead of discretizing _every_ segment of the workspace, sample-based planning takes a number of samples and uses them to build a discrete representation of the workspace. The resultant graph is not as precise as one created using discrete planning, but it is much quicker to construct because of the relatively small number of samples used. \n\nA path generated using sample-based planning may not be the _best_ path, but in certain applications - it’s better to generate a feasible path quickly than to wait hours or even days to generate the optimal path. \n\nThe image below displays a graph representation of a 2-dimensional workspace created using sample-based planning. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598985,
+              "key": "6b6b53d8-c3e1-49bc-9384-f6f028b93669",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785a_c5-l2-11-prm-1516-v2/c5-l2-11-prm-1516-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6b6b53d8-c3e1-49bc-9384-f6f028b93669",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599027,
+              "key": "022313e0-a0d1-4a5f-86f9-3d88815a00f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Probabilistic Path Planning\n\nThe last type of path planning that you will learn about in this module is probabilistic path planning. While the first two approaches looked at the path planning problem generically - with no understanding of who or what may be executing the actions - probabilistic path planning takes into account the uncertainty of the robot’s motion. \n\nWhile this may not provide significant benefits in some environments, it is especially helpful in highly-constrained environment or environments with sensitive or high-risk areas.\n\nThe image below displays probabilistic path planning applied to an environment containing a hazard (the lake at the top right).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614900,
+              "key": "5268366e-2cff-4eea-ac85-35b4fab619fc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade82de_mdpimage-53-v2/mdpimage-53-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5268366e-2cff-4eea-ac85-35b4fab619fc",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599028,
+              "key": "dc601f28-004b-4fc8-b7fe-81312a5680c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Multi-Lesson Map\n\nIn this lesson, you will be learning several discrete path planning algorithms and in the next lesson, you will move on to study sample-based and probabilistic planning. After you’ve become a wizard of path planning, you can apply your knowledge in a path planning lab, where you will code search algorithms in C++.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598943,
+          "key": "52e66aa2-1553-4a86-82db-0a36ecd7a820",
+          "title": "Discrete Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "52e66aa2-1553-4a86-82db-0a36ecd7a820",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 601482,
+              "key": "ff83b4ae-92d0-4fb2-8cba-9a1d2901d993",
+              "title": "Discrete Planning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "paeOudcnghM",
+                "china_cdn_id": "paeOudcnghM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 598944,
+          "key": "53e7d71c-9516-42d6-af99-542a1a2652b9",
+          "title": "Continuous Representation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53e7d71c-9516-42d6-af99-542a1a2652b9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613387,
+              "key": "170dbce8-f6c7-4ae6-a329-f7b0d5f782c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Continuous Representation ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 601494,
+              "key": "52f36cfb-6c03-4507-97ae-b2c92f52cd54",
+              "title": "Continuous Representation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Npk-v3sg2U",
+                "china_cdn_id": "4Npk-v3sg2U.mp4"
+              }
+            },
+            {
+              "id": 599029,
+              "key": "2ac50275-c35a-4010-90c2-9fa9e99bb3cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nTo account for the geometry of a robot and simplify the task of path planning, obstacles in the workspace can be inflated to create a new space called the configuration space (or C-space). With the obstacles inflated by the radius of the robot, the robot can then be treated as a point, making it easier for an algorithm to search for a path. The C-space is the set of _all_ robot poses, and can be broken-down into <span class=\"mathquill\">C_{Free}</span> and <span class=\"mathquill\">C_{Obs}</span>.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598945,
+          "key": "654b0a91-d0c3-4b34-8b66-516a520e2e8b",
+          "title": "Minkowski Sum",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "654b0a91-d0c3-4b34-8b66-516a520e2e8b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599030,
+              "key": "097b249e-1f0a-46d8-87ef-52cd3b32e6fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Minkowski Sum\n\nThe Minkowski sum is a mathematical property that can be used to compute the configuration space given an obstacle geometry and robot geometry. \n\nThe intuition behind how the Minkowski sum is calculated can be understood by imagining to paint the outside of an obstacle using a paintbrush that is shaped like your robot, with the robot’s origin as the tip of the paintbrush. The painted area is <span class=\"mathquill\">C_{obs}</span>. The image below shows just this.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598988,
+              "key": "099c8e74-c290-47ed-af6f-53aeb0644624",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785b_c5-l2-24-minkowski-sum-02-v1/c5-l2-24-minkowski-sum-02-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/099c8e74-c290-47ed-af6f-53aeb0644624",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599031,
+              "key": "4686e296-753f-4d54-85cc-1d14fcc36052",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To create the configuration space, the Minkowski sum is calculated in such a way for every obstacle in the workspace. The image below shows three configuration spaces created from a single workspace with three different sized robots. As you can see, if the robot is just a dot, then the obstacles in the workspace are only inflated by a small amount to create the C-space. As the size of the robot increases, the obstacles are inflated more and more. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598987,
+              "key": "94589910-cc5d-4a4d-a579-3667bd4fb435",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785b_c5-l2-22-minkowski-sum-01-v1/c5-l2-22-minkowski-sum-01-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94589910-cc5d-4a4d-a579-3667bd4fb435",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599032,
+              "key": "7be4d283-e525-4ea8-ba8f-4f35a67ed3a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For convex polygons, computing the convolution is trivial and can be done in linear time - however for non-convex polygons (i.e. ones with gaps or holes present), the computation is much more expensive.\n\nIf you are interested in understanding the Minkowski Sum in more detail, then you may find the following resources helpful:\n\n- [A blog post on Minkowski sums and differences](http://twistedoakstudios.com/blog/Post554_minkowski-sums-and-differences),\n\n- [An interesting read on how collisions are detected in video games](https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598946,
+          "key": "43116bb4-eb4d-4245-9bfa-478434cb597a",
+          "title": "Quiz: Minkowski Sum",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "43116bb4-eb4d-4245-9bfa-478434cb597a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613388,
+              "key": "e3372b63-8e74-4b15-9307-a9783b453a09",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Minkowski Sum",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598989,
+              "key": "26d08397-baea-42b5-a207-83bde34e0c73",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785c_c5-l2-26-minkowski-sum-quiz-01-v1/c5-l2-26-minkowski-sum-quiz-01-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/26d08397-baea-42b5-a207-83bde34e0c73",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599033,
+              "key": "300e3376-7bd4-468d-a660-0229cdb42245",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Which of the following images represents the Configuration Space for the robot (purple) and obstacle (white) presented above?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598990,
+              "key": "e217a695-7526-48fa-8ed7-fe246ec52fea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785c_c5-l2-28-minkowski-sum-quiz-02-v1/c5-l2-28-minkowski-sum-quiz-02-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e217a695-7526-48fa-8ed7-fe246ec52fea",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599034,
+              "key": "ddf5f888-f6d3-4b69-8a29-8c9884a54246",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ddf5f888-f6d3-4b69-8a29-8c9884a54246",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the images is the correct configuration space for the obstacle and robot described above?",
+                "answers": [
+                  {
+                    "id": "a1523749358315",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523749363037",
+                    "text": "B",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523749363655",
+                    "text": "C",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 626906,
+          "key": "1b20cf18-721a-40c6-beea-0b9f64ba7e70",
+          "title": "Minkowski Sum C++",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b20cf18-721a-40c6-beea-0b9f64ba7e70",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626907,
+              "key": "1e2b183c-cb13-40f1-ba19-c7cb1885a75b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've learned the **Minkowski Sum**, you'll get a chance to code it in C++!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628031,
+              "key": "03107f7f-3dc2-4c33-86d5-7462b0aca747",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628035,
+              "key": "ba095088-50f0-4293-90c9-4ea188918f24",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5afb6dbc_minkowski-sum-initial/minkowski-sum-initial.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ba095088-50f0-4293-90c9-4ea188918f24",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 626908,
+              "key": "bca812c4-4327-4775-b338-adc1329270db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this example, you can see two triangles - a blue and a red one. Let's suppose the robot is represented by a blue triangle and the obstacle is represented by a red triangle. Your task is to compute the configuration space **C** of robot **A** and obstacle **B** in C++.\n* **Robot**: Blue triangle denoted by A\n* **Obstacle**: Red triangle denoted by B",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626914,
+              "key": "4403edd3-1326-4676-bf3e-b3a8f21395ad",
+              "title": "Minkowski Sum C++",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4403edd3-1326-4676-bf3e-b3a8f21395ad",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "`main()`: Define the coordinates of triangle A and B in 2D vectors",
+                "`minkowski_sum()`: Compute the Minkowski Sum of two vectors",
+                "` delete_duplicate()`: Check for duplicate coordinates inside a 2D vector and delete them"
+              ],
+              "positive_feedback": "Great Job! Now submit your answer.",
+              "video_feedback": null,
+              "description": "Here are the steps that you should follow in order to code the Minkowski Sum in C++. Check them off as you complete them!"
+            },
+            {
+              "id": 626911,
+              "key": "85b9f59c-6dbd-41f2-8f5a-185b18134c0e",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "85b9f59c-6dbd-41f2-8f5a-185b18134c0e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5338012253290496",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\n// Print 2D vectors coordinate values\nvoid print2DVector(vector<vector<int> > vec)\n{\n     // Sorting the vector for grading purpose\n    sort(vec.begin(), vec.end());\n    for (int i = 0; i < vec.size(); ++i) {\n        for (int j = 0; j < vec[0].size(); ++j) {\n                cout << vec[i][j] << \"  \";\n        }\n        cout << endl;\n    }\n}\n\n// ***TODO: Check for duplicate coordinates inside a 2D vector and delete them*** //\nvector<vector<int> > delete_duplicate(vector<vector<int> > C)\n{\n\n    \n    \n    \n    \n    \n}\n\n// ***TODO: Compute the Minkowski Sum of two vectors***//\nvector<vector<int> > minkowski_sum(vector<vector<int> > A, vector<vector<int> > B)\n{\n    \n    \n    \n    \n    \n    \n    \n    C = delete_duplicate(C);\n    return C;\n}\n\nint main()\n{\n    // ***TODO: Define the coordinates of triangle A and B using 2D vectors*** //\n    \n    \n    // Compute the minkowski sum of triangle A and B\n    vector<vector<int> > C;\n    C = minkowski_sum(A, B);\n\n    // Print the resulting vector\n    print2DVector(C);\n\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\n// Print 2D vectors coordinate values\nvoid print2DVector(vector<vector<int> > vec)\n{\n    // Sorting the vector for grading purpose\n    sort(vec.begin(), vec.end());\n    for (int i = 0; i < vec.size(); ++i) {\n        for (int j = 0; j < vec[0].size(); ++j) {\n                cout << vec[i][j] << \"  \";\n        }\n        cout << endl;\n    }\n}\n\n// Check for duplicate coordinates inside a 2D vector and delete them\nvector<vector<int> > delete_duplicate(vector<vector<int> > C)\n{\n    // Sort the C vector\n    sort(C.begin(), C.end());\n    // Initialize a non duplicated vector\n    vector<vector<int> > Cn;\n    for (int i = 0; i < C.size() - 1; i++) {\n        // Check if it's a duplicate coordinate\n        if (C[i] != C[i + 1]) {\n            Cn.push_back(C[i]);\n        }\n    }\n    Cn.push_back(C[C.size() - 1]);\n    return Cn;\n}\n\n// Compute the Minkowski Sum of two vectors\nvector<vector<int> > minkowski_sum(vector<vector<int> > A, vector<vector<int> > B)\n{\n    vector<vector<int> > C;\n    for (int i = 0; i < A.size(); i++) {\n        for (int j = 0; j < B.size(); j++) {\n            // Compute the current sum\n            vector<int> Ci = { A[i][0] + B[j][0], A[i][1] + B[j][1] };\n            // Push it to the C vector\n            C.push_back(Ci);\n        }\n    }\n    C = delete_duplicate(C);\n    return C;\n}\n\nint main()\n{\n    // Define the coordinates of triangle A and B using 2D vectors\n    vector<vector<int> > A(3, vector<int>(2));\n    A = {{ 1, 0 }, { 0, 1 }, { 0, -1 },};\n    vector<vector<int> > B(3, vector<int>(2));\n    B = {{ 0, 0 }, { 1, 1 }, { 1, -1 },};\n\n    // Compute the minkowski sum of triangle A and B\n    vector<vector<int> > C;\n    C = minkowski_sum(A, B);\n\n    // Print the resulting vector\n    print2DVector(C);\n\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 628030,
+              "key": "bdda1d83-569e-457c-8859-3dc153a6e86f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Generated Configuration Space",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628036,
+              "key": "133c9567-a906-41e3-a101-6c309d12ca74",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5afb6dce_minkowski-sum-nonshifted/minkowski-sum-nonshifted.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/133c9567-a906-41e3-a101-6c309d12ca74",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 628032,
+              "key": "26627660-785e-4ee5-872c-a40d52f7b975",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Translation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628038,
+              "key": "c39a9b44-0c2a-46c6-b951-c5e587c01424",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You successfully coded the Minkowski sum in C++ and generated the configuration space. You can easily notice that the red obstacle is not well inflated and the blue robot can still hit the obstacle. That's because the configuration space still has to be shifted to the obstacle. \n\nInitially, the robot should be translated to the obstacle, and then after computing the configuration space, it should be translated to both the robot and obstacle. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628033,
+              "key": "db5ffc08-e00e-49bf-a2b6-e056dbea2995",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Final Result",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628034,
+              "key": "0a91e9ff-8480-4001-8709-993777815bed",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5afb6da3_minkowski-sum-final/minkowski-sum-final.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0a91e9ff-8480-4001-8709-993777815bed",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 628039,
+              "key": "3d71465a-447b-4c26-b106-71fc0b0973ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Above is the resulting image where both the blue robot and the green configuration space have been shifted. You can now see the yellow padding which represents the translated configurations space all around the red obstacle. The blue robot will never be able to hit the red obstacle since it's well inflated. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628041,
+              "key": "4e400acf-1481-468d-af85-07fc1ce6a65d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Plotting\nIf you are eager to know how I generated these plots and translated the shapes, you can clone the [GitHub repo](https://github.com/udacity/RoboND-MinkowskiSum) and read through the C++ code. In short, I had to follow these steps to generate any polygon: \n1.  Computed the centroid of each polygon\n2.  Computed the angle of each point-centroid with respect to the x-axis\n3.  Sorted the points in ascending order of their angles (clockwise)\n4.  Plotted a line between each consecutive point\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598947,
+          "key": "7bc6f8c7-4083-4f38-8993-1e174f148a68",
+          "title": "Translation and Rotation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7bc6f8c7-4083-4f38-8993-1e174f148a68",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598991,
+              "key": "18a88b66-b7f7-480e-a444-0a712ce51dc3",
+              "title": "Translation And Rotation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZVAJmzOk5p4",
+                "china_cdn_id": "ZVAJmzOk5p4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 598948,
+          "key": "a440b5ee-c249-4cb7-8a3d-fe0e14671c50",
+          "title": "3D Configuration Space",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a440b5ee-c249-4cb7-8a3d-fe0e14671c50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599035,
+              "key": "ecae2745-cbdc-43c8-985d-1714ac9d7f71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# 3D Configuration Space\n\nAs you saw, the configuration space for a robot changes depending on its rotation. Allowing a robot to rotate adds a degree of freedom - so, sensibly, it complicates the configuration space as well. Luckily, this is actually very simple to handle. The dimension of the configuration space is equal to the number of degrees of freedom that the robot has. \n\nWhile a 2D configuration space was able to represent the x- and y-translation of the robot, a third dimension is required to represent the rotation of the robot. \n\nLet’s look at a robot and its corresponding configuration space for two different rotations. The first will have the robot at 0°, and the second at 18°.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598992,
+              "key": "54afe9ce-2d73-4d8c-8244-efc4b5ba135b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785c_c5-l2-32-configuration-space-01-v1/c5-l2-32-configuration-space-01-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/54afe9ce-2d73-4d8c-8244-efc4b5ba135b",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 598993,
+              "key": "29dcc3e3-e711-4e85-a7db-28a2e604337a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785c_c5-l2-33-configuration-space-02-v1/c5-l2-33-configuration-space-02-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/29dcc3e3-e711-4e85-a7db-28a2e604337a",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599036,
+              "key": "41f8dc2e-9813-49f3-a01f-c7318c832689",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A three-dimensional configuration space can be generated by stacking two-dimensional configuration spaces as layers - as seen in the image below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598994,
+              "key": "2789de35-4629-4579-8e27-4aed1bf927e0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785d_c5-l2-35-configuration-space-03-v1/c5-l2-35-configuration-space-03-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2789de35-4629-4579-8e27-4aed1bf927e0",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599037,
+              "key": "391aae72-386c-4150-bf38-7890964524d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If we were to calculate the configuration spaces for infinitesimally small rotations of the robot, and stack them on top of each other - we would get something that looks like the image below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613358,
+              "key": "f601ec73-2917-44d0-8860-dafc1191718c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad8dbc5_c5-l2-37-3dimage-v3/c5-l2-37-3dimage-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f601ec73-2917-44d0-8860-dafc1191718c",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599038,
+              "key": "4e050e8e-d8ed-48e1-bd88-9b1a63895091",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The image above displays the configuration space for a triangular robot that is able to translate in two dimensions as well as rotate about its z-axis. While this image looks complicated to construct, there are a few tricks that can be used to generate 3D configuration spaces and move about them. The following video from the Freie Universität Berlin is a wonderful visualization of a 3D configuration space. The video will display different types of motion, and describe how certain robot motions map into the 3D configuration space. \n\n[Configuration Space Visualization](https://www.youtube.com/watch?v=SBFwgR4K1Gk)  - This is a _must_ watch!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 619637,
+              "key": "5ebf76b8-f6e5-4834-824f-655fddaba843",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5ebf76b8-f6e5-4834-824f-655fddaba843",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When a robot rotates about one of it's boundary points (edges or vertices), how is this motion represented in the 3D configuration space?",
+                "answers": [
+                  {
+                    "id": "a1525102067755",
+                    "text": "Diagonal Line",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525102174653",
+                    "text": "Circle",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525102177035",
+                    "text": "Vertical Line",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525102180234",
+                    "text": "Helix",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598949,
+          "key": "c4af2bca-6bd0-4290-a8fa-20b46d37f0ef",
+          "title": "Discretization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4af2bca-6bd0-4290-a8fa-20b46d37f0ef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598995,
+              "key": "88afec1c-52fe-4edf-9ee6-be9545bebf3b",
+              "title": "Discretization",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mKWjmGt4BPs",
+                "china_cdn_id": "mKWjmGt4BPs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 598950,
+          "key": "fec93f43-5301-476d-a8d9-8af813aca0ed",
+          "title": "Roadmap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fec93f43-5301-476d-a8d9-8af813aca0ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599039,
+              "key": "fd3ebc1e-0781-4c00-afc6-c19039400ea0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Roadmap \n\nThe first group of discretization approaches that you will learn is referred to by the name Roadmap. These methods represent the configuration space using a simple connected graph - similar to how a city can be represented by a metro map. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598996,
+              "key": "2e21fe08-c209-4cbb-bd48-449a1cd61877",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785d_c5-l2-41-img-subway-map-v1/c5-l2-41-img-subway-map-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2e21fe08-c209-4cbb-bd48-449a1cd61877",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599040,
+              "key": "ef658756-ab4c-4e06-8e28-769ff77275d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Roadmap methods are typically implemented in two phases:\n\n- The **construction phase** builds up a graph from a continuous representation of the space. This phase usually takes a significant amount of time and effort, but the resultant graph can be used for multiple queries with minimal modifications. \n\n- The **query phase** evaluates the graph to find a path from a start location to a goal location. This is done with the help of a search algorithm. \n\nIn this Discretization section, we will only discuss and evaluate the construction phase of each Roadmap method. Whereas the query phase will be discussed in more detail in the Graph Search section, following Discretization.\n\nThe two roadmap methods that you will learn next are the Visibility Graph, and Voronoi Diagram methods.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598951,
+          "key": "477341a5-0859-4d30-925a-3a96a29e5f50",
+          "title": "Visibility Graph",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "477341a5-0859-4d30-925a-3a96a29e5f50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599041,
+              "key": "e92b8398-8c3b-4804-9f6b-d2b96f1fcdf4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Visibility Graph\n\nThe Visibility Graph builds a roadmap by connecting the start node, all of the obstacles’ vertices, and goal node to each other - except those that would result in collisions with obstacles. The Visibility Graph has its name for a reason - it connects every node to all other nodes that are ‘visible’ from its location. \n\n> **Nodes:** Start, Goal, and all obstacle vertices.\n\n> **Edges:** An edge between two nodes that does not intersect an obstacle, including obstacle edges. \n\nThe following image illustrates a visibility graph for a configuration space containing polygonal obstacles.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598997,
+              "key": "b3a0f132-5e35-4feb-aebc-6ea5ce77cd4b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785d_c5-l2-44-visibility-graph-01-v3/c5-l2-44-visibility-graph-01-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b3a0f132-5e35-4feb-aebc-6ea5ce77cd4b",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599042,
+              "key": "4e28d870-29bb-432c-beca-d0ca8291088c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The motivation for building Visibility Graphs is that the shortest path from the start node to the goal node will be a piecewise linear path that bends only at the obstacles’ vertices. This makes sense intuitively - the path would want to hug the obstacles’ corners as tightly as possible, as not to add any additional length. \n\nOnce the Visibility Graph is built, a search algorithm can be applied to find the shortest path from Start to Goal. The image below displays the shortest path in this visibility graph.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598998,
+              "key": "17925a30-3e26-4356-b79f-e5fa7bdf3b01",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad2785e_c5-l2-46-visibility-graph-02-v3/c5-l2-46-visibility-graph-02-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/17925a30-3e26-4356-b79f-e5fa7bdf3b01",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599043,
+              "key": "a30d7073-4882-4b81-a79f-8334475ed5ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz\n\nAlthough the algorithms used to search the roadmap have not yet been introduced - it is still worth analysing whether _any_ algorithm would be able to find a path from start to goal, and whether the optimal path lies within the roadmap.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599044,
+              "key": "61db433c-c388-4dcc-a7ac-5d4efc311fda",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "61db433c-c388-4dcc-a7ac-5d4efc311fda",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the visibility graph complete? Does it contain the optimal path?",
+                "answers": [
+                  {
+                    "id": "a1523749581015",
+                    "text": "Complete",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523749588036",
+                    "text": "Optimal",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523749588677",
+                    "text": "Neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 599045,
+              "key": "e1c36096-44ef-4bca-9dc4-a80ae7e969f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Having completed the quiz, you should have by now seen the advantages of the Visibility Graph method. One disadvantage to the Visibility Graph is that it leaves no clearance for error. A robot traversing the optimal path would have to pass incredibly close to obstacles, increasing the risk of collision significantly. In certain applications, such as animation or path planning for video games, this is acceptable. However the uncertainty of real-world robot localization makes this method impractical. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598952,
+          "key": "ed96fdf0-b817-4970-a57e-6786bf15fee9",
+          "title": "Voronoi Diagram",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed96fdf0-b817-4970-a57e-6786bf15fee9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599046,
+              "key": "d755eec0-82ae-4a76-be08-76dabb7a702c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Voronoi Diagram\n\nAnother discretization method that generates a roadmap is called the Voronoi Diagram. Unlike the visibility graph method which generates the shortest paths, Voronoi Diagrams maximize clearance between obstacles. \n\nA Voronoi Diagram is a graph whose edges bisect the free space in between obstacles. Every edge lies equidistant from each obstacle around it - with the greatest amount of clearance possible. You can see a Voronoi Diagram for our configuration space in the graphic below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613362,
+              "key": "7959a7cb-6885-4957-9d36-59a0d922bc1f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad8dc18_l251-voronoi-diagram-01-v4/l251-voronoi-diagram-01-v4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7959a7cb-6885-4957-9d36-59a0d922bc1f",
+              "caption": "",
+              "alt": "",
+              "width": 1928,
+              "height": 1090,
+              "instructor_notes": null
+            },
+            {
+              "id": 599047,
+              "key": "d1100c73-3738-4fac-b04e-feebba507eea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once a Voronoi Diagram is constructed for a workspace, it can be used for multiple queries. Start and goal nodes can be connected into the graph by constructing the paths from the nodes to the edge closest to each of them. \n\nEvery edge will either be a straight line, if it lies between the edges of two obstacles, or it will be a quadratic, if it passes by the vertex of an obstacle. \n\n## Quiz\n\nOnce again, it is worth investigating - will the roadmap built by the voronoi diagram contain a path from start to goal, and will it contain the optimal path. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599048,
+              "key": "1ae877ff-0e9a-481f-98e9-1552d61b6c93",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1ae877ff-0e9a-481f-98e9-1552d61b6c93",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the Voronoi Diagram complete? Does it contain the optimal path?",
+                "answers": [
+                  {
+                    "id": "a1523749780123",
+                    "text": "Complete",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523749793155",
+                    "text": "Optimal",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523749793792",
+                    "text": "Neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598953,
+          "key": "84b17e6e-4181-4187-82a8-3dd89d09adf7",
+          "title": "Cell Decomposition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84b17e6e-4181-4187-82a8-3dd89d09adf7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599049,
+              "key": "a13a3c81-351c-4846-8303-c9c78da82756",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cell Decomposition\n\nAnother discretization method that can be used to convert a configuration space into a representation that can easily be explored by a search algorithm is cell decomposition. Cell decomposition divides the space into discrete cells, where each cell is a node and adjacent cells are connected with edges. There are two distinct types of cell decomposition:\n- Exact Cell Decomposition\n- Approximate Cell Decomposition. \n\n## Exact Cell Decomposition\n\nExact cell decomposition divides the space into *non-overlapping* cells. This is commonly done by breaking up the space into triangles and trapezoids, which can be accomplished by adding vertical line segments at every obstacle’s vertex. You can see the result of exact cell decomposition of a configuration space in the image below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598999,
+              "key": "19f2e18a-9491-4379-8879-68288774aacc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27860_c5-l2-60-decomposition-v2/c5-l2-60-decomposition-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/19f2e18a-9491-4379-8879-68288774aacc",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1081,
+              "instructor_notes": null
+            },
+            {
+              "id": 599050,
+              "key": "e6a1bef3-0e08-4396-9896-8d028f41c8e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once a space has been decomposed, the resultant graph can be used to search for the shortest path from start to goal. The resultant graph can be seen in the image below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599000,
+              "key": "3944452f-194f-4578-86da-06d53a20ab45",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27860_c5-l2-62-graph-v2/c5-l2-62-graph-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3944452f-194f-4578-86da-06d53a20ab45",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599051,
+              "key": "226951b0-84d9-4634-b64d-83b4063a3b29",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Exact cell decomposition is elegant because of its precision and completeness. Every cell is either ‘full’, meaning it is completely occupied by an obstacle, or it is ‘empty’, meaning it is free. And the union of all cells exactly represents the configuration space. If a path exists from start to goal, the resultant graph _will_ contain it. \n\nTo implement exact cell decomposition, the algorithm must order all obstacle vertices along the x-axis, and then for every vertex determine whether a new cell must be created or whether two cells should be merged together. Such an algorithm is called the Plane Sweep algorithm. \n\nExact cell decomposition results in cells of awkward shapes. Collections of uniquely-shaped trapezoids and triangles are more difficult to work with than a regular rectangular grid. This results in an added computational complexity, especially for environments with greater numbers of dimensions. It is also difficult to compute the decomposition when obstacles are not polygonal, but of an irregular shape. \n\nFor this reason, there is an alternate type of cell decomposition, that is much more practical in its implementation.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598954,
+          "key": "fdd08013-e509-412c-915f-97029d41dce0",
+          "title": "Approximate Cell Decomposition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fdd08013-e509-412c-915f-97029d41dce0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599052,
+              "key": "b2321055-d820-4dea-8011-efb33410509d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Approximate Cell Decomposition\n\nApproximate cell decomposition divides a configuration space into discrete cells of simple, regular shapes - such as rectangles and squares (or their multidimensional equivalents). Aside from simplifying the computation of the cells, this method also supports hierarchical decomposition of space (more on this below). \n\n# Simple Decomposition\n\nA 2-dimensional configuration space can be decomposed into a grid of rectangular cells. Then, each cell could be marked full or empty, as before. A search algorithm can then look for a sequence of free cells to connect the start node to the goal node. \n\nSuch a method is more efficient than exact cell decomposition, but it loses its completeness. It is possible that a particular configuration space contains a feasible path, but the resolution of the cells results in some of the cells encompassing the path to be marked ‘full’ due to the presence of obstacles. A cell will be marked ‘full’ whether 99% of the space is occupied by an obstacle or a mere 1%. Evidently, this is not practical. \n\n# Iterative Decomposition\n\nAn alternate method of partitioning a space into simple cells exists. Instead of immediately decomposing the space into _small_ cells of equal size, the method _recursively_ decomposes a space into four quadrants. Each quadrant is marked full, empty, or a new label called ‘mixed’ - used to represent cells that are somewhat occupied by an obstacle, but also contain some free space. If a sequence of free cells cannot be found from start to goal, then the mixed cells will be further decomposed into another four quadrants. Through this process, more free cells will emerge, eventually revealing a path if one exists. \n\nThe 2-dimensional implementation of this method is called quadtree decomposition. It can be seen in the graphic below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599001,
+              "key": "6831f750-0e8d-4c86-9884-ec407c507f10",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27861_c5-l2-65-quadtrees-image-01-v3/c5-l2-65-quadtrees-image-01-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6831f750-0e8d-4c86-9884-ec407c507f10",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599055,
+              "key": "127bccbf-b364-4029-8859-43933c971b71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithm\n\nThe algorithm behind approximate cell decomposition is much simpler than the exact cell decomposition algorithm. The pseudocode for the algorithm is provided below.\n\n> Decompose the configuration space into four cells, label cells free, mixed, or full.\n\n> Search for a sequence of free cells that connect the start node to the goal node.\n\n> If such a sequence exists:\n\n>    <span class=\"mathquill\">\\quad</span>Return path\n\n>Else: \n\n>    <span class=\"mathquill\">\\quad</span>Further decompose the mixed cells\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599002,
+              "key": "b46a64d8-8d05-48d1-ae49-850e2dc9c561",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27861_c5-l2-67-exact-cell-decomposition-applied-v4/c5-l2-67-exact-cell-decomposition-applied-v4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b46a64d8-8d05-48d1-ae49-850e2dc9c561",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599053,
+              "key": "89700981-4349-4251-8894-2248b700710f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The three dimensional equivalent of quadtrees are octrees, depicted in the image below. The method of discretizing a space with any number of dimensions follows the same procedure as the algorithm described above, but expanded to accommodate the additional dimensions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599003,
+              "key": "414a1a52-eca3-4ced-913b-0dca184dfe8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27862_c5-l2-69-octrees-image-01-v1/c5-l2-69-octrees-image-01-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/414a1a52-eca3-4ced-913b-0dca184dfe8a",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599054,
+              "key": "8ae4b1e2-c0c5-47c3-a76d-78440ac41b4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Although exact cell decomposition is a more elegant method, it is much more computationally expensive than approximate cell decomposition for non-trivial environments. For this reason, approximate cell decomposition is commonly used in practice. \n\nWith enough computation, approximate cell decomposition approaches completeness. However, it is not optimal - the resultant path depends on how cells are decomposed. Approximate cell decomposition finds the obvious solution quickly. It is possible that the optimal path squeezes through a minuscule opening between obstacles, but the resultant path takes a much longer route through wide open spaces - one that the recursively-decomposing algorithms would find first.\n\nApproximate cell decomposition is functional, but like all discrete/combinatorial path planning methods - it starts to be computationally intractable for use with high-dimensional environments.\n\n## Quiz",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599056,
+              "key": "e002490b-38f6-45ff-a22c-b962b2ecc4e9",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e002490b-38f6-45ff-a22c-b962b2ecc4e9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements are true about cell decomposition?",
+                "answers": [
+                  {
+                    "id": "a1523750101794",
+                    "text": "In practice, approximate cell decomposition is preferred due to its more manageable computation.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523750117415",
+                    "text": "Approximate cell decomposition is not optimal because obvious (wide/open) paths are found first.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523750117972",
+                    "text": "The optimality of exact cell decomposition depends on how the configuration space is decomposed. ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523750139786",
+                    "text": "The quadtree and octree methods recursively decompose mixed cells until they find a sequence of free cells from start to goal. ",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598955,
+          "key": "c128b182-6dc2-44d5-9ab2-4f357d01271a",
+          "title": "Potential Field",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c128b182-6dc2-44d5-9ab2-4f357d01271a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599057,
+              "key": "bda16cb2-f0f7-43a9-9b93-90b5387768eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Potential Field\n\nOnto the last discretization method that you will be learning in this lesson - potential field method. Unlike the methods discussed thus far that discretize the continuous space into a connected graph, the potential field method performs a different type of discretization. \n\nTo accomplish its task, the potential field method generates two functions - one that attracts the robot to the goal and one that repels the robot away from obstacles. The two functions can be summed to create a discretized representation. By applying an optimization algorithm such as gradient descent, a robot can move toward the goal configuration while steering around obstacles. Let’s look at how each of these steps is implemented in more detail. \n\n## Attractive Potential Field\n\nThe attractive potential field is a function with the global minimum at the goal configuration. If a robot is placed at any point and required to follow the direction of steepest descent, it will end up at the goal configuration. This function does not need to be complicated, a simple quadratic function can achieve all of the requirements discussed above. \n\n<div class=\"mathquill\">f_{att}(\\textbf{x}) = \\nu_{att}(||\\textbf{x}-\\textbf{x}_{goal}||)^2</div>\n\nWhere <span class=\"mathquill\">\\textbf{x}</span> represents the robot’s current position, and <span class=\"mathquill\">\\textbf{x}_{goal}</span> the goal position. <span class=\"mathquill\">\\nu</span> is a scaling factor.\n\nA fragment of the attractive potential field is displayed in the image below. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599004,
+              "key": "978a148a-c42e-4b26-a833-6d5319217773",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27862_c5-l2-73-img-scalar-function-v2/c5-l2-73-img-scalar-function-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/978a148a-c42e-4b26-a833-6d5319217773",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599058,
+              "key": "141d7e6a-2968-458c-b561-9046445cd018",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Repulsive Potential Field\n\nThe repulsive potential field is a function that is equal to zero in free space, and grows to a large value near obstacles. One way to create such a potential field is with the function below. \n\n<div class=\"mathquill\">f _{rep} =\\left\\{ \\begin{array}{ll} \\nu _{rep} (\\frac{1}{\\rho(\\textbf{x})}-\\frac{1}{\\rho_{0}})^{2}\\ \\quad  if\\ \\rho\\leq \\rho_{0},\\\\ \\\\ 0 \\qquad\\qquad\\qquad\\quad \\ if\\ \\rho > \\rho_{0}\\\\ \\end{array} \\right.</div>\n\nWhere the function <span class=\"mathquill\">\\rho(\\textbf{x})</span> returns the distance from the robot to its nearest obstacle, <span class=\"mathquill\">\\rho_0</span> is a scaling parameter that defines the reach of an obstacle’s repulsiveness, and <span class=\"mathquill\">\\nu</span> is a scaling parameter. \n\nAn image of a repulsive potential field for an arbitrary configuration space is provided below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599005,
+              "key": "30c7faa7-2901-4b02-9371-78f0ed03557c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27862_c5-l2-75-img-obstacles-function-v2/c5-l2-75-img-obstacles-function-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/30c7faa7-2901-4b02-9371-78f0ed03557c",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599059,
+              "key": "357ad62d-e96b-4bfc-b866-ebe13f7a59e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The value <span class=\"mathquill\">\\rho_0</span> controls how far from an obstacle the potential field will be non-zero, and how steep the area surrounding an obstacle will be. \n\nPast <span class=\"mathquill\">\\rho_0</span>, the potential field is zero. Within a <span class=\"mathquill\">\\rho_0</span> distance of the obstacle, the potential field scales with proximity to the obstacle. \n\n## Potential Field Sum\n\nThe attractive and repulsive functions are summed to produce the potential field that is used to guide the robot from anywhere in the space to the goal. The image below shows the summation of the functions, and the image immediately after displays the final function. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599006,
+              "key": "d4cb79e5-233b-49cc-8caa-c90edfcff0a4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27863_c5-l2-77-img-combination-v2/c5-l2-77-img-combination-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d4cb79e5-233b-49cc-8caa-c90edfcff0a4",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599007,
+              "key": "4ad2090b-7f3c-4a07-81b9-784f6b64394d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27864_c5-l2-78-img-final-gradient-v2/c5-l2-78-img-final-gradient-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4ad2090b-7f3c-4a07-81b9-784f6b64394d",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599060,
+              "key": "ba35dc98-cac0-45f3-8992-64bdaad56199",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Imagine placing a marble onto the surface of the function - from anywhere in the field it will roll in the direction of the goal without colliding with any of the obstacles (as long as <span class=\"mathquill\">\\rho_0</span> is set appropriately)!\n\nThe gradient of the function dictates which direction the robot should move, and the speed can be set to be constant or scaled in relation to the distance between the robot and the goal. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 619638,
+              "key": "0f881a9e-16c8-4cc4-a272-53deacda3a2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Problems with the Potential Field Method\n\nThe potential field method is not without its faults - the method is neither complete nor optimal. In certain environments, the method will lead the robot to a **local minimum**, as opposed to the global minimum. The images below depict one such instance. Depending on where the robot commences, it may be led to the bottom of the smile. \n\nThe image below depicts the configuration space, and the following image displays the corresponding potential field.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 619640,
+              "key": "ce162530-8b28-4ddb-a13a-60c0ffb25407",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ae7392c_c5-l2-83-img-local-minima-cspace-v2/c5-l2-83-img-local-minima-cspace-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce162530-8b28-4ddb-a13a-60c0ffb25407",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 619641,
+              "key": "91860053-9b2b-48ab-829c-9586091189be",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ae73932_c5-l2-84-img-local-minima-gradient-v1/c5-l2-84-img-local-minima-gradient-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/91860053-9b2b-48ab-829c-9586091189be",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 619639,
+              "key": "6b62208d-407a-41ed-86b9-e62564185450",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The problem of a robot becoming stuck in a local minimum can be resolved by adding random walks, and other strategies that are commonly applied to gradient descent, but ultimately the method is not complete. \n\nThe potential field method isn’t optimal either, as it may not always find the shortest (or cheapest) path from start to goal. The shortest path may not follow the path of steepest descent. In addition, potential field does not take into consideration the cost of every step. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598957,
+          "key": "5159d23b-b66d-4d19-ace9-252fdaee4259",
+          "title": "Discretization Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5159d23b-b66d-4d19-ace9-252fdaee4259",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616695,
+              "key": "c9c30454-5613-4288-b3e1-7a2d3c90cc9e",
+              "title": "02 86 Discretization Wrap-Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YuH5HQ7DJUE",
+                "china_cdn_id": "YuH5HQ7DJUE.mp4"
+              }
+            },
+            {
+              "id": 616924,
+              "key": "6e749a00-5247-4741-80fa-2763d12601fd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598958,
+          "key": "5966589b-516f-46a6-b3de-ba19540cc764",
+          "title": "Graph Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5966589b-516f-46a6-b3de-ba19540cc764",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599010,
+              "key": "8fef6da1-da9a-49e8-b679-cc0e513dc4f1",
+              "title": "Graph Search",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aA17XOlX044",
+                "china_cdn_id": "aA17XOlX044.mp4"
+              }
+            },
+            {
+              "id": 599064,
+              "key": "5be0b3ae-f8b1-4f43-9548-aa223a347c0a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Uninformed vs Informed Search\n\nUninformed search algorithms are not provided with any information about the whereabouts of the goal, and thus search blindly. The only difference between different uninformed algorithms is the order in which they expand nodes. Several different types of uninformed algorithms are listed below:\n\n- Breadth-first Search\n- Depth-first Search\n- Uniform Cost Search\n\nInformed searches, on the other hand, are provided with information pertaining to the location of the goal. As a result, these search algorithms are able to evaluate some nodes to be more promising than others. This makes their search more efficient. The informed algorithm that you will be learning in this lesson is,\n\n- A* Search\n\nSeveral variations on the above searches exist, and will be briefly discussed.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598959,
+          "key": "2bda360b-44ea-4675-b92e-c4b5acfd1f22",
+          "title": "Terminology",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2bda360b-44ea-4675-b92e-c4b5acfd1f22",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599065,
+              "key": "6fe54dbe-34dd-4789-9667-db122552dc35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Terminology \n\nYou are already familiar with two terms that can be used to describe an algorithm - completeness and optimality. However, there are a few others that you should know before starting to learn individual graph search algorithms. \n\nThe **time complexity** of an algorithm assesses how long it takes an algorithm to generate a path, usually with respect to the number of nodes or dimensions present. It can also refer to the trade-off between quality of an algorithm (ex. completeness) vs its computation time.\n\nThe **space complexity** of an algorithm assesses how much memory is required to execute the search. Some algorithms must keep significant amounts of information in memory throughout their run-time, while others can get away with very little.\n\nThe **generality** of an algorithm considers the type of problems that the algorithm can solve - is it limited to very specific types of problems, or will the algorithm perform well in a broad range of problems? \n\nKeep these concepts in mind as you learn about each search algorithm. Let’s dive into the algorithms! ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598960,
+          "key": "f262ff55-2575-4723-b403-2eca3e49ff92",
+          "title": "Breadth-First Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f262ff55-2575-4723-b403-2eca3e49ff92",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613383,
+              "key": "fabc1694-486c-4651-83ce-1c72789f4665",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Breadth-First Search",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599011,
+              "key": "ea790cc1-5082-474b-bf8e-aa29003a08ac",
+              "title": "Breadth-First Search",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5JUpzI75iuk",
+                "china_cdn_id": "5JUpzI75iuk.mp4"
+              }
+            },
+            {
+              "id": 599012,
+              "key": "861074ee-407b-46aa-a730-939ce445dcdb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27866_c5-l2-119-bfs-part-1-09-v2/c5-l2-119-bfs-part-1-09-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/861074ee-407b-46aa-a730-939ce445dcdb",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599066,
+              "key": "cd6761fd-25f2-4b86-b79e-529ba41bbfea",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cd6761fd-25f2-4b86-b79e-529ba41bbfea",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "On which steps of its search would the BFS algorithm reach the nodes labelled A, B, and C?"
+                },
+                "concepts_label": "Node",
+                "answers_label": "Exploration Order",
+                "concepts": [
+                  {
+                    "text": "A",
+                    "correct_answer": {
+                      "id": "a1523771541537",
+                      "text": "23"
+                    }
+                  },
+                  {
+                    "text": "B",
+                    "correct_answer": {
+                      "id": "a1523771549277",
+                      "text": "27"
+                    }
+                  },
+                  {
+                    "text": "C",
+                    "correct_answer": {
+                      "id": "a1523771552786",
+                      "text": "22"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1523771570034",
+                    "text": "17"
+                  },
+                  {
+                    "id": "a1523771568000",
+                    "text": "26"
+                  },
+                  {
+                    "id": "a1523771541537",
+                    "text": "23"
+                  },
+                  {
+                    "id": "a1523771552786",
+                    "text": "22"
+                  },
+                  {
+                    "id": "a1523771549277",
+                    "text": "27"
+                  },
+                  {
+                    "id": "a1523771572139",
+                    "text": "33"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 613389,
+              "key": "a38a908f-1727-45b0-9a5d-3bf3b8021cf5",
+              "title": "C5 L2 A94 L BFS Part 2 V6",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z_ZvAnyfUeE",
+                "china_cdn_id": "Z_ZvAnyfUeE.mp4"
+              }
+            },
+            {
+              "id": 599067,
+              "key": "c02dfd1e-1b73-41fb-8937-ce6362ec3c44",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c02dfd1e-1b73-41fb-8937-ce6362ec3c44",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the breadth-first search algorithm complete? Optimal? Efficient?",
+                "answers": [
+                  {
+                    "id": "a1523772549406",
+                    "text": "Complete",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523772552378",
+                    "text": "Optimal",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523772553421",
+                    "text": "Efficient",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773049780",
+                    "text": "Neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598961,
+          "key": "a39bd12f-aba2-4335-99d7-e6ce5162dcdb",
+          "title": "Depth-First Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a39bd12f-aba2-4335-99d7-e6ce5162dcdb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613384,
+              "key": "cdd0e2de-562e-4c56-86fb-6f6fc5304c28",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Depth-First Search",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599013,
+              "key": "b3abe554-c93f-4a7b-b98f-a561d264eeff",
+              "title": "Depth-First Search",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MxdxqfN1-P8",
+                "china_cdn_id": "MxdxqfN1-P8.mp4"
+              }
+            },
+            {
+              "id": 599014,
+              "key": "dc479ff5-13b7-4aed-bcda-9af1600e1511",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27866_c5-l2-118-dfs-part-1-11-v1/c5-l2-118-dfs-part-1-11-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dc479ff5-13b7-4aed-bcda-9af1600e1511",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599068,
+              "key": "5ff9cfd2-1687-4fa8-9f05-3a4fe7831472",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5ff9cfd2-1687-4fa8-9f05-3a4fe7831472",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "On which steps of its search would the DFS algorithm reach the nodes labelled A, B, and C?\n"
+                },
+                "concepts_label": "Node",
+                "answers_label": "Expansion Order",
+                "concepts": [
+                  {
+                    "text": "A",
+                    "correct_answer": {
+                      "id": "a1523772744433",
+                      "text": "20"
+                    }
+                  },
+                  {
+                    "text": "B",
+                    "correct_answer": {
+                      "id": "a1523772746299",
+                      "text": "18"
+                    }
+                  },
+                  {
+                    "text": "C",
+                    "correct_answer": {
+                      "id": "a1523772748649",
+                      "text": "32"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1523772744433",
+                    "text": "20"
+                  },
+                  {
+                    "id": "a1523772766439",
+                    "text": "28"
+                  },
+                  {
+                    "id": "a1523772746299",
+                    "text": "18"
+                  },
+                  {
+                    "id": "a1523772768622",
+                    "text": "14"
+                  },
+                  {
+                    "id": "a1523772748649",
+                    "text": "32"
+                  },
+                  {
+                    "id": "a1523772764156",
+                    "text": "25"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 599015,
+              "key": "0feab316-6971-4537-a032-43c0db474529",
+              "title": "L2 98 DFS Part 2 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2_hHQBhD1n8",
+                "china_cdn_id": "2_hHQBhD1n8.mp4"
+              }
+            },
+            {
+              "id": 599069,
+              "key": "670358fc-ee88-404a-a77a-6d435f5b5ae7",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "670358fc-ee88-404a-a77a-6d435f5b5ae7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the depth-first search algorithm complete? Optimal? Efficient?",
+                "answers": [
+                  {
+                    "id": "a1523772918162",
+                    "text": "Complete",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523772922726",
+                    "text": "Optimal",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523772929274",
+                    "text": "Efficient",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523772931675",
+                    "text": "Neither",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598962,
+          "key": "a2211586-889c-4b71-af6d-fd0fc5d3e606",
+          "title": "Uniform Cost Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a2211586-889c-4b71-af6d-fd0fc5d3e606",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613385,
+              "key": "e3785024-4671-43e0-ab13-6f12771b8da2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Uniform Cost Search",
+              "instructor_notes": ""
+            },
+            {
+              "id": 601486,
+              "key": "b9a92b92-ed0e-4ea8-8d7c-a8d57a8b15dc",
+              "title": "Uniform Cost Search",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "27mdDguSqvM",
+                "china_cdn_id": "27mdDguSqvM.mp4"
+              }
+            },
+            {
+              "id": 601487,
+              "key": "31ab41f1-218e-4b83-9636-8dfacd779f9d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27865_c5-l2-117-uniform-cost-search-part-1-30-v1/c5-l2-117-uniform-cost-search-part-1-30-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/31ab41f1-218e-4b83-9636-8dfacd779f9d",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599070,
+              "key": "e488d22a-9e77-444a-a9f4-f6fa430a7e59",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e488d22a-9e77-444a-a9f4-f6fa430a7e59",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you are to expand the search to include all nodes with a path cost of 5, which of the following nodes will not be explored?",
+                "answers": [
+                  {
+                    "id": "a1523773092866",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773095167",
+                    "text": "B",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773095820",
+                    "text": "C",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773096406",
+                    "text": "D",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773097038",
+                    "text": "E",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773097589",
+                    "text": "F",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773104864",
+                    "text": "G",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773105480",
+                    "text": "H",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 601488,
+              "key": "25ea8c86-5af5-411c-9c3f-e26f09c9d963",
+              "title": "C5 L2 A102 UCS Part 2 V6",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hrhu6VXEq6U",
+                "china_cdn_id": "hrhu6VXEq6U.mp4"
+              }
+            },
+            {
+              "id": 599071,
+              "key": "3f343135-a9e9-4e87-a315-408589c83d40",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3f343135-a9e9-4e87-a315-408589c83d40",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is uniform cost search algorithm complete? Optimal? Efficient?",
+                "answers": [
+                  {
+                    "id": "a1523773140271",
+                    "text": "Complete",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773144191",
+                    "text": "Optimal",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773144769",
+                    "text": "Efficient",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773145383",
+                    "text": "None of the above",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 620137,
+              "key": "35b3909d-f312-416a-8b0d-b5ffa111816a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Terminology Note\nIn some of the literature for these algorithms you may come across the terms \"LIFO\" and \"FIFO\":\n<br>**LIFO** stands for **L**ast **I**n **F**irst **O**ut\n<br>**FIFO** stands for **F**irst **I**n **F**irst **O**ut",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598963,
+          "key": "caad0a6d-b52a-4534-9d34-2545707e2940",
+          "title": "A* Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "caad0a6d-b52a-4534-9d34-2545707e2940",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613386,
+              "key": "5f34840b-bf67-49ee-acc7-759e9e8e70e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# A* Search",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615497,
+              "key": "6aebcf7b-4eda-4963-918f-190cb64d8577",
+              "title": "02 A104 A Search V5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i6OQJIFL9dA",
+                "china_cdn_id": "i6OQJIFL9dA.mp4"
+              }
+            },
+            {
+              "id": 599072,
+              "key": "d2d64428-1eb3-4b50-85e4-bb41e5d99cec",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d2d64428-1eb3-4b50-85e4-bb41e5d99cec",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements are correct about A* search?",
+                "answers": [
+                  {
+                    "id": "a1523773230909",
+                    "text": "A heuristic function provides the robot with knowledge about the environment, guiding it in the direction of the goal.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773232405",
+                    "text": "A* uses the sum of the path cost and the heuristic function to determine which nodes to explore next.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773233029",
+                    "text": "A* uses a priority queue as the data structure underlying the frontier. ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523773233612",
+                    "text": "A* is optimal.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523773247098",
+                    "text": "Choosing an appropriate heuristic function (ex. Euclidean distance, Manhattan distance, etc.) is important. The order in which nodes are explored will change from one heuristic to another.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 599073,
+              "key": "a876cc33-7007-4d6d-9c75-98bb26efb080",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you saw in the video above, A\\* search orders the frontier using a priority queue, ordered by f(n), the sum of the path cost and the heuristic function. This is very effective, as it requires the search to keep paths short, while moving towards the goal. However, as you may have discovered in the quiz - A\\* search is not guaranteed to be optimal. Let’s look at why this is so! \n\nA\\* search will find the optimal path *if* the following conditions are met,\n\n- Every edge must have a cost greater than some value, <span class=\"mathquill\">\\epsilon</span>, otherwise, the search can get stuck in infinite loops and the search would not be complete.\n\n- The heuristic function must be consistent. This means that it must obey the triangle inequality theorem. That is, for three neighbouring points (<span class=\"mathquill\">x_1, x_2, x_3</span>), the heuristic value for <span class=\"mathquill\">x_1</span> to <span class=\"mathquill\">x_3</span> must be less than the sum of the heuristic values for <span class=\"mathquill\">x_1</span> to <span class=\"mathquill\">x_2</span> and <span class=\"mathquill\">x_2</span> to <span class=\"mathquill\">x_3</span>.\n\n- The heuristic function must be admissible. This means that h(n) must always be less than or equal to the true cost of reaching the goal from every node. In other words, h(n) must never overestimate the true path cost.\n\nTo understand where the admissibility clause comes from, take a look at the image below. Suppose you have two paths to a goal where one is optimal (the highlighted path), and one is not (the lower path). Both heuristics overestimate the path cost. From the start, you have four nodes on the frontier, but Node N would be expanded first because its h(n) is the lowest - it is equal to 62. From there, the goal node is added to the frontier - with a cost of 23 + 37 = 60. This node looks more promising than Node P, whose h(n) is equal to 63. In such a case, A\\* finds a path to the goal which is not optimal. If the heuristics never overestimated the true cost, this situation would not occur because Node P would look more promising than Node N and be explored first. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613381,
+              "key": "f37c742e-d328-4f06-8cac-84df97a22f9c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad8e5b2_l2121-admissibility-01-v1/l2121-admissibility-01-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f37c742e-d328-4f06-8cac-84df97a22f9c",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599074,
+              "key": "b2c127c0-820e-48b2-ab37-9c1c1a39d408",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you saw in the image above, admissibility is a requirement for A* to be optimal. For this reason, common heuristics include the Euclidean distance from a node to the goal (as you saw in the video), or in some applications the Manhattan distance. When comparing two different types of values - for instance, if the path cost is measured in hours, but the heuristic function is estimating distance - then you would need to determine a scaling parameter to be able to sum the two in a useful manner. \n\nIf you are interested in learning more about heuristics, visit [Amit’s Heuristics Guide](http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html) on Stanford’s website. \n\nWhile A\\* is a much more efficient search in most situations, there will be environments where it will not outperform other search algorithms. This happens if the path to the goal happens to go in the opposite direction first. \n\nVariants of A\\* search exist - some accommodate the use of A\\* search in dynamic environments, while others help A\\* become more manageable in large environments.\n\n## Additional Resources\n\nThe following visualization is a great tool that allows you to draw your own obstacles, set your own rules, and perform search using different algorithms. \n\n[Path Finding Visualization](https://qiao.github.io/PathFinding.js/visual/)\n\nFor more information on A\\* variants, take a look at:<br>\n[MovingAI A* Variants](http://movingai.com/astar-var.html)<br>\n[Variants of A* - Stanford](http://theory.stanford.edu/~amitp/GameProgramming/Variations.html\n)\n\nTake some time to investigate the efficiency of A\\* over BFS in different scenarios! And if you're feeling extra adventurous, research some of the other algorithms that are provided in the simulation and compare their results to those of BFS & A\\*. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598964,
+          "key": "eb9b0fb4-a196-4165-ab19-d518fd4db6c3",
+          "title": "Overall Concerns",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eb9b0fb4-a196-4165-ab19-d518fd4db6c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599075,
+              "key": "887bd063-f134-450f-984b-384f768192be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overall Concerns Regarding Search\n\n## Bidirectional Search\nOne way to improve a search’s efficiency is to conduct two searches simultaneously - one rooted at the start node, and another at the goal node. Once the two searches meet, a path exists between the start node and the goal node. \n\nThe advantage with this approach is that the number of nodes that need to be expanded as part of the search is decreased. As you can see in the image below, the volume swept out by a unidirectional search is noticeably greater than the volume swept out by a bidirectional search for the same problem. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 599017,
+              "key": "241d7807-5ed2-4206-8817-154f86b85038",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad27865_c5-l2-107-img-bidirectional-v2/c5-l2-107-img-bidirectional-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/241d7807-5ed2-4206-8817-154f86b85038",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 599076,
+              "key": "db6b5cc1-3fbf-4623-9206-e81523a366fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Path Proximity to Obstacles\n\nAnother concern with the search of discretized spaces includes the proximity of the final path to obstacles or other hazards. When discretizing a space with methods such as cell decomposition, empty cells are not differentiated from one another. The optimal path will often lead the robot very close to obstacles. In certain scenarios this can be quite problematic, as it will increase the chance of collisions due to the uncertainty of robot localization. The optimal path may not be the best path. To avoid this, a map can be ‘smoothed’ prior to applying a search to it, marking cells near obstacles with a higher cost than free cells. Then the path found by A* search may pass by obstacles with some additional clearance. \n\n## Paths Aligned to Grid\n\nAnother concern with discretized spaces is that the resultant path will follow the discrete cells. When a robot goes to execute the path in the real world, it may seem funny to see a robot zig-zag its way across a room instead of driving down the room’s diagonal. In such a scenario, a path that is optimal in the discretized space may be suboptimal in the real world. Some careful path smoothing, with attention paid to the location of obstacles, can fix this problem. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 599018,
+          "key": "31369ad2-a92b-44be-8b06-b6689329d218",
+          "title": "Graph-Search Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "31369ad2-a92b-44be-8b06-b6689329d218",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599019,
+              "key": "4a5066d0-218f-4ce6-8a81-f1aa0a13dde7",
+              "title": "Graph-Search Wrap-Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tplAoLJeBS0",
+                "china_cdn_id": "tplAoLJeBS0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 598965,
+          "key": "967cf9d1-2fc3-47d6-8003-208d01735115",
+          "title": "Discrete Planning Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "967cf9d1-2fc3-47d6-8003-208d01735115",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 599020,
+              "key": "26821df9-b6eb-45ad-bf46-f5c9d05ee5a1",
+              "title": "Discrete Planning Wrap-Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UKntCcGaFNo",
+                "china_cdn_id": "UKntCcGaFNo.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

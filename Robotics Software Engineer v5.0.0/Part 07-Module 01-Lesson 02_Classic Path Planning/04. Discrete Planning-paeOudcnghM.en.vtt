@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.330
+Solving the path planning problem through discrete planning,
+
+00:00:03.330 --> 00:00:05.429
+otherwise known as combinatorial planning,
+
+00:00:05.429 --> 00:00:08.324
+can be broken down into three distinct steps.
+
+00:00:08.324 --> 00:00:12.285
+The first is to develop a convenient continuous representation.
+
+00:00:12.285 --> 00:00:17.009
+This can be done by representing the problem space as the configuration space.
+
+00:00:17.010 --> 00:00:19.350
+The configuration space, also known as
+
+00:00:19.350 --> 00:00:23.745
+a C Space is an alternate way of representing the problem space.
+
+00:00:23.745 --> 00:00:26.550
+The C Space takes into account the geometry of
+
+00:00:26.550 --> 00:00:30.734
+the robot and makes it easier to apply discrete search algorithms.
+
+00:00:30.734 --> 00:00:34.380
+Next, the configuration space must be discretized
+
+00:00:34.380 --> 00:00:38.700
+into a representation that is more easily manipulated by algorithms.
+
+00:00:38.700 --> 00:00:42.315
+The discretized space is represented by a graph.
+
+00:00:42.314 --> 00:00:45.799
+Finally, a search algorithm can be applied to the graph
+
+00:00:45.799 --> 00:00:49.504
+to find the best path from the start node to the goal node.
+
+00:00:49.505 --> 00:00:52.520
+For each of these steps there are a variety of methods that
+
+00:00:52.520 --> 00:00:55.255
+can be applied to accomplish the desired outcomes,
+
+00:00:55.255 --> 00:00:58.340
+each with their own advantages and disadvantages.
+
+00:00:58.340 --> 00:01:02.440
+The remainder of this lesson we will study these various approaches.
+

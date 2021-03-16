@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.899
+If you recall, breadth-first search is optimal because it
+
+00:00:03.899 --> 00:00:07.849
+expands the shallowest unexplored node with every step.
+
+00:00:07.849 --> 00:00:13.044
+However, BFS is limited to graphs where all step costs are equal.
+
+00:00:13.044 --> 00:00:16.949
+This next algorithm, Uniform Cost Search builds upon
+
+00:00:16.949 --> 00:00:21.449
+breadth-first search to be able to search graphs with differing edge costs.
+
+00:00:21.449 --> 00:00:24.899
+Uniform Cost Search is also optimal because it
+
+00:00:24.899 --> 00:00:28.709
+expands nodes in order of increasing path cost.
+
+00:00:28.710 --> 00:00:33.020
+In certain environments, you can assign a cost to every edge.
+
+00:00:33.020 --> 00:00:35.590
+The cost may represent one of many things.
+
+00:00:35.590 --> 00:00:40.550
+For instance, the time it takes a robot to move from one node to another.
+
+00:00:40.549 --> 00:00:46.039
+A robot may have to slow down to turn corners or to move across rough terrain.
+
+00:00:46.039 --> 00:00:50.644
+The associated delay can be represented with a higher cost to that edge.
+
+00:00:50.645 --> 00:00:55.070
+So far, every edge in our search tree has had the same cost.
+
+00:00:55.070 --> 00:00:57.774
+So, let's add some costs to this tree.
+
+00:00:57.774 --> 00:01:00.710
+Uniform Cost Search, explores nodes on
+
+00:01:00.710 --> 00:01:04.640
+the frontier starting with the node that has the lowest path cost.
+
+00:01:04.640 --> 00:01:10.855
+Path cost refers to the sum of all edge costs leading from the start to that node.
+
+00:01:10.855 --> 00:01:15.150
+For instance, the path costs of this node, is just two.
+
+00:01:15.150 --> 00:01:19.890
+But the path cost of this node is two plus three which is five.
+
+00:01:19.890 --> 00:01:24.385
+If we start at the top of the search tree and explore the nodes,
+
+00:01:24.385 --> 00:01:26.660
+they are explored in the following manner.
+
+00:01:26.659 --> 00:01:30.379
+From the start node, we add two nodes to the frontier.
+
+00:01:30.379 --> 00:01:34.099
+One has a cost of one and the other, a cost of two.
+
+00:01:34.099 --> 00:01:37.644
+Next, we explore the node with the lower path cost, the left node.
+
+00:01:37.644 --> 00:01:40.114
+This adds two more nodes to the frontier.
+
+00:01:40.114 --> 00:01:44.244
+One with a path cost of three and one with a cost of two.
+
+00:01:44.245 --> 00:01:48.530
+Now, we've explored all available nodes with a path cost of one.
+
+00:01:48.530 --> 00:01:53.495
+So, next, let's look for nodes with a path cost of two and explore them.
+
+00:01:53.495 --> 00:01:56.995
+There's one to the right and another one here.
+
+00:01:56.995 --> 00:02:02.075
+We continue exploring the nodes on the frontier with the lowest path costs.
+
+00:02:02.075 --> 00:02:06.305
+By now, we've explored all nodes with a path cost of one,
+
+00:02:06.305 --> 00:02:09.175
+two, three, and four.
+
+00:02:09.175 --> 00:02:14.885
+Now, if you are to expand a search to include all nodes with the path cost of five,
+
+00:02:14.884 --> 00:02:20.489
+which of the following nodes currently on the frontier would not be explored?
+

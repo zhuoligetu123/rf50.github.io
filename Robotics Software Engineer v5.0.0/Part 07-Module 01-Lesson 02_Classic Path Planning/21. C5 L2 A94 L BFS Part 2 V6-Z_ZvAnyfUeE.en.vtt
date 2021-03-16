@@ -1,0 +1,181 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.899
+Here's the search tree with all of its values filled in.
+
+00:00:03.899 --> 00:00:07.379
+As you can see, the breadth-first search algorithm would
+
+00:00:07.379 --> 00:00:10.605
+have reached node A on the 23rd step,
+
+00:00:10.605 --> 00:00:12.960
+node B on the 27th,
+
+00:00:12.960 --> 00:00:15.390
+and node C on the 22nd.
+
+00:00:15.390 --> 00:00:17.070
+As you may have guessed,
+
+00:00:17.070 --> 00:00:20.385
+breadth-first search is an uninformed search algorithm.
+
+00:00:20.385 --> 00:00:23.520
+This means that it searches blindly without
+
+00:00:23.519 --> 00:00:27.600
+any knowledge of the space it's traversing or where the goal may be.
+
+00:00:27.600 --> 00:00:32.325
+For this reason, it isn't the most efficient in its operation.
+
+00:00:32.325 --> 00:00:35.385
+Let's look at a more complicated example.
+
+00:00:35.384 --> 00:00:39.015
+Here is a discretized map of an environment.
+
+00:00:39.015 --> 00:00:42.679
+The robot starts off at this location in the middle of
+
+00:00:42.679 --> 00:00:47.825
+the open space and would like to find a path to its goal location marked in green.
+
+00:00:47.825 --> 00:00:50.675
+Let's assume that the space is for connected,
+
+00:00:50.674 --> 00:00:53.390
+meaning that the robot can move up,
+
+00:00:53.390 --> 00:00:57.585
+right, down, or left, but not diagonally.
+
+00:00:57.585 --> 00:00:59.770
+Thus, from a start location,
+
+00:00:59.770 --> 00:01:03.215
+the robot has four options for where to explore next.
+
+00:01:03.215 --> 00:01:05.500
+We can't explore all four at once.
+
+00:01:05.500 --> 00:01:09.650
+So, we're going to add each of these options to something called the frontier.
+
+00:01:09.650 --> 00:01:15.290
+The frontier is the collection of all nodes that we have seen but not yet explored.
+
+00:01:15.290 --> 00:01:16.895
+When the time comes,
+
+00:01:16.894 --> 00:01:20.569
+each of these nodes will be removed from the frontier unexplored.
+
+00:01:20.569 --> 00:01:22.969
+Before we add these nodes to the frontier,
+
+00:01:22.969 --> 00:01:24.500
+let's set a standard.
+
+00:01:24.500 --> 00:01:28.594
+In our examples, we will break ties in the following manner.
+
+00:01:28.594 --> 00:01:31.355
+When we have new notes that add to the frontier,
+
+00:01:31.355 --> 00:01:33.954
+we will choose to add the top node first,
+
+00:01:33.954 --> 00:01:36.629
+then the one on the right, then the left,
+
+00:01:36.629 --> 00:01:38.679
+and if no other options are available,
+
+00:01:38.680 --> 00:01:40.745
+then the node directly below.
+
+00:01:40.745 --> 00:01:44.094
+Now, we can add the four nodes to our frontier.
+
+00:01:44.094 --> 00:01:49.054
+For breadth-first search, the data structure underlying the frontier is a queue.
+
+00:01:49.055 --> 00:01:55.340
+In a queue, the first element to enter will be the first to exit. Here we go.
+
+00:01:55.340 --> 00:02:00.424
+Now, we remove the first element from the frontier and explore that node.
+
+00:02:00.424 --> 00:02:03.694
+We'll mark previously explored nodes in dark blue.
+
+00:02:03.694 --> 00:02:05.589
+From this node, we can see
+
+00:02:05.590 --> 00:02:10.414
+three more unexplored nodes if we are to look up, right, and left.
+
+00:02:10.414 --> 00:02:12.449
+We should add these to our frontier.
+
+00:02:12.449 --> 00:02:15.819
+Now, one might want to keep exploring upwards,
+
+00:02:15.819 --> 00:02:17.484
+but that isn't what we agreed upon.
+
+00:02:17.485 --> 00:02:20.665
+We always remove the first element from the frontier,
+
+00:02:20.664 --> 00:02:24.245
+explore it, and then add any new nodes to the frontier.
+
+00:02:24.245 --> 00:02:27.550
+So, the next node to be explored is D7.
+
+00:02:27.550 --> 00:02:29.995
+D7 is removed from the frontier,
+
+00:02:29.995 --> 00:02:32.550
+and E7 and D8 are added.
+
+00:02:32.550 --> 00:02:35.155
+Next, we explore B7,
+
+00:02:35.155 --> 00:02:39.495
+then C8, then C5,
+
+00:02:39.495 --> 00:02:41.884
+and we continue with this process.
+
+00:02:41.884 --> 00:02:46.524
+You'll notice that the explored area radiates outward from the starting node.
+
+00:02:46.525 --> 00:02:49.359
+Breadth-first search searches broadly,
+
+00:02:49.359 --> 00:02:51.575
+visiting the closest nodes first.
+
+00:02:51.574 --> 00:02:55.159
+For this reason, it takes the algorithm a long time to travel
+
+00:02:55.159 --> 00:02:59.270
+a certain distance because it is radiating in all directions.
+
+00:02:59.270 --> 00:03:02.570
+Eventually, the algorithm will find the goal node.
+
+00:03:02.569 --> 00:03:08.824
+Jackpot. Now, if we were to number the nodes in the order that they were explored,
+
+00:03:08.824 --> 00:03:11.524
+the goal would be node number 25.
+
+00:03:11.525 --> 00:03:15.300
+I'll let you decide what you think of this.
+

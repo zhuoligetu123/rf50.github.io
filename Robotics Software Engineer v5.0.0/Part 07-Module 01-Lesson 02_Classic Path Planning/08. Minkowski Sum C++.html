@@ -1,0 +1,710 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Minkowski Sum C++
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Classic Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction to Path Planning.html">
+       01. Introduction to Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Examples of Path Planning.html">
+       02. Examples of Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Approaches to Path Planning.html">
+       03. Approaches to Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Discrete Planning.html">
+       04. Discrete Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Continuous Representation.html">
+       05. Continuous Representation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Minkowski Sum.html">
+       06. Minkowski Sum
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Quiz Minkowski Sum.html">
+       07. Quiz: Minkowski Sum
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Minkowski Sum C++.html">
+       08. Minkowski Sum C++
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Translation and Rotation.html">
+       09. Translation and Rotation
+      </a>
+     </li>
+     <li class="">
+      <a href="10. 3D Configuration Space.html">
+       10. 3D Configuration Space
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Discretization.html">
+       11. Discretization
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Roadmap.html">
+       12. Roadmap
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Visibility Graph.html">
+       13. Visibility Graph
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Voronoi Diagram.html">
+       14. Voronoi Diagram
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Cell Decomposition.html">
+       15. Cell Decomposition
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Approximate Cell Decomposition.html">
+       16. Approximate Cell Decomposition
+      </a>
+     </li>
+     <li class="">
+      <a href="17. Potential Field.html">
+       17. Potential Field
+      </a>
+     </li>
+     <li class="">
+      <a href="18. Discretization Wrap-Up.html">
+       18. Discretization Wrap-Up
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Graph Search.html">
+       19. Graph Search
+      </a>
+     </li>
+     <li class="">
+      <a href="20. Terminology.html">
+       20. Terminology
+      </a>
+     </li>
+     <li class="">
+      <a href="21. Breadth-First Search.html">
+       21. Breadth-First Search
+      </a>
+     </li>
+     <li class="">
+      <a href="22. Depth-First Search.html">
+       22. Depth-First Search
+      </a>
+     </li>
+     <li class="">
+      <a href="23. Uniform Cost Search.html">
+       23. Uniform Cost Search
+      </a>
+     </li>
+     <li class="">
+      <a href="24. A Search.html">
+       24. A* Search
+      </a>
+     </li>
+     <li class="">
+      <a href="25. Overall Concerns.html">
+       25. Overall Concerns
+      </a>
+     </li>
+     <li class="">
+      <a href="26. Graph-Search Wrap-Up.html">
+       26. Graph-Search Wrap-Up
+      </a>
+     </li>
+     <li class="">
+      <a href="27. Discrete Planning Wrap-Up.html">
+       27. Discrete Planning Wrap-Up
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          08. Minkowski Sum C++
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now that you've learned the
+          <strong>
+           Minkowski Sum
+          </strong>
+          , you'll get a chance to code it in C++!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="example">
+          Example
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/minkowski-sum-initial.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          In this example, you can see two triangles - a blue and a red one. Let's suppose the robot is represented by a blue triangle and the obstacle is represented by a red triangle. Your task is to compute the configuration space
+          <strong>
+           C
+          </strong>
+          of robot
+          <strong>
+           A
+          </strong>
+          and obstacle
+          <strong>
+           B
+          </strong>
+          in C++.
+         </p>
+         <ul>
+          <li>
+           <strong>
+            Robot
+           </strong>
+           : Blue triangle denoted by A
+          </li>
+          <li>
+           <strong>
+            Obstacle
+           </strong>
+           : Red triangle denoted by B
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Minkowski Sum C++
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Here are the steps that you should follow in order to code the Minkowski Sum in C++. Check them off as you complete them!
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="4403edd3-1326-4676-bf3e-b3a8f21395ad--0" type="checkbox"/>
+            <label for="4403edd3-1326-4676-bf3e-b3a8f21395ad--0">
+             <p>
+              <code>
+               main()
+              </code>
+              : Define the coordinates of triangle A and B in 2D vectors
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4403edd3-1326-4676-bf3e-b3a8f21395ad--1" type="checkbox"/>
+            <label for="4403edd3-1326-4676-bf3e-b3a8f21395ad--1">
+             <p>
+              <code>
+               minkowski_sum()
+              </code>
+              : Compute the Minkowski Sum of two vectors
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4403edd3-1326-4676-bf3e-b3a8f21395ad--2" type="checkbox"/>
+            <label for="4403edd3-1326-4676-bf3e-b3a8f21395ad--2">
+             <p>
+              <code>
+               delete_duplicate()
+              </code>
+              : Check for duplicate coordinates inside a 2D vector and delete them
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Job! Now submit your answer.
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="626911-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#626911-main-cpp" id="tab-626911-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="626911-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#626911-solution-cpp" id="tab-626911-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-626911-main-cpp" class="tab-pane active show" id="626911-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Print 2D vectors coordinate values
+void print2DVector(vector&lt;vector&lt;int&gt; &gt; vec)
+{
+     // Sorting the vector for grading purpose
+    sort(vec.begin(), vec.end());
+    for (int i = 0; i &lt; vec.size(); ++i) {
+        for (int j = 0; j &lt; vec[0].size(); ++j) {
+                cout &lt;&lt; vec[i][j] &lt;&lt; "  ";
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+// ***TODO: Check for duplicate coordinates inside a 2D vector and delete them*** //
+vector&lt;vector&lt;int&gt; &gt; delete_duplicate(vector&lt;vector&lt;int&gt; &gt; C)
+{
+
+    
+    
+    
+    
+    
+}
+
+// ***TODO: Compute the Minkowski Sum of two vectors***//
+vector&lt;vector&lt;int&gt; &gt; minkowski_sum(vector&lt;vector&lt;int&gt; &gt; A, vector&lt;vector&lt;int&gt; &gt; B)
+{
+    
+    
+    
+    
+    
+    
+    
+    C = delete_duplicate(C);
+    return C;
+}
+
+int main()
+{
+    // ***TODO: Define the coordinates of triangle A and B using 2D vectors*** //
+    
+    
+    // Compute the minkowski sum of triangle A and B
+    vector&lt;vector&lt;int&gt; &gt; C;
+    C = minkowski_sum(A, B);
+
+    // Print the resulting vector
+    print2DVector(C);
+
+    return 0;
+}</pre>
+           </div>
+           <div aria-labelledby="tab-626911-solution-cpp" class="tab-pane" id="626911-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Print 2D vectors coordinate values
+void print2DVector(vector&lt;vector&lt;int&gt; &gt; vec)
+{
+    // Sorting the vector for grading purpose
+    sort(vec.begin(), vec.end());
+    for (int i = 0; i &lt; vec.size(); ++i) {
+        for (int j = 0; j &lt; vec[0].size(); ++j) {
+                cout &lt;&lt; vec[i][j] &lt;&lt; "  ";
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+// Check for duplicate coordinates inside a 2D vector and delete them
+vector&lt;vector&lt;int&gt; &gt; delete_duplicate(vector&lt;vector&lt;int&gt; &gt; C)
+{
+    // Sort the C vector
+    sort(C.begin(), C.end());
+    // Initialize a non duplicated vector
+    vector&lt;vector&lt;int&gt; &gt; Cn;
+    for (int i = 0; i &lt; C.size() - 1; i++) {
+        // Check if it's a duplicate coordinate
+        if (C[i] != C[i + 1]) {
+            Cn.push_back(C[i]);
+        }
+    }
+    Cn.push_back(C[C.size() - 1]);
+    return Cn;
+}
+
+// Compute the Minkowski Sum of two vectors
+vector&lt;vector&lt;int&gt; &gt; minkowski_sum(vector&lt;vector&lt;int&gt; &gt; A, vector&lt;vector&lt;int&gt; &gt; B)
+{
+    vector&lt;vector&lt;int&gt; &gt; C;
+    for (int i = 0; i &lt; A.size(); i++) {
+        for (int j = 0; j &lt; B.size(); j++) {
+            // Compute the current sum
+            vector&lt;int&gt; Ci = { A[i][0] + B[j][0], A[i][1] + B[j][1] };
+            // Push it to the C vector
+            C.push_back(Ci);
+        }
+    }
+    C = delete_duplicate(C);
+    return C;
+}
+
+int main()
+{
+    // Define the coordinates of triangle A and B using 2D vectors
+    vector&lt;vector&lt;int&gt; &gt; A(3, vector&lt;int&gt;(2));
+    A = {{ 1, 0 }, { 0, 1 }, { 0, -1 },};
+    vector&lt;vector&lt;int&gt; &gt; B(3, vector&lt;int&gt;(2));
+    B = {{ 0, 0 }, { 1, 1 }, { 1, -1 },};
+
+    // Compute the minkowski sum of triangle A and B
+    vector&lt;vector&lt;int&gt; &gt; C;
+    C = minkowski_sum(A, B);
+
+    // Print the resulting vector
+    print2DVector(C);
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="generated-configuration-space">
+          Generated Configuration Space
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/minkowski-sum-nonshifted.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="translation">
+          Translation
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          You successfully coded the Minkowski sum in C++ and generated the configuration space. You can easily notice that the red obstacle is not well inflated and the blue robot can still hit the obstacle. That's because the configuration space still has to be shifted to the obstacle.
+         </p>
+         <p>
+          Initially, the robot should be translated to the obstacle, and then after computing the configuration space, it should be translated to both the robot and obstacle.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="final-result">
+          Final Result
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/minkowski-sum-final.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Above is the resulting image where both the blue robot and the green configuration space have been shifted. You can now see the yellow padding which represents the translated configurations space all around the red obstacle. The blue robot will never be able to hit the red obstacle since it's well inflated.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="plotting">
+          Plotting
+         </h2>
+         <p>
+          If you are eager to know how I generated these plots and translated the shapes, you can clone the
+          <a href="https://github.com/udacity/RoboND-MinkowskiSum" rel="noopener noreferrer" target="_blank">
+           GitHub repo
+          </a>
+          and read through the C++ code. In short, I had to follow these steps to generate any polygon:
+         </p>
+         <ol>
+          <li>
+           Computed the centroid of each polygon
+          </li>
+          <li>
+           Computed the angle of each point-centroid with respect to the x-axis
+          </li>
+          <li>
+           Sorted the points in ascending order of their angles (clockwise)
+          </li>
+          <li>
+           Plotted a line between each consecutive point
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="09. Translation and Rotation.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Minkowski Sum C++')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

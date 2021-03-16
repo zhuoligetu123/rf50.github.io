@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.280
+So far, we focused on the questions of where a robot is with respect to
+
+00:00:05.280 --> 00:00:10.754
+a map in localization and how to build a map of the environment in mapping in snap.
+
+00:00:10.755 --> 00:00:14.925
+These are both critical elements for robotic mobility.
+
+00:00:14.925 --> 00:00:20.685
+Now, we'll turn our attention to decision making aspects of mobile robotics,
+
+00:00:20.684 --> 00:00:23.239
+path planning and navigation.
+
+00:00:23.239 --> 00:00:26.089
+Given a map and the goal position,
+
+00:00:26.089 --> 00:00:31.129
+path planning is the calculation of a path that gets the robot where it needs to go.
+
+00:00:31.129 --> 00:00:32.824
+Once a path is in place,
+
+00:00:32.825 --> 00:00:36.230
+the robot must navigate to the goal and may encounter
+
+00:00:36.229 --> 00:00:40.519
+on-map obstacles along the way that conflict with the planned path.
+
+00:00:40.520 --> 00:00:42.500
+With real-time sensor readings,
+
+00:00:42.500 --> 00:00:47.240
+the robot can use obstacle avoidance techniques to modify the original path.
+
+00:00:47.240 --> 00:00:51.230
+While path planning is a strategic solution to the problem of,
+
+00:00:51.229 --> 00:00:52.564
+"How do I get there?"
+
+00:00:52.564 --> 00:00:54.949
+obstacle avoidance is a series of
+
+00:00:54.950 --> 00:00:59.540
+tactical decisions the robot must take as it moves along its path.
+
+00:00:59.539 --> 00:01:03.244
+There are multiple approaches for accomplishing both.
+
+00:01:03.244 --> 00:01:07.594
+In this module, you learn a number of path planning approaches,
+
+00:01:07.594 --> 00:01:10.194
+both classical and probabilistic.
+
+00:01:10.194 --> 00:01:12.839
+Practice what you've learned in the lab.
+
+00:01:12.840 --> 00:01:14.579
+In the final project,
+
+00:01:14.579 --> 00:01:19.525
+you'll put together robotic algorithm you've learned to program a home service robot.
+
+00:01:19.525 --> 00:01:23.935
+Your robot will autonomously map an environment and then
+
+00:01:23.935 --> 00:01:29.170
+navigate through that environment to pick up and drop off virtual objects.
+

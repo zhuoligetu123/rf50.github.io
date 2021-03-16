@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.960
+Well, that's all the risks to Discrete Path Planning.
+
+00:00:03.960 --> 00:00:07.365
+You've learned the three steps that compose the process,
+
+00:00:07.365 --> 00:00:10.905
+and you've learned different approaches to accomplishing every step.
+
+00:00:10.904 --> 00:00:13.410
+With this knowledge, you are now equipped to
+
+00:00:13.410 --> 00:00:16.350
+choose the appropriate approach for an application.
+
+00:00:16.350 --> 00:00:18.690
+For instance, if you were working on
+
+00:00:18.690 --> 00:00:22.320
+a two-dimensional robot simulation on a powerful computer,
+
+00:00:22.320 --> 00:00:25.170
+you may decide to create a configuration space and
+
+00:00:25.170 --> 00:00:28.395
+discretize it using approximate cell decomposition.
+
+00:00:28.394 --> 00:00:33.000
+Then, you'd apply the A* algorithm to search the space for a path.
+
+00:00:33.000 --> 00:00:35.835
+On the contrary, if you are doing path planning
+
+00:00:35.835 --> 00:00:39.840
+online on a mobile robot with limited computing power,
+
+00:00:39.840 --> 00:00:44.550
+you may select a less precise approach in favor of a reduced runtime.
+
+00:00:44.549 --> 00:00:46.784
+As of many aspects of engineering,
+
+00:00:46.784 --> 00:00:49.229
+choose the right tools for the job.
+
+00:00:49.229 --> 00:00:52.399
+In the next lesson, we will build on what you have learned
+
+00:00:52.399 --> 00:00:55.109
+here and study sample-based planning,
+
+00:00:55.109 --> 00:00:59.000
+to see how it can be applied to more complex path planning problems.
+
