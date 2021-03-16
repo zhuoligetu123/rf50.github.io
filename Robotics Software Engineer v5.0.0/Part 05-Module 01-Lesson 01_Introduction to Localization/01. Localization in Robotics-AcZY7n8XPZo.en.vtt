@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.609
+Hey there! It's great to see you again.
+
+00:00:02.609 --> 00:00:04.064
+In these coming lessons,
+
+00:00:04.065 --> 00:00:06.030
+we're going to be talking about localization.
+
+00:00:06.030 --> 00:00:07.290
+That's right.
+
+00:00:07.290 --> 00:00:11.969
+Localization is the challenge of determining your robot's pose in a mapped environment.
+
+00:00:11.970 --> 00:00:15.929
+We do this by implementing a probabilistic algorithm to filter
+
+00:00:15.929 --> 00:00:19.469
+noisy sensor measurements and track the robot's position and orientation.
+
+00:00:19.469 --> 00:00:23.835
+Here's an example of a robot inside of a mapped environment.
+
+00:00:23.835 --> 00:00:27.240
+This robot's job is to keep the house's floors clean.
+
+00:00:27.239 --> 00:00:30.219
+However, instead of starting at it's charging dock,
+
+00:00:30.219 --> 00:00:32.549
+its starting position was elsewhere in the room.
+
+00:00:32.549 --> 00:00:34.500
+The robot is moving around,
+
+00:00:34.500 --> 00:00:38.774
+taking measurements, trying to figure out where it can be positioned in the room.
+
+00:00:38.774 --> 00:00:41.354
+Since this is a probabilistic model,
+
+00:00:41.354 --> 00:00:44.714
+the robot might have a few guesses as to where it is located.
+
+00:00:44.715 --> 00:00:49.800
+However, over time, it should hopefully narrow down on a precise location.
+
+00:00:49.799 --> 00:00:53.354
+Bingo! Now we've identified the robot's pose.
+
+00:00:53.354 --> 00:00:57.689
+Its X and Y position coordinates within the room and theta, its orientation.
+
+00:00:57.689 --> 00:00:59.369
+Great work!
+
+00:00:59.369 --> 00:01:02.114
+Now, there's more than one way to localize the robot.
+
+00:01:02.115 --> 00:01:05.572
+In fact, there are four very popular localization algorithms.
+
+00:01:05.572 --> 00:01:08.879
+Starting with the extended Kalman filter localization,
+
+00:01:08.879 --> 00:01:11.280
+which is the most common Gaussian filter that
+
+00:01:11.280 --> 00:01:14.325
+helps in estimating the state of non-linear models,
+
+00:01:14.325 --> 00:01:16.620
+moving through the Markov localization,
+
+00:01:16.620 --> 00:01:19.380
+which is a base filter localization algorithm.
+
+00:01:19.379 --> 00:01:23.069
+Markov maintains a probability distribution over the set
+
+00:01:23.069 --> 00:01:27.179
+of all possible position and orientation the robot might be located at.
+
+00:01:27.180 --> 00:01:29.820
+The grid localization is referred to as
+
+00:01:29.819 --> 00:01:34.643
+histogram filter since it's capable of estimating the robot's pose using grids,
+
+00:01:34.643 --> 00:01:37.498
+and finally, Monte Carlo localization,
+
+00:01:37.498 --> 00:01:42.329
+also known as particle filter because it estimates the robot's pose using particles.
+
+00:01:42.329 --> 00:01:47.039
+In this module, you'll learn the two most common localization algorithms.
+
+00:01:47.040 --> 00:01:49.790
+The extended Kalman filter localization algorithm,
+
+00:01:49.790 --> 00:01:52.170
+often called EKF localization,
+
+00:01:52.170 --> 00:01:55.439
+and the Monte Carlo localization algorithm or MCL.
+
+00:01:55.439 --> 00:01:59.567
+If you're interested in learning the Markov and Grid localization algorithms,
+
+00:01:59.567 --> 00:02:01.640
+take a look at the references provided
+

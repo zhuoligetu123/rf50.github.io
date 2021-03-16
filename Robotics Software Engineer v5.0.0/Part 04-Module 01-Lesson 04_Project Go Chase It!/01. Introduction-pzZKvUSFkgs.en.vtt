@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.770
+Welcome to Go Chase It.
+
+00:00:01.770 --> 00:00:05.984
+In this project, you will build a bold chaser mobile robot with ROS.
+
+00:00:05.985 --> 00:00:08.820
+The project is divided into two major tasks.
+
+00:00:08.820 --> 00:00:12.464
+First, design the robot and house it inside your world.
+
+00:00:12.464 --> 00:00:16.829
+Second, program it to chase white colored balls through the word.
+
+00:00:16.829 --> 00:00:19.169
+In the first task, you will learn how to model
+
+00:00:19.170 --> 00:00:21.929
+a mobile robot that can interface with ROS.
+
+00:00:21.929 --> 00:00:25.640
+You will use what you learned in this module to design and customize the robot.
+
+00:00:25.640 --> 00:00:30.394
+Then, house the inside the environment you created in the, Build my world project.
+
+00:00:30.394 --> 00:00:33.875
+In the second task, you will write to ROS nodes.
+
+00:00:33.875 --> 00:00:38.480
+The first node, drive bot will provide a service to drive the robot.
+
+00:00:38.479 --> 00:00:43.084
+The second node, process image will subscribe to the robots camera images,
+
+00:00:43.085 --> 00:00:44.570
+search for a wide bot,
+
+00:00:44.570 --> 00:00:48.439
+then if it exists, identify its position and requests a service
+
+00:00:48.439 --> 00:00:52.609
+from your first node to drive the robot toward the white colored ball.
+
+00:00:52.609 --> 00:00:55.850
+This is a fun project that demonstrates your ability to work with
+
+00:00:55.850 --> 00:01:00.160
+ROS nodes and services. Let's dive in.
+

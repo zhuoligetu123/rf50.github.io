@@ -1,0 +1,806 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   ROS Node: drive_bot
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Go Chase It!
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Workspace.html">
+       02. ROS in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Setting up my_robot.html">
+       03. Setting up my_robot
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Understanding URDF.html">
+       04. Understanding URDF
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Robot Basic Setup.html">
+       05. Robot Basic Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Enhancements.html">
+       06. Robot Enhancements
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Robot Sensors.html">
+       07. Robot Sensors
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Gazebo Plugins.html">
+       08. Gazebo Plugins
+      </a>
+     </li>
+     <li class="">
+      <a href="09. RViz Basics.html">
+       09. RViz Basics
+      </a>
+     </li>
+     <li class="">
+      <a href="10. RViz Integration.html">
+       10. RViz Integration
+      </a>
+     </li>
+     <li class="">
+      <a href="11. House your Robot.html">
+       11. House your Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Setting up ball_chaser.html">
+       12. Setting up ball_chaser
+      </a>
+     </li>
+     <li class="">
+      <a href="13. ROS Node drive_bot.html">
+       13. ROS Node: drive_bot
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Model a White Ball.html">
+       14. Model a White Ball
+      </a>
+     </li>
+     <li class="">
+      <a href="15. ROS Node process_image.html">
+       15. ROS Node: process_image
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Go Chase It!.html">
+       Project Description - Go Chase It!
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Go Chase It!.html">
+       Project Rubric - Go Chase It!
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          13. ROS Node: drive_bot
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="ros-node-drive_bot">
+          ROS Node: drive_bot
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          This server node provides a
+          <code>
+           ball_chaser/command_robot
+          </code>
+          <strong>
+           service
+          </strong>
+          to drive the robot around by setting its linear x and angular z velocities. The service server
+          <strong>
+           publishes
+          </strong>
+          messages containing the velocities for the wheel joints.
+         </p>
+         <p>
+          After writing this node, you will be able to request the
+          <code>
+           ball_chaser/command_robot
+          </code>
+          service, either from the terminal or from a client node, to drive the robot by controlling its linear x and angular z velocities.
+         </p>
+         <h2 id="reference">
+          Reference
+         </h2>
+         <p>
+          The
+          <code>
+           drive_bot.cpp
+          </code>
+          node is similar to the
+          <code>
+           arm_mover.cpp
+          </code>
+          node that you already wrote. Both nodes contain a ROS
+          <strong>
+           publisher
+          </strong>
+          and
+          <strong>
+           service
+          </strong>
+          . But this time, instead of publishing messages to the arm joint angles, you have to publish messages to the wheels joint angles. Please refer to the
+          <code>
+           arm_mover.cpp
+          </code>
+          node before you begin coding the
+          <code>
+           drive_bot.cpp
+          </code>
+          node.
+         </p>
+         <h2 id="ros-service-file">
+          ROS Service File
+         </h2>
+         <p>
+          <strong>
+           1- Write the
+           <code>
+            DriveToTarget.srv
+           </code>
+           file
+          </strong>
+         </p>
+         <p>
+          Create a
+          <code>
+           DriveToTarget.srv
+          </code>
+          file under the
+          <code>
+           srv
+          </code>
+          directory of
+          <code>
+           ball_chaser
+          </code>
+          . Then, define the
+          <code>
+           DriveToTarget.srv
+          </code>
+          file as follows:
+         </p>
+         <p>
+          <strong>
+           Request
+          </strong>
+          :
+         </p>
+         <ul>
+          <li>
+           <code>
+            linear_x
+           </code>
+           type
+           <strong>
+            float64
+           </strong>
+          </li>
+          <li>
+           <code>
+            angular_z
+           </code>
+           type
+           <strong>
+            float64
+           </strong>
+          </li>
+         </ul>
+         <p>
+          <strong>
+           Response
+          </strong>
+          :
+         </p>
+         <ul>
+          <li>
+           <code>
+            msg_feedback
+           </code>
+           type
+           <strong>
+            string
+           </strong>
+          </li>
+         </ul>
+         <p>
+          <strong>
+           2- Test
+           <code>
+            DriveToTarget.srv
+           </code>
+          </strong>
+         </p>
+         <p>
+          After writing the service file, test it with ROS. Open a new terminal and execute the following:
+         </p>
+         <pre><code>$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rossrv show DriveToTarget</code></pre>
+         <p>
+          You should receive this response:
+         </p>
+         <pre><code>[ball_chaser/DriveToTarget]:
+float64 linear_x
+float64 angular_z
+---
+string msg_feedback</code></pre>
+         <h2 id="drive_botcpp-node">
+          <code>
+           drive_bot.cpp
+          </code>
+          Node
+         </h2>
+         <p>
+          Now it’s time to write the
+          <code>
+           drive_bot.cpp
+          </code>
+          server node that will provide the
+          <code>
+           ball_chaser/command_robot
+          </code>
+          service. Create the script under the
+          <code>
+           src
+          </code>
+          directory of your
+          <code>
+           ball_chaser
+          </code>
+          package. It might be a bit challenging to write this script from scratch, thus I am providing you with some hints.
+         </p>
+         <p>
+          Attached below is a program that will continuously publish to the robot
+          <code>
+           /cmd_vel
+          </code>
+          topic. This code will drive your robot forward:
+         </p>
+         <pre><code class="C++ language-C++">#include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
+//TODO: Include the ball_chaser "DriveToTarget" header file
+
+// ROS::Publisher motor commands;
+ros::Publisher motor_command_publisher;
+
+// TODO: Create a handle_drive_request callback function that executes whenever a drive_bot service is requested
+// This function should publish the requested linear x and angular velocities to the robot wheel joints
+// After publishing the requested velocities, a message feedback should be returned with the requested wheel velocities
+
+int main(int argc, char** argv)
+{
+    // Initialize a ROS node
+    ros::init(argc, argv, "drive_bot");
+
+    // Create a ROS NodeHandle object
+    ros::NodeHandle n;
+
+    // Inform ROS master that we will be publishing a message of type geometry_msgs::Twist on the robot actuation topic with a publishing queue size of 10
+    motor_command_publisher = n.advertise&lt;geometry_msgs::Twist&gt;("/cmd_vel", 10);
+
+    // TODO: Define a drive /ball_chaser/command_robot service with a handle_drive_request callback function
+
+    // TODO: Delete the loop, move the code to the inside of the callback function and make the necessary changes to publish the requested velocities instead of constant values
+    while (ros::ok()) {
+        // Create a motor_command object of type geometry_msgs::Twist
+        geometry_msgs::Twist motor_command;
+        // Set wheel velocities, forward [0.5, 0.0]
+        motor_command.linear.x = 0.5;
+        motor_command.angular.z = 0.0;
+        // Publish angles to drive the robot
+        motor_command_publisher.publish(motor_command);
+    }
+
+    // TODO: Handle ROS communication events
+    //ros::spin();
+
+    return 0;
+}</code></pre>
+         <p>
+          Take a look at this program and try to understand what is happening. Then, copy it to
+          <code>
+           drive_bot.cpp
+          </code>
+          , and make the necessary changes to define a
+          <code>
+           ball_chaser/command_robot
+          </code>
+          service.
+         </p>
+         <h2 id="edit-cmakeliststxt">
+          Edit CMakeLists.txt
+         </h2>
+         <p>
+          After you write the server node in C++, you’ll have to add the following dependencies:
+         </p>
+         <ul>
+          <li>
+           Add the
+           <code>
+            add_compile_options
+           </code>
+           for C++ 11 dependency, this step is optional and depends on your code
+          </li>
+          <li>
+           Add the
+           <code>
+            add_service_files
+           </code>
+           dependency which defines the DriveToTarget.srv file
+          </li>
+          <li>
+           Add the
+           <code>
+            generate_messages
+           </code>
+           dependency
+          </li>
+          <li>
+           Add
+           <code>
+            include_directories
+           </code>
+           dependency
+          </li>
+          <li>
+           Add the
+           <code>
+            add_executable
+           </code>
+           ,
+           <code>
+            target_link_libraries
+           </code>
+           , and
+           <code>
+            add_dependencies
+           </code>
+           dependency for your
+           <code>
+            drive_bot.cpp
+           </code>
+           script
+          </li>
+         </ul>
+         <h2 id="build-package">
+          Build Package
+         </h2>
+         <p>
+          Now that you’ve included specific instructions for your
+          <code>
+           drive_bot.cpp
+          </code>
+          code in
+          <code>
+           CMakeLists.txt
+          </code>
+          file, compile it with:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ catkin_make</code></pre>
+         <h2 id="test-drive_botcpp">
+          Test
+          <code>
+           drive_bot.cpp
+          </code>
+         </h2>
+         <p>
+          To test if the service you wrote is working, first launch the robot inside your world. Then call the
+          <code>
+           /ball_chaser/command_robot
+          </code>
+          service to drive the robot forward, left, and then right.
+         </p>
+         <p>
+          <strong>
+           1- Launch the robot inside your world
+          </strong>
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch</code></pre>
+         <p>
+          <strong>
+           2- Run the
+           <code>
+            drive_bot
+           </code>
+           node
+          </strong>
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rosrun ball_chaser drive_bot</code></pre>
+         <p>
+          <strong>
+           3- Request a
+           <code>
+            ball_chaser/command_robot
+           </code>
+           service
+          </strong>
+         </p>
+         <p>
+          Test the service by requesting different sets of velocities from the terminal.
+         </p>
+         <p>
+          Open a new terminal while all the nodes are running and type:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.5
+angular_z: 0.0"  # This request should drive your robot forward
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: 0.5"  # This request should drive your robot left
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: -0.5"  # This request should drive your robot right
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: 0.0"  # This request should bring your robot to a complete stop</code></pre>
+         <h2 id="launch-files">
+          Launch Files
+         </h2>
+         <p>
+          Let’s add the
+          <code>
+           drive_bot
+          </code>
+          node to a launch file. Create a
+          <code>
+           ball_chaser.launch
+          </code>
+          file under the
+          <code>
+           launch
+          </code>
+          directory of your
+          <code>
+           ball_chaser
+          </code>
+          package and then copy this code to it:
+         </p>
+         <pre><code>&lt;launch&gt;
+
+ &lt;!-- The drive_bot node --&gt;
+  &lt;node name="drive_bot" type="drive_bot" pkg="ball_chaser" output="screen"&gt;
+  &lt;/node&gt;
+
+&lt;/launch&gt;</code></pre>
+         <p>
+          This code will launch your
+          <code>
+           drive_bot
+          </code>
+          node, which is contained in the
+          <code>
+           ball_chaser
+          </code>
+          package. The server node outputs all the logs to the terminal window.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these steps to create the
+           <code>
+            drive_bot
+           </code>
+           node :
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--0" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--0">
+             <p>
+              ROS Service: Create the
+              <code>
+               DriveToTarget.srv
+              </code>
+              file in the
+              <code>
+               srv
+              </code>
+              directory of
+              <code>
+               ball_chaser
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--1" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--1">
+             <p>
+              ROS Service: Test
+              <code>
+               DriveToTarget.srv
+              </code>
+              in the terminal
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--2" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--2">
+             <p>
+              ROS Node: Write the
+              <code>
+               drive_bot.cpp
+              </code>
+              C++ node
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--3" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--3">
+             <p>
+              CMakeLists: Edit ball_chaser’s
+              <code>
+               CMakeLists.txt
+              </code>
+              and add dependencies for
+              <code>
+               drive_bot
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--4" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--4">
+             <p>
+              Build: Build the
+              <code>
+               ball_chaser
+              </code>
+              package to compile the
+              <code>
+               drive_bot.cpp
+              </code>
+              file
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--5" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--5">
+             <p>
+              ROS Service: Request
+              <code>
+               /ball_chaser/command_robot
+              </code>
+              services from the terminal to test it
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--6" type="checkbox"/>
+            <label for="7eca364c-8148-4f0f-bf2b-c49d54e4d7e5--6">
+             <p>
+              Launch Files: Add the
+              <code>
+               drive_bot
+              </code>
+              node to a newly created
+              <code>
+               ball_chaser.launch
+              </code>
+              file
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="14. Model a White Ball.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. ROS Node: drive_bot')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

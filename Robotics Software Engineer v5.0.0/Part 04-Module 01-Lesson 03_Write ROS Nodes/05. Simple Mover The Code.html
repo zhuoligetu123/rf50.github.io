@@ -1,0 +1,463 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Simple Mover: The Code
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          05. Simple Mover: The Code
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="simple-mover-the-code">
+          Simple Mover: The Code
+         </h1>
+         <p>
+          Below is the complete code for the
+          <code>
+           simple_mover
+          </code>
+          C++ node, with line-by-line comments embedded. You can copy and paste this code into the
+          <code>
+           simple_mover
+          </code>
+          script you created in
+          <code>
+           /home/workspace/catkin_ws/src/simple_arm/src/
+          </code>
+          directory like this:
+         </p>
+         <p>
+          First, open a new terminal. Then:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/simple_arm/src/
+$ gedit simple_mover.cpp</code></pre>
+         <p>
+          You have opened the C++
+          <code>
+           simple_mover
+          </code>
+          script with the
+          <strong>
+           gedit
+          </strong>
+          editor, now copy and paste the code below into the script and save the script. I encourage you to write this code instead of copying it so that you get more familiar with the syntax.
+         </p>
+         <h2 id="simple_movercpp">
+          simple_mover.cpp
+         </h2>
+         <pre><code class="C++ language-C++">#include "ros/ros.h"
+#include "std_msgs/Float64.h"
+
+int main(int argc, char** argv)
+{
+    // Initialize the arm_mover node
+    ros::init(argc, argv, "arm_mover");
+
+    // Create a handle to the arm_mover node
+    ros::NodeHandle n;
+
+    // Create a publisher that can publish a std_msgs::Float64 message on the /simple_arm/joint_1_position_controller/command topic
+    ros::Publisher joint1_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_1_position_controller/command", 10);
+    // Create a publisher that can publish a std_msgs::Float64 message on the /simple_arm/joint_2_position_controller/command topic
+    ros::Publisher joint2_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_2_position_controller/command", 10);
+
+    // Set loop frequency of 10Hz
+    ros::Rate loop_rate(10);
+
+    int start_time, elapsed;
+
+    // Get ROS start time
+    while (not start_time) {
+        start_time = ros::Time::now().toSec();
+    }
+
+    while (ros::ok()) {
+        // Get ROS elapsed time
+        elapsed = ros::Time::now().toSec() - start_time;
+
+        // Set the arm joint angles
+        std_msgs::Float64 joint1_angle, joint2_angle;
+        joint1_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);
+        joint2_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);
+
+        // Publish the arm joint angles
+        joint1_pub.publish(joint1_angle);
+        joint2_pub.publish(joint2_angle);
+
+        // Sleep for the time remaining until 10 Hz is reached
+        loop_rate.sleep();
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Simple Mover: The Code
+         </p>
+        </h3>
+        <video controls="">
+         <source src="05. Simple Mover The Code-mj7lwGqouEA.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="05. Simple Mover The Code-mj7lwGqouEA.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="the-code-explained">
+          The code: Explained
+         </h2>
+         <pre><code class="C++ language-C++">#include "ros/ros.h"</code></pre>
+         <p>
+          <code>
+           ros
+          </code>
+          is the official client library for ROS. It provides most of the fundamental functionality required for interfacing with ROS via C++. It has tools for creating Nodes and interfacing with Topics, Services, and Parameters.
+         </p>
+         <pre><code class="C++ language-C++">#include "std_msgs/Float64.h"</code></pre>
+         <p>
+          From the
+          <code>
+           std_msgs
+          </code>
+          package, the Float64 header file is imported. The
+          <a href="http://wiki.ros.org/std_msgs" rel="noopener noreferrer" target="_blank">
+           std_msgs
+          </a>
+          package also contains the primitive message types in ROS. Later, you will be publish Float64 messages to the position command topics for each joint.
+         </p>
+         <pre><code class="C++ language-C++">ros::init(argc, argv, "arm_mover");</code></pre>
+         <p>
+          A ROS node is initialized with the
+          <code>
+           init()
+          </code>
+          function and registered with the ROS Master. Here
+          <code>
+           arm_mover
+          </code>
+          is the name of the node. Notice that the main function takes both
+          <code>
+           argc
+          </code>
+          and
+          <code>
+           argv
+          </code>
+          arguments and passes them to the
+          <code>
+           init()
+          </code>
+          function.
+         </p>
+         <pre><code class="C++ language-C++"> ros::NodeHandle n;</code></pre>
+         <p>
+          A node handle object
+          <code>
+           n
+          </code>
+          is instantiated from the NodeHandle class. This node handle object will fully initialize the node and permits it to communicate with the ROS Master.
+         </p>
+         <pre><code class="C++ language-C++">ros::Publisher joint1_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_1_position_controller/command", 10);
+ros::Publisher joint2_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_2_position_controller/command", 10);</code></pre>
+         <p>
+          Two publishers are declared, one for joint 1 commands, and one for joint 2 commands. The node handle will tell the ROS master that a Float64 message will be published on the joint topic. The node handle also sets the queue size to 10 in the second argument of the advertise function.
+         </p>
+         <pre><code class="C++ language-C++">ros::Rate loop_rate(10);</code></pre>
+         <p>
+          A frequency of 10HZ is set using the
+          <code>
+           loop_rate
+          </code>
+          object. Rates are used in ROS to limit the frequency at which certain loops cycle. Choosing a rate that is too high may result in unnecessary CPU usage, while choosing a value too low could result in high latency. Choosing sensible values for all of the nodes in a ROS system is a bit of a fine art.
+         </p>
+         <pre><code class="C++ language-C++">start_time = ros::Time::now().toSec();</code></pre>
+         <p>
+          We set
+          <code>
+           start_time
+          </code>
+          to the current time. In a moment we will use this to determine how much time has elapsed. When using ROS with simulated time (as we are doing here),
+          <code>
+           ros-Time-now
+          </code>
+          will initially return 0, until the first message has been received on the
+          <code>
+           /clock
+          </code>
+          topic. This is why
+          <code>
+           start_time
+          </code>
+          is set and polled continuously until a nonzero value is returned.
+         </p>
+         <pre><code class="C++ language-C++">elapsed = ros::Time::now().toSec() - start_time;</code></pre>
+         <p>
+          In the main loop, the elapsed time is evaluated by measuring the current time and subtracting the start time.
+         </p>
+         <pre><code class="C++ language-C++">std_msgs::Float64 joint1_angle, joint2_angle;
+joint1_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);
+joint2_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);</code></pre>
+         <p>
+          The joint angles are sampled from a sine wave with a period of 10 seconds, and in magnitude from  [-pi/2, +pi/2].
+         </p>
+         <pre><code class="C++ language-C++">joint1_pub.publish(joint1_angle);
+joint2_pub.publish(joint2_angle);</code></pre>
+         <p>
+          Each trip through the body of the loop will result in two joint command messages being published.
+         </p>
+         <pre><code class="C++ language-C++">loop_rate.sleep();</code></pre>
+         <p>
+          Due to the call to
+          <code>
+           loop_rate.sleep()
+          </code>
+          , the loop is traversed at approximately 10 Hertz. When the node receives the signal to shut down (either from the ROS Master, or via a signal from a console window), the loop will exit.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="06. Simple Mover Build and Run.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Simple Mover: The Code')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

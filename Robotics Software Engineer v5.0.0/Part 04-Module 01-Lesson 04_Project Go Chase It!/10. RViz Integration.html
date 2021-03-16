@@ -1,0 +1,595 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   RViz Integration
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Go Chase It!
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Workspace.html">
+       02. ROS in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Setting up my_robot.html">
+       03. Setting up my_robot
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Understanding URDF.html">
+       04. Understanding URDF
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Robot Basic Setup.html">
+       05. Robot Basic Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Enhancements.html">
+       06. Robot Enhancements
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Robot Sensors.html">
+       07. Robot Sensors
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Gazebo Plugins.html">
+       08. Gazebo Plugins
+      </a>
+     </li>
+     <li class="">
+      <a href="09. RViz Basics.html">
+       09. RViz Basics
+      </a>
+     </li>
+     <li class="">
+      <a href="10. RViz Integration.html">
+       10. RViz Integration
+      </a>
+     </li>
+     <li class="">
+      <a href="11. House your Robot.html">
+       11. House your Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Setting up ball_chaser.html">
+       12. Setting up ball_chaser
+      </a>
+     </li>
+     <li class="">
+      <a href="13. ROS Node drive_bot.html">
+       13. ROS Node: drive_bot
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Model a White Ball.html">
+       14. Model a White Ball
+      </a>
+     </li>
+     <li class="">
+      <a href="15. ROS Node process_image.html">
+       15. ROS Node: process_image
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Go Chase It!.html">
+       Project Description - Go Chase It!
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Go Chase It!.html">
+       Project Rubric - Go Chase It!
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          10. RViz Integration
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="rviz-integration">
+          RViz Integration
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          In this section, you will display your model into RViz and visualize data from the
+          <strong>
+           camera
+          </strong>
+          and
+          <strong>
+           lidar
+          </strong>
+          sensors. You will also
+          <strong>
+           actuate
+          </strong>
+          your robot and drive it around!
+         </p>
+         <h2 id="modify-robot_description">
+          Modify robot_description
+         </h2>
+         <p>
+          Start by modifying the
+          <code>
+           robot_description.launch
+          </code>
+          file. Open it and add these lines after the first
+          <code>
+           param
+          </code>
+          definition.
+         </p>
+         <pre><code>  &lt;!-- Send fake joint values--&gt;
+  &lt;node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"&gt;
+    &lt;param name="use_gui" value="false"/&gt;
+  &lt;/node&gt;
+
+  &lt;!-- Send robot states to tf --&gt;
+  &lt;node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/&gt;</code></pre>
+         <p>
+          Those elements add two nodes - the
+          <strong>
+           joint_state_publisher
+          </strong>
+          and the
+          <strong>
+           robot_state_publisher
+          </strong>
+          .
+         </p>
+         <ul>
+          <li>
+           <code>
+            joint_state_publisher
+           </code>
+           :  Publishes joint state messages for the robot, such as the angles for the non-fixed joints.
+          </li>
+          <li>
+           <code>
+            robot_state_publisher
+           </code>
+           : Publishes the robot's state to tf (transform tree). Your robot model has several frames corresponding to each link/joint. The robot_state_publisher publishes the 3D poses of all of these links. This offers a convenient and efficient advantage, especially for more complicated robots.
+          </li>
+         </ul>
+         <h2 id="modify-worldlaunch">
+          Modify
+          <code>
+           world.launch
+          </code>
+         </h2>
+         <p>
+          Next, you need to launch RViz along with Gazebo. Open the
+          <code>
+           world.launch
+          </code>
+          file and add these elements after the
+          <code>
+           urdf_spawner
+          </code>
+          node definition:
+         </p>
+         <pre><code>&lt;!--launch rviz--&gt;
+&lt;node name="rviz" pkg="rviz" type="rviz" respawn="false"/&gt;</code></pre>
+         <p>
+          This will create a node that launches the package
+          <code>
+           rviz
+          </code>
+          . Let's launch it 🚀
+         </p>
+         <h2 id="launch">
+          Launch!
+         </h2>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch</code></pre>
+         <p>
+          This time both Gazebo and RViz should launch!
+         </p>
+         <h3 id="rviz-setup">
+          RViz Setup
+         </h3>
+         <p>
+          Setup RViz to visualize the sensor readings. On the left side of RViz, under
+          <code>
+           Displays
+          </code>
+          :
+         </p>
+         <ul>
+          <li>
+           Select
+           <code>
+            odom
+           </code>
+           for
+           <strong>
+            fixed frame
+           </strong>
+          </li>
+          <li>
+           Click the
+           <strong>
+            Add
+           </strong>
+           button and
+           <ul>
+            <li>
+             add
+             <code>
+              RobotModel
+             </code>
+             and your robot model should load up in RViz.
+            </li>
+            <li>
+             add
+             <code>
+              Camera
+             </code>
+             and select the
+             <strong>
+              Image topic
+             </strong>
+             that was defined in the camera Gazebo plugin
+            </li>
+            <li>
+             add
+             <code>
+              LaserScan
+             </code>
+             and select the
+             <strong>
+              topic
+             </strong>
+             that was defined in the Hokuyo Gazebo plugin
+            </li>
+           </ul>
+          </li>
+         </ul>
+         <h3 id="add-objects">
+          Add Objects
+         </h3>
+         <p>
+          In Gazebo, add a box, sphere or cylinder object in front of your robot. Your robot’s sensors should be able to visualize it. You can check the
+          <code>
+           Camera
+          </code>
+          viewer on the bottom left side of RViz to see a picture of the new object. Also, you can see a red
+          <code>
+           Laser
+          </code>
+          scan inside the scene, reflecting from your object.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/robot-in-rviz.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="drive-around">
+          Drive Around
+         </h3>
+         <p>
+          While everything above is still running, test the robot’s actuators and drive it around. Open a new terminal window and publish velocity commands to the robot’s wheel actuators:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rostopic pub /cmd_vel geometry_msgs/Twist  "linear:
+  x: 0.1
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.1" </code></pre>
+         <p>
+          This command publishes messages to
+          <code>
+           cmd_vel
+          </code>
+          , a topic which was defined in the drive controller plugin. The values set for
+          <code>
+           linear.x
+          </code>
+          and
+          <code>
+           angular.z
+          </code>
+          will enable the robot to start moving in a circle!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these steps to test the robot’s sensors and actuators with RViz:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--0" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--0">
+             <p>
+              Launch file: Modify the
+              <code>
+               robot_description.launch
+              </code>
+              file and add the
+              <code>
+               joint_state_publisher
+              </code>
+              and
+              <code>
+               robot_state_publisher
+              </code>
+              nodes
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--1" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--1">
+             <p>
+              Launch file: Modify the
+              <code>
+               world.launch
+              </code>
+              file and add the
+              <code>
+               rviz
+              </code>
+              node
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--2" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--2">
+             <p>
+              Launch file: Launch
+              <code>
+               world.launch
+              </code>
+              file that will open both RViz and Gazebo
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--3" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--3">
+             <p>
+              Rviz: Setup Rviz to visualize the robot and the sensors
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--4" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--4">
+             <p>
+              Sensors test : In Gazebo, add objects in front of your robot
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="4faf8c24-7b2d-4a34-9ead-aae030491dc0--5" type="checkbox"/>
+            <label for="4faf8c24-7b2d-4a34-9ead-aae030491dc0--5">
+             <p>
+              Actuators test : Publish to
+              <code>
+               /cmd_vel
+              </code>
+              to drive robot around
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="11. House your Robot.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. RViz Integration')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,22 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.424
+So far, we have characterized the three most important localization problems.
+
+00:00:04.424 --> 00:00:08.250
+In the real world, we still have to consider whether environment is static,
+
+00:00:08.250 --> 00:00:12.150
+meaning unchanging, or dynamic where objects may shift over time.
+
+00:00:12.150 --> 00:00:16.300
+Dynamic environments are more challenging to localize in.
+
+00:00:16.300 --> 00:00:17.640
+But we'll focus only on
+
+00:00:17.640 --> 00:00:21.000
+static environments where the environment always matches the ground truth.
+

@@ -1,0 +1,427 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Go Chase It!
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Go Chase It!
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Workspace.html">
+       02. ROS in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Setting up my_robot.html">
+       03. Setting up my_robot
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Understanding URDF.html">
+       04. Understanding URDF
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Robot Basic Setup.html">
+       05. Robot Basic Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Enhancements.html">
+       06. Robot Enhancements
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Robot Sensors.html">
+       07. Robot Sensors
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Gazebo Plugins.html">
+       08. Gazebo Plugins
+      </a>
+     </li>
+     <li class="">
+      <a href="09. RViz Basics.html">
+       09. RViz Basics
+      </a>
+     </li>
+     <li class="">
+      <a href="10. RViz Integration.html">
+       10. RViz Integration
+      </a>
+     </li>
+     <li class="">
+      <a href="11. House your Robot.html">
+       11. House your Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Setting up ball_chaser.html">
+       12. Setting up ball_chaser
+      </a>
+     </li>
+     <li class="">
+      <a href="13. ROS Node drive_bot.html">
+       13. ROS Node: drive_bot
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Model a White Ball.html">
+       14. Model a White Ball
+      </a>
+     </li>
+     <li class="">
+      <a href="15. ROS Node process_image.html">
+       15. ROS Node: process_image
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Go Chase It!.html">
+       Project Description - Go Chase It!
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Go Chase It!.html">
+       Project Rubric - Go Chase It!
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          Go Chase It!
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <h1 id="project-description">
+        Project Description
+       </h1>
+       <h2 id="summary-of-tasks">
+        Summary of Tasks
+       </h2>
+       <p>
+        In this project, you should create two ROS packages inside your
+        <code>
+         catkin_ws/src
+        </code>
+        : the
+        <code>
+         drive_bot
+        </code>
+        and the
+        <code>
+         ball_chaser
+        </code>
+        . Here are the steps to design the robot, house it inside your world, and program it to chase white-colored balls:
+       </p>
+       <ol>
+        <li>
+         <code>
+          drive_bot
+         </code>
+         :
+        </li>
+       </ol>
+       <ul>
+        <li>
+         Create a
+         <code>
+          my_robot
+         </code>
+         ROS package to hold your robot, the white ball, and the world.
+        </li>
+        <li>
+         Design a differential drive robot with the Unified Robot Description Format. Add two sensors to your robot: a lidar and a camera. Add Gazebo plugins for your robot’s differential drive, lidar, and camera. The robot you design should be significantly different from the one presented in the project lesson. Implement significant changes such as adjusting the color, wheel radius, and chassis dimensions. Or completely redesign the robot model! After all you want to impress your future employers :-D
+        </li>
+        <li>
+         House your robot inside the world you built in the
+         <strong>
+          Build My World
+         </strong>
+         project.
+        </li>
+        <li>
+         Add a white-colored ball to your Gazebo world and save a new copy of this world.
+        </li>
+        <li>
+         The
+         <code>
+          world.launch
+         </code>
+         file should launch your world with the white-colored ball and your robot.
+        </li>
+       </ul>
+       <ol>
+        <li>
+         <code>
+          ball_chaser
+         </code>
+         :
+        </li>
+       </ol>
+       <ul>
+        <li>
+         Create a
+         <code>
+          ball_chaser
+         </code>
+         ROS package to hold your C++ nodes.
+        </li>
+        <li>
+         Write a
+         <code>
+          drive_bot
+         </code>
+         C++ node that will provide a
+         <code>
+          ball_chaser/command_robot
+         </code>
+         service to drive the robot by controlling its linear x and angular z velocities. The service should publish to the wheel joints and return back the requested velocities.
+        </li>
+        <li>
+         Write a
+         <code>
+          process_image
+         </code>
+         C++ node that reads your robot’s camera image, analyzes it to determine the presence and position of a white ball. If a white ball exists in the image, your node should request a service via a client to drive the robot towards it.
+        </li>
+        <li>
+         The
+         <code>
+          ball_chaser.launch
+         </code>
+         should run both the
+         <code>
+          drive_bot
+         </code>
+         and the
+         <code>
+          process_image
+         </code>
+         nodes.
+        </li>
+       </ul>
+       <p>
+        The robot you design in this project will be used as a base model for all your upcoming projects in this Robotics Software Engineer Nanodegree Program.
+       </p>
+       <h2 id="evaluation">
+        Evaluation
+       </h2>
+       <p>
+        Once you finish designing your robot and building the nodes, check the
+        <a href="https://review.udacity.com/#!/rubrics/2397/view" rel="noopener noreferrer" target="_blank">
+         Project Rubric
+        </a>
+        to see if it meets the specifications. If you meet the specifications, then you are ready to submit!
+       </p>
+       <p>
+        If you do not meet specifications, keep working and discussing with your fellow students and mentors.
+       </p>
+       <h2 id="submission-folder">
+        Submission Folder
+       </h2>
+       <p>
+        Your submission should follow the directory structure and contain all the files listed here:
+       </p>
+       <pre><code>    .Project2                          # Go Chase It Project
+    ├── my_robot                       # my_robot package                   
+    │   ├── launch                     # launch folder for launch files   
+    │   │   ├── robot_description.launch
+    │   │   ├── world.launch
+    │   ├── meshes                     # meshes folder for sensors
+    │   │   ├── hokuyo.dae
+    │   ├── urdf                       # urdf folder for xarco files
+    │   │   ├── my_robot.gazebo
+    │   │   ├── my_robot.xacro
+    │   ├── world                      # world folder for world files
+    │   │   ├── &lt;yourworld&gt;.world
+    │   ├── CMakeLists.txt             # compiler instructions
+    │   ├── package.xml                # package info
+    ├── ball_chaser                    # ball_chaser package                   
+    │   ├── launch                     # launch folder for launch files   
+    │   │   ├── ball_chaser.launch
+    │   ├── src                        # source folder for C++ scripts
+    │   │   ├── drive_bot.cpp
+    │   │   ├── process_images.cpp
+    │   ├── srv                        # service folder for ROS services
+    │   │   ├── DriveToTarget.srv
+    │   ├── CMakeLists.txt             # compiler instructions
+    │   ├── package.xml                # package info                  
+    └──                              </code></pre>
+       <h2 id="ready-to-submit-your-project">
+        Ready to submit your project?
+       </h2>
+       <p>
+        Click on the "Submit Project" button and follow the instructions to submit!
+       </p>
+       <h2 id="project-submission-checklist">
+        Project Submission Checklist
+       </h2>
+       <p>
+        <strong>
+         Before submitting your project, please review and confirm the following items.
+        </strong>
+        <br/>
+        <input type="checkbox"/>
+        I am confident all rubric items have been met and my project will pass as submitted.
+        <br/>
+        <input type="checkbox"/>
+        Project builds correctly without errors and runs.
+        <br/>
+        <input type="checkbox"/>
+        All required functionality exists and my project behaves as expected per the project's specifications.
+       </p>
+       <p>
+        <strong>
+         Once you have checked all these items, you are ready to submit!
+        </strong>
+       </p>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Go Chase It!')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

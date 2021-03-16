@@ -1,0 +1,130 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.669
+Here, I'll step through the arm mover code and explain what's going on.
+
+00:00:05.669 --> 00:00:08.939
+The included header files for arm mover are the
+
+00:00:08.939 --> 00:00:12.584
+same as simple arm with the exception of one new file,
+
+00:00:12.585 --> 00:00:15.260
+namely the GoToPosition header file,
+
+00:00:15.259 --> 00:00:17.670
+which is the header file generated from
+
+00:00:17.670 --> 00:00:21.810
+the GoToPosition service file that we created earlier.
+
+00:00:21.809 --> 00:00:24.734
+Inside the C plus plus main function,
+
+00:00:24.734 --> 00:00:27.449
+the arm mover node is initialized and
+
+00:00:27.449 --> 00:00:32.714
+ros NodeHandle object n is instantiated to communicate with ros.
+
+00:00:32.715 --> 00:00:35.260
+As we did earlier in the simple arm node,
+
+00:00:35.259 --> 00:00:41.250
+two publisher objects are created to publish joint angles to the arm.
+
+00:00:41.289 --> 00:00:45.469
+These objects are defined globally so
+
+00:00:45.469 --> 00:00:49.354
+as to be easily accessible in all the other functions.
+
+00:00:49.354 --> 00:00:56.500
+Next, the GoToPosition service is created with the node name followed by safe move.
+
+00:00:56.500 --> 00:00:59.689
+Generally, you want to name your services with
+
+00:00:59.689 --> 00:01:03.320
+the node name first to easily find them in large projects.
+
+00:01:03.320 --> 00:01:08.709
+This service is defined with a handle safe move request callback function.
+
+00:01:08.709 --> 00:01:13.009
+The callback function will be called when the service request is received.
+
+00:01:13.010 --> 00:01:21.160
+The ros spin function simply blocks until a shutdown request is received by the node.
+
+00:01:21.159 --> 00:01:26.354
+When a client sends a GoToPosition request to the safe move service,
+
+00:01:26.355 --> 00:01:29.719
+either from the terminal or from a separate node,
+
+00:01:29.719 --> 00:01:32.599
+the handle safe move request function is called.
+
+00:01:32.599 --> 00:01:39.390
+The function parameter request is of type GoToPosition request,
+
+00:01:39.390 --> 00:01:46.715
+and the service response parameter response is of type GoToPosition response.
+
+00:01:46.715 --> 00:01:53.909
+This function passes the requested joint angles to the clamp at boundaries function.
+
+00:01:54.340 --> 00:01:58.189
+The clamp at boundaries function is responsible for
+
+00:01:58.189 --> 00:02:02.840
+enforcing the minimum and maximum joint angles for each joint.
+
+00:02:02.840 --> 00:02:08.000
+If the joint angles passed in are outside of the operable range,
+
+00:02:08.000 --> 00:02:11.395
+they will be clamped to the nearest allowable value.
+
+00:02:11.395 --> 00:02:15.380
+The minimum and maximum joint angles are retrieved from
+
+00:02:15.379 --> 00:02:20.030
+the parameter server each time clamp at boundaries is called.
+
+00:02:20.030 --> 00:02:26.525
+The rest of this function simply clamp the joint angle if necessary.
+
+00:02:26.525 --> 00:02:31.885
+Warning messages are logged if the requested joint angles are out of the bounds.
+
+00:02:31.884 --> 00:02:38.944
+Then the handle safe move request function publishes the clamp joint angles to the arm.
+
+00:02:38.944 --> 00:02:43.159
+The safe move service would be blocked for three seconds so
+
+00:02:43.159 --> 00:02:47.109
+the arm has enough time to move to the requested position.
+
+00:02:47.110 --> 00:02:51.500
+Finally, the safe move service returns a message indicating that
+
+00:02:51.500 --> 00:02:56.509
+the arm has moved to its new position and displays the clamp joint angles.
+
+00:02:56.509 --> 00:02:59.209
+Now that you have written the arm mover node,
+
+00:02:59.210 --> 00:03:01.504
+the next step is to build the package,
+
+00:03:01.504 --> 00:03:04.069
+launch the node, and then test it out by
+
+00:03:04.069 --> 00:03:07.799
+interacting with the service via the command line.
+

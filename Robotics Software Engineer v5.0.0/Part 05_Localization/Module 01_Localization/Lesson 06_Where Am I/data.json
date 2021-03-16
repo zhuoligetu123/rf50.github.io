@@ -1,0 +1,921 @@
+{
+  "data": {
+    "lesson": {
+      "id": 722487,
+      "key": "7dfe4265-e484-4efc-89e7-088540ff6720",
+      "title": "Where Am I?",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Use the Adaptive Monte Carlo Localization algorithm in ROS to localize your robot!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "33b590db-b90a-45ac-97df-f539a0a7699e",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Where Am I",
+        "description": "# Recap\n\nYou have successfully build and implemented the AMCL localization package on your robot! Let us review what are needed for the submission:\n\n- Your Localization ROS Workspace folder\n- Screenshot(s) of your robot localizing in the simulation\n\n# Submit Your Project\n\nOnce you have completed your project, use the [**Project Rubric**](https://review.udacity.com/#!/rubrics/2351/view) to review the project. If you have covered all of the points in the rubric, then you are ready to submit! If you see room for improvement in **any** category in which you do not meet specifications, keep working! ",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2351",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/March/5ab1be3c_2-14-project-where-am-i1x/2-14-project-where-am-i1x.png",
+          "width": 500,
+          "height": 500
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 722488,
+          "key": "9f34859e-12e3-497e-bac1-14ce42f92f8c",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9f34859e-12e3-497e-bac1-14ce42f92f8c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729708,
+              "key": "cbfd5018-51a4-45d0-963e-4f8cf711848f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bb3eda9_2-14-project-where-am-i1x/2-14-project-where-am-i1x.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cbfd5018-51a4-45d0-963e-4f8cf711848f",
+              "caption": "",
+              "alt": "",
+              "width": 450,
+              "height": 175,
+              "instructor_notes": null
+            },
+            {
+              "id": 722492,
+              "key": "fa939b1b-1b17-463f-9e7c-5476361bba9d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Overview\n\nWelcome to the `Where Am I?` localization project! In this project, you will learn to utilize ROS AMCL package to accurately localize a mobile robot inside a map in the Gazebo simulation environments.\n\nOver the course of this lesson, you will learn several aspects of robotic software engineering with a focus on ROS:\n\n- Create a ROS package that launches a custom robot model in a custom Gazebo world\n\n- Utilize the ROS AMCL package and the Tele-Operation / Navigation Stack to localize the robot\n\n- Explore, add, and tune specific parameters corresponding to each package to achieve the best possible localization results",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780705,
+              "key": "05fdb17c-1d5b-46dd-909e-2734c0826c33",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05fdb17c-1d5b-46dd-909e-2734c0826c33",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Set up simulation: environment and robot",
+                "Generate ground truth map from your Gazebo world",
+                "Build your AMCL launch file",
+                "Select proper localization parameters",
+                "Optional: Add teleop node",
+                "Put it all together"
+              ],
+              "positive_feedback": "Great job completing the localization project!",
+              "video_feedback": null,
+              "description": "Tasks: Where Am I Project"
+            },
+            {
+              "id": 722500,
+              "key": "8ebffdea-06f0-48cb-b45b-ae16bd8e60ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Udacity Classroom Workspaces\n\nUdacity will provide you with a ROS Workspace to work on this project. It is in the ['Project Workspace'](https://classroom.udacity.com/nanodegrees/nd209/parts/a431d446-05df-4641-9e3d-79e1d55a7a2f/modules/b66739be-878e-4cea-8569-881b7eb2d34c/lessons/7dfe4265-e484-4efc-89e7-088540ff6720/concepts/a99f915f-2c34-4e0b-a96b-6fc381be08db) concept at the end of this lesson. By now you should be quite familiar with it. Here is the lesson for a recap: [Udacity Workspace Instructions](https://classroom.udacity.com/nanodegrees/nd209/parts/0778207d-f34a-4178-8ccf-9e06b5bd2203/modules/48156d08-abb1-4c03-a18d-9db738a0b92b/lessons/e0c61e8d-7eac-4807-8737-d2bd321ae7a2/concepts/47784838-aea6-4834-9ebb-79fbb3e135af)\n\nLaunch your Workspace's desktop GUI. Now, you are all set to start the `Where Am I? `Project!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783609,
+              "key": "30144ce5-98d5-4687-bfee-8d6adfcd0c92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Native Installation & Virtual Machine\nIf you are working with a native ROS installation or using a VM, some of the following package might need to be installed. You could install them as shown below:\n\n```\n$ sudo apt-get install ros-kinetic-navigation\n$ sudo apt-get install ros-kinetic-map-server\n$ sudo apt-get install ros-kinetic-move-base\n$ sudo apt-get install ros-kinetic-amcl\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 728999,
+          "key": "0f2ce1ae-c9e9-4f93-9d4a-b167bbad7bff",
+          "title": "Simulation Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f2ce1ae-c9e9-4f93-9d4a-b167bbad7bff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729412,
+              "key": "f7894726-02ab-48da-852e-f2733cdbbe48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simulation Setup\n\nIn the previous projects, you have built your simulation environment and a robot. Let us set them up in the Project 3 Workspace for our next tasks.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778401,
+              "key": "92a0ad80-f9c6-4da4-9b10-748727fb2914",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Navigate to Workspace by clicking the `Project Workspace` on the side bar. You might want to open it in a new window. You could use either the terminal in Classroom without GPU mode or the VNC Desktop with GPU mode to do the setup.\n\nSetup your `catkin_ws` folder as well as the `src` folder, then we need to grab the code from last project. Namely, the package you created to launch the simulation of your Gazebo world and your robot. You could do that in two ways.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783611,
+              "key": "7c7e2558-d359-42c7-94be-4946adfc52f4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Method 1: `git`\n\nIf you have pushed your submission for the ROS Introduction project to GitHub, go ahead and create a new repository then duplicate your code from last project to it. Substitute the url in the following commands with your project GitHub url.\n\n```\ngit clone --bare https://github.com/exampleuser/old-repository.git\n\ncd old-repository.git\ngit push --mirror https://github.com/exampleuser/new-repository.git\n\ncd ..\nrm -rf old-repository.git\n```\n\n_Source: https://help.github.com/articles/duplicating-a-repository/_",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783612,
+              "key": "f0ab949d-ef6a-416e-bf57-6c3c3779cc1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Method 2: Folder Upload\n\nIf you want to upload the package folder to the Project 3 Workspace, go to the project Workspace and click the `+` button, then select `Upload Folder` to upload your package folder!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783613,
+              "key": "242326a2-d90d-4f38-9e07-b4e0a84fb55b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bec66e5_upload-folder-workspace/upload-folder-workspace.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/242326a2-d90d-4f38-9e07-b4e0a84fb55b",
+              "caption": "",
+              "alt": "",
+              "width": 373,
+              "height": 351,
+              "instructor_notes": null
+            },
+            {
+              "id": 783614,
+              "key": "98cc4cab-df37-4e42-befb-f56ab8f50c2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Verify Your Simulation Setup\n\nDo a quick `catkin_make` and source the `devel/setup.bash` script. Launch the world to verify if the system is good to go!\n```\nroslaunch <YOUR PACKAGE NAME> world.launch\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729424,
+          "key": "f97e67d6-2baa-4022-853d-b5b6d39be176",
+          "title": "Map Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f97e67d6-2baa-4022-853d-b5b6d39be176",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729425,
+              "key": "d1b514a7-46d7-462f-9f4e-2d298388310a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Map Setup\n\nGreat! We have our simulation environment ready now. However, we cannot localize the robot just yet. The poor robot has zero information on its surroundings! Let us generate a map for it so that it knows what to expect in this environment.\n\nGenerally speaking, in the development of a robotic project, engineers utilize Mapping tools to measure and map the area robot will be operating in. Since we are developing in simulation environment the problem is simplified. We could generate the map from Gazebo world directly using a ROS package: [pgm_map_creator](https://github.com/udacity/pgm_map_creator).\n\n**Note that currently, the map creator could not handle objects in the environment well. Please use the it with vertical surfaces only!**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783721,
+              "key": "fa8f4043-0c45-4ac5-a37d-4e6457030695",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5becad91_map-creator/map-creator.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fa8f4043-0c45-4ac5-a37d-4e6457030695",
+              "caption": "Udacity Office Space Map",
+              "alt": "",
+              "width": 1145,
+              "height": 721,
+              "instructor_notes": null
+            },
+            {
+              "id": 783649,
+              "key": "4670fb2c-80b8-4e7c-992a-ae0274d684e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## PGM Map File\n\nThe map ROS AMCL Package uses is a `pgm` file. A `pgm` file is a grayscale image file. For more information about `pgm` file or more generally, `pnm` file, please refer to [Netpbm format Wiki Page](https://en.wikipedia.org/wiki/Netpbm_format).\n\nBy default, AMCL package will treat 'darker' pixels as obstacle in the `pgm` map file, and 'lighter' pixels as free space. The threshold could be set as a parameter which we will cover when we are building the launch file.\n\nNavigate to your ROS package folder and create a `maps` folder. That's where your map file will reside.\n```\n$ cd /home/workspace/catkin_ws/src/<YOUR PACKAGE NAME>\n$ mkdir maps\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783650,
+              "key": "0d6733f9-80a0-4370-a130-3dbd62067a65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# PGM Map Creator\n\n## Install Dependencies\nWe need `libignition-math2-dev` and `protobuf-compiler` to compile the map creator:\n```\nsudo apt-get install libignition-math2-dev protobuf-compiler\n```\n\n## Clone the Repository\nClone the package `pgm_map_creator` to your `src` folder.\n```\ncd /home/workspace/catkin_ws/src/\ngit clone https://github.com/udacity/pgm_map_creator.git\n```\nBuild the package:\n```\ncd ..\ncatkin_make\n```\n\n## Add and Edit the World File\nCopy the Gazebo world you created to the `world` folder \n```\ncp <YOUR GAZEBO WORLD FILE> src/pgm_map_creator/world/<YOUR GAZEBO WORLD FILE>\n```\nInsert the map creator plugin to your map file. Open the map file using the editor of your choice. Add the following tag towards the end of the file, but just before `</world>` tag:\n```\n<plugin filename=\"libcollision_map_creator.so\" name=\"collision_map_creator\"/>\n```\n\n## Create the PGM Map!\nOpen a terminal, run gzerver with the map file:\n```\ngzserver src/pgm_map_creator/world/<YOUR GAZEBO WORLD FILE>\n```\nOpen another terminal, launch the request_publisher node \n```\nroslaunch pgm_map_creator request_publisher.launch\n```\nWait for the plugin to generate map. It will be located in the map folder of the `pgm_map_creator`! Open it to do a quick check of the map. If the map is cropped, you might want to adjust the parameters in `launch/request_publisher.launch`, namely the `x` and `y` values, which defines the size of the map:\n```\n  <arg name=\"xmin\" default=\"-15\" />\n  <arg name=\"xmax\" default=\"15\" />\n  <arg name=\"ymin\" default=\"-15\" />\n  <arg name=\"ymax\" default=\"15\" />\n  <arg name=\"scan_height\" default=\"5\" />\n  <arg name=\"resolution\" default=\"0.01\" />\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 809477,
+              "key": "9c604c86-7799-4587-80b7-1b0ecd9d32a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Edit the Map\n\nRemember, the map is an image, which means you could edit it using image processing softwares like `gimp` in Linux. If you have found the map not accurate due to the models, feel free to edit the `pgm` file directly!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783719,
+              "key": "62fba220-69a0-455a-a1db-1fde76635111",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add the Map to Your Package\nNow we have the map file, let us move it to where it is needed! That is the `maps` folder you created at the very beginning.\n```\ncd /home/workspace/catkin_ws/\ncp src/pgm_map_creator/maps/<YOUR MAP NAME>  src/<YOUR PACKAGE NAME>/maps/<YOUR MAP NAME>\n```\n\nYou would also need a `yaml` file providing the [metadata about the map](http://wiki.ros.org/map_server#YAML_format). Create a `yaml` file next to your map:\n```\ncd src/<YOUR PACKAGE NAME>/src/maps\ntouch <YOUR MAP NAME>.yaml\n```\n\nOpen the `yaml` file and add the following lines to it:\n```\nimage: <YOUR MAP NAME>\nresolution: 0.01\norigin: [-15.0, -15.0, 0.0]\noccupied_thresh: 0.65\nfree_thresh: 0.196\nnegate: 0\n```\n\nNote that the origin of the map should correspond to your map's size. For example, the default map size is 30 by 30, so the origin will be [-15, -15, 0], i.e. half the size of the map. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729430,
+          "key": "c5caea65-7c89-4f67-831c-82360b57bebb",
+          "title": "AMCL Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5caea65-7c89-4f67-831c-82360b57bebb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729431,
+              "key": "88aedbd7-6333-475a-afa5-4e8e0e642fc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AMCL Package\n\nYou learned about Monte Carlo Localization (MCL) in great detail in the previous lessons. Adaptive Monte Carlo Localization (AMCL) dynamically adjusts the number of particles over a period of time, as the robot navigates around in a map. This adaptive process offers a significant computational advantage over MCL. \n\nThe [ROS AMCL package (http://wiki.ros.org/amcl)](http://wiki.ros.org/amcl) implements this variant and you will integrate this package with your robot to localize it inside the provided map.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778428,
+              "key": "a0d6b59b-c1e1-403e-a84d-5c1071826d8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdc9612_ros-wiki-amcl/ros-wiki-amcl.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a0d6b59b-c1e1-403e-a84d-5c1071826d8a",
+              "caption": "",
+              "alt": "",
+              "width": 774,
+              "height": 494,
+              "instructor_notes": null
+            },
+            {
+              "id": 729439,
+              "key": "7cced112-c324-4e2a-a1ba-c94b0ec23b8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you have learned in the previous projects, ROS utilizes `launch` files to run ROS nodes. In the following concepts, you will start to build the `launch` file for the AMCL package!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729010,
+          "key": "fcc95f1f-4a68-42a3-90c0-166b4d49e544",
+          "title": "AMCL Launch File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fcc95f1f-4a68-42a3-90c0-166b4d49e544",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729428,
+              "key": "c1b88379-fa83-4bc7-aa09-414e1299b558",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AMCL `launch` file\n\nFirst things first, create a `launch` file for the AMCL node in the `launch` folder of your package:\n\n```bash\n$ cd /home/workspace/catkin_ws/src/<YOUR PACKAGE NAME>/launch/\n$ vi amcl.launch # nano, gedit\n```\n\nFeel free to use whichever editor you prefer: `vi`, `nano`, or `gedit`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729429,
+              "key": "bb0cded7-abf5-4bd9-a938-23d8a7acf3e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Add the root element `<launch>` tag in the `amcl.launch` file: \n\n```\n<launch>\n<!-- TODO: Add nodes here -->\n</launch>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729490,
+              "key": "6512607e-1b19-453a-8807-224813b2492e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Great, we have the `launch` file in place! Now, let's add nodes to this `amcl.launch` file. A list of nodes is provided below as a tracker of your progress. You don't need to complete that now - come back when you have all three nodes added!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729441,
+              "key": "7e5af617-98d7-4281-902c-240cd6229856",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7e5af617-98d7-4281-902c-240cd6229856",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Map Server Node `name=\"map_server\"`",
+                "AMCL Node `name=\"amcl\"`",
+                "Move Base Node `name=\"move_base\"`"
+              ],
+              "positive_feedback": "Well done! The nodes are all ready in the launch file!",
+              "video_feedback": null,
+              "description": "Here is the list of nodes required for AMCL package to operate:"
+            }
+          ]
+        },
+        {
+          "id": 729471,
+          "key": "45033784-d44a-4e8d-8fe8-479f16778603",
+          "title": "AMCL Launch File: Map Server Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "45033784-d44a-4e8d-8fe8-479f16778603",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729493,
+              "key": "b2b32169-726c-4acf-97bc-5eb9da4ec671",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Map Server Node\n\nThe first node is the `map_server` node (http://wiki.ros.org/map_server). The `map_server` node provides map data as a ROS service to other nodes such as the `amcl` node. Here, `map_server` node will locate the map you created in the [Map Setup](https://classroom.udacity.com/nanodegrees/nd209-beta/parts/930229bf-7a57-45c8-9111-83c1d2954661/modules/b66739be-878e-4cea-8569-881b7eb2d34c/lessons/7dfe4265-e484-4efc-89e7-088540ff6720/concepts/f97e67d6-2baa-4022-853d-b5b6d39be176) step and send it out as the map data.\n\nFirst, add an argument of the path to your map file so that you could easily change the map loaded and avoid typing long paths again:\n```\n<arg name=\"map_file\" default=\"$(find <YOUR PACKAGE NAME>)/maps/<YOUR MAP NAME>.yaml\"/>\n```\n\nThen, add the `map_server` node, which utilizes the argument you created just now:\n```\n<node name=\"map_server\" pkg=\"map_server\" type=\"map_server\" args=\"$(arg map_file)\" />\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729494,
+              "key": "1bd4329b-0c0d-449a-9f32-156c28f184d0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your `amcl.launch` file should look like this now:\n```\n<launch>\n\n  <!-- Map Server -->\n  <arg name=\"map_file\" ... />\n  <node name=\"map_server\" ... />\n\n</launch>\n```\n\nNice, we have the `map_server` node set up. Let's move on to the `amcl` node.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729472,
+          "key": "58e7ea88-8806-421f-97e3-96709fdf3fc3",
+          "title": "AMCL Launch File: AMCL Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "58e7ea88-8806-421f-97e3-96709fdf3fc3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729495,
+              "key": "8e5fb4aa-b580-46ed-aac1-1c78f1172968",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AMCL Node\n\nThe next node to be set up is the `amcl` node. As it was introduced in the previous concepts, it takes `odometry` and `laser scan` data to perform the AMCL localization.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729502,
+              "key": "beadaf10-dbcd-4e17-a901-aaa9ffd168fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add `amcl` Node\nFirst, add the `amcl` node in your `amcl.launch` file:\n```\n<launch>\n\n  <!-- Map Server -->\n  ...\n\n  <!-- AMCL Node -->\n  <node name=\"amcl\" pkg=\"amcl\" type=\"amcl\" output=\"screen\">\n  </node>\n\n</launch>\n```\n\nOk, we created the `amcl` node. However it needs more information to localize the robot! For example, what are the sensor readings from the LiDAR? ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729511,
+              "key": "ec856a61-9463-426b-b034-70052cd62a53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Remap `scan` topic\n\nBy default, `amcl` package will look for the `scan` topic for LiDAR data. In the simulation, the `Hokuyo` LiDAR sensor actually publishes on the `<YOUR PACKAGE NAME>/laser/scan` topic.  We will use the `remap` tag to remap the topic name `scan` to the actual topic name so that the `amcl` package could use it!\n\nAdd this `remap` line to your `amcl` node in the `amcl.launch` file:\n```\n...\n<!-- AMCL Node -->\n<node name=\"amcl\" ...>\n  <remap from=\"scan\" to=\"<YOUR PACKAGE NAME>/laser/scan\"/>\n</node>\n```\n\nFor more information on `remap`, check out the ROS Wiki here:  http://wiki.ros.org/roslaunch/XML/remap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729507,
+              "key": "f65b97a2-c652-4b3c-b0da-89318eef52a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add AMCL Parameters\n\nThe AMCL node also requires a set of parameters in order to connect the world (`map` frame) with the robot (`odom` frame).\n\nAdd the following parameter tags to the `amcl` node in the `amcl.launch` file:\n```\n...\n<!-- AMCL Node -->\n<node name=\"amcl\" ...>\n  <remap from=\"scan\" to=\"<YOUR PACKAGE NAME>/laser/scan\"/>\n  <param name=\"odom_frame_id\" value=\"odom\"/>\n  <param name=\"odom_model_type\" value=\"diff-corrected\"/>\n  <param name=\"base_frame_id\" value=\"robot_footprint\"/>\n  <param name=\"global_frame_id\" value=\"map\"/>\n</node>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729542,
+              "key": "0bbec9f8-6822-4758-897b-e07d1e66b6cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "From the ROS Wiki (http://wiki.ros.org/amcl), we could find the purpose of the parameters added above:\n\n- `odom_frame_id` (string, default: \"odom\"): Which frame to use for odometry\n- `odom_model_type` (string, default: \"diff\"): Which model to use, either \"diff\", \"omni\", \"diff-corrected\" or \"omni-corrected\"\n- `base_frame_id` (string, default: \"base_link\"): Which frame to use for the robot base\n- `global_frame_id` (string, default: \"map\"): The name of the coordinate frame published by the localization system\n\nRemember, AMCL package 'links' the robot (`odom` frame) with the world (`map` frame). These parameters are required for `amcl` package to localize the robot in the world.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805849,
+              "key": "43b94556-58d4-476f-8063-72eea2f19271",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Optional: Set Initial Position\n\nYou could use the RViz `2D Pose Estimate` function to give AMCL a pose estimate as position, but you could also have it defined in the launch file.\n\nAdd the following parameters to the AMCL node, the values should correspond to your `world.launch` file:\n```\n<param name=\"initial_pose_x\" value=\"<YOUR X VALUE>\"/>\n<param name=\"initial_pose_y\" value=\"<YOUR Y VALUE>\"/>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729539,
+              "key": "b0650ab0-da7a-4ca3-9f6d-ecb4cd29ae0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Launch File\nNow, your `amcl.launch` file should look like this:\n\n```\n<launch>\n\n  <!-- Map Server -->\n    <arg name=\"map_file\" ... />\n    <node name=\"map_server\" ... />\n\n  <!-- AMCL Node -->\n  <node name=\"amcl\" pkg=\"amcl\" type=\"amcl\" output=\"screen\">\n    <remap from=\"scan\" to=\"<YOUR PACKAGE NAME>/laser/scan\"/>\n    <param name=\"odom_frame_id\" value=\"odom\"/>\n    <param name=\"odom_model_type\" value=\"diff-corrected\"/>\n    <param name=\"base_frame_id\" value=\"robot_footprint\"/>\n    <param name=\"global_frame_id\" value=\"map\"/>\n\n    <!-- If you choose to define initial pose here -->\n    <param name=\"initial_pose_x\" value=\"0\"/>\n    <param name=\"initial_pose_y\" value=\"0\"/>\n  </node>\n\n</launch>\n```\n\nNow, the robot has a map and the `amcl` package to localize itself. But how could it navigate to other positions to collect more information about its surroundings? `ROS Navigation Stack` is the answer.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729473,
+          "key": "20ef398b-bace-4d56-8210-3cdd78670e2b",
+          "title": "AMCL Launch File: Move Base Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "20ef398b-bace-4d56-8210-3cdd78670e2b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729546,
+              "key": "81e035c8-03ff-4eed-8d89-0a24c4090bdf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Move Base Node\n\nTwo nodes down, one node to go!\n\nYou will be working with the [`move_base`](http://wiki.ros.org/move_base) package using which you can define a navigation goal position for your robot in the map, and the robot will navigate to that goal position. Note that this step is optional if you choose to use `teleop` node to control and localize your robot.\n\nThe `move_base` package is a very powerful tool. It utilizes a costmap - where each part of the map is divided into which area is occupied, like walls or obstacles, and which area is unoccupied. As the robot moves around, a local costmap, in relation to the global costmap, keeps getting updated allowing the package to define a continuous path for the robot to move along. \n\nWhat makes this package more remarkable is that it has some built-in corrective behaviors or maneuvers. Based on specific conditions, like detecting a particular obstacle or if the robot is stuck, it will navigate the robot around the obstacle or rotate the robot till it finds a clear path ahead. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729547,
+              "key": "a8965c1a-2fa3-4df1-9c7c-2fb147957e09",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add ROS `move_base` Node\n\nLet's add the `move_base` node to the `amcl.launch` file:\n```\n<launch>\n  <!-- Map Server -->\n  ...\n\n  <!-- AMCL Node -->\n  ...\n  \n  <!-- Move Base -->\n  <node name=\"move_base\" pkg=\"move_base\" type=\"move_base\" respawn=\"false\" output=\"screen\">\n  </node>\n\n</launch>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729563,
+              "key": "fe058551-e249-464b-9825-91ae108157df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Remap `scan` Topic\n\nAgain, we need to `remap` the `scan` topic to the correct one.\n\n```\n  <remap from=\"scan\" to=\"<YOUR PACKAGE NAME>/laser/scan\"/>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729549,
+              "key": "7c69c510-5e84-420c-b64b-6327a4a8525f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add Parameters to `move_base` Node\n\nSimilar to the `amcl` node, `move_base` node requires a set of parameters to move the robot in the world. As we already know , we could use the `param` tag to specify the parameter. But when there are plenty of parameters, we could use the `rosparam` tag to include config files to set multiple parameters directly! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729561,
+              "key": "0ebbc3e1-f528-4341-8dcd-35bfd12629b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Planners\n\nAdd the following `param` tags to the `move_base` node:\n\n```\n  <param name=\"base_global_planner\" value=\"navfn/NavfnROS\" />\n  <param name=\"base_local_planner\" value=\"base_local_planner/TrajectoryPlannerROS\"/>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729566,
+              "key": "c88995a9-0a75-410e-bbeb-6c4009e27790",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Load Config Files\n\nThen we need to create/get the config files and load them in the `launch` file: \n\n```\n$ cd ..\n$ mkdir config\n$ cd config\n```\n\nDownload the `config` files from Udacity S3 bucket and add them to the `config` folder:\n```\nwget https://s3-us-west-1.amazonaws.com/udacity-robotics/Resource/where_am_i/config.zip\nunzip config.zip\nrm config.zip\n```\n\nThese config files have a preset of parameters defined for you to navigate the robot if you choose to send navigation goal to the robot in testing.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729564,
+              "key": "4f1ceee4-31e6-45ab-bfe1-51ac125ba1d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Config Files\n\nNow that we have the `config` files ready, we will include them in the `launch` file, in the `move_base` node:\n\n```\n  <rosparam file=\"$(find udacity_bot)/config/costmap_common_params.yaml\" command=\"load\" ns=\"global_costmap\" />\n  <rosparam file=\"$(find udacity_bot)/config/costmap_common_params.yaml\" command=\"load\" ns=\"local_costmap\" />\n  <rosparam file=\"$(find udacity_bot)/config/local_costmap_params.yaml\" command=\"load\" />\n  <rosparam file=\"$(find udacity_bot)/config/global_costmap_params.yaml\" command=\"load\" />\n  <rosparam file=\"$(find udacity_bot)/config/base_local_planner_params.yaml\" command=\"load\" />\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805760,
+              "key": "be40855e-ad1a-4b7e-ba89-f2d6792a2fd7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Well done! That was a lot of work. Let us move on!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 805761,
+          "key": "126dd6da-f071-4f5f-8ebd-943a38242bf0",
+          "title": "Optional: Teleop Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "126dd6da-f071-4f5f-8ebd-943a38242bf0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 805764,
+              "key": "86883643-d48b-43f0-864f-adf105c9d3ba",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2c4961_ros-teleop/ros-teleop.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86883643-d48b-43f0-864f-adf105c9d3ba",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 805762,
+              "key": "ff9f8037-c7fc-4854-84dc-9c227ad3e1fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Teleop Package\n\nIf you prefer to control your robot to help it localize itself as you did in the lab, you would need to add the `teleop` node to your package. Thanks to the ROS community, we could use `ros-teleop` package to send command to the robot using keyboard or controller.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805763,
+              "key": "09006b63-089a-49aa-87a4-8c18e13b4c42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Clone the `ros-teleop` package to your `src` folder:\n```\ncd /home/workspace/catkin_ws/src\ngit clone https://github.com/ros-teleop/teleop_twist_keyboard\n```\n\nBuild the package and source the setup script:\n```\ncd ..\ncatkin_make\nsource devel/setup.bash\n```\n\nNow you could run the `teleop` script as is described in the `README` file:\n```\nrosrun teleop_twist_keyboard teleop_twist_keyboard.py\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729477,
+          "key": "aa859ae2-effe-43bb-82f8-62a51c1440ba",
+          "title": "Localization: Launching",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa859ae2-effe-43bb-82f8-62a51c1440ba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729568,
+              "key": "b98b944c-3613-4e0f-bab8-f256d2c9eb61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Launching\n\nYou have your robot, your map, your localization and navigation nodes. Let’s launch it all and test it!\n\nFirst, launch the simulation:\n```\n$ cd /home/workspace/catkin_ws/\n$ roslaunch <YOUR PACKAGE NAME> <YOUR WORLD>.launch\n```\n\nIn a new terminal, launch the `amcl` launch file:\n```\n$ roslaunch <YOUR PACKAGE NAME> amcl.launch\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729569,
+              "key": "33666487-9ef1-4184-992e-e0459d2d5f83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Rviz Configuration\n\nAs you did in a previous section, setup your RViz by adding the necessary displays and selecting the required topics to visualize the robot and also the map.\n\n### Add by display type\n\nIn Rviz,\n- Select `odom` for fixed frame\n- Click the “Add” button and \n    - add `RobotModel`: this would add the robot itself to RViz\n    - add `Map` and select first `topic/map`: the second and third topics in the list will show the global costmap, and the local costmap. Both can be helpful to tune your parameters\n    - add `PoseArray` and select `topic/particlecloud`: this will display a set of arrows around the robot\n\nEach arrow is essentially a particle defining the pose of the robot that your localization package created. Your goal is to add/tune the parameters that will help localize your robot better and thereby improve the pose array.\n\n*Note:* You can save the above RViz setup in a configuration file and launch RViz with the same configuration every time. This will make the process more efficient for you! Click `file` -> `save config` to save the current configuration.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805767,
+              "key": "397d1c19-ffe6-43ee-a4fe-0d165f924c88",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2c50d9_screen-shot-2019-01-01-at-9.48.50-pm/screen-shot-2019-01-01-at-9.48.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/397d1c19-ffe6-43ee-a4fe-0d165f924c88",
+              "caption": "",
+              "alt": "",
+              "width": 2868,
+              "height": 1538,
+              "instructor_notes": null
+            },
+            {
+              "id": 805766,
+              "key": "c4dc8671-fc2b-414e-99de-24c195ed9968",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add by topic\n\nWhen adding elements to RViz, you could also select `By topic` tab. Here, all valid topics would be displayed and you could locate what you need faster!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805765,
+              "key": "6e2410fb-07d6-4ec6-a87c-ae802aac2cee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2c4fb6_screen-shot-2019-01-01-at-9.43.46-pm/screen-shot-2019-01-01-at-9.43.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e2410fb-07d6-4ec6-a87c-ae802aac2cee",
+              "caption": "",
+              "alt": "",
+              "width": 2870,
+              "height": 1544,
+              "instructor_notes": null
+            },
+            {
+              "id": 826409,
+              "key": "c10e7a28-cc12-43f9-9ef0-cd7d8fad0b91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `Transform Timeout` and `Map Update Loop`\n\nIf you received warning on `Transform Timeout` and `Map Update Loop`, you might want to configure the corresponding parameters. Namely larger `transform_tolerance` value for the AMCL node and lower `update_frequency` & `publish_frequency` values in the configuration files.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729011,
+          "key": "82b8b814-8567-4558-9603-45dc0478d74c",
+          "title": "Localization: Parameters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82b8b814-8567-4558-9603-45dc0478d74c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729675,
+              "key": "657812c2-0661-4283-9d16-e127ae98fbfa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For the next part of the project, you will identify and tune parameters for your `amcl` node in the `amcl.launch` file, to achieve better results.\n\n### AMCL Parameters\nThe [amcl package](http://wiki.ros.org/amcl#Parameters) has a lot of parameters to select from. Different sets of parameters contribute to different aspects of the algorithm. Broadly speaking, they can be categorized into three categories - overall filter, laser, and odometry. Let’s cover some of the parameters that we recommend you start with or details to focus on.\n\n#### Overall Filter\n\n- `min_particles` and `max_particles` - As amcl dynamically adjusts its particles for every iteration, it expects a range of the number of particles as an input. Often, this range is tuned based on your system specifications. A larger range, with a high maximum might be too computationally extensive for a low-end system.\n- `initial_pose` - For the project, you should set the position to [0, 0]. Feel free to play around with the mean yaw value.\n- `update_min*` - `amcl` relies on incoming laser scans. Upon receiving a scan, it checks the values for `update_min_a` and `update_min_d` and compares to how far the robot has moved. Based on this comparison it decides whether or not  to perform a filter update or to discard the scan data. Discarding data could result in poorer localization results, and too many frequent filter updates for a fast moving robot could also cause computational problems.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729676,
+              "key": "2f276e70-d8d0-498d-9133-ed5794971fed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n#### Laser\n\nThere are two different types of models to consider under this - the `likelihood_field` and the `beam`. Each of these models defines how the laser rangefinder sensor estimates the obstacles in relation to the robot.\n\nThe `likelihood_field` model is usually more computationally efficient and reliable for an environment such as the one you are working with. So you can focus on parameters for that particular model such as the -\n\n- `laser_*_range`\n- `laser_max_beams`\n- `laser_z_hit` and `laser_z_rand`\n\nTuning of these parameters will have to be experimental. While tuning them, observe the laser scan information in RViz and try to make sure that the laser scan matches or is aligned with the actual map, and how it gets updated as the robot moves. The better the estimation of where the obstacles are, the better the localization results.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729677,
+              "key": "11e226c9-e5ba-483e-b5d6-09e9917cd6e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n\n\n#### Odometry\n\n`odom_model_type` - Since you are working with a differential drive mobile robot, it’s best to use the `diff-corrected` type. There are additional parameters that are specific to this type - the `odom_alphas` (1 through 4). These parameters define how much noise is expected from the robot's movements/motions as it navigates inside the map. \n\n**Note: ** The odometry information for this project is received directly from Gazebo, and is equivalent to the ground truth value (no noise expected). So, you need not have to tune these parameters and can leave them at their default values. But feel free to experiment with some values and see if you notice any changes.\n\n\n**Important:** The above set of parameters should help you get started, however they aren't the only ones that can improve your results. You are encouraged and required to go through the documentation, identify which parameters might help you improve your localization results, and experiment with them. All the remaining parameters and corresponding documentation can be found on the [ROS wiki's amcl page](http://wiki.ros.org/amcl#Parameters). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729678,
+              "key": "533e1f54-c9f4-4a7e-b740-46a9738a75ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Identifying and tuning all these parameters can take time and effort. But don't worry. Based on the information and resources provided, you are well-equipped to tackle the problem head-on! Make sure to discuss your approaches with your fellow students in the ND Slack, and to reach out to your mentor for any further help.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 805768,
+          "key": "2ab0200c-3c61-4ca6-bfb6-2b33cf81b743",
+          "title": "Localization: Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2ab0200c-3c61-4ca6-bfb6-2b33cf81b743",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 805769,
+              "key": "cd159e45-31f5-4a96-a3cb-69207344a8f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Testing\n\nNow, let us test the performance of your AMCL package! You have two options to control your robot while it localize itself here:\n- Send `navigation goal` via RViz\n- Send move command via `teleop` package.\n\nNavigate your robot, observe its performance and tune your parameters for AMCL! Capture screenshots and include them in your project submission.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805770,
+              "key": "cd8f954a-7724-4567-a228-6b83fd55a667",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Option 1: Send `2D Navigation Goal`\n\nYour first option would be sending a `2D Nav Goal` from RViz. The `move_base` will try to navigate your robot based on the localization. Based on the new observation and the odometry, the robot to further perform the localization.\n\nClick the `2D Nav Goal` button in the toolbar, then click and drag on the map to send the goal to the robot. It will start moving and localize itself in the process. If you would like to give `amcl` node a nudge, you could give the robot an initial position estimate on the map using `2D Pose Estimate`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805771,
+              "key": "93bbca22-09d6-43af-8940-348d9f4238dd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2c586e_screen-shot-2019-01-01-at-10.21.03-pm/screen-shot-2019-01-01-at-10.21.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/93bbca22-09d6-43af-8940-348d9f4238dd",
+              "caption": "",
+              "alt": "",
+              "width": 2864,
+              "height": 1542,
+              "instructor_notes": null
+            },
+            {
+              "id": 805772,
+              "key": "b60c8beb-0e22-4859-b4ba-c2dd119dc011",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Option 2: Use `teleop` Node\n\nYou could also use `teleop` node to control your robot and observe it localize itself in the environment, if you have set it up in the `Optional: Teleop Package` part. \n\nOpen another terminal and launch the `teleop` script:\n```\nrosrun teleop_twist_keyboard teleop_twist_keyboard.py\n```\n\nYou could control your robot by keyboard commands now.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805773,
+              "key": "f347b1ca-b73e-406f-8df5-1d083917ffbd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2c5994_screen-shot-2019-01-01-at-10.26.08-pm/screen-shot-2019-01-01-at-10.26.08-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f347b1ca-b73e-406f-8df5-1d083917ffbd",
+              "caption": "",
+              "alt": "",
+              "width": 2870,
+              "height": 1550,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 729012,
+          "key": "a99f915f-2c34-4e0b-a96b-6fc381be08db",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a99f915f-2c34-4e0b-a96b-6fc381be08db",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 796742,
+              "key": "165fc14a-c0bf-46da-9196-657bc39feaa5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c729012xREACTc23aec5w",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-3jbqh",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export PATH=/usr/bin:$PATH\nsource /opt/ros/kinetic/setup.bash",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Go To Desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

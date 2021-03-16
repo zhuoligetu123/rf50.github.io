@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.910
+Now that you've created a Catkin workspace,
+
+00:00:02.910 --> 00:00:05.250
+and added the simple R package to it,
+
+00:00:05.250 --> 00:00:07.275
+you are ready to write some RA's nodes.
+
+00:00:07.275 --> 00:00:13.260
+In this lesson, you'll write RA's nodes in C++ that publish and subscribe to topics.
+
+00:00:13.259 --> 00:00:16.859
+You'll also write the RA's service that can be called from a client node,
+
+00:00:16.859 --> 00:00:18.480
+or from the command line.
+
+00:00:18.480 --> 00:00:21.975
+The first node that you'll be writing is called simple mover.
+
+00:00:21.975 --> 00:00:24.720
+The simple mover node does nothing more than
+
+00:00:24.719 --> 00:00:27.449
+published joint angle commands to simple arm.
+
+00:00:27.449 --> 00:00:30.585
+Once you've understand the general structure of a RA's node,
+
+00:00:30.585 --> 00:00:33.465
+you write a second node called R-mover.
+
+00:00:33.465 --> 00:00:37.100
+The R-mover node provides a service called safe move,
+
+00:00:37.100 --> 00:00:39.200
+which allows the R to be move to
+
+00:00:39.200 --> 00:00:43.190
+any position within its workspace that has proven to be safe.
+
+00:00:43.189 --> 00:00:47.390
+The safe zone is bounded by minimum and the maximum joint angles,
+
+00:00:47.390 --> 00:00:50.390
+and it's configurable via the RA's parameter server.
+
+00:00:50.390 --> 00:00:54.579
+The last and third node you write in this lesson is the look away node.
+
+00:00:54.579 --> 00:00:57.019
+This node subscribes to the aren't
+
+00:00:57.020 --> 00:01:01.175
+joint positions and a topic where camera data is being published.
+
+00:01:01.174 --> 00:01:05.030
+When the camera detects an image with uniform color, meaning,
+
+00:01:05.030 --> 00:01:08.135
+that it's looking at the sky and the ARM is not moving,
+
+00:01:08.135 --> 00:01:10.550
+then what we'll call the safe move service via
+
+00:01:10.549 --> 00:01:13.144
+a client to move the ARM to a new position.
+
+00:01:13.144 --> 00:01:14.614
+With these new skills,
+
+00:01:14.614 --> 00:01:19.000
+you'd have everything you need as I call the upcoming projects in this program
+

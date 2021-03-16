@@ -1,0 +1,660 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Robot Basic Setup
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Go Chase It!
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Workspace.html">
+       02. ROS in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Setting up my_robot.html">
+       03. Setting up my_robot
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Understanding URDF.html">
+       04. Understanding URDF
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Robot Basic Setup.html">
+       05. Robot Basic Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Enhancements.html">
+       06. Robot Enhancements
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Robot Sensors.html">
+       07. Robot Sensors
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Gazebo Plugins.html">
+       08. Gazebo Plugins
+      </a>
+     </li>
+     <li class="">
+      <a href="09. RViz Basics.html">
+       09. RViz Basics
+      </a>
+     </li>
+     <li class="">
+      <a href="10. RViz Integration.html">
+       10. RViz Integration
+      </a>
+     </li>
+     <li class="">
+      <a href="11. House your Robot.html">
+       11. House your Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Setting up ball_chaser.html">
+       12. Setting up ball_chaser
+      </a>
+     </li>
+     <li class="">
+      <a href="13. ROS Node drive_bot.html">
+       13. ROS Node: drive_bot
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Model a White Ball.html">
+       14. Model a White Ball
+      </a>
+     </li>
+     <li class="">
+      <a href="15. ROS Node process_image.html">
+       15. ROS Node: process_image
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Go Chase It!.html">
+       Project Description - Go Chase It!
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Go Chase It!.html">
+       Project Rubric - Go Chase It!
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          05. Robot Basic Setup
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="robot-basic-setup">
+          Robot Basic Setup
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Let’s build a basic mobile robot model by creating a URDF file and launch it inside an empty Gazebo world.
+         </p>
+         <p>
+          We can break the effort down into smaller components - a robot base, wheels, and sensors.
+         </p>
+         <p>
+          For this model, we will create a cuboidal base with two caster wheels. The caster wheels will help stabilize this model. They aren't always required, but they can help with weight distribution, preventing the robot from tilting along the z-axis.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="Robot base with two castor wheels" class="img img-fluid" src="img/gazebo-robot-base-castors.png"/>
+          <figcaption class="figure-caption">
+           <p>
+            Robot base with two castor wheels
+           </p>
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="create-the-urdf-file">
+          Create the
+          <strong>
+           URDF
+          </strong>
+          File
+         </h2>
+         <p>
+          <strong>
+           1- Create a
+           <code>
+            urdf
+           </code>
+           directory in the
+           <code>
+            my_robot
+           </code>
+           package
+          </strong>
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/my_robot/
+$ mkdir urdf</code></pre>
+         <p>
+          <strong>
+           2- Create the robot’s
+           <code>
+            xacro
+           </code>
+           file inside the
+           <code>
+            urdf
+           </code>
+           directory
+          </strong>
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/my_robot/urdf/
+$ touch my_robot.xacro</code></pre>
+         <p>
+          <strong>
+           3- Copy the following code into
+           <code>
+            my_robot.xacro
+           </code>
+           file
+          </strong>
+         </p>
+         <pre><code>&lt;?xml version='1.0'?&gt;
+
+&lt;robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro"&gt;
+
+  &lt;link name="robot_footprint"&gt;&lt;/link&gt;
+
+  &lt;joint name="robot_footprint_joint" type="fixed"&gt;
+    &lt;origin xyz="0 0 0" rpy="0 0 0" /&gt;
+    &lt;parent link="robot_footprint"/&gt;
+    &lt;child link="chassis" /&gt;
+  &lt;/joint&gt;
+
+  &lt;link name='chassis'&gt;
+    &lt;pose&gt;0 0 0.1 0 0 0&lt;/pose&gt;
+
+    &lt;inertial&gt;
+      &lt;mass value="15.0"/&gt;
+      &lt;origin xyz="0.0 0 0" rpy=" 0 0 0"/&gt;
+      &lt;inertia
+          ixx="0.1" ixy="0" ixz="0"
+          iyy="0.1" iyz="0"
+          izz="0.1"
+      /&gt;
+    &lt;/inertial&gt;
+
+    &lt;collision name='collision'&gt;
+      &lt;origin xyz="0 0 0" rpy=" 0 0 0"/&gt; 
+      &lt;geometry&gt;
+        &lt;box size=".4 .2 .1"/&gt;
+      &lt;/geometry&gt;
+    &lt;/collision&gt;
+
+    &lt;visual name='chassis_visual'&gt;
+      &lt;origin xyz="0 0 0" rpy=" 0 0 0"/&gt;
+      &lt;geometry&gt;
+        &lt;box size=".4 .2 .1"/&gt;
+      &lt;/geometry&gt;
+    &lt;/visual&gt;
+
+
+    &lt;collision name='back_caster_collision'&gt;
+      &lt;origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/&gt;
+      &lt;geometry&gt;
+        &lt;sphere radius="0.0499"/&gt;
+      &lt;/geometry&gt;
+    &lt;/collision&gt;
+
+    &lt;visual name='back_caster_visual'&gt;
+      &lt;origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/&gt;
+      &lt;geometry&gt;
+        &lt;sphere radius="0.05"/&gt;
+      &lt;/geometry&gt;
+    &lt;/visual&gt;
+
+    &lt;collision name='front_caster_collision'&gt;
+      &lt;origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/&gt;
+      &lt;geometry&gt;
+        &lt;sphere radius="0.0499"/&gt;
+      &lt;/geometry&gt;
+    &lt;/collision&gt;
+
+    &lt;visual name='front_caster_visual'&gt;
+      &lt;origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/&gt;
+      &lt;geometry&gt;
+        &lt;sphere radius="0.05"/&gt;
+      &lt;/geometry&gt;
+    &lt;/visual&gt;
+
+  &lt;/link&gt;
+
+&lt;/robot&gt;</code></pre>
+         <p>
+          We have a single link, with the
+          <code>
+           name
+          </code>
+          defined as "chassis", encompassing the base as well as the caster wheels. Every link has specific elements, such as the
+          <code>
+           inertial
+          </code>
+          or the
+          <code>
+           collision
+          </code>
+          elements. You can quickly review the details of these elements covered in the previous section. The chassis is a cube, whereas the casters are spherical, as denoted by their
+          <code>
+           &lt;geometry&gt;
+          </code>
+          tags. Each link (or joint) has an origin (or pose), as well. Every element of that link or joint will have its own origin, which will be relative to the link's frame of reference.
+         </p>
+         <p>
+          For this base, the casters are included as part of the link for stability. There is no need for any additional links to define the casters, and therefore no joints to connect them. The casters do, however, have
+          <code>
+           friction
+          </code>
+          coefficients defined for them. These friction coefficients are set to 0, to allow for free motion while moving.
+         </p>
+         <h2 id="launch-the-robot">
+          Launch the Robot
+         </h2>
+         <p>
+          Now that you’ve built the basic robot model, let’s create a launch file to load it inside an empty Gazebo world.
+         </p>
+         <p>
+          <strong>
+           1- Create a new launch file to load the
+           <code>
+            URDF
+           </code>
+           model file
+          </strong>
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/my_robot/launch/
+$ touch robot_description.launch</code></pre>
+         <p>
+          <strong>
+           2- Copy the following code into
+           <code>
+            robot_description.launch
+           </code>
+           file
+          </strong>
+         </p>
+         <pre><code>&lt;?xml version="1.0"?&gt;
+&lt;launch&gt;
+
+  &lt;!-- send urdf to param server --&gt;
+  &lt;param name="robot_description" command="$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'" /&gt;
+
+&lt;/launch&gt;</code></pre>
+         <p>
+          To generate the URDF file from the Xacro file, you must first define a parameter,
+          <code>
+           robot_description
+          </code>
+          . This parameter will set a single command to use the
+          <a href="http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File" rel="noopener noreferrer" target="_blank">
+           xacro package
+          </a>
+          to generate the URDF from the xacro file.
+         </p>
+         <h3 id="3--update-the-worldlaunch-file-created-earlier-so-that-gazebo-can-load-the-robot-urdf-model">
+          3- Update the
+          <code>
+           world.launch
+          </code>
+          file created earlier so that Gazebo can load the robot
+          <code>
+           URDF
+          </code>
+          model
+         </h3>
+         <p>
+          Add the following to the launch file (after
+          <code>
+           &lt;launch&gt;
+          </code>
+          ):
+         </p>
+         <pre><code>  &lt;!-- Robot pose --&gt;
+  &lt;arg name="x" default="0"/&gt;
+  &lt;arg name="y" default="0"/&gt;
+  &lt;arg name="z" default="0"/&gt;
+  &lt;arg name="roll" default="0"/&gt;
+  &lt;arg name="pitch" default="0"/&gt;
+  &lt;arg name="yaw" default="0"/&gt;
+
+  &lt;!-- Launch other relevant files--&gt;
+  &lt;include file="$(find my_robot)/launch/robot_description.launch"/&gt;</code></pre>
+         <p>
+          <strong>
+           Note: If you have copied your gazebo world from Project 1 then you could skip this step, since you already have
+           <code>
+            my_robot
+           </code>
+           in your Gazebo world.
+          </strong>
+         </p>
+         <p>
+          Add the following to the launch file (before
+          <code>
+           &lt;/launch&gt;
+          </code>
+          ):
+         </p>
+         <pre><code>&lt;!-- Find my robot Description--&gt;
+  &lt;param name="robot_description" command="$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'"/&gt;
+
+  &lt;!-- Spawn My Robot --&gt;
+  &lt;node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+        args="-urdf -param robot_description -model my_robot 
+              -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/&gt;</code></pre>
+         <p>
+          The
+          <a href="http://wiki.ros.org/gazebo_ros" rel="noopener noreferrer" target="_blank">
+           gazebo_ros package
+          </a>
+          spawns the model from the URDF that
+          <code>
+           robot_description
+          </code>
+          helps generate.
+         </p>
+         <h2 id="launch">
+          Launch
+         </h2>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ catkin_make
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch</code></pre>
+         <p>
+          <strong>
+           Note
+          </strong>
+          : Launching Gazebo for the first time with a model can take time for everything to load up.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these steps to model a basic robot with a URDF file
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--0" type="checkbox"/>
+            <label for="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--0">
+             <p>
+              URDF file setup: Create a
+              <code>
+               urdf
+              </code>
+              directory in
+              <code>
+               my_robot
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--1" type="checkbox"/>
+            <label for="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--1">
+             <p>
+              URDF file setup: Create the robot
+              <code>
+               xacro
+              </code>
+              file inside the
+              <code>
+               urdf
+              </code>
+              directory
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--2" type="checkbox"/>
+            <label for="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--2">
+             <p>
+              Launch file setup: Create a
+              <code>
+               robot_description.launch
+              </code>
+              file to load the robot model
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--3" type="checkbox"/>
+            <label for="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--3">
+             <p>
+              Launch file setup: Update the
+              <code>
+               world.launch
+              </code>
+              file created earlier to spawn the model
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--4" type="checkbox"/>
+            <label for="1142b4f4-f3a9-489c-920f-1bc32e49a9eb--4">
+             <p>
+              Launch: Launch the
+              <code>
+               world.launch
+              </code>
+              file and visualize the basic robot model in a Gazebo empty world
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="06. Robot Enhancements.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Robot Basic Setup')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,408 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Look Away: Build, Launch and Interact
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          14. Look Away: Build, Launch and Interact
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="look-away-build-launch-and-interact">
+          Look Away: Build, Launch and Interact
+         </h1>
+         <h2 id="modifying-cmakeliststxt">
+          Modifying CMakeLists.txt
+         </h2>
+         <p>
+          Before compiling the
+          <code>
+           look_away.cpp
+          </code>
+          code, you have to include instructions for the compiler. As a reminder, for every C++ ROS node you write, you have to add its dependencies in
+          <code>
+           CMakeLists.txt file
+          </code>
+          . Open the
+          <code>
+           simple_arm
+          </code>
+          package’s
+          <code>
+           CMakeLists.txt
+          </code>
+          file, located in
+          <code>
+           /home/workspace/catkin_ws/src/simple_arm/
+          </code>
+          , and add the following instructions at the bottom of the file:
+         </p>
+         <pre><code class="html language-html">add_executable(look_away src/look_away.cpp)
+target_link_libraries(look_away ${catkin_LIBRARIES})
+add_dependencies(look_away simple_arm_generate_messages_cpp)</code></pre>
+         <h2 id="building-the-package">
+          Building the package
+         </h2>
+         <p>
+          Now that you’ve written the
+          <code>
+           look_away
+          </code>
+          C++ script, and included specific instructions for your compiler, let’s build the package:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ catkin_make</code></pre>
+         <h2 id="launching-the-nodes">
+          Launching the nodes
+         </h2>
+         <p>
+          You can now launch and interact with
+          <code>
+           simple_arm
+          </code>
+          just as before:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch simple_arm robot_spawn.launch</code></pre>
+         <h2 id="interacting-with-the-arm">
+          Interacting with the arm
+         </h2>
+         <p>
+          After launching, the arm should move away from the grey sky and look towards the blocks. To view the camera image stream, you can use the same command as before:
+         </p>
+         <pre><code class="sh language-sh">$ rqt_image_view /rgb_camera/image_raw</code></pre>
+         <p>
+          To check that everything is working as expected, open a new terminal and send a service call to point the arm directly up towards the sky (note that the line break in the message is necessary):
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rosservice call /arm_mover/safe_move "joint_1: 0
+joint_2: 0"</code></pre>
+         <h2 id="look_away-github-branch">
+          <code>
+           look_away
+          </code>
+          GitHub branch
+         </h2>
+         <p>
+          You can always download a copy of this lab that includes all three nodes by visiting
+          <a href="https://github.com/udacity/RoboND-simple_arm/" rel="noopener noreferrer" target="_blank">
+           the GitHub repo
+          </a>
+          .
+         </p>
+         <p>
+          What happens?
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Look Away: Build, Launch and Interact
+         </p>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Check all the things that happen to the arm after executing the
+             <code>
+              rosservice
+             </code>
+             call above:
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="rbk1" name="778171" type="checkbox" value="rbk1"/>
+           <label for="rbk1">
+            <p>
+             The arm moves to point towards the sky.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk2" name="778171" type="checkbox" value="rbk2"/>
+           <label for="rbk2">
+            <p>
+             The arm does not move.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk3" name="778171" type="checkbox" value="rbk3"/>
+           <label for="rbk3">
+            <p>
+             The arm points back to toward the blocks.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk4" name="778171" type="checkbox" value="rbk4"/>
+           <label for="rbk4">
+            <p>
+             The arm stops when pointing at the sky and does not move again.
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            The arm moves to point towards the sky.
+           </li>
+           <li>
+            The arm points back to toward the blocks.
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="15. Pub-Sub Class.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('14. Look Away: Build, Launch and Interact')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,157 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.144
+Here, I'll step through a C++ code for the simple mover node,
+
+00:00:05.144 --> 00:00:07.064
+and explain what's happening.
+
+00:00:07.065 --> 00:00:12.285
+First, the ROS header file is the official client library for us.
+
+00:00:12.285 --> 00:00:15.630
+It provides most of the fundamental functionality
+
+00:00:15.630 --> 00:00:19.649
+required for interfacing with ROS via C++.
+
+00:00:19.649 --> 00:00:22.019
+It has tools for creating nodes,
+
+00:00:22.019 --> 00:00:26.535
+and interfacing with topics, services, and parameters.
+
+00:00:26.535 --> 00:00:29.190
+From the STD messages package,
+
+00:00:29.190 --> 00:00:32.039
+we import the Float 64 header file.
+
+00:00:32.039 --> 00:00:36.969
+This package contains the primitive messages types in ROS.
+
+00:00:36.969 --> 00:00:44.524
+Later, you will publish Float 64 messages to the position command topics for each joint.
+
+00:00:44.524 --> 00:00:46.670
+Inside the main function,
+
+00:00:46.670 --> 00:00:48.500
+the ROS node is initialized,
+
+00:00:48.500 --> 00:00:50.719
+and registered with ROS master.
+
+00:00:50.719 --> 00:00:53.524
+Arm mover is the name of the node.
+
+00:00:53.524 --> 00:00:58.723
+Notice that the main function takes both argc and argv arguments,
+
+00:00:58.723 --> 00:01:01.619
+and pass them to the int function.
+
+00:01:01.619 --> 00:01:08.765
+Then, a NodeHandle object n is instantiated from the NodeHandle class.
+
+00:01:08.765 --> 00:01:12.019
+This NodeHandle object will fully initialize
+
+00:01:12.019 --> 00:01:16.729
+the node and permits it to communicate with the ROS master.
+
+00:01:16.730 --> 00:01:19.685
+Next, two publishers are declared.
+
+00:01:19.685 --> 00:01:23.585
+One for the joint one commands and one for the joint two commands.
+
+00:01:23.584 --> 00:01:26.779
+The NoteHandle tells the ROS master that
+
+00:01:26.780 --> 00:01:30.844
+a Float 64 message will be published on the joint topic.
+
+00:01:30.844 --> 00:01:33.739
+The NodeHandle also set the queue size to
+
+00:01:33.739 --> 00:01:37.884
+10 using the second argument of the advertised function.
+
+00:01:37.885 --> 00:01:43.125
+Following, the loop rate object sets a frequency of 10 Hertz.
+
+00:01:43.125 --> 00:01:48.500
+Rates are used in ROS to limit the frequency at which certain loops cycle.
+
+00:01:48.500 --> 00:01:51.724
+Choosing array that is too high may result in
+
+00:01:51.724 --> 00:01:58.324
+unnecessary CPU usage while choosing a value too low could result in high system latency.
+
+00:01:58.325 --> 00:02:04.930
+Choosing sensible values for all of the nodes in a ROS system is a bit of a fine art.
+
+00:02:04.930 --> 00:02:07.695
+Next, we set start time.
+
+00:02:07.694 --> 00:02:12.064
+In a moment, we will use this to measure how much time has elapsed.
+
+00:02:12.064 --> 00:02:15.979
+When using ROS, we simulated time as we're doing here,
+
+00:02:15.979 --> 00:02:19.429
+ROS time now with initially return zero until
+
+00:02:19.430 --> 00:02:23.330
+the first message has been received on the clock topic.
+
+00:02:23.330 --> 00:02:31.160
+This is why start time is set and pulled continuously until a non zero value is returned.
+
+00:02:31.159 --> 00:02:32.900
+In the main loop,
+
+00:02:32.900 --> 00:02:35.990
+the elapsed time is evaluated by measuring
+
+00:02:35.990 --> 00:02:39.860
+the current time and then subtracting the start time.
+
+00:02:39.860 --> 00:02:45.200
+The joint angles are sampled from a sine wave with a period of 10 seconds,
+
+00:02:45.199 --> 00:02:49.819
+and a magnitude from minus PI over two to plus PI over two.
+
+00:02:49.819 --> 00:02:52.759
+Each trip through the body of the loop will result
+
+00:02:52.759 --> 00:02:55.834
+in two joint command messages being published.
+
+00:02:55.835 --> 00:02:58.270
+Due to the call to rate.sleep(),
+
+00:02:58.270 --> 00:03:01.835
+the loop is traversed at approximately 10 Hertz.
+
+00:03:01.835 --> 00:03:05.420
+When the node receives the signal to shut down either from
+
+00:03:05.419 --> 00:03:09.530
+the ROS master or via signal in a console window,
+
+00:03:09.530 --> 00:03:11.030
+the loop will exit.
+
+00:03:11.030 --> 00:03:13.129
+Before you are able to launch the node,
+
+00:03:13.129 --> 00:03:16.680
+you still have to compile the C++ source code.
+

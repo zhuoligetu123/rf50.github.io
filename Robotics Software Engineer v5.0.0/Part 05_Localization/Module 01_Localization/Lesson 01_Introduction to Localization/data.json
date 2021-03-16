@@ -1,0 +1,186 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462507,
+      "key": "57ae3c4d-6b31-4d2f-9188-ec17c73aa1cd",
+      "title": "Introduction to Localization",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Introduction to the localization concept and the algorithms",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/57ae3c4d-6b31-4d2f-9188-ec17c73aa1cd/462507/1544270073547/Introduction+to+Localization+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/57ae3c4d-6b31-4d2f-9188-ec17c73aa1cd/462507/1544270071211/Introduction+to+Localization+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 462534,
+          "key": "b1045faa-5058-4f1a-b2c7-82d741eece07",
+          "title": "Localization in Robotics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1045faa-5058-4f1a-b2c7-82d741eece07",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 522247,
+              "key": "4de91222-7541-4075-b20a-cd6f7ab71ca7",
+              "title": "Localization in Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AcZY7n8XPZo",
+                "china_cdn_id": "AcZY7n8XPZo.mp4"
+              }
+            },
+            {
+              "id": 498541,
+              "key": "4068571d-f42c-4052-be10-fae7f8f3b976",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Resources for Additional Localization Knowledge:**\n\nTextbook: [Probabilistic Robotics](http://www.probabilistic-robotics.org/) by Sebastian Thrun,‎ Wolfram Burgard,‎ and Dieter Fox.\n\nUdacity's [AI for Robotics](https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373) Free Course\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 462535,
+          "key": "026772a0-b0a9-4b7e-ab9d-b66cfd3f9124",
+          "title": "Localization Challenges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "026772a0-b0a9-4b7e-ab9d-b66cfd3f9124",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518408,
+              "key": "8f0f2d41-eb19-432a-96bc-be3338b7c816",
+              "title": "Localization Challenges",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "J_ggwD8zip0",
+                "china_cdn_id": "J_ggwD8zip0.mp4"
+              }
+            },
+            {
+              "id": 498542,
+              "key": "f64cbc81-3d97-4508-9112-c3f6a663a47c",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f64cbc81-3d97-4508-9112-c3f6a663a47c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all of the correct statements regarding localization.",
+                "answers": [
+                  {
+                    "id": "a1515191973781",
+                    "text": "In position tracking, the robot's initial pose is unknown.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1515191986555",
+                    "text": "In global localization, the robot's initial pose is unknown.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1515191987048",
+                    "text": "The position tracking problem is easier to solve than the global localization one. ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1515192006348",
+                    "text": "In the kidnapped robot problem, the robot is teleported to a different location.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1515192057081",
+                    "text": "The global localization problem is harder to solve than the kidnapped robot problem.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 518409,
+              "key": "6e7ee5b5-7dc2-4136-b644-e401815d5a01",
+              "title": "Localization Challenges Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2W60lfPQYZY",
+                "china_cdn_id": "2W60lfPQYZY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 462536,
+          "key": "458cf51e-d422-4e00-87e5-96a1f93a2b45",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "458cf51e-d422-4e00-87e5-96a1f93a2b45",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518410,
+              "key": "dbc83866-e7d2-4955-aa38-b45b8af7d396",
+              "title": "Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NV1j739Tlw8",
+                "china_cdn_id": "NV1j739Tlw8.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

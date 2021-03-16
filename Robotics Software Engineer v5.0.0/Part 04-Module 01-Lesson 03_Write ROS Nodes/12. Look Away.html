@@ -1,0 +1,327 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Look Away
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          12. Look Away
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="look-away">
+          Look Away
+         </h1>
+         <h2 id="description-of-look-away">
+          Description of Look Away
+         </h2>
+         <p>
+          To see a ROS
+          <strong>
+           subscriber
+          </strong>
+          and
+          <strong>
+           client
+          </strong>
+          in action, you'll write a node called
+          <code>
+           look_away
+          </code>
+          . The
+          <code>
+           look_away
+          </code>
+          node will subscribe to the
+          <code>
+           /rgb_camera/image_raw
+          </code>
+          topic, which has image data from the camera mounted on the end of the robotic arm. Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a
+          <code>
+           safe_move
+          </code>
+          service to safely move the arm to something more interesting. There are a few extra pieces in the code to ensure that this procedure is executed smoothly, but we’ll focus on those later.
+         </p>
+         <h2 id="updating-the-launch-file">
+          Updating the launch file
+         </h2>
+         <p>
+          Just as you did with the
+          <code>
+           arm_mover
+          </code>
+          node, to get
+          <code>
+           look_away
+          </code>
+          to launch with the rest of the nodes, you will need to modify
+          <code>
+           robot_spawn.launch
+          </code>
+          , which can be found in
+          <code>
+           /home/workspace/catkin_ws/src/simple_arm/launch
+          </code>
+          . You can add the following code there:
+         </p>
+         <pre><code class="xml language-xml">  &lt;!-- The look away node --&gt;
+  &lt;node name="look_away" type="look_away" pkg="simple_arm"/&gt;</code></pre>
+         <p>
+          Remember that a half turn of a joint requires pi/2 radians of revolution. Numerically, pi/2 is approximately 1.57. Since we want to be able to revolve a joint halfway around with one request, it will be helpful to set
+          <code>
+           max_joint_2_angle: 1.57
+          </code>
+          in
+          <code>
+           arm_mover
+          </code>
+          :
+         </p>
+         <pre><code class="xml language-xml">  &lt;!-- The arm mover node --&gt;
+  &lt;node name="arm_mover" type="arm_mover" pkg="simple_arm"&gt;
+    &lt;rosparam&gt;
+      min_joint_1_angle: 0
+      max_joint_1_angle: 1.57
+      min_joint_2_angle: 0
+      max_joint_2_angle: 1.57
+    &lt;/rosparam&gt;
+  &lt;/node&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="13. Look Away The Code.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Look Away')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

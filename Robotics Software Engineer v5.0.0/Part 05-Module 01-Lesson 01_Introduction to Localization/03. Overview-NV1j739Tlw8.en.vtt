@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.000
+In this module, you will learn about the application and
+
+00:00:03.000 --> 00:00:06.769
+implementation of the two most common localization algorithms.
+
+00:00:06.769 --> 00:00:09.209
+You will start by learning about the Kalman Filter,
+
+00:00:09.210 --> 00:00:12.685
+a very robust algorithm for filtering noisy sensor data.
+
+00:00:12.685 --> 00:00:15.435
+You will code the Kalman Filter in C++,
+
+00:00:15.435 --> 00:00:18.870
+and you'll then learn about the algorithm's limitations and how they can be
+
+00:00:18.870 --> 00:00:23.789
+overcome with a variation of the algorithm called the Extended Kalman Filter.
+
+00:00:23.789 --> 00:00:27.419
+Then, there'll be a lab in which you'll be introduced to sensor fusion,
+
+00:00:27.420 --> 00:00:30.330
+the process of combining data from multiple sensors to
+
+00:00:30.329 --> 00:00:34.019
+calculate the most accurate estimate of a measured value.
+
+00:00:34.020 --> 00:00:35.905
+You'll then use your knowledge and apply
+
+00:00:35.905 --> 00:00:41.149
+sensor fusion Extended Kalman Filter package with ROS to estimate the robot's pose.
+
+00:00:41.149 --> 00:00:44.129
+Moving on, you'll learn the Monte Carlo Localization.
+
+00:00:44.130 --> 00:00:51.405
+MCL uses particle filters to track your robot pose and present many advantages over EKF.
+
+00:00:51.405 --> 00:00:53.164
+After learning the MCL algorithm,
+
+00:00:53.164 --> 00:00:58.604
+you'll code in C++ to generate particles and localize your robot in a 2D map.
+
+00:00:58.604 --> 00:01:02.899
+And you'll visualize how particles can estimate your robot's pose.
+
+00:01:02.899 --> 00:01:07.079
+Finally, you'll build and customize your mobile robot in Gazebo.
+
+00:01:07.079 --> 00:01:10.349
+And you'll be tracking your robot pose while it navigates in a map
+
+00:01:10.349 --> 00:01:14.500
+using the adaptive Monte Carlo Localization package in ROS.
+
+00:01:14.500 --> 00:01:18.000
+Well, what are we waiting for? Let's get started.
+

@@ -1,0 +1,851 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Robot Sensors
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Go Chase It!
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Workspace.html">
+       02. ROS in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Setting up my_robot.html">
+       03. Setting up my_robot
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Understanding URDF.html">
+       04. Understanding URDF
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Robot Basic Setup.html">
+       05. Robot Basic Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Enhancements.html">
+       06. Robot Enhancements
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Robot Sensors.html">
+       07. Robot Sensors
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Gazebo Plugins.html">
+       08. Gazebo Plugins
+      </a>
+     </li>
+     <li class="">
+      <a href="09. RViz Basics.html">
+       09. RViz Basics
+      </a>
+     </li>
+     <li class="">
+      <a href="10. RViz Integration.html">
+       10. RViz Integration
+      </a>
+     </li>
+     <li class="">
+      <a href="11. House your Robot.html">
+       11. House your Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Setting up ball_chaser.html">
+       12. Setting up ball_chaser
+      </a>
+     </li>
+     <li class="">
+      <a href="13. ROS Node drive_bot.html">
+       13. ROS Node: drive_bot
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Model a White Ball.html">
+       14. Model a White Ball
+      </a>
+     </li>
+     <li class="">
+      <a href="15. ROS Node process_image.html">
+       15. ROS Node: process_image
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Go Chase It!.html">
+       Project Description - Go Chase It!
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Go Chase It!.html">
+       Project Rubric - Go Chase It!
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. Robot Sensors
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="robot-sensors">
+          Robot Sensors
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Earlier, you built a very basic robot model by creating its own URDF file. Then, you enhanced the model and added a wheel and a joint on each side of the chassis. Now, it’s time to add sensors to our robot so it can perceive its surroundings. You’ll add two sensors - a
+          <strong>
+           camera
+          </strong>
+          and a
+          <strong>
+           lidar
+          </strong>
+          .
+         </p>
+         <h2 id="sensors">
+          Sensors
+         </h2>
+         <p>
+          <strong>
+           Camera:
+          </strong>
+          Cameras are one of the most common sensors in Robotics. They capture information that is easily interpreted by humans at a high resolution compared to other sensors. Every image captures millions of pixels. To extract depth information from camera images, people have started using stereo cameras. These work like your eyes do and are able to estimate distances to objects.
+         </p>
+         <p>
+          <strong>
+           Lidar:
+          </strong>
+          Lidar stands for Light Detection and Ranging. It uses arrays of lasers to sense “point cloud” models of the environment. By measuring thousands of millions of times per second, lidar builds an accurate model of the world. However, the resolution is not nearly as high as that of a camera.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/robot-enhanced-with-sensors.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="add-a-camera">
+          Add a
+          <strong>
+           Camera
+          </strong>
+         </h2>
+         <p>
+          First, add the camera link and a corresponding joint. Open the
+          <code>
+           my_robot.xacro
+          </code>
+          file and add a camera sensor based on the following specifications:
+         </p>
+         <ul>
+          <li>
+           <p>
+            <code>
+             link name
+            </code>
+            - "camera"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             link origin
+            </code>
+            - "[0, 0, 0, 0, 0, 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             geometry
+            </code>
+            - box with size "[0.05, 0.05, 0.05]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             mass
+            </code>
+            - "0.1"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             box_inertia
+            </code>
+            - m="0.1" x="0.05" y="0.05" z="0.05"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             inertia
+            </code>
+            - ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint name
+            </code>
+            - "camera_joint"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint type
+            </code>
+            - "fixed"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint axis
+            </code>
+            - "[0, 1, 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint origin
+            </code>
+            - "[0.2, 0, 0, 0, 0, 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint parent link
+            </code>
+            - "chassis"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint child link
+            </code>
+            - "camera"
+           </p>
+          </li>
+         </ul>
+         <p>
+          As we covered in the previous section, each link should have its own
+          <code>
+           visual
+          </code>
+          ,
+          <code>
+           collision
+          </code>
+          and
+          <code>
+           inertial
+          </code>
+          elements.
+         </p>
+         <h2 id="add-a-lidar">
+          Add a
+          <strong>
+           Lidar
+          </strong>
+         </h2>
+         <p>
+          Now, let's add the lidar sensor. ROS supports many different types of
+          <a href="http://wiki.ros.org/Sensors#A2D_range_finders" rel="noopener noreferrer" target="_blank">
+           sensors
+          </a>
+          . One of them, that you will use for this robot and for the project, is the Hokuyo rangefinder sensor.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/hokuyo-lidar-sensor.jpg"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The Hokuyo sensor can be added to your robot model just like the camera sensor, except that you first need to add a mesh file to your robot model. Mesh files define the shape of the object or model you are working with. There are some basic shapes, like the box or cylinder, that do not require a mesh file. However, for more advanced designs, mesh files are necessary. The mesh file should be located in a directory called
+          <code>
+           meshes
+          </code>
+          that you can create in your package folder,
+          <code>
+           my_robot
+          </code>
+          .
+         </p>
+         <p>
+          <strong>
+           1- Create
+           <code>
+            meshes
+           </code>
+           directory
+          </strong>
+         </p>
+         <p>
+          Let’s create a
+          <code>
+           meshes
+          </code>
+          directory in
+          <code>
+           my_robot
+          </code>
+          to hold sensor mesh files:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/my_robot/
+$ mkdir meshes</code></pre>
+         <p>
+          <strong>
+           2- Now, download this
+           <a href="https://s3-us-west-1.amazonaws.com/udacity-robotics/hokuyo.dae" rel="noopener noreferrer" target="_blank">
+            hokuyo.dae
+           </a>
+           file and place it under the
+           <code>
+            meshes
+           </code>
+           directory you just created.
+          </strong>
+         </p>
+         <p>
+          Wondering where I got the mesh file for the Hokuyo sensor? Gazebo shares the mesh files for its
+          <a href="http://models.gazebosim.org/" rel="noopener noreferrer" target="_blank">
+           entire library of models
+          </a>
+          .
+         </p>
+         <p>
+          <strong>
+           3- Add the Hokuyo sensor to
+           <code>
+            my_robot.xacro
+           </code>
+          </strong>
+         </p>
+         <p>
+          Here are the Hokuyo lidar sensor specifications:
+         </p>
+         <ul>
+          <li>
+           <p>
+            <code>
+             link name
+            </code>
+            - "hokuyo"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             link origin
+            </code>
+            - "[0, 0, 0, 0, 0, 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             geometry
+            </code>
+            for
+            <code>
+             &lt;collision&gt;
+            </code>
+            - box with size "[0.1, 0.1, 0.1]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             geometry
+            </code>
+            for
+            <code>
+             &lt;visual&gt;
+            </code>
+            - filename = “package://my_robot/meshes/hokuyo.dae”
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             mass
+            </code>
+            - "1e-5"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             inertia
+            </code>
+            - ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint name
+            </code>
+            - "hokuyo_joint"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint type
+            </code>
+            - "fixed"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint axis
+            </code>
+            - "[0 1 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint origin
+            </code>
+            - "[0.15, 0, .1, 0, 0, 0]"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint parent link
+            </code>
+            - "chassis"
+           </p>
+          </li>
+          <li>
+           <p>
+            <code>
+             joint child link
+            </code>
+            - "hokuyo"
+           </p>
+          </li>
+         </ul>
+         <p>
+          As we covered in the previous section, each link should have its own
+          <code>
+           visual
+          </code>
+          ,
+          <code>
+           collision
+          </code>
+          and
+          <code>
+           inertial
+          </code>
+          elements.
+         </p>
+         <h2 id="launch">
+          Launch
+         </h2>
+         <p>
+          Excellent work! You created a robot model and added sensors to it. Now you can test your updated model in Gazebo:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch</code></pre>
+         <p>
+          Now, let's see what your model looks like!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/gazebo-robot-color.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Wait, something's definitely wrong here.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Robot Sensors
+         </p>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             What element would you have to add to your Xacro file to give your robot some color?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="rbk1" name="781627" type="radio" value="rbk1"/>
+           <label for="rbk1">
+            <p>
+             material
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk2" name="781627" type="radio" value="rbk2"/>
+           <label for="rbk2">
+            <p>
+             model
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk3" name="781627" type="radio" value="rbk3"/>
+           <label for="rbk3">
+            <p>
+             light
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          material
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these steps to add two sensors to your robot:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--0" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--0">
+             <p>
+              Camera: Create a camera link with a collision, inertial, and visual element
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--1" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--1">
+             <p>
+              Camera: Create a camera joint
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--2" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--2">
+             <p>
+              Lidar: Create a
+              <code>
+               meshes
+              </code>
+              directory in
+              <code>
+               my_robot
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--3" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--3">
+             <p>
+              Lidar: Add
+              <code>
+               hokuyo.dae
+              </code>
+              to
+              <code>
+               meshes
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--4" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--4">
+             <p>
+              Lidar: Create a Hokuyo link with a collision, inertial, and visual element
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--5" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--5">
+             <p>
+              Lidar: Create a Hokuyo joint
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--6" type="checkbox"/>
+            <label for="1c82c347-085f-4bf9-a7ea-2fe31e7280ed--6">
+             <p>
+              Launch: Launch
+              <code>
+               empty.world
+              </code>
+              file and visualize the robot’s newest features
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Gazebo Plugins.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Robot Sensors')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

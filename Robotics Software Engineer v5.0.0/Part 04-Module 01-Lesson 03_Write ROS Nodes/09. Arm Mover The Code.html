@@ -1,0 +1,607 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Arm Mover: The Code
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          09. Arm Mover: The Code
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="arm-mover-the-code">
+          Arm Mover: The Code
+         </h1>
+         <h2 id="creating-the-empty-arm_mover-node-script">
+          Creating the empty
+          <code>
+           arm_mover
+          </code>
+          node script
+         </h2>
+         <p>
+          The steps that you should take to create the
+          <code>
+           arm_mover
+          </code>
+          node are exactly the same as the steps you took to create the
+          <code>
+           simple_mover
+          </code>
+          node, except the actual name of the node itself.
+         </p>
+         <p>
+          Open a new terminal, and type the following:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/simple_arm/src/
+$ gedit arm_mover.cpp</code></pre>
+         <p>
+          You have created and opened the C++
+          <code>
+           arm_mover
+          </code>
+          source code with the
+          <strong>
+           gedit
+          </strong>
+          editor. Now copy and paste the code below into the source code and save the file.
+         </p>
+         <h2 id="arm_movercpp">
+          arm_mover.cpp
+         </h2>
+         <pre><code class="C++ language-C++">#include "ros/ros.h"
+#include "simple_arm/GoToPosition.h"
+#include &lt;std_msgs/Float64.h&gt;
+
+// Global joint publisher variables
+ros::Publisher joint1_pub, joint2_pub;
+
+// This function checks and clamps the joint angles to a safe zone
+std::vector&lt;float&gt; clamp_at_boundaries(float requested_j1, float requested_j2)
+{
+    // Define clamped joint angles and assign them to the requested ones
+    float clamped_j1 = requested_j1;
+    float clamped_j2 = requested_j2;
+
+    // Get min and max joint parameters, and assigning them to their respective variables
+    float min_j1, max_j1, min_j2, max_j2;
+    // Assign a new node handle since we have no access to the main one
+    ros::NodeHandle n2;
+    // Get node name
+    std::string node_name = ros::this_node::getName();
+    // Get joints min and max parameters
+    n2.getParam(node_name + "/min_joint_1_angle", min_j1);
+    n2.getParam(node_name + "/max_joint_1_angle", max_j1);
+    n2.getParam(node_name + "/min_joint_2_angle", min_j2);
+    n2.getParam(node_name + "/max_joint_2_angle", max_j2);
+
+    // Check if joint 1 falls in the safe zone, otherwise clamp it
+    if (requested_j1 &lt; min_j1 || requested_j1 &gt; max_j1) {
+        clamped_j1 = std::min(std::max(requested_j1, min_j1), max_j1);
+        ROS_WARN("j1 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f", min_j1, max_j1, clamped_j1);
+    }
+    // Check if joint 2 falls in the safe zone, otherwise clamp it
+    if (requested_j2 &lt; min_j2 || requested_j2 &gt; max_j2) {
+        clamped_j2 = std::min(std::max(requested_j2, min_j2), max_j2);
+        ROS_WARN("j2 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f", min_j2, max_j2, clamped_j2);
+    }
+
+    // Store clamped joint angles in a clamped_data vector
+    std::vector&lt;float&gt; clamped_data = { clamped_j1, clamped_j2 };
+
+    return clamped_data;
+}
+
+// This callback function executes whenever a safe_move service is requested
+bool handle_safe_move_request(simple_arm::GoToPosition::Request&amp; req,
+    simple_arm::GoToPosition::Response&amp; res)
+{
+
+    ROS_INFO("GoToPositionRequest received - j1:%1.2f, j2:%1.2f", (float)req.joint_1, (float)req.joint_2);
+
+    // Check if requested joint angles are in the safe zone, otherwise clamp them
+    std::vector&lt;float&gt; joints_angles = clamp_at_boundaries(req.joint_1, req.joint_2);
+
+    // Publish clamped joint angles to the arm
+    std_msgs::Float64 joint1_angle, joint2_angle;
+
+    joint1_angle.data = joints_angles[0];
+    joint2_angle.data = joints_angles[1];
+
+    joint1_pub.publish(joint1_angle);
+    joint2_pub.publish(joint2_angle);
+
+    // Wait 3 seconds for arm to settle
+    ros::Duration(3).sleep();
+
+    // Return a response message
+    res.msg_feedback = "Joint angles set - j1: " + std::to_string(joints_angles[0]) + " , j2: " + std::to_string(joints_angles[1]);
+    ROS_INFO_STREAM(res.msg_feedback);
+
+    return true;
+}
+
+int main(int argc, char** argv)
+{
+    // Initialize the arm_mover node and create a handle to it
+    ros::init(argc, argv, "arm_mover");
+    ros::NodeHandle n;
+
+    // Define two publishers to publish std_msgs::Float64 messages on joints respective topics
+    joint1_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_1_position_controller/command", 10);
+    joint2_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_2_position_controller/command", 10);
+
+    // Define a safe_move service with a handle_safe_move_request callback function
+    ros::ServiceServer service = n.advertiseService("/arm_mover/safe_move", handle_safe_move_request);
+    ROS_INFO("Ready to send joint commands");
+
+    // Handle ROS communication events
+    ros::spin();
+
+    return 0;
+}</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Arm Mover: The Code
+         </p>
+        </h3>
+        <video controls="">
+         <source src="09. Arm Mover The Code-TjYL_qmr_kg.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="09. Arm Mover The Code-TjYL_qmr_kg.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="the-code-explained">
+          The code: Explained
+         </h2>
+         <pre><code class="C++ language-C++">#include "ros/ros.h"
+#include "simple_arm/GoToPosition.h"
+#include &lt;std_msgs/Float64.h&gt;</code></pre>
+         <p>
+          The included modules for
+          <code>
+           arm_mover
+          </code>
+          are the same as
+          <code>
+           simple_arm
+          </code>
+          , with the exception of one new file. Namely, the
+          <code>
+           GoToPosition.h
+          </code>
+          header file, which is the header file generated from the
+          <code>
+           GoToPosition.srv
+          </code>
+          file we created earlier.
+         </p>
+         <pre><code class="C++ language-C++">ros::init(argc, argv, "arm_mover");
+ros::NodeHandle n;</code></pre>
+         <p>
+          Inside the C++ main function, the
+          <code>
+           arm_mover
+          </code>
+          node is initialized and a ROS NodeHandle object
+          <code>
+           n
+          </code>
+          is instantiated to communicate with ROS.
+         </p>
+         <pre><code class="C++ language-C++">joint1_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_1_position_controller/command", 10);
+joint2_pub = n.advertise&lt;std_msgs::Float64&gt;("/simple_arm/joint_2_position_controller/command", 10);</code></pre>
+         <p>
+          As we did earlier in the
+          <code>
+           simple_arm
+          </code>
+          node, two publisher objects are created to publish joint angles to the arm. These objects are defined globally so as to be easily accessible from all the other functions.
+         </p>
+         <pre><code class="C++ language-C++">ros::ServiceServer service = n.advertiseService("/arm_mover/safe_move", handle_safe_move_request);</code></pre>
+         <p>
+          Next, the
+          <code>
+           GoToPosition
+          </code>
+          service is created with the node name followed by
+          <code>
+           safe_move
+          </code>
+          . Generally, you want to name your services with the node name first to easily find them in large projects. This service is defined with a
+          <code>
+           handle_safe_move_request
+          </code>
+          callback function. The callback function runs when a service request is received.
+         </p>
+         <pre><code class="C++ language-C++">ros::spin();</code></pre>
+         <p>
+          The
+          <code>
+           ros::spin()
+          </code>
+          function simply blocks until a shutdown request is received by the node.
+         </p>
+         <pre><code class="C++ language-C++">bool handle_safe_move_request(simple_arm::GoToPosition::Request&amp; req, simple_arm::GoToPosition::Response&amp; res)</code></pre>
+         <p>
+          When a client sends a
+          <code>
+           GoToPosition
+          </code>
+          request to the
+          <code>
+           safe_move
+          </code>
+          service, either from the terminal or from a separate node the handle_safe_move_request function is called. The function parameter
+          <code>
+           req
+          </code>
+          is of type
+          <code>
+           GoToPosition::Request
+          </code>
+          . And the service response parameter
+          <code>
+           res
+          </code>
+          is of type
+          <code>
+           GoToPosition::Response
+          </code>
+          .
+         </p>
+         <pre><code class="C++ language-C++">std::vector&lt;float&gt; joints_angles = clamp_at_boundaries(req.joint_1, req.joint_2);</code></pre>
+         <p>
+          This function passes the requested angles to the
+          <code>
+           clamp_at_boundaries()
+          </code>
+          function.
+         </p>
+         <pre><code class="C++ language-C++">std::vector&lt;float&gt; clamp_at_boundaries(float requested_j1, float requested_j2)
+{
+    // Define clamped joint angles and assign them to the requested ones
+    float clamped_j1 = requested_j1;
+    float clamped_j2 = requested_j2;
+
+    // Get min and max joint parameters, and assign them to their respective variables
+    float min_j1, max_j1, min_j2, max_j2;
+    // Assign a new node handle since we have no access to the main one
+    ros::NodeHandle n2;
+    // Get node name
+    std::string node_name = ros::this_node::getName();
+    // Get joints min and max parameters
+    n2.getParam(node_name + "/min_joint_1_angle", min_j1);
+    n2.getParam(node_name + "/max_joint_1_angle", max_j1);
+    n2.getParam(node_name + "/min_joint_2_angle", min_j2);
+    n2.getParam(node_name + "/max_joint_2_angle", max_j2);
+
+    // Check if joint 1 falls in the safe zone, otherwise clamp it
+    if (requested_j1 &lt; min_j1 || requested_j1 &gt; max_j1) {
+        clamped_j1 = std::min(std::max(requested_j1, min_j1), max_j1);
+        ROS_WARN("j1 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f", min_j1, max_j1, clamped_j1);
+    }
+    // Check if joint 2 falls in the safe zone, otherwise clamp it
+    if (requested_j2 &lt; min_j2 || requested_j2 &gt; max_j2) {
+        clamped_j2 = std::min(std::max(requested_j2, min_j2), max_j2);
+        ROS_WARN("j2 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f", min_j2, max_j2, clamped_j2);
+    }
+
+    // Store clamped joint angles in a clamped_data vector
+    std::vector&lt;float&gt; clamped_data = { clamped_j1, clamped_j2 };
+
+    return clamped_data;
+}</code></pre>
+         <p>
+          The
+          <code>
+           clamp_at_boundaries()
+          </code>
+          function is responsible for enforcing the minimum and maximum joint angles for each joint. If the joint angles passed in are outside of the operable range, they will be “clamped” to the nearest allowable value. The minimum and maximum joint angles are retrieved from the parameter server each time
+          <code>
+           clamp_at_boundaries
+          </code>
+          is called. The rest of this function simply clamps the joint angle if necessary. Warning messages are logged if the requested joint angles are out of bounds.
+         </p>
+         <pre><code class="C++ language-C++">std_msgs::Float64 joint1_angle, joint2_angle;
+
+joint1_angle.data = joints_angles[0];
+joint2_angle.data = joints_angles[1];
+
+joint1_pub.publish(joint1_angle);
+joint2_pub.publish(joint2_angle);</code></pre>
+         <p>
+          Then, the
+          <code>
+           handle_safe_move_request()
+          </code>
+          function publishes the clamped joint angles to the arm.
+         </p>
+         <pre><code class="C++ language-C++">ros::Duration(3).sleep();</code></pre>
+         <p>
+          The
+          <code>
+           safe_move
+          </code>
+          service will be blocked for 3 seconds so the arm has enough time to move to the requested position.
+         </p>
+         <pre><code class="C++ language-C++">res.msg_feedback = "Joint angles set - j1: " + std::to_string(joints_angles[0]) + " , j2: " + std::to_string(joints_angles[1]);
+ROS_INFO_STREAM(res.msg_feedback);</code></pre>
+         <p>
+          Finally, the
+          <code>
+           safe_move
+          </code>
+          service returns back a message indicating that the arm has moved to its new position and displays the clamped joint angles.
+         </p>
+         <h2 id="next-steps">
+          Next steps
+         </h2>
+         <p>
+          Now that you've written the
+          <code>
+           arm_mover
+          </code>
+          node, the next step is to
+          <strong>
+           build
+          </strong>
+          it,
+          <strong>
+           launch
+          </strong>
+          it, and
+          <strong>
+           test
+          </strong>
+          it out via the command line!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="10. Arm Mover Build, Launch and Interact.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Arm Mover: The Code')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

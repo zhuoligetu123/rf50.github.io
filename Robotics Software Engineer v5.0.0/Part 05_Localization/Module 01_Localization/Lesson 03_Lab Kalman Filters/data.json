@@ -1,0 +1,728 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462509,
+      "key": "72cae9de-deae-4579-93da-7e56bd5021fc",
+      "title": "Lab: Kalman Filters",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to apply an EKF ROS package to a robot to estimate its pose. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/72cae9de-deae-4579-93da-7e56bd5021fc/462509/1544270623842/Lab%3A+Kalman+Filters+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/72cae9de-deae-4579-93da-7e56bd5021fc/462509/1544270620363/Lab%3A+Kalman+Filters+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 466801,
+          "key": "c441aa5d-d615-44ef-9775-95143f9c1753",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c441aa5d-d615-44ef-9775-95143f9c1753",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518607,
+              "key": "8736c5e5-bfb5-4fcb-aa54-556c0450375a",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AwjP4ABJjoo",
+                "china_cdn_id": "AwjP4ABJjoo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 466802,
+          "key": "5a46623e-2d2a-483c-9d04-0fb0cd181a63",
+          "title": "Sensor Fusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a46623e-2d2a-483c-9d04-0fb0cd181a63",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518609,
+              "key": "3cc8d12c-1ffb-42ec-9c57-78586ed673ac",
+              "title": "Sensor Fusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Uc_MUK_olJk",
+                "china_cdn_id": "Uc_MUK_olJk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 466803,
+          "key": "ebdd2049-881b-4399-b202-e9a82040663b",
+          "title": "Catkin Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ebdd2049-881b-4399-b202-e9a82040663b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 477752,
+              "key": "daa4ac7e-0973-4247-8893-f7b6641c8604",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Catkin Workspace\n\nBefore you start downloading the different ROS packages, you need to create a `catkin_ws` to hold them in. If you already have a workspace in your **/home/workspace** directory, it is recommended that you keep a copy of it by renaming it to `catkin_ws_saved`. By doing so, you’ll avoid any possible conflict with pre-installed packages.  \n\n## Udacity Workspace\nFor this lab, you'll get a chance to work in the Udacity Workspace. Thus, move to the next concept, enable GPU, and GO TO DESKTOP. \n\nNow, follow these steps to create your `catkin_ws` and perform a system update: \n\n## Create Catkin Workspace:\n```sh\n$ mkdir -p /home/workspace/catkin_ws/src\n$ cd /home/workspace/catkin_ws/src\n$ catkin_init_workspace\n$ cd ..\n$ catkin_make\n```\n## Perform System Update/Upgrade:\n```sh\n$ apt-get update\n$ apt-get upgrade -y\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 621654,
+          "key": "9ac41e92-5cbb-481e-89f6-25bfa136e311",
+          "title": "Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ac41e92-5cbb-481e-89f6-25bfa136e311",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621656,
+              "key": "d7ef14fd-8bd3-42a8-9fbb-2feead3e12c2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewdfa812fa",
+              "pool_id": "autonomousgpu",
+              "view_id": "dfa812fa-f657-4aa6-988e-107aa96b8668",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 466804,
+          "key": "c917ff5b-38ea-47c3-9b13-8a31fcf70391",
+          "title": "TurtleBot Gazebo Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c917ff5b-38ea-47c3-9b13-8a31fcf70391",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 522242,
+              "key": "5b18bf59-3ae8-42d4-bede-fda980862894",
+              "title": "TurtleBot Gazebo Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "huR9KRtmNAM",
+                "china_cdn_id": "huR9KRtmNAM.mp4"
+              }
+            },
+            {
+              "id": 477756,
+              "key": "812e5b1a-0c45-46c2-b9f2-e1455a0f67da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Turtlebot package:\nAccess this [link](http://wiki.ros.org/turtlebot_gazebo) and go through the `turtlebot_gazebo` documentation. After that, follow the instructions listed below to clone the `turtlebot_gazebo` package in the `src` directory of your `catkin_ws` and build it. \n\n\n\nWhile scrolling through these instructions, you will notice that some statements are a bit different than the one presented in the videos. The reason behind that is the different environment used. In the videos, a **Virtual Machine** booted with LUbuntu is used. Here in the description, you are presented with instructions on how to replicate the steps in the **Udacity Workspace**. The only difference between what you see and what is listed is the directory of the `catkin_ws`. In VM, you can store it anywhere you want, preferably in the root `~` directory. Whereas, in the workspace, you will have to store it under `/home/workspace/` so it won't get deleted after a reboot.\n\n \n\n### Clone Package:\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ git clone https://github.com/turtlebot/turtlebot_simulator\n```\n\n### Install Dependencies:\n```sh\n$ cd /home/workspace/catkin_ws\n$ source devel/setup.bash\n$ rosdep -i install turtlebot_gazebo\n```\n\n### Build Package:\n```sh\n$ catkin_make\n$ source devel/setup.bash\n```\n\n### Launch Nodes:\n```sh\n$ roslaunch turtlebot_gazebo turtlebot_world.launch\n```\n### Topics:\n```sh\n$ rostopic list\nOr\n$ rosrun rqt_graph rqt_graph\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466805,
+          "key": "852b4434-bcec-4798-8409-831e88ddd9be",
+          "title": "Robot Pose EKF Package ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "852b4434-bcec-4798-8409-831e88ddd9be",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 522246,
+              "key": "e163b59a-e1be-4a3f-80ca-6667580dc717",
+              "title": "Robot Pose EKF Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1XW1VtpztGE",
+                "china_cdn_id": "1XW1VtpztGE.mp4"
+              }
+            },
+            {
+              "id": 477763,
+              "key": "bb8df9af-1124-4f71-b5c8-7fd1896a1f08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### EKF package:\nAccess this [link](http://wiki.ros.org/robot_pose_ekf) and go through the robot_pose_ekf documentation.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527319,
+              "key": "439c5d35-3376-409b-9a5b-84536dab5dfc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Install the package:\n```sh\n$ cd /home/workspace/catkin_ws/src/\n$ git clone https://github.com/udacity/robot_pose_ekf \n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477768,
+              "key": "034a9293-9d9f-4c81-9df6-c2ccf960d9cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477766,
+              "key": "ed2c2de2-5d55-49fe-ae0a-da0fe53c0ed4",
+              "title": "robot_pose_ekf",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ed2c2de2-5d55-49fe-ae0a-da0fe53c0ed4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I deleted the remap odom statement",
+                "I disabled the 3D odometry from the launch file",
+                "I remapped the `/imu_data` topic to `/mobile_base/sensors/imu_data`",
+                "I built the package and launched the node"
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "Follow the steps and launch the `robot_pose_ekf` node:"
+            },
+            {
+              "id": 477771,
+              "key": "1e728e14-7d95-47cd-987f-141a1dd6fda5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz Solution:\nHere are the steps to edit and launch the `ros_pose_ekf` launch file:\n\n#### First, edit `robot_pose_ekf.launch` file:\n```html\n<launch>\n\n<node pkg=\"robot_pose_ekf\" type=\"robot_pose_ekf\" name=\"robot_pose_ekf\">\n  <param name=\"output_frame\" value=\"odom_combined\"/>\n  <param name=\"base_footprint_frame\" value=\"base_footprint\"/>\n  <param name=\"freq\" value=\"30.0\"/>\n  <param name=\"sensor_timeout\" value=\"1.0\"/>  \n  <param name=\"odom_used\" value=\"true\"/>\n  <param name=\"imu_used\" value=\"true\"/>\n  <param name=\"vo_used\" value=\"false\"/>\n  \n  <remap from=\"imu_data\" to=\"/mobile_base/sensors/imu_data\" />\t\n\n</node>\n\n</launch>\n\n```\n\n#### Now, build the package:\n```sh\n$ cd /home/workspace/catkin_ws\n$ catkin_make\n$ source devel/setup.bash\n```\n\n#### Launch the node:\n```sh\n$ roslaunch robot_pose_ekf robot_pose_ekf.launch\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477772,
+              "key": "b61585a9-0bd7-4e22-b9e7-68be662db7f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, topics from the `robot` and `ekf` nodes should be communicating. To confirm that, run the `rqt graph`. In `rqt graph`, visualize how the topics and nodes are connected. In the`active nodes and topic`, you won’t be able to see the `3D filtered pose` topic since we haven’t yet subscribed to it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477773,
+              "key": "ff1cf120-615b-498a-bac4-62d793f59db2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Visualize the topics:\n```sh\n$ rosrun rqt_graph rqt_graph\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477775,
+              "key": "75a4e885-cd26-4729-bb93-7fe15960e19e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a3056ca_rqt-graph-/rqt-graph-.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/75a4e885-cd26-4729-bb93-7fe15960e19e",
+              "caption": "",
+              "alt": "",
+              "width": 1343,
+              "height": 720,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 466806,
+          "key": "aac6c3ef-9d8d-4656-9a0f-2f0170a5931c",
+          "title": "Odometry to Trajectory Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aac6c3ef-9d8d-4656-9a0f-2f0170a5931c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 634773,
+              "key": "af7b908a-202c-42ec-967d-1e6b20786ff2",
+              "title": "Odometry To Trajectory Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1U-SlO_JT9s",
+                "china_cdn_id": "1U-SlO_JT9s.mp4"
+              }
+            },
+            {
+              "id": 477778,
+              "key": "c6d8cb24-b91a-44ad-8bfc-b9afada4e18c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install the package:\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ git clone https://github.com/udacity/odom_to_trajectory\n```\n\n### Build the package:\n```sh\n$ cd /home/workspace/catkin_ws\n$ catkin_make\n$ source devel/setup.bash\n```\n\n### Launch the nodes:\n```sh\n$ roslaunch odom_to_trajectory create_trajectory.launch \n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477791,
+              "key": "5333ad9b-b9c7-4ba5-bdaa-19d2ae01ff04",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a305ca4_screen-shot-2017-12-12-at-2.46.30-pm/screen-shot-2017-12-12-at-2.46.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5333ad9b-b9c7-4ba5-bdaa-19d2ae01ff04",
+              "caption": "",
+              "alt": "",
+              "width": 1528,
+              "height": 357,
+              "instructor_notes": null
+            },
+            {
+              "id": 550385,
+              "key": "3ea5cdaf-4d41-4849-a51a-f13deb7666a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<center>`click to expand`</center>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477782,
+              "key": "c589a04e-83f4-4647-b215-8bb416aa269f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you’ve launched the nodes, open a new terminal and run the `rqt graph`. In the active nodes and topics, you’ll now see the estimated `3D pose` since one of the nodes in the `odom to trajectory` package is subscribing to it.  You’ll also notice that the `trajectories` are still invisible since we are not yet subscribed to them!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477783,
+              "key": "4c466646-3630-4dd2-8869-2ff4df3aefe2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Visualize the topics:\n```sh\n$ rosrun rqt_graph rqt_graph\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466807,
+          "key": "3ad78b60-f8b6-494c-afd5-f03de3dcfa3c",
+          "title": "TurtleBot Teleop Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ad78b60-f8b6-494c-afd5-f03de3dcfa3c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 634783,
+              "key": "7f2d4cd6-c97e-4e5b-bcb4-22981131f4aa",
+              "title": "TurtleBot Teleop Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zoM5A9PN6VA",
+                "china_cdn_id": "zoM5A9PN6VA.mp4"
+              }
+            },
+            {
+              "id": 477792,
+              "key": "f52f90e5-53fc-430a-9328-a14eec54c6b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Teleop package:\nAccess this [link](http://wiki.ros.org/turtlebot_teleop) and go through the `turtlebot_teleop` documentation.\n\n### Clone the Package:\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ git clone https://github.com/turtlebot/turtlebot\n```\n\n### Install the Dependencies:\n```sh\n$ cd /home/workspace/catkin_ws\n$ source devel/setup.bash\n$ rosdep -i install turtlebot_teleop\n```\n\n### Build the Package:\n```sh\n$ catkin_make\n$ source devel/setup.bash\n```\n\n### Launch the Nodes:\n```sh\n$ roslaunch turtlebot_teleop keyboard_teleop.launch\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466808,
+          "key": "725715f1-3650-49d2-b08a-07e590956fe7",
+          "title": "Rviz Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "725715f1-3650-49d2-b08a-07e590956fe7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 634789,
+              "key": "023f8e75-243d-479d-a04a-2ede3602b515",
+              "title": "Rviz Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b3_kNyi7KLY",
+                "china_cdn_id": "b3_kNyi7KLY.mp4"
+              }
+            },
+            {
+              "id": 477797,
+              "key": "c5701c84-b9f6-4aa3-9419-fecb30b1887c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Launch `rviz`:\n```sh\n$ rosrun rviz rviz\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477800,
+              "key": "27e7d75e-4a52-44ee-9d54-af3aaf778118",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Edit the `rviz` configuration:\n1. Change the **Fixed Frame**  to `base_footprint`\n2. Change the **Reference Frame** to `odom`\n3. Add a `RobotModel`\n4. Add a `camera` and select the `/camera/rgb/image_raw` **topic** \n5. Add a `/ekfpath` **topic** and change the **display name** to `EKFPath`\n6. Add a `/odompath` topic and change the **display name** to `OdomPath`\n7. Change the `OdomPath` **color** to `red:255;0;0`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477801,
+              "key": "623a2fcd-a996-4801-b75c-6c1fa6a003ab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Save the `rviz` configuration:\nSave the rviz configuration in `/home/workspace/catkin_ws/src` as `EKFLab.rviz`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477802,
+              "key": "90016911-6d14-45b5-b017-9a14dc4501b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Now, kill the `rviz` terminal! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477803,
+              "key": "16ce6854-590a-4fab-bee9-eb7f4d0fa531",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Relaunch `rviz`:\n```sh\n$ rosrun rviz rviz -d /home/workspace/catkin_ws/src/EKFLab.rviz\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477804,
+              "key": "17911478-f243-4c0e-8367-5f3d6c130908",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477805,
+              "key": "f3f9a0d1-0d22-4789-ab12-44639e35180d",
+              "title": "Rviz",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f3f9a0d1-0d22-4789-ab12-44639e35180d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I created the `RvizLaunch.launch` file in the src folder of my catkin workspace.",
+                "I edited the `RvizLaunch.launch` file and included the `rviz node` and the path of `EKFLab.rviz` configuration file",
+                "I successfully launched `rviz` with the saved configurations from the `RvizLaunch.launch`"
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "Create an `rviz` Launch file by following these tasks:"
+            },
+            {
+              "id": 477806,
+              "key": "a15e55be-6d4e-4406-89c1-b069ccf98aba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz Solution:\n#### The RvizLaunch.launch file:\n```html\n<launch>\n  <!--RVIZ-->\n  <node pkg=\"rviz\" type=\"rviz\" name=\"rviz\" args=\"-d /home/workspace/catkin_ws/src/EKFLab.rviz\"/>\n</launch>\n```\n\n#### Launch Rvizlaunch.launch:\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ roslaunch RvizLaunch.launch\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466809,
+          "key": "818b0fb0-5a66-4fff-8943-7d47abc81839",
+          "title": "Main Launch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "818b0fb0-5a66-4fff-8943-7d47abc81839",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527317,
+              "key": "774e30ca-2a4f-42b1-ad27-110c324c77af",
+              "title": "Main Launch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dh1PlulCxtA",
+                "china_cdn_id": "dh1PlulCxtA.mp4"
+              }
+            },
+            {
+              "id": 527275,
+              "key": "45dd86c7-6fb4-472c-baee-79280e2217f8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6f5da6_c2l3-a09-main-launch.00-00-35-10.still001/c2l3-a09-main-launch.00-00-35-10.still001.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/45dd86c7-6fb4-472c-baee-79280e2217f8",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 527315,
+              "key": "8d7cc75c-fcee-4a55-8783-7c9e330c9d2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `main.launch` file located inside a `main` package. This launch file is a combination of all the 5 nodes we interfaced so far.   ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477810,
+              "key": "a570bd4a-64f6-4141-8e19-4b3c3fc98bd5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477817,
+              "key": "e2e48365-86a6-46a5-bbff-f5fd39a5f118",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e2e48365-86a6-46a5-bbff-f5fd39a5f118",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I created a `main` package in `catkin_ws/src`",
+                "I created a `launch` directory in `catkin_ws/src/main`",
+                "I created and wrote the `main.launch` file in `catkin_ws/src/main/launch`",
+                "I opened a terminal and launched the Lab with a single command"
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "In this quiz, create a main package. Inside the main package create a launch directory and store a main launch file. The main launch file will contain the nodes of all the packages we worked with so far. After you write the main launch file, open a terminal and launch it."
+            },
+            {
+              "id": 477811,
+              "key": "02d537c4-2fcb-4ddc-bafc-c22e2a80749e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution:\n### Create a `main package`:\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ catkin_create_pkg main\n```\n\n### Build the package:\n```sh\n$ cd /home/workspace/catkin_ws\n$ catkin_make\n```\n\n### Create and edit the `main.launch` file:\n```sh\n$ cd /home/workspace/catkin_ws/src/main\n$ mkdir launch\n$ cd launch \n$ gedit main.launch\n```\nCopy the `main.launch` file from [GitHub](https://github.com/udacity/RoboND-EKFLab/blob/master/main/launch/main.launch)\n\n### Launch the `main.launch` file:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch main main.launch\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466810,
+          "key": "bc16701c-433f-4939-b064-4d8fdd05f03a",
+          "title": "Rqt Multiplot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bc16701c-433f-4939-b064-4d8fdd05f03a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518615,
+              "key": "c27fd932-3b85-43de-a850-8def56612a1b",
+              "title": "RQT Multiplot",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZEpVMvXC6jQ",
+                "china_cdn_id": "ZEpVMvXC6jQ.mp4"
+              }
+            },
+            {
+              "id": 477833,
+              "key": "6cf5702b-3a16-4190-9dea-3019c7dd25b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructions for **Installing** and **Running** the `rqt_multiplot` ROS plugin:\n\n### GitHub documentation:\nAccess this [link](https://github.com/ethz-asl/rqt_multiplot_plugin) and go through the `rqt_multiplot` ROS plugin documentation. \n\n### Open a new terminal and install the `rqt_multiplot`:\n```sh\n$ apt-get install ros-kinetic-rqt -y\n$ apt-get install ros-kinetic-rqt-multiplot -y\n$ apt-get install libqwt-dev -y\n$ rm -rf ~/.config/ros.org/rqt_gui.ini\n```\n\n### Run the `rqt_plot` package node:\n```sh\n$ rosrun rqt_multiplot rqt_multiplot\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 466811,
+          "key": "db714a77-c42e-46b5-8214-0b8cf8614371",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db714a77-c42e-46b5-8214-0b8cf8614371",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 518620,
+              "key": "efeaa77b-4e7b-453d-a76f-7867341e6f1b",
+              "title": "Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-Us3L6wJN8s",
+                "china_cdn_id": "-Us3L6wJN8s.mp4"
+              }
+            },
+            {
+              "id": 477834,
+              "key": "4c9dd56e-fbf2-42a7-9504-8dd768dc0366",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lab GitHub Repo:\nAccess this [link](https://github.com/udacity/RoboND-EKFLab) and grab the lab from GitHub. ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

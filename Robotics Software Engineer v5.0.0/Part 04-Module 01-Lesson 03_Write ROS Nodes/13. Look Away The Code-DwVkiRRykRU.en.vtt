@@ -1,0 +1,154 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.799
+Let's walk through the code for the look away node step-by-step.
+
+00:00:04.799 --> 00:00:09.344
+The included header files are similar to those in arm mover,
+
+00:00:09.345 --> 00:00:13.665
+except this time we include the JointState header file.
+
+00:00:13.664 --> 00:00:18.039
+This allows us to read back the arm joints positions.
+
+00:00:18.039 --> 00:00:23.750
+We also include the image header file so that we can use the camera data.
+
+00:00:23.750 --> 00:00:26.585
+Inside of C plus plus main function,
+
+00:00:26.585 --> 00:00:29.359
+the look away node is initialized and
+
+00:00:29.359 --> 00:00:34.504
+ros NodeHandle object n is instantiated to communicate with ros.
+
+00:00:34.505 --> 00:00:37.540
+A client object is created here.
+
+00:00:37.539 --> 00:00:44.159
+This object can request GoToPosition responses from the arm mover safe moves service,
+
+00:00:44.159 --> 00:00:47.334
+recreated earlier in the arm mover node.
+
+00:00:47.335 --> 00:00:50.549
+This client object is defined globally,
+
+00:00:50.549 --> 00:00:54.125
+so we can request services within any function.
+
+00:00:54.125 --> 00:01:00.130
+In particular, the request happens in the move arm center function.
+
+00:01:00.130 --> 00:01:03.115
+The first subscriber objects sub1,
+
+00:01:03.115 --> 00:01:07.445
+subscribes to the simple arm joint states topic.
+
+00:01:07.444 --> 00:01:09.439
+By subscribing to this topic,
+
+00:01:09.439 --> 00:01:13.640
+we can track the arm position by reading the angle of each joint.
+
+00:01:13.640 --> 00:01:15.859
+The queue size is set to 10,
+
+00:01:15.859 --> 00:01:20.055
+meaning that a maximum of 10 messages can be stored into queue.
+
+00:01:20.055 --> 00:01:25.790
+The data from each new incoming message is passed to the joint states callback function.
+
+00:01:25.790 --> 00:01:31.985
+The second subscriber object sub2 subscribes to the RGB camera image raw topic.
+
+00:01:31.984 --> 00:01:34.625
+The queue size is also set to 10.
+
+00:01:34.625 --> 00:01:39.034
+The look way callback function is called every time a new message arrives.
+
+00:01:39.034 --> 00:01:44.579
+This function will first check if the image is uniform and the arm is not moving.
+
+00:01:44.579 --> 00:01:47.864
+If true, it will move the arm to the center.
+
+00:01:47.864 --> 00:01:54.140
+Then our spin function simply blocks until a shutdown request is received by the node.
+
+00:01:54.140 --> 00:01:59.144
+When the sub1 object receives a message on the simple arm joint states topic,
+
+00:01:59.144 --> 00:02:04.459
+the message is passed through a joint states call back in the variable js.
+
+00:02:04.459 --> 00:02:10.504
+The joint states callback function checks if the current joint states provided in js
+
+00:02:10.504 --> 00:02:13.370
+are the same as the previous joint states which are
+
+00:02:13.370 --> 00:02:16.990
+stored in the global joints last position variable.
+
+00:02:16.990 --> 00:02:20.960
+If the current and previous joint state are the same,
+
+00:02:20.960 --> 00:02:23.468
+up to a specified error tolerance,
+
+00:02:23.468 --> 00:02:25.659
+then the arm has stopped moving,
+
+00:02:25.659 --> 00:02:28.669
+and the moving state flag is set to false.
+
+00:02:28.669 --> 00:02:34.655
+This flag is defined globally so as to be shared with other functions in the code.
+
+00:02:34.655 --> 00:02:39.349
+On the other hand, if the current and previous joint states are different,
+
+00:02:39.349 --> 00:02:41.239
+then the arm is still moving.
+
+00:02:41.240 --> 00:02:45.110
+In this case, the function sets moving state to true and
+
+00:02:45.110 --> 00:02:49.555
+updates the joints last position variable with current position data.
+
+00:02:49.555 --> 00:02:56.254
+The look away callback function receives image data from the RGB camera image row topic.
+
+00:02:56.254 --> 00:03:00.079
+The callback function first checks if all color values in
+
+00:03:00.080 --> 00:03:04.270
+the image are the same as the color value of the first pixel.
+
+00:03:04.270 --> 00:03:07.610
+Then, if all color values in the image or the same,
+
+00:03:07.610 --> 00:03:11.135
+meaning a uniform image and if the arm is not moving,
+
+00:03:11.134 --> 00:03:14.155
+the move arm center function is called.
+
+00:03:14.155 --> 00:03:16.974
+Inside the move arm center function,
+
+00:03:16.974 --> 00:03:21.289
+a GoToPosition request message is created and sent using
+
+00:03:21.289 --> 00:03:28.409
+the arm mover safe move service moving both joint angles by 1.57 radians.
+

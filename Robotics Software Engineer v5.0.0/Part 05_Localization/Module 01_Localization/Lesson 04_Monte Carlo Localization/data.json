@@ -1,0 +1,772 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462510,
+      "key": "f45bb62d-a83c-4c9c-91bb-cbc11d155ccc",
+      "title": "Monte Carlo Localization",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the Monte Carlo Localization algorithm which uses particle filters to estimate a robot's pose. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f45bb62d-a83c-4c9c-91bb-cbc11d155ccc/462510/1544270528871/Monte+Carlo+Localization+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f45bb62d-a83c-4c9c-91bb-cbc11d155ccc/462510/1544270526695/Monte+Carlo+Localization+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 462537,
+          "key": "3d8e85a4-8928-4815-b243-8ace61fda291",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3d8e85a4-8928-4815-b243-8ace61fda291",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515541,
+              "key": "ecb6e18e-7342-44dd-94e3-7ce821f6c948",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uEt_lRFqtwE",
+                "china_cdn_id": "uEt_lRFqtwE.mp4"
+              }
+            },
+            {
+              "id": 477860,
+              "key": "b2c52261-b0d9-47b6-9cdd-1494fc57a6e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional References:\nRobust Monte Carlo Localization for Mobile Robots [paper](http://robots.stanford.edu/papers/thrun.robust-mcl.pdf) by Sebastian Thrun.\n ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 462538,
+          "key": "8fdb4681-0a76-4bbb-993e-d6c53fa345f5",
+          "title": "What's MCL?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8fdb4681-0a76-4bbb-993e-d6c53fa345f5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515542,
+              "key": "c33183a8-3bb0-482f-8a7e-b9018c077191",
+              "title": "What's MCL?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RiFI2VzSFp8",
+                "china_cdn_id": "RiFI2VzSFp8.mp4"
+              }
+            },
+            {
+              "id": 477861,
+              "key": "ee266413-7622-4cf7-97b8-d23d5a812d53",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ee266413-7622-4cf7-97b8-d23d5a812d53",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which localization problems can MCL solve? Select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1513127944058",
+                    "text": "Local",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513127954894",
+                    "text": "Global",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513127955798",
+                    "text": "Kidnapped Robot",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 462539,
+          "key": "395bdb02-f41b-40d0-adba-8b1548fe0eef",
+          "title": "Power of MCL",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "395bdb02-f41b-40d0-adba-8b1548fe0eef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515543,
+              "key": "b540f95e-8adf-4173-9274-696e56b9f75c",
+              "title": "Power Of MCL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xwOWl7cGwOU",
+                "china_cdn_id": "xwOWl7cGwOU.mp4"
+              }
+            },
+            {
+              "id": 477864,
+              "key": "7a24b0f6-6831-47cf-8a6f-ca599239bac9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### MCL vs EKF:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 515616,
+              "key": "ef5610bf-cd19-4e34-87e3-5a97ad3eb5f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a694a40_c2-l4-a03/c2-l4-a03.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ef5610bf-cd19-4e34-87e3-5a97ad3eb5f6",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 477865,
+              "key": "c31efb87-93c0-485d-862f-970bcd205f76",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c31efb87-93c0-485d-862f-970bcd205f76",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How is MCL different from other localization algorithms? Select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1513128314922",
+                    "text": " MCL uses grids to localize the robot pose",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128348982",
+                    "text": "MCL uses particles to localize the robot pose",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513128349746",
+                    "text": "MCL uses histograms to localize the robot pose",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128350368",
+                    "text": "MCL is restricted by a Gaussian state space distribution",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128350928",
+                    "text": "MCL can approximate almost any state space distribution",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 462540,
+          "key": "59cf8743-a484-45c5-a75c-dc1d43f2d358",
+          "title": "Particle Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "59cf8743-a484-45c5-a75c-dc1d43f2d358",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527282,
+              "key": "4e155c3f-77d7-44af-821f-f10395965b8e",
+              "title": "Particle Filters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "flFKViJI-18",
+                "china_cdn_id": "flFKViJI-18.mp4"
+              }
+            },
+            {
+              "id": 477869,
+              "key": "ce5b1331-1d62-40e6-9425-b487264f8df2",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ce5b1331-1d62-40e6-9425-b487264f8df2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Choose the correct answer regarding MCL:",
+                "answers": [
+                  {
+                    "id": "a1513128615385",
+                    "text": " Both robot and particles are physical elements. ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128622178",
+                    "text": "Particles are always simulated with a red color.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128622907",
+                    "text": "Both robot and particles hold a four-dimensional vector: [X, Y, θ, Weight].",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513128623526",
+                    "text": "None of the above",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 462541,
+          "key": "e3a9d449-b4de-40f3-91f7-87bb81525541",
+          "title": "Bayes Filtering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e3a9d449-b4de-40f3-91f7-87bb81525541",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 477876,
+              "key": "8e58f58b-2f43-4092-9673-29b42440a1ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Bayes Filtering\nThe powerful Monte Carlo localization algorithm estimates the posterior distribution of a robot’s position and orientation based on sensory information. This process is known as a recursive `Bayes filter`. \n\nUsing a Bayes filtering approach, roboticists can estimate the **state** of a **dynamical system** from sensor **measurements**.  \n\nIn mobile robot localization, it’s  important to be acquainted with the following definitions:\n* **Dynamical system**: The mobile robot and its environment\n* **State**: The robot’s pose, including its position and orientation.\n* **Measurements**:  Perception data(e.g. laser scanners) and odometry data(e.g. rotary encoders)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477879,
+              "key": "5a524819-9bcf-4433-9fad-d584d6b0633c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The goal of Bayes filtering is to estimate a probability density over the state space conditioned on the measurements. The probability density, or also known as **posterior** is called the **belief** and is denoted as:\n<div class=\"mathquill\">Bel(X_{t}) = P(X_{t} |Z_{1...t} )</div>\nWhere, \n*  **X<sub>t</sub>**:  `State` at time t\n*  **Z<sub>1...t</sub>** : `Measurements` from time 1 up to time t\n\n## Probability:\nGiven a set of probabilities, **P(A|B)** is calculated as follows:\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 514136,
+              "key": "3468a469-cc4a-4b89-ab06-7b94f23e3682",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<div class=\"mathquill\">\\large P(A|B) = \\frac{P(B|A)*P(A)}{P(B)} = \\frac{P(B|A)*P(A)}{P(A)*P(B|A) + P(\\neg A)*P(B|\\neg A)}</div>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477882,
+              "key": "e51b0b40-2c08-4421-b0d5-6a5981700514",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518412,
+              "key": "ec6ddad7-9f27-4aef-af9c-7e3f47cb1515",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a1bf8_l4-c6-bayesfiltering/l4-c6-bayesfiltering.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ec6ddad7-9f27-4aef-af9c-7e3f47cb1515",
+              "caption": "Source: Thrun, 2005 - Probabilistic Robotics\n",
+              "alt": "",
+              "width": 1186,
+              "height": 118,
+              "instructor_notes": null
+            },
+            {
+              "id": 477884,
+              "key": "ac43451f-d73d-45db-9d3f-e395ce66e973",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This robot is located inside of a 1D hallway which has three doors. The robot doesn't know where it is located in this hallway, but it has sensors onboard that can tell it, with some amount of precision, whether it is standing in front of a door, or in front of a wall. The robot also has the ability to move around - with some precision provided by its odometry data. Neither the sensors nor the movement is perfectly accurate, but the robot aims to locate itself in this hallway. \n\nThe mobile robot is now moving in the 1D hallway and collecting odometry and perception data. With the odometry data, the robot is keeping track of its current position. Whereas, with the perception data, the robot is identifying the presence of doors. \n\nIn this quiz, we are aiming to calculate the state of the robot, given its measurements. This is known by the belief: **P(X<sub>t</sub>|Z)**! \n\n**Given**:\n* **P(POS)**: The probability of the robot being at the actual position\n* **P(DOOR|POS)**: The probability of the robot seeing the door given that it’s in the actual position\n* **P(DOOR|¬POS)**: The probability of the robot seeing the door given that it’s not in the actual position\n\n**Compute**:\n* **P(POS|DOOR)**: The belief or the probability of the robot being at the actual position given that it’s seeing the door. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463719,
+              "key": "f9814d08-7bdf-442a-a74e-1812f78d5144",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "f9814d08-7bdf-442a-a74e-1812f78d5144",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5924616955101184",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\nusing namespace std;\n\nint main() {\n\t\n\t//Given P(POS), P(DOOR|POS) and P(DOOR|¬POS)\n\tdouble a = 0.0002 ; //P(POS) = 0.002\n\tdouble b = 0.6    ; //P(DOOR|POS) = 0.6\n\tdouble c = 0.05   ; //P(DOOR|¬POS) = 0.05\n\t\n\t//TODO: Compute P(¬POS) and P(POS|DOOR)\n\tdouble d =                   //P(¬POS)\n\tdouble e =                   //P(POS|DOOR)\n\t\n\t//Print Result\n\tcout << \"P(POS|DOOR)= \" <<    e    << endl;\n\t\n\treturn 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\nusing namespace std;\n\nint main() {\n\t\n\t//Given P(POS), P(DOOR|POS) and P(DOOR|¬POS)\n\tdouble a = 0.0002 ; //P(POS) = 0.002\n\tdouble b = 0.6    ; //P(DOOR|POS) = 0.6\n\tdouble c = 0.05   ; //P(DOOR|¬POS) = 0.05\n\t\n\t//TODO: Compute P(¬POS) and P(POS|DOOR)\n\tdouble d = 1-a ;                  //P(¬POS)\n\tdouble e =  (b*a)/((a*b)+(d*c)) ; //P(POS|DOOR)\n\t\n\t//Print Result\n\tcout << \"P(POS|DOOR)= \" <<    e    << endl;\n\t\n\treturn 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 462542,
+          "key": "956dc6d5-d45c-4d0c-81b7-45912a0ac99d",
+          "title": "MCL: The Algorithm ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "956dc6d5-d45c-4d0c-81b7-45912a0ac99d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515544,
+              "key": "9e24c2fb-38a6-4ed9-a28f-fc3cf7a114b5",
+              "title": "MCL: The Algorithm",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nNkCTQw0D_I",
+                "china_cdn_id": "nNkCTQw0D_I.mp4"
+              }
+            },
+            {
+              "id": 477889,
+              "key": "475cef05-93b1-453b-bdeb-057d6e228afd",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "475cef05-93b1-453b-bdeb-057d6e228afd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Put the following steps in the correct order of the MCL algorithm"
+                },
+                "concepts_label": "Steps",
+                "answers_label": "Concepts",
+                "concepts": [
+                  {
+                    "text": "First Step",
+                    "correct_answer": {
+                      "id": "a1513130637857",
+                      "text": "Previous Belief"
+                    }
+                  },
+                  {
+                    "text": "Second Step",
+                    "correct_answer": {
+                      "id": "a1513130650960",
+                      "text": "Motion Update"
+                    }
+                  },
+                  {
+                    "text": "Third Step",
+                    "correct_answer": {
+                      "id": "a1513130651791",
+                      "text": " Measurement Update"
+                    }
+                  },
+                  {
+                    "text": "Fourth Step",
+                    "correct_answer": {
+                      "id": "a1513130652491",
+                      "text": "Resampling"
+                    }
+                  },
+                  {
+                    "text": "Fifth Step",
+                    "correct_answer": {
+                      "id": "a1513130653167",
+                      "text": "New Belief"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1513130652491",
+                    "text": "Resampling"
+                  },
+                  {
+                    "id": "a1513130651791",
+                    "text": " Measurement Update"
+                  },
+                  {
+                    "id": "a1513130653167",
+                    "text": "New Belief"
+                  },
+                  {
+                    "id": "a1513130650960",
+                    "text": "Motion Update"
+                  },
+                  {
+                    "id": "a1513130637857",
+                    "text": "Previous Belief"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 477890,
+              "key": "33cd8a45-ce76-400c-9a0f-75d8af834a6d",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "33cd8a45-ce76-400c-9a0f-75d8af834a6d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Does the orientation of particles play a role in estimating the robot’s pose?",
+                "answers": [
+                  {
+                    "id": "a1513131100995",
+                    "text": "Yes, definitely!",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513131114793",
+                    "text": "Perhaps",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513131115549",
+                    "text": "No, I don't think so!",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 462543,
+          "key": "d4819bf3-729b-4158-866a-7db3268cf226",
+          "title": "MCL in Action",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d4819bf3-729b-4158-866a-7db3268cf226",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515545,
+              "key": "e41330ed-d877-4281-8fb2-1705c61b9c6c",
+              "title": "MCL in Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VgEGrvgty_k",
+                "china_cdn_id": "VgEGrvgty_k.mp4"
+              }
+            },
+            {
+              "id": 477891,
+              "key": "868d6154-3d21-4e4e-8717-1f32f59ae4ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## MCL vs EKF in Action\n### 1- MCL:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518414,
+              "key": "c4e5f4a4-ef50-45e1-856b-1daf7d8d3409",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a1cfb_l4-c7-mcl/l4-c7-mcl.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c4e5f4a4-ef50-45e1-856b-1daf7d8d3409",
+              "caption": "Source: Thrun, 2005 - Probabilistic Robotics\n",
+              "alt": "",
+              "width": 1408,
+              "height": 1752,
+              "instructor_notes": null
+            },
+            {
+              "id": 477893,
+              "key": "1e8bd80c-2a88-4b6f-80a8-02d99d8d7690",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**At time**:\n* **t=1**, Particles are drawn randomly and uniformly over the entire pose space.\n* **t=2**, Measurement is updated and an importance weight is assigned to each particle. \n* **t=3**, Motion is updated and a new particle set with uniform weights and high number of particles around the three most likely places is obtained in resampling.\n* **t=4**, Measurement assigns non-uniform weight to the particle set.    \n* **t=5**, Motion is updated and a new resampling step is about to start.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 477894,
+              "key": "d45b8430-0672-4b97-abda-ed0730a6926b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 2- EKF:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518415,
+              "key": "3d4877d1-5078-44dc-8f68-1a00a7c45de3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a1d2e_l4-c7-ekf/l4-c7-ekf.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d4877d1-5078-44dc-8f68-1a00a7c45de3",
+              "caption": "Source: Thrun, 2005 - Probabilistic Robotics",
+              "alt": "",
+              "width": 1378,
+              "height": 1386,
+              "instructor_notes": null
+            },
+            {
+              "id": 477896,
+              "key": "8e523d44-a750-4335-b9e9-99a0eb0815a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**At time**:\n* **t=1**, Initial belief represented by a Gaussian distribution around the first door. \n* **t=2**, Motion is updated and the new belief is represented by a shifted Gaussian of increased weight.\n* **t=3**, Measurement is updated and the robot is more certain of its location. The new posterior is represented by a Gaussian with a small variance. \n* **t=4**, Motion is updated and the uncertainty increases.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518600,
+              "key": "df89b60c-43df-4e62-a908-9c5cc679ffcc",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "df89b60c-43df-4e62-a908-9c5cc679ffcc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select concepts that are common to both the MCL and EKF algorithms",
+                "answers": [
+                  {
+                    "id": "a1516920312926",
+                    "text": "Particle filters",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516920316011",
+                    "text": "Gaussian distribution ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1516920316833",
+                    "text": "Resampling stage ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516920317460",
+                    "text": "Assigning importance weights  ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516920341236",
+                    "text": "Motion and measurement stages",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1516920448664",
+                    "text": "Non-Gaussian distribution",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 477897,
+              "key": "a3f0ee84-99c4-45cd-bfd6-7902237a4882",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a3f0ee84-99c4-45cd-bfd6-7902237a4882",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which approach do you prefer?",
+                "answers": [
+                  {
+                    "id": "a1513131476306",
+                    "text": "MCL",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513131485473",
+                    "text": "EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513131486208",
+                    "text": "Markov",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513131486797",
+                    "text": "Grid",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 462544,
+          "key": "fe6d8d6f-4c29-474c-aa92-942f489e0e80",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe6d8d6f-4c29-474c-aa92-942f489e0e80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515546,
+              "key": "36dd9750-6aff-4731-bd90-8eb2c5040ae8",
+              "title": "Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qBd_gY5CXFM",
+                "china_cdn_id": "qBd_gY5CXFM.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

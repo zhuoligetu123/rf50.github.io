@@ -1,0 +1,1787 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462508,
+      "key": "f002d591-94af-4c70-aeac-ac2ed6f7b527",
+      "title": "Kalman Filters",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the Kalman Filter and Extended Kalman Filter Gaussian estimation algorithms.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f002d591-94af-4c70-aeac-ac2ed6f7b527/462508/1544270501107/Kalman+Filters+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f002d591-94af-4c70-aeac-ac2ed6f7b527/462508/1544270490047/Kalman+Filters+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 486251,
+          "key": "dc2c7f21-6148-487e-8cd0-69673ff0e93c",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc2c7f21-6148-487e-8cd0-69673ff0e93c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515427,
+              "key": "692d0b6d-b85f-4631-b9f2-69375fa08782",
+              "title": "Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nA7tllSCpRA",
+                "china_cdn_id": "nA7tllSCpRA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465888,
+          "key": "2c831b47-8b7f-478f-9d54-0ed51d6766e5",
+          "title": "What's a Kalman Filter?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2c831b47-8b7f-478f-9d54-0ed51d6766e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515540,
+              "key": "ce7a770d-23d7-46e0-9f1e-3835cb2a28b9",
+              "title": "What's A Kalman Filter?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Cd5KKT7PfdE",
+                "china_cdn_id": "Cd5KKT7PfdE.mp4"
+              }
+            },
+            {
+              "id": 524545,
+              "key": "2240c1d3-b660-4495-99de-1f927985f2ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Another way of looking at a Kalman Filter is just like you’d look at any other filter. What does it take as an input, what does it filter out, and what important substance does it let through? The graphic below compares a household coffee filter, an engineering low-pass filter, and a Kalman filter. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522227,
+              "key": "e2a56f66-2318-4336-b419-0620c1d30f26",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6ce588_l2-a02/l2-a02.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e2a56f66-2318-4336-b419-0620c1d30f26",
+              "caption": "",
+              "alt": "",
+              "width": 4016,
+              "height": 2250,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 465889,
+          "key": "76cd3dac-120f-4e25-82c4-5859dc906585",
+          "title": "History",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76cd3dac-120f-4e25-82c4-5859dc906585",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 714728,
+              "key": "82fa2e48-be43-45ba-8ee4-b25c8199d23e",
+              "title": "C2 L2 A3 History V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "K1PT5I5hro0",
+                "china_cdn_id": "K1PT5I5hro0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465890,
+          "key": "3eedca1c-44c2-476a-99ef-d780eac6655c",
+          "title": "Applications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3eedca1c-44c2-476a-99ef-d780eac6655c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515431,
+              "key": "5f63da7b-026f-4d5b-8117-d76c2f583b85",
+              "title": "Applications",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EIOqFwzB4j8",
+                "china_cdn_id": "EIOqFwzB4j8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465891,
+          "key": "35c58327-60ae-4dd0-a542-1f4fd72fc870",
+          "title": "Variations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35c58327-60ae-4dd0-a542-1f4fd72fc870",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515433,
+              "key": "669e8e87-a09e-43be-acb0-c935aad04f78",
+              "title": "Variations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ldg7uIhA08k",
+                "china_cdn_id": "ldg7uIhA08k.mp4"
+              }
+            },
+            {
+              "id": 498544,
+              "key": "3d4385e8-24c6-4a46-8136-c5729684ff4e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Instructor's Notes:**\n\n[UKF-Wikipedia](https://en.wikipedia.org/wiki/Kalman_filter#Unscented_Kalman_filter)\n\n[UKF by Cyrill Stachniss, University of Freiburg](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam05-ukf.pdf)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465892,
+          "key": "ac1658ed-405e-4892-ad57-35bd36e77923",
+          "title": "Robot Uncertainty",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac1658ed-405e-4892-ad57-35bd36e77923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515474,
+              "key": "785cfe37-43c9-41ff-8adf-fc02e838084c",
+              "title": "Robot Uncertainty",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5NAb2iyu2uo",
+                "china_cdn_id": "5NAb2iyu2uo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465893,
+          "key": "540b92f5-71f2-4efe-ada1-c453b2a2cfeb",
+          "title": "Kalman Filter Advantage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "540b92f5-71f2-4efe-ada1-c453b2a2cfeb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515439,
+              "key": "3eeba7a7-89c8-468a-a40f-820d4d57f93f",
+              "title": "Kalman Filter Advantage",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "thwTZvbzAgk",
+                "china_cdn_id": "thwTZvbzAgk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 464449,
+          "key": "e91213a4-1faf-4dbc-878a-758e0b74dc1b",
+          "title": "1D Gaussian",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e91213a4-1faf-4dbc-878a-758e0b74dc1b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486259,
+              "key": "c3dfc5b1-4e7d-4f48-a11f-afd165d4a2e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# 1D Gaussian\n\nAt the basis of the Kalman Filter is the Gaussian distribution, sometimes referred to as a bell curve or normal distribution. Recall the rover example - after executing one motion, the rover’s location was represented by a Gaussian. It’s exact location was not certain, but the level of uncertainty was bounded. It was unlikely that the rover would be more than a few meters away from its target location, and it would be nearly impossible for it to show up at the 50 meter mark. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518685,
+              "key": "c14b5252-4bd7-4216-a9fe-30dbd9db2d1d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a7042_c2l2-a08-rover/c2l2-a08-rover.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c14b5252-4bd7-4216-a9fe-30dbd9db2d1d",
+              "caption": "",
+              "alt": "",
+              "width": 1280,
+              "height": 359,
+              "instructor_notes": null
+            },
+            {
+              "id": 486260,
+              "key": "71d04919-37e1-416d-a037-31d5a71a3c4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is the role of a Kalman Filter - after a movement or a measurement update, it outputs a unimodal Gaussian distribution. This is its best guess at the true value of a parameter.\n\nA Gaussian distribution is a probability distribution, which is a continuous function. The probability that a random variable, x, will take a value between <span class=\"mathquill\">x_1</span> and <span class=\"mathquill\">x_2</span> is given by the integral of the function from <span class=\"mathquill\">x_1</span> to <span class=\"mathquill\">x_2</span>. \n\n<div class=\"mathquill\">p(x_1 < x < x_2) = \\int_{x_1}^{x_2}f_x(x)dx</div>\n\nIn the image below, the probability of the rover being located between 8.7m and 9m is 7%.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518686,
+              "key": "45b83437-0839-4423-bda3-af1241f929c7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a7041_c2l2-a08-graph-/c2l2-a08-graph-.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/45b83437-0839-4423-bda3-af1241f929c7",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 486261,
+              "key": "5a7b0d2e-209b-4f16-a7db-7ba65af5b730",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Mean and Variance\n\nA Gaussian is characterized by two parameters - its mean (μ) and its variance (σ²). The mean is the most probable occurrence and lies at the centre of the function, and the variance relates to the width of the curve. The term unimodal implies a single peak present in the distribution.\n\nGaussian distributions are frequently abbreviated as N(x: μ, σ²), and will be referred to in this way throughout the coming lessons. \n\nIt's time for a quiz! Reference the image below to answer the quiz question. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522237,
+              "key": "2255d762-2604-4176-9013-66d1249c6173",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6cf8d1_c2l2-a08-quiz/c2l2-a08-quiz.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2255d762-2604-4176-9013-66d1249c6173",
+              "caption": "",
+              "alt": "",
+              "width": 4001,
+              "height": 2251,
+              "instructor_notes": null
+            },
+            {
+              "id": 518704,
+              "key": "c9f66c6c-d036-47dc-b00c-e62ae818d370",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c9f66c6c-d036-47dc-b00c-e62ae818d370",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you had to pick a Gaussian to represent the location of your rover, which of the following would you prefer? ",
+                "answers": [
+                  {
+                    "id": "a1516927085330",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516927107879",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516927108559",
+                    "text": "C",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 518702,
+              "key": "0825689a-4c89-44d9-a053-dc81fcc2ace5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The formula for the Gaussian distribution is printed below. Notice that the formula contains an exponential of a quadratic function. The quadratic compares the value of x to μ, and in the case that x=μ, the exponential is equal to 1 (<span class=\"mathquill\">e^0 = 1</span>). You’ll note here, that the constant in front of the exponential is a necessary normalizing factor.\n\n<div class=\"mathquill\">\\huge p(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}</div>\n\nJust like with discrete probability, like a coin toss, the probabilities of all the options must sum to one. Therefore, the area underneath the function always sums to one. \n\n<div class=\"mathquill\">\\huge \\int p(x)dx = 1</div>\n\nNow that you are familiar with the formula, it’s time to code the Gaussian in C++. This will allow you to calculate the probability of a value occurring given a mean and a variance! \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464457,
+              "key": "f2fa1fb4-73f2-4676-99aa-cf0d051a70e5",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "f2fa1fb4-73f2-4676-99aa-cf0d051a70e5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5329363680231424",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n\nusing namespace std;\n\ndouble f(double mu, double sigma2, double x)\n{\n    //Use mu, sigma2 (sigma squared), and x to code the 1-dimensional Gaussian\n    //Put your code here\n    //double prob =\n    return prob;\n}\n\nint main()\n{\n    cout << f(10.0, 4.0, 8.0) << endl;\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n\nusing namespace std;\n\ndouble f(double mu, double sigma2, double x)\n{\n    //Use mu, sigma2 (sigma squared), and x to code the 1-dimensional Gaussian\n    //Put your code here\n    double prob = 1.0 / sqrt(2.0 * M_PI * sigma2) * exp(-0.5 * pow((x - mu), 2.0) / sigma2);\n    return prob;\n}\n\nint main()\n{\n    cout << f(10.0, 4.0, 8.0) << endl;\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 486273,
+              "key": "85314b95-6daa-4413-a02b-05ad95e5df68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Great, you’ve coded the formula for a Gaussian distribution, now let’s make sure you know where it is applied!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486275,
+              "key": "ce24d42f-f697-4f78-a46f-d3266eb464fe",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ce24d42f-f697-4f78-a46f-d3266eb464fe",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is represented by a Gaussian distribution? Check all that apply.",
+                "answers": [
+                  {
+                    "id": "a1513620912074",
+                    "text": "Predicted Motion ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513620925541",
+                    "text": "Sensor Measurement",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513620926378",
+                    "text": "Estimated State of Robot",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 486276,
+              "key": "7f4c8832-14a2-4e9c-847c-62dd8fab646d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That’s right, the Kalman Filter treats all noise as unimodal Gaussian. In reality, that’s not the case. However, the algorithm is optimal if the noise is Gaussian. The term optimal expresses that the algorithm minimizes the mean square error of the estimated parameters.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522222,
+              "key": "819f6071-14a1-4bae-90f5-0e84290f1639",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Distribution Quiz",
+              "instructor_notes": ""
+            },
+            {
+              "id": 524547,
+              "key": "e1628187-1dad-4da2-8634-50e7c8c5a261",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Reference the following probability distribution to answer the quiz question below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522223,
+              "key": "7bf19974-f5f7-4119-a3b6-683f452e2b81",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6cd6ab_last-graph-v1/last-graph-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7bf19974-f5f7-4119-a3b6-683f452e2b81",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 524546,
+              "key": "52821bc1-150e-445b-9e65-e988b95acab0",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "52821bc1-150e-445b-9e65-e988b95acab0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Can a state with this probability distribution be solved using the Kalman Filter?",
+                "answers": [
+                  {
+                    "id": "a1517175134948",
+                    "text": "Yes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517175139786",
+                    "text": "No",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 486274,
+              "key": "95e86a50-9977-48a3-ada9-93748c895517",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That’s all of the mathematics that you need to know for now. Let’s start designing Kalman Filters! ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465894,
+          "key": "366b7684-5c26-4e42-8665-ceb237a96dae",
+          "title": "Designing 1D Kalman Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "366b7684-5c26-4e42-8665-ceb237a96dae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515441,
+              "key": "fc52a6db-fdb5-471a-a753-edebf619e442",
+              "title": "Designing 1D Kalman FIlter",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5YChifc8z1M",
+                "china_cdn_id": "5YChifc8z1M.mp4"
+              }
+            },
+            {
+              "id": 524548,
+              "key": "f561aba8-5d21-4bb3-a28a-c7891ed09f19",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Variable Naming Conventions\n\n<div class=\"mathquill\">\\large x_t: state</div>\n<div class=\"mathquill\">\\large z_t: measurement</div>\n<div class=\"mathquill\">\\large u_t: control{\\space}action</div>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 627897,
+              "key": "b125098f-0af4-42e0-9fa9-8f97769a9874",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 464448,
+          "key": "0976a728-e605-4149-9074-cba310f02b9f",
+          "title": "Measurement Update",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0976a728-e605-4149-9074-cba310f02b9f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515586,
+              "key": "6ba9317c-c50c-495e-8f68-63cce22714e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Mean Calculation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522243,
+              "key": "680ebff8-071d-4578-a18e-70b5633b3625",
+              "title": "Measurement Update",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OaLfGr8xx9Q",
+                "china_cdn_id": "OaLfGr8xx9Q.mp4"
+              }
+            },
+            {
+              "id": 626483,
+              "key": "1fbd204f-753f-4a40-b5b8-ff7a925834ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```<span class=\"mathquill\">\\mu</span>```: Mean of the prior belief\n<br/>\n```<span class=\"mathquill\">\\sigma^{2}</span>```: Variance of the prior belief\n<br/><br/>\n```<span class=\"mathquill\">v</span>```: Mean of the measurement\n<br/>\n```<span class=\"mathquill\">r^{2}</span>```: Variance of the measurement\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522232,
+              "key": "b27ca752-f962-4f81-b8cd-ac18d0129134",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### New Belief Quiz",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522244,
+              "key": "03d616f1-893a-488a-b162-0284cea06a6e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6d0b71_c2l2-a10-measurement-update-in-1d-quiz.00-00-46-29.still001/c2l2-a10-measurement-update-in-1d-quiz.00-00-46-29.still001.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03d616f1-893a-488a-b162-0284cea06a6e",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 515587,
+              "key": "07c0b7ba-dfc6-4b1d-bc87-09ca112ee3bc",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "07c0b7ba-dfc6-4b1d-bc87-09ca112ee3bc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Where do you think the robot's new belief will be?",
+                "answers": [
+                  {
+                    "id": "a1516843604221",
+                    "text": "A",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1516843635362",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516843636812",
+                    "text": "C",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 522245,
+              "key": "7fdffe0d-c0bd-495a-aff8-1f6f3f74b6a6",
+              "title": "Measurement Update In 1D (Post Quiz) ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cKEVFynbJfs",
+                "china_cdn_id": "cKEVFynbJfs.mp4"
+              }
+            },
+            {
+              "id": 486277,
+              "key": "b180838f-f637-4324-82a4-53b484a68bef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The new mean is a weighted sum of the prior belief and measurement means. With uncertainty, a larger number represents a more uncertain probability distribution. However, the new mean should be biased towards the measurement update, which has a smaller standard deviation than the prior. How do we accomplish this?\n\n<div class=\"mathquill\">\\large \\mu' = \\frac{r^2 \\mu + \\sigma^2 v}{r^2 + \\sigma^2}</div>\n\nThe answer is - the uncertainty of the prior is multiplied by the mean of the measurement, to give it more weight, and similarly the uncertainty of the measurement is multiplied with the mean of the prior. Applying this formula to our example generates a new mean of 27.5, which we can label on our graph below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 533827,
+              "key": "6b5b88a6-1d46-4e1e-a57f-d99c73729f60",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a77fa82_c2l2-graph-1-v1/c2l2-graph-1-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6b5b88a6-1d46-4e1e-a57f-d99c73729f60",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 486279,
+              "key": "9353d4a3-7f15-447d-a25d-e36d0795b971",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Variance Calculation\n\nNext, we need to determine the variance of the new state estimate. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498547,
+              "key": "a9569dd4-c753-4885-8f17-7efe058cc141",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a9569dd4-c753-4885-8f17-7efe058cc141",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What do you think? Would the variance of the new state estimate be less confident than our prior, in between our prior and measurement, or more confident than our measurement?",
+                "answers": [
+                  {
+                    "id": "a1515193618121",
+                    "text": "Less confident than our prior.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1515193623348",
+                    "text": "A confidence in between our prior and measurement.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1515193623955",
+                    "text": "More confident than our measurement.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 486281,
+              "key": "0f7e689d-9d7d-4816-aa68-3f48de343d60",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The two Gaussians provide us with more information together than either Gaussian offered alone. As a result, our new state estimate is more confident than our prior belief and our measurement. This means that it has a higher peak and is narrower. You can see this in the graph below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518696,
+              "key": "157d4db2-e43f-4fd8-8d4e-d6541bffa003",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a7575_c2l2-graph-2/c2l2-graph-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/157d4db2-e43f-4fd8-8d4e-d6541bffa003",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 486282,
+              "key": "ff3ece1d-e277-4fcb-b0b6-7cc3bd7e9b22",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The formula for the new variance is presented below. \n\n<div class=\"mathquill\">\\large \\sigma^{2'} = \\frac{1}{\\frac{1}{r^2} + \\frac{1}{\\sigma^2}}</div>\n\nEntering the variances from our example into this formula produces a new variance of 2.25. The new state estimate, often called the posterior, is drawn below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522239,
+              "key": "6ab43ad5-0514-42ea-b130-2e5d57b2f2d9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6cfd03_c2l2-graph-3/c2l2-graph-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6ab43ad5-0514-42ea-b130-2e5d57b2f2d9",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 670649,
+              "key": "181b9775-bc0c-48db-83a1-e5f96dfbd8d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```<span class=\"mathquill\">\\mu</span>```: Mean of the prior belief\n<br/>\n```<span class=\"mathquill\">\\sigma^{2}</span>```: Variance of the prior belief\n<br/><br/>\n```<span class=\"mathquill\">v</span>```: Mean of the measurement\n<br/>\n```<span class=\"mathquill\">r^{2}</span>```: Variance of the measurement\n<br/><br/>\n```<span class=\"mathquill\">\\tau</span>```: Mean of the posterior\n<br/>\n```<span class=\"mathquill\">s^{2}</span>```: Variance of the posterior\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486285,
+              "key": "74e8e8e9-8d93-4b96-b198-bdfc188f7030",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It’s time to implement these two formulas in C++. Place your code within a function called measurement_update, such that you can use it as a building block in your Kalman Filter implementation.\n\nWhen you’re done, calculate the posterior mean and variance for a prior of <span class=\"mathquill\">N(x: μ_1=10, σ^2=8)</span> and measurement <span class=\"mathquill\">N(x: μ_2=13, σ^2=2)</span>. Is it what you expected?\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 524549,
+              "key": "d5b8d387-b1ba-4411-98bf-eabb20349818",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Programming Quiz",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552815,
+              "key": "3d3bb0c2-c9ef-4e3e-9369-96113d211551",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this C++ code, the **measurement update** function returns two values: the newly computed mean and variance. Usually, a `tuple` or `struct`should be used in C++ to return more than one value from a function and easily assign them later to multiple variables. For more information on `tuples` and `structs` take a look at this [link](https://dzone.com/articles/returning-multiple-values-from-functions-in-c). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464452,
+              "key": "8f8c866b-e30e-4679-b8bf-4ef0473ce27c",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "8f8c866b-e30e-4679-b8bf-4ef0473ce27c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6385708202328064",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> measurement_update(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = //TODO: Code the measurment update mean function mu;\n    new_var =  //TODO: Code the measurment update variance function sigma square;\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n\n    tie(new_mean, new_var) = measurement_update(10, 8, 13, 2);\n    printf(\"[%f, %f]\", new_mean, new_var);\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> measurement_update(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = (var2 * mean1 + var1 * mean2) / (var1 + var2);\n    new_var = 1 / (1 / var1 + 1 / var2);\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n\n    tie(new_mean, new_var) = measurement_update(10, 8, 13, 2);\n    printf(\"[%f, %f]\", new_mean, new_var);\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 486286,
+              "key": "131a3a86-929e-4fd6-a372-683db260a5b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I encourage you to think about what the posterior Gaussian would look like for the following example, and even calculate the exact values using your measurement_update function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518676,
+              "key": "ff19f153-254c-43da-9976-82b1673cbccf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6a705f_c2l2-graph-4-v2/c2l2-graph-4-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ff19f153-254c-43da-9976-82b1673cbccf",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 464450,
+          "key": "03f4aca6-869b-488a-9687-32d030d95b79",
+          "title": "State Prediction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03f4aca6-869b-488a-9687-32d030d95b79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515446,
+              "key": "aa0f85ec-3529-459d-b713-a8d7f35996da",
+              "title": "State Prediction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mjBpoGmNaqU",
+                "china_cdn_id": "mjBpoGmNaqU.mp4"
+              }
+            },
+            {
+              "id": 486290,
+              "key": "be5c10e5-7d61-4c02-85fe-d9382d08aa32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State Prediction Formulas\n\n<div class=\"mathquill\">Posterior\\ Mean \\ \\ \\ \\ \\ \\ \\ \\large \\mu' = \\mu_1 + \\mu_2</div>\n\n<div class=\"mathquill\">Posterior\\ Variance \\  \\ \\ \\ \\large \\sigma^{2'} = \\sigma^2_1 + \\sigma^2_2</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464454,
+              "key": "31cb2b79-debe-4c1e-9380-bdd78b80e3ba",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "31cb2b79-debe-4c1e-9380-bdd78b80e3ba",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4921998514454528",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> state_prediction(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = //TODO: Code the state prediction mean function mu;\n    new_var =  //TODO: Code the state prediction variance function sigma square;\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n\n    tie(new_mean, new_var) = state_prediction(10, 4, 12, 4);\n    printf(\"[%f, %f]\", new_mean, new_var);\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> state_prediction(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = mean1 + mean2;\n    new_var =  var1 + var2;\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n\n    tie(new_mean, new_var) = state_prediction(10, 4, 12, 4);\n    printf(\"[%f, %f]\", new_mean, new_var);\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 464451,
+          "key": "b101736d-4bec-4bf1-9c4d-7a515efab089",
+          "title": "1D Kalman Filter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b101736d-4bec-4bf1-9c4d-7a515efab089",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515520,
+              "key": "e3961774-ec2a-4f1e-a382-603e9876ee38",
+              "title": "1D Kalman Filter",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1nHSG4U_v2g",
+                "china_cdn_id": "1nHSG4U_v2g.mp4"
+              }
+            },
+            {
+              "id": 524550,
+              "key": "45285b0e-3ce9-49d4-bc06-f07efebf4295",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the programming quiz below, write the code that will iteratively go through the available measurements and motions, and apply a measurement update or a state prediction to each one of them.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464459,
+              "key": "c702ee6c-bfec-4c5c-a033-6902d6fd1912",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "c702ee6c-bfec-4c5c-a033-6902d6fd1912",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6674441002680320",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> measurement_update(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = (var2 * mean1 + var1 * mean2) / (var1 + var2);\n    new_var = 1 / (1 / var1 + 1 / var2);\n    return make_tuple(new_mean, new_var);\n}\n\ntuple<double, double> state_prediction(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = mean1 + mean2;\n    new_var = var1 + var2;\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n    //Measurements and measurement variance\n    double measurements[5] = { 5, 6, 7, 9, 10 };\n    double measurement_sig = 4;\n    \n    //Motions and motion variance\n    double motion[5] = { 1, 1, 2, 1, 1 };\n    double motion_sig = 2;\n    \n    //Initial state\n    double mu = 0;\n    double sig = 1000;\n    \n    //######TODO: Put your code here below this line######//\n    \n    // Loop through all the measurments\n        // Apply a measurment update\n        printf(\"update:  [%f, %f]\\n\", mu, sig);\n        // Apply a state prediction\n        printf(\"predict: [%f, %f]\\n\", mu, sig);\n    \n    \n    return 0;\n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n\nusing namespace std;\n\ndouble new_mean, new_var;\n\ntuple<double, double> measurement_update(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = (var2 * mean1 + var1 * mean2) / (var1 + var2);\n    new_var = 1 / (1 / var1 + 1 / var2);\n    return make_tuple(new_mean, new_var);\n}\n\ntuple<double, double> state_prediction(double mean1, double var1, double mean2, double var2)\n{\n    new_mean = mean1 + mean2;\n    new_var = var1 + var2;\n    return make_tuple(new_mean, new_var);\n}\n\nint main()\n{\n    //Measurements and measurement variance\n    double measurements[5] = { 5, 6, 7, 9, 10 };\n    double measurement_sig = 4;\n    \n    //Motions and motion variance\n    double motion[5] = { 1, 1, 2, 1, 1 };\n    double motion_sig = 2;\n    \n    //Initial state\n    double mu = 0;\n    double sig = 1000;\n\n    for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++) {\n        tie(mu, sig) = measurement_update(mu, sig, measurements[i], measurement_sig);\n        printf(\"update:  [%f, %f]\\n\", mu, sig);\n        tie(mu, sig) = state_prediction(mu, sig, motion[i], motion_sig);\n        printf(\"predict: [%f, %f]\\n\", mu, sig);\n    }\n\n    return 0;\n}\n",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 498548,
+              "key": "26866ace-a439-4f58-a141-26bc2e770a91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Additional Challenge\n\nYou should try experimenting with different initial values - for instance changing the initial estimate to something absurd, and then adjusting the confidence value from 1000 down to a single digit number. At what point does the Kalman Filter start to be affected by the incorrect initial estimate? How robust is the filter to errors? ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486253,
+          "key": "519e39cc-7ae6-4e29-bec0-17ddcbfd41c8",
+          "title": "Multivariate Gaussian",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "519e39cc-7ae6-4e29-bec0-17ddcbfd41c8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627900,
+              "key": "49d478aa-b44e-4414-8191-a52aab9b74d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Multivariate Gaussians\n\nMost robots that we would be interested in modeling are moving in more than one dimension. For instance, a robot on a plane would have an x & y position. \n\nThe simple approach to take, would be to have a 1-dimensional Gaussian represent each dimension - one for the x-axis and one for the y-axis.\n\nDo you see any problems with this?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 627901,
+              "key": "c78eedea-7821-4e8b-96a9-aa0117a6a4b1",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c78eedea-7821-4e8b-96a9-aa0117a6a4b1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why couldn't we use multiple 1-dimensional Gaussians to represent multi-dimensional systems?",
+                "answers": [
+                  {
+                    "id": "a1526399378919",
+                    "text": "We totally could! ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526399408036",
+                    "text": "Sometimes we want to use different types of distributions (Uniform, Gaussian, Poisson) for different dimensions.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526399435379",
+                    "text": "There may be correlations between dimensions that we would not be able to model by using independent 1-dimensional Gaussians.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 627902,
+              "key": "d02cee35-ffc0-4375-a4d7-e4dbb30c4243",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The image below depicts a two-dimensional Gaussian distribution. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 627903,
+              "key": "da13ba0b-d703-48a7-bbd1-bb13b9f2fe0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5afb04b6_multivariate-gaussian/multivariate-gaussian.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/da13ba0b-d703-48a7-bbd1-bb13b9f2fe0c",
+              "caption": "",
+              "alt": "",
+              "width": 533,
+              "height": 458,
+              "instructor_notes": null
+            },
+            {
+              "id": 627930,
+              "key": "955a5903-c134-4ef4-96fe-68fb52a91778",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's dive into the details!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 518705,
+              "key": "7ea8e1c7-e050-4b98-a500-bff2034839a0",
+              "title": "Multivariate Gaussian",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ih69P0KJgII",
+                "china_cdn_id": "ih69P0KJgII.mp4"
+              }
+            },
+            {
+              "id": 627899,
+              "key": "da514f42-9022-471a-b07e-3df6d92d9df8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Formulas for the Multivariate Gaussian\n\n### Mean\n\nThe mean is now a vector,\n\n<div class=\"mathquill\"> \\large \\mu =         \\left[\n            \\begin{array}{c}\n                \\mu_{x} \\\\\n                \\mu_{y}\n            \\end{array}\n        \\right] </div>\n\n### Covariance\n\nAnd the multidimensional equivalent of variance is a covariance matrix,\n\n<div class=\"mathquill\"> \\large  \\Sigma = \\left[\n            \\begin{array}{cc}\n                \\sigma_{x}^2 & \\sigma_{x}\\sigma_{y} \\\\\n                \\sigma_{y}\\sigma_{x} & \\sigma_{y}^2\n            \\end{array}\n        \\right]</div>\n\nWhere <span class=\"mathquill\"> \\sigma_{x}^2</span> and <span class=\"mathquill\"> \\sigma_{y}^2</span> represent the variances, while <span class=\"mathquill\"> \\sigma_{y}\\sigma_{x}</span> and <span class=\"mathquill\"> \\sigma_{x}\\sigma_{y}</span> are correlation terms. These terms are non-zero if there is a correlation between the variance in one dimension and the variance in another. When that is the case, the Gaussian function looks 'skewed' when looked at from above. \n\nIf we were to evaluate this mathematically, the eigenvalues and eigenvectors of the covariance matrix describe the amount and direction of uncertainty. \n\n### Multivariate Gaussian\n\nBelow is the formula for the multivariate Gaussian. Note that <span class=\"mathquill\"> x</span> and <span class=\"mathquill\"> \\mu</span> are vectors, and <span class=\"mathquill\"> \\Sigma</span> is a matrix. \n\n<div class=\"mathquill\"> \\large p(x) = \\frac{1}{(2\\pi)^{\\frac{D}{2}}|\\Sigma|^\\frac{1}{2}}e^{-\\frac{1}{2}(x-\\mu)^T\\Sigma^{-1}(x-\\mu)}</div>\n\nIf D=1, the formula simplifies to the formula for the one-dimensional Gaussian that you have seen before. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486254,
+          "key": "a68c705b-e661-46d1-9fa0-5c006e738a17",
+          "title": "Intro to Multidimensional KF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a68c705b-e661-46d1-9fa0-5c006e738a17",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515451,
+              "key": "e3c8959b-da83-4d1b-a892-ec5e87156d1e",
+              "title": "Intro to Multidimensional KF",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9Xb5WavDqKE",
+                "china_cdn_id": "9Xb5WavDqKE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 464479,
+          "key": "2e25ed5b-4001-41e8-8cbc-478662356527",
+          "title": "Design of Multidimensional KF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2e25ed5b-4001-41e8-8cbc-478662356527",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626482,
+              "key": "84e0cf34-a454-4323-b0ec-8175f420119d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Design of Multi-Dimensional Kalman Filters\n\nFrom this point forward we will transition to using linear algebra, as it allows us to easily work with multi-dimensional problems. To begin with, let’s write the state prediction in linear algebra form. \n\n## State Transition\n\nThe formula below is the state transition function that advances the state from time _t_ to time _t + 1_. It is just the relationship between the robot’s position, <span class=\"mathquill\">x</span>, and velocity, <span class=\"mathquill\">\\dot{x}</span>. Here, we will assume that the robot’s velocity is not changing.\n\n<div class=\"mathquill\">\\large x' = x + \\Delta t \\dot{x}</div>\n\n<div class=\"mathquill\">\\large \\dot{x}' = \\dot{x}</div>\n\nWe can express the same relationship in matrix form, as seen below. On the left, is the posterior state (denoted with the prime symbol, <span class=\"mathquill\">'</span>), and on the right are the state transition function and the prior state. This equation shows how the state changes over the time period, <span class=\"mathquill\">\\Delta t</span>. Note that we are only working with the means here; the covariance matrix will appear later.\n\n\n<div class='mathquill'> \\large  \n\\begin{bmatrix}\nx \\\\\n\\dot{x}\n\\end{bmatrix}'\n=\n\\begin{bmatrix}\n1 & \\Delta{t} \\\\\n0 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\nx \\\\\n\\dot{x}\n\\end{bmatrix}\n</div>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626484,
+              "key": "8bfb8254-89b4-41b4-b6cf-66d1767fb193",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The State Transition Function is denoted <span class=\"mathquill\">F</span>, and the formula can be written as so,\n\n<div class=\"mathquill\">\\large x' = Fx</div>\n\nIn reality, the equation should also account for process noise, as its own term in the equation. However, process noise is a Gaussian with a mean of 0, so the update equation for the mean need not include it. \n\n<div class=\"mathquill\">\\large x' = Fx + noise</div>\n\n<div class=\"mathquill\">\\large noise \\sim N(0,Q)</div>\n\nNow, what happens to the covariance? How does it change in this process? \n\n**Sidenote:** While it is common to use <span class=\"mathquill\">\\Sigma</span> to represent the covariance of a Gaussian distribution in mathematics, it is more common to use the letter <span class=\"mathquill\">P</span> to represent the state covariance in localization.\n\nIf you multiply the state, <span class=\"mathquill\">x</span>, by <span class=\"mathquill\">F</span>, then the covariance will be affected by the square of <span class=\"mathquill\">F</span>. In matrix form, this will look like so:\n\n<div class=\"mathquill\">\\large P' = FPF^T</div>\n\nHowever, your intuition may suggest that it should be affected by more than just the state transition function. For instance, additional uncertainty may arise from the prediction itself. If so, you’re correct! \n\nTo calculate the posterior covariance, the prior covariance is multiplied by the state transition function squared, and <span class=\"mathquill\">Q</span> added as an increase of uncertainty due to process noise. <span class=\"mathquill\">Q</span> can account for a robot slowing down unexpectedly, or being drawn off course by an external influence. \n\n<div class=\"mathquill\">\\large P' = FPF^T + Q</div>\n\nNow we’ve updated the mean and the covariance as part of the state prediction. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671249,
+              "key": "0a95be79-7995-4fd1-a635-e32991d8ab10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz 1\n\nNow that you've seen how a simple state transition function is created, let's see if you can construct a more complicated one for the following problem:\n\nYou are tracking the position and velocity of a robot in two dimensions, x and y. The state is represented as so,\n\n<div class='mathquill'> \\large \nx = \n\\begin{bmatrix}\np_x \\\\\np_y \\\\\nv_x \\\\\nv_y\n\\end{bmatrix}\n</div>\n\nFind the state update function, F, that will advance the state from time _t_ to time _t + 1_ based on the state transition equation below.\n\n<div class=\"mathquill\">\\large x' = Fx</div>\n\nTry to work through this on paper before looking at the quiz options below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671246,
+              "key": "93ba888e-999c-46a4-a7fe-fc7c95c8deca",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "93ba888e-999c-46a4-a7fe-fc7c95c8deca",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following matrices is the correct state transition function for the problem defined above?",
+                "answers": [
+                  {
+                    "id": "a1530724696040",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & \\Delta t \\\\ 1 & \\Delta t \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix}</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1530724854176",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & 0 & \\Delta t & 0 \\\\ 0 & 1  & 0 & \\Delta t \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{bmatrix} </div>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1530724854660",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 0 & 1  & 0 & \\Delta t \\\\ 1 & 0 & \\Delta t & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix} </div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1530724855157",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & 0 & \\Delta t & 0 \\\\ 0 & 1  & 0 & \\Delta t \\end{bmatrix} </div>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 671252,
+              "key": "2faeb257-6a9b-4297-8bf8-d4b1739c08cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz 2\n\nYou are tracking the position, velocity, and acceleration of a quadrotor in the vertical dimension, z. The state of the quadrotor can be represented as so, \n\n<div class='mathquill'> \\large \nx = \n\\begin{bmatrix}\nz \\\\\n\\dot{z} \\\\\n\\ddot{z} \n\\end{bmatrix}\n</div>\n\nFind the state update function, F, that will advance the state from time _t_ to time _t + 1_ based on the state transition equation below.\n\n<div class=\"mathquill\">\\large x' = Fx</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671254,
+              "key": "89b6225f-e5a0-47a0-a61a-df22a9db2b73",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "89b6225f-e5a0-47a0-a61a-df22a9db2b73",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following matrices is the correct state transition function for the problem defined above?",
+                "answers": [
+                  {
+                    "id": "a1530725664449",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & \\Delta t & 0 \\\\ 0 & 1 & \\Delta t \\\\ 0 & 0 & 1 \\end{bmatrix}</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1530725665933",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & \\Delta t & \\Delta t^2 \\\\ 0 & 1 & \\Delta t \\\\ 0 & 0 & 1 \\end{bmatrix} </div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1530725666468",
+                    "text": "<div class='mathquill'> F = \\begin{bmatrix} 1 & \\Delta t & \\frac{1}{2} \\Delta t^2 \\\\ 0 & 1 & \\Delta t \\\\ 0 & 0 & 1 \\end{bmatrix} </div>",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 514065,
+              "key": "99c796bb-75a8-4921-a046-8420e23f627a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Measurement Update\n\nNext, we move onto the measurement update step. If we return to our original example, where we were tracking the position and velocity of a robot in the x-dimension, the robot was taking measurements of the location only (the velocity is a hidden state variable). Therefore the measurement function is very simple - a matrix containing a one and a zero. This matrix demonstrates how to map the state to the observation, <span class=\"mathquill\">z</span>.\n\n<div class='mathquill'> \\large \nz =\n\\begin{bmatrix}\n1 & 0\n\\end{bmatrix}\n\\begin{bmatrix}\nx \\\\\n\\dot{x}\n\\end{bmatrix}\n</div>\n\nThis matrix, called the Measurement Function, is denoted <span class=\"mathquill\">H</span>.\n\nFor the measurement update step, there are a few formulas. First, we calculate the measurement residual, <span class=\"mathquill\">y</span>. The measurement residual is the difference between the measurement and the expected measurement based on the prediction (ie. we are comparing where the measurement _tells us_ we are vs. where we _think_ we are). The measurement residual will be used later on in a formula.\n\n<div class=\"mathquill\">\\large y = z - Hx'</div>\n\nNext, it's time to consider the measurement noise, denoted <span class=\"mathquill\">R</span>. This formula maps the state prediction covariance into the measurement space and adds the measurement noise. The result, <span class=\"mathquill\">S</span>, will be used in a subsequent equation to calculate the Kalman Gain.\n\n<div class=\"mathquill\">\\large S = HP'H^T + R</div>\n\nThese equations need not be memorized, instead they can be referred to in text or implemented in code for use and reuse. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626481,
+              "key": "0dce30e9-8ba2-4d83-98bb-114d32b1ead4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kalman Gain\n\nNext, we calculate the Kalman Gain, K. As you will see in the next equation, the Kalman Gain determines how much weight should be placed on the state prediction, and how much on the measurement update. It is an averaging factor that changes depending on the uncertainty of the state prediction and measurement update. \n\n<div class=\"mathquill\">\\large K = P'H^TS^{-1}</div>\n\n<div class=\"mathquill\">\\large x = x' + Ky</div>\n\nThese equations may look complicated and intimidating, but they do nothing more than calculate an average factor. Let’s work through a quick example to gain a better understanding of this. Feel free to pause the video and follow along in your own notebook!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 515454,
+              "key": "ed7b04fc-26a0-493c-8204-c5023abe602b",
+              "title": "C2L2 A15  V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The second equation on the left should use <span class=\"mathquill\">P'</span> instead of <span class=\"mathquill\">P</span> on the left side of the equation.",
+              "video": {
+                "youtube_id": "K-FobmdRMtI",
+                "china_cdn_id": "K-FobmdRMtI.mp4"
+              }
+            },
+            {
+              "id": 498658,
+              "key": "fe87a78a-4246-4c2b-b215-2442575662b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The last step in the Kalman Filter is to update the new state’s covariance using the Kalman Gain.\n\n<div class=\"mathquill\">\\large P = (I - KH)P'</div>\n\n## Kalman Filter Equations\n\nThese are the equations that implement the Kalman Filter in multiple dimensions.\n\nState Prediction:\n\n<div class=\"mathquill\">\\large x' = Fx</div>\n\n<div class=\"mathquill\">\\large P' = FPF^T + Q</div>\n\nMeasurement Update:\n\n<div class=\"mathquill\">\\large y = z - Hx'</div>\n\n<div class=\"mathquill\">\\large S = HP'H^T + R</div>\n\nCalculation of Kalman Gain:\n\n<div class=\"mathquill\">\\large K = P'H^TS^{-1}</div>\n\nCalculation of Posterior State and Covariance:\n\n<div class=\"mathquill\">\\large x = x' + Ky</div>\n\n<div class=\"mathquill\">\\large P = (I - KH)P'</div>\n\nThe Kalman Filter can successfully recover from inaccurate initial estimates, but it is very important to estimate the noise parameters, Q and R,  as accurately as possible - as they are used to determine which of the estimate or the measurement to believe more.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671255,
+              "key": "923857f9-fca2-4601-b9fc-f8b0c572866b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Programming Exercise\n\nNow it’s your chance to code the multi-dimensional Kalman Filter in C++. The code below uses the C++ `eigen` library to define matrices and easily compute their inverse and transpose. Check out the `eigen` library full documentation [here](https://eigen.tuxfamily.org/dox/group__QuickRefPage.html) and go through some of their examples.  Here's a list of useful commands that you'll need while working on this quiz:\n* Initializing a 2x1 float matrix **K**: `MatrixXf K(2, 1)`;\n* Inserting values to matrix **K**: `K << 0, 0` \n* Computing the transpose of matrix **K**: `K.transpose()`\n* Computing the inverse of matrix **K**: `K.inverse()`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464480,
+              "key": "6a76d83c-27aa-41c3-a956-2676375e2a30",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "6a76d83c-27aa-41c3-a956-2676375e2a30",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5565189060165632",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n#include \"Core\" // Eigen Library\n#include \"LU\"   // Eigen Library\n\nusing namespace std;\nusing namespace Eigen;\n\nfloat measurements[3] = { 1, 2, 3 };\n\ntuple<MatrixXf, MatrixXf> kalman_filter(MatrixXf x, MatrixXf P, MatrixXf u, MatrixXf F, MatrixXf H, MatrixXf R, MatrixXf I)\n{\n    for (int n = 0; n < sizeof(measurements) / sizeof(measurements[0]); n++) {\n        //****** TODO: Kalman-filter function********//\n        \n        // Measurement Update\n        // Code the Measurement Update\n        // Initialize and Compute Z, y, S, K, x, and P\n        \n        \n        \n        \n        \n        \n        \n        \n        // Prediction\n        // Code the Prediction\n        // Compute x and P\n\n\n\n        \n        \n    }\n\n    return make_tuple(x, P);\n}\n\nint main()\n{\n\n    MatrixXf x(2, 1);// Initial state (location and velocity) \n    x << 0,\n    \t 0; \n    MatrixXf P(2, 2);//Initial Uncertainty\n    P << 100, 0, \n    \t 0, 100; \n    MatrixXf u(2, 1);// External Motion\n    u << 0,\n    \t 0; \n    MatrixXf F(2, 2);//Next State Function\n    F << 1, 1,\n    \t 0, 1; \n    MatrixXf H(1, 2);//Measurement Function\n    H << 1,\n    \t 0; \n    MatrixXf R(1, 1); //Measurement Uncertainty\n    R << 1;\n    MatrixXf I(2, 2);// Identity Matrix\n    I << 1, 0,\n    \t 0, 1; \n\n    tie(x, P) = kalman_filter(x, P, u, F, H, R, I);\n    cout << \"x= \" << x << endl;\n    cout << \"P= \" << P << endl;\n\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <tuple>\n#include \"Core\" // Eigen Library\n#include \"LU\"   // Eigen Library\n\nusing namespace std;\nusing namespace Eigen;\n\nfloat measurements[3] = { 1, 2, 3 };\n\ntuple<MatrixXf, MatrixXf> kalman_filter(MatrixXf x, MatrixXf P, MatrixXf u, MatrixXf F, MatrixXf H, MatrixXf R, MatrixXf I)\n{\n    for (int n = 0; n < sizeof(measurements) / sizeof(measurements[0]); n++) {\n\n        // Measurement Update\n        MatrixXf Z(1, 1);\n        Z << measurements[n];\n\n        MatrixXf y(1, 1);\n        y << Z - (H * x);\n\n        MatrixXf S(1, 1);\n        S << H * P * H.transpose() + R;\n\n        MatrixXf K(2, 1);\n        K << P * H.transpose() * S.inverse();\n\n        x << x + (K * y);\n\n        P << (I - (K * H)) * P;\n\n        // Prediction\n        x << (F * x) + u;\n        P << F * P * F.transpose();\n    }\n\n    return make_tuple(x, P);\n}\n\nint main()\n{\n\n    MatrixXf x(2, 1);// Initial state (location and velocity) \n    x << 0,\n    \t 0; \n    MatrixXf P(2, 2);//Initial Uncertainty\n    P << 100, 0, \n    \t 0, 100; \n    MatrixXf u(2, 1);// External Motion\n    u << 0,\n    \t 0; \n    MatrixXf F(2, 2);//Next State Function\n    F << 1, 1,\n    \t 0, 1; \n    MatrixXf H(1, 2);//Measurement Function\n    H << 1,\n    \t 0; \n    MatrixXf R(1, 1); //Measurement Uncertainty\n    R << 1;\n    MatrixXf I(2, 2);// Identity Matrix\n    I << 1, 0,\n    \t 0, 1; \n\n    tie(x, P) = kalman_filter(x, P, u, F, H, R, I);\n    cout << \"x= \" << x << endl;\n    cout << \"P= \" << P << endl;\n\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 486256,
+          "key": "91537cab-e4d6-488a-a583-31ec1af8fe78",
+          "title": "Introduction to EKF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "91537cab-e4d6-488a-a583-31ec1af8fe78",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671259,
+              "key": "86279e15-f48b-4e35-83c1-f86d19492e38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction to the Extended Kalman Filter",
+              "instructor_notes": ""
+            },
+            {
+              "id": 522143,
+              "key": "3208d09a-24c9-4254-98f5-16e904e7c5ff",
+              "title": "Introduction to EKF",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dwpKthaQ6ts",
+                "china_cdn_id": "dwpKthaQ6ts.mp4"
+              }
+            },
+            {
+              "id": 522248,
+              "key": "b41fb98b-4ddd-4547-a2c7-a36d730d4841",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Resources:\n* [Taylor series Wikipedia page](https://en.wikipedia.org/wiki/Taylor_series)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630927,
+              "key": "8d342a1e-a541-441c-b8e4-3714b678502a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ## Summary\n\nThe Kalman Filter is applicable to problems with linear motion and measurement functions. This is limiting, as much of the real world is nonlinear. \n\nA nonlinear function can be used to update the mean of a function, \n\n<div class=\"mathquill\"> \\mu \\xrightarrow{f(x)} \\mu'</div>\n\nbut not the variance, as this would result in a non-Gaussian distribution which is _much_ more computationally expensive to work with. To update the variance, the Extended Kalman Filter linearizes the nonlinear function f(x) over a small section and calls it F. This linearization, F, is then used to update the state's variance.\n\n<div class=\"mathquill\"> P \\xrightarrow{F} P'</div>\n\nThe linear approximation can be obtained by using the first two terms of the Taylor Series of the function centered around the mean.\n\n<div class=\"mathquill\">F = f(\\mu) + \\frac{\\delta f(\\mu)}{\\delta x}(x-\\mu)</div>\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486257,
+          "key": "bb377b96-eed0-49e8-bad9-5d416ee80cd1",
+          "title": "EKF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb377b96-eed0-49e8-bad9-5d416ee80cd1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 498677,
+              "key": "64d2bf19-a8d0-424e-b1b4-024f83d8b855",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Multi-dimensional Extended Kalman Filter\n\nNow you’ve seen the fundamentals behind the Extended Kalman Filter. The mechanics are not too different from the Kalman Filter, with the exception of needing to linearize a nonlinear motion or measurement function to be able to update the variance. \n\nYou’ve seen how this can be done for a state prediction or measurement function that is of one-dimension, but now it’s time to explore how to linearize functions with multiple dimensions. To do this, we will be using multi-dimensional Taylor series. \n\n## Linearization in Multiple Dimensions\n\nThe equation for a multidimensional Taylor Series is presented below.\n\n<div class=\"mathquill\">\\large T(x) = f(a) + (x-a)^TDf(a) + \\frac{1}{2!}(x-a)^TD^2f(a)(x-a)+...</div>\n\nYou will see that it is very similar to the 1-dimensional Taylor Series. As before, to calculate a linear approximation, we only need the first two terms.\n\n<div class=\"mathquill\">\\large T(x) = f(a) + (x-a)^TDf(a)</div>\n\nYou may notice a new term, Df(a). This is the Jacobian matrix, and it holds the partial derivative terms for the multi-dimensional equation.\n\n<div class=\"mathquill\">\\large Df(a) = \\frac{\\delta f(a)}{\\delta x}</div>\n\nIn it's expanded form, the Jacobian is a matrix of partial derivatives. It tells us how each of the components of f changes as we change each of the components of the state vector. \n\n<div class=\"mathquill\">\\large \nDf(a) = \n\\begin{bmatrix}\n\\frac{\\delta f_1}{\\delta x_1} & \\frac{\\delta f_1}{\\delta x_2} & \\ldots & \\frac{\\delta f_1}{\\delta x_n} \\\\\n\\frac{\\delta f_2}{\\delta x_1} & \\frac{\\delta f_2}{\\delta x_2} & \\ldots & \\frac{\\delta f_2}{\\delta x_n}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\frac{\\delta f_m}{\\delta x_1} & \\frac{\\delta f_m}{\\delta x_2} & \\ldots & \\frac{\\delta f_m}{\\delta x_n}\n\\end{bmatrix}\n</div>\n\nThe rows correspond to the dimensions of the function, f, and the columns relate to the dimensions (state variables) of x. The first element of the matrix is the first dimension of the function derived with respect to the first dimension of x.  \n\nThe Jacobian is a generalization of the 1-dimensional case. In a 1-dimensional case, the Jacobian would have df/dx as its only term.\n\n## Example Application\n\nThis will make more sense in context, so let’s look at a specific example. Let’s say that we are tracking the x-y coordinate of an object. This is to say that our state is a vector x, with state variables x and y.\n\n<div class='mathquill'> \\large \nx = \n\\begin{bmatrix}\nx \\\\\ny\n\\end{bmatrix}\n</div>\n\nHowever, our sensor does not allow us to measure the x and y coordinates of the object directly. Instead, our sensor measures the distance from the robot to the object, r, as well as the angle between r and the x-axis, θ. \n\n<div class='mathquill'> \\large \nz = \n\\begin{bmatrix}\nr \\\\\n\\theta\n\\end{bmatrix}\n</div>\n\nIt is important to notice that our state is using a Cartesian representation of the world, while the measurements are in a polar representation. How will this affect our measurement function? \n\nOur measurement function maps the state to the observation, as so,\n\n<div class='mathquill'> \\large \n\\begin{bmatrix}\nx \\\\\ny\n\\end{bmatrix}\n\\xRightarrow{meas. function}\n\\begin{bmatrix}\nr \\\\\n\\theta\n\\end{bmatrix}\n</div>\n\nThus, our measurement function must map from Cartesian to polar coordinates. But there is no matrix, H, that will successfully make this conversion, as the relationship between Cartesian and polar coordinates is nonlinear. \n\n<div class='mathquill'> \\large \nr =  \\sqrt{x^2 + y^2}\n</div>\n<div class='mathquill'> \\large \n\\theta = tan^{-1}(\\frac{y}{x})\n</div>\n\nFor this reason, instead of using the measurement residual equation <span class='mathquill'>y = z - Hx'</span> that you had seen before, the mapping must be made with a dedicated function, h(x').\n\n<div class='mathquill'> \\large \nh(x') = \n\\begin{bmatrix}\n \\sqrt{x^2 + y^2} \\\\\ntan^{-1}(\\frac{y}{x})\n\\end{bmatrix}\n</div>\n\nThen the measurement residual equation becomes <span class='mathquill'>y = z - h(x')</span>.\n\nOur measurement covariance matrix cannot be updated the same way, as it would turn into a non-Gaussian distribution (as seen in the previous video). Let's calculate a linearization, H, and use it instead. The Taylor series for the function h(x), centered about the mean μ, is defined below.\n\n<div class=\"mathquill\">\\large h(x) \\simeq h(\\mu) + (x-\\mu)^TDf(\\mu)</div>\n\nThe Jacobian, <span class=\"mathquill\">Df(\\mu)</span>, is defined below. But let's call it H since it's the linearization of our measurement function, h(x).\n\n<div class=\"mathquill\">\\Large\nH = \n\\begin{bmatrix}\n\\frac{\\partial r}{\\partial x} & \\frac{\\partial r}{\\partial y} \\\\\n\\frac{\\partial \\theta}{\\partial x} & \\frac{\\partial \\theta}{\\partial y}\\end{bmatrix}\n</div>\n\nIf you were to compute each of those partial derivatives, the matrix would reduce to the following,\n\n<div class=\"mathquill\">\\Large\nH = \\begin{bmatrix}\n\\frac{x}{\\sqrt[]{x^2 + y^2}} & \\frac{y}{\\sqrt[]{x^2 + y^2}}\\\\\n-\\frac{y}{x^2 + y^2} & \\frac{x}{x^2 + y^2}\n\\end{bmatrix}\n</div>\n\nIt's this matrix, H, that can then be used to update the state's covariance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 514067,
+              "key": "37b66995-6606-48d3-a95c-9dc0f71c217f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To summarize the flow of calculations for the Extended Kalman Filter, it's worth revisiting the equations to see what has changed and what has remained the same.\n\n## Extended Kalman Filter Equations\n\nThese are the equations that implement the Extended Kalman Filter - you'll notice that most of them remain the same, with a few changes highlighted in red. \n\nState Prediction:\n\n<div class=\"mathquill\"> \\large \\color{red} \\cancel{x' = Fx} \\quad \\color{black} \\rightarrow \\quad x' = f(x)</div>\n<div class=\"mathquill\">\\large \\color{black} P' = \\color{blue}F\\color{black}P\\color{blue}F^T\\color{black} + Q</div>\n\nMeasurement Update:\n<div class=\"mathquill\">\\large \\color{red} \\cancel{y = z - Hx'}\\quad \\color{black}  \\rightarrow \\quad y = z -h(x')</div>\n<div class=\"mathquill\">\\large \\color{black} S =  \\color{blue}H\\color{black}P' \\color{blue}H^T\\color{black} + R</div>\n\nCalculation of Kalman Gain:\n<div class=\"mathquill\">\\large \\color{black} K = P' \\color{blue}H^T\\color{black}S^{-1}</div>\n\nCalculation of Posterior State and Covariance:\n<div class=\"mathquill\">\\large \\color{black} x = x' + Ky</div>\n<div class=\"mathquill\">\\large \\color{black} P = (I - K \\color{blue}H\\color{black})P'</div>\n\nHighlighted in blue are the Jacobians that replaced the measurement and state transition functions.\n\nThe Extended Kalman Filter requires us to calculate the Jacobian of a nonlinear function as part of every single iteration, since the mean (which is the point that we linearize about) is updated.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630930,
+              "key": "6c69f939-fef1-4083-97fe-ef9a133909cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nPhew, that got complicated quickly! Here are the key take-aways about Extended Kalman Filters:\n\n- The Kalman Filter cannot be used when the measurement and/or state transition functions are nonlinear, since this would result in a non-Gaussian distribution. \n\n- Instead, we take a local linear approximation and use this approximation to update the covariance of the estimate. The linear approximation is made using the first terms of the Taylor Series, which includes the first derivative of the function.\n\n- In the multi-dimensional case, taking the first derivative isn't as easy as there are multiple state variables and multiple dimensions. Here we employ a Jacobian, which is a matrix of partial derivatives, containing the partial derivative of each dimension with respect to each state variable.\n\nWhile it's important to understand the underlying math to employ the Kalman Filter, don't feel the need to memorize these equations. Chances are, whatever software package or programming language you're working with will have libraries that allow you to apply the Kalman Filter, or at the very least perform linear algebra calculations (such as matrix multiplication and calculating the Jacobian).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630932,
+          "key": "c2a0cee6-c667-4654-a699-7c0cb4f1c519",
+          "title": "EKF Example",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c2a0cee6-c667-4654-a699-7c0cb4f1c519",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630934,
+              "key": "8cacccbf-142d-4fe9-a65d-19bbcb483e20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# EKF Example\n\nLet's look at another example of a vehicle taking measurements - this time, a quadrotor! This quadrotor is a bit simplified - it's motion is constrained to the y-axis. Therefore, it's state can be defined by the following vector,\n\n<div class=\"mathquill\">\\large x = \\begin{bmatrix} \\phi \\\\ \\dot{y} \\\\ y \\end{bmatrix}</div>\n\nthat is: its roll angle, its velocity, and its position.\n\nImagine you have a quadrotor, such as the one in the image below. This quadrotor would like to know the distance between it and the wall. This is an important measurement to have if the quadrotor would like to traverse the inside of a room, or outside of a building, while maintaining a safe distance from the wall. \n\nTo estimate this distance, the quadrotor is equipped with a range finger. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 673092,
+              "key": "9d62abdc-d4db-44b1-8630-3f945db54a4c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b45157e_e1/e1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d62abdc-d4db-44b1-8630-3f945db54a4c",
+              "caption": "",
+              "alt": "",
+              "width": 1077,
+              "height": 441,
+              "instructor_notes": null
+            },
+            {
+              "id": 630937,
+              "key": "a160f89a-e310-4468-a987-b0eed391d25a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Shown in blue, are the true distances from an arbitrary point on the left to the quadrotor, and to the wall.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630938,
+              "key": "27cef05c-8c28-4afd-a85c-c14018b72e22",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "27cef05c-8c28-4afd-a85c-c14018b72e22",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In the quadrotor's current configuration, what would you expect it's measurement to the wall to be?",
+                "answers": [
+                  {
+                    "id": "a1527262530474",
+                    "text": "<div class=\"mathquill\">h(x) = wall - y</div>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527262537394",
+                    "text": "<div class=\"mathquill\">h(x) = y + wall</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527262537886",
+                    "text": "No way to know",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 630939,
+              "key": "b0d3d0d6-5837-4979-9991-cfaeacc897c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That's right - while the quadrotor is hovering perpendicular to the wall, the measurement, <span class=\"mathquill\">h(x)</span>, is equal to <span class=\"mathquill\">wall - y</span>. \n\nNow, what would happen if the quadrotor were to roll to some angle <span class=\"mathquill\">\\phi</span>? What is a more general equation for the measurement that takes into account the roll angle?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 673093,
+              "key": "ae2a1e94-94f5-42bb-8ba8-327d3340e1bc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b45158e_e2/e2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ae2a1e94-94f5-42bb-8ba8-327d3340e1bc",
+              "caption": "",
+              "alt": "",
+              "width": 1062,
+              "height": 554,
+              "instructor_notes": null
+            },
+            {
+              "id": 630949,
+              "key": "f60723c5-1cf8-4fb8-bd96-3e648b815825",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f60723c5-1cf8-4fb8-bd96-3e648b815825",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the equation for the measurement when the quadrotor has a roll angle of <span class=\"mathquill\">\\phi</span>?",
+                "answers": [
+                  {
+                    "id": "a1527263493402",
+                    "text": "<div class=\"mathquill\">h(x) = (wall - y)*cos \\phi</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527263541675",
+                    "text": "<div class=\"mathquill\">h(x) = wall - y</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527263542185",
+                    "text": "<div class=\"mathquill\">h(x) = \\frac{wall - y}{cos \\phi}</div>",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 630954,
+              "key": "5bc282b1-a5b9-40bc-9506-2e53deff2434",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Applying some basic trigonometry, we've now determined the measurement model for this quadrotor's range finder.\n\n<div class=\"mathquill\">\\large h(x) = \\begin{bmatrix} \\frac{wall - y}{cos \\phi} \\end{bmatrix}</div>\n\nThe function has a cosine in it's denominator, making this function non-linear. This means that we will need to use the Extended Kalman Filter for our estimation, and in the process, linearize the function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672422,
+              "key": "fa332946-c684-4c9e-a379-bf931677c9fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Calculating H\n\nTo apply the Extended Kalman Filter, we will need to calculate H, the Jacobian of the measurement model that we defined above. This won't be too strenuous since the measurement function is a 1x1 matrix. \n\nWithout calculating the partial derivatives, which of the following is the correct Jacobian for the measurement model?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672423,
+              "key": "be9bec7d-ed55-4ffa-ad8c-148a48e13900",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "be9bec7d-ed55-4ffa-ad8c-148a48e13900",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select the correct Jacobian for the measurement model.",
+                "answers": [
+                  {
+                    "id": "a1531171722373",
+                    "text": "  <div class=\"mathquill\">\\large H = \\begin{bmatrix} \\frac{\\delta h}{\\delta \\phi} \\end{bmatrix}</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1531171744725",
+                    "text": "  <div class=\"mathquill\">\\large H = \\begin{bmatrix} \\frac{\\delta h}{\\delta \\phi} & \\frac{\\delta h}{\\delta \\dot{y}} & \\frac{\\delta h}{\\delta y} \\end{bmatrix}</div>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1531171745542",
+                    "text": "  <div class=\"mathquill\">\\large H = \\begin{bmatrix} \\frac{\\delta \\phi}{\\delta h} \\\\ \\frac{\\delta \\dot{y}}{\\delta h} \\\\ \\frac{\\delta y}{\\delta h} \\end{bmatrix}</div>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 672918,
+              "key": "60ad1f84-1c67-49ab-9b44-c94de071b074",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Calculating the three partial derivatives will result in the following,\n\n<div class=\"mathquill\">\\begin{aligned} \\frac{\\delta h}{\\delta \\phi} &= \\frac{sin \\phi}{cos^2 \\phi} (wall - y) \\\\\n\n\\frac{\\delta h}{\\delta \\dot{y}} &= 0 \\\\\n\n\\frac{\\delta h}{\\delta y} &= \\frac{-1}{cos \\phi}\n\n\\end{aligned}</div>\n\nWhen implementing the Extended Kalman Filter in code, there are software libraries that can take the partial derivative of a function, simplifying your implementation. There are, of course, also EKF implementations readily available too. However, it's _always_ helpful to understand the inner workings of an algorithm and apply it intelligently to the problem at hand.\n\nAfter calculating H, \n\n<div class=\"mathquill\">\\large H = \\begin{bmatrix} \\frac{sin \\phi}{cos^2 \\phi} (wall - y) & 0 &   \\frac{-1}{cos \\phi}\\end{bmatrix}</div>\n\nit can be used in the EKF equations to update the covariance of the state.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 673098,
+              "key": "6ee46882-4d52-4a17-bd31-de8a1b7091e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As a reminder, the equations are provided below:\n\n## Extended Kalman Filter Equations\n\nThe matrices in blue display where the Jacobian is used, if the underlying state transition or measurement function is nonlinear.\n\nState Prediction:\n\n<div class=\"mathquill\"> \\large \\color{black} x' = f(x)</div>\n<div class=\"mathquill\">\\large \\color{black} P' = \\color{blue}F\\color{black}P\\color{blue}F^T\\color{black} + Q</div>\n\nMeasurement Update: \n\n<div class=\"mathquill\">\\large  \\color{black} y = z -h(x')</div>\n<div class=\"mathquill\">\\large \\color{black} S =  \\color{blue}H\\color{black}P' \\color{blue}H^T\\color{black} + R</div>\n\nCalculation of Kalman Gain:\n<div class=\"mathquill\">\\large \\color{black} K = P' \\color{blue}H^T\\color{black}S^{-1}</div>\n\nCalculation of Posterior State and Covariance:\n<div class=\"mathquill\">\\large \\color{black} x = x' + Ky</div>\n<div class=\"mathquill\">\\large \\color{black} P = (I - K \\color{blue}H\\color{black})P'</div>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486258,
+          "key": "c649f1dc-5828-4256-a825-b781e6dcf501",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c649f1dc-5828-4256-a825-b781e6dcf501",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 515455,
+              "key": "8006b1fa-16c0-435e-a5ef-aacd1d5a6959",
+              "title": "Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "a-wUWkxWPqY",
+                "china_cdn_id": "a-wUWkxWPqY.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

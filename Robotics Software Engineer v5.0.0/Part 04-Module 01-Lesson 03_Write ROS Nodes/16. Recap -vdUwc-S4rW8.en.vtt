@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.275
+Congratulations. You've come to the conclusion of ROS essentials.
+
+00:00:04.275 --> 00:00:06.315
+After the understanding of ROS,
+
+00:00:06.315 --> 00:00:08.835
+you are now prepared for the projects to come.
+
+00:00:08.835 --> 00:00:13.695
+While we hope you now have a solid understanding of the fundamental concepts of ROS,
+
+00:00:13.695 --> 00:00:17.160
+the lessons here are by no means comprehensive.
+
+00:00:17.160 --> 00:00:21.344
+Fortunately, there are a wealth of resources available online.
+
+00:00:21.344 --> 00:00:24.104
+First and foremost, is the ROS wiki.
+
+00:00:24.105 --> 00:00:29.414
+The ROS wiki is the primary source of documentation for all official ROS packages.
+
+00:00:29.414 --> 00:00:33.869
+Additionally, the ROS wiki hosts many helpful tutorials.
+
+00:00:33.869 --> 00:00:35.929
+Aside from a simple web search,
+
+00:00:35.929 --> 00:00:40.284
+this is probably the first place you should go if you are having a ROS related problem.
+
+00:00:40.284 --> 00:00:43.099
+If the wiki does not provide the answers you need,
+
+00:00:43.100 --> 00:00:45.590
+ROS answers is the next best bet.
+
+00:00:45.590 --> 00:00:48.710
+With tens of thousands of questions and answers,
+
+00:00:48.710 --> 00:00:50.750
+there's a good chance that somebody has
+
+00:00:50.750 --> 00:00:53.335
+already solved the problem that you are dealing with.
+
+00:00:53.335 --> 00:00:56.840
+We hope you're excited to keep building robots with ROS.
+

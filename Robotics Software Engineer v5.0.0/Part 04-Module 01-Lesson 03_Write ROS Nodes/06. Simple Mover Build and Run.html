@@ -1,0 +1,426 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Simple Mover: Build and Run
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Simple Mover: Build and Run
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="simple-mover-build-and-run">
+          Simple Mover: Build and Run
+         </h1>
+         <p>
+          Before you can run the
+          <code>
+           simple_mover
+          </code>
+          node, you have to compile the C++ script.
+         </p>
+         <h2 id="modifying-cmakeliststxt">
+          Modifying CMakeLists.txt
+         </h2>
+         <p>
+          In order for catkin to generate the C++ libraries, you must first modify
+          <code>
+           simple_arm
+          </code>
+          ’s
+          <code>
+           CMakeLists.txt
+          </code>
+          .
+         </p>
+         <p>
+          CMake is the build tool underlying catkin, and
+          <code>
+           CMakeLists.txt
+          </code>
+          is a CMake script used by catkin. If you’re familiar with the concept of makefiles, this is similar.
+         </p>
+         <p>
+          Navigate to the package
+          <code>
+           CMakeLists.txt
+          </code>
+          file and open it:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/simple_arm/
+$ gedit CMakeLists.txt </code></pre>
+         <p>
+          First, ensure that the
+          <code>
+           find_package()
+          </code>
+          macro lists
+          <code>
+           std_msgs
+          </code>
+          ,
+          <code>
+           message_generation
+          </code>
+          , and
+          <code>
+           controller_manager
+          </code>
+          as required packages. The
+          <code>
+           find_package()
+          </code>
+          macro should look as follows:
+         </p>
+         <pre><code class="html language-html">find_package(catkin REQUIRED COMPONENTS
+        std_msgs
+        message_generation
+        controller_manager
+)</code></pre>
+         <p>
+          As the names might imply, the
+          <code>
+           std_msgs
+          </code>
+          package contains all of the basic message types, and
+          <code>
+           message_generation
+          </code>
+          is required to generate message libraries for all the supported languages (cpp, lisp, python, javascript). The
+          <code>
+           contoller_manager
+          </code>
+          is another package responsible for controlling the arm.
+         </p>
+         <p>
+          Now, add the following block of code at the bottom of the file:
+         </p>
+         <pre><code class="html language-html">include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_executable(simple_mover src/simple_mover.cpp)
+target_link_libraries(simple_mover ${catkin_LIBRARIES})
+add_dependencies(simple_mover simple_arm_generate_messages_cpp)</code></pre>
+         <p>
+          These instructions ask the compiler to include the directories, executable file, link libraries, and dependencies for your C++ code:
+         </p>
+         <pre><code class="html language-html">add_executable(node_name sourcecode_directory)</code></pre>
+         <p>
+          Creates the executable
+          <code>
+           simple_mover
+          </code>
+          file.
+         </p>
+         <pre><code class="html language-html">target_link_libraries(node_name ${catkin_LIBRARIES})</code></pre>
+         <p>
+          This will add all the linked libraries to the compiler.
+         </p>
+         <pre><code class="html language-html">add_dependencies(node_name package_name_generate_messages_cpp)</code></pre>
+         <p>
+          Generates message headers for this package before you can use them.
+         </p>
+         <p>
+          Keep in mind that you should always include these instructions whenever you want to write a C++ ROS node.  For more information about
+          <code>
+           CMakeLists.txt
+          </code>
+          check out
+          <a href="http://wiki.ros.org/catkin/CMakeLists.txt" rel="noopener noreferrer" target="_blank">
+           the CMakeLists.txt page
+          </a>
+          on the ROS wiki.
+         </p>
+         <h2 id="building-the-package">
+          Building the Package
+         </h2>
+         <p>
+          Now that you have included specific instructions for your compiler, let’s build the package:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ catkin_make</code></pre>
+         <h2 id="running-simple_mover">
+          Running simple_mover
+         </h2>
+         <p>
+          Assuming that your workspace has recently been built, you can launch
+          <code>
+           simple_arm
+          </code>
+          as follows:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch simple_arm robot_spawn.launch</code></pre>
+         <p>
+          Once the ROS Master, Gazebo, and all of our relevant nodes are up and running, we can finally launch
+          <code>
+           simple_mover
+          </code>
+          . To do so, open a new terminal and type the following commands:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rosrun simple_arm simple_mover</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="simple_mover-github-branch">
+          <code>
+           simple_mover
+          </code>
+          GitHub branch
+         </h2>
+         <p>
+          You can always download a copy of this branch
+          <a href="https://github.com/udacity/RoboND-simple_arm/tree/simple_mover" rel="noopener noreferrer" target="_blank">
+           here
+          </a>
+          .
+         </p>
+         <p>
+          Congratulations! You’ve now written your first ROS node in C++!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. ROS Services.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Simple Mover: Build and Run')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

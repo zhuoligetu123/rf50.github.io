@@ -1,0 +1,479 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   ROS Services
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Write ROS Nodes
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. ROS Publishers.html">
+       03. ROS Publishers
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simple Mover.html">
+       04. Simple Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Simple Mover The Code.html">
+       05. Simple Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simple Mover Build and Run.html">
+       06. Simple Mover: Build and Run
+      </a>
+     </li>
+     <li class="">
+      <a href="07. ROS Services.html">
+       07. ROS Services
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Arm Mover.html">
+       08. Arm Mover
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Arm Mover The Code.html">
+       09. Arm Mover: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Arm Mover Build, Launch and Interact.html">
+       10. Arm Mover: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="11. ROS Clients and Subscribers.html">
+       11. ROS Clients and Subscribers
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Look Away.html">
+       12. Look Away
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Look Away The Code.html">
+       13. Look Away: The Code
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Look Away Build, Launch and Interact.html">
+       14. Look Away: Build, Launch and Interact
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Pub-Sub Class.html">
+       15. Pub-Sub Class
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Recap.html">
+       16. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. ROS Services
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="ros-services">
+          ROS Services
+         </h1>
+         <p>
+          Now that you've written your first ROS node, you've seen how publishing to a topic works, and you were able to control the robotic arm by publishing to the
+          <code>
+           /simple_arm/joint_1_position_controller/command
+          </code>
+          topic and
+          <code>
+           /simple_arm/joint_2_position_controller/command
+          </code>
+          topic. Next, we'll see another node called
+          <code>
+           arm_mover
+          </code>
+          , which implements the
+          <code>
+           safe_move
+          </code>
+          service to allow service calls to control the arm.
+         </p>
+         <h2 id="defining-services">
+          Defining services
+         </h2>
+         <p>
+          A ROS service allows request/response communication to exist between nodes. Within the node providing the service, request messages are handled by functions or methods. Once the requests have been handled successfully, the node providing the service sends a message back to the requester node. In C++, a ROS service server can be created using the following definition format:
+         </p>
+         <pre><code class="C++ language-C++">ros::ServiceServer service = n.advertiseService(`service_name`, handler);</code></pre>
+         <p>
+          In ROS, the service class name
+          <code>
+           ServiceServer
+          </code>
+          comes from the file name where the service definition exists. Each service provides a definition in a
+          <code>
+           .srv
+          </code>
+          file; this is a text file that provides the proper message type for both requests and responses.
+         </p>
+         <p>
+          The
+          <code>
+           advertiseService()
+          </code>
+          allows you to communicate with ROS through the node handle
+          <code>
+           n
+          </code>
+          and inform ROS that you want to create a service.
+         </p>
+         <p>
+          The
+          <code>
+           service_name
+          </code>
+          is the name given to the service. Other nodes will use this name to specify the service to which they are sending requests.
+         </p>
+         <p>
+          The
+          <code>
+           handler
+          </code>
+          is the name of the function or method that handles the incoming service message. This function is called each time the service is called, and the message from the service call is passed to the
+          <code>
+           handler
+          </code>
+          function as an argument. The
+          <code>
+           handler
+          </code>
+          should return an appropriate service response message.
+         </p>
+         <h2 id="using-services">
+          Using Services
+         </h2>
+         <h3 id="command-line">
+          Command Line
+         </h3>
+         <p>
+          Services can be called directly from the command line, with:
+         </p>
+         <pre><code class="sh language-sh">$ rosservice call service_name “request”</code></pre>
+         <p>
+          After calling the service, you will wait for an answer.
+         </p>
+         <h3 id="ros-service-client">
+          ROS Service Client
+         </h3>
+         <p>
+          Another approach is  to use a ROS service programmatically, from within a node. You will define a
+          <code>
+           ROS client
+          </code>
+          , which provides the interface for sending messages to the service:
+         </p>
+         <pre><code class="C++ language-C++">ros::ServiceClient client = n.serviceClient&lt;package_name::service_file_name&gt;("service_name");</code></pre>
+         <p>
+          One way the
+          <code>
+           ROS Client
+          </code>
+          can then be used is to send requests is as follows:
+         </p>
+         <pre><code class="C++ language-C++">client.call(srv);    // request a service </code></pre>
+         <p>
+          For now, we’ll focus on how to create the ROS
+          <strong>
+           service server
+          </strong>
+          . Later, in the
+          <code>
+           look_away
+          </code>
+          node, you will practice calling the service from a
+          <strong>
+           service client
+          </strong>
+          node.
+         </p>
+         <p>
+          See the ROS documentation
+          <a href="http://wiki.ros.org/roscpp/Overview/Services" rel="noopener noreferrer" target="_blank">
+           on services
+          </a>
+          for detailed instructions on how to create and call ROS services.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-10-30-at-11.33.36-am.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          ROS Services
+         </p>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following ROS nodes might best be implemented using a service?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="rbk1" name="778145" type="checkbox" value="rbk1"/>
+           <label for="rbk1">
+            <p>
+             A node for an autonomous vehicle that provides lidar data for other nodes to use in localization.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk2" name="778145" type="checkbox" value="rbk2"/>
+           <label for="rbk2">
+            <p>
+             A node for a lunar rover that shuts down a robotic arm by folding the arm and killing all related processes.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk3" name="778145" type="checkbox" value="rbk3"/>
+           <label for="rbk3">
+            <p>
+             A node that sets a given parameter on request. For example, a node in turtlesim that sets the pen color in the turtlesim window.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="rbk4" name="778145" type="checkbox" value="rbk4"/>
+           <label for="rbk4">
+            <p>
+             A node which executes movement for a robotic arm, checking that the arm joints are within specified bounds.
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            A node for a lunar rover that shuts down a robotic arm by folding the arm and killing all related processes.
+           </li>
+           <li>
+            A node that sets a given parameter on request. For example, a node in turtlesim that sets the pen color in the turtlesim window.
+           </li>
+           <li>
+            A node which executes movement for a robotic arm, checking that the arm joints are within specified bounds.
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Let's get started with the
+          <code>
+           arm_mover
+          </code>
+          code, so you can see how to combine the
+          <code>
+           safe_move
+          </code>
+          service along with publishers in a node so that whenever a service is requested, it will be responsible to publish messages on a topic.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Arm Mover.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. ROS Services')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>
