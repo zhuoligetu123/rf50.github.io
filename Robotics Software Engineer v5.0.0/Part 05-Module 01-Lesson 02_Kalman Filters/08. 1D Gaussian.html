@@ -1,0 +1,677 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   1D Gaussian
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Kalman Filters
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What's a Kalman Filter.html">
+       02. What's a Kalman Filter?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. History.html">
+       03. History
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Applications.html">
+       04. Applications
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Variations.html">
+       05. Variations
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Uncertainty.html">
+       06. Robot Uncertainty
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Kalman Filter Advantage.html">
+       07. Kalman Filter Advantage
+      </a>
+     </li>
+     <li class="">
+      <a href="08. 1D Gaussian.html">
+       08. 1D Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Designing 1D Kalman Filters.html">
+       09. Designing 1D Kalman Filters
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Measurement Update.html">
+       10. Measurement Update
+      </a>
+     </li>
+     <li class="">
+      <a href="11. State Prediction.html">
+       11. State Prediction
+      </a>
+     </li>
+     <li class="">
+      <a href="12. 1D Kalman Filter.html">
+       12. 1D Kalman Filter
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Multivariate Gaussian.html">
+       13. Multivariate Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to Multidimensional KF.html">
+       14. Intro to Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Design of Multidimensional KF.html">
+       15. Design of Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Introduction to EKF.html">
+       16. Introduction to EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="17. EKF.html">
+       17. EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="18. EKF Example.html">
+       18. EKF Example
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Recap.html">
+       19. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          08. 1D Gaussian
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="1d-gaussian">
+          1D Gaussian
+         </h1>
+         <p>
+          At the basis of the Kalman Filter is the Gaussian distribution, sometimes referred to as a bell curve or normal distribution. Recall the rover example - after executing one motion, the rover’s location was represented by a Gaussian. It’s exact location was not certain, but the level of uncertainty was bounded. It was unlikely that the rover would be more than a few meters away from its target location, and it would be nearly impossible for it to show up at the 50 meter mark.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/c2l2-a08-rover.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          This is the role of a Kalman Filter - after a movement or a measurement update, it outputs a unimodal Gaussian distribution. This is its best guess at the true value of a parameter.
+         </p>
+         <p>
+          A Gaussian distribution is a probability distribution, which is a continuous function. The probability that a random variable, x, will take a value between
+          <span class="mathquill ud-math">
+           x_1
+          </span>
+          and
+          <span class="mathquill ud-math">
+           x_2
+          </span>
+          is given by the integral of the function from
+          <span class="mathquill ud-math">
+           x_1
+          </span>
+          to
+          <span class="mathquill ud-math">
+           x_2
+          </span>
+          .
+         </p>
+         <div class="mathquill">
+          p(x_1 &lt; x &lt; x_2) = \int_{x_1}^{x_2}f_x(x)dx
+         </div>
+         <p>
+          In the image below, the probability of the rover being located between 8.7m and 9m is 7%.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/c2l2-a08-graph-.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="mean-and-variance">
+          Mean and Variance
+         </h2>
+         <p>
+          A Gaussian is characterized by two parameters - its mean (μ) and its variance (σ²). The mean is the most probable occurrence and lies at the centre of the function, and the variance relates to the width of the curve. The term unimodal implies a single peak present in the distribution.
+         </p>
+         <p>
+          Gaussian distributions are frequently abbreviated as N(x: μ, σ²), and will be referred to in this way throughout the coming lessons.
+         </p>
+         <p>
+          It's time for a quiz! Reference the image below to answer the quiz question.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/c2l2-a08-quiz.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             If you had to pick a Gaussian to represent the location of your rover, which of the following would you prefer?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1516927085330" name="518704" type="checkbox" value="a1516927085330"/>
+           <label for="a1516927085330">
+            <p>
+             A
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516927107879" name="518704" type="checkbox" value="a1516927107879"/>
+           <label for="a1516927107879">
+            <p>
+             B
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516927108559" name="518704" type="checkbox" value="a1516927108559"/>
+           <label for="a1516927108559">
+            <p>
+             C
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            C
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The formula for the Gaussian distribution is printed below. Notice that the formula contains an exponential of a quadratic function. The quadratic compares the value of x to μ, and in the case that x=μ, the exponential is equal to 1 (
+          <span class="mathquill ud-math">
+           e^0 = 1
+          </span>
+          ). You’ll note here, that the constant in front of the exponential is a necessary normalizing factor.
+         </p>
+         <div class="mathquill">
+          \huge p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+         </div>
+         <p>
+          Just like with discrete probability, like a coin toss, the probabilities of all the options must sum to one. Therefore, the area underneath the function always sums to one.
+         </p>
+         <div class="mathquill">
+          \huge \int p(x)dx = 1
+         </div>
+         <p>
+          Now that you are familiar with the formula, it’s time to code the Gaussian in C++. This will allow you to calculate the probability of a value occurring given a mean and a variance!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="464457-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#464457-main-cpp" id="tab-464457-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="464457-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#464457-solution-cpp" id="tab-464457-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-464457-main-cpp" class="tab-pane active show" id="464457-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+
+using namespace std;
+
+double f(double mu, double sigma2, double x)
+{
+    //Use mu, sigma2 (sigma squared), and x to code the 1-dimensional Gaussian
+    //Put your code here
+    //double prob =
+    return prob;
+}
+
+int main()
+{
+    cout &lt;&lt; f(10.0, 4.0, 8.0) &lt;&lt; endl;
+    return 0;
+}</pre>
+           </div>
+           <div aria-labelledby="tab-464457-solution-cpp" class="tab-pane" id="464457-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+
+using namespace std;
+
+double f(double mu, double sigma2, double x)
+{
+    //Use mu, sigma2 (sigma squared), and x to code the 1-dimensional Gaussian
+    //Put your code here
+    double prob = 1.0 / sqrt(2.0 * M_PI * sigma2) * exp(-0.5 * pow((x - mu), 2.0) / sigma2);
+    return prob;
+}
+
+int main()
+{
+    cout &lt;&lt; f(10.0, 4.0, 8.0) &lt;&lt; endl;
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Great, you’ve coded the formula for a Gaussian distribution, now let’s make sure you know where it is applied!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             What is represented by a Gaussian distribution? Check all that apply.
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1513620912074" name="486275" type="checkbox" value="a1513620912074"/>
+           <label for="a1513620912074">
+            <p>
+             Predicted Motion
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1513620925541" name="486275" type="checkbox" value="a1513620925541"/>
+           <label for="a1513620925541">
+            <p>
+             Sensor Measurement
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1513620926378" name="486275" type="checkbox" value="a1513620926378"/>
+           <label for="a1513620926378">
+            <p>
+             Estimated State of Robot
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            Predicted Motion
+           </li>
+           <li>
+            Sensor Measurement
+           </li>
+           <li>
+            Estimated State of Robot
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          That’s right, the Kalman Filter treats all noise as unimodal Gaussian. In reality, that’s not the case. However, the algorithm is optimal if the noise is Gaussian. The term optimal expresses that the algorithm minimizes the mean square error of the estimated parameters.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="distribution-quiz">
+          Distribution Quiz
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Reference the following probability distribution to answer the quiz question below.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/last-graph-v1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Can a state with this probability distribution be solved using the Kalman Filter?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1517175134948" name="524546" type="radio" value="a1517175134948"/>
+           <label for="a1517175134948">
+            <p>
+             Yes
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517175139786" name="524546" type="radio" value="a1517175139786"/>
+           <label for="a1517175139786">
+            <p>
+             No
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          No
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          That’s all of the mathematics that you need to know for now. Let’s start designing Kalman Filters!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="09. Designing 1D Kalman Filters.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. 1D Gaussian')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1014 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Design of Multidimensional KF
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Kalman Filters
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What's a Kalman Filter.html">
+       02. What's a Kalman Filter?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. History.html">
+       03. History
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Applications.html">
+       04. Applications
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Variations.html">
+       05. Variations
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Uncertainty.html">
+       06. Robot Uncertainty
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Kalman Filter Advantage.html">
+       07. Kalman Filter Advantage
+      </a>
+     </li>
+     <li class="">
+      <a href="08. 1D Gaussian.html">
+       08. 1D Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Designing 1D Kalman Filters.html">
+       09. Designing 1D Kalman Filters
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Measurement Update.html">
+       10. Measurement Update
+      </a>
+     </li>
+     <li class="">
+      <a href="11. State Prediction.html">
+       11. State Prediction
+      </a>
+     </li>
+     <li class="">
+      <a href="12. 1D Kalman Filter.html">
+       12. 1D Kalman Filter
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Multivariate Gaussian.html">
+       13. Multivariate Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to Multidimensional KF.html">
+       14. Intro to Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Design of Multidimensional KF.html">
+       15. Design of Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Introduction to EKF.html">
+       16. Introduction to EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="17. EKF.html">
+       17. EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="18. EKF Example.html">
+       18. EKF Example
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Recap.html">
+       19. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          15. Design of Multidimensional KF
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="design-of-multi-dimensional-kalman-filters">
+          Design of Multi-Dimensional Kalman Filters
+         </h1>
+         <p>
+          From this point forward we will transition to using linear algebra, as it allows us to easily work with multi-dimensional problems. To begin with, let’s write the state prediction in linear algebra form.
+         </p>
+         <h2 id="state-transition">
+          State Transition
+         </h2>
+         <p>
+          The formula below is the state transition function that advances the state from time
+          <em>
+           t
+          </em>
+          to time
+          <em>
+           t + 1
+          </em>
+          . It is just the relationship between the robot’s position,
+          <span class="mathquill ud-math">
+           x
+          </span>
+          , and velocity,
+          <span class="mathquill ud-math">
+           \dot{x}
+          </span>
+          . Here, we will assume that the robot’s velocity is not changing.
+         </p>
+         <div class="mathquill">
+          \large x' = x + \Delta t \dot{x}
+         </div>
+         <div class="mathquill">
+          \large \dot{x}' = \dot{x}
+         </div>
+         <p>
+          We can express the same relationship in matrix form, as seen below. On the left, is the posterior state (denoted with the prime symbol,
+          <span class="mathquill ud-math">
+           '
+          </span>
+          ), and on the right are the state transition function and the prior state. This equation shows how the state changes over the time period,
+          <span class="mathquill ud-math">
+           \Delta t
+          </span>
+          . Note that we are only working with the means here; the covariance matrix will appear later.
+         </p>
+         <div class="mathquill">
+          \large  
+\begin{bmatrix}
+x \\
+\dot{x}
+\end{bmatrix}'
+=
+\begin{bmatrix}
+1 &amp; \Delta{t} \\
+0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+\dot{x}
+\end{bmatrix}
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The State Transition Function is denoted
+          <span class="mathquill ud-math">
+           F
+          </span>
+          , and the formula can be written as so,
+         </p>
+         <div class="mathquill">
+          \large x' = Fx
+         </div>
+         <p>
+          In reality, the equation should also account for process noise, as its own term in the equation. However, process noise is a Gaussian with a mean of 0, so the update equation for the mean need not include it.
+         </p>
+         <div class="mathquill">
+          \large x' = Fx + noise
+         </div>
+         <div class="mathquill">
+          \large noise \sim N(0,Q)
+         </div>
+         <p>
+          Now, what happens to the covariance? How does it change in this process?
+         </p>
+         <p>
+          <strong>
+           Sidenote:
+          </strong>
+          While it is common to use
+          <span class="mathquill ud-math">
+           \Sigma
+          </span>
+          to represent the covariance of a Gaussian distribution in mathematics, it is more common to use the letter
+          <span class="mathquill ud-math">
+           P
+          </span>
+          to represent the state covariance in localization.
+         </p>
+         <p>
+          If you multiply the state,
+          <span class="mathquill ud-math">
+           x
+          </span>
+          , by
+          <span class="mathquill ud-math">
+           F
+          </span>
+          , then the covariance will be affected by the square of
+          <span class="mathquill ud-math">
+           F
+          </span>
+          . In matrix form, this will look like so:
+         </p>
+         <div class="mathquill">
+          \large P' = FPF^T
+         </div>
+         <p>
+          However, your intuition may suggest that it should be affected by more than just the state transition function. For instance, additional uncertainty may arise from the prediction itself. If so, you’re correct!
+         </p>
+         <p>
+          To calculate the posterior covariance, the prior covariance is multiplied by the state transition function squared, and
+          <span class="mathquill ud-math">
+           Q
+          </span>
+          added as an increase of uncertainty due to process noise.
+          <span class="mathquill ud-math">
+           Q
+          </span>
+          can account for a robot slowing down unexpectedly, or being drawn off course by an external influence.
+         </p>
+         <div class="mathquill">
+          \large P' = FPF^T + Q
+         </div>
+         <p>
+          Now we’ve updated the mean and the covariance as part of the state prediction.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="quiz-1">
+          Quiz 1
+         </h3>
+         <p>
+          Now that you've seen how a simple state transition function is created, let's see if you can construct a more complicated one for the following problem:
+         </p>
+         <p>
+          You are tracking the position and velocity of a robot in two dimensions, x and y. The state is represented as so,
+         </p>
+         <div class="mathquill">
+          \large 
+x = 
+\begin{bmatrix}
+p_x \\
+p_y \\
+v_x \\
+v_y
+\end{bmatrix}
+         </div>
+         <p>
+          Find the state update function, F, that will advance the state from time
+          <em>
+           t
+          </em>
+          to time
+          <em>
+           t + 1
+          </em>
+          based on the state transition equation below.
+         </p>
+         <div class="mathquill">
+          \large x' = Fx
+         </div>
+         <p>
+          Try to work through this on paper before looking at the quiz options below.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following matrices is the correct state transition function for the problem defined above?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1530724696040" name="671246" type="radio" value="a1530724696040"/>
+           <label for="a1530724696040">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; \Delta t \\ 1 &amp; \Delta t \\ 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+          <div>
+           <input id="a1530724854176" name="671246" type="radio" value="a1530724854176"/>
+           <label for="a1530724854176">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; 0 &amp; \Delta t &amp; 0 \\ 0 &amp; 1  &amp; 0 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+          <div>
+           <input id="a1530724854660" name="671246" type="radio" value="a1530724854660"/>
+           <label for="a1530724854660">
+            <div class="mathquill">
+             F = \begin{bmatrix} 0 &amp; 1  &amp; 0 &amp; \Delta t \\ 1 &amp; 0 &amp; \Delta t &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+          <div>
+           <input id="a1530724855157" name="671246" type="radio" value="a1530724855157"/>
+           <label for="a1530724855157">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; 0 &amp; \Delta t &amp; 0 \\ 0 &amp; 1  &amp; 0 &amp; \Delta t \end{bmatrix}
+            </div>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <div class="mathquill">
+           F = \begin{bmatrix} 1 &amp; 0 &amp; \Delta t &amp; 0 \\ 0 &amp; 1  &amp; 0 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+          </div>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="quiz-2">
+          Quiz 2
+         </h3>
+         <p>
+          You are tracking the position, velocity, and acceleration of a quadrotor in the vertical dimension, z. The state of the quadrotor can be represented as so,
+         </p>
+         <div class="mathquill">
+          \large 
+x = 
+\begin{bmatrix}
+z \\
+\dot{z} \\
+\ddot{z} 
+\end{bmatrix}
+         </div>
+         <p>
+          Find the state update function, F, that will advance the state from time
+          <em>
+           t
+          </em>
+          to time
+          <em>
+           t + 1
+          </em>
+          based on the state transition equation below.
+         </p>
+         <div class="mathquill">
+          \large x' = Fx
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following matrices is the correct state transition function for the problem defined above?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1530725664449" name="671254" type="radio" value="a1530725664449"/>
+           <label for="a1530725664449">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; \Delta t &amp; 0 \\ 0 &amp; 1 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+          <div>
+           <input id="a1530725665933" name="671254" type="radio" value="a1530725665933"/>
+           <label for="a1530725665933">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; \Delta t &amp; \Delta t^2 \\ 0 &amp; 1 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+          <div>
+           <input id="a1530725666468" name="671254" type="radio" value="a1530725666468"/>
+           <label for="a1530725666468">
+            <div class="mathquill">
+             F = \begin{bmatrix} 1 &amp; \Delta t &amp; \frac{1}{2} \Delta t^2 \\ 0 &amp; 1 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+            </div>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <div class="mathquill">
+           F = \begin{bmatrix} 1 &amp; \Delta t &amp; \frac{1}{2} \Delta t^2 \\ 0 &amp; 1 &amp; \Delta t \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+          </div>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="measurement-update">
+          Measurement Update
+         </h2>
+         <p>
+          Next, we move onto the measurement update step. If we return to our original example, where we were tracking the position and velocity of a robot in the x-dimension, the robot was taking measurements of the location only (the velocity is a hidden state variable). Therefore the measurement function is very simple - a matrix containing a one and a zero. This matrix demonstrates how to map the state to the observation,
+          <span class="mathquill ud-math">
+           z
+          </span>
+          .
+         </p>
+         <div class="mathquill">
+          \large 
+z =
+\begin{bmatrix}
+1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+\dot{x}
+\end{bmatrix}
+         </div>
+         <p>
+          This matrix, called the Measurement Function, is denoted
+          <span class="mathquill ud-math">
+           H
+          </span>
+          .
+         </p>
+         <p>
+          For the measurement update step, there are a few formulas. First, we calculate the measurement residual,
+          <span class="mathquill ud-math">
+           y
+          </span>
+          . The measurement residual is the difference between the measurement and the expected measurement based on the prediction (ie. we are comparing where the measurement
+          <em>
+           tells us
+          </em>
+          we are vs. where we
+          <em>
+           think
+          </em>
+          we are). The measurement residual will be used later on in a formula.
+         </p>
+         <div class="mathquill">
+          \large y = z - Hx'
+         </div>
+         <p>
+          Next, it's time to consider the measurement noise, denoted
+          <span class="mathquill ud-math">
+           R
+          </span>
+          . This formula maps the state prediction covariance into the measurement space and adds the measurement noise. The result,
+          <span class="mathquill ud-math">
+           S
+          </span>
+          , will be used in a subsequent equation to calculate the Kalman Gain.
+         </p>
+         <div class="mathquill">
+          \large S = HP'H^T + R
+         </div>
+         <p>
+          These equations need not be memorized, instead they can be referred to in text or implemented in code for use and reuse.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="kalman-gain">
+          Kalman Gain
+         </h2>
+         <p>
+          Next, we calculate the Kalman Gain, K. As you will see in the next equation, the Kalman Gain determines how much weight should be placed on the state prediction, and how much on the measurement update. It is an averaging factor that changes depending on the uncertainty of the state prediction and measurement update.
+         </p>
+         <div class="mathquill">
+          \large K = P'H^TS^{-1}
+         </div>
+         <div class="mathquill">
+          \large x = x' + Ky
+         </div>
+         <p>
+          These equations may look complicated and intimidating, but they do nothing more than calculate an average factor. Let’s work through a quick example to gain a better understanding of this. Feel free to pause the video and follow along in your own notebook!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          C2L2 A15  V3
+         </p>
+        </h3>
+        <video controls="">
+         <source src="15. C2L2 A15  V3-K-FobmdRMtI.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="15. C2L2 A15  V3-K-FobmdRMtI.en.vtt" srclang="en"/>
+        </video>
+        <div class="jumbotron" style="margin-top: 50px; margin-bottom: 50px;">
+         <h3>
+          INSTRUCTOR NOTE:
+         </h3>
+         <p>
+          Note: The second equation on the left should use
+          <span class="mathquill ud-math">
+           P'
+          </span>
+          instead of
+          <span class="mathquill ud-math">
+           P
+          </span>
+          on the left side of the equation.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The last step in the Kalman Filter is to update the new state’s covariance using the Kalman Gain.
+         </p>
+         <div class="mathquill">
+          \large P = (I - KH)P'
+         </div>
+         <h2 id="kalman-filter-equations">
+          Kalman Filter Equations
+         </h2>
+         <p>
+          These are the equations that implement the Kalman Filter in multiple dimensions.
+         </p>
+         <p>
+          State Prediction:
+         </p>
+         <div class="mathquill">
+          \large x' = Fx
+         </div>
+         <div class="mathquill">
+          \large P' = FPF^T + Q
+         </div>
+         <p>
+          Measurement Update:
+         </p>
+         <div class="mathquill">
+          \large y = z - Hx'
+         </div>
+         <div class="mathquill">
+          \large S = HP'H^T + R
+         </div>
+         <p>
+          Calculation of Kalman Gain:
+         </p>
+         <div class="mathquill">
+          \large K = P'H^TS^{-1}
+         </div>
+         <p>
+          Calculation of Posterior State and Covariance:
+         </p>
+         <div class="mathquill">
+          \large x = x' + Ky
+         </div>
+         <div class="mathquill">
+          \large P = (I - KH)P'
+         </div>
+         <p>
+          The Kalman Filter can successfully recover from inaccurate initial estimates, but it is very important to estimate the noise parameters, Q and R,  as accurately as possible - as they are used to determine which of the estimate or the measurement to believe more.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="programming-exercise">
+          Programming Exercise
+         </h2>
+         <p>
+          Now it’s your chance to code the multi-dimensional Kalman Filter in C++. The code below uses the C++
+          <code>
+           eigen
+          </code>
+          library to define matrices and easily compute their inverse and transpose. Check out the
+          <code>
+           eigen
+          </code>
+          library full documentation
+          <a href="https://eigen.tuxfamily.org/dox/group__QuickRefPage.html" rel="noopener noreferrer" target="_blank">
+           here
+          </a>
+          and go through some of their examples.  Here's a list of useful commands that you'll need while working on this quiz:
+         </p>
+         <ul>
+          <li>
+           Initializing a 2x1 float matrix
+           <strong>
+            K
+           </strong>
+           :
+           <code>
+            MatrixXf K(2, 1)
+           </code>
+           ;
+          </li>
+          <li>
+           Inserting values to matrix
+           <strong>
+            K
+           </strong>
+           :
+           <code>
+            K &lt;&lt; 0, 0
+           </code>
+          </li>
+          <li>
+           Computing the transpose of matrix
+           <strong>
+            K
+           </strong>
+           :
+           <code>
+            K.transpose()
+           </code>
+          </li>
+          <li>
+           Computing the inverse of matrix
+           <strong>
+            K
+           </strong>
+           :
+           <code>
+            K.inverse()
+           </code>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="464480-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#464480-main-cpp" id="tab-464480-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="464480-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#464480-solution-cpp" id="tab-464480-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-464480-main-cpp" class="tab-pane active show" id="464480-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+#include &lt;tuple&gt;
+#include "Core" // Eigen Library
+#include "LU"   // Eigen Library
+
+using namespace std;
+using namespace Eigen;
+
+float measurements[3] = { 1, 2, 3 };
+
+tuple&lt;MatrixXf, MatrixXf&gt; kalman_filter(MatrixXf x, MatrixXf P, MatrixXf u, MatrixXf F, MatrixXf H, MatrixXf R, MatrixXf I)
+{
+    for (int n = 0; n &lt; sizeof(measurements) / sizeof(measurements[0]); n++) {
+        //****** TODO: Kalman-filter function********//
+        
+        // Measurement Update
+        // Code the Measurement Update
+        // Initialize and Compute Z, y, S, K, x, and P
+        
+        
+        
+        
+        
+        
+        
+        
+        // Prediction
+        // Code the Prediction
+        // Compute x and P
+
+
+
+        
+        
+    }
+
+    return make_tuple(x, P);
+}
+
+int main()
+{
+
+    MatrixXf x(2, 1);// Initial state (location and velocity) 
+    x &lt;&lt; 0,
+    	 0; 
+    MatrixXf P(2, 2);//Initial Uncertainty
+    P &lt;&lt; 100, 0, 
+    	 0, 100; 
+    MatrixXf u(2, 1);// External Motion
+    u &lt;&lt; 0,
+    	 0; 
+    MatrixXf F(2, 2);//Next State Function
+    F &lt;&lt; 1, 1,
+    	 0, 1; 
+    MatrixXf H(1, 2);//Measurement Function
+    H &lt;&lt; 1,
+    	 0; 
+    MatrixXf R(1, 1); //Measurement Uncertainty
+    R &lt;&lt; 1;
+    MatrixXf I(2, 2);// Identity Matrix
+    I &lt;&lt; 1, 0,
+    	 0, 1; 
+
+    tie(x, P) = kalman_filter(x, P, u, F, H, R, I);
+    cout &lt;&lt; "x= " &lt;&lt; x &lt;&lt; endl;
+    cout &lt;&lt; "P= " &lt;&lt; P &lt;&lt; endl;
+
+    return 0;
+}</pre>
+           </div>
+           <div aria-labelledby="tab-464480-solution-cpp" class="tab-pane" id="464480-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+#include &lt;tuple&gt;
+#include "Core" // Eigen Library
+#include "LU"   // Eigen Library
+
+using namespace std;
+using namespace Eigen;
+
+float measurements[3] = { 1, 2, 3 };
+
+tuple&lt;MatrixXf, MatrixXf&gt; kalman_filter(MatrixXf x, MatrixXf P, MatrixXf u, MatrixXf F, MatrixXf H, MatrixXf R, MatrixXf I)
+{
+    for (int n = 0; n &lt; sizeof(measurements) / sizeof(measurements[0]); n++) {
+
+        // Measurement Update
+        MatrixXf Z(1, 1);
+        Z &lt;&lt; measurements[n];
+
+        MatrixXf y(1, 1);
+        y &lt;&lt; Z - (H * x);
+
+        MatrixXf S(1, 1);
+        S &lt;&lt; H * P * H.transpose() + R;
+
+        MatrixXf K(2, 1);
+        K &lt;&lt; P * H.transpose() * S.inverse();
+
+        x &lt;&lt; x + (K * y);
+
+        P &lt;&lt; (I - (K * H)) * P;
+
+        // Prediction
+        x &lt;&lt; (F * x) + u;
+        P &lt;&lt; F * P * F.transpose();
+    }
+
+    return make_tuple(x, P);
+}
+
+int main()
+{
+
+    MatrixXf x(2, 1);// Initial state (location and velocity) 
+    x &lt;&lt; 0,
+    	 0; 
+    MatrixXf P(2, 2);//Initial Uncertainty
+    P &lt;&lt; 100, 0, 
+    	 0, 100; 
+    MatrixXf u(2, 1);// External Motion
+    u &lt;&lt; 0,
+    	 0; 
+    MatrixXf F(2, 2);//Next State Function
+    F &lt;&lt; 1, 1,
+    	 0, 1; 
+    MatrixXf H(1, 2);//Measurement Function
+    H &lt;&lt; 1,
+    	 0; 
+    MatrixXf R(1, 1); //Measurement Uncertainty
+    R &lt;&lt; 1;
+    MatrixXf I(2, 2);// Identity Matrix
+    I &lt;&lt; 1, 0,
+    	 0, 1; 
+
+    tie(x, P) = kalman_filter(x, P, u, F, H, R, I);
+    cout &lt;&lt; "x= " &lt;&lt; x &lt;&lt; endl;
+    cout &lt;&lt; "P= " &lt;&lt; P &lt;&lt; endl;
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="16. Introduction to EKF.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('15. Design of Multidimensional KF')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

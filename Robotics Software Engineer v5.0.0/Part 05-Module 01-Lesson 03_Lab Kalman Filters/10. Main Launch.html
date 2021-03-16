@@ -1,0 +1,418 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Main Launch
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Kalman Filters
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Sensor Fusion.html">
+       02. Sensor Fusion
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Catkin Workspace.html">
+       03. Catkin Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Udacity Workspace.html">
+       04. Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="05. TurtleBot Gazebo Package.html">
+       05. TurtleBot Gazebo Package
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Pose EKF Package .html">
+       06. Robot Pose EKF Package
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Odometry to Trajectory Package.html">
+       07. Odometry to Trajectory Package
+      </a>
+     </li>
+     <li class="">
+      <a href="08. TurtleBot Teleop Package.html">
+       08. TurtleBot Teleop Package
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Rviz Package.html">
+       09. Rviz Package
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Main Launch.html">
+       10. Main Launch
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Rqt Multiplot.html">
+       11. Rqt Multiplot
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Outro.html">
+       12. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          10. Main Launch
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Main Launch
+         </p>
+        </h3>
+        <video controls="">
+         <source src="10. Main Launch-dh1PlulCxtA.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="10. Main Launch-dh1PlulCxtA.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/c2l3-a09-main-launch.00-00-35-10.still001.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The
+          <code>
+           main.launch
+          </code>
+          file located inside a
+          <code>
+           main
+          </code>
+          package. This launch file is a combination of all the 5 nodes we interfaced so far.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="quiz">
+          Quiz:
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           In this quiz, create a main package. Inside the main package create a launch directory and store a main launch file. The main launch file will contain the nodes of all the packages we worked with so far. After you write the main launch file, open a terminal and launch it.
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="e2e48365-86a6-46a5-bbff-f5fd39a5f118--0" type="checkbox"/>
+            <label for="e2e48365-86a6-46a5-bbff-f5fd39a5f118--0">
+             <p>
+              I created a
+              <code>
+               main
+              </code>
+              package in
+              <code>
+               catkin_ws/src
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="e2e48365-86a6-46a5-bbff-f5fd39a5f118--1" type="checkbox"/>
+            <label for="e2e48365-86a6-46a5-bbff-f5fd39a5f118--1">
+             <p>
+              I created a
+              <code>
+               launch
+              </code>
+              directory in
+              <code>
+               catkin_ws/src/main
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="e2e48365-86a6-46a5-bbff-f5fd39a5f118--2" type="checkbox"/>
+            <label for="e2e48365-86a6-46a5-bbff-f5fd39a5f118--2">
+             <p>
+              I created and wrote the
+              <code>
+               main.launch
+              </code>
+              file in
+              <code>
+               catkin_ws/src/main/launch
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="e2e48365-86a6-46a5-bbff-f5fd39a5f118--3" type="checkbox"/>
+            <label for="e2e48365-86a6-46a5-bbff-f5fd39a5f118--3">
+             <p>
+              I opened a terminal and launched the Lab with a single command
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="quiz-solution">
+          Quiz Solution:
+         </h2>
+         <h3 id="create-a-main-package">
+          Create a
+          <code>
+           main package
+          </code>
+          :
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src
+$ catkin_create_pkg main</code></pre>
+         <h3 id="build-the-package">
+          Build the package:
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws
+$ catkin_make</code></pre>
+         <h3 id="create-and-edit-the-mainlaunch-file">
+          Create and edit the
+          <code>
+           main.launch
+          </code>
+          file:
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src/main
+$ mkdir launch
+$ cd launch 
+$ gedit main.launch</code></pre>
+         <p>
+          Copy the
+          <code>
+           main.launch
+          </code>
+          file from
+          <a href="https://github.com/udacity/RoboND-EKFLab/blob/master/main/launch/main.launch" rel="noopener noreferrer" target="_blank">
+           GitHub
+          </a>
+         </p>
+         <h3 id="launch-the-mainlaunch-file">
+          Launch the
+          <code>
+           main.launch
+          </code>
+          file:
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch main main.launch</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="11. Rqt Multiplot.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('10. Main Launch')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

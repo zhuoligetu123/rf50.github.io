@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.950
+In our one dimensional examples,
+
+00:00:01.950 --> 00:00:05.035
+the system state was represented by one variable.
+
+00:00:05.035 --> 00:00:10.134
+An N-dimensional systems, the state is a vector with N state variables.
+
+00:00:10.134 --> 00:00:12.794
+If we are to explore a two dimensional example,
+
+00:00:12.794 --> 00:00:16.769
+these two state variables could be the x and y position of a robot.
+
+00:00:16.769 --> 00:00:19.829
+Or if you're looking for a more interesting example,
+
+00:00:19.829 --> 00:00:22.859
+it could be the position and the velocity of a robot.
+
+00:00:22.859 --> 00:00:25.259
+This leads right into another important matter.
+
+00:00:25.260 --> 00:00:27.145
+When working in one dimension,
+
+00:00:27.144 --> 00:00:29.204
+your state has to be observable,
+
+00:00:29.204 --> 00:00:32.754
+meaning that it had to be something that can be measured directly.
+
+00:00:32.755 --> 00:00:37.155
+In multi-dimensional states, there may exist hidden state variables,
+
+00:00:37.155 --> 00:00:40.200
+ones that you cannot measure with the sensors available,
+
+00:00:40.200 --> 00:00:45.530
+however, you may be able to and further value from other states and measurements.
+
+00:00:45.530 --> 00:00:49.005
+In this example, the location of the robot is observable,
+
+00:00:49.005 --> 00:00:50.940
+while its velocity is not,
+
+00:00:50.939 --> 00:00:53.424
+making it a hidden state variable.
+
+00:00:53.424 --> 00:00:55.949
+However, a robot's position and velocity
+
+00:00:55.950 --> 00:00:59.315
+over time are linked through a very simple formula.
+
+00:00:59.314 --> 00:01:01.299
+Let's look at this on a graph.
+
+00:01:01.299 --> 00:01:03.854
+If initially, the position of the robot is known,
+
+00:01:03.854 --> 00:01:05.685
+but its velocity is not,
+
+00:01:05.685 --> 00:01:08.605
+the estimate of the robot's state would look like so,
+
+00:01:08.605 --> 00:01:10.560
+a Gaussian that is very narrow in
+
+00:01:10.560 --> 00:01:15.219
+the X dimension representing confidence about the robot's location,
+
+00:01:15.219 --> 00:01:18.109
+and very wide in the X dot dimension,
+
+00:01:18.109 --> 00:01:21.144
+since the robot's velocity is completely unknown.
+
+00:01:21.144 --> 00:01:24.719
+Next, a state prediction can be calculated.
+
+00:01:24.719 --> 00:01:27.769
+This is where the common filter starts to get exciting.
+
+00:01:27.769 --> 00:01:32.435
+Knowing the relationship between the hidden variable and observable variable is key.
+
+00:01:32.435 --> 00:01:36.870
+Let's assume that one iteration of the common filter takes one second.
+
+00:01:36.870 --> 00:01:38.594
+Now, using the formula,
+
+00:01:38.594 --> 00:01:42.980
+we can calculate the posterior state for each possible velocity.
+
+00:01:42.980 --> 00:01:45.750
+For instance, if the velocity is zero,
+
+00:01:45.750 --> 00:01:50.930
+the posterior state would be identical to the prior and if the velocity is one,
+
+00:01:50.930 --> 00:01:53.865
+the posterior would be here and so forth.
+
+00:01:53.864 --> 00:01:57.719
+From this, we can draw a posterior Gaussian that looks like so.
+
+00:01:57.719 --> 00:02:00.799
+This doesn't yet tell us anything about the velocity.
+
+00:02:00.799 --> 00:02:05.269
+It just graphs the correlation between the velocity and the location of the robot.
+
+00:02:05.269 --> 00:02:08.909
+However, what do we have next, a measurement update.
+
+00:02:08.909 --> 00:02:10.710
+Let's see if it will be able to provide us with
+
+00:02:10.710 --> 00:02:14.865
+sufficient information to identify the velocity of the robot.
+
+00:02:14.865 --> 00:02:18.270
+The Initial Belief was useful to calculate the state prediction but has
+
+00:02:18.270 --> 00:02:20.490
+no additional value and the result of
+
+00:02:20.490 --> 00:02:25.020
+the state prediction can be called a Prior Belief for our measurement update.
+
+00:02:25.020 --> 00:02:29.695
+Let's say that the new measurement suggests a location of X equals 50.
+
+00:02:29.694 --> 00:02:32.625
+Now, if we apply the measurement update to our prior,
+
+00:02:32.625 --> 00:02:37.215
+we will have a very small posterior centered around X equals 50,
+
+00:02:37.215 --> 00:02:39.620
+and X dot equals 50.
+
+00:02:39.620 --> 00:02:41.159
+This may look like magic,
+
+00:02:41.159 --> 00:02:44.715
+but it's the exact same measurement update that you applied before,
+
+00:02:44.715 --> 00:02:48.390
+implemented in two dimensions. Take a look.
+
+00:02:48.389 --> 00:02:52.049
+This was the Prior Belief and here is the measurement.
+
+00:02:52.050 --> 00:02:54.689
+The Posterior Belief is just a weighted sum of the
+
+00:02:54.689 --> 00:02:59.159
+two and more confident than either the prior or the measurement.
+
+00:02:59.159 --> 00:03:02.145
+Then, the relationship between the two dimensions
+
+00:03:02.145 --> 00:03:05.455
+narrows down the posterior for the X dot axis.
+
+00:03:05.455 --> 00:03:11.760
+After all, if the robot moved from X equals 35 to X equals 50 in one second,
+
+00:03:11.759 --> 00:03:14.014
+the speed should be trivial to calculate.
+
+00:03:14.014 --> 00:03:16.474
+And so it seems that two iterations of
+
+00:03:16.474 --> 00:03:20.564
+the common filter cycle were enough to infer the robot's velocity.
+
+00:03:20.564 --> 00:03:24.840
+Continuing iterating through the measurement update and state prediction
+
+00:03:24.840 --> 00:03:28.259
+steps will update the robot's internal state
+
+00:03:28.259 --> 00:03:31.530
+to keep it aligned with where it is in the real world.
+
+00:03:31.530 --> 00:03:33.990
+Now, let's look at the linear algebra equations
+
+00:03:33.990 --> 00:03:37.000
+that enable this and apply them in the common filter.
+

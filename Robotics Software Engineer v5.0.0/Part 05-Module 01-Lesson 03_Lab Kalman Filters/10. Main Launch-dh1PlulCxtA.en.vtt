@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.827
+Up until now, we worked with five different packages,.
+
+00:00:03.827 --> 00:00:06.150
+Each with its unique launch file.
+
+00:00:06.150 --> 00:00:08.475
+We had to open five different terminals,
+
+00:00:08.474 --> 00:00:12.224
+[inaudible] environment multiple times, and launch each file.
+
+00:00:12.224 --> 00:00:14.535
+This is tedious and error prone.
+
+00:00:14.535 --> 00:00:18.990
+It even gets worse in large projects with more than 20 launch files.
+
+00:00:18.989 --> 00:00:21.899
+So, in this quiz, create a Main Package.
+
+00:00:21.899 --> 00:00:23.549
+Inside the Main Package,
+
+00:00:23.550 --> 00:00:27.000
+create a launch directory and store a main launch file.
+
+00:00:27.000 --> 00:00:32.295
+The main launch file will contain the nodes of all the packages we work with so far.
+
+00:00:32.295 --> 00:00:34.245
+After you write the main launch file,
+
+00:00:34.244 --> 00:00:36.349
+open a terminal and launch it.
+

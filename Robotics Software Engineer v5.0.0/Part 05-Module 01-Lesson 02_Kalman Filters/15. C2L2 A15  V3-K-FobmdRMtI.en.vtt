@@ -1,0 +1,232 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.995
+Here are the Kalman filter equations that you've seen thus far.
+
+00:00:04.995 --> 00:00:10.246
+We'll be using them to take a look at the two extreme cases for our Kalman filter.
+
+00:00:10.246 --> 00:00:13.080
+The case where the sensors measurements are perfect,
+
+00:00:13.080 --> 00:00:17.384
+and the case where the sensor produces completely uncertain data.
+
+00:00:17.385 --> 00:00:19.905
+Let's start with a perfect sensor.
+
+00:00:19.905 --> 00:00:23.730
+If the sensor that you're measuring with is perfectly accurate,
+
+00:00:23.730 --> 00:00:27.899
+then the measurement noise R would be a matrix of zeros.
+
+00:00:27.899 --> 00:00:30.390
+I will represent it as so.
+
+00:00:30.390 --> 00:00:32.115
+In such a case,
+
+00:00:32.115 --> 00:00:35.850
+the equation for S would be simplified to the following.
+
+00:00:35.850 --> 00:00:40.920
+When you plug the equation for S into the formula for the Kalman gain,
+
+00:00:40.920 --> 00:00:43.274
+you have the following equation.
+
+00:00:43.274 --> 00:00:45.765
+We can rewrite this equation.
+
+00:00:45.765 --> 00:00:49.049
+There's a helpful matrix property that allows us to
+
+00:00:49.049 --> 00:00:52.379
+apply the inverse not to the product of the matrices,
+
+00:00:52.380 --> 00:00:54.600
+but to the individual matrices.
+
+00:00:54.600 --> 00:00:56.594
+However, in the process,
+
+00:00:56.594 --> 00:01:00.524
+the order of the matrices and the product reverses.
+
+00:01:00.524 --> 00:01:03.725
+The result is the following equation.
+
+00:01:03.725 --> 00:01:09.655
+Then we can use another handy matrix property to simplify even further.
+
+00:01:09.655 --> 00:01:12.849
+The H transpose and the inverse of
+
+00:01:12.849 --> 00:01:17.769
+the H transpose are simplified to be the identity function,
+
+00:01:17.769 --> 00:01:21.849
+as R P prime and the inverse of P prime.
+
+00:01:21.849 --> 00:01:26.349
+The result is that the Kalman gain is equal to the inverse of
+
+00:01:26.349 --> 00:01:30.280
+the measurement function H. This is important,
+
+00:01:30.280 --> 00:01:33.879
+so let's keep this in mind as we continue.
+
+00:01:33.879 --> 00:01:40.534
+The next equation in the Kalman filter has us updating the mean using the Kalman gain.
+
+00:01:40.534 --> 00:01:44.340
+We haven't yet calculated the measurement residual Y,
+
+00:01:44.340 --> 00:01:47.010
+so let's plug in the equation for it.
+
+00:01:47.010 --> 00:01:52.365
+Now, we can replace K with what we calculated it to be earlier.
+
+00:01:52.364 --> 00:01:56.954
+From here, it's as easy as multiplying out the inverse of H
+
+00:01:56.954 --> 00:02:02.039
+to every term inside of the brackets and simplifying the result.
+
+00:02:02.040 --> 00:02:09.450
+Once again, we can substitute the inverse of H multiplied by H with the identity matrix.
+
+00:02:09.449 --> 00:02:16.489
+Then, you'll notice that we have X prime and negative X prime in the same equation,
+
+00:02:16.490 --> 00:02:18.355
+these sum to zero.
+
+00:02:18.354 --> 00:02:23.694
+And the entire equation simplifies to X is equal to the inverse of H
+
+00:02:23.694 --> 00:02:30.189
+multiplied by Z. H is the function that maps from the state to the measurement,
+
+00:02:30.189 --> 00:02:34.719
+so its inverse would map from the measurement to the state.
+
+00:02:34.719 --> 00:02:38.889
+The new mean is entirely made up from the measurement.
+
+00:02:38.889 --> 00:02:41.079
+We've thrown out any information that
+
+00:02:41.080 --> 00:02:44.425
+the state prediction provided because it's not needed,
+
+00:02:44.425 --> 00:02:47.125
+the measurement is perfect.
+
+00:02:47.125 --> 00:02:51.384
+The same can be shown for an utterly imperfect measurement,
+
+00:02:51.384 --> 00:02:55.149
+one that you know you cannot rely on at all.
+
+00:02:55.150 --> 00:02:57.175
+In such a case,
+
+00:02:57.175 --> 00:03:00.115
+R would be a matrix of infinities.
+
+00:03:00.115 --> 00:03:03.545
+The uncertainty is as high as it can be.
+
+00:03:03.544 --> 00:03:06.764
+I'll represent it as so again.
+
+00:03:06.764 --> 00:03:13.334
+Now, the equation for S contains the product of some matrices plus infinity.
+
+00:03:13.335 --> 00:03:17.145
+In such a case, S would equal infinity.
+
+00:03:17.145 --> 00:03:21.450
+Once again, we move on to the Kalman gain equation.
+
+00:03:21.449 --> 00:03:24.780
+Here we can substitute S for infinity.
+
+00:03:24.780 --> 00:03:29.129
+And now we have the product of some matrices including one that is
+
+00:03:29.129 --> 00:03:33.990
+the inverse of infinity as an infinity to the power of negative one.
+
+00:03:33.990 --> 00:03:35.820
+Well, that's zero.
+
+00:03:35.819 --> 00:03:39.530
+And anything multiplied by zero is zero itself.
+
+00:03:39.530 --> 00:03:41.485
+With a negligible sensor,
+
+00:03:41.485 --> 00:03:43.555
+the Kalman gain is zero.
+
+00:03:43.555 --> 00:03:48.040
+The equation for the new mean would only have one term left,
+
+00:03:48.039 --> 00:03:51.129
+and so X is equal to X prime.
+
+00:03:51.129 --> 00:03:52.840
+In such a case,
+
+00:03:52.840 --> 00:03:55.990
+the new mean is equal to the state prediction and
+
+00:03:55.990 --> 00:04:00.610
+the measurement update is not included at all as it is unreliable.
+
+00:04:00.610 --> 00:04:02.245
+As you saw here,
+
+00:04:02.245 --> 00:04:07.390
+the two extremes for the Kalman filter are a perfect sensor and a negligible sensor.
+
+00:04:07.389 --> 00:04:09.024
+And these two cases,
+
+00:04:09.025 --> 00:04:11.920
+the new state is either exclusively dependent on
+
+00:04:11.919 --> 00:04:16.360
+the measurement or exclusively reliant on the state prediction.
+
+00:04:16.360 --> 00:04:22.944
+In reality, you will more often find that the Kalman gain is somewhere between the two.
+
+00:04:22.944 --> 00:04:28.029
+It is an averaging factor evaluating which of the measurement update or
+
+00:04:28.029 --> 00:04:30.625
+state prediction should be trusted more
+
+00:04:30.625 --> 00:04:34.240
+based on the measurement noise and the process noise.
+
+00:04:34.240 --> 00:04:37.329
+I hope that working through these two examples has
+
+00:04:37.329 --> 00:04:40.659
+demystified the Kalman filter equations just a bit.
+
+00:04:40.660 --> 00:04:43.795
+Once again, you need not remember these equations,
+
+00:04:43.795 --> 00:04:47.920
+they can be referenced from the lesson or textbook as needed.
+

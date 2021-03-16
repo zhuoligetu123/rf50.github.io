@@ -1,0 +1,500 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   MCL in Action
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Monte Carlo Localization
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What's MCL.html">
+       02. What's MCL?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Power of MCL.html">
+       03. Power of MCL
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Particle Filters.html">
+       04. Particle Filters
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Bayes Filtering.html">
+       05. Bayes Filtering
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MCL The Algorithm .html">
+       06. MCL: The Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="07. MCL in Action.html">
+       07. MCL in Action
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Outro.html">
+       08. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. MCL in Action
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          MCL in Action
+         </p>
+        </h3>
+        <video controls="">
+         <source src="07. MCL in Action-VgEGrvgty_k.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="07. MCL in Action-VgEGrvgty_k.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="mcl-vs-ekf-in-action">
+          MCL vs EKF in Action
+         </h2>
+         <h3 id="1--mcl">
+          1- MCL:
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="Source: Thrun, 2005 - Probabilistic Robotics
+" class="img img-fluid" src="img/l4-c7-mcl.png"/>
+          <figcaption class="figure-caption">
+           <p>
+            Source: Thrun, 2005 - Probabilistic Robotics
+           </p>
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          <strong>
+           At time
+          </strong>
+          :
+         </p>
+         <ul>
+          <li>
+           <strong>
+            t=1
+           </strong>
+           , Particles are drawn randomly and uniformly over the entire pose space.
+          </li>
+          <li>
+           <strong>
+            t=2
+           </strong>
+           , Measurement is updated and an importance weight is assigned to each particle.
+          </li>
+          <li>
+           <strong>
+            t=3
+           </strong>
+           , Motion is updated and a new particle set with uniform weights and high number of particles around the three most likely places is obtained in resampling.
+          </li>
+          <li>
+           <strong>
+            t=4
+           </strong>
+           , Measurement assigns non-uniform weight to the particle set.
+          </li>
+          <li>
+           <strong>
+            t=5
+           </strong>
+           , Motion is updated and a new resampling step is about to start.
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="2--ekf">
+          2- EKF:
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="Source: Thrun, 2005 - Probabilistic Robotics" class="img img-fluid" src="img/l4-c7-ekf.png"/>
+          <figcaption class="figure-caption">
+           <p>
+            Source: Thrun, 2005 - Probabilistic Robotics
+           </p>
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          <strong>
+           At time
+          </strong>
+          :
+         </p>
+         <ul>
+          <li>
+           <strong>
+            t=1
+           </strong>
+           , Initial belief represented by a Gaussian distribution around the first door.
+          </li>
+          <li>
+           <strong>
+            t=2
+           </strong>
+           , Motion is updated and the new belief is represented by a shifted Gaussian of increased weight.
+          </li>
+          <li>
+           <strong>
+            t=3
+           </strong>
+           , Measurement is updated and the robot is more certain of its location. The new posterior is represented by a Gaussian with a small variance.
+          </li>
+          <li>
+           <strong>
+            t=4
+           </strong>
+           , Motion is updated and the uncertainty increases.
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Select concepts that are common to both the MCL and EKF algorithms
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1516920312926" name="518600" type="checkbox" value="a1516920312926"/>
+           <label for="a1516920312926">
+            <p>
+             Particle filters
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516920316011" name="518600" type="checkbox" value="a1516920316011"/>
+           <label for="a1516920316011">
+            <p>
+             Gaussian distribution
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516920316833" name="518600" type="checkbox" value="a1516920316833"/>
+           <label for="a1516920316833">
+            <p>
+             Resampling stage
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516920317460" name="518600" type="checkbox" value="a1516920317460"/>
+           <label for="a1516920317460">
+            <p>
+             Assigning importance weights
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516920341236" name="518600" type="checkbox" value="a1516920341236"/>
+           <label for="a1516920341236">
+            <p>
+             Motion and measurement stages
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1516920448664" name="518600" type="checkbox" value="a1516920448664"/>
+           <label for="a1516920448664">
+            <p>
+             Non-Gaussian distribution
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            Gaussian distribution
+           </li>
+           <li>
+            Motion and measurement stages
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which approach do you prefer?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1513131476306" name="477897" type="checkbox" value="a1513131476306"/>
+           <label for="a1513131476306">
+            <p>
+             MCL
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1513131485473" name="477897" type="checkbox" value="a1513131485473"/>
+           <label for="a1513131485473">
+            <p>
+             EKF
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1513131486208" name="477897" type="checkbox" value="a1513131486208"/>
+           <label for="a1513131486208">
+            <p>
+             Markov
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1513131486797" name="477897" type="checkbox" value="a1513131486797"/>
+           <label for="a1513131486797">
+            <p>
+             Grid
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            MCL
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Outro.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. MCL in Action')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.970
+The Kalman filter was invented by Rudolf Kalman,
+
+00:00:02.970 --> 00:00:05.655
+at a very convenient time in American history.
+
+00:00:05.655 --> 00:00:07.680
+Soon after developing the algorithm,
+
+00:00:07.680 --> 00:00:09.270
+Kalman visited his acquaintance,
+
+00:00:09.270 --> 00:00:14.745
+Stanley Schmidt at his workplace at NASA and introduced the algorithm to NASA staff.
+
+00:00:14.745 --> 00:00:18.960
+At the time, NASA was struggling to apply existing algorithms to
+
+00:00:18.960 --> 00:00:23.510
+the nonlinear problem of trajectory estimation for the Apollo program.
+
+00:00:23.510 --> 00:00:27.675
+The hope was to launch a spacecraft into a trajectory around the moon.
+
+00:00:27.675 --> 00:00:30.750
+The challenge lay in being able to create something accurate
+
+00:00:30.750 --> 00:00:34.720
+enough to guide the spacecraft through very narrow quarters of space,
+
+00:00:34.720 --> 00:00:39.790
+but also efficient enough to run on an on-board computer in the 1960s.
+
+00:00:39.790 --> 00:00:43.670
+At the time, computing power was very limited in
+
+00:00:43.670 --> 00:00:48.505
+both the on-board computer and the computer that was used for simulation and testing.
+
+00:00:48.505 --> 00:00:51.860
+Another challenge was that during the flight of the spacecraft,
+
+00:00:51.860 --> 00:00:55.625
+measurements would be coming in at irregular time intervals,
+
+00:00:55.625 --> 00:00:59.410
+something that the existing algorithms were unable to process.
+
+00:00:59.410 --> 00:01:03.020
+After a lot of work and even some tweaking of the algorithm,
+
+00:01:03.020 --> 00:01:05.480
+the Kalman filter provided the Apollo mission with
+
+00:01:05.480 --> 00:01:10.140
+a navigational accuracy to successfully enter orbit around the moon.
+

@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.065
+You've successfully coded the first section of the MCL algorithm,
+
+00:00:04.065 --> 00:00:06.794
+known as motion and sensor update.
+
+00:00:06.794 --> 00:00:11.775
+Now, it's time to move to the second section known by resampling and coded.
+
+00:00:11.775 --> 00:00:13.470
+But before you start,
+
+00:00:13.470 --> 00:00:16.644
+let's first learn how particles are resampled.
+
+00:00:16.644 --> 00:00:18.719
+Given a set of N particles,
+
+00:00:18.719 --> 00:00:20.739
+ranging from one to N,
+
+00:00:20.739 --> 00:00:25.359
+each particle has a pose composed of an x position,
+
+00:00:25.359 --> 00:00:29.009
+y position and theta orientation.
+
+00:00:29.010 --> 00:00:30.315
+In addition to the pose,
+
+00:00:30.315 --> 00:00:35.675
+each particle has a weight denoting how close the particle is from the robot position.
+
+00:00:35.674 --> 00:00:41.549
+Let's sum all of these weights and call the sum capital W. Then,
+
+00:00:41.549 --> 00:00:44.174
+let's compute the normalized weights alphas,
+
+00:00:44.174 --> 00:00:47.459
+by dividing each weight by the normalizer capital
+
+00:00:47.460 --> 00:00:53.265
+W. alpha is the probability of each particle being selected from the whole.
+
+00:00:53.265 --> 00:00:56.469
+The sum of all the alphas is equal to one.
+
+00:00:56.469 --> 00:01:00.920
+The resampler will group all N normalized weights in a bag.
+
+00:01:00.920 --> 00:01:05.424
+Let's assume that particle two and three, have large weights.
+
+00:01:05.424 --> 00:01:08.355
+The resampling process will happen n times,
+
+00:01:08.355 --> 00:01:11.430
+picking a particle from the bag every time.
+
+00:01:11.430 --> 00:01:13.815
+By the end of the resampling process,
+
+00:01:13.814 --> 00:01:18.629
+there will be the same N number of particles as there were originally.
+
+00:01:18.629 --> 00:01:21.810
+But which particles stays or go with change?
+
+00:01:21.810 --> 00:01:24.990
+At each iteration the resampling process is
+
+00:01:24.989 --> 00:01:28.739
+more likely to pick particles with large probabilities.
+
+00:01:28.739 --> 00:01:30.629
+This process happens randomly,
+
+00:01:30.629 --> 00:01:35.699
+but is always more likely to pick particles with higher probabilities or alphas.
+
+00:01:35.700 --> 00:01:38.880
+Here, p2 and p3 were selected
+
+00:01:38.879 --> 00:01:42.609
+more than once in the new set because of their high probabilities.
+
+00:01:42.609 --> 00:01:48.329
+And p4 was selected only once because of its relatively low probability.
+
+00:01:48.329 --> 00:01:52.319
+Now suppose that you have five particles each with an impotence weight.
+
+00:01:52.319 --> 00:01:56.638
+Compute the probability of throwing each particle into the new set.
+
+00:01:56.638 --> 00:02:01.140
+Use the C++ coding section and follow the instructions to print the results.
+

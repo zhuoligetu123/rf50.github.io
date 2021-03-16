@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.219
+Now that you've learned the extended Kalman filter and its implementation in robotics,
+
+00:00:04.219 --> 00:00:07.574
+it's time to use the power of ROS and implement an EKF package.
+
+00:00:07.575 --> 00:00:10.949
+In this lab, we've controlled a robot inside a simulator and you
+
+00:00:10.949 --> 00:00:14.474
+collect sensitive information from the robots inertial measurement unit,
+
+00:00:14.474 --> 00:00:16.995
+rotary encoders and vision sensors.
+
+00:00:16.995 --> 00:00:19.679
+Then you'll apply an EKF ROS package to this robot.
+
+00:00:19.679 --> 00:00:23.219
+The EKF ROS package will compare data generated from
+
+00:00:23.219 --> 00:00:25.349
+the robot's onboard sensors and apply
+
+00:00:25.350 --> 00:00:29.410
+sensor fusion to estimate the robot's pose as it moves around.
+
+00:00:29.410 --> 00:00:32.759
+Within this lab, you'll be working with five different ROS packages,
+
+00:00:32.759 --> 00:00:35.082
+each with a different purpose;
+
+00:00:35.082 --> 00:00:39.810
+the turtlebot gazebo package which launches a mobile robot inside a gazebot environment,
+
+00:00:39.810 --> 00:00:45.407
+the robot_pose_ekf package which will estimate the position and orientation of the robot,
+
+00:00:45.406 --> 00:00:47.919
+the odom_to_trajectory package which will open
+
+00:00:47.920 --> 00:00:51.840
+the odometry values generated over time into a trajectory path,
+
+00:00:51.840 --> 00:00:56.460
+the turtlebot_teleop package which will let you drive the robot using keyboard commands.
+
+00:00:56.460 --> 00:00:59.609
+Finally, the rviz package which will let
+
+00:00:59.609 --> 00:01:03.265
+you visualize the estimated position and orientation of the robot.
+
+00:01:03.265 --> 00:01:04.930
+While working through this lab,
+
+00:01:04.930 --> 00:01:07.830
+you'll learn how to go through the documentation of ROS packages,
+
+00:01:07.829 --> 00:01:10.394
+identify the subscriber and publisher topics,
+
+00:01:10.394 --> 00:01:14.549
+and then make the necessary changes to integrate the different packages.
+
+00:01:14.549 --> 00:01:15.750
+By the end of this lab,
+
+00:01:15.750 --> 00:01:17.459
+you'll know how to merge all the nodes of
+
+00:01:17.459 --> 00:01:20.489
+the five different packages into a single launch file.
+
+00:01:20.489 --> 00:01:23.429
+Then, you'll be able to launch your project with a single command.
+

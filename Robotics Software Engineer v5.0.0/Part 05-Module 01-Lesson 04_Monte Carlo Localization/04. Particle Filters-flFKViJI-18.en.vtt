@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.745
+In this particular two-dimensional map,
+
+00:00:02.745 --> 00:00:05.700
+the robot has no idea where it's located at.
+
+00:00:05.700 --> 00:00:07.845
+Since the initial state is unknown,
+
+00:00:07.844 --> 00:00:12.750
+the robot is trying to estimate its pose by solving the global localization problem.
+
+00:00:12.750 --> 00:00:19.019
+The robot has on-board range sensors which permits it to sense obstacles such as objects,
+
+00:00:19.019 --> 00:00:22.890
+walls, and ultimately determine where it's located.
+
+00:00:22.890 --> 00:00:27.500
+Here, the current robot pose is represented by an x coordinate,
+
+00:00:27.500 --> 00:00:31.431
+y coordinate and the orientation vector,
+
+00:00:31.431 --> 00:00:34.179
+all with respect to the global coordinate frame.
+
+00:00:34.179 --> 00:00:36.835
+With the Monte Carlo localization algorithm,
+
+00:00:36.835 --> 00:00:41.350
+particles are initially spread randomly and uniformly throughout this entire map.
+
+00:00:41.350 --> 00:00:45.760
+These particles do not physically exist and are just shown in simulation.
+
+00:00:45.759 --> 00:00:49.539
+Every red circle, represents a single particle.
+
+00:00:49.539 --> 00:00:51.009
+And just like the robot,
+
+00:00:51.009 --> 00:00:53.424
+each particle has an x coordinate,
+
+00:00:53.424 --> 00:00:56.574
+y coordinate, and orientation vector.
+
+00:00:56.575 --> 00:01:01.630
+So, each of these particles represents the hypothesis of where the robot might be.
+
+00:01:01.630 --> 00:01:04.049
+In addition to the three-dimensional vector,
+
+00:01:04.049 --> 00:01:06.469
+particles are each assigned a weight.
+
+00:01:06.469 --> 00:01:09.079
+The weight of a particle is the difference between
+
+00:01:09.079 --> 00:01:12.905
+the robot's actual pose and the particle's predicted pose.
+
+00:01:12.905 --> 00:01:16.310
+The importance of a particle depends on its weight,
+
+00:01:16.310 --> 00:01:18.034
+and the bigger the particle,
+
+00:01:18.034 --> 00:01:19.715
+the more accurate it is.
+
+00:01:19.715 --> 00:01:24.935
+Particles with large weights are more likely to survive during a resampling process.
+
+00:01:24.935 --> 00:01:29.769
+For example, P2 will be twice as more likely to survive than P1,
+
+00:01:29.769 --> 00:01:34.534
+since it has larger weight and thus a larger probability of survival.
+
+00:01:34.534 --> 00:01:36.694
+After the resampling process,
+
+00:01:36.694 --> 00:01:39.469
+particles with significant weight are more likely to
+
+00:01:39.469 --> 00:01:43.170
+survive whereas the others are more likely to die.
+
+00:01:43.170 --> 00:01:48.240
+Finally, after several iterations of the Monte Carlo localization algorithm,
+
+00:01:48.239 --> 00:01:50.594
+and after different stages of resampling,
+
+00:01:50.594 --> 00:01:53.879
+particles will converge and estimate the robot's pose.
+

@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.254
+Initially 1,000 particles are spread randomly and uniformly into 2D map.
+
+00:00:06.254 --> 00:00:08.310
+We can see that the average error is very
+
+00:00:08.310 --> 00:00:11.910
+high since particles are distance from the robot.
+
+00:00:11.910 --> 00:00:16.132
+Then after a few iterations the average error is reduced.
+
+00:00:16.132 --> 00:00:18.179
+But we still need to iterate since
+
+00:00:18.179 --> 00:00:22.105
+the particles are not precisely estimating the robot's pose.
+
+00:00:22.105 --> 00:00:25.589
+Finally, after many other iterations the average error is
+
+00:00:25.589 --> 00:00:29.089
+reduced tremendously and particles are now localizing the robot.
+

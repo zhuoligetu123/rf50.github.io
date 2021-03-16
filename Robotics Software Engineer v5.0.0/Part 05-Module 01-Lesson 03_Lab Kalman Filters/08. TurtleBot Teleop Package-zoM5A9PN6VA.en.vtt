@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.710
+We are still unable to generate the
+
+00:00:01.710 --> 00:00:05.570
+filtered and unfiltered trajectories since the robot is static.
+
+00:00:05.570 --> 00:00:09.150
+Currently, the trajectories are appending zero values.
+
+00:00:09.150 --> 00:00:13.890
+The robot is performing only a sensor update without any motion update.
+
+00:00:13.890 --> 00:00:16.290
+Therefore, we'll have to drive the robot in
+
+00:00:16.290 --> 00:00:18.840
+the environment as it collects sensory information.
+
+00:00:18.840 --> 00:00:21.165
+With the turtlebot-telop package,
+
+00:00:21.165 --> 00:00:24.195
+we can publish driving commands to the robot.
+
+00:00:24.195 --> 00:00:29.320
+We'll be able to control the robot with either keyboard or joystick commands.
+
+00:00:29.320 --> 00:00:33.725
+Now let's have a closer look at the properties of this package and it's nodes.
+
+00:00:33.725 --> 00:00:39.095
+The turtlebot-telop node has no subscribers and only publishes control commands.
+
+00:00:39.095 --> 00:00:43.885
+Now we need to integrate this package with the turtlebot-gazebo package.
+
+00:00:43.885 --> 00:00:46.580
+As you can see, the control topics of
+
+00:00:46.580 --> 00:00:50.585
+both nodes in the two packages perfectly match each other.
+
+00:00:50.585 --> 00:00:55.205
+Here you can see the final result of integrating the four packages.
+
+00:00:55.205 --> 00:00:56.960
+You can drive the robot with
+
+00:00:56.960 --> 00:01:01.790
+the turtlebot-telop package and generate filtered and unfiltered trajectories.
+
+00:01:01.790 --> 00:01:06.815
+Now let's launch the node and drive the robot in the gazebo environment.
+
+00:01:06.815 --> 00:01:12.425
+First, clone the package into src folder of your [inaudible] work space,
+
+00:01:12.425 --> 00:01:15.685
+then install the dependencies,
+
+00:01:15.685 --> 00:01:18.810
+following built the package.
+
+00:01:18.810 --> 00:01:22.395
+Once again, source the environment.
+
+00:01:22.395 --> 00:01:25.245
+Finally, launch the node.
+
+00:01:25.245 --> 00:01:28.580
+Inside this terminal, followed the instructions to
+
+00:01:28.580 --> 00:01:32.760
+drive your robot and change its speed with the keyboard commands
+

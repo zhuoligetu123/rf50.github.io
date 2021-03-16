@@ -1,0 +1,1466 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Particle Filter
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Build MCL in C++
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Robot Class.html">
+       02. Robot Class
+      </a>
+     </li>
+     <li class="">
+      <a href="03. First Interaction.html">
+       03. First Interaction
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Motion and Sensing.html">
+       04. Motion and Sensing
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Noise.html">
+       05. Noise
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Particle Filter .html">
+       06. Particle Filter
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Importance Weight.html">
+       07. Importance Weight
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Resampling.html">
+       08. Resampling
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Resampling Wheel.html">
+       09. Resampling Wheel
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Error .html">
+       10. Error
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Graphing.html">
+       11. Graphing
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Udacity Workspace.html">
+       12. Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Images.html">
+       13. Images
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Outro.html">
+       14. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Particle Filter
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Particle Filter
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Particle Filter-UN9e0li6W38.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Particle Filter-UN9e0li6W38.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          1- Generating Particles
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           You'll first
+           <strong>
+            generate
+           </strong>
+           1000 particles by uniformly and randomly spreading them in the 2D map.  To replicate real world conditions, you’ll
+           <strong>
+            simulate noise
+           </strong>
+           and add random Gaussian digits to the particle forward, turn and sensing values.
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="028f3a82-47ec-4f92-b5a8-62d3b7c47107--0" type="checkbox"/>
+            <label for="028f3a82-47ec-4f92-b5a8-62d3b7c47107--0">
+             <p>
+              Loop over the set of particles
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="028f3a82-47ec-4f92-b5a8-62d3b7c47107--1" type="checkbox"/>
+            <label for="028f3a82-47ec-4f92-b5a8-62d3b7c47107--1">
+             <p>
+              For each particle add
+              <code>
+               Forward_Noise
+              </code>
+              =0.05,
+              <code>
+               Turn_Noise
+              </code>
+              =0.05, and
+              <code>
+               Sense_Noise
+              </code>
+              =5.0
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="028f3a82-47ec-4f92-b5a8-62d3b7c47107--2" type="checkbox"/>
+            <label for="028f3a82-47ec-4f92-b5a8-62d3b7c47107--2">
+             <p>
+              Print the pose of each particle on a single line
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great work! Now run your code and verify it is functioning as expected.
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="463704-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#463704-main-cpp" id="tab-463704-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="463704-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#463704-solution-cpp" id="tab-463704-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-463704-main-cpp" class="tab-pane active show" id="463704-main-cpp" role="tabpanel">
+            <pre><code></code>//#include "src/matplotlibcpp.h"//Graph Library
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;vector&gt;
+#include &lt;stdexcept&gt; // throw errors
+#include &lt;random&gt; //C++ 11 Random Numbers
+
+//namespace plt = matplotlibcpp;
+using namespace std;
+
+// Landmarks
+double landmarks[8][2] = { { 20.0, 20.0 }, { 20.0, 80.0 }, { 20.0, 50.0 },
+    { 50.0, 20.0 }, { 50.0, 80.0 }, { 80.0, 80.0 },
+    { 80.0, 20.0 }, { 80.0, 50.0 } };
+
+// Map size in meters
+double world_size = 100.0;
+
+// Random Generators
+random_device rd;
+mt19937 gen(rd());
+
+// Global Functions
+double mod(double first_term, double second_term);
+double gen_real_random();
+
+class Robot {
+public:
+    Robot()
+    {
+        // Constructor
+        x = gen_real_random() * world_size; // robot's x coordinate
+        y = gen_real_random() * world_size; // robot's y coordinate
+        orient = gen_real_random() * 2.0 * M_PI; // robot's orientation
+
+        forward_noise = 0.0; //noise of the forward movement
+        turn_noise = 0.0; //noise of the turn
+        sense_noise = 0.0; //noise of the sensing
+    }
+
+    void set(double new_x, double new_y, double new_orient)
+    {
+        // Set robot new position and orientation
+        if (new_x &lt; 0 || new_x &gt;= world_size)
+            throw std::invalid_argument("X coordinate out of bound");
+        if (new_y &lt; 0 || new_y &gt;= world_size)
+            throw std::invalid_argument("Y coordinate out of bound");
+        if (new_orient &lt; 0 || new_orient &gt;= 2 * M_PI)
+            throw std::invalid_argument("Orientation must be in [0..2pi]");
+
+        x = new_x;
+        y = new_y;
+        orient = new_orient;
+    }
+
+    void set_noise(double new_forward_noise, double new_turn_noise, double new_sense_noise)
+    {
+        // Simulate noise, often useful in particle filters
+        forward_noise = new_forward_noise;
+        turn_noise = new_turn_noise;
+        sense_noise = new_sense_noise;
+    }
+
+    vector&lt;double&gt; sense()
+    {
+        // Measure the distances from the robot toward the landmarks
+        vector&lt;double&gt; z(sizeof(landmarks) / sizeof(landmarks[0]));
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            dist += gen_gauss_random(0.0, sense_noise);
+            z[i] = dist;
+        }
+        return z;
+    }
+
+    Robot move(double turn, double forward)
+    {
+        if (forward &lt; 0)
+            throw std::invalid_argument("Robot cannot move backward");
+
+        // turn, and add randomness to the turning command
+        orient = orient + turn + gen_gauss_random(0.0, turn_noise);
+        orient = mod(orient, 2 * M_PI);
+
+        // move, and add randomness to the motion command
+        double dist = forward + gen_gauss_random(0.0, forward_noise);
+        x = x + (cos(orient) * dist);
+        y = y + (sin(orient) * dist);
+
+        // cyclic truncate
+        x = mod(x, world_size);
+        y = mod(y, world_size);
+
+        // set particle
+        Robot res;
+        res.set(x, y, orient);
+        res.set_noise(forward_noise, turn_noise, sense_noise);
+
+        return res;
+    }
+
+    string show_pose()
+    {
+        // Returns the robot current position and orientation in a string format
+        return "[x=" + to_string(x) + " y=" + to_string(y) + " orient=" + to_string(orient) + "]";
+    }
+
+    string read_sensors()
+    {
+        // Returns all the distances from the robot toward the landmarks
+        vector&lt;double&gt; z = sense();
+        string readings = "[";
+        for (int i = 0; i &lt; z.size(); i++) {
+            readings += to_string(z[i]) + " ";
+        }
+        readings[readings.size() - 1] = ']';
+
+        return readings;
+    }
+
+    double measurement_prob(vector&lt;double&gt; measurement)
+    {
+        // Calculates how likely a measurement should be
+        double prob = 1.0;
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            prob *= gaussian(dist, sense_noise, measurement[i]);
+        }
+
+        return prob;
+    }
+
+    double x, y, orient; //robot poses
+    double forward_noise, turn_noise, sense_noise; //robot noises
+
+private:
+    double gen_gauss_random(double mean, double variance)
+    {
+        // Gaussian random
+        normal_distribution&lt;double&gt; gauss_dist(mean, variance);
+        return gauss_dist(gen);
+    }
+
+    double gaussian(double mu, double sigma, double x)
+    {
+        // Probability of x for 1-dim Gaussian with mean mu and var. sigma
+        return exp(-(pow((mu - x), 2)) / (pow(sigma, 2)) / 2.0) / sqrt(2.0 * M_PI * (pow(sigma, 2)));
+    }
+};
+
+// Functions
+double gen_real_random()
+{
+    // Generate real random between 0 and 1
+    uniform_real_distribution&lt;double&gt; real_dist(0.0, 1.0); //Real
+    return real_dist(gen);
+}
+
+double mod(double first_term, double second_term)
+{
+    // Compute the modulus
+    return first_term - (second_term)*floor(first_term / (second_term));
+}
+
+double evaluation(Robot r, Robot p[], int n)
+{
+    //Calculate the mean error of the system
+    double sum = 0.0;
+    for (int i = 0; i &lt; n; i++) {
+        //the second part is because of world's cyclicity
+        double dx = mod((p[i].x - r.x + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double dy = mod((p[i].y - r.y + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double err = sqrt(pow(dx, 2) + pow(dy, 2));
+        sum += err;
+    }
+    return sum / n;
+}
+double max(double arr[], int n)
+{
+    // Identify the max element in an array
+    double max = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] &gt; max)
+            max = arr[i];
+    }
+    return max;
+}
+/*
+void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
+{
+	//Draw the robot, landmarks, particles and resampled particles on a graph
+	
+    //Graph Format
+    plt::title("MCL, step " + to_string(step));
+    plt::xlim(0, 100);
+    plt::ylim(0, 100);
+
+    //Draw particles in green
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ p[i].x }, { p[i].y }, "go");
+    }
+
+    //Draw resampled particles in yellow
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ pr[i].x }, { pr[i].y }, "yo");
+    }
+
+    //Draw landmarks in red
+    for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+        plt::plot({ landmarks[i][0] }, { landmarks[i][1] }, "ro");
+    }
+    
+    //Draw robot position in blue
+    plt::plot({ robot.x }, { robot.y }, "bo");
+
+	//Save the image and close the plot
+    plt::save("./Images/Step" + to_string(step) + ".png");
+    plt::clf();
+}
+*/
+
+int main()
+{
+    //Practice Interfacing with Robot Class
+    Robot myrobot;
+    myrobot.set_noise(5.0, 0.1, 5.0);
+    myrobot.set(30.0, 50.0, M_PI / 2.0);
+    myrobot.move(-M_PI / 2.0, 15.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+    myrobot.move(-M_PI / 2.0, 10.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+
+    //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+
+    // Instantiating 1000 Particles each with a random position and orientation
+    int n = 1000;
+    Robot p[n];
+    //TODO: Your job is to loop over the set of particles
+    //TODO: For each particle add noise: Forward_Noise=0.05, Turn_Noise=0.05, and Sense_Noise=5.0
+    //TODO: And print its pose on a single line
+    
+    
+    
+    
+    return 0;
+}</pre>
+           </div>
+           <div aria-labelledby="tab-463704-solution-cpp" class="tab-pane" id="463704-solution-cpp" role="tabpanel">
+            <pre><code></code>//#include "src/matplotlibcpp.h"//Graph Library
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;vector&gt;
+#include &lt;stdexcept&gt; // throw errors
+#include &lt;random&gt; //C++ 11 Random Numbers
+
+//namespace plt = matplotlibcpp;
+using namespace std;
+
+// Landmarks
+double landmarks[8][2] = { { 20.0, 20.0 }, { 20.0, 80.0 }, { 20.0, 50.0 },
+    { 50.0, 20.0 }, { 50.0, 80.0 }, { 80.0, 80.0 },
+    { 80.0, 20.0 }, { 80.0, 50.0 } };
+
+// Map size in meters
+double world_size = 100.0;
+
+// Random Generators
+random_device rd;
+mt19937 gen(rd());
+
+// Global Functions
+double mod(double first_term, double second_term);
+double gen_real_random();
+
+class Robot {
+public:
+    Robot()
+    {
+        // Constructor
+        x = gen_real_random() * world_size; // robot's x coordinate
+        y = gen_real_random() * world_size; // robot's y coordinate
+        orient = gen_real_random() * 2.0 * M_PI; // robot's orientation
+
+        forward_noise = 0.0; //noise of the forward movement
+        turn_noise = 0.0; //noise of the turn
+        sense_noise = 0.0; //noise of the sensing
+    }
+
+    void set(double new_x, double new_y, double new_orient)
+    {
+        // Set robot new position and orientation
+        if (new_x &lt; 0 || new_x &gt;= world_size)
+            throw std::invalid_argument("X coordinate out of bound");
+        if (new_y &lt; 0 || new_y &gt;= world_size)
+            throw std::invalid_argument("Y coordinate out of bound");
+        if (new_orient &lt; 0 || new_orient &gt;= 2 * M_PI)
+            throw std::invalid_argument("Orientation must be in [0..2pi]");
+
+        x = new_x;
+        y = new_y;
+        orient = new_orient;
+    }
+
+    void set_noise(double new_forward_noise, double new_turn_noise, double new_sense_noise)
+    {
+        // Simulate noise, often useful in particle filters
+        forward_noise = new_forward_noise;
+        turn_noise = new_turn_noise;
+        sense_noise = new_sense_noise;
+    }
+
+    vector&lt;double&gt; sense()
+    {
+        // Measure the distances from the robot toward the landmarks
+        vector&lt;double&gt; z(sizeof(landmarks) / sizeof(landmarks[0]));
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            dist += gen_gauss_random(0.0, sense_noise);
+            z[i] = dist;
+        }
+        return z;
+    }
+
+    Robot move(double turn, double forward)
+    {
+        if (forward &lt; 0)
+            throw std::invalid_argument("Robot cannot move backward");
+
+        // turn, and add randomness to the turning command
+        orient = orient + turn + gen_gauss_random(0.0, turn_noise);
+        orient = mod(orient, 2 * M_PI);
+
+        // move, and add randomness to the motion command
+        double dist = forward + gen_gauss_random(0.0, forward_noise);
+        x = x + (cos(orient) * dist);
+        y = y + (sin(orient) * dist);
+
+        // cyclic truncate
+        x = mod(x, world_size);
+        y = mod(y, world_size);
+
+        // set particle
+        Robot res;
+        res.set(x, y, orient);
+        res.set_noise(forward_noise, turn_noise, sense_noise);
+
+        return res;
+    }
+
+    string show_pose()
+    {
+        // Returns the robot current position and orientation in a string format
+        return "[x=" + to_string(x) + " y=" + to_string(y) + " orient=" + to_string(orient) + "]";
+    }
+
+    string read_sensors()
+    {
+        // Returns all the distances from the robot toward the landmarks
+        vector&lt;double&gt; z = sense();
+        string readings = "[";
+        for (int i = 0; i &lt; z.size(); i++) {
+            readings += to_string(z[i]) + " ";
+        }
+        readings[readings.size() - 1] = ']';
+
+        return readings;
+    }
+
+    double measurement_prob(vector&lt;double&gt; measurement)
+    {
+        // Calculates how likely a measurement should be
+        double prob = 1.0;
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            prob *= gaussian(dist, sense_noise, measurement[i]);
+        }
+
+        return prob;
+    }
+
+    double x, y, orient; //robot poses
+    double forward_noise, turn_noise, sense_noise; //robot noises
+
+private:
+    double gen_gauss_random(double mean, double variance)
+    {
+        // Gaussian random
+        normal_distribution&lt;double&gt; gauss_dist(mean, variance);
+        return gauss_dist(gen);
+    }
+
+    double gaussian(double mu, double sigma, double x)
+    {
+        // Probability of x for 1-dim Gaussian with mean mu and var. sigma
+        return exp(-(pow((mu - x), 2)) / (pow(sigma, 2)) / 2.0) / sqrt(2.0 * M_PI * (pow(sigma, 2)));
+    }
+};
+
+// Functions
+double gen_real_random()
+{
+    // Generate real random between 0 and 1
+    uniform_real_distribution&lt;double&gt; real_dist(0.0, 1.0); //Real
+    return real_dist(gen);
+}
+
+double mod(double first_term, double second_term)
+{
+    // Compute the modulus
+    return first_term - (second_term)*floor(first_term / (second_term));
+}
+
+double evaluation(Robot r, Robot p[], int n)
+{
+    //Calculate the mean error of the system
+    double sum = 0.0;
+    for (int i = 0; i &lt; n; i++) {
+        //the second part is because of world's cyclicity
+        double dx = mod((p[i].x - r.x + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double dy = mod((p[i].y - r.y + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double err = sqrt(pow(dx, 2) + pow(dy, 2));
+        sum += err;
+    }
+    return sum / n;
+}
+double max(double arr[], int n)
+{
+    // Identify the max element in an array
+    double max = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] &gt; max)
+            max = arr[i];
+    }
+    return max;
+}
+/*
+void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
+{
+	//Draw the robot, landmarks, particles and resampled particles on a graph
+	
+    //Graph Format
+    plt::title("MCL, step " + to_string(step));
+    plt::xlim(0, 100);
+    plt::ylim(0, 100);
+
+    //Draw particles in green
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ p[i].x }, { p[i].y }, "go");
+    }
+
+    //Draw resampled particles in yellow
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ pr[i].x }, { pr[i].y }, "yo");
+    }
+
+    //Draw landmarks in red
+    for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+        plt::plot({ landmarks[i][0] }, { landmarks[i][1] }, "ro");
+    }
+    
+    //Draw robot position in blue
+    plt::plot({ robot.x }, { robot.y }, "bo");
+
+	//Save the image and close the plot
+    plt::save("./Images/Step" + to_string(step) + ".png");
+    plt::clf();
+}
+*/
+
+int main()
+{
+    //Practice Interfacing with Robot Class
+    Robot myrobot;
+    myrobot.set_noise(5.0, 0.1, 5.0);
+    myrobot.set(30.0, 50.0, M_PI / 2.0);
+    myrobot.move(-M_PI / 2.0, 15.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+    myrobot.move(-M_PI / 2.0, 10.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+
+    //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+    
+    // Instantiating 1000 Particles each with a random position and orientation
+    int n = 1000;
+    Robot p[n]; 
+    //Your job is to loop over the set of particles
+    //For each particle add noise: Forward_Noise=0.05, Turn_Noise=0.05, and Sense_Noise=5.0
+    //And print its pose on a single line
+    for (int i = 0; i &lt; n; i++) {
+        p[i].set_noise(0.05, 0.05, 5.0);
+        cout &lt;&lt; p[i].show_pose() &lt;&lt; endl;
+    }
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          2- Simulating Motion
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Now that you've generated the particles, you’ll
+           <strong>
+            simulate
+           </strong>
+           motion for each one of them by
+           <strong>
+            rotating
+           </strong>
+           them and
+           <strong>
+            moving
+           </strong>
+           them forward.
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="9ac1a885-c6fe-4304-bfaa-c21e40377334--0" type="checkbox"/>
+            <label for="9ac1a885-c6fe-4304-bfaa-c21e40377334--0">
+             <p>
+              Create a new particle set p2
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="9ac1a885-c6fe-4304-bfaa-c21e40377334--1" type="checkbox"/>
+            <label for="9ac1a885-c6fe-4304-bfaa-c21e40377334--1">
+             <p>
+              Rotate each particle by 0.1 and move it forward by 5.0
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="9ac1a885-c6fe-4304-bfaa-c21e40377334--2" type="checkbox"/>
+            <label for="9ac1a885-c6fe-4304-bfaa-c21e40377334--2">
+             <p>
+              Assign p2 to p and print the particle poses, each on a single line
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great work! Now run your code and verify it is functioning as expected.
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="463735-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#463735-main-cpp" id="tab-463735-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="463735-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#463735-solution-cpp" id="tab-463735-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-463735-main-cpp" class="tab-pane active show" id="463735-main-cpp" role="tabpanel">
+            <pre><code></code>//#include "src/matplotlibcpp.h"//Graph Library
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;vector&gt;
+#include &lt;stdexcept&gt; // throw errors
+#include &lt;random&gt; //C++ 11 Random Numbers
+
+//namespace plt = matplotlibcpp;
+using namespace std;
+
+// Landmarks
+double landmarks[8][2] = { { 20.0, 20.0 }, { 20.0, 80.0 }, { 20.0, 50.0 },
+    { 50.0, 20.0 }, { 50.0, 80.0 }, { 80.0, 80.0 },
+    { 80.0, 20.0 }, { 80.0, 50.0 } };
+
+// Map size in meters
+double world_size = 100.0;
+
+// Random Generators
+random_device rd;
+mt19937 gen(rd());
+
+// Global Functions
+double mod(double first_term, double second_term);
+double gen_real_random();
+
+class Robot {
+public:
+    Robot()
+    {
+        // Constructor
+        x = gen_real_random() * world_size; // robot's x coordinate
+        y = gen_real_random() * world_size; // robot's y coordinate
+        orient = gen_real_random() * 2.0 * M_PI; // robot's orientation
+
+        forward_noise = 0.0; //noise of the forward movement
+        turn_noise = 0.0; //noise of the turn
+        sense_noise = 0.0; //noise of the sensing
+    }
+
+    void set(double new_x, double new_y, double new_orient)
+    {
+        // Set robot new position and orientation
+        if (new_x &lt; 0 || new_x &gt;= world_size)
+            throw std::invalid_argument("X coordinate out of bound");
+        if (new_y &lt; 0 || new_y &gt;= world_size)
+            throw std::invalid_argument("Y coordinate out of bound");
+        if (new_orient &lt; 0 || new_orient &gt;= 2 * M_PI)
+            throw std::invalid_argument("Orientation must be in [0..2pi]");
+
+        x = new_x;
+        y = new_y;
+        orient = new_orient;
+    }
+
+    void set_noise(double new_forward_noise, double new_turn_noise, double new_sense_noise)
+    {
+        // Simulate noise, often useful in particle filters
+        forward_noise = new_forward_noise;
+        turn_noise = new_turn_noise;
+        sense_noise = new_sense_noise;
+    }
+
+    vector&lt;double&gt; sense()
+    {
+        // Measure the distances from the robot toward the landmarks
+        vector&lt;double&gt; z(sizeof(landmarks) / sizeof(landmarks[0]));
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            dist += gen_gauss_random(0.0, sense_noise);
+            z[i] = dist;
+        }
+        return z;
+    }
+
+    Robot move(double turn, double forward)
+    {
+        if (forward &lt; 0)
+            throw std::invalid_argument("Robot cannot move backward");
+
+        // turn, and add randomness to the turning command
+        orient = orient + turn + gen_gauss_random(0.0, turn_noise);
+        orient = mod(orient, 2 * M_PI);
+
+        // move, and add randomness to the motion command
+        double dist = forward + gen_gauss_random(0.0, forward_noise);
+        x = x + (cos(orient) * dist);
+        y = y + (sin(orient) * dist);
+
+        // cyclic truncate
+        x = mod(x, world_size);
+        y = mod(y, world_size);
+
+        // set particle
+        Robot res;
+        res.set(x, y, orient);
+        res.set_noise(forward_noise, turn_noise, sense_noise);
+
+        return res;
+    }
+
+    string show_pose()
+    {
+        // Returns the robot current position and orientation in a string format
+        return "[x=" + to_string(x) + " y=" + to_string(y) + " orient=" + to_string(orient) + "]";
+    }
+
+    string read_sensors()
+    {
+        // Returns all the distances from the robot toward the landmarks
+        vector&lt;double&gt; z = sense();
+        string readings = "[";
+        for (int i = 0; i &lt; z.size(); i++) {
+            readings += to_string(z[i]) + " ";
+        }
+        readings[readings.size() - 1] = ']';
+
+        return readings;
+    }
+
+    double measurement_prob(vector&lt;double&gt; measurement)
+    {
+        // Calculates how likely a measurement should be
+        double prob = 1.0;
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            prob *= gaussian(dist, sense_noise, measurement[i]);
+        }
+
+        return prob;
+    }
+
+    double x, y, orient; //robot poses
+    double forward_noise, turn_noise, sense_noise; //robot noises
+
+private:
+    double gen_gauss_random(double mean, double variance)
+    {
+        // Gaussian random
+        normal_distribution&lt;double&gt; gauss_dist(mean, variance);
+        return gauss_dist(gen);
+    }
+
+    double gaussian(double mu, double sigma, double x)
+    {
+        // Probability of x for 1-dim Gaussian with mean mu and var. sigma
+        return exp(-(pow((mu - x), 2)) / (pow(sigma, 2)) / 2.0) / sqrt(2.0 * M_PI * (pow(sigma, 2)));
+    }
+};
+
+// Functions
+double gen_real_random()
+{
+    // Generate real random between 0 and 1
+    uniform_real_distribution&lt;double&gt; real_dist(0.0, 1.0); //Real
+    return real_dist(gen);
+}
+
+double mod(double first_term, double second_term)
+{
+    // Compute the modulus
+    return first_term - (second_term)*floor(first_term / (second_term));
+}
+
+double evaluation(Robot r, Robot p[], int n)
+{
+    //Calculate the mean error of the system
+    double sum = 0.0;
+    for (int i = 0; i &lt; n; i++) {
+        //the second part is because of world's cyclicity
+        double dx = mod((p[i].x - r.x + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double dy = mod((p[i].y - r.y + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double err = sqrt(pow(dx, 2) + pow(dy, 2));
+        sum += err;
+    }
+    return sum / n;
+}
+double max(double arr[], int n)
+{
+    // Identify the max element in an array
+    double max = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] &gt; max)
+            max = arr[i];
+    }
+    return max;
+}
+/*
+void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
+{
+	//Draw the robot, landmarks, particles and resampled particles on a graph
+	
+    //Graph Format
+    plt::title("MCL, step " + to_string(step));
+    plt::xlim(0, 100);
+    plt::ylim(0, 100);
+
+    //Draw particles in green
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ p[i].x }, { p[i].y }, "go");
+    }
+
+    //Draw resampled particles in yellow
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ pr[i].x }, { pr[i].y }, "yo");
+    }
+
+    //Draw landmarks in red
+    for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+        plt::plot({ landmarks[i][0] }, { landmarks[i][1] }, "ro");
+    }
+    
+    //Draw robot position in blue
+    plt::plot({ robot.x }, { robot.y }, "bo");
+
+	//Save the image and close the plot
+    plt::save("./Images/Step" + to_string(step) + ".png");
+    plt::clf();
+}
+*/
+
+int main()
+{
+    //Practice Interfacing with Robot Class
+    Robot myrobot;
+    myrobot.set_noise(5.0, 0.1, 5.0);
+    myrobot.set(30.0, 50.0, M_PI / 2.0);
+    myrobot.move(-M_PI / 2.0, 15.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+    myrobot.move(-M_PI / 2.0, 10.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+
+    // Create a set of particles
+    int n = 1000;
+    Robot p[n];
+
+    for (int i = 0; i &lt; n; i++) {
+        p[i].set_noise(0.05, 0.05, 5.0);
+        //cout &lt;&lt; p[i].show_pose() &lt;&lt; endl;
+    }
+
+    //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+
+    //Now, simulate motion for each particle
+    //TODO: Create a new particle set 'p2'
+    //TODO: Rotate each particle by 0.1 and move it forward by 5.0
+    //TODO: Assign 'p2' to 'p' and print the particle poses, each on a single line
+
+    return 0;
+}</pre>
+           </div>
+           <div aria-labelledby="tab-463735-solution-cpp" class="tab-pane" id="463735-solution-cpp" role="tabpanel">
+            <pre><code></code>//#include "src/matplotlibcpp.h"//Graph Library
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;vector&gt;
+#include &lt;stdexcept&gt; // throw errors
+#include &lt;random&gt; //C++ 11 Random Numbers
+
+//namespace plt = matplotlibcpp;
+using namespace std;
+
+// Landmarks
+double landmarks[8][2] = { { 20.0, 20.0 }, { 20.0, 80.0 }, { 20.0, 50.0 },
+    { 50.0, 20.0 }, { 50.0, 80.0 }, { 80.0, 80.0 },
+    { 80.0, 20.0 }, { 80.0, 50.0 } };
+
+// Map size in meters
+double world_size = 100.0;
+
+// Random Generators
+random_device rd;
+mt19937 gen(rd());
+
+// Global Functions
+double mod(double first_term, double second_term);
+double gen_real_random();
+
+class Robot {
+public:
+    Robot()
+    {
+        // Constructor
+        x = gen_real_random() * world_size; // robot's x coordinate
+        y = gen_real_random() * world_size; // robot's y coordinate
+        orient = gen_real_random() * 2.0 * M_PI; // robot's orientation
+
+        forward_noise = 0.0; //noise of the forward movement
+        turn_noise = 0.0; //noise of the turn
+        sense_noise = 0.0; //noise of the sensing
+    }
+
+    void set(double new_x, double new_y, double new_orient)
+    {
+        // Set robot new position and orientation
+        if (new_x &lt; 0 || new_x &gt;= world_size)
+            throw std::invalid_argument("X coordinate out of bound");
+        if (new_y &lt; 0 || new_y &gt;= world_size)
+            throw std::invalid_argument("Y coordinate out of bound");
+        if (new_orient &lt; 0 || new_orient &gt;= 2 * M_PI)
+            throw std::invalid_argument("Orientation must be in [0..2pi]");
+
+        x = new_x;
+        y = new_y;
+        orient = new_orient;
+    }
+
+    void set_noise(double new_forward_noise, double new_turn_noise, double new_sense_noise)
+    {
+        // Simulate noise, often useful in particle filters
+        forward_noise = new_forward_noise;
+        turn_noise = new_turn_noise;
+        sense_noise = new_sense_noise;
+    }
+
+    vector&lt;double&gt; sense()
+    {
+        // Measure the distances from the robot toward the landmarks
+        vector&lt;double&gt; z(sizeof(landmarks) / sizeof(landmarks[0]));
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            dist += gen_gauss_random(0.0, sense_noise);
+            z[i] = dist;
+        }
+        return z;
+    }
+
+    Robot move(double turn, double forward)
+    {
+        if (forward &lt; 0)
+            throw std::invalid_argument("Robot cannot move backward");
+
+        // turn, and add randomness to the turning command
+        orient = orient + turn + gen_gauss_random(0.0, turn_noise);
+        orient = mod(orient, 2 * M_PI);
+
+        // move, and add randomness to the motion command
+        double dist = forward + gen_gauss_random(0.0, forward_noise);
+        x = x + (cos(orient) * dist);
+        y = y + (sin(orient) * dist);
+
+        // cyclic truncate
+        x = mod(x, world_size);
+        y = mod(y, world_size);
+
+        // set particle
+        Robot res;
+        res.set(x, y, orient);
+        res.set_noise(forward_noise, turn_noise, sense_noise);
+
+        return res;
+    }
+
+    string show_pose()
+    {
+        // Returns the robot current position and orientation in a string format
+        return "[x=" + to_string(x) + " y=" + to_string(y) + " orient=" + to_string(orient) + "]";
+    }
+
+    string read_sensors()
+    {
+        // Returns all the distances from the robot toward the landmarks
+        vector&lt;double&gt; z = sense();
+        string readings = "[";
+        for (int i = 0; i &lt; z.size(); i++) {
+            readings += to_string(z[i]) + " ";
+        }
+        readings[readings.size() - 1] = ']';
+
+        return readings;
+    }
+
+    double measurement_prob(vector&lt;double&gt; measurement)
+    {
+        // Calculates how likely a measurement should be
+        double prob = 1.0;
+        double dist;
+
+        for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+            dist = sqrt(pow((x - landmarks[i][0]), 2) + pow((y - landmarks[i][1]), 2));
+            prob *= gaussian(dist, sense_noise, measurement[i]);
+        }
+
+        return prob;
+    }
+
+    double x, y, orient; //robot poses
+    double forward_noise, turn_noise, sense_noise; //robot noises
+
+private:
+    double gen_gauss_random(double mean, double variance)
+    {
+        // Gaussian random
+        normal_distribution&lt;double&gt; gauss_dist(mean, variance);
+        return gauss_dist(gen);
+    }
+
+    double gaussian(double mu, double sigma, double x)
+    {
+        // Probability of x for 1-dim Gaussian with mean mu and var. sigma
+        return exp(-(pow((mu - x), 2)) / (pow(sigma, 2)) / 2.0) / sqrt(2.0 * M_PI * (pow(sigma, 2)));
+    }
+};
+
+// Functions
+double gen_real_random()
+{
+    // Generate real random between 0 and 1
+    uniform_real_distribution&lt;double&gt; real_dist(0.0, 1.0); //Real
+    return real_dist(gen);
+}
+
+double mod(double first_term, double second_term)
+{
+    // Compute the modulus
+    return first_term - (second_term)*floor(first_term / (second_term));
+}
+
+double evaluation(Robot r, Robot p[], int n)
+{
+    //Calculate the mean error of the system
+    double sum = 0.0;
+    for (int i = 0; i &lt; n; i++) {
+        //the second part is because of world's cyclicity
+        double dx = mod((p[i].x - r.x + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double dy = mod((p[i].y - r.y + (world_size / 2.0)), world_size) - (world_size / 2.0);
+        double err = sqrt(pow(dx, 2) + pow(dy, 2));
+        sum += err;
+    }
+    return sum / n;
+}
+double max(double arr[], int n)
+{
+    // Identify the max element in an array
+    double max = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] &gt; max)
+            max = arr[i];
+    }
+    return max;
+}
+/*
+void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
+{
+	//Draw the robot, landmarks, particles and resampled particles on a graph
+	
+    //Graph Format
+    plt::title("MCL, step " + to_string(step));
+    plt::xlim(0, 100);
+    plt::ylim(0, 100);
+
+    //Draw particles in green
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ p[i].x }, { p[i].y }, "go");
+    }
+
+    //Draw resampled particles in yellow
+    for (int i = 0; i &lt; n; i++) {
+        plt::plot({ pr[i].x }, { pr[i].y }, "yo");
+    }
+
+    //Draw landmarks in red
+    for (int i = 0; i &lt; sizeof(landmarks) / sizeof(landmarks[0]); i++) {
+        plt::plot({ landmarks[i][0] }, { landmarks[i][1] }, "ro");
+    }
+    
+    //Draw robot position in blue
+    plt::plot({ robot.x }, { robot.y }, "bo");
+
+	//Save the image and close the plot
+    plt::save("./Images/Step" + to_string(step) + ".png");
+    plt::clf();
+}
+*/
+
+int main()
+{
+    //Practice Interfacing with Robot Class
+    Robot myrobot;
+    myrobot.set_noise(5.0, 0.1, 5.0);
+    myrobot.set(30.0, 50.0, M_PI / 2.0);
+    myrobot.move(-M_PI / 2.0, 15.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+    myrobot.move(-M_PI / 2.0, 10.0);
+    //cout &lt;&lt; myrobot.read_sensors() &lt;&lt; endl;
+
+    // Create a set of particles
+    int n = 1000;
+    Robot p[n];
+
+    for (int i = 0; i &lt; n; i++) {
+        p[i].set_noise(0.05, 0.05, 5.0);
+        //cout &lt;&lt; p[i].show_pose() &lt;&lt; endl;
+    }
+
+    //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
+
+    //Now, simulate motion for each particle
+    //Create a new particle set 'p2'
+    //Rotate each particle by 0.1 and move it forward by 5.0
+    //Assign p2 to p and print the particle poses, each on a single line
+    Robot p2[n];
+    for (int i = 0; i &lt; n; i++) {
+        p2[i] = p[i].move(0.1, 5.0);
+        p[i] = p2[i];
+        cout &lt;&lt; p[i].show_pose() &lt;&lt; endl;
+    }
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Importance Weight.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Particle Filter ')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

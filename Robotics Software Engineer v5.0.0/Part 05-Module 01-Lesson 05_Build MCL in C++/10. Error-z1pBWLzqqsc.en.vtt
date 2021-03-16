@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.745
+You've just called the MCL algorithm.
+
+00:00:02.745 --> 00:00:06.724
+And now, you should evaluate the overall quality of your solution.
+
+00:00:06.724 --> 00:00:12.134
+To do so, you need to compute the average distance between the particles and the robot.
+
+00:00:12.134 --> 00:00:17.149
+A good solution will result in an average distance smaller than a meter.
+
+00:00:17.149 --> 00:00:21.574
+Before we start, let's iterate the MCL algorithm 50 times.
+
+00:00:21.574 --> 00:00:25.140
+At each iteration, we'll see how the quality of the solution is
+
+00:00:25.140 --> 00:00:29.850
+affected each time the robot updates its pose and take new measurements.
+
+00:00:29.850 --> 00:00:33.495
+Here, I'm providing you with the evaluation function,
+
+00:00:33.494 --> 00:00:35.354
+which take the robot pose,
+
+00:00:35.354 --> 00:00:38.294
+and the particle set as arguments.
+
+00:00:38.295 --> 00:00:40.615
+Inside the evaluation function,
+
+00:00:40.615 --> 00:00:46.289
+I'm comparing the exposition of the robot with the exposition of each particle.
+
+00:00:46.289 --> 00:00:48.359
+I'm also normalizing the values,
+
+00:00:48.359 --> 00:00:51.049
+since the robot operate in a cyclic word.
+
+00:00:51.049 --> 00:00:53.699
+After that, I'm comparing the y position of
+
+00:00:53.700 --> 00:00:56.640
+the robot with the y position of each particle.
+
+00:00:56.640 --> 00:01:00.480
+Here, I'm not taking into consideration the orientation of
+
+00:01:00.479 --> 00:01:06.390
+particles since the measurements are not affected by the robot or particle orientation.
+
+00:01:06.390 --> 00:01:10.739
+Moving on, I'm computing the Euclidean distance of the differences.
+
+00:01:10.739 --> 00:01:12.809
+And finally, I'm computing
+
+00:01:12.810 --> 00:01:17.344
+the average error of each particle relative to the robot position.
+
+00:01:17.344 --> 00:01:20.159
+Now, use the evaluation function and compute
+
+00:01:20.159 --> 00:01:23.219
+the average distance or error at each iteration.
+

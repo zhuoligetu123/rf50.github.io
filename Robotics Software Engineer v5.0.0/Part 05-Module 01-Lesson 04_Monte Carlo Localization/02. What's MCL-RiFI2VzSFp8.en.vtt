@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.155
+As a roboticist, you will certainly be interested in mapping your home,
+
+00:00:04.155 --> 00:00:07.110
+office, or backyard with the help of your robot.
+
+00:00:07.110 --> 00:00:09.720
+Then, you'll want to operate your robot inside
+
+00:00:09.720 --> 00:00:13.560
+the mapped environment by keeping track of its position and orientation.
+
+00:00:13.560 --> 00:00:15.870
+To do so, you have a wide choice of
+
+00:00:15.869 --> 00:00:20.384
+localization algorithms you could implement ranging from extended Kalman filter,
+
+00:00:20.385 --> 00:00:23.955
+to Marco, to Monte Carlo, and finally, Grid.
+
+00:00:23.954 --> 00:00:27.104
+The Monte Carlo Localization algorithm, or MCL,
+
+00:00:27.105 --> 00:00:30.435
+is the most popular localization algorithms in robotics.
+
+00:00:30.434 --> 00:00:35.295
+So, you might want to choose MCL and deploy it to your robot to keep track of its pose.
+
+00:00:35.295 --> 00:00:38.340
+Now, your robot will be navigating inside its known map and
+
+00:00:38.340 --> 00:00:41.775
+collecting sensory information using range finder sensors.
+
+00:00:41.774 --> 00:00:46.125
+MCL will use these sensor measurements to keep track of your robot pose.
+
+00:00:46.125 --> 00:00:50.715
+Many scientists refer to MCL as particle filter localization algorithm,
+
+00:00:50.715 --> 00:00:53.395
+since it uses particles to localize your robot.
+
+00:00:53.395 --> 00:00:58.490
+In robotics, you can think of a particle as a virtual element that resembles the robot.
+
+00:00:58.490 --> 00:01:01.475
+Each particle has a position and orientation
+
+00:01:01.475 --> 00:01:04.820
+and represent a guess of where your robot might be located.
+
+00:01:04.819 --> 00:01:09.799
+These particles are re-sampled each time your robot moves and sense its environment.
+
+00:01:09.799 --> 00:01:14.825
+Keep in mind that MCL is limited to local and global localization problem only.
+
+00:01:14.825 --> 00:01:18.040
+So, you lose sight of your robot if someone hacks into it.
+

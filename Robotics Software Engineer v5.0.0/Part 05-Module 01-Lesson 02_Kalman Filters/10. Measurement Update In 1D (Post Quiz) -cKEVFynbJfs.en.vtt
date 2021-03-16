@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.410
+The new Belief would have a mean somewhere in between the two Gaussians
+
+00:00:03.410 --> 00:00:07.517
+since it combining information from both of them, but where?
+
+00:00:07.517 --> 00:00:08.879
+What do you think?
+
+00:00:08.880 --> 00:00:10.530
+Would it lie precisely in the middle,
+
+00:00:10.529 --> 00:00:13.094
+or would it lie closer to one of the curves?
+
+00:00:13.095 --> 00:00:16.155
+Well, since the measurement update is more certain,
+
+00:00:16.155 --> 00:00:19.000
+the new mean will lie closer to the measurement update.
+

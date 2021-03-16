@@ -1,0 +1,556 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   AMCL Launch File: AMCL Node
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Where Am I?
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Simulation Setup.html">
+       02. Simulation Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Map Setup.html">
+       03. Map Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="04. AMCL Package.html">
+       04. AMCL Package
+      </a>
+     </li>
+     <li class="">
+      <a href="05. AMCL Launch File.html">
+       05. AMCL Launch File
+      </a>
+     </li>
+     <li class="">
+      <a href="06. AMCL Launch File Map Server Node.html">
+       06. AMCL Launch File: Map Server Node
+      </a>
+     </li>
+     <li class="">
+      <a href="07. AMCL Launch File AMCL Node.html">
+       07. AMCL Launch File: AMCL Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. AMCL Launch File Move Base Node.html">
+       08. AMCL Launch File: Move Base Node
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Optional Teleop Package.html">
+       09. Optional: Teleop Package
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Localization Launching.html">
+       10. Localization: Launching
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Localization Parameters.html">
+       11. Localization: Parameters
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Localization Testing.html">
+       12. Localization: Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Project Workspace.html">
+       13. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Where Am I.html">
+       Project Description - Where Am I
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Where Am I.html">
+       Project Rubric - Where Am I
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. AMCL Launch File: AMCL Node
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="amcl-node">
+          AMCL Node
+         </h1>
+         <p>
+          The next node to be set up is the
+          <code>
+           amcl
+          </code>
+          node. As it was introduced in the previous concepts, it takes
+          <code>
+           odometry
+          </code>
+          and
+          <code>
+           laser scan
+          </code>
+          data to perform the AMCL localization.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="add-amcl-node">
+          Add
+          <code>
+           amcl
+          </code>
+          Node
+         </h3>
+         <p>
+          First, add the
+          <code>
+           amcl
+          </code>
+          node in your
+          <code>
+           amcl.launch
+          </code>
+          file:
+         </p>
+         <pre><code>&lt;launch&gt;
+
+  &lt;!-- Map Server --&gt;
+  ...
+
+  &lt;!-- AMCL Node --&gt;
+  &lt;node name="amcl" pkg="amcl" type="amcl" output="screen"&gt;
+  &lt;/node&gt;
+
+&lt;/launch&gt;</code></pre>
+         <p>
+          Ok, we created the
+          <code>
+           amcl
+          </code>
+          node. However it needs more information to localize the robot! For example, what are the sensor readings from the LiDAR?
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="remap-scan-topic">
+          Remap
+          <code>
+           scan
+          </code>
+          topic
+         </h3>
+         <p>
+          By default,
+          <code>
+           amcl
+          </code>
+          package will look for the
+          <code>
+           scan
+          </code>
+          topic for LiDAR data. In the simulation, the
+          <code>
+           Hokuyo
+          </code>
+          LiDAR sensor actually publishes on the
+          <code>
+           &lt;YOUR PACKAGE NAME&gt;/laser/scan
+          </code>
+          topic.  We will use the
+          <code>
+           remap
+          </code>
+          tag to remap the topic name
+          <code>
+           scan
+          </code>
+          to the actual topic name so that the
+          <code>
+           amcl
+          </code>
+          package could use it!
+         </p>
+         <p>
+          Add this
+          <code>
+           remap
+          </code>
+          line to your
+          <code>
+           amcl
+          </code>
+          node in the
+          <code>
+           amcl.launch
+          </code>
+          file:
+         </p>
+         <pre><code>...
+&lt;!-- AMCL Node --&gt;
+&lt;node name="amcl" ...&gt;
+  &lt;remap from="scan" to="&lt;YOUR PACKAGE NAME&gt;/laser/scan"/&gt;
+&lt;/node&gt;</code></pre>
+         <p>
+          For more information on
+          <code>
+           remap
+          </code>
+          , check out the ROS Wiki here:
+          <a href="http://wiki.ros.org/roslaunch/XML/remap" rel="noopener noreferrer" target="_blank">
+           http://wiki.ros.org/roslaunch/XML/remap
+          </a>
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="add-amcl-parameters">
+          Add AMCL Parameters
+         </h3>
+         <p>
+          The AMCL node also requires a set of parameters in order to connect the world (
+          <code>
+           map
+          </code>
+          frame) with the robot (
+          <code>
+           odom
+          </code>
+          frame).
+         </p>
+         <p>
+          Add the following parameter tags to the
+          <code>
+           amcl
+          </code>
+          node in the
+          <code>
+           amcl.launch
+          </code>
+          file:
+         </p>
+         <pre><code>...
+&lt;!-- AMCL Node --&gt;
+&lt;node name="amcl" ...&gt;
+  &lt;remap from="scan" to="&lt;YOUR PACKAGE NAME&gt;/laser/scan"/&gt;
+  &lt;param name="odom_frame_id" value="odom"/&gt;
+  &lt;param name="odom_model_type" value="diff-corrected"/&gt;
+  &lt;param name="base_frame_id" value="robot_footprint"/&gt;
+  &lt;param name="global_frame_id" value="map"/&gt;
+&lt;/node&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          From the ROS Wiki (
+          <a href="http://wiki.ros.org/amcl)" rel="noopener noreferrer" target="_blank">
+           http://wiki.ros.org/amcl)
+          </a>
+          , we could find the purpose of the parameters added above:
+         </p>
+         <ul>
+          <li>
+           <code>
+            odom_frame_id
+           </code>
+           (string, default: "odom"): Which frame to use for odometry
+          </li>
+          <li>
+           <code>
+            odom_model_type
+           </code>
+           (string, default: "diff"): Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected"
+          </li>
+          <li>
+           <code>
+            base_frame_id
+           </code>
+           (string, default: "base_link"): Which frame to use for the robot base
+          </li>
+          <li>
+           <code>
+            global_frame_id
+           </code>
+           (string, default: "map"): The name of the coordinate frame published by the localization system
+          </li>
+         </ul>
+         <p>
+          Remember, AMCL package 'links' the robot (
+          <code>
+           odom
+          </code>
+          frame) with the world (
+          <code>
+           map
+          </code>
+          frame). These parameters are required for
+          <code>
+           amcl
+          </code>
+          package to localize the robot in the world.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="optional-set-initial-position">
+          Optional: Set Initial Position
+         </h3>
+         <p>
+          You could use the RViz
+          <code>
+           2D Pose Estimate
+          </code>
+          function to give AMCL a pose estimate as position, but you could also have it defined in the launch file.
+         </p>
+         <p>
+          Add the following parameters to the AMCL node, the values should correspond to your
+          <code>
+           world.launch
+          </code>
+          file:
+         </p>
+         <pre><code>&lt;param name="initial_pose_x" value="&lt;YOUR X VALUE&gt;"/&gt;
+&lt;param name="initial_pose_y" value="&lt;YOUR Y VALUE&gt;"/&gt;</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="the-launch-file">
+          The Launch File
+         </h3>
+         <p>
+          Now, your
+          <code>
+           amcl.launch
+          </code>
+          file should look like this:
+         </p>
+         <pre><code>&lt;launch&gt;
+
+  &lt;!-- Map Server --&gt;
+    &lt;arg name="map_file" ... /&gt;
+    &lt;node name="map_server" ... /&gt;
+
+  &lt;!-- AMCL Node --&gt;
+  &lt;node name="amcl" pkg="amcl" type="amcl" output="screen"&gt;
+    &lt;remap from="scan" to="&lt;YOUR PACKAGE NAME&gt;/laser/scan"/&gt;
+    &lt;param name="odom_frame_id" value="odom"/&gt;
+    &lt;param name="odom_model_type" value="diff-corrected"/&gt;
+    &lt;param name="base_frame_id" value="robot_footprint"/&gt;
+    &lt;param name="global_frame_id" value="map"/&gt;
+
+    &lt;!-- If you choose to define initial pose here --&gt;
+    &lt;param name="initial_pose_x" value="0"/&gt;
+    &lt;param name="initial_pose_y" value="0"/&gt;
+  &lt;/node&gt;
+
+&lt;/launch&gt;</code></pre>
+         <p>
+          Now, the robot has a map and the
+          <code>
+           amcl
+          </code>
+          package to localize itself. But how could it navigate to other positions to collect more information about its surroundings?
+          <code>
+           ROS Navigation Stack
+          </code>
+          is the answer.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. AMCL Launch File Move Base Node.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. AMCL Launch File: AMCL Node')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

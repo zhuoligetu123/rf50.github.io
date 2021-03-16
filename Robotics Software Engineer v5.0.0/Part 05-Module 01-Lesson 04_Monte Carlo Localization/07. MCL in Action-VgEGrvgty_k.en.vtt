@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.444
+Now that you've learned the Monte Carlo Localization algorithm,
+
+00:00:03.444 --> 00:00:06.977
+let's see the MCL apply to a one-dimensional hallway.
+
+00:00:06.977 --> 00:00:11.849
+In this hallway, the mobile robot can move upward and downward.
+
+00:00:11.849 --> 00:00:14.625
+Also, the robot is capable of collecting
+
+00:00:14.625 --> 00:00:18.240
+all the battery information and sensing the presence of doors.
+
+00:00:18.239 --> 00:00:21.119
+Initially, at time T equal one,
+
+00:00:21.120 --> 00:00:26.240
+particles are drawn randomly and uniformly over the entire post space.
+
+00:00:26.239 --> 00:00:28.664
+Then, at time T equal two,
+
+00:00:28.664 --> 00:00:33.247
+the robot senses a door and MCL assigns weights to each particle.
+
+00:00:33.247 --> 00:00:35.954
+The number of particles remains constant,
+
+00:00:35.954 --> 00:00:39.359
+whereas the particles' importance weights are adjusted.
+
+00:00:39.359 --> 00:00:41.021
+Now, at time T equal three,
+
+00:00:41.021 --> 00:00:45.539
+the robot moves down the hallway and the particle set is shifted.
+
+00:00:45.539 --> 00:00:48.570
+The new set has uniform importance weight and
+
+00:00:48.570 --> 00:00:51.951
+the high number of particles near the three likely places.
+
+00:00:51.951 --> 00:00:54.645
+Moving on at time T equal four,
+
+00:00:54.645 --> 00:00:57.585
+the robot senses another door and the new measurement
+
+00:00:57.585 --> 00:01:01.210
+assigns non-uniform importance weight to the particle set.
+
+00:01:01.210 --> 00:01:03.704
+Finally, at time T equal five,
+
+00:01:03.704 --> 00:01:08.009
+the robot keeps moving down the hallway causing a new particle set to generate.
+

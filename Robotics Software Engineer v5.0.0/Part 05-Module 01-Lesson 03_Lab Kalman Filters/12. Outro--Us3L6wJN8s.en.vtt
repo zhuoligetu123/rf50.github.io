@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.134
+Congratulations. You've successfully completed this lab,
+
+00:00:03.134 --> 00:00:07.544
+and estimated the robot pose with an extended Kalman Filter ROS package.
+
+00:00:07.544 --> 00:00:11.625
+During this lab, you remapped some publisher and subscriber topics,
+
+00:00:11.625 --> 00:00:15.629
+and established the communication between nodes of different packages.
+
+00:00:15.630 --> 00:00:18.300
+Finally, you grouped all the launch file
+
+00:00:18.300 --> 00:00:21.179
+into a single one to be launched from the terminal.
+
+00:00:21.179 --> 00:00:24.329
+Overall, this was a good demonstration of how you
+
+00:00:24.329 --> 00:00:27.344
+can implement a ROS package, and apply it to your robot.
+
+00:00:27.344 --> 00:00:30.660
+Soon, you'll be challenged to create your own packages,
+
+00:00:30.660 --> 00:00:32.234
+and write your own subscriber,
+
+00:00:32.234 --> 00:00:35.689
+publisher, service, and client nodes.
+

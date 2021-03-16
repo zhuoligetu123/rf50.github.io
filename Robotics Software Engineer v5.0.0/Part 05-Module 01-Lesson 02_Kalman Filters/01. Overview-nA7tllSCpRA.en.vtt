@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.270
+Welcome. If you're hoping to learn about Kalman filters,
+
+00:00:03.270 --> 00:00:04.890
+you've come to the right place.
+
+00:00:04.889 --> 00:00:09.109
+In this lesson, you'll start off by learning about the background of the Kalman filter,
+
+00:00:09.109 --> 00:00:10.472
+what problem it solves,
+
+00:00:10.473 --> 00:00:11.695
+how it came about,
+
+00:00:11.695 --> 00:00:13.660
+and where you're likely to see it used.
+
+00:00:13.660 --> 00:00:18.574
+You will understand the challenges of localization and recognize the need for a filter.
+
+00:00:18.574 --> 00:00:21.780
+We'll then dive into how the common filter algorithm works,
+
+00:00:21.780 --> 00:00:23.700
+first through a one dimensional example,
+
+00:00:23.699 --> 00:00:25.839
+and then a multi-dimensional example.
+
+00:00:25.839 --> 00:00:29.585
+You'll have a chance to implement both in C++.
+
+00:00:29.585 --> 00:00:32.840
+You will then learn a specific variation of the Kalman filter called
+
+00:00:32.840 --> 00:00:37.440
+the extended Kalman filter that extends its reach of applications even.
+

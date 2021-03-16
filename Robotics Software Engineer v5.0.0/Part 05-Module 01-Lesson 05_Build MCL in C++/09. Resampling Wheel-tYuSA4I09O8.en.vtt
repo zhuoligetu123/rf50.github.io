@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.555
+Let's have a closer look at how particles are being picked.
+
+00:00:03.555 --> 00:00:06.884
+In this example, we are giving a set of eight particles,
+
+00:00:06.884 --> 00:00:09.189
+each with its specific weight.
+
+00:00:09.189 --> 00:00:12.269
+These particles are initially grouped in a wheel with
+
+00:00:12.269 --> 00:00:16.434
+each particle occupying a space depending on its weight.
+
+00:00:16.434 --> 00:00:18.674
+We can notice that particles one and three
+
+00:00:18.675 --> 00:00:22.664
+occupy a very small space because of their small weights,
+
+00:00:22.664 --> 00:00:28.379
+whereas particle four occupies the biggest space because it has the largest weight.
+
+00:00:28.379 --> 00:00:31.799
+Initially, randomly pick an index from the set of
+
+00:00:31.800 --> 00:00:36.984
+particles ranging from one to N or in our example, one to eight.
+
+00:00:36.984 --> 00:00:40.679
+Let's pick the sixth particle as our initial index.
+
+00:00:40.679 --> 00:00:45.929
+Next, we will initialize a variable called beta and give it an initial value of zero.
+
+00:00:45.929 --> 00:00:50.700
+Now, we are going to iterate over the set of indexes and for each index,
+
+00:00:50.700 --> 00:00:54.210
+we will compute a new beta by adding to it any form
+
+00:00:54.210 --> 00:00:58.439
+random value ranging from zero to two times the largest weight.
+
+00:00:58.439 --> 00:01:01.274
+In this case, two times w4.
+
+00:01:01.274 --> 00:01:05.459
+As you can see, the new beta is now equal to the size occupied
+
+00:01:05.459 --> 00:01:09.780
+by particle six plus half the size occupied by particle seven.
+
+00:01:09.780 --> 00:01:12.605
+While W index is smaller than beta,
+
+00:01:12.605 --> 00:01:17.829
+we should subtract the W index from beta and increment the index.
+
+00:01:17.829 --> 00:01:20.399
+Here, you can see that the size occupied by
+
+00:01:20.400 --> 00:01:23.675
+particle six is smaller than the size of beta.
+
+00:01:23.674 --> 00:01:28.474
+So, we subtract w6 from beta and increment our index.
+
+00:01:28.474 --> 00:01:34.290
+Beta size is now reduced to only half of the size occupied by particle seven,
+
+00:01:34.290 --> 00:01:36.509
+and the index is now incremented,
+
+00:01:36.510 --> 00:01:38.790
+and shifted to particle seven.
+
+00:01:38.790 --> 00:01:42.720
+Now, if beta size becomes smaller than W index size,
+
+00:01:42.719 --> 00:01:45.810
+we'll have to pick the particle at that index.
+
+00:01:45.810 --> 00:01:48.543
+Here, you can see that beta is smaller than w7,
+
+00:01:48.543 --> 00:01:52.045
+therefore, we'll pick the particle seven.
+
+00:01:52.045 --> 00:01:56.310
+After that, we iterate and compute the new beta.
+
+00:01:56.310 --> 00:01:58.350
+Note that sometimes, you will pick
+
+00:01:58.349 --> 00:02:02.549
+the same particle more than once because of its small value.
+
+00:02:02.549 --> 00:02:05.054
+Now that you've learned the Resampling Pseudo Code,
+
+00:02:05.055 --> 00:02:07.000
+try to code it with C++.
+

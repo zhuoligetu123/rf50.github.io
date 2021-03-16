@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.424
+Congratulations. You've just coded MCL in C++.
+
+00:00:04.424 --> 00:00:07.980
+Now you can upload this code to any real world mobile robot with
+
+00:00:07.980 --> 00:00:11.790
+rangefinder sensors to estimate its pose any node map.
+
+00:00:11.789 --> 00:00:16.304
+You've probably noticed that the average error changes every time you run the program.
+
+00:00:16.304 --> 00:00:19.800
+This is because MCL is a probabilistic estimation.
+
+00:00:19.800 --> 00:00:21.765
+Now share with your classmates,
+
+00:00:21.765 --> 00:00:25.109
+the number of steps it took you to achieve a converging solution.
+
+00:00:25.109 --> 00:00:26.849
+In the upcoming project,
+
+00:00:26.850 --> 00:00:31.470
+you'll use ROS and implement the Adaptive Monte Carlo Localization package.
+
+00:00:31.469 --> 00:00:35.070
+Don't worry, I know that you're not familiar with AMCL yet,
+
+00:00:35.070 --> 00:00:36.990
+but stay tuned to learn it.
+

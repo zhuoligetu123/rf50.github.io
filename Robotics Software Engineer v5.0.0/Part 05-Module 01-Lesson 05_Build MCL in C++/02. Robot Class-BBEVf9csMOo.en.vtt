@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.960
+Here's the robot class with supporting and global functions.
+
+00:00:03.960 --> 00:00:05.564
+In the upcoming quizzes,
+
+00:00:05.565 --> 00:00:08.609
+you'll instantiate a robot object from this class.
+
+00:00:08.609 --> 00:00:12.359
+The instantiated robot object will have a random position
+
+00:00:12.359 --> 00:00:16.056
+and orientation based on a Gaussian distribution.
+
+00:00:16.056 --> 00:00:18.660
+Also, the forward, turn,
+
+00:00:18.660 --> 00:00:22.679
+and sensing noise parameters will initially be set to zero.
+
+00:00:22.679 --> 00:00:25.695
+To update the position and orientation of the robot,
+
+00:00:25.695 --> 00:00:28.460
+you can use this set function.
+
+00:00:28.460 --> 00:00:31.710
+To simulate noise, use this set noise function and
+
+00:00:31.710 --> 00:00:35.265
+add random noise values to the robot's pose and measurement.
+
+00:00:35.265 --> 00:00:37.410
+Now, if you want to measure the distance
+
+00:00:37.409 --> 00:00:40.125
+between the robot and each of the eight landmarks,
+
+00:00:40.125 --> 00:00:42.039
+use the sense function.
+
+00:00:42.039 --> 00:00:43.770
+With this move function,
+
+00:00:43.770 --> 00:00:46.500
+you can rotate the robot and move it forward.
+
+00:00:46.500 --> 00:00:49.679
+Finally, you can request the robot to show you it's
+
+00:00:49.679 --> 00:00:54.659
+current pose or the distances toward the eight landmarks.
+
+00:00:54.659 --> 00:00:58.754
+There are still some other functions that we'll cover later in the lesson.
+
+00:00:58.755 --> 00:01:01.679
+Now, go through the robot class and the functions in
+
+00:01:01.679 --> 00:01:06.064
+the C++ quiz section and try to understand the role of each one of them.
+
+00:01:06.064 --> 00:01:08.859
+After reviewing the robot class,
+
+00:01:08.859 --> 00:01:12.200
+print "I am ready for coding the MCL!" in the main function.
+

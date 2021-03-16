@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.889
+So far, you've coded MCL and evaluated the overall quality of your solution.
+
+00:00:05.889 --> 00:00:08.804
+Now, you will be able to visualize what you have coded,
+
+00:00:08.804 --> 00:00:10.984
+or more precisely, MCL in action.
+
+00:00:10.984 --> 00:00:13.080
+To do so, I am providing you with
+
+00:00:13.080 --> 00:00:16.725
+the visualization function which takes the number of particles,
+
+00:00:16.725 --> 00:00:21.875
+the robot's pose, and particles at each time step as arguments.
+
+00:00:21.875 --> 00:00:28.129
+Note that the plotting functions used here are linked to the Python matplotlib library.
+
+00:00:28.129 --> 00:00:31.199
+Initially, I am formatting the graph by including
+
+00:00:31.199 --> 00:00:34.630
+a title and specifying the x and y limits.
+
+00:00:34.630 --> 00:00:38.850
+Then, I am plotting the original particles with green circles,
+
+00:00:38.850 --> 00:00:43.064
+and the re-sampled particles with yellow circles.
+
+00:00:43.064 --> 00:00:47.954
+Following, I am plotting the eight fixed landmarks with red circles.
+
+00:00:47.954 --> 00:00:51.479
+Moving on, I am plotting the robot position which
+
+00:00:51.479 --> 00:00:55.625
+is our main point of interest with a blue circle.
+
+00:00:55.625 --> 00:00:58.905
+Finally, I'm saving the plot and destroying it.
+
+00:00:58.905 --> 00:01:03.135
+Unfortunately, you will not be able to run this program in the classroom yet.
+
+00:01:03.134 --> 00:01:07.000
+So, follow the instructions and then edit and run the code.
+

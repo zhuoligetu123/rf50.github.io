@@ -1,0 +1,513 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   EKF
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Kalman Filters
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What's a Kalman Filter.html">
+       02. What's a Kalman Filter?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. History.html">
+       03. History
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Applications.html">
+       04. Applications
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Variations.html">
+       05. Variations
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Robot Uncertainty.html">
+       06. Robot Uncertainty
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Kalman Filter Advantage.html">
+       07. Kalman Filter Advantage
+      </a>
+     </li>
+     <li class="">
+      <a href="08. 1D Gaussian.html">
+       08. 1D Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Designing 1D Kalman Filters.html">
+       09. Designing 1D Kalman Filters
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Measurement Update.html">
+       10. Measurement Update
+      </a>
+     </li>
+     <li class="">
+      <a href="11. State Prediction.html">
+       11. State Prediction
+      </a>
+     </li>
+     <li class="">
+      <a href="12. 1D Kalman Filter.html">
+       12. 1D Kalman Filter
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Multivariate Gaussian.html">
+       13. Multivariate Gaussian
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to Multidimensional KF.html">
+       14. Intro to Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Design of Multidimensional KF.html">
+       15. Design of Multidimensional KF
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Introduction to EKF.html">
+       16. Introduction to EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="17. EKF.html">
+       17. EKF
+      </a>
+     </li>
+     <li class="">
+      <a href="18. EKF Example.html">
+       18. EKF Example
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Recap.html">
+       19. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          17. EKF
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="multi-dimensional-extended-kalman-filter">
+          Multi-dimensional Extended Kalman Filter
+         </h1>
+         <p>
+          Now you’ve seen the fundamentals behind the Extended Kalman Filter. The mechanics are not too different from the Kalman Filter, with the exception of needing to linearize a nonlinear motion or measurement function to be able to update the variance.
+         </p>
+         <p>
+          You’ve seen how this can be done for a state prediction or measurement function that is of one-dimension, but now it’s time to explore how to linearize functions with multiple dimensions. To do this, we will be using multi-dimensional Taylor series.
+         </p>
+         <h2 id="linearization-in-multiple-dimensions">
+          Linearization in Multiple Dimensions
+         </h2>
+         <p>
+          The equation for a multidimensional Taylor Series is presented below.
+         </p>
+         <div class="mathquill">
+          \large T(x) = f(a) + (x-a)^TDf(a) + \frac{1}{2!}(x-a)^TD^2f(a)(x-a)+...
+         </div>
+         <p>
+          You will see that it is very similar to the 1-dimensional Taylor Series. As before, to calculate a linear approximation, we only need the first two terms.
+         </p>
+         <div class="mathquill">
+          \large T(x) = f(a) + (x-a)^TDf(a)
+         </div>
+         <p>
+          You may notice a new term, Df(a). This is the Jacobian matrix, and it holds the partial derivative terms for the multi-dimensional equation.
+         </p>
+         <div class="mathquill">
+          \large Df(a) = \frac{\delta f(a)}{\delta x}
+         </div>
+         <p>
+          In it's expanded form, the Jacobian is a matrix of partial derivatives. It tells us how each of the components of f changes as we change each of the components of the state vector.
+         </p>
+         <div class="mathquill">
+          \large 
+Df(a) = 
+\begin{bmatrix}
+\frac{\delta f_1}{\delta x_1} &amp; \frac{\delta f_1}{\delta x_2} &amp; \ldots &amp; \frac{\delta f_1}{\delta x_n} \\
+\frac{\delta f_2}{\delta x_1} &amp; \frac{\delta f_2}{\delta x_2} &amp; \ldots &amp; \frac{\delta f_2}{\delta x_n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+\frac{\delta f_m}{\delta x_1} &amp; \frac{\delta f_m}{\delta x_2} &amp; \ldots &amp; \frac{\delta f_m}{\delta x_n}
+\end{bmatrix}
+         </div>
+         <p>
+          The rows correspond to the dimensions of the function, f, and the columns relate to the dimensions (state variables) of x. The first element of the matrix is the first dimension of the function derived with respect to the first dimension of x.
+         </p>
+         <p>
+          The Jacobian is a generalization of the 1-dimensional case. In a 1-dimensional case, the Jacobian would have df/dx as its only term.
+         </p>
+         <h2 id="example-application">
+          Example Application
+         </h2>
+         <p>
+          This will make more sense in context, so let’s look at a specific example. Let’s say that we are tracking the x-y coordinate of an object. This is to say that our state is a vector x, with state variables x and y.
+         </p>
+         <div class="mathquill">
+          \large 
+x = 
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+         </div>
+         <p>
+          However, our sensor does not allow us to measure the x and y coordinates of the object directly. Instead, our sensor measures the distance from the robot to the object, r, as well as the angle between r and the x-axis, θ.
+         </p>
+         <div class="mathquill">
+          \large 
+z = 
+\begin{bmatrix}
+r \\
+\theta
+\end{bmatrix}
+         </div>
+         <p>
+          It is important to notice that our state is using a Cartesian representation of the world, while the measurements are in a polar representation. How will this affect our measurement function?
+         </p>
+         <p>
+          Our measurement function maps the state to the observation, as so,
+         </p>
+         <div class="mathquill">
+          \large 
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+\xRightarrow{meas. function}
+\begin{bmatrix}
+r \\
+\theta
+\end{bmatrix}
+         </div>
+         <p>
+          Thus, our measurement function must map from Cartesian to polar coordinates. But there is no matrix, H, that will successfully make this conversion, as the relationship between Cartesian and polar coordinates is nonlinear.
+         </p>
+         <div class="mathquill">
+          \large 
+r =  \sqrt{x^2 + y^2}
+         </div>
+         <div class="mathquill">
+          \large 
+\theta = tan^{-1}(\frac{y}{x})
+         </div>
+         <p>
+          For this reason, instead of using the measurement residual equation
+          <span class="mathquill ud-math">
+           y = z - Hx'
+          </span>
+          that you had seen before, the mapping must be made with a dedicated function, h(x').
+         </p>
+         <div class="mathquill">
+          \large 
+h(x') = 
+\begin{bmatrix}
+ \sqrt{x^2 + y^2} \\
+tan^{-1}(\frac{y}{x})
+\end{bmatrix}
+         </div>
+         <p>
+          Then the measurement residual equation becomes
+          <span class="mathquill ud-math">
+           y = z - h(x')
+          </span>
+          .
+         </p>
+         <p>
+          Our measurement covariance matrix cannot be updated the same way, as it would turn into a non-Gaussian distribution (as seen in the previous video). Let's calculate a linearization, H, and use it instead. The Taylor series for the function h(x), centered about the mean μ, is defined below.
+         </p>
+         <div class="mathquill">
+          \large h(x) \simeq h(\mu) + (x-\mu)^TDf(\mu)
+         </div>
+         <p>
+          The Jacobian,
+          <span class="mathquill ud-math">
+           Df(\mu)
+          </span>
+          , is defined below. But let's call it H since it's the linearization of our measurement function, h(x).
+         </p>
+         <div class="mathquill">
+          \Large
+H = 
+\begin{bmatrix}
+\frac{\partial r}{\partial x} &amp; \frac{\partial r}{\partial y} \\
+\frac{\partial \theta}{\partial x} &amp; \frac{\partial \theta}{\partial y}\end{bmatrix}
+         </div>
+         <p>
+          If you were to compute each of those partial derivatives, the matrix would reduce to the following,
+         </p>
+         <div class="mathquill">
+          \Large
+H = \begin{bmatrix}
+\frac{x}{\sqrt[]{x^2 + y^2}} &amp; \frac{y}{\sqrt[]{x^2 + y^2}}\\
+-\frac{y}{x^2 + y^2} &amp; \frac{x}{x^2 + y^2}
+\end{bmatrix}
+         </div>
+         <p>
+          It's this matrix, H, that can then be used to update the state's covariance.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          To summarize the flow of calculations for the Extended Kalman Filter, it's worth revisiting the equations to see what has changed and what has remained the same.
+         </p>
+         <h2 id="extended-kalman-filter-equations">
+          Extended Kalman Filter Equations
+         </h2>
+         <p>
+          These are the equations that implement the Extended Kalman Filter - you'll notice that most of them remain the same, with a few changes highlighted in red.
+         </p>
+         <p>
+          State Prediction:
+         </p>
+         <div class="mathquill">
+          \large \color{red} \cancel{x' = Fx} \quad \color{black} \rightarrow \quad x' = f(x)
+         </div>
+         <div class="mathquill">
+          \large \color{black} P' = \color{blue}F\color{black}P\color{blue}F^T\color{black} + Q
+         </div>
+         <p>
+          Measurement Update:
+         </p>
+         <div class="mathquill">
+          \large \color{red} \cancel{y = z - Hx'}\quad \color{black}  \rightarrow \quad y = z -h(x')
+         </div>
+         <div class="mathquill">
+          \large \color{black} S =  \color{blue}H\color{black}P' \color{blue}H^T\color{black} + R
+         </div>
+         <p>
+          Calculation of Kalman Gain:
+         </p>
+         <div class="mathquill">
+          \large \color{black} K = P' \color{blue}H^T\color{black}S^{-1}
+         </div>
+         <p>
+          Calculation of Posterior State and Covariance:
+         </p>
+         <div class="mathquill">
+          \large \color{black} x = x' + Ky
+         </div>
+         <div class="mathquill">
+          \large \color{black} P = (I - K \color{blue}H\color{black})P'
+         </div>
+         <p>
+          Highlighted in blue are the Jacobians that replaced the measurement and state transition functions.
+         </p>
+         <p>
+          The Extended Kalman Filter requires us to calculate the Jacobian of a nonlinear function as part of every single iteration, since the mean (which is the point that we linearize about) is updated.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="summary">
+          Summary
+         </h2>
+         <p>
+          Phew, that got complicated quickly! Here are the key take-aways about Extended Kalman Filters:
+         </p>
+         <ul>
+          <li>
+           <p>
+            The Kalman Filter cannot be used when the measurement and/or state transition functions are nonlinear, since this would result in a non-Gaussian distribution.
+           </p>
+          </li>
+          <li>
+           <p>
+            Instead, we take a local linear approximation and use this approximation to update the covariance of the estimate. The linear approximation is made using the first terms of the Taylor Series, which includes the first derivative of the function.
+           </p>
+          </li>
+          <li>
+           <p>
+            In the multi-dimensional case, taking the first derivative isn't as easy as there are multiple state variables and multiple dimensions. Here we employ a Jacobian, which is a matrix of partial derivatives, containing the partial derivative of each dimension with respect to each state variable.
+           </p>
+          </li>
+         </ul>
+         <p>
+          While it's important to understand the underlying math to employ the Kalman Filter, don't feel the need to memorize these equations. Chances are, whatever software package or programming language you're working with will have libraries that allow you to apply the Kalman Filter, or at the very least perform linear algebra calculations (such as matrix multiplication and calculating the Jacobian).
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="18. EKF Example.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('17. EKF')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

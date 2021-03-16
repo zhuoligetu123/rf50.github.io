@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.000
+With the extended Kalman Filter localization algorithm,
+
+00:00:03.000 --> 00:00:07.794
+you can estimate the pose of almost any robot with accurate onboard sensors.
+
+00:00:07.794 --> 00:00:12.780
+So, you might be wondering why it's necessary to master another localization algorithm.
+
+00:00:12.779 --> 00:00:16.875
+Well, MCL presents many advantages over EKF.
+
+00:00:16.875 --> 00:00:21.144
+First, MCL is easy to program compared to EKF.
+
+00:00:21.144 --> 00:00:24.519
+You will be able to evaluate this by yourself while coding
+
+00:00:24.519 --> 00:00:28.364
+MCL algorithm with C++ in the upcoming lesson.
+
+00:00:28.364 --> 00:00:31.734
+Second, MCL represents non-Gaussian distributions
+
+00:00:31.734 --> 00:00:35.670
+and can approximate any other practical important distribution.
+
+00:00:35.670 --> 00:00:38.670
+This means that MCL is unrestricted by
+
+00:00:38.670 --> 00:00:43.020
+a linear Gaussian states-based assumption as is the case for EKF.
+
+00:00:43.020 --> 00:00:46.320
+This allows MCL to model a much greater variety of
+
+00:00:46.320 --> 00:00:48.630
+environments especially since you can't
+
+00:00:48.630 --> 00:00:52.560
+always model the real world with Gaussian distributions.
+
+00:00:52.560 --> 00:00:56.790
+Third, in MCL, you can control the computational memory and resolution of
+
+00:00:56.789 --> 00:00:58.920
+your solution by changing the number of
+
+00:00:58.920 --> 00:01:04.049
+particles distributed uniformly and randomly throughout the map.
+
+00:01:04.049 --> 00:01:05.774
+This might not make sense to you yet,
+
+00:01:05.775 --> 00:01:10.065
+but you'll be able to understand it as we go through building the MCL and C++.
+
+00:01:10.064 --> 00:01:12.736
+For a full comparison of MCL and EKF,
+
+00:01:12.736 --> 00:01:14.340
+check out the table provided.
+

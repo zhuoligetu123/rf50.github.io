@@ -1,0 +1,196 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+Before we dive into the details of the Kalman filter,
+
+00:00:03.120 --> 00:00:05.669
+it's important to understand a few intricacies of
+
+00:00:05.669 --> 00:00:10.754
+robot operation that will give context to why a Kalman filter works the way it does.
+
+00:00:10.755 --> 00:00:13.125
+Let's explore two different robot worlds,
+
+00:00:13.125 --> 00:00:15.375
+the ideal world and the real world.
+
+00:00:15.375 --> 00:00:18.820
+In both worlds, the robots know their starting positions.
+
+00:00:18.820 --> 00:00:20.318
+In the ideal world,
+
+00:00:20.318 --> 00:00:23.575
+the robot is instructed to move 10 meters forward.
+
+00:00:23.574 --> 00:00:25.244
+The robot proceeds to do so,
+
+00:00:25.245 --> 00:00:28.660
+and stops precisely 10 meters from its starting position.
+
+00:00:28.660 --> 00:00:30.579
+The movement was error-free.
+
+00:00:30.579 --> 00:00:34.710
+The robot in the real world is also asked to move forward 10 meters.
+
+00:00:34.710 --> 00:00:36.329
+In the real world, however,
+
+00:00:36.329 --> 00:00:40.989
+there are few complexities that result in the robot's movement being imprecise.
+
+00:00:40.990 --> 00:00:44.130
+The robot may encounter imperfections in the terrain,
+
+00:00:44.130 --> 00:00:50.240
+experience wheel slip, or be adversely affected by other factors in its environment.
+
+00:00:50.240 --> 00:00:52.020
+Upon completion of its movement,
+
+00:00:52.020 --> 00:00:55.200
+the robot may not be at the 10-meter mark precisely,
+
+00:00:55.200 --> 00:00:59.355
+but some distance ahead of or behind of its desired goal.
+
+00:00:59.354 --> 00:01:01.349
+This error will be different with every movement
+
+00:01:01.350 --> 00:01:05.340
+performed due to the randomness encountered in the environment.
+
+00:01:05.340 --> 00:01:07.685
+Let's look at this movement on a graph.
+
+00:01:07.685 --> 00:01:13.484
+If we were to record the real world robot moving 10 meters forward a total of 100 times,
+
+00:01:13.484 --> 00:01:16.334
+the results would look like this data here.
+
+00:01:16.334 --> 00:01:20.804
+The roboticist with a keen eye may notice that this data resembles a bell curve,
+
+00:01:20.805 --> 00:01:22.725
+also known as a Gaussian.
+
+00:01:22.724 --> 00:01:26.069
+This graph displays a probability distribution of
+
+00:01:26.069 --> 00:01:30.354
+the robot's final position after multiple iterations of the movement.
+
+00:01:30.355 --> 00:01:33.855
+The X-axis represents the distance traveled by the robot,
+
+00:01:33.855 --> 00:01:38.939
+and the Y-axis represents how often the robot stopped at that distance.
+
+00:01:38.939 --> 00:01:42.435
+This curve shows that if we were to ask a robot to move,
+
+00:01:42.435 --> 00:01:45.737
+it is most likely to stop at the 10-meter mark,
+
+00:01:45.736 --> 00:01:50.069
+but at times, can find itself as far off as the 12-meter mark.
+
+00:01:50.069 --> 00:01:52.289
+The shape of the Gaussian is specific to
+
+00:01:52.290 --> 00:01:55.190
+the robots and the environment that it is operating in.
+
+00:01:55.189 --> 00:01:58.034
+If the robot was driving around a factory floor,
+
+00:01:58.034 --> 00:02:00.659
+there'd be fewer environmental factors to affect it,
+
+00:02:00.659 --> 00:02:03.079
+so its movement would be more precise,
+
+00:02:03.079 --> 00:02:05.939
+and its distribution more narrow.
+
+00:02:05.939 --> 00:02:09.284
+On the other hand, if the robot is performing rescue missions,
+
+00:02:09.284 --> 00:02:12.794
+it may have any number of environmental factors affect it,
+
+00:02:12.794 --> 00:02:14.234
+such as adverse weather,
+
+00:02:14.235 --> 00:02:17.545
+or unexpected movements due to unstable terrain.
+
+00:02:17.544 --> 00:02:21.024
+The result is a much wider Gaussian distribution,
+
+00:02:21.025 --> 00:02:25.460
+but the distribution of the uncertainty is not the only problem here.
+
+00:02:25.460 --> 00:02:29.700
+If a robot were to continue to take blind movements one after the other,
+
+00:02:29.699 --> 00:02:33.704
+then its location would become less and less certain with every movement.
+
+00:02:33.705 --> 00:02:36.094
+You can see this displayed on the graph.
+
+00:02:36.094 --> 00:02:37.650
+Every movement is uncertain,
+
+00:02:37.650 --> 00:02:40.645
+and these uncertainties stack up over time.
+
+00:02:40.645 --> 00:02:42.765
+With all of these uncertainties in motion,
+
+00:02:42.764 --> 00:02:45.803
+a robot needs a way to sense its own action.
+
+00:02:45.804 --> 00:02:49.740
+But unfortunately, sensory data is often uncertain, too.
+
+00:02:49.740 --> 00:02:53.120
+Let's go back to our two robot worlds to explore this.
+
+00:02:53.120 --> 00:02:56.310
+Let's say that we are interested in knowing the speed of a robot,
+
+00:02:56.310 --> 00:02:59.504
+and that we have sensors on-board the robot to measure this.
+
+00:02:59.504 --> 00:03:01.019
+In the ideal world,
+
+00:03:01.020 --> 00:03:03.855
+the sensor will measure the speed of the robot accurately,
+
+00:03:03.854 --> 00:03:07.259
+and respond to changes in the speed instantaneously.
+
+00:03:07.259 --> 00:03:08.625
+However, in the real world,
+
+00:03:08.625 --> 00:03:11.694
+sensor measurements will contain some amount of noise.
+
+00:03:11.694 --> 00:03:16.199
+An expensive encoder may come close to what you would expect in an ideal world,
+
+00:03:16.199 --> 00:03:18.839
+but if you're using hobbyist grade robotic sensors,
+
+00:03:18.840 --> 00:03:21.289
+they will exhibit imperfect measurements.
+

@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.240
+The TurtleBot is one of the famous robots used
+
+00:00:03.240 --> 00:00:06.509
+by roboticists around the world to perform localization,
+
+00:00:06.509 --> 00:00:08.580
+mapping, and path planning.
+
+00:00:08.580 --> 00:00:12.509
+At this point in time, the TurtleBot comes in three different versions.
+
+00:00:12.509 --> 00:00:17.759
+The TurtleBot one was introduced in 2010 with an iRobot Create base.
+
+00:00:17.760 --> 00:00:22.628
+The TurtleBot two was introduced in 2012 with the Kobuki base,
+
+00:00:22.628 --> 00:00:27.435
+and the latest, TurtleBot three family was introduced in 2017.
+
+00:00:27.434 --> 00:00:30.494
+In this lab, you will deploy the TurtleBot two
+
+00:00:30.495 --> 00:00:33.795
+in a Gazebo environment and then estimate its pose.
+
+00:00:33.795 --> 00:00:37.020
+TheTurtleBot two has multiple on-board sensors
+
+00:00:37.020 --> 00:00:41.295
+ranging from rotary encoders to IMU to vision.
+
+00:00:41.295 --> 00:00:44.160
+So, you will use an EKF package to fuse
+
+00:00:44.159 --> 00:00:47.729
+at least two of these sensors and estimate the robot's pose.
+
+00:00:47.729 --> 00:00:51.119
+Going through the documentation of the TurtleBot Gazebo package,
+
+00:00:51.119 --> 00:00:53.655
+we see that not much information is provided.
+
+00:00:53.655 --> 00:00:59.737
+Usually, the risks of subscriber and publisher topics of Ros package is provided.
+
+00:00:59.737 --> 00:01:02.339
+But not to worry, because you can always go on the package
+
+00:01:02.340 --> 00:01:05.760
+and obtain the lists of subscribers and publisher topics.
+
+00:01:05.760 --> 00:01:08.609
+Let's dive into our VM and do so.
+
+00:01:08.609 --> 00:01:11.459
+First, open a terminal and clone
+
+00:01:11.459 --> 00:01:15.569
+the package into the SRC folder of your catkin workspace.
+
+00:01:15.569 --> 00:01:21.395
+Feel free to pause this video at any time and follow the steps in the instructor notes.
+
+00:01:21.396 --> 00:01:27.585
+Next, source the workspace and install the package dependencies.
+
+00:01:27.584 --> 00:01:30.765
+Then, built the package.
+
+00:01:30.765 --> 00:01:34.650
+And once again, source the workspace.
+
+00:01:34.650 --> 00:01:37.820
+Finally, launch the nodes.
+
+00:01:37.819 --> 00:01:43.179
+Launching TurtleBot for the first time in Gazebo might take up to five minute.
+
+00:01:43.180 --> 00:01:49.260
+Now, TurtleBot two is deployed in the Gazebo environment with some obstacles around it.
+
+00:01:49.260 --> 00:01:52.660
+To obtain the list of subscriber and publisher topics,
+
+00:01:52.659 --> 00:01:57.084
+you can either on the architect graph or run a Ros topic list command.
+
+00:01:57.084 --> 00:02:01.899
+Let's open a new terminal and execute a Ros topic list command.
+
+00:02:01.900 --> 00:02:05.080
+All of the subscriber and publisher topics of
+
+00:02:05.079 --> 00:02:08.694
+different nodes are now listed in our terminal.
+
+00:02:08.694 --> 00:02:10.719
+The TurtleBot is publishing data from
+
+00:02:10.719 --> 00:02:14.590
+different on-board sensors and subscribing to control commands.
+
+00:02:14.590 --> 00:02:19.330
+The robot can accept control command through the teleop topic.
+
+00:02:19.330 --> 00:02:23.995
+The depth images are being published to a camera depth image row topic.
+
+00:02:23.995 --> 00:02:26.800
+Other than that, the encoders position and
+
+00:02:26.800 --> 00:02:29.800
+velocity are being published to the Odom topic.
+
+00:02:29.800 --> 00:02:37.135
+Finally, the robot is publishing IMU data to the mobile base sensors, IMU data topic.
+
+00:02:37.134 --> 00:02:38.799
+In the TurtleBot package,
+
+00:02:38.800 --> 00:02:40.990
+nodes are subscribing and publishing to
+
+00:02:40.990 --> 00:02:44.125
+other topics but we are only interested in these for now,
+
+00:02:44.125 --> 00:02:46.930
+to control and estimate the robot's pose.
+

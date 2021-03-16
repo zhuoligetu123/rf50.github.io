@@ -1,0 +1,13 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.400
+As you know, almost all real-world sensors are noisy and require filtering.
+
+00:00:05.400 --> 00:00:10.185
+In this quiz, you'll alter the robot's pose and measurement values to noisy ones.
+
+00:00:10.185 --> 00:00:13.570
+Scroll down to the main function and follow the instructions.
+

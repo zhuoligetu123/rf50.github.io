@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.394
+Let's begin our Kalman filter implementation with the measurement update.
+
+00:00:04.394 --> 00:00:08.744
+Let's take a look at an example back in our one-dimensional robot world.
+
+00:00:08.744 --> 00:00:12.855
+It seems that our robot's been roaming around while we've been away learning.
+
+00:00:12.855 --> 00:00:18.449
+However, I have an inkling that the robot's current position is near the 20-meter mark,
+
+00:00:18.449 --> 00:00:20.280
+but I'm not incredibly certain.
+
+00:00:20.280 --> 00:00:24.935
+So, the prior belief Gaussian has a rather wide probability distribution.
+
+00:00:24.934 --> 00:00:30.564
+Next, a robot takes it's first sensory measurement providing us with data to work with.
+
+00:00:30.565 --> 00:00:33.783
+The measurement data, Z, is more certain,
+
+00:00:33.783 --> 00:00:36.993
+so it appears as a narrower Gaussian with a mean of 30.
+
+00:00:36.993 --> 00:00:39.640
+Hey, our intuition was close.
+
+00:00:39.640 --> 00:00:44.427
+Given our prior belief about the robot's state and the measurement that it collected,
+
+00:00:44.427 --> 00:00:48.049
+where do you think the robot's new belief will be?
+

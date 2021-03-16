@@ -1,0 +1,262 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.509
+All right. You've written a program that can apply
+
+00:00:03.509 --> 00:00:08.564
+the Kalman filter to real life localization problems. You're a champ.
+
+00:00:08.564 --> 00:00:11.580
+It takes skills and patience to get this far.
+
+00:00:11.580 --> 00:00:15.035
+However, we've got a little bit further to go.
+
+00:00:15.035 --> 00:00:20.754
+If you recall the assumptions under which the Kalman filter operates,
+
+00:00:20.754 --> 00:00:24.640
+are that the motion and measurement functions are linear,
+
+00:00:24.640 --> 00:00:29.530
+and that the state can be represented by a unimodal Gaussian distribution.
+
+00:00:29.530 --> 00:00:33.429
+Well, it turns out that these assumptions are very limiting,
+
+00:00:33.429 --> 00:00:36.865
+and would only suffice for very primitive robots.
+
+00:00:36.865 --> 00:00:41.005
+Most mobile robots will execute non-linear emotions.
+
+00:00:41.005 --> 00:00:45.280
+For example, moving in a circle or following a curve.
+
+00:00:45.280 --> 00:00:51.579
+So, what can we do if our Kalman filter can't be applied to most robotics problems?
+
+00:00:51.579 --> 00:00:54.924
+Let's take a look at why we can't apply the Kalman filter
+
+00:00:54.924 --> 00:00:58.659
+in more detail and maybe we'll find some answers there.
+
+00:00:58.659 --> 00:01:01.149
+Here's a prior distribution.
+
+00:01:01.149 --> 00:01:04.674
+A unimodal Gaussian distribution with a mean of mu,
+
+00:01:04.674 --> 00:01:07.000
+and a variance of sigma squared.
+
+00:01:07.000 --> 00:01:10.915
+When this distribution undergoes a linear transformation,
+
+00:01:10.915 --> 00:01:14.785
+for instance the function y equals ax plus b,
+
+00:01:14.784 --> 00:01:18.004
+the resulting distribution looks like so.
+
+00:01:18.004 --> 00:01:24.239
+This posterior distribution is a Gaussian with a mean of amu plus p,
+
+00:01:24.239 --> 00:01:27.479
+and a variance of a squared sigma squared.
+
+00:01:27.480 --> 00:01:31.350
+This is precisely what can happen in a state prediction.
+
+00:01:31.349 --> 00:01:34.349
+The important thing to note is that a linear transformation
+
+00:01:34.349 --> 00:01:37.152
+that takes a Gaussian distribution as an input,
+
+00:01:37.152 --> 00:01:40.635
+will always have a Gaussian distribution as an output.
+
+00:01:40.635 --> 00:01:44.295
+Now, what happens if the transformation is nonlinear?
+
+00:01:44.295 --> 00:01:46.620
+Let's look at another example.
+
+00:01:46.620 --> 00:01:51.996
+Once again, the prior distribution is a unimodal Gaussian distribution,
+
+00:01:51.995 --> 00:01:55.324
+with a mean of mu and a variance of sigma squared.
+
+00:01:55.325 --> 00:02:00.490
+But now, the function f of x is clearly non-linear.
+
+00:02:00.489 --> 00:02:06.655
+The resulting distribution is no longer a Gaussian as can be identified from its shape.
+
+00:02:06.655 --> 00:02:11.275
+In fact, the distribution cannot be computed in closed form.
+
+00:02:11.275 --> 00:02:14.605
+Meaning, in a finite number of operations.
+
+00:02:14.604 --> 00:02:17.655
+Instead, to model this distribution,
+
+00:02:17.656 --> 00:02:22.555
+many thousands of samples must be collected according to the prior distribution,
+
+00:02:22.555 --> 00:02:27.835
+and pass through the function f of x to create this posterior distribution.
+
+00:02:27.835 --> 00:02:32.075
+What used to be a simple algebra or matrix manipulation,
+
+00:02:32.074 --> 00:02:34.943
+has become much more computationally intensive,
+
+00:02:34.943 --> 00:02:39.169
+which is not the responsiveness that the Kalman filter is known for.
+
+00:02:39.169 --> 00:02:41.104
+So, what can we do?
+
+00:02:41.104 --> 00:02:43.189
+Well, if you look closely,
+
+00:02:43.189 --> 00:02:46.340
+and I mean really closely, let's zoom in,
+
+00:02:46.340 --> 00:02:49.250
+you may notice that for very short intervals,
+
+00:02:49.250 --> 00:02:54.319
+the function f of x may be approximated by a linear function.
+
+00:02:54.319 --> 00:02:58.924
+This will allow us to use the Kalman filter on this nonlinear problem.
+
+00:02:58.925 --> 00:03:03.110
+The linear estimate is only good for a small section of the function,
+
+00:03:03.110 --> 00:03:06.040
+but if it is centered on the best estimate,
+
+00:03:06.039 --> 00:03:09.090
+the mean and updated with every step,
+
+00:03:09.090 --> 00:03:12.854
+it turns out that it can produce sufficiently accurate results.
+
+00:03:12.854 --> 00:03:16.829
+The mean can continue to be updated with a nonlinear function.
+
+00:03:16.830 --> 00:03:22.755
+But the covariance must be updated by a linearization of the function f of x.
+
+00:03:22.754 --> 00:03:25.965
+To calculate the local linear approximation,
+
+00:03:25.965 --> 00:03:28.215
+a Taylor series can be of help.
+
+00:03:28.215 --> 00:03:30.974
+If you're not familiar with the Taylor series,
+
+00:03:30.974 --> 00:03:33.659
+the Taylor series Wikipedia page provides
+
+00:03:33.659 --> 00:03:37.514
+a great summary along with some helpful visualizations.
+
+00:03:37.514 --> 00:03:40.439
+A function can be represented by the sum of
+
+00:03:40.439 --> 00:03:44.270
+an infinite number of terms as represented by this formula.
+
+00:03:44.270 --> 00:03:46.730
+This is called the Taylor series.
+
+00:03:46.729 --> 00:03:51.319
+However, an infinite number of terms is not needed.
+
+00:03:51.319 --> 00:03:56.344
+An approximation can be obtained by using just a few of the terms.
+
+00:03:56.344 --> 00:03:59.479
+And a linear approximation can be obtained by
+
+00:03:59.479 --> 00:04:03.094
+using just the first two terms of a taylor series.
+
+00:04:03.094 --> 00:04:07.879
+This linear approximation centered around the mean,
+
+00:04:07.879 --> 00:04:12.680
+will be used to update the covariance matrix of the prior state Gaussian.
+
+00:04:12.680 --> 00:04:18.100
+Let's take a look back at our non-linear example and apply the linearization.
+
+00:04:18.100 --> 00:04:22.194
+The taylor series can be simplified to a linear equation,
+
+00:04:22.194 --> 00:04:25.379
+one of the form y equals ax plus b,
+
+00:04:25.379 --> 00:04:28.634
+and the transformation can be applied to the prior.
+
+00:04:28.634 --> 00:04:33.105
+The results is precisely what we wanted, a Gaussian.
+
+00:04:33.105 --> 00:04:35.715
+It will inevitably have an error.
+
+00:04:35.714 --> 00:04:38.789
+You can see that the posterior Gaussian distribution
+
+00:04:38.790 --> 00:04:42.210
+is quite different from the distribution that you saw before.
+
+00:04:42.209 --> 00:04:47.759
+However, the tradeoff is in the simplicity and speed of the calculation.
+
+00:04:47.759 --> 00:04:52.980
+Let's recap what the differences are between ekf and kf.
+
+00:04:52.980 --> 00:04:56.759
+To begin with, either the state transformation function,
+
+00:04:56.759 --> 00:05:00.300
+measurement function, or both, are nonlinear.
+
+00:05:00.300 --> 00:05:03.884
+These nonlinear functions can be used to update the mean,
+
+00:05:03.884 --> 00:05:05.564
+but not the variance,
+
+00:05:05.564 --> 00:05:09.375
+as this would result in a non-Gaussian distribution.
+
+00:05:09.375 --> 00:05:11.730
+For this reason, locally
+
+00:05:11.730 --> 00:05:16.215
+linear approximations are calculated and used to update the variance.
+
+00:05:16.214 --> 00:05:18.873
+Before you dive into the formulas for ekaf,
+
+00:05:18.874 --> 00:05:21.180
+it's important to generalize the process for
+
+00:05:21.180 --> 00:05:24.439
+multidimensional state transition or measurement and function.
+

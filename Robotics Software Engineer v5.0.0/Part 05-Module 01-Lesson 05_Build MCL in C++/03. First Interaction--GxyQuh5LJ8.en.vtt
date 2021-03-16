@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.174
+Now that you've reviewed the Robot class,
+
+00:00:02.174 --> 00:00:03.910
+it's time to interact with it.
+
+00:00:03.910 --> 00:00:09.269
+In this quiz, you learn how to instantiate a robot object from the Robot class.
+
+00:00:09.269 --> 00:00:13.964
+This robot will be initialized with random position and orientation.
+
+00:00:13.964 --> 00:00:18.490
+Then, you learn how to change the robot initial position and orientation.
+
+00:00:18.489 --> 00:00:21.354
+You may be curious to know where the robot is located,
+
+00:00:21.355 --> 00:00:22.705
+so you learn how to print its pause.
+
+00:00:22.704 --> 00:00:28.889
+Following, you learn how to rotate the robot and move it forward into 2D map.
+
+00:00:28.890 --> 00:00:31.289
+Finally, you learn how to print the distances
+
+00:00:31.289 --> 00:00:34.314
+from the robot toward each of the eight landmarks.
+
+00:00:34.314 --> 00:00:39.539
+Scroll down to the main function in the C++ quiz and go through the instructions.
+
+00:00:39.539 --> 00:00:42.299
+You'll notice some missing values and statements
+
+00:00:42.299 --> 00:00:45.399
+where you'll be asked to fill them out to simulate robot motion.
+

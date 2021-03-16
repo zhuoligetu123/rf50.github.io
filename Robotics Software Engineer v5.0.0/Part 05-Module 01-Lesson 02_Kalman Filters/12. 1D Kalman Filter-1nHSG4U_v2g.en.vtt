@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.720
+All right. So we've learned a few things.
+
+00:00:02.720 --> 00:00:07.343
+The measurement update is a weighted sum of the prior belief and the measurement.
+
+00:00:07.344 --> 00:00:10.290
+The state prediction is the addition of the prior belief's
+
+00:00:10.289 --> 00:00:13.934
+mean and variance to the motion's mean and variance.
+
+00:00:13.935 --> 00:00:16.004
+You've coded both of these steps,
+
+00:00:16.004 --> 00:00:20.862
+and now it's time to add some support code that will call them one after the other,
+
+00:00:20.862 --> 00:00:23.009
+as long as measurement data is available,
+
+00:00:23.010 --> 00:00:25.350
+and the robot has motions to implement.
+
+00:00:25.350 --> 00:00:27.255
+For the purpose of this example,
+
+00:00:27.254 --> 00:00:31.469
+we will use two arrays to hold the measurement values and motions.
+
+00:00:31.469 --> 00:00:36.030
+The index of every value in each list represents its timestamp.
+
+00:00:36.030 --> 00:00:41.750
+The first value in the measurement array is the measurement at time equals zero.
+
+00:00:41.750 --> 00:00:45.390
+The second, at time equals 1, and so forth.
+
+00:00:45.390 --> 00:00:47.625
+Here, we have five values for each.
+
+00:00:47.625 --> 00:00:51.869
+So, we will be able to go through five iterations of the Kalman Filter Cycle.
+
+00:00:51.869 --> 00:00:56.820
+At each iteration, the Kalman filter will try to estimate the state of the system.
+
+00:00:56.820 --> 00:00:59.429
+After five iterations, we will see if
+
+00:00:59.429 --> 00:01:03.034
+the Kalman filter converges on the robot's true value.
+
+00:01:03.034 --> 00:01:05.384
+We will also use two variables to represent
+
+00:01:05.385 --> 00:01:09.555
+the variance of the measurements and the variance of the motions.
+
+00:01:09.555 --> 00:01:14.340
+If you remember, we also require an initial estimate of the robot's position.
+
+00:01:14.340 --> 00:01:16.005
+In our motion example,
+
+00:01:16.004 --> 00:01:21.894
+the robot left off at the 35 meter mark so let's use that as our initial estimate.
+
+00:01:21.894 --> 00:01:25.784
+We must also enter the uncertainty associated with this estimate.
+
+00:01:25.784 --> 00:01:28.064
+I've been keeping a close eye on our robot,
+
+00:01:28.064 --> 00:01:31.259
+and I can assure you that it hasn't gone anywhere.
+
+00:01:31.260 --> 00:01:33.870
+We can use a fairly certain value of four,
+
+00:01:33.870 --> 00:01:35.370
+but as you'll soon see,
+
+00:01:35.370 --> 00:01:40.545
+this value isn't quite as critical to a successful outcome as you may initially think.
+
+00:01:40.545 --> 00:01:42.600
+Your task is to write the code that will
+
+00:01:42.599 --> 00:01:44.909
+iterally go through the available measurements and
+
+00:01:44.909 --> 00:01:49.545
+motions and apply a measurement update or a state prediction to each one of them.
+
+00:01:49.545 --> 00:01:53.299
+That's your last step to implementing a one-dimensional Kalman filter.
+

@@ -1,0 +1,407 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Localization: Parameters
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Where Am I?
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Simulation Setup.html">
+       02. Simulation Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Map Setup.html">
+       03. Map Setup
+      </a>
+     </li>
+     <li class="">
+      <a href="04. AMCL Package.html">
+       04. AMCL Package
+      </a>
+     </li>
+     <li class="">
+      <a href="05. AMCL Launch File.html">
+       05. AMCL Launch File
+      </a>
+     </li>
+     <li class="">
+      <a href="06. AMCL Launch File Map Server Node.html">
+       06. AMCL Launch File: Map Server Node
+      </a>
+     </li>
+     <li class="">
+      <a href="07. AMCL Launch File AMCL Node.html">
+       07. AMCL Launch File: AMCL Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. AMCL Launch File Move Base Node.html">
+       08. AMCL Launch File: Move Base Node
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Optional Teleop Package.html">
+       09. Optional: Teleop Package
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Localization Launching.html">
+       10. Localization: Launching
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Localization Parameters.html">
+       11. Localization: Parameters
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Localization Testing.html">
+       12. Localization: Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Project Workspace.html">
+       13. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Where Am I.html">
+       Project Description - Where Am I
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Where Am I.html">
+       Project Rubric - Where Am I
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          11. Localization: Parameters
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          For the next part of the project, you will identify and tune parameters for your
+          <code>
+           amcl
+          </code>
+          node in the
+          <code>
+           amcl.launch
+          </code>
+          file, to achieve better results.
+         </p>
+         <h3 id="amcl-parameters">
+          AMCL Parameters
+         </h3>
+         <p>
+          The
+          <a href="http://wiki.ros.org/amcl#Parameters" rel="noopener noreferrer" target="_blank">
+           amcl package
+          </a>
+          has a lot of parameters to select from. Different sets of parameters contribute to different aspects of the algorithm. Broadly speaking, they can be categorized into three categories - overall filter, laser, and odometry. Let’s cover some of the parameters that we recommend you start with or details to focus on.
+         </p>
+         <h4 id="overall-filter">
+          Overall Filter
+         </h4>
+         <ul>
+          <li>
+           <code>
+            min_particles
+           </code>
+           and
+           <code>
+            max_particles
+           </code>
+           - As amcl dynamically adjusts its particles for every iteration, it expects a range of the number of particles as an input. Often, this range is tuned based on your system specifications. A larger range, with a high maximum might be too computationally extensive for a low-end system.
+          </li>
+          <li>
+           <code>
+            initial_pose
+           </code>
+           - For the project, you should set the position to [0, 0]. Feel free to play around with the mean yaw value.
+          </li>
+          <li>
+           <code>
+            update_min*
+           </code>
+           -
+           <code>
+            amcl
+           </code>
+           relies on incoming laser scans. Upon receiving a scan, it checks the values for
+           <code>
+            update_min_a
+           </code>
+           and
+           <code>
+            update_min_d
+           </code>
+           and compares to how far the robot has moved. Based on this comparison it decides whether or not  to perform a filter update or to discard the scan data. Discarding data could result in poorer localization results, and too many frequent filter updates for a fast moving robot could also cause computational problems.
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4 id="laser">
+          Laser
+         </h4>
+         <p>
+          There are two different types of models to consider under this - the
+          <code>
+           likelihood_field
+          </code>
+          and the
+          <code>
+           beam
+          </code>
+          . Each of these models defines how the laser rangefinder sensor estimates the obstacles in relation to the robot.
+         </p>
+         <p>
+          The
+          <code>
+           likelihood_field
+          </code>
+          model is usually more computationally efficient and reliable for an environment such as the one you are working with. So you can focus on parameters for that particular model such as the -
+         </p>
+         <ul>
+          <li>
+           <code>
+            laser_*_range
+           </code>
+          </li>
+          <li>
+           <code>
+            laser_max_beams
+           </code>
+          </li>
+          <li>
+           <code>
+            laser_z_hit
+           </code>
+           and
+           <code>
+            laser_z_rand
+           </code>
+          </li>
+         </ul>
+         <p>
+          Tuning of these parameters will have to be experimental. While tuning them, observe the laser scan information in RViz and try to make sure that the laser scan matches or is aligned with the actual map, and how it gets updated as the robot moves. The better the estimation of where the obstacles are, the better the localization results.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4 id="odometry">
+          Odometry
+         </h4>
+         <p>
+          <code>
+           odom_model_type
+          </code>
+          - Since you are working with a differential drive mobile robot, it’s best to use the
+          <code>
+           diff-corrected
+          </code>
+          type. There are additional parameters that are specific to this type - the
+          <code>
+           odom_alphas
+          </code>
+          (1 through 4). These parameters define how much noise is expected from the robot's movements/motions as it navigates inside the map.
+         </p>
+         <p>
+          **Note: ** The odometry information for this project is received directly from Gazebo, and is equivalent to the ground truth value (no noise expected). So, you need not have to tune these parameters and can leave them at their default values. But feel free to experiment with some values and see if you notice any changes.
+         </p>
+         <p>
+          <strong>
+           Important:
+          </strong>
+          The above set of parameters should help you get started, however they aren't the only ones that can improve your results. You are encouraged and required to go through the documentation, identify which parameters might help you improve your localization results, and experiment with them. All the remaining parameters and corresponding documentation can be found on the
+          <a href="http://wiki.ros.org/amcl#Parameters" rel="noopener noreferrer" target="_blank">
+           ROS wiki's amcl page
+          </a>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Identifying and tuning all these parameters can take time and effort. But don't worry. Based on the information and resources provided, you are well-equipped to tackle the problem head-on! Make sure to discuss your approaches with your fellow students in the ND Slack, and to reach out to your mentor for any further help.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="12. Localization Testing.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Localization: Parameters')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

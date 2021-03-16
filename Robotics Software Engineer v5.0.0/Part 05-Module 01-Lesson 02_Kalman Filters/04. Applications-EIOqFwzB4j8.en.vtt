@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.759
+Since its success with the Apollo program,
+
+00:00:02.759 --> 00:00:04.379
+the Kalman filter has become one of
+
+00:00:04.379 --> 00:00:08.099
+the most practical algorithms in the field of controls engineering.
+
+00:00:08.099 --> 00:00:12.719
+Today the Kalman filter is applied in many different disciplines within
+
+00:00:12.720 --> 00:00:15.150
+engineering the Kalman filter is often used to
+
+00:00:15.150 --> 00:00:18.524
+estimate the state of a system when the measurements are noisy.
+
+00:00:18.524 --> 00:00:21.509
+For example, the fluid level in a tank,
+
+00:00:21.510 --> 00:00:25.220
+or as you saw earlier, position tracking of a mobile robot.
+
+00:00:25.219 --> 00:00:28.029
+Outside of engineering, the Kalman filter is very
+
+00:00:28.030 --> 00:00:30.820
+popular in the field of economics, for instance,
+
+00:00:30.820 --> 00:00:35.619
+to estimate the exchange rate of a particular currency or the global domestic product,
+
+00:00:35.619 --> 00:00:38.289
+a measure of a country's economic well being.
+
+00:00:38.289 --> 00:00:41.604
+Computer vision is another big user of the Kalman filter,
+
+00:00:41.604 --> 00:00:45.329
+for many different applications including feature tracking
+

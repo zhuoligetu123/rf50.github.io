@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.969
+So far you've generated the particles and simulated motion.
+
+00:00:04.969 --> 00:00:10.460
+Now you should assign any importance weight to each one of the generated particles.
+
+00:00:10.460 --> 00:00:11.825
+At each time step,
+
+00:00:11.824 --> 00:00:17.399
+the robot is rotating and moving forward into the map and sensing the landmarks position.
+
+00:00:17.399 --> 00:00:20.739
+These are the actual measurements denoted by Z.
+
+00:00:20.739 --> 00:00:23.759
+In order to assign weight to each particle,
+
+00:00:23.760 --> 00:00:25.425
+you need to compare the measurements of
+
+00:00:25.425 --> 00:00:28.830
+each particle also known by a predicted measurement,
+
+00:00:28.829 --> 00:00:31.357
+to the actual or what measurement.
+
+00:00:31.358 --> 00:00:33.600
+The mismatch between the actual measurements of
+
+00:00:33.600 --> 00:00:37.045
+the robot and the predicted measurements of each particle,
+
+00:00:37.045 --> 00:00:40.329
+is known as the Particles Importance Weight.
+
+00:00:40.329 --> 00:00:44.549
+The larger the weight the more important the particle is and the more
+
+00:00:44.549 --> 00:00:48.609
+likely it is to represent the robot's actual position.
+
+00:00:48.609 --> 00:00:51.015
+In this quiz, you'll generate a weight vector
+
+00:00:51.015 --> 00:00:54.390
+which holds the weight values of the 1000 particles.
+
+00:00:54.390 --> 00:00:56.109
+While you were busy learning,
+
+00:00:56.109 --> 00:00:57.390
+I rotated the robot,
+
+00:00:57.390 --> 00:01:01.710
+move it forward, and then stored the measurement values in a Z vector.
+
+00:01:01.710 --> 00:01:05.055
+The Z vector now holds eight different values,
+
+00:01:05.055 --> 00:01:06.510
+each of which represents
+
+00:01:06.510 --> 00:01:10.725
+the actual distance of the robot toward one of the eight landmarks.
+
+00:01:10.724 --> 00:01:14.049
+Also, I've included a measurement probability function,
+
+00:01:14.049 --> 00:01:18.944
+which takes the actual measurement vector and compares it to the predicted one.
+
+00:01:18.944 --> 00:01:22.109
+This function will compute the probability of how
+
+00:01:22.109 --> 00:01:26.054
+close the predicted measurements are to the actual ones.
+
+00:01:26.055 --> 00:01:29.370
+Note that noise is always added to the measurements.
+
+00:01:29.370 --> 00:01:31.965
+Now go ahead and code the importance weight,
+
+00:01:31.965 --> 00:01:36.079
+right after the block of code where it generated particles and simulated motion.
+

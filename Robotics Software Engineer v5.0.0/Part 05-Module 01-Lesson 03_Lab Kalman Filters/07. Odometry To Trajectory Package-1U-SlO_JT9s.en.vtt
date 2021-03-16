@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.610
+Currently, the Turtlebot is publishing
+
+00:00:02.610 --> 00:00:07.425
+the unfiltered odometry values represented by an instantaneous two-dimensional pose.
+
+00:00:07.425 --> 00:00:10.230
+On the other side, the EKF node is
+
+00:00:10.230 --> 00:00:13.875
+publishing an instantaneous three-dimensional filtered pose.
+
+00:00:13.875 --> 00:00:20.415
+At this stage, we are only able to compare instantaneous filtered and unfiltered poses.
+
+00:00:20.415 --> 00:00:23.309
+To compare filtered and unfiltered trajectories,
+
+00:00:23.309 --> 00:00:24.360
+we need to append
+
+00:00:24.360 --> 00:00:29.250
+the filtered and unfiltered poses generated over time into separate vectors.
+
+00:00:29.250 --> 00:00:31.650
+Luckily, the odometry to trajectory
+
+00:00:31.650 --> 00:00:36.105
+ROS package can subscribe to odometry values and publish trajectories.
+
+00:00:36.105 --> 00:00:38.955
+This package contains two nodes.
+
+00:00:38.955 --> 00:00:43.410
+The first node subscribes to 2D unfiltered robot odometry,
+
+00:00:43.410 --> 00:00:46.600
+appends the robots last 1,000 poses,
+
+00:00:46.600 --> 00:00:50.570
+and publishes the robots unfiltered trajectory.
+
+00:00:50.570 --> 00:00:55.595
+The second node subscribes to 3D filtered odometry and also appends
+
+00:00:55.595 --> 00:01:01.045
+the robots last 1,000 poses and publishes the filter trajectory.
+
+00:01:01.045 --> 00:01:06.830
+It's time to integrate this package with a Turtlebot Gazebo and Robot Pose EKF packages.
+
+00:01:06.830 --> 00:01:11.300
+The subscriber and publisher 2D pose topics are identical and
+
+00:01:11.300 --> 00:01:16.040
+also both filtered 3D poses topics have the same name.
+
+00:01:16.040 --> 00:01:19.570
+Here's the final result of integrating the three packages.
+
+00:01:19.570 --> 00:01:22.910
+The filtered and unfiltered trajectories are being published.
+
+00:01:22.910 --> 00:01:25.385
+For now, follow the instructor nodes,
+
+00:01:25.385 --> 00:01:28.530
+clone the package, and launch the nodes.
+

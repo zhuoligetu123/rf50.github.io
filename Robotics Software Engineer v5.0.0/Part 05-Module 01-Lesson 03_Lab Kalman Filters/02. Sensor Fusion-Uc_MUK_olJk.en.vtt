@@ -1,0 +1,130 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.980
+Before we dive into the lab,
+
+00:00:01.980 --> 00:00:04.650
+let's see how the sensor fusion process works.
+
+00:00:04.650 --> 00:00:07.815
+Inside an environment, a robot will localize itself
+
+00:00:07.815 --> 00:00:11.175
+by collecting data from its different on-board sensors.
+
+00:00:11.175 --> 00:00:16.274
+Each of these sensors has limitations which manifest as noise and error.
+
+00:00:16.274 --> 00:00:19.019
+Nowadays, the three most common types of
+
+00:00:19.019 --> 00:00:21.899
+mobile robot sensors are inertial measurement units,
+
+00:00:21.899 --> 00:00:24.878
+rotary encoders, and vision sensors.
+
+00:00:24.878 --> 00:00:27.000
+The inertial measurement unit can measure
+
+00:00:27.000 --> 00:00:30.644
+both the linear acceleration and the angular velocity.
+
+00:00:30.644 --> 00:00:32.685
+To estimate the robot's position,
+
+00:00:32.685 --> 00:00:35.443
+a double integral of the acceleration is calculated.
+
+00:00:35.442 --> 00:00:37.250
+However, the IMU is noisy and so
+
+00:00:37.250 --> 00:00:40.609
+a double integration accumulates even more error over time.
+
+00:00:40.609 --> 00:00:42.710
+So next time you want to use an IMU,
+
+00:00:42.710 --> 00:00:45.799
+be sure to check the drift for error parameters.
+
+00:00:45.799 --> 00:00:48.919
+Next, the rotary encoder sensors are attached to
+
+00:00:48.920 --> 00:00:53.300
+the robot's actuated wheels and measures the velocity and position of the wheels.
+
+00:00:53.299 --> 00:00:55.445
+To estimate the robot's position,
+
+00:00:55.445 --> 00:00:57.784
+the integral of the velocity is calculated.
+
+00:00:57.784 --> 00:01:02.029
+But the robot wheel might be stuck between obstacles, or even worse,
+
+00:01:02.030 --> 00:01:03.679
+it might be driven on
+
+00:01:03.679 --> 00:01:07.129
+slippery floors which would lead to inaccurate and noisy measurements.
+
+00:01:07.129 --> 00:01:09.379
+So next time you want to use an encoder,
+
+00:01:09.379 --> 00:01:11.694
+make sure to check its resolution.
+
+00:01:11.694 --> 00:01:16.184
+Encoders with low resolution are usually highly sensitive to slippage.
+
+00:01:16.185 --> 00:01:20.280
+Finally, division sensor is often an RGB-D camera.
+
+00:01:20.280 --> 00:01:24.000
+Using an RGB-D, camera the robot can capture images and
+
+00:01:24.000 --> 00:01:28.635
+sense the depth towards the obstacle which can be translated to a position.
+
+00:01:28.635 --> 00:01:32.250
+But the image quality is usually affected by the light and
+
+00:01:32.250 --> 00:01:36.105
+the camera is usually unable to measure the depths at small distances.
+
+00:01:36.105 --> 00:01:38.549
+So next time you want to use an RGB-D camera,
+
+00:01:38.549 --> 00:01:40.994
+check its smallest range of operation.
+
+00:01:40.995 --> 00:01:44.700
+You just saw that each and every sensor has its own limitation.
+
+00:01:44.700 --> 00:01:47.156
+The IMU and encoders are prone to drift,
+
+00:01:47.156 --> 00:01:50.659
+whereas the camera might not always operate as expected.
+
+00:01:50.659 --> 00:01:53.209
+So we are unable to accurately determine
+
+00:01:53.209 --> 00:01:56.029
+the pose of the robot using just one of these sensors.
+
+00:01:56.030 --> 00:02:00.730
+A sensor fusion of at least two of them is usually required.
+
+00:02:00.730 --> 00:02:04.969
+Extended Kalman filter will take all the noisy measurements, compare them,
+
+00:02:04.969 --> 00:02:07.340
+filter the noise, remove the uncertainties,
+
+00:02:07.340 --> 00:02:10.560
+and provide a good estimate of the robot's pose.
+

@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.089
+The Monte Carlo Localization Algorithm is
+
+00:00:03.089 --> 00:00:07.479
+composed of two main sections represented by two for loops.
+
+00:00:07.480 --> 00:00:10.190
+The first section is the motion and sensor update,
+
+00:00:10.189 --> 00:00:13.429
+and the second one is the resampling process.
+
+00:00:13.429 --> 00:00:15.240
+Given a map of the environment,
+
+00:00:15.240 --> 00:00:20.289
+the goal of the MCL is to determine the robot's pose represented by the belief.
+
+00:00:20.289 --> 00:00:24.464
+At each iteration, the algorithm takes the previous belief,
+
+00:00:24.464 --> 00:00:29.250
+the actuation command, and the sensor measurements as input.
+
+00:00:29.250 --> 00:00:33.704
+Initially, the belief is obtained by randomly generating m particles.
+
+00:00:33.704 --> 00:00:35.699
+Then, in the first for loop,
+
+00:00:35.700 --> 00:00:39.570
+the hypothetical state is computed whenever the robot moves.
+
+00:00:39.570 --> 00:00:45.880
+Following, the particles weight is computed using the latest sensor measurements.
+
+00:00:45.880 --> 00:00:50.090
+Now, motion and measurement are both added to the previous state.
+
+00:00:50.090 --> 00:00:54.660
+Moving onto the second section of the MCL where a sampling process happens.
+
+00:00:54.659 --> 00:01:00.539
+Here, the particles with high probability survive and are re-drawn in the next iteration,
+
+00:01:00.539 --> 00:01:02.369
+while the others die.
+
+00:01:02.369 --> 00:01:06.989
+Finally, the algorithm outputs the new belief and another cycle of
+
+00:01:06.989 --> 00:01:12.000
+iteration starts implementing the next motion by reading the new sensor measurements.
+

@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.104
+Now, it's time for you to code the particle filter,
+
+00:00:03.104 --> 00:00:06.820
+which is the most essential step in the MCL algorithm.
+
+00:00:06.820 --> 00:00:08.490
+As we saw in the previous lesson,
+
+00:00:08.490 --> 00:00:11.925
+the MCL algorithm consists of two main sections.
+
+00:00:11.925 --> 00:00:13.980
+In this part of the first section,
+
+00:00:13.980 --> 00:00:18.635
+particles are generated and motion is assigned to each one of them.
+
+00:00:18.635 --> 00:00:22.559
+Here, you'll be coding this fraction by generating the particles in
+
+00:00:22.559 --> 00:00:25.049
+the first programming quiz and simulating
+
+00:00:25.050 --> 00:00:28.605
+motion to each one of them in the second programming quiz.
+
+00:00:28.605 --> 00:00:31.414
+First, you generate the particles.
+
+00:00:31.414 --> 00:00:35.484
+Inside the 2D map of size 100 meter by 100 meter,
+
+00:00:35.484 --> 00:00:40.310
+you will randomly and uniformly spread 1,000 particles.
+
+00:00:40.310 --> 00:00:42.219
+To replicate real-world conditions,
+
+00:00:42.219 --> 00:00:46.929
+you'd simulate noise and add random Gaussian digits to the particle forward,
+
+00:00:46.929 --> 00:00:49.726
+turn, and sensing values.
+
+00:00:49.726 --> 00:00:54.414
+Remember that each particle represents a guess of where the robot might be.
+
+00:00:54.414 --> 00:00:56.979
+Then, you'd simulate motion for each of
+
+00:00:56.979 --> 00:01:00.799
+these particles by rotating them and moving them forward.
+

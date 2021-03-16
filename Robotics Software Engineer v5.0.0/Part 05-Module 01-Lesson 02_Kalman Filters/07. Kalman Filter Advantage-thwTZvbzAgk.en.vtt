@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.679
+So now that we know that both movements and sensory measurements are uncertain,
+
+00:00:04.679 --> 00:00:09.989
+how can the Kalman filter help us make better sense of our robot's current state?
+
+00:00:09.990 --> 00:00:12.150
+The Kalman filter can very quickly develop
+
+00:00:12.150 --> 00:00:17.219
+a surprisingly accurate estimate of the true value of the variable being measured.
+
+00:00:17.219 --> 00:00:21.414
+For example, your robot's location in our one dimensional real world.
+
+00:00:21.414 --> 00:00:25.199
+Unlike other algorithms that require a lot of data to make an estimate,
+
+00:00:25.199 --> 00:00:29.554
+the Kalman filter is able to do so after just a few sensor measurements.
+
+00:00:29.554 --> 00:00:32.759
+It does so by using an initial guess and by taking into
+
+00:00:32.759 --> 00:00:36.774
+account the expected uncertainty of a sensor or movement.
+
+00:00:36.774 --> 00:00:40.424
+There is another advantageous application of the Kalman filter.
+
+00:00:40.424 --> 00:00:45.164
+Let's say that your robot is using GPS data to identify its location.
+
+00:00:45.164 --> 00:00:49.159
+Today's GPS measurements are only accurate to a few meters.
+
+00:00:49.159 --> 00:00:51.899
+It is possible that by using the GPS alone,
+
+00:00:51.899 --> 00:00:56.699
+you cannot obtain an accurate enough estimate of your robot's location.
+
+00:00:56.700 --> 00:01:00.075
+However, if you use additional sensors on board the robot,
+
+00:01:00.075 --> 00:01:02.340
+you may be able to combine measurements from all
+
+00:01:02.340 --> 00:01:05.370
+of them to obtain a more accurate estimate.
+
+00:01:05.370 --> 00:01:07.125
+This is called sensor fusion.
+
+00:01:07.125 --> 00:01:10.185
+Sensor fusion uses the Kalman filter to calculate
+
+00:01:10.185 --> 00:01:13.855
+a more accurate estimate using data from multiple sensors.
+
+00:01:13.855 --> 00:01:16.200
+Once again, the Kalman filter takes into
+
+00:01:16.200 --> 00:01:19.950
+account the uncertainty of each sensor's measurements.
+
+00:01:19.950 --> 00:01:24.030
+So whether it's making sense of noisy data from one sensor or from multiple,
+
+00:01:24.030 --> 00:01:27.000
+the Kalman filter is a very useful algorithm to learn.
+

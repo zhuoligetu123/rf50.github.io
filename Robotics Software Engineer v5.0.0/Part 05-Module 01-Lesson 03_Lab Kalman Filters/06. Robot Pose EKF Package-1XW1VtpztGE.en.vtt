@@ -1,0 +1,160 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.875
+Now that the robot is inside a Gazebo environment,
+
+00:00:02.875 --> 00:00:06.275
+you can apply an extended Kalman filter and localize it.
+
+00:00:06.275 --> 00:00:08.519
+The Robot Pose EKF package applies
+
+00:00:08.519 --> 00:00:12.119
+sensor fusion to the robot's sensor measurement to estimate its pose.
+
+00:00:12.119 --> 00:00:16.352
+Going through the Robot Pose EKF package,
+
+00:00:16.352 --> 00:00:20.310
+we see solid documentation with the launch file,
+
+00:00:20.309 --> 00:00:26.460
+different parameters, and the list of subscriber and publisher topics.
+
+00:00:26.460 --> 00:00:29.505
+Access this link in the instructor notes,
+
+00:00:29.504 --> 00:00:31.629
+and go through the package documentation.
+
+00:00:31.629 --> 00:00:36.704
+As always, feel free to post this video at anytime to catch up with the lesson.
+
+00:00:36.704 --> 00:00:39.614
+After carefully reviewing the Robot Pose EKF package,
+
+00:00:39.615 --> 00:00:42.390
+we can conclude that the Robot Pose EKF node is
+
+00:00:42.390 --> 00:00:47.085
+subscribing to three different sensor topics and publishing a filtered pose.
+
+00:00:47.085 --> 00:00:52.890
+The EKF node is subscribing to the encoder's data through the odom topic.
+
+00:00:52.890 --> 00:00:58.289
+The EKF node is also subscribing to IMU data through the IMU data topic.
+
+00:00:58.289 --> 00:01:04.379
+Lastly, the node is subscribing to 3D odometry data through the vo topic.
+
+00:01:04.379 --> 00:01:09.000
+Now, EKF is fusing all these three sensor values and
+
+00:01:09.000 --> 00:01:14.019
+publishing the filtered results in the Robot Pose EKF odom combined topic.
+
+00:01:14.019 --> 00:01:17.009
+To interface the Robot Pose EKF package
+
+00:01:17.010 --> 00:01:20.070
+with the turtlebot Gazebo package and estimate the robot's pose,
+
+00:01:20.069 --> 00:01:24.441
+we'll need to rename some topics to match them with the others.
+
+00:01:24.441 --> 00:01:29.606
+At first glance, we see that depth imaging is unique to the turtlebot Gazebo package,
+
+00:01:29.606 --> 00:01:33.129
+so the EKF node will not be able to subscribe to it.
+
+00:01:33.129 --> 00:01:35.054
+So, let's cross it out in our diagram,
+
+00:01:35.055 --> 00:01:36.885
+as we won't be using it.
+
+00:01:36.885 --> 00:01:41.265
+The same applies to the 3D odometry topic, which is unique to the Robot Pose EKF package.
+
+00:01:41.265 --> 00:01:46.200
+We need to modify the EKF launch file in order to turn off the 3D odometry.
+
+00:01:46.200 --> 00:01:48.975
+Now, we can see that the encoders perfectly match,
+
+00:01:48.974 --> 00:01:52.794
+since they are not unique to any package and hold the same topic name.
+
+00:01:52.795 --> 00:01:54.780
+The same applies to the IMU data,
+
+00:01:54.780 --> 00:01:56.420
+but be careful here.
+
+00:01:56.420 --> 00:01:59.140
+See, the topic names are not identical.
+
+00:01:59.140 --> 00:02:04.340
+You should rename the IMU topic either into turtlebot package or in the EKF package.
+
+00:02:04.340 --> 00:02:06.719
+After performing the corresponding changes,
+
+00:02:06.719 --> 00:02:12.430
+you can see how the turtlebot nodes are publishing sensor data directly to the EKF node.
+
+00:02:12.430 --> 00:02:15.770
+The EKF node will subscribe to the sensor data,
+
+00:02:15.770 --> 00:02:20.110
+remove the uncertainties, and ultimately estimate the robot's 3D pose.
+
+00:02:20.110 --> 00:02:22.755
+To rename a topic go to the launch file of the package,
+
+00:02:22.754 --> 00:02:24.310
+and then write the statement.
+
+00:02:24.310 --> 00:02:31.104
+Here, this statement is remapping the odom topic to a pr2 base odometry odom topic.
+
+00:02:31.104 --> 00:02:32.872
+We'll need to delete this statement,
+
+00:02:32.872 --> 00:02:36.479
+since the odom topic of both packages are identical.
+
+00:02:36.479 --> 00:02:41.399
+Now, clone the EKF package inside the SRC folder of your catkin workspace,
+
+00:02:41.400 --> 00:02:44.599
+and edit the launch file with the following changes.
+
+00:02:44.599 --> 00:02:46.590
+First, delete the remap statement,
+
+00:02:46.590 --> 00:02:50.460
+since we want the encoders to publish on the odom topic.
+
+00:02:50.460 --> 00:02:53.430
+Then, turn off the 3D odometry pose,
+
+00:02:53.430 --> 00:02:55.409
+since it's unique to this package.
+
+00:02:55.409 --> 00:02:57.599
+Inside the same launch file,
+
+00:02:57.599 --> 00:03:00.495
+remap the IMU topic to match with the turtlebot one.
+
+00:03:00.495 --> 00:03:02.230
+After you complete these steps,
+
+00:03:02.229 --> 00:03:04.169
+build your package, and launch the node.
+

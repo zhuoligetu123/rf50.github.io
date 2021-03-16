@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.530
+So far, I've been referring to the Kalman filter as one unique entity.
+
+00:00:04.530 --> 00:00:07.095
+However, they're actually three common types.
+
+00:00:07.094 --> 00:00:10.994
+There is a standard Kalman filter and there are two variations to it,
+
+00:00:10.994 --> 00:00:14.504
+the extended Kalman filter and the unscented Kalman filter.
+
+00:00:14.505 --> 00:00:17.678
+The Kalman filter can be applied to linear systems,
+
+00:00:17.678 --> 00:00:20.580
+ones where the output is proportional to the input.
+
+00:00:20.579 --> 00:00:25.814
+The EKF can be applied to non-linear systems which is more applicable in robotics,
+
+00:00:25.815 --> 00:00:29.585
+as real-world systems are more often non-linear than linear.
+
+00:00:29.585 --> 00:00:33.850
+The UKF is another type of non-linear estimator appropriate for
+
+00:00:33.850 --> 00:00:38.140
+highly non-linear systems where EKF may fail to converge.
+
+00:00:38.140 --> 00:00:40.149
+In this lesson, you'll be learning about
+
+00:00:40.149 --> 00:00:42.655
+the Kalman filter and the extended Kalman filter.
+
+00:00:42.655 --> 00:00:45.265
+If you wish to learn about the unscented Kalman filter,
+
+00:00:45.265 --> 00:00:47.755
+you will find some helpful resources provided.
+
+00:00:47.755 --> 00:00:50.600
+Feel free to keep these for future reference.
+

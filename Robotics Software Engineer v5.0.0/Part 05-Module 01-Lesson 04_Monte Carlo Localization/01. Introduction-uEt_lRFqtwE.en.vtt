@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.685
+Now, it's time to cover another famous localization algorithm.
+
+00:00:03.685 --> 00:00:06.314
+In this lesson, you will learn the Monte Carlo or MCL.
+
+00:00:06.315 --> 00:00:08.850
+We'll discuss the advantages of
+
+00:00:08.849 --> 00:00:12.910
+Monte Carlo over the Extended Kalman Filter in localizing robots.
+
+00:00:12.910 --> 00:00:17.460
+And then, you will learn the role of Particle Filters in the MCL algorithm.
+
+00:00:17.460 --> 00:00:18.570
+Moving on, you will learn
+
+00:00:18.570 --> 00:00:23.240
+the Bayes Filter algorithm and you will evaluate the information state or belief.
+
+00:00:23.239 --> 00:00:26.579
+After that, you will learn the Monte Carlo Localization Pseudo Code.
+
+00:00:26.579 --> 00:00:28.074
+By the end of the lesson,
+
+00:00:28.074 --> 00:00:31.804
+you will see how MCL can be applied to a robot to estimate its pose.
+
+00:00:31.804 --> 00:00:33.840
+Before we dive deeper into MCL,
+
+00:00:33.840 --> 00:00:36.005
+check the reference paper by Sebastian Throne.
+
+00:00:36.005 --> 00:00:38.790
+The first section of this paper will be especially helpful to
+
+00:00:38.789 --> 00:00:41.460
+you as it describes the localization challenges,
+
+00:00:41.460 --> 00:00:44.435
+followed by a detailed explanation of MCL.
+
+00:00:44.435 --> 00:00:47.000
+All right now, let's dive in.
+
