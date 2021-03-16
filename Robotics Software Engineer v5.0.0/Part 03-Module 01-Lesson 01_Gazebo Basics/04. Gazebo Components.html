@@ -1,0 +1,457 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Gazebo Components
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Gazebo Basics
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What is Gazebo.html">
+       02. What is Gazebo?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Gazebo in the Workspace.html">
+       03. Gazebo in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Gazebo Components.html">
+       04. Gazebo Components
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Understanding the GUI.html">
+       05. Understanding the GUI
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simulating your First Robot.html">
+       06. Simulating your First Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Writing a Plugin.html">
+       07. Writing a Plugin
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Exploring the Building Editor.html">
+       08. Exploring the Building Editor
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Outro.html">
+       09. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          04. Gazebo Components
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="gazebo-components">
+          Gazebo Components
+         </h1>
+         <p>
+          There are six components involved in running an instance of a Gazebo simulation:
+         </p>
+         <ol>
+          <li>
+           Gazebo Server
+          </li>
+          <li>
+           Gazebo Client
+          </li>
+          <li>
+           World Files
+          </li>
+          <li>
+           Model Files
+          </li>
+          <li>
+           Environment Variables
+          </li>
+          <li>
+           Plugins
+          </li>
+         </ol>
+         <h2 id="1--gazebo-server">
+          1- Gazebo Server
+         </h2>
+         <p>
+          The first main component involved in running an instance of a Gazebo simulation is the Gazebo Server or also known by
+          <strong>
+           gzserver
+          </strong>
+          .
+         </p>
+         <p>
+          <strong>
+           gzserver
+          </strong>
+          performs most of the heavy-lifting for Gazebo. It is responsible for parsing the description files related to the scene we are trying to simulate, as well as the objects within. It then simulates the complete scene using a physics and sensor engine.
+         </p>
+         <p>
+          While the server can be launched independently by using the following command in a terminal:
+         </p>
+         <pre><code class="sh language-sh">$ gzserver</code></pre>
+         <p>
+          It does not have any GUI component. Running
+          <strong>
+           gzserver
+          </strong>
+          in a so-called headless mode can come in handy in certain situations, but we will talk more about that in future lessons.
+         </p>
+         <h2 id="2--gazebo-client">
+          2- Gazebo Client
+         </h2>
+         <p>
+          The second main component involved in running an instance of a Gazebo simulation is the Gazebo Client or also known by
+          <strong>
+           gzclient
+          </strong>
+          .
+         </p>
+         <p>
+          <strong>
+           gzclient
+          </strong>
+          on the other hand provides the very essential Graphical Client that connects to the
+          <strong>
+           gzserver
+          </strong>
+          and renders the simulation scene along with useful interactive tools. While you can technically run
+          <strong>
+           gzclient
+          </strong>
+          by itself using the following command:
+         </p>
+         <pre><code class="sh language-sh">$ gzclient</code></pre>
+         <p>
+          <br/>
+          it does nothing at all (except consume your compute resources), since it does not have a
+          <strong>
+           gzserver
+          </strong>
+          to connect to and receive instructions from.
+         </p>
+         <h3 id="combining-gazebo-server-and-gazebo-client">
+          Combining Gazebo Server and Gazebo Client
+         </h3>
+         <p>
+          It is a common practice to run
+          <strong>
+           gzserver
+          </strong>
+          first, followed by
+          <strong>
+           gzclient
+          </strong>
+          , allowing some time to initialize the simulation scene, objects within, and associated parameters before rendering it. To make our lives easier, there is a single intuitive command that necessarily launches both the components sequentially:
+         </p>
+         <pre><code class="sh language-sh">$ gazebo</code></pre>
+         <h2 id="3--world-files">
+          3- World Files
+         </h2>
+         <p>
+          A
+          <strong>
+           world
+          </strong>
+          file in Gazebo contains all the elements in the simulated environment. These elements are your robot model, its environment, lighting, sensors, and other objects. You have the ability to save your simulation to a world file that usually has a
+          <code>
+           .world
+          </code>
+          extension.
+         </p>
+         <p>
+          Gazebo can also read the content of a world file from your disk to generate the simulation. To launch the simulation from a
+          <strong>
+           world
+          </strong>
+          file, type:
+         </p>
+         <pre><code class="sh language-sh">$ gazebo &lt;yourworld&gt;.world</code></pre>
+         <p>
+          The
+          <strong>
+           world
+          </strong>
+          file is formatted using the
+          <strong>
+           Simulation Description Format
+          </strong>
+          or
+          <a href="http://sdformat.org/spec?ver=1.6&amp;elem=world" rel="noopener noreferrer" target="_blank">
+           SDF
+          </a>
+          for short. Here’s the basic format of an
+          <strong>
+           SDF
+          </strong>
+          <strong>
+           world
+          </strong>
+          file:
+         </p>
+         <pre><code class="html language-html">&lt;?xml version="1.0" ?&gt;
+&lt;sdf version="1.5"&gt;
+  &lt;world name="default"&gt;
+    &lt;physics type="ode"&gt;
+      ...
+    &lt;/physics&gt;
+
+    &lt;scene&gt;
+      ...
+    &lt;/scene&gt;
+
+    &lt;model name="box"&gt;
+      ...
+    &lt;/model&gt;
+
+    &lt;model name="sphere"&gt;
+      ...
+    &lt;/model&gt;
+
+    &lt;light name="spotlight"&gt;
+      ...
+    &lt;/light&gt;
+
+  &lt;/world&gt;
+&lt;/sdf&gt;</code></pre>
+         <h2 id="4--model-files">
+          4- Model Files
+         </h2>
+         <p>
+          For simplification, you must create a separate
+          <strong>
+           SDF
+          </strong>
+          file of your robot with exactly the same format as your
+          <strong>
+           world
+          </strong>
+          file. This
+          <strong>
+           model
+          </strong>
+          file should only represent a single model (ex: a robot) and can be imported by your
+          <strong>
+           world
+          </strong>
+          file. The reason why you need to keep your model in a separate file is to use it in other projects. To include a
+          <strong>
+           model
+          </strong>
+          file of a robot or any other model inside your
+          <strong>
+           world
+          </strong>
+          file, you can add the following code to the
+          <strong>
+           world’s
+          </strong>
+          <strong>
+           SDF
+          </strong>
+          file:
+         </p>
+         <pre><code class="html language-html">&lt;include&gt;
+  &lt;uri&gt;model://model_file_name&lt;/uri&gt;
+&lt;/include&gt;</code></pre>
+         <h2 id="5--environment-variables">
+          5- Environment Variables
+         </h2>
+         <p>
+          There are many environment variables that Gazebo uses, primarily to locate files (world, model, …) and set up communications between
+          <strong>
+           gzserver
+          </strong>
+          and
+          <strong>
+           gzclient
+          </strong>
+          . While working on a robotic project, you’ll leave these variables as default.
+          <br/>
+          Here’s an example of a variable that Gazebo uses:
+         </p>
+         <p>
+          <code>
+           GAZEBO_MODEL_PATH:
+          </code>
+          List of directories where Gazebo looks to populate a model file.
+         </p>
+         <h2 id="6--plugins">
+          6- Plugins
+         </h2>
+         <p>
+          To interact with a world, model, or sensor in Gazebo, you can write plugins. These plugins can be either loaded from the command line or added to your
+          <strong>
+           SDF
+          </strong>
+          world file.  You’ll learn about World Plugins later in the lesson.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="05. Understanding the GUI.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Gazebo Components')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

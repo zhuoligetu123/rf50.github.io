@@ -1,0 +1,854 @@
+{
+  "data": {
+    "lesson": {
+      "id": 778179,
+      "key": "e007bba9-c618-4709-9afd-2dc976d401cb",
+      "title": "Write ROS Nodes",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "ROS Nodes are a key abstraction that allows a robot system to be built modularly. In this lesson,  you'll learn how to write them using C++.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/e007bba9-c618-4709-9afd-2dc976d401cb/778179/1543375984584/Write+ROS+Nodes+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/e007bba9-c618-4709-9afd-2dc976d401cb/778179/1543375982172/Write+ROS+Nodes+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 778124,
+          "key": "03319a90-3d37-46b9-b383-171022a50f2e",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03319a90-3d37-46b9-b383-171022a50f2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778121,
+              "key": "631370c9-f29c-4a06-a804-5637b0b5f34d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778122,
+              "key": "63998b29-49bc-4768-a691-5b047210fb9e",
+              "title": "Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2ej-majGGXE",
+                "china_cdn_id": "2ej-majGGXE.mp4"
+              }
+            },
+            {
+              "id": 778123,
+              "key": "7ef08b31-f310-4313-8dc0-45bed6a1358b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, you’ll be learning how to write nodes in C++.\n\nThe first node that you will write is called `simple_mover`. The `simple_mover` node does nothing more than publish joint angle commands to `simple_arm`.\n\nOnce you understand the general structure of a ROS node, you will write another node called `arm_mover`. The `arm_mover` node provides a service called `safe_move`, which allows the arm to be moved to any position within its workspace that has been deemed safe. The safe zone is bounded by minimum and maximum joint angles, and is configurable via the ROS parameter server.\n\nThe last node you’ll write in this lesson is the `look_away` node. This node subscribes to the arm joint positions and a topic where camera data is being published. When the camera detects an image with uniform color, meaning that it’s looking at the sky, and the arm is not moving, the node will call the `safe_move` service via a client to move the arm to a new position.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778127,
+          "key": "319330ba-4d8e-4f98-9283-79d789061cb7",
+          "title": "ROS in the Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "319330ba-4d8e-4f98-9283-79d789061cb7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778125,
+              "key": "b4c7ee4e-5d74-4043-be57-30bd0af34370",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS in the Workspace \n\nTo follow along with this lesson, you will need to run ROS in the Udacity Workspace. Follow these steps:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` The workspace is best supported on **Google Chrome** and might not load on other browsers.\n\nYou're now ready to follow along in your Udacity Workspace with this lesson!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778214,
+              "key": "b1598b55-3fc6-4d47-9b97-6628d755c024",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c778127xREACTzdw3r066",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-kkosj",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 778131,
+          "key": "5abc3fcd-ea5d-4330-9762-07519e4f4755",
+          "title": "ROS Publishers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5abc3fcd-ea5d-4330-9762-07519e4f4755",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778128,
+              "key": "1246346e-4f77-4713-b454-49bb37bcae50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS Publishers\n\nBefore you see the code for `simple_mover`, it may be helpful to see how ROS Publishers work in C++.\n\nPublishers allow a node to send messages to a topic, so that data from the node can be used in other parts of ROS. In C++, ROS publishers typically have the following definition format, although other parameters and arguments are possible:\n\n```C++\nros::Publisher pub1 = n.advertise<message_type>(\"/topic_name\", queue_size);\n```\nThe `pub1` object is a publisher object instantiated from the ros::Publisher class. This object allows you to publish messages by calling the `publish()` function. \n\nTo communicate with ROS master in C++, you need a **NodeHandle**. The node handle `n` will fully initialize the node. \n\nThe `advertise()` function is used to communicate with ROS and inform that you want to publish a message on a given topic name. \nThe `\"/topic_name\"` indicates which topic the publisher will be publishing to. \n\nThe message_type is the type of message being published on \"/topic_name\". For example, the string message data type in ROS is `std_msgs::String`. \n\nThe `queue_size` indicates the number of messages that can be stored in a queue. A publisher can store messages in a queue until the messages can be sent. If the number of messages stored exceeds the size of the queue, the oldest messages are dropped. \n\nOnce the publisher object `pub1` has been created, as above, a `message` with the specified data type can be published as follows:\n```C++\npub1.publish(msg);\n```\nFor more information about C++ ROS publishers, see [the documentation here](http://docs.ros.org/jade/api/roscpp/html/classros_1_1Publisher.html). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778129,
+              "key": "cf3f38dc-a792-4312-b21c-421cb2fc92aa",
+              "title": "ROS Publishers",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf3f38dc-a792-4312-b21c-421cb2fc92aa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Assume that a queued message is typically picked up in an average time of 1/10th of a second with a standard deviation of 1/20th of a second, and your publisher is publishing at a frequency of 10Hz. Of the options below, which would be the best setting for `queue_size`?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`queue_size=2`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`queue_size=100`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`queue_size=0`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778130,
+              "key": "60f6a387-4747-4af3-a663-34e3143e54b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's get started with `simple_mover`!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778135,
+          "key": "f0808a68-c8f6-4020-a6e5-aafb0f76184c",
+          "title": "Simple Mover",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0808a68-c8f6-4020-a6e5-aafb0f76184c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778132,
+              "key": "2feb386a-e981-4ce5-8e14-5a22fd4dd8d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simple Mover \r\nYou will now go through the process of implementing your first ROS node in C++.\nThis node is called `simple_mover`. As its name implies, this node only has one responsibility, and that is to command joint movements for `simple_arm`.\n\n## Goal\n\nThe goal of the `simple_mover` node is to command each joint in the simple arm and make it swing between -pi/2 to pi/2 over time. Here’s a demonstration of this node in action: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778133,
+              "key": "9a965508-6693-47d5-b633-0fb943dde0dd",
+              "title": "Simple Arm",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ki5LkE_xir4",
+                "china_cdn_id": "Ki5LkE_xir4.mp4"
+              }
+            },
+            {
+              "id": 778134,
+              "key": "de653bff-d506-4f8c-a3f3-f52676cbf66c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Topics\nTo do so, it must publish joint angle command messages to the following topics:\n\n|**Topic Name**    | /simple_arm/joint_1_position_controller/command |\n|-|-|\n| **Message Type**| std_msgs/Float64                                                            |\n|**Description**      | Commands joint 1 to move counter-clockwise, units in radians |\n\n|**Topic Name **    | /simple_arm/joint_2_position_controller/command |\n|-|-|\n|**Message Type**| std_msgs/Float64                                                            |\n|**Description**     | Commands joint 2 to move counter-clockwise, units in radians |\n\n**Note**: If you no longer have the `catkin_ws` or `simple_arm` package from the previous lesson, you need to re-create a new `catkin_ws` and clone the package inside your `/home/workspace/catkin_ws/src` with:\n```sh\n$ mkdir -p /home/workspace/catkin_ws/src/\n$ cd /home/workspace/catkin_ws/src/\n$ git clone -b first_interaction https://github.com/udacity/RoboND-simple_arm/ simple_arm\n```\n\n## Adding the source directory \nIn order to create a new node in C++, you must first create the `src` directory within the `simple_arm` package, as it does not yet exist. \n\n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/\n$ mkdir src\n```\n\n## Creating a new script ##\nOnce the source directory has been created, C++ scripts can be added to the package. Now, create the `simple_mover` C++ script inside the source directory of the package.  \n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/src/\n$ touch simple_mover.cpp\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778139,
+          "key": "0cbea148-4efd-402c-9520-243f5e0c71fd",
+          "title": "Simple Mover: The Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0cbea148-4efd-402c-9520-243f5e0c71fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778136,
+              "key": "d6cdea04-007a-41bd-ade4-0c30f0b06853",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simple Mover: The Code \n\nBelow is the complete code for the `simple_mover` C++ node, with line-by-line comments embedded. You can copy and paste this code into the `simple_mover` script you created in  `/home/workspace/catkin_ws/src/simple_arm/src/` directory like this:\n\nFirst, open a new terminal. Then: \n\n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/src/\n$ gedit simple_mover.cpp\n```\nYou have opened the C++ `simple_mover` script with the **gedit** editor, now copy and paste the code below into the script and save the script. I encourage you to write this code instead of copying it so that you get more familiar with the syntax. \n\n## simple_mover.cpp\n```C++\n#include \"ros/ros.h\"\n#include \"std_msgs/Float64.h\"\n\nint main(int argc, char** argv)\n{\n    // Initialize the arm_mover node\n    ros::init(argc, argv, \"arm_mover\");\n\n    // Create a handle to the arm_mover node\n    ros::NodeHandle n;\n\n    // Create a publisher that can publish a std_msgs::Float64 message on the /simple_arm/joint_1_position_controller/command topic\n    ros::Publisher joint1_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_1_position_controller/command\", 10);\n    // Create a publisher that can publish a std_msgs::Float64 message on the /simple_arm/joint_2_position_controller/command topic\n    ros::Publisher joint2_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_2_position_controller/command\", 10);\n\n    // Set loop frequency of 10Hz\n    ros::Rate loop_rate(10);\n\n    int start_time, elapsed;\n\n    // Get ROS start time\n    while (not start_time) {\n        start_time = ros::Time::now().toSec();\n    }\n\n    while (ros::ok()) {\n        // Get ROS elapsed time\n        elapsed = ros::Time::now().toSec() - start_time;\n\n        // Set the arm joint angles\n        std_msgs::Float64 joint1_angle, joint2_angle;\n        joint1_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);\n        joint2_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);\n\n        // Publish the arm joint angles\n        joint1_pub.publish(joint1_angle);\n        joint2_pub.publish(joint2_angle);\n\n        // Sleep for the time remaining until 10 Hz is reached\n        loop_rate.sleep();\n    }\n\n    return 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778137,
+              "key": "45bbeb99-73a3-4cbd-a730-434439a5afad",
+              "title": "Simple Mover: The Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mj7lwGqouEA",
+                "china_cdn_id": "mj7lwGqouEA.mp4"
+              }
+            },
+            {
+              "id": 778138,
+              "key": "15550ab7-7604-401c-8930-43a168611db4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The code: Explained\n```C++\n#include \"ros/ros.h\"\n```\n`ros` is the official client library for ROS. It provides most of the fundamental functionality required for interfacing with ROS via C++. It has tools for creating Nodes and interfacing with Topics, Services, and Parameters.      \n\n```C++\n#include \"std_msgs/Float64.h\"\n```\nFrom the `std_msgs` package, the Float64 header file is imported. The [std_msgs](http://wiki.ros.org/std_msgs) package also contains the primitive message types in ROS. Later, you will be publish Float64 messages to the position command topics for each joint.\n\n```C++\nros::init(argc, argv, \"arm_mover\");\n```\nA ROS node is initialized with the `init()` function and registered with the ROS Master. Here `arm_mover` is the name of the node. Notice that the main function takes both `argc` and `argv` arguments and passes them to the `init()` function. \n\n```C++\n ros::NodeHandle n;\n```\nA node handle object `n` is instantiated from the NodeHandle class. This node handle object will fully initialize the node and permits it to communicate with the ROS Master. \n\n```C++\nros::Publisher joint1_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_1_position_controller/command\", 10);\nros::Publisher joint2_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_2_position_controller/command\", 10);\n```\nTwo publishers are declared, one for joint 1 commands, and one for joint 2 commands. The node handle will tell the ROS master that a Float64 message will be published on the joint topic. The node handle also sets the queue size to 10 in the second argument of the advertise function. \n\n```C++\nros::Rate loop_rate(10);\n```\nA frequency of 10HZ is set using the `loop_rate` object. Rates are used in ROS to limit the frequency at which certain loops cycle. Choosing a rate that is too high may result in unnecessary CPU usage, while choosing a value too low could result in high latency. Choosing sensible values for all of the nodes in a ROS system is a bit of a fine art.\n\n```C++\nstart_time = ros::Time::now().toSec();\n```\nWe set `start_time` to the current time. In a moment we will use this to determine how much time has elapsed. When using ROS with simulated time (as we are doing here), `ros-Time-now` will initially return 0, until the first message has been received on the `/clock` topic. This is why `start_time` is set and polled continuously until a nonzero value is returned. \n\n```C++\nelapsed = ros::Time::now().toSec() - start_time;\n```\nIn the main loop, the elapsed time is evaluated by measuring the current time and subtracting the start time. \n\n```C++\nstd_msgs::Float64 joint1_angle, joint2_angle;\njoint1_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);\njoint2_angle.data = sin(2 * M_PI * 0.1 * elapsed) * (M_PI / 2);\n```\nThe joint angles are sampled from a sine wave with a period of 10 seconds, and in magnitude from  [-pi/2, +pi/2]. \n\n```C++\njoint1_pub.publish(joint1_angle);\njoint2_pub.publish(joint2_angle);\n```\nEach trip through the body of the loop will result in two joint command messages being published. \n\n```C++\nloop_rate.sleep();\n```\nDue to the call to `loop_rate.sleep()`, the loop is traversed at approximately 10 Hertz. When the node receives the signal to shut down (either from the ROS Master, or via a signal from a console window), the loop will exit.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778142,
+          "key": "9ef610aa-a550-49ed-8fad-857a0a6e8367",
+          "title": "Simple Mover: Build and Run",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ef610aa-a550-49ed-8fad-857a0a6e8367",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778140,
+              "key": "1557a04b-a3e0-4598-91d3-10570c5dcc73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simple Mover: Build and Run \n\nBefore you can run the `simple_mover` node, you have to compile the C++ script.\n\n## Modifying CMakeLists.txt \n\nIn order for catkin to generate the C++ libraries, you must first modify `simple_arm`’s `CMakeLists.txt`.\n\nCMake is the build tool underlying catkin, and `CMakeLists.txt` is a CMake script used by catkin. If you’re familiar with the concept of makefiles, this is similar.\n\nNavigate to the package `CMakeLists.txt` file and open it:\n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/\n$ gedit CMakeLists.txt \n```\n\nFirst, ensure that the `find_package()` macro lists `std_msgs`, ` message_generation`, and \t`controller_manager` as required packages. The `find_package()` macro should look as follows:\n\n```html\nfind_package(catkin REQUIRED COMPONENTS\n        std_msgs\n        message_generation\n        controller_manager\n)\n```\n\nAs the names might imply, the `std_msgs` package contains all of the basic message types, and `message_generation` is required to generate message libraries for all the supported languages (cpp, lisp, python, javascript). The `contoller_manager` is another package responsible for controlling the arm. \n\nNow, add the following block of code at the bottom of the file:\n\n```html\ninclude_directories(include ${catkin_INCLUDE_DIRS})\n\nadd_executable(simple_mover src/simple_mover.cpp)\ntarget_link_libraries(simple_mover ${catkin_LIBRARIES})\nadd_dependencies(simple_mover simple_arm_generate_messages_cpp)\n``` \n\nThese instructions ask the compiler to include the directories, executable file, link libraries, and dependencies for your C++ code:\n```html\nadd_executable(node_name sourcecode_directory)\n```\nCreates the executable `simple_mover` file.\n\n```html\ntarget_link_libraries(node_name ${catkin_LIBRARIES})\n```\nThis will add all the linked libraries to the compiler.\n\n```html\nadd_dependencies(node_name package_name_generate_messages_cpp)\n```\nGenerates message headers for this package before you can use them. \n\nKeep in mind that you should always include these instructions whenever you want to write a C++ ROS node.  For more information about `CMakeLists.txt` check out [the CMakeLists.txt page](http://wiki.ros.org/catkin/CMakeLists.txt) on the ROS wiki.\n\n## Building the Package\n\nNow that you have included specific instructions for your compiler, let’s build the package: \n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\n## Running simple_mover \nAssuming that your workspace has recently been built, you can launch `simple_arm` as follows:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch simple_arm robot_spawn.launch\n```\n\nOnce the ROS Master, Gazebo, and all of our relevant nodes are up and running, we can finally launch `simple_mover`. To do so, open a new terminal and type the following commands:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rosrun simple_arm simple_mover\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778141,
+              "key": "5c1952b7-9c47-4bf6-b85d-d95296c71fd0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `simple_mover` GitHub branch\nYou can always download a copy of this branch [here](https://github.com/udacity/RoboND-simple_arm/tree/simple_mover).\n\n\nCongratulations! You’ve now written your first ROS node in C++! ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778147,
+          "key": "1e555f02-93d8-4b58-a6f6-9bd66f1ae373",
+          "title": "ROS Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e555f02-93d8-4b58-a6f6-9bd66f1ae373",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778143,
+              "key": "43c7c627-c874-4243-8c88-8ebe63ea9d57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS Services\n\nNow that you've written your first ROS node, you've seen how publishing to a topic works, and you were able to control the robotic arm by publishing to the `/simple_arm/joint_1_position_controller/command` topic and `/simple_arm/joint_2_position_controller/command` topic. Next, we'll see another node called `arm_mover`, which implements the `safe_move` service to allow service calls to control the arm.\n\n## Defining services\n\nA ROS service allows request/response communication to exist between nodes. Within the node providing the service, request messages are handled by functions or methods. Once the requests have been handled successfully, the node providing the service sends a message back to the requester node. In C++, a ROS service server can be created using the following definition format:\n\n```C++\nros::ServiceServer service = n.advertiseService(`service_name`, handler);\n```\n\nIn ROS, the service class name `ServiceServer` comes from the file name where the service definition exists. Each service provides a definition in a `.srv` file; this is a text file that provides the proper message type for both requests and responses.\n\nThe `advertiseService()` allows you to communicate with ROS through the node handle `n` and inform ROS that you want to create a service. \n\nThe `service_name` is the name given to the service. Other nodes will use this name to specify the service to which they are sending requests.\n\nThe `handler` is the name of the function or method that handles the incoming service message. This function is called each time the service is called, and the message from the service call is passed to the `handler` function as an argument. The `handler` should return an appropriate service response message.\n\n## Using Services\n### Command Line\nServices can be called directly from the command line, with:\n```sh\n$ rosservice call service_name “request”\n```\nAfter calling the service, you will wait for an answer. \n\n### ROS Service Client\nAnother approach is  to use a ROS service programmatically, from within a node. You will define a `ROS client`, which provides the interface for sending messages to the service:\n\n```C++\nros::ServiceClient client = n.serviceClient<package_name::service_file_name>(\"service_name\");\n```\nOne way the `ROS Client` can then be used is to send requests is as follows:\n\n``` C++\nclient.call(srv);    // request a service \n```\n\nFor now, we’ll focus on how to create the ROS **service server**. Later, in the `look_away` node, you will practice calling the service from a **service client** node.\n\nSee the ROS documentation [on services](http://wiki.ros.org/roscpp/Overview/Services) for detailed instructions on how to create and call ROS services.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778144,
+              "key": "5f4a7b86-ddcb-4f25-9ef0-d847dbfa6a37",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb85dc_screen-shot-2018-10-30-at-11.33.36-am/screen-shot-2018-10-30-at-11.33.36-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5f4a7b86-ddcb-4f25-9ef0-d847dbfa6a37",
+              "caption": "",
+              "alt": "",
+              "width": 2176,
+              "height": 848,
+              "instructor_notes": null
+            },
+            {
+              "id": 778145,
+              "key": "e6e9d2e5-c19d-438c-ae5c-32ad3e8937fe",
+              "title": "ROS Services",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e6e9d2e5-c19d-438c-ae5c-32ad3e8937fe",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following ROS nodes might best be implemented using a service?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A node for an autonomous vehicle that provides lidar data for other nodes to use in localization.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A node for a lunar rover that shuts down a robotic arm by folding the arm and killing all related processes.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A node that sets a given parameter on request. For example, a node in turtlesim that sets the pen color in the turtlesim window.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A node which executes movement for a robotic arm, checking that the arm joints are within specified bounds.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778146,
+              "key": "e0b12189-1479-4b90-ae93-47be37f6ede2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's get started with the `arm_mover` code, so you can see how to combine the `safe_move` service along with publishers in a node so that whenever a service is requested, it will be responsible to publish messages on a topic. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778149,
+          "key": "8cdf7b94-d588-4817-85b5-994b2c4c7186",
+          "title": "Arm Mover",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8cdf7b94-d588-4817-85b5-994b2c4c7186",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778148,
+              "key": "198dcf9f-4e9d-4394-9049-02825495d740",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Arm Mover \n\nYou’ve written your first ROS C++ node! This was no trivial task. You’ve had to learn quite a few things to get to this point.\n\nBut before we rush off, we have more ground to cover:\n* Custom message generation\n* Services\n* Parameters\n* Launch Files\n\nIn order to gain an understanding of the above, you will write another node called `arm_mover`. \n\n## Description of Arm Mover \n\nIn many respects, `arm_mover` is quite similar to `simple_mover`. Like `simple_mover`, it is responsible for commanding the arm to move. However, instead of simply commanding the arm to follow a predetermined trajectory, the `arm_mover` node provides the service `safe_move`, which allows other nodes in the system to send `movement_commands`.\n\nIn addition to allowing movements via a service interface, `arm_mover` also allows for configurable minimum and maximum joint angles, by using parameters.\n\n## Creating a new service definition \n\nAn interaction with a service consists of two messages. A node passes a request message to the service, and the service returns a response message to the node. The definitions of the request and response message types are contained within .srv files living in the `srv` directory under the package’s root.\n\nLet’s define a new service for `simple_arm`. We shall call it `GoToPosition`.\n\n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/\n$ mkdir srv\n$ cd srv\n$ gedit GoToPosition.srv\n```\n\nYou should now edit `GoToPosition.srv` with gedit, so it contains the following:\n\n```text\nfloat64 joint_1\nfloat64 joint_2\n---\nstring msg_feedback\n```\n\nService definitions always contain two sections, separated by a ‘---’ line. The first section is the definition of the request message. Here, a request consists of two float64 fields, one for each of `simple_arm`’s joints. The second section contains the service response. The response contains only a single field, msg_feedback. The `msg_feedback` field is of type string, and is responsible for indicating that the arm has moved to a new position.\n\nNote: Defining a custom message type is very similar. The only differences is that message definitions live within the `msg` directory of the package root, have a `.msg` extension, and do not contain the `---` section divider. You can find more detailed information on creating [messages](http://wiki.ros.org/msg) and [services](http://wiki.ros.org/srv) on the ROS wiki.\n\n## Modifying CMakeLists.txt \nAs a reminder, in order for catkin to generate the C++ libraries which allow you to utilize messages in your code you must modify `simple_arm`’s `CMakeLists.txt` file. You can find this file in  `/home/workspace/catkin_ws/src/simple_arm/`.\n\nFirst, uncomment the `add_service_files()` macro so it looks like this:\n\n```text\nadd_service_files(\n   FILES\n   GoToPosition.srv\n)\n```\nThis tells catkin to add the newly created service file.\n\nThen, make sure that the `generate_messages()` macro is uncommented:\n```text\ngenerate_messages(\n   DEPENDENCIES\n   std_msgs  # Or other packages containing msgs\n)\n```\nThis macro is actually responsible for generating the code.\n\nTo force ROS to compile your C++ code with C++ 11 include this line of code: \n```text\nadd_compile_options(-std=c++11)\n```\n\n## Modifying package.xml \nNow that you have updated the `CMakeLists.txt` file, there’s one more file which needs to be modified: `package.xml`.\n\n`package.xml` is responsible for defining many of the package’s properties, such as the name of the package, version numbers, authors, maintainers, and dependencies.\n\nRight now, we’ll focus on the dependencies. You already learned about build-time dependencies and run-time package dependencies. When `rosdep` is searching for these dependencies, it’s the `package.xml` file that is being parsed. So make sure that the `message_generation` build dependency and the `message_runtime` run dependency exist in `package.xml`.\n\n```html\n  <buildtool_depend>catkin</buildtool_depend>\n  <build_depend>message_generation</build_depend>\n\n  <run_depend>controller_manager</run_depend>\n  <run_depend>effort_controllers</run_depend>\n  <run_depend>gazebo_plugins</run_depend>\n  <run_depend>gazebo_ros</run_depend>\n  <run_depend>gazebo_ros_control</run_depend>\n  <run_depend>joint_state_controller</run_depend>\n  <run_depend>joint_state_publisher</run_depend>\n  <run_depend>robot_state_publisher</run_depend>\n  <run_depend>message_runtime</run_depend>\n  <run_depend>xacro</run_depend>\n```\n\nFor more information about `package.xml`, check out the [ROS Wiki](http://wiki.ros.org/catkin/package.xml).\n\n## Checking Service with ROS\n\nNow that you’ve created your `GoToPosition` service file, let's make sure that ROS can see it using the `rossrv show` command:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rossrv show GoToPosition\n```\n\nYou will see:\n\n```text\n[simple_arm/GoToPosition]:\nfloat64 joint_1\nfloat64 joint_2\n---\nstring msg_feedback\n```\nThis indicates that ROS can see your service. \n\nGreat job, you accomplished so much in this lesson! First you created the `GoToPosition.srv` file. Then, you’ve added its dependencies in `CMakeLists.txt`. In addition, you checked for the build and run dependencies in `package.xml`. Lastly, you checked if ROS can see your service file. Now, let’s move onto the code for `arm_mover`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778153,
+          "key": "18b4f47a-8020-4ee4-828e-ddcb1003ef8c",
+          "title": "Arm Mover: The Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "18b4f47a-8020-4ee4-828e-ddcb1003ef8c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778150,
+              "key": "a811752c-a8f9-404b-bc10-6f6f135f1941",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Arm Mover: The Code \n\n## Creating the empty `arm_mover` node script \n\nThe steps that you should take to create the `arm_mover` node are exactly the same as the steps you took to create the `simple_mover` node, except the actual name of the node itself.\n\nOpen a new terminal, and type the following: \n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/src/\n$ gedit arm_mover.cpp\n```\nYou have created and opened the C++ `arm_mover` source code with the **gedit** editor. Now copy and paste the code below into the source code and save the file.\n \n## arm_mover.cpp\n```C++\n#include \"ros/ros.h\"\n#include \"simple_arm/GoToPosition.h\"\n#include <std_msgs/Float64.h>\n\n// Global joint publisher variables\nros::Publisher joint1_pub, joint2_pub;\n\n// This function checks and clamps the joint angles to a safe zone\nstd::vector<float> clamp_at_boundaries(float requested_j1, float requested_j2)\n{\n    // Define clamped joint angles and assign them to the requested ones\n    float clamped_j1 = requested_j1;\n    float clamped_j2 = requested_j2;\n\n    // Get min and max joint parameters, and assigning them to their respective variables\n    float min_j1, max_j1, min_j2, max_j2;\n    // Assign a new node handle since we have no access to the main one\n    ros::NodeHandle n2;\n    // Get node name\n    std::string node_name = ros::this_node::getName();\n    // Get joints min and max parameters\n    n2.getParam(node_name + \"/min_joint_1_angle\", min_j1);\n    n2.getParam(node_name + \"/max_joint_1_angle\", max_j1);\n    n2.getParam(node_name + \"/min_joint_2_angle\", min_j2);\n    n2.getParam(node_name + \"/max_joint_2_angle\", max_j2);\n\n    // Check if joint 1 falls in the safe zone, otherwise clamp it\n    if (requested_j1 < min_j1 || requested_j1 > max_j1) {\n        clamped_j1 = std::min(std::max(requested_j1, min_j1), max_j1);\n        ROS_WARN(\"j1 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f\", min_j1, max_j1, clamped_j1);\n    }\n    // Check if joint 2 falls in the safe zone, otherwise clamp it\n    if (requested_j2 < min_j2 || requested_j2 > max_j2) {\n        clamped_j2 = std::min(std::max(requested_j2, min_j2), max_j2);\n        ROS_WARN(\"j2 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f\", min_j2, max_j2, clamped_j2);\n    }\n\n    // Store clamped joint angles in a clamped_data vector\n    std::vector<float> clamped_data = { clamped_j1, clamped_j2 };\n\n    return clamped_data;\n}\n\n// This callback function executes whenever a safe_move service is requested\nbool handle_safe_move_request(simple_arm::GoToPosition::Request& req,\n    simple_arm::GoToPosition::Response& res)\n{\n\n    ROS_INFO(\"GoToPositionRequest received - j1:%1.2f, j2:%1.2f\", (float)req.joint_1, (float)req.joint_2);\n\n    // Check if requested joint angles are in the safe zone, otherwise clamp them\n    std::vector<float> joints_angles = clamp_at_boundaries(req.joint_1, req.joint_2);\n\n    // Publish clamped joint angles to the arm\n    std_msgs::Float64 joint1_angle, joint2_angle;\n\n    joint1_angle.data = joints_angles[0];\n    joint2_angle.data = joints_angles[1];\n\n    joint1_pub.publish(joint1_angle);\n    joint2_pub.publish(joint2_angle);\n\n    // Wait 3 seconds for arm to settle\n    ros::Duration(3).sleep();\n\n    // Return a response message\n    res.msg_feedback = \"Joint angles set - j1: \" + std::to_string(joints_angles[0]) + \" , j2: \" + std::to_string(joints_angles[1]);\n    ROS_INFO_STREAM(res.msg_feedback);\n\n    return true;\n}\n\nint main(int argc, char** argv)\n{\n    // Initialize the arm_mover node and create a handle to it\n    ros::init(argc, argv, \"arm_mover\");\n    ros::NodeHandle n;\n\n    // Define two publishers to publish std_msgs::Float64 messages on joints respective topics\n    joint1_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_1_position_controller/command\", 10);\n    joint2_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_2_position_controller/command\", 10);\n\n    // Define a safe_move service with a handle_safe_move_request callback function\n    ros::ServiceServer service = n.advertiseService(\"/arm_mover/safe_move\", handle_safe_move_request);\n    ROS_INFO(\"Ready to send joint commands\");\n\n    // Handle ROS communication events\n    ros::spin();\n\n    return 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778151,
+              "key": "7742f42d-e882-4bf8-a782-34696e350d01",
+              "title": "Arm Mover: The Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TjYL_qmr_kg",
+                "china_cdn_id": "TjYL_qmr_kg.mp4"
+              }
+            },
+            {
+              "id": 778152,
+              "key": "7980c284-4d4a-44d6-a095-7916e06b9831",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The code: Explained\n\n```C++\n#include \"ros/ros.h\"\n#include \"simple_arm/GoToPosition.h\"\n#include <std_msgs/Float64.h>\n```\nThe included modules for `arm_mover` are the same as `simple_arm`, with the exception of one new file. Namely, the `GoToPosition.h` header file, which is the header file generated from the `GoToPosition.srv` file we created earlier. \n\n```C++\nros::init(argc, argv, \"arm_mover\");\nros::NodeHandle n;\n```\nInside the C++ main function, the `arm_mover` node is initialized and a ROS NodeHandle object `n` is instantiated to communicate with ROS. \n\n```C++\njoint1_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_1_position_controller/command\", 10);\njoint2_pub = n.advertise<std_msgs::Float64>(\"/simple_arm/joint_2_position_controller/command\", 10);\n```\nAs we did earlier in the `simple_arm` node, two publisher objects are created to publish joint angles to the arm. These objects are defined globally so as to be easily accessible from all the other functions. \n\n```C++\nros::ServiceServer service = n.advertiseService(\"/arm_mover/safe_move\", handle_safe_move_request);\n```\nNext, the `GoToPosition` service is created with the node name followed by `safe_move`. Generally, you want to name your services with the node name first to easily find them in large projects. This service is defined with a `handle_safe_move_request` callback function. The callback function runs when a service request is received. \n\n```C++\nros::spin();\n```\nThe `ros::spin()` function simply blocks until a shutdown request is received by the node. \n\n```C++\nbool handle_safe_move_request(simple_arm::GoToPosition::Request& req, simple_arm::GoToPosition::Response& res)\n```\nWhen a client sends a `GoToPosition` request to the `safe_move` service, either from the terminal or from a separate node the handle_safe_move_request function is called. The function parameter `req` is of type `GoToPosition::Request`. And the service response parameter `res` is of type `GoToPosition::Response`.\n\n```C++\nstd::vector<float> joints_angles = clamp_at_boundaries(req.joint_1, req.joint_2);\n```\nThis function passes the requested angles to the `clamp_at_boundaries()` function. \n\n```C++\nstd::vector<float> clamp_at_boundaries(float requested_j1, float requested_j2)\n{\n    // Define clamped joint angles and assign them to the requested ones\n    float clamped_j1 = requested_j1;\n    float clamped_j2 = requested_j2;\n\n    // Get min and max joint parameters, and assign them to their respective variables\n    float min_j1, max_j1, min_j2, max_j2;\n    // Assign a new node handle since we have no access to the main one\n    ros::NodeHandle n2;\n    // Get node name\n    std::string node_name = ros::this_node::getName();\n    // Get joints min and max parameters\n    n2.getParam(node_name + \"/min_joint_1_angle\", min_j1);\n    n2.getParam(node_name + \"/max_joint_1_angle\", max_j1);\n    n2.getParam(node_name + \"/min_joint_2_angle\", min_j2);\n    n2.getParam(node_name + \"/max_joint_2_angle\", max_j2);\n\n    // Check if joint 1 falls in the safe zone, otherwise clamp it\n    if (requested_j1 < min_j1 || requested_j1 > max_j1) {\n        clamped_j1 = std::min(std::max(requested_j1, min_j1), max_j1);\n        ROS_WARN(\"j1 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f\", min_j1, max_j1, clamped_j1);\n    }\n    // Check if joint 2 falls in the safe zone, otherwise clamp it\n    if (requested_j2 < min_j2 || requested_j2 > max_j2) {\n        clamped_j2 = std::min(std::max(requested_j2, min_j2), max_j2);\n        ROS_WARN(\"j2 is out of bounds, valid range (%1.2f,%1.2f), clamping to: %1.2f\", min_j2, max_j2, clamped_j2);\n    }\n\n    // Store clamped joint angles in a clamped_data vector\n    std::vector<float> clamped_data = { clamped_j1, clamped_j2 };\n\n    return clamped_data;\n}\n```\nThe `clamp_at_boundaries()` function is responsible for enforcing the minimum and maximum joint angles for each joint. If the joint angles passed in are outside of the operable range, they will be “clamped” to the nearest allowable value. The minimum and maximum joint angles are retrieved from the parameter server each time `clamp_at_boundaries` is called. The rest of this function simply clamps the joint angle if necessary. Warning messages are logged if the requested joint angles are out of bounds.\n\n```C++\nstd_msgs::Float64 joint1_angle, joint2_angle;\n\njoint1_angle.data = joints_angles[0];\njoint2_angle.data = joints_angles[1];\n\njoint1_pub.publish(joint1_angle);\njoint2_pub.publish(joint2_angle);\n```\nThen, the `handle_safe_move_request()` function publishes the clamped joint angles to the arm. \n\n```C++\nros::Duration(3).sleep();\n```\nThe `safe_move` service will be blocked for 3 seconds so the arm has enough time to move to the requested position. \n\n```C++\nres.msg_feedback = \"Joint angles set - j1: \" + std::to_string(joints_angles[0]) + \" , j2: \" + std::to_string(joints_angles[1]);\nROS_INFO_STREAM(res.msg_feedback);\n```\nFinally, the `safe_move` service returns back a message indicating that the arm has moved to its new position and displays the clamped joint angles.\n\n## Next steps\nNow that you've written the `arm_mover` node, the next step is to **build** it, **launch** it, and **test** it out via the command line!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778159,
+          "key": "22dd55da-b30a-4938-8d7d-b91c44d957c4",
+          "title": "Arm Mover: Build, Launch and Interact",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22dd55da-b30a-4938-8d7d-b91c44d957c4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778154,
+              "key": "5563db0d-3984-4d29-8113-1ded2d685062",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Arm Mover: Build, Launch and Interact \n\n## Modifying CMakeLists.txt \n\nBefore compiling the `arm_mover.cpp` code, you have to include instructions for the compiler. To do so, open the `simple_arm` package `CMakeLists.txt` file located in `/home/workspace/catkin_ws/src/simple_arm/`, and add the following instructions at the bottom of the file:\n```html\nadd_executable(arm_mover src/arm_mover.cpp)\ntarget_link_libraries(arm_mover ${catkin_LIBRARIES})\nadd_dependencies(arm_mover simple_arm_generate_messages_cpp)\n```\n\n## Building the package\n\nNow that you’ve written the `arm_mover` C++ script, and included specific instructions for your compiler, let’s build the package: \n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n## Launching the project with the new service \nTo get the `arm_mover` node, and accompanying `safe_move` service, to launch along with all of the other nodes, modify `robot_spawn.launch`.\n\nLaunch files, when they exist, are located within the `launch` directory in the root of a catkin package. Inside a launch file, you can instruct ROS Master which nodes to run. Also you can specify certain parameters and arguments for each of your nodes. Thus, a launch file is necessary inside a ROS package containing more than one node or a node with multiple parameters and arguments. This launch file can run all the nodes within a single command: `roslaunch package_name launch_file.launch`. `simple_arm`’s launch file is located in `/home/workspace/catkin_ws/src/simple_arm/launch`\n\nTo get the `arm_mover` node to launch, add the following:\n\n```xml\n  <!-- The arm mover node -->\n  <node name=\"arm_mover\" type=\"arm_mover\" pkg=\"simple_arm\" output=\"screen\">\n    <rosparam>\n      min_joint_1_angle: 0\n      max_joint_1_angle: 1.57\n      min_joint_2_angle: 0\n      max_joint_2_angle: 1.0\n    </rosparam>\n  </node>\n```\n\nInside the launch file, the node tag specifies the name, type, package name and output channel. The ROS parameters specify the min and max joint angles. More information on the format of the launch file can be found on the [XML page of the ROS wiki](http://wiki.ros.org/roslaunch/XML).\n\n## Testing the new service\nNow that you've built your code and modified the launch file, you are ready to test it all out.\n\nLaunch the `simple_arm`, verify that the `arm_mover` node is running and that the `safe_move` service is listed:\n\n**Note:** You will need to make sure that you've exited your previous `roslaunch` session before re-launching.\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch simple_arm robot_spawn.launch\n```\n\nThen, in a new terminal, verify that the node and service have indeed launched.\n\n```text\n$ rosnode list\n$ rosservice list\n```\n\nCheck that both the service (`/arm_mover/safe_move`) and the node (`/arm_mover`) show up as expected. If they do not appear, check the logs in the `roscore` console. You can now interact with the service using `rosservice`.\n\nTo view the camera image stream, you can use the command `rqt_image_view` (you can learn more about rqt and the associated tools on the [RQT page of the ROS wiki](http://wiki.ros.org/rqt)):\n\n```sh\n$ rqt_image_view /rgb_camera/image_raw\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778155,
+              "key": "dd70e778-6bf4-44b5-ae0e-e85eb8d9dae4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb8627_rqtimage/rqtimage.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dd70e778-6bf4-44b5-ae0e-e85eb8d9dae4",
+              "caption": "",
+              "alt": "",
+              "width": 774,
+              "height": 723,
+              "instructor_notes": null
+            },
+            {
+              "id": 778156,
+              "key": "8f2eb5e0-3cc4-4cf3-8e4f-b4b239e452ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Adjusting the view\n\nThe camera is displaying a gray image. This is to be expected, given that it is pointing straight up, towards the gray sky of our Gazebo world.\n\nTo point the camera towards the numbered blocks on the countertop, we need to rotate both joint 1 and joint 2 by approximately pi/2 radians. Let’s give that a try:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rosservice call /arm_mover/safe_move \"joint_1: 1.57\njoint_2: 1.57\"\n```\n\nNote: `rosservice call` can tab-complete the request message, so that you don’t have to worry about writing it out by hand. Also, be sure to include a line break between the two joint parameters.\n\nUpon entering the command, you should see the arm move and eventually stop, reporting the new joint clamped angles to the console. This is as expected.\n\nWhat was not expected was the resulting position of the arm. Looking at the `roscore` console, we can see the problem. The requested angle for joint 2 was out of the safe bounds, so it was clamped. We requested 1.57 radians, but the maximum joint angle was set to 1.0 radians.\n\nBy setting the `max_joint_2_angle` on the parameter server, we should be able to increase joint 2’s maximum angle and bring the blocks into view the next time we request a service. To update that parameter, use the command `rosparam`\n\n```sh\n$ rosparam set /arm_mover/max_joint_2_angle 1.57\n```\n\nNow we should be able to move the arm such that all of the blocks are within the field of view of the camera:\n\n```sh\n$ rosservice call /arm_mover/safe_move \"joint_1: 1.57\njoint_2: 1.57\"\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778157,
+              "key": "6e17fde7-7444-4203-9394-8764bc76acca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb8639_camerablocks/camerablocks.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e17fde7-7444-4203-9394-8764bc76acca",
+              "caption": "",
+              "alt": "",
+              "width": 774,
+              "height": 722,
+              "instructor_notes": null
+            },
+            {
+              "id": 778158,
+              "key": "854b5644-4971-4124-a055-a19cbe126729",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "And there you have it. All of the blocks are within the field of view!\n\n## `arm_mover` GitHub branch\nYou can always download a copy of this branch [from the GitHub repo](https://github.com/udacity/RoboND-simple_arm/tree/arm_mover).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778163,
+          "key": "61d5c6a9-0351-4eab-a94d-ea3c856cb3c2",
+          "title": "ROS Clients and Subscribers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "61d5c6a9-0351-4eab-a94d-ea3c856cb3c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778160,
+              "key": "847a7c04-831b-479d-90e5-a5ed62695c11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS Clients and Subscribers \n\nWriting the `arm_mover node`, you practiced generating custom messages, publishing to a topic, building ROS services servers, setting parameters, and creating launch files. You almost have a complete overview of ROS, but you still have to learn ROS **clients** to request services from client nodes, as well as ROS **subscribers**.\n\n## ROS Clients\nA service client defined inside a service client node can request services from a service server node. In C++, ROS clients frequently have the following format, although other parameters and arguments are possible:\n\n```C++\nros::ServiceClient client = n.serviceClient<package_name::service_file_name>(\"service_name\");\n```\n\nThe `client` object is instantiated from the ros::ServiceClient class. This object allows you to request services by calling the `client.call()` function. \n\nTo communicate with the ROS Master in C++, you need a **NodeHandle**. The node handle `n` will initialize the node. \n\nThe `package_name::service_file_name` indicates the name of the service file located in the `srv` directory of the package.   \n\nThe `service_name` argument indicates the name of the service which is defined in the service server node. \n## ROS Subscribers\nA subscriber enables your node to read messages from a topic, allowing useful data to be streamed to the node. In C++, ROS subscribers frequently have the following format, although other parameters and arguments are possible:\n\n```C++\nros::Subscriber sub1 = n.subscribe(\"/topic_name\", queue_size, callback_function);\n```\n\nThe `sub1` object is a subscriber object instantiated from the ros::Subscriber class. This object allows you to subscribe to messages by calling the `subscribe()` function. \n\nTo communicate with the ROS Master in C++, you need a **NodeHandle**. The node handle `n` will initialize the node. \n\nThe `\"/topic_name\"` indicates the topic to which the Subscriber should listen. \n\nThe `queue_size` determines the number of messages that can be stored in a queue. If the number of messages published exceeds the size of the queue, the oldest messages are dropped. As an example, if the `queue_size` is set to 100 and the number of messages stored in the queue is equal to 100, we will have to start deleting old messages to make room in the queue for new messages. This means that we are unable to process messages fast enough and we probably need to increase the `queue_size`. \n\nThe `callback_function` is the name of the function that will be run each incoming message. Each time a message arrives, it is passed as an argument to `callback_function`. Typically, this function performs a useful action with the incoming data. Note that unlike service handler functions, the `callback_function` is not required to return anything.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778161,
+              "key": "7e37d1a4-5ccc-4ce4-85c7-961832ec5241",
+              "title": "ROS Clients and Subscribers",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7e37d1a4-5ccc-4ce4-85c7-961832ec5241",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following ROS nodes would likely need a Subscriber?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A node for an autonomous vehicle that implements pedestrian detection using camera data.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A node for a robotic arm that implements a service for moving the arm.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A node for a robot which implements a random number generator and publishes new random numbers at a frequency of 50Hz.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A controller node for a lunar rover which implements the actuation of the throttle and brake given target velocities as input.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778162,
+              "key": "50d71ac1-4d48-4357-85fb-16321aab9cd2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For more information about subscribers, see [the Subscriber documentation on the ROS wiki](http://docs.ros.org/jade/api/roscpp/html/classros_1_1Subscriber.html). Let's move on to the `look_away` node so you can see **subscribers** and **clients** in action!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778165,
+          "key": "ff620e4e-26a6-43d0-aad0-a78620d067b2",
+          "title": "Look Away",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ff620e4e-26a6-43d0-aad0-a78620d067b2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778164,
+              "key": "48f0e7df-d5e9-43d3-b7e6-54647e24e81c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Look Away\n\n## Description of Look Away\n\nTo see a ROS **subscriber** and **client** in action, you'll write a node called `look_away`. The `look_away` node will subscribe to the `/rgb_camera/image_raw` topic, which has image data from the camera mounted on the end of the robotic arm. Whenever the camera is pointed towards an uninteresting image - in this case, an image with uniform color - the callback function will request a `safe_move` service to safely move the arm to something more interesting. There are a few extra pieces in the code to ensure that this procedure is executed smoothly, but we’ll focus on those later.\n\n## Updating the launch file\n\nJust as you did with the `arm_mover` node, to get `look_away` to launch with the rest of the nodes, you will need to modify `robot_spawn.launch`, which can be found in  `/home/workspace/catkin_ws/src/simple_arm/launch`. You can add the following code there:\n\n```xml\n  <!-- The look away node -->\n  <node name=\"look_away\" type=\"look_away\" pkg=\"simple_arm\"/>\n```\n\nRemember that a half turn of a joint requires pi/2 radians of revolution. Numerically, pi/2 is approximately 1.57. Since we want to be able to revolve a joint halfway around with one request, it will be helpful to set `max_joint_2_angle: 1.57` in `arm_mover`:\n```xml\n  <!-- The arm mover node -->\n  <node name=\"arm_mover\" type=\"arm_mover\" pkg=\"simple_arm\">\n    <rosparam>\n      min_joint_1_angle: 0\n      max_joint_1_angle: 1.57\n      min_joint_2_angle: 0\n      max_joint_2_angle: 1.57\n    </rosparam>\n  </node>\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778169,
+          "key": "8be4719e-6875-4ef4-be55-8aaf3569423a",
+          "title": "Look Away: The Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8be4719e-6875-4ef4-be55-8aaf3569423a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778166,
+              "key": "0ea5844c-f67b-427a-9b97-60508a7e86e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Look Away: The Code \n\n## Creating the empty `look_away` node script \n\nThe steps that you should take to create the `look_away` node are exactly the same as the steps you took to create the `simple_mover` and `arm_mover` scripts, but of course change the actual name of the file itself.\n\nOpen a new terminal, and type the following: \n```sh\n$ cd /home/workspace/catkin_ws/src/simple_arm/src/\n$ gedit look_away.cpp\n```\nYou have created and opened the C++ `look_away` file with the **gedit** editor. Now copy and paste the code below and save the file.\n\n## look_away.cpp\n```C++\n#include \"ros/ros.h\"\n#include \"simple_arm/GoToPosition.h\"\n#include <sensor_msgs/JointState.h>\n#include <sensor_msgs/Image.h>\n\n// Define global vector of joints last position, moving state of the arm, and the client that can request services\nstd::vector<double> joints_last_position{ 0, 0 };\nbool moving_state = false;\nros::ServiceClient client;\n\n// This function calls the safe_move service to safely move the arm to the center position\nvoid move_arm_center()\n{\n    ROS_INFO_STREAM(\"Moving the arm to the center\");\n\n    // Request centered joint angles [1.57, 1.57]\n    simple_arm::GoToPosition srv;\n    srv.request.joint_1 = 1.57;\n    srv.request.joint_2 = 1.57;\n\n    // Call the safe_move service and pass the requested joint angles\n    if (!client.call(srv))\n        ROS_ERROR(\"Failed to call service safe_move\");\n}\n\n// This callback function continuously executes and reads the arm joint angles position\nvoid joint_states_callback(const sensor_msgs::JointState js)\n{\n    // Get joints current position\n    std::vector<double> joints_current_position = js.position;\n\n    // Define a tolerance threshold to compare double values\n    double tolerance = 0.0005;\n\n    // Check if the arm is moving by comparing its current joints position to its latest\n    if (fabs(joints_current_position[0] - joints_last_position[0]) < tolerance && fabs(joints_current_position[1] - joints_last_position[1]) < tolerance)\n        moving_state = false;\n    else {\n        moving_state = true;\n        joints_last_position = joints_current_position;\n    }\n}\n\n// This callback function continuously executes and reads the image data\nvoid look_away_callback(const sensor_msgs::Image img)\n{\n\n    bool uniform_image = true;\n\n    // Loop through each pixel in the image and check if its equal to the first one\n    for (int i = 0; i < img.height * img.step; i++) {\n        if (img.data[i] - img.data[0] != 0) {\n            uniform_image = false;\n            break;\n        }\n    }\n\n    // If the image is uniform and the arm is not moving, move the arm to the center\n    if (uniform_image == true && moving_state == false)\n        move_arm_center();\n}\n\nint main(int argc, char** argv)\n{\n    // Initialize the look_away node and create a handle to it\n    ros::init(argc, argv, \"look_away\");\n    ros::NodeHandle n;\n\n    // Define a client service capable of requesting services from safe_move\n    client = n.serviceClient<simple_arm::GoToPosition>(\"/arm_mover/safe_move\");\n\n    // Subscribe to /simple_arm/joint_states topic to read the arm joints position inside the joint_states_callback function\n    ros::Subscriber sub1 = n.subscribe(\"/simple_arm/joint_states\", 10, joint_states_callback);\n\n    // Subscribe to rgb_camera/image_raw topic to read the image data inside the look_away_callback function\n    ros::Subscriber sub2 = n.subscribe(\"rgb_camera/image_raw\", 10, look_away_callback);\n\n    // Handle ROS communication events\n    ros::spin();\n\n    return 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778167,
+              "key": "9909e165-c6b7-455d-9d0b-74e8aaf213c3",
+              "title": "Look Away: The Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DwVkiRRykRU",
+                "china_cdn_id": "DwVkiRRykRU.mp4"
+              }
+            },
+            {
+              "id": 778168,
+              "key": "c31e334b-fa14-4e06-b298-b8b603625d20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The code: Explained \n\n```C++\n#include \"ros/ros.h\"\n#include \"simple_arm/GoToPosition.h\"\n#include <sensor_msgs/JointState.h>\n#include <sensor_msgs/Image.h>\n```\nThe header files are similar to those in `arm_mover`, except this time we included the `JointState.h` header file  so that we can read the arm joints’ positions. We also include the `Image.h` header file so that we can use the camera data.\n\n```C++\nros::init(argc, argv, \"look_away\");\nros::NodeHandle n;\n```\nInside the C++ main function, the `look_away` node is initialized and a ROS NodeHandle object `n` is instantiated to communicate with ROS. \n\n```C++\nclient = n.serviceClient<simple_arm::GoToPosition>(\"/arm_mover/safe_move\");\n```\nA `client` object is created here. This object can request `GoToPosition` services from the `/arm_mover/safe_move` service created earlier in the `arm_mover` node. This client object is defined globally in the code, so we can request services within any function. In particular, this happens in the `move_arm_center()` function. \n\n```C++\nros::Subscriber sub1 = n.subscribe(\"/simple_arm/joint_states\", 10, joint_states_callback);\n```\nThe first subscriber object `sub1`, subscribes to the `/simple_arm/joint_states` topic. By subscribing to this topic, we can track the arm position by reading the angle of each joint. The `queue_size` is set to 10, meaning that a maximum of 10 messages can be stored in the queue. The data from each new incoming message is passed to the `joint_states_callback` function.\n\n```C++\nros::Subscriber sub2 = n.subscribe(\"rgb_camera/image_raw\", 10, look_away_callback);\n```\nThe second subscriber object `sub2`, subscribes to the `/rgb_camera/image_raw` topic. The `queue_size` is also set to 10. And the `look_away_callback` function is called each time a new message arrives.\n\n```C++\nros::spin();\n```\nThe `ros::spin()` function simply blocks until a shutdown request is received by the node. \n\n```C++\nvoid joint_states_callback(const sensor_msgs::JointState js)\n{\n    // Get joints current position\n    std::vector<double> joints_current_position = js.position;\n\n    // Define a tolerance threshold to compare double values\n    double tolerance = 0.0005;\n\n    // Check if the arm is moving by comparing its current joints position to its latest\n    if (fabs(joints_current_position[0] - joints_last_position[0]) < tolerance && fabs(joints_current_position[1] - joints_last_position[1]) < tolerance)\n        moving_state = false;\n    else {\n        moving_state = true;\n        joints_last_position = joints_current_position;\n    }\n}\n```\nWhen `sub1` receives a message on the`/simple_arm/joint_states` topic, the message is passed to the `joint_states_callback` in the variable `js`. The `joint_states_callback()` function checks if the current joint states provided in `js` are the same as the previous joint states, which are stored in the global `joints_last_position` variable. If the current and previous joint states are the same (up to the specified error tolerance), then the arm has stopped moving, and the `moving_state` flag is set to `False`. This flag is defined globally so as to be shared with other functions in the code. On the other hand, if the current and previous joint states are different, then the arm is still moving. In this case, the function sets `moving_state` to `true` and updates the `joints_Last_position` variable with current position data stored in `joints_current_position`.\n\n```C++\nvoid look_away_callback(const sensor_msgs::Image img)\n{\n\n    bool uniform_image = true;\n\n    // Loop through each pixel in the image and check if its equal to the first one\n    for (int i = 0; i < img.height * img.step; i++) {\n        if (img.data[i] - img.data[0] != 0) {\n            uniform_image = false;\n            break;\n        }\n    }\n\n    // If the image is uniform and the arm is not moving, move the arm to the center\n    if (uniform_image == true && moving_state == false)\n        move_arm_center();\n}\n```\nThe `look_away_callback()` function receives [image data](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/Image.html) from the `/rgb_camera/image_raw` topic. The callback function first checks if all color values in the image are the same as the color value of the first pixel. Then, if the image is uniform and the arm is not moving, the `move_arm_center()` function is called. \n\n```C++\nvoid move_arm_center()\n{\n    ROS_INFO_STREAM(\"Moving the arm to the center\");\n\n    // Request centered joint angles [1.57, 1.57]\n    simple_arm::GoToPosition srv;\n    srv.request.joint_1 = 1.57;\n    srv.request.joint_2 = 1.57;\n\n    // Call the safe_move service and pass the requested joint angles\n    if (!client.call(srv))\n        ROS_ERROR(\"Failed to call service safe_move\");\n}\n```\nInside the `move_arm_center` function, a `GoToPosition` request message is created and sent using the `arm_mover/safe_move` service, moving both joint angles to `1.57` radians.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778172,
+          "key": "14851085-d4f0-47d5-82ad-173895387fd1",
+          "title": "Look Away: Build, Launch and Interact",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "14851085-d4f0-47d5-82ad-173895387fd1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778170,
+              "key": "22bc9f15-52d4-45dd-b2e9-843257d96656",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Look Away: Build, Launch and Interact\n\n## Modifying CMakeLists.txt \nBefore compiling the `look_away.cpp` code, you have to include instructions for the compiler. As a reminder, for every C++ ROS node you write, you have to add its dependencies in `CMakeLists.txt file`. Open the `simple_arm` package’s `CMakeLists.txt` file, located in `/home/workspace/catkin_ws/src/simple_arm/`, and add the following instructions at the bottom of the file:\n```html\nadd_executable(look_away src/look_away.cpp)\ntarget_link_libraries(look_away ${catkin_LIBRARIES})\nadd_dependencies(look_away simple_arm_generate_messages_cpp)\n```\n\n## Building the package\n\nNow that you’ve written the `look_away` C++ script, and included specific instructions for your compiler, let’s build the package: \n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\n## Launching the nodes\nYou can now launch and interact with `simple_arm` just as before:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch simple_arm robot_spawn.launch\n```\n\n## Interacting with the arm\nAfter launching, the arm should move away from the grey sky and look towards the blocks. To view the camera image stream, you can use the same command as before:\n```sh\n$ rqt_image_view /rgb_camera/image_raw\n```\nTo check that everything is working as expected, open a new terminal and send a service call to point the arm directly up towards the sky (note that the line break in the message is necessary):\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rosservice call /arm_mover/safe_move \"joint_1: 0\njoint_2: 0\"\n```\n## `look_away` GitHub branch\nYou can always download a copy of this lab that includes all three nodes by visiting [the GitHub repo](https://github.com/udacity/RoboND-simple_arm/).\n\nWhat happens?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778171,
+              "key": "0324182c-de50-43b4-95ac-7f72769010a4",
+              "title": "Look Away: Build, Launch and Interact",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0324182c-de50-43b4-95ac-7f72769010a4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Check all the things that happen to the arm after executing the `rosservice` call above:",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "The arm moves to point towards the sky.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "The arm does not move.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "The arm points back to toward the blocks.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "The arm stops when pointing at the sky and does not move again.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 778174,
+          "key": "81619e5c-b56b-4007-b3e1-f6b5cdc746e6",
+          "title": "Pub-Sub Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "81619e5c-b56b-4007-b3e1-f6b5cdc746e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778173,
+              "key": "809a1ba1-dcc6-440e-a04d-7685f0f0e843",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Pub-Sub Class\n\nInside the publisher and subscriber nodes of this lesson, global variables and objects were defined to be used anywhere in the code. We did this to simplify the code, but it is not a good practice. You should always write a pub-sub class to easily share variables and objects with any callback function in your code. Here’s a [ROS pub-sub template class](https://answers.ros.org/question/59725/publishing-to-a-topic-via-subscriber-callback-function/) that you can use: \r\n## ROS Class C++ Code\n```C++\n#include <ros/ros.h>\n\nclass SubscribeAndPublish\n{\npublic:\n  SubscribeAndPublish()\n  {\n    //Topic you want to publish\n    pub_ = n_.advertise<PUBLISHED_MESSAGE_TYPE>(\"/published_topic\", 1);\n\n    //Topic you want to subscribe\n    sub_ = n_.subscribe(\"/subscribed_topic\", 1, &SubscribeAndPublish::callback, this);\n  }\n\n  void callback(const SUBSCRIBED_MESSAGE_TYPE& input)\n  {\n    PUBLISHED_MESSAGE_TYPE output;\n    //.... do something with the input and generate the output...\n    pub_.publish(output);\n  }\n\nprivate:\n  ros::NodeHandle n_; \n  ros::Publisher pub_;\n  ros::Subscriber sub_;\n\n};//End of class SubscribeAndPublish\n\nint main(int argc, char **argv)\n{\n  //Initiate ROS\n  ros::init(argc, argv, \"subscribe_and_publish\");\n\n  //Create an object of class SubscribeAndPublish that will take care of everything\n  SubscribeAndPublish SAPObject;\n\n  ros::spin();\n\n  return 0;\n}\n```\r\rWe challenge you to use this template class to implement the nodes in this lesson. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778178,
+          "key": "468c09f9-f45e-4441-9009-b1c67f41bfef",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "468c09f9-f45e-4441-9009-b1c67f41bfef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778175,
+              "key": "72ff86c1-6956-4540-b022-c9dccbd1fe1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778176,
+              "key": "9344c70e-8076-4185-9033-aa72e4c13c29",
+              "title": "Recap ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vdUwc-S4rW8",
+                "china_cdn_id": "vdUwc-S4rW8.mp4"
+              }
+            },
+            {
+              "id": 778177,
+              "key": "6bde64e2-85de-4745-a6f5-16f9659b83ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Primary Resources \n* [ROS Wiki](http://wiki.ros.org)\n* [ROS Answers](http://answers.ros.org/)\n\n## Additional Resources \n\n* [ROS Cheat Sheet](https://github.com/ros/cheatsheet/releases/download/0.0.1/ROScheatsheet_catkin.pdf): \nThis is the official ROS cheat sheet. Even though the title indicates that it is for the indigo distribution, almost all of the commands still work in Kinetic, the distribution that we are using for this program. Download this Cheat Sheet and keep it next to you while working with ROS so that you don’t have to remember all the commands.\n* [A gentle Introduction to ROS](https://cse.sc.edu/~jokane/agitr/): This is a great book, and is available for free as a PDF. A print version is also for sale.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

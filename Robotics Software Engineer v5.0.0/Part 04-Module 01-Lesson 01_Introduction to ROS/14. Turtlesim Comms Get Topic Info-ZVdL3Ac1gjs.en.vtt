@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.990
+In these examples, even though you have a list of topics,
+
+00:00:03.990 --> 00:00:05.940
+some things are still unclear.
+
+00:00:05.940 --> 00:00:09.780
+For example, the rostopic list command does
+
+00:00:09.779 --> 00:00:14.234
+not tell us which nodes are publishing or subscribing to a topic,
+
+00:00:14.234 --> 00:00:17.024
+or what type of messages are being passed.
+
+00:00:17.024 --> 00:00:18.839
+To get that information,
+
+00:00:18.839 --> 00:00:21.570
+we will use the command rostopic info.
+
+00:00:21.570 --> 00:00:26.310
+Let's start with getting information about the command vel topic,
+
+00:00:26.309 --> 00:00:34.019
+rostopic info, and then the name of the topic you'd like more information about.
+
+00:00:34.020 --> 00:00:36.300
+In this case, turtle1,
+
+00:00:36.299 --> 00:00:40.079
+command vel. There you have it.
+
+00:00:40.079 --> 00:00:43.199
+The command vel topic has one publisher,
+
+00:00:43.200 --> 00:00:48.450
+the teleop node, and one subscriber, the turtlesim node.
+
+00:00:48.450 --> 00:00:52.640
+This is as you might have suspected a while back when we
+
+00:00:52.640 --> 00:00:57.145
+were using the keyboard to command the turtle vel teleop node.
+
+00:00:57.145 --> 00:01:01.640
+The message type associated with the command vel topic is
+
+00:01:01.640 --> 00:01:06.379
+a twist message and is part of the geometry messages package.
+
+00:01:06.379 --> 00:01:10.339
+You might be asking yourself right now what is a twist message.
+
+00:01:10.340 --> 00:01:14.620
+To learn that, we will use the ros message command next.
+

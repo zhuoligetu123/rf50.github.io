@@ -1,0 +1,1420 @@
+{
+  "data": {
+    "lesson": {
+      "id": 781675,
+      "key": "21c5607d-1627-46da-a4b7-081e8366de5a",
+      "title": "Project: Go Chase It!",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Design and build a mobile robot, and house it in your world. Then, program your robot with C++ nodes in ROS to chase white colored balls! ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/21c5607d-1627-46da-a4b7-081e8366de5a/781675/1543375989374/Project%3A+Go+Chase+It%21+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/21c5607d-1627-46da-a4b7-081e8366de5a/781675/1543375986247/Project%3A+Go+Chase+It%21+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "c00eedd3-eaae-40a2-b08e-0481afcdd702",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Go Chase It!",
+        "description": "# Project Description\n\n## Summary of Tasks\n\nIn this project, you should create two ROS packages inside your `catkin_ws/src`: the `drive_bot` and the `ball_chaser`. Here are the steps to design the robot, house it inside your world, and program it to chase white-colored balls:  \n1. `drive_bot`:\n * Create a `my_robot` ROS package to hold your robot, the white ball, and the world.\n * Design a differential drive robot with the Unified Robot Description Format. Add two sensors to your robot: a lidar and a camera. Add Gazebo plugins for your robot’s differential drive, lidar, and camera. The robot you design should be significantly different from the one presented in the project lesson. Implement significant changes such as adjusting the color, wheel radius, and chassis dimensions. Or completely redesign the robot model! After all you want to impress your future employers :-D \n * House your robot inside the world you built in the **Build My World** project. \n * Add a white-colored ball to your Gazebo world and save a new copy of this world. \n * The `world.launch` file should launch your world with the white-colored ball and your robot. \n\n2. `ball_chaser`:\n * Create a `ball_chaser` ROS package to hold your C++ nodes.\n * Write a `drive_bot`C++ node that will provide a `ball_chaser/command_robot` service to drive the robot by controlling its linear x and angular z velocities. The service should publish to the wheel joints and return back the requested velocities.\n * Write a `process_image` C++ node that reads your robot’s camera image, analyzes it to determine the presence and position of a white ball. If a white ball exists in the image, your node should request a service via a client to drive the robot towards it.  \n * The `ball_chaser.launch` should run both the `drive_bot` and the `process_image` nodes.\n\nThe robot you design in this project will be used as a base model for all your upcoming projects in this Robotics Software Engineer Nanodegree Program.  \n\n## Evaluation\n\nOnce you finish designing your robot and building the nodes, check the [Project Rubric](https://review.udacity.com/#!/rubrics/2397/view) to see if it meets the specifications. If you meet the specifications, then you are ready to submit!\n\nIf you do not meet specifications, keep working and discussing with your fellow students and mentors.\n\n## Submission Folder\n\nYour submission should follow the directory structure and contain all the files listed here: \n```\n    .Project2                          # Go Chase It Project\n    ├── my_robot                       # my_robot package                   \n    │   ├── launch                     # launch folder for launch files   \n    │   │   ├── robot_description.launch\n    │   │   ├── world.launch\n    │   ├── meshes                     # meshes folder for sensors\n    │   │   ├── hokuyo.dae\n    │   ├── urdf                       # urdf folder for xarco files\n    │   │   ├── my_robot.gazebo\n    │   │   ├── my_robot.xacro\n    │   ├── world                      # world folder for world files\n    │   │   ├── <yourworld>.world\n    │   ├── CMakeLists.txt             # compiler instructions\n    │   ├── package.xml                # package info\n    ├── ball_chaser                    # ball_chaser package                   \n    │   ├── launch                     # launch folder for launch files   \n    │   │   ├── ball_chaser.launch\n    │   ├── src                        # source folder for C++ scripts\n    │   │   ├── drive_bot.cpp\n    │   │   ├── process_images.cpp\n    │   ├── srv                        # service folder for ROS services\n    │   │   ├── DriveToTarget.srv\n    │   ├── CMakeLists.txt             # compiler instructions\n    │   ├── package.xml                # package info                  \n    └──                              \n```\n\n## Ready to submit your project?\n\nClick on the \"Submit Project\" button and follow the instructions to submit!\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2397",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 781597,
+          "key": "eeed176f-8d63-40d4-9288-1027494ae6dc",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eeed176f-8d63-40d4-9288-1027494ae6dc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781593,
+              "key": "d3e78fdd-0c93-4d71-87a0-fbba6a6268c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781594,
+              "key": "4f7e4337-53a5-4142-9ce0-0a87c6e2b9ff",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pzZKvUSFkgs",
+                "china_cdn_id": "pzZKvUSFkgs.mp4"
+              }
+            },
+            {
+              "id": 781595,
+              "key": "6107f0f3-14b8-4cb3-8ecb-a2f3f5677eed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Preview\n\nHere’s a preview of the final outcome of this project. Note that your world and the robot will look different than mine as you will be implementing you own world and robot. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781596,
+              "key": "eb763ad5-db72-4dd5-9ae3-02a205b5beeb",
+              "title": "Project Preview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HxYGmwMp2uw",
+                "china_cdn_id": "HxYGmwMp2uw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 781600,
+          "key": "ef8614dd-089a-420a-adc6-a1bc0688582b",
+          "title": "ROS in the Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ef8614dd-089a-420a-adc6-a1bc0688582b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781703,
+              "key": "4e71c67d-d090-4d69-8513-0f7fd78e4a59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS in the Workspace \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781598,
+              "key": "aaec6583-3d1a-4c3b-b937-df1c68c14645",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can work on your project in the workspace. As before, follow these simple steps to boot up ROS in your Workspace:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` The workspace is best supported on **Google Chrome** and might not load on other browsers.\n\nYou're now ready to follow along in your workspace!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781677,
+              "key": "0e0a0d54-3c4f-44ab-bb8d-b52cfbb188a8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c781600xREACT2mh2glsk",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-dszy8",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 781605,
+          "key": "4e2b2ec3-455c-4fd0-9942-13e42a1b29c1",
+          "title": "Setting up my_robot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e2b2ec3-455c-4fd0-9942-13e42a1b29c1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781704,
+              "key": "de95ffb8-0cd5-4631-b32d-b53022cab104",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Setting up my_robot\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781601,
+              "key": "4358abd9-7c49-4e7f-b1b0-7a7b1dad3449",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The first task in this project is to create the `my_robot` ROS package. Inside `my_robot`, you will store and launch an empty Gazebo world file. As you proceed with the project, you will model and store a robot, as well as replace the empty world file with the world you created in the **Build My World** project. For now, follow these steps to set up `my_robot`.\n\n*Note: Do not have more than one my_robot instance in the Gazebo world otherwise it would not be able to launch.*\n\n## Create the `my_robot` Package\n\n**1- Create and initialize a `catkin_ws`**\n\nFeel free to skip if you already have a `catkin_ws`.\n```sh\n$ mkdir -p /home/workspace/catkin_ws/src\n$ cd /home/workspace/catkin_ws/src\n$ catkin_init_workspace\n```\n\n** 2- Navigate to the `src` directory of your `catkin_ws` and create the `my_robot` package**:\n```sh\n$ cd /home/workspace/catkin_ws/src/\n$ catkin_create_pkg my_robot\n```\n\n**3- Next, create a `worlds` directory and a `launch` directory, that will further define the structure of your package**:\n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/\n$ mkdir launch\n$ mkdir worlds\n```\n\n## Create and Store an Empty Gazebo World File\nInside the `worlds` directory, create and store an empty Gazebo world file. As a reminder, in Gazebo a **world** is a collection of models, such as your robot, together with a specific environment. You can also define several other physical properties specific to this world.\n\n**1- Create an empty Gazebo world**\n\nAn empty world in Gazebo is a simple world, with no objects or models.\n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/worlds/\n$ touch empty.world\n```\n\n**2- Add the following to `empty.world`**\n```\n<?xml version=\"1.0\" ?>\n\n<sdf version=\"1.4\">\n\n  <world name=\"default\">\n\n    <include>\n      <uri>model://ground_plane</uri>\n    </include>\n\n    <!-- Light source -->\n    <include>\n      <uri>model://sun</uri>\n    </include>\n\n    <!-- World camera -->\n    <gui fullscreen='0'>\n      <camera name='world_camera'>\n        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>\n        <view_controller>orbit</view_controller>\n      </camera>\n    </gui>\n\n  </world>\n</sdf>\n```\nThe `.world` file uses the XML file format to describe all the elements with respect to the Gazebo environment. The simple world that you are creating here has the following elements: \n\n- `<sdf>`: The base element which encapsulates the entire file structure and content.\n- `<world>`: The world element defines the world description and several properties pertaining to that world. In this example, you are adding a ground plane, a light source, and a camera to your world. Each model or property can have further elements that add detail. For example, the `camera` has a `pose` element which defines its position and orientation.\n- `<include>`: The include element, along with the `<uri>` element, provide a path to a particular model. In Gazebo there are several models that are available by default. \n\n## Create a Launch File\nLaunch files in ROS allow us to execute more than one node simultaneously, which helps avoid the potentially tedious task of defining and launching several nodes in separate shells or terminals.\n\n**1- Create the `world.launch` file**\n```\n$ cd /home/workspace/catkin_ws/src/my_robot/launch/\n$ touch world.launch\n```\n\n**2- Add the following to `world.launch`**\n```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<launch>\n \n  <!-- World File -->\n  <arg name=\"world_file\" default=\"$(find my_robot)/worlds/empty.world\"/>\n  \n  <!-- Launch Gazebo World -->\n  <include file=\"$(find gazebo_ros)/launch/empty_world.launch\">\n    <arg name=\"use_sim_time\" value=\"true\"/>\n    <arg name=\"debug\" value=\"false\"/>\n    <arg name=\"gui\" value=\"true\" />\n    <arg name=\"world_name\" value=\"$(arg world_file)\"/>\n  </include>\n\n</launch>\n\n```\nAs in the case of the `.world` file, the `.launch` files are also based on XML. The structure for the launch files has two parts - \n\n- First, define arguments using the `<arg>` element. Each such element will have a `name` attribute and a `default` value.\n- Second, include the `world.launch` file from the `gazebo_ros` package. The [empty_world](https://github.com/ros-simulation/gazebo_ros_pkgs/blob/kinetic-devel/gazebo_ros/launch/empty_world.launch) file includes a set of important definitions that are inherited by the world that we create. Using the `world_name` argument and the path to your `.world` file passed as the `value` to that argument, you will be able to launch your world in Gazebo.\n\n## Launch `empty.world`\n\n``` sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781602,
+              "key": "72cb8651-562b-47e0-82fa-7c4fe832725f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b23a_gazebo-empty-world/gazebo-empty-world.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72cb8651-562b-47e0-82fa-7c4fe832725f",
+              "caption": "Empty Gazebo world with a sun shining from the top!\n",
+              "alt": "Empty Gazebo world with a sun shining from the top!\n",
+              "width": 3830,
+              "height": 1986,
+              "instructor_notes": null
+            },
+            {
+              "id": 781603,
+              "key": "b3b79bb0-e795-4d95-a8b0-c7fd7a05ea6a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It does look a bit bland, but don't worry, there will soon be a different world for your robot to explore!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781604,
+              "key": "497e41a6-0cad-4718-b854-8bfb705f26cc",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "497e41a6-0cad-4718-b854-8bfb705f26cc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Package setup: Create a `catkin_ws` to store ROS packages",
+                "Package setup: Create the `my_robot` package inside `catkin_ws/src`",
+                "Package setup: Create a `worlds` and `launch` directory inside `my_robot` package",
+                "Gazebo world file: Create an `empty.world` Gazebo world file",
+                "ROS Launch file: Create a launch file to launch the `empty.world` file",
+                "ROS Launch file: Launch the `empty.world` file with ROS"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to set up the `my_robot` package"
+            }
+          ]
+        },
+        {
+          "id": 781607,
+          "key": "be60a8cc-19bd-4df2-a53a-86fd3eccc183",
+          "title": "Understanding URDF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be60a8cc-19bd-4df2-a53a-86fd3eccc183",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781705,
+              "key": "64def6e8-1911-47cf-9bde-a8fd0f46795a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Understanding Unified Robot Description Format (URDF)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781606,
+              "key": "ceebb210-bf36-46d8-946f-5a95ce93656f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the Build My World project, you used the **Model Editor** tool in Gazebo to model a robot with the Simulation Description Format, or **SDF**. Now that you are working with ROS, you have to model a robot with the Unified Robot Description Format, or **URDF**. Both of these formats use [**XML**](https://www.w3schools.com/xml/xml_whatis.asp) markup language. We can use a URDF file to define a robot model, its kinodynamic properties, visual elements and even model sensors for the robot. URDF can only describe a robot with rigid links connected by joints in a chain or tree structure. It cannot describe a robot with flexible or parallel links.  \n\nA simple robot with two links and a joint can be described using URDF as follows:\n\n```\n<?xml version=\"1.0\"?>\n<robot name=\"two_link_robot\">\n  <!--Links-->\n  <link name=\"link_1\">\n    <visual>\n      <geometry>\n        <cylinder length=\"0.5\" radius=\"0.2\"/>\n      </geometry>\n    </visual>\n  </link>\n  <link name=\"link_2\">\n    <visual>\n      <geometry>\n        <box size=\"0.6 0.1 0.2\"/>\n      </geometry>\n    </visual>\n  </link>\n  <!--Joints-->\n  <joint name=\"joint_1\" type=\"continuous\">\n    <parent link=\"link_1\"/>\n    <child link=\"link_2\"/>\n  </joint>\n</robot>\n```\n\nSince we use URDF files to describe several robot and environmental properties, the files tend to be long and tedious. This is why we use Xacro (XML Macros) to divide our single URDF file into multiple Xacro files. While the syntax remains the same, we can now divide our robot description into smaller subsystems. \n\nSince URDF (and Xacro) files are basically XML, they use tags to define robot geometry and properties. The most important and commonly used tags with their elements are described below:\n\n## `<robot>` `</robot>`\n\nThis is a top level tag that contains all the other tags related to a given robot. \n\n## `<link>` `</link>`\n\nEach rigid link in a robot must have this tag associated with it. \n\n### Attributes\n**name**: Requires a unique link name attribute.\n### Elements \n\n#### `<visual>` `</visual>`\n\nThis element specifies the appearance of the object for visualization purposes.\n\n| **Name** | **Description** |\n|----------------|-----------------------|\n| `<origin>` |The reference frame of the visual element with respect to the reference frame of the link. |\n| `<geometry>` | The shape of the visual object. |\n| `<material>` | The material of the visual element. | \n\n#### `<collision>` `</collision>`\nThe collision properties of a link. Note that this can be different from the visual properties of a link, for example, simpler collision models are often used to reduce computation time. \n\n| **Name** | **Description** |\n|----------------|-----------------------|\n| `<origin>` |The reference frame of the collision element, relative to the reference frame of the link. |\n| `<geometry>` | See the geometry description in the above visual element. |     \n\n#### `<inertial>` `</inertial>`\nThe inertial properties of the link are described within this tag.\n\n| **Name** | **Description** |\n|----------------|-----------------------|\n| `<origin>` |This is the pose of the inertial reference frame, relative to the link reference frame. The origin of the inertial reference frame needs to be at the center of gravity. |\n| `<mass>`  | The mass of the link is represented by the value attribute of this element. |\n| `<inertia>` | The 3x3 rotational inertia matrix, represented in the inertia frame. Because the rotational inertia matrix is symmetric, only 6 above-diagonal elements of this matrix are specified here, using the attributes ixx, ixy, ixz, iyy, iyz, izz. |\nExample snippet for `<link>` tag with important elements:\n```\n  <link name=\"link_1\">\n    <inertial>\n      <origin xyz=\"0 0 0.4\" rpy=\"0 0 0\"/>\n      <mass value=\"${mass1}\"/>\n      <inertia ixx=\"30\" ixy=\"0\" ixz=\"0\" iyy=\"50\" iyz=\"0\" izz=\"50\"/>\n    </inertial>\n    <visual>\n      <origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>\n      <geometry>\n        <mesh filename=\"package://kuka_arm/meshes/kr210l150/visual/link_1.dae\"/>\n      </geometry>\n      <material name=\"\">\n        <color rgba=\"0.75294 0.75294 0.75294 1\"/>\n      </material>\n    </visual>\n    <collision>\n      <origin xyz=\"0 0 0\" rpy=\"0 0 0\"/>\n      <geometry>\n        <mesh filename=\"package://kuka_arm/meshes/kr210l150/collision/link_1.stl\"/>\n      </geometry>\n    </collision>\n  </link>\n```\n\nThe `<link>` tag has many more optional elements that can be used to define other properties like color, material, texture, etc. Refer [this link](http://wiki.ros.org/urdf/XML/link) for details on those tags.\n\n## `<joint>` `</joint>`\n\nThis tag typically defines a single joint between two links in a robot. The type of joints you can define using this tag include:\n\n| **Name** | **Description** |\n|------------|----------------------|\n| Fixed | Rigid joint with no degrees of freedom. Used to **weld** links together. |\n| Revolute | A range-limited joint that rotates about an axis. |\n| Prismatic | A range-limited joint that slides along an axis |\n| Continuous | Similar to **Revolute** joint but has no limits. It can rotate continuously about an axis.  |\n| Planar | A 2D **Prismatic** joint that allows motion in a plane perpendicular to an axis. |\n| Floating | A joint with 6 degrees of freedom, generally used for Quadrotors and UAVs |\n\n\n### Attributes\n**name** Unique joint name\n\n**type** Type of joint\n\n### Elements\nTo define a joint, we need to declare the axis of rotation/translation and the relationship between the two links that form the joint.\n\n| **Name** | **Description** | \n|------------|----------------------|\n| `<origin>` | This is the transform from the parent link to the child link. The joint is located at the origin of the child link. |\n| `<parent>` | Name of the Parent link for the respective joint. |\n| `<child>` | Name of the child link for the respective joint. |                                                                                                  \n| `<axis>`   | Defines the axis of rotation for revolute joints, the axis of translation for prismatic joints, and the surface normal for planar joints. Fixed and floating joints do not use the axis field. |\n\nExample snippet for `<joint>` tag with important elements:\n```\n<joint name=\"joint_2\" type=\"revolute\">\n  <origin xyz=\"0.35 0 0.42\" rpy=\"0 0 0\"/>\n  <parent link=\"link_1\"/>\n  <child link=\"link_2\"/>\n  <axis xyz=\"0 1 0\"/>\n</joint>\n```\nOther optional elements under the `<joint>` tag can be [found here](http://wiki.ros.org/urdf/XML/joint). \n\nThere are many more optional tags and attributes that help to define various dynamic and kinematic properties of a robot, along with sensors and actuators. For a full list, refer to the [ROS documentation on URDF](http://wiki.ros.org/urdf).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 781612,
+          "key": "856f47de-1292-4f3d-854a-95996f68c562",
+          "title": "Robot Basic Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "856f47de-1292-4f3d-854a-95996f68c562",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781706,
+              "key": "000ddcad-8deb-4efe-b9ff-e736ac3df851",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Robot Basic Setup",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781608,
+              "key": "50e3dbd2-b090-4ad5-a5cc-473aaeb9af36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let’s build a basic mobile robot model by creating a URDF file and launch it inside an empty Gazebo world.\n\nWe can break the effort down into smaller components - a robot base, wheels, and sensors.\n\nFor this model, we will create a cuboidal base with two caster wheels. The caster wheels will help stabilize this model. They aren't always required, but they can help with weight distribution, preventing the robot from tilting along the z-axis.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781609,
+              "key": "8f5310ab-b247-45ae-afdf-797336677a67",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b28c_gazebo-robot-base-castors/gazebo-robot-base-castors.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f5310ab-b247-45ae-afdf-797336677a67",
+              "caption": "Robot base with two castor wheels",
+              "alt": "Robot base with two castor wheels",
+              "width": 1731,
+              "height": 1093,
+              "instructor_notes": null
+            },
+            {
+              "id": 781610,
+              "key": "2c768a15-2ac7-42bf-abad-aee7dd4cea19",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create the **URDF** File\n\n**1- Create a `urdf` directory in the `my_robot` package**\n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/\n$ mkdir urdf\n```\n\n**2- Create the robot’s `xacro` file inside the `urdf` directory**\n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/urdf/\n$ touch my_robot.xacro\n```\n\n**3- Copy the following code into `my_robot.xacro` file**\n```\n<?xml version='1.0'?>\n\n<robot name=\"my_robot\" xmlns:xacro=\"http://www.ros.org/wiki/xacro\">\n\n  <link name=\"robot_footprint\"></link>\n\n  <joint name=\"robot_footprint_joint\" type=\"fixed\">\n    <origin xyz=\"0 0 0\" rpy=\"0 0 0\" />\n    <parent link=\"robot_footprint\"/>\n    <child link=\"chassis\" />\n  </joint>\n\n  <link name='chassis'>\n    <pose>0 0 0.1 0 0 0</pose>\n\n    <inertial>\n      <mass value=\"15.0\"/>\n      <origin xyz=\"0.0 0 0\" rpy=\" 0 0 0\"/>\n      <inertia\n          ixx=\"0.1\" ixy=\"0\" ixz=\"0\"\n          iyy=\"0.1\" iyz=\"0\"\n          izz=\"0.1\"\n      />\n    </inertial>\n\n    <collision name='collision'>\n      <origin xyz=\"0 0 0\" rpy=\" 0 0 0\"/> \n      <geometry>\n        <box size=\".4 .2 .1\"/>\n      </geometry>\n    </collision>\n\n    <visual name='chassis_visual'>\n      <origin xyz=\"0 0 0\" rpy=\" 0 0 0\"/>\n      <geometry>\n        <box size=\".4 .2 .1\"/>\n      </geometry>\n    </visual>\n\n\n    <collision name='back_caster_collision'>\n      <origin xyz=\"-0.15 0 -0.05\" rpy=\" 0 0 0\"/>\n      <geometry>\n        <sphere radius=\"0.0499\"/>\n      </geometry>\n    </collision>\n\n    <visual name='back_caster_visual'>\n      <origin xyz=\"-0.15 0 -0.05\" rpy=\" 0 0 0\"/>\n      <geometry>\n        <sphere radius=\"0.05\"/>\n      </geometry>\n    </visual>\n\n    <collision name='front_caster_collision'>\n      <origin xyz=\"0.15 0 -0.05\" rpy=\" 0 0 0\"/>\n      <geometry>\n        <sphere radius=\"0.0499\"/>\n      </geometry>\n    </collision>\n\n    <visual name='front_caster_visual'>\n      <origin xyz=\"0.15 0 -0.05\" rpy=\" 0 0 0\"/>\n      <geometry>\n        <sphere radius=\"0.05\"/>\n      </geometry>\n    </visual>\n\n  </link>\n\n</robot>\n\n```\n\nWe have a single link, with the `name` defined as \"chassis\", encompassing the base as well as the caster wheels. Every link has specific elements, such as the `inertial` or the `collision` elements. You can quickly review the details of these elements covered in the previous section. The chassis is a cube, whereas the casters are spherical, as denoted by their `<geometry>` tags. Each link (or joint) has an origin (or pose), as well. Every element of that link or joint will have its own origin, which will be relative to the link's frame of reference.\n\nFor this base, the casters are included as part of the link for stability. There is no need for any additional links to define the casters, and therefore no joints to connect them. The casters do, however, have `friction` coefficients defined for them. These friction coefficients are set to 0, to allow for free motion while moving. \n\n## Launch the Robot\n\nNow that you’ve built the basic robot model, let’s create a launch file to load it inside an empty Gazebo world.\n\n**1- Create a new launch file to load the `URDF` model file**\n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/launch/\n$ touch robot_description.launch\n```\n**2- Copy the following code into `robot_description.launch` file**\n```\n<?xml version=\"1.0\"?>\n<launch>\n\n  <!-- send urdf to param server -->\n  <param name=\"robot_description\" command=\"$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'\" />\n\n</launch>\n```\n\nTo generate the URDF file from the Xacro file, you must first define a parameter, `robot_description`. This parameter will set a single command to use the [xacro package](http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File) to generate the URDF from the xacro file. \n\n### 3- Update the `world.launch` file created earlier so that Gazebo can load the robot `URDF` model\n\nAdd the following to the launch file (after `<launch>`):\n\n```\n  <!-- Robot pose -->\n  <arg name=\"x\" default=\"0\"/>\n  <arg name=\"y\" default=\"0\"/>\n  <arg name=\"z\" default=\"0\"/>\n  <arg name=\"roll\" default=\"0\"/>\n  <arg name=\"pitch\" default=\"0\"/>\n  <arg name=\"yaw\" default=\"0\"/>\n    \n  <!-- Launch other relevant files-->\n  <include file=\"$(find my_robot)/launch/robot_description.launch\"/>\n\n```\n\n__Note: If you have copied your gazebo world from Project 1 then you could skip this step, since you already have `my_robot` in your Gazebo world.__\n\nAdd the following to the launch file (before `</launch>`):\n\n```\n<!-- Find my robot Description-->\n  <param name=\"robot_description\" command=\"$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'\"/>\n\n  <!-- Spawn My Robot -->\n  <node name=\"urdf_spawner\" pkg=\"gazebo_ros\" type=\"spawn_model\" respawn=\"false\" output=\"screen\" \n        args=\"-urdf -param robot_description -model my_robot \n              -x $(arg x) -y $(arg y) -z $(arg z)\n              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)\"/>\n\n```\n\nThe [gazebo_ros package](http://wiki.ros.org/gazebo_ros) spawns the model from the URDF that `robot_description` helps generate.\n\n## Launch\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```\n**Note**: Launching Gazebo for the first time with a model can take time for everything to load up.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781611,
+              "key": "1142b4f4-f3a9-489c-920f-1bc32e49a9eb",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1142b4f4-f3a9-489c-920f-1bc32e49a9eb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "URDF file setup: Create a `urdf` directory in `my_robot`",
+                "URDF file setup: Create the robot `xacro` file inside the `urdf` directory",
+                "Launch file setup: Create a `robot_description.launch` file to load the robot model",
+                "Launch file setup: Update the `world.launch` file created earlier to spawn the model",
+                "Launch: Launch the `world.launch` file and visualize the basic robot model in a Gazebo empty world"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to model a basic robot with a URDF file"
+            }
+          ]
+        },
+        {
+          "id": 781619,
+          "key": "ba17fbd1-282d-4297-8730-4cc6b464a0a7",
+          "title": "Robot Enhancements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ba17fbd1-282d-4297-8730-4cc6b464a0a7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781707,
+              "key": "e758fa40-b703-4705-85ae-7b1145cbf7e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Robot Enhancement",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781613,
+              "key": "c2d269b3-86ab-406d-afd2-4146a59d2396",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you’ve built a basic model of your robot, enhance it and add wheels. Each wheel is represented as a `link` and is connected to the base link (the chassis) with a `joint`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781614,
+              "key": "a7e614d2-9c70-4d7e-b212-306b29616c7e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b2be_gazebo-robot/gazebo-robot.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a7e614d2-9c70-4d7e-b212-306b29616c7e",
+              "caption": "",
+              "alt": "",
+              "width": 1229,
+              "height": 675,
+              "instructor_notes": null
+            },
+            {
+              "id": 781615,
+              "key": "f36e389a-5e5b-4b2c-b15e-7193b53fe46c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create Wheel `Links`\nYou will first create the links for each wheel using the specifications given below and add that to your Xacro file. For each wheel, you will have a `collision`, `inertial`, and `visual` element, along with the following properties: \n\n- `link name` - \"SIDE_wheel\", where the SIDE is either left or right.\n-  `geometry` - \"cylinder\" with radius 0.1 and length 0.05.\n- `origin` for each element - [0, 0, 0, 0, 1.5707, 1.5707]\n- `mass` of each wheel - \"5\".\n- You can use the same `inertia` values as the ones for the chassis for simplicity:\n          ixx=\"0.1\" ixy=\"0\" ixz=\"0\"\n          iyy=\"0.1\" iyz=\"0\"\n          izz=\"0.1\"\n\n\n## Create `Joints` for the two wheels\nOnce define the links, you need to create the corresponding joints. The following elements will create a joint between your left wheel (the child link) and the robot chassis (the parent link):\n\n```\n  <joint type=\"continuous\" name=\"left_wheel_hinge\">\n    <origin xyz=\"0 0.15 0\" rpy=\"0 0 0\"/>\n    <child link=\"left_wheel\"/>\n    <parent link=\"chassis\"/>\n    <axis xyz=\"0 1 0\" rpy=\"0 0 0\"/>\n    <limit effort=\"10000\" velocity=\"1000\"/>\n    <dynamics damping=\"1.0\" friction=\"1.0\"/>\n  </joint>\n```\n\nThe `joint type` is set to \"continuous\" and is similar to a revolute joint but has no limits on its rotation. This means that the joint can rotate continuously. The joint will have its own `axis` of rotation. Also, the joint will have certain `limits` to enforce the maximum \"effort\" and \"velocity\" for that joint. The limits are useful constraints in for a real robot and can help in simulation as well. ROS has [good documentation on safety limits](http://wiki.ros.org/pr2_controller_manager/safety_limits). In addition, the joint will have specific joint `dynamics` that correspond to the physical properties of the joint like \"damping\" and “friction”.\n\nAdd the left wheel joint to your Xacro file. Then use it as a template to create the joint between the right wheel and the chassis.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781616,
+              "key": "25f2419a-c69f-4507-8a48-0595093d7e19",
+              "title": "Robot Enhancements",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "25f2419a-c69f-4507-8a48-0595093d7e19",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What elements or values did you have to modify to create the right wheel joint using the left wheel joint as the template?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Joint properties",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Child link",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Position (origin)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Orientation (origin)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "Parent link",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 781617,
+              "key": "384e766a-6d5c-4435-be34-ddbcfd269c0a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Launch\nExcellent work! You can now launch the `empty.world` file to visualize your enhanced robot model in Gazebo.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781618,
+              "key": "4059d6ab-2480-4622-84ed-698ea8cf65b0",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4059d6ab-2480-4622-84ed-698ea8cf65b0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Link: Create a left wheel link wheel with a collision, inertial, and visual element",
+                "Link: Create a right wheel link wheel with a collision, inertial, and visual element",
+                "Joint: Create a left wheel joint",
+                "Joint: Create a right wheel joint",
+                "Launch: Launch `world.launch` file and visualize the enhanced robot"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to enhance the basic robot model created earlier."
+            }
+          ]
+        },
+        {
+          "id": 781629,
+          "key": "5dd60615-9674-4fef-ac65-d3b2847ab1a1",
+          "title": "Robot Sensors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5dd60615-9674-4fef-ac65-d3b2847ab1a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781709,
+              "key": "8f2ae4fb-ced5-4c9f-8e7e-0777a43ed48f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Robot Sensors",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781620,
+              "key": "27a85205-124e-4d42-8b00-3030004e916d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Earlier, you built a very basic robot model by creating its own URDF file. Then, you enhanced the model and added a wheel and a joint on each side of the chassis. Now, it’s time to add sensors to our robot so it can perceive its surroundings. You’ll add two sensors - a **camera** and a **lidar**. \n\n## Sensors\n\n**Camera:** Cameras are one of the most common sensors in Robotics. They capture information that is easily interpreted by humans at a high resolution compared to other sensors. Every image captures millions of pixels. To extract depth information from camera images, people have started using stereo cameras. These work like your eyes do and are able to estimate distances to objects.\n\n**Lidar:** Lidar stands for Light Detection and Ranging. It uses arrays of lasers to sense “point cloud” models of the environment. By measuring thousands of millions of times per second, lidar builds an accurate model of the world. However, the resolution is not nearly as high as that of a camera. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781621,
+              "key": "74f9b6f2-af35-4485-b04d-3099ecea4af2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b2dd_robot-enhanced-with-sensors/robot-enhanced-with-sensors.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/74f9b6f2-af35-4485-b04d-3099ecea4af2",
+              "caption": "",
+              "alt": "",
+              "width": 493,
+              "height": 424,
+              "instructor_notes": null
+            },
+            {
+              "id": 781622,
+              "key": "76a00a87-7481-4391-b6c3-03a653e3e2fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add a **Camera**\n\nFirst, add the camera link and a corresponding joint. Open the `my_robot.xacro` file and add a camera sensor based on the following specifications:\n\n- `link name` - \"camera\"\n- `link origin` - \"[0, 0, 0, 0, 0, 0]\"\n- `geometry` - box with size \"[0.05, 0.05, 0.05]\"\n- `mass` - \"0.1\"\n- `box_inertia` - m=\"0.1\" x=\"0.05\" y=\"0.05\" z=\"0.05\" \n- `inertia` - ixx=\"1e-6\" ixy=\"0\" ixz=\"0\" iyy=\"1e-6\" iyz=\"0\" izz=\"1e-6\"\n\n- `joint name` - \"camera_joint\"\n- `joint type` - \"fixed\"\n- `joint axis` - \"[0, 1, 0]\"\n- `joint origin` - \"[0.2, 0, 0, 0, 0, 0]\"\n- `joint parent link` - \"chassis\"\n- `joint child link` - \"camera\"\n\nAs we covered in the previous section, each link should have its own `visual`, `collision` and `inertial` elements.\n\n## Add a **Lidar**\n\nNow, let's add the lidar sensor. ROS supports many different types of [sensors](http://wiki.ros.org/Sensors#A2D_range_finders). One of them, that you will use for this robot and for the project, is the Hokuyo rangefinder sensor. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781623,
+              "key": "8ca04f7f-1599-4eac-9325-914451633bcb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b2ed_hokuyo-lidar-sensor/hokuyo-lidar-sensor.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8ca04f7f-1599-4eac-9325-914451633bcb",
+              "caption": "",
+              "alt": "",
+              "width": 750,
+              "height": 750,
+              "instructor_notes": null
+            },
+            {
+              "id": 781624,
+              "key": "fd216572-e9dd-472a-9a86-b91f335655a9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The Hokuyo sensor can be added to your robot model just like the camera sensor, except that you first need to add a mesh file to your robot model. Mesh files define the shape of the object or model you are working with. There are some basic shapes, like the box or cylinder, that do not require a mesh file. However, for more advanced designs, mesh files are necessary. The mesh file should be located in a directory called `meshes` that you can create in your package folder, `my_robot`. \n\n**1- Create `meshes` directory**\n\nLet’s create a `meshes` directory in `my_robot` to hold sensor mesh files: \n```sh\n$ cd /home/workspace/catkin_ws/src/my_robot/\n$ mkdir meshes\n```\n**2- Now, download this [hokuyo.dae](https://s3-us-west-1.amazonaws.com/udacity-robotics/hokuyo.dae) file and place it under the `meshes` directory you just created.**\n\nWondering where I got the mesh file for the Hokuyo sensor? Gazebo shares the mesh files for its [entire library of models](http://models.gazebosim.org/). \n\n\n**3- Add the Hokuyo sensor to `my_robot.xacro`**\n\nHere are the Hokuyo lidar sensor specifications:\n\n- `link name` - \"hokuyo\"\n- `link origin` - \"[0, 0, 0, 0, 0, 0]\"\n- `geometry` for `<collision>` - box with size \"[0.1, 0.1, 0.1]\" \n- `geometry` for `<visual>` - filename = “package://my_robot/meshes/hokuyo.dae”\n- `mass` - \"1e-5\"\n- `inertia` - ixx=\"1e-6\" ixy=\"0\" ixz=\"0\" iyy=\"1e-6\" iyz=\"0\" izz=\"1e-6\"\n\n- `joint name` - \"hokuyo_joint\"\n- `joint type` - \"fixed\"\n- `joint axis` - \"[0 1 0]\"\n- `joint origin` - \"[0.15, 0, .1, 0, 0, 0]\"\n- `joint parent link` - \"chassis\"\n- `joint child link` - \"hokuyo\"\n\nAs we covered in the previous section, each link should have its own `visual`, `collision` and `inertial` elements.\n\n## Launch\nExcellent work! You created a robot model and added sensors to it. Now you can test your updated model in Gazebo: \n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```\nNow, let's see what your model looks like!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781625,
+              "key": "cd5bc451-2a02-4bf6-b244-acdb6b327a0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b308_gazebo-robot-color/gazebo-robot-color.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cd5bc451-2a02-4bf6-b244-acdb6b327a0c",
+              "caption": "",
+              "alt": "",
+              "width": 1387,
+              "height": 750,
+              "instructor_notes": null
+            },
+            {
+              "id": 781626,
+              "key": "33319ff5-7b32-4227-a74f-78894ce7972a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Wait, something's definitely wrong here.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781627,
+              "key": "1e5cbe25-387a-417f-85f8-4cd02ef74775",
+              "title": "Robot Sensors",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1e5cbe25-387a-417f-85f8-4cd02ef74775",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What element would you have to add to your Xacro file to give your robot some color?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "material",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "model",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "light",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 781628,
+              "key": "1c82c347-085f-4bf9-a7ea-2fe31e7280ed",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1c82c347-085f-4bf9-a7ea-2fe31e7280ed",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Camera: Create a camera link with a collision, inertial, and visual element",
+                "Camera: Create a camera joint",
+                "Lidar: Create a `meshes` directory in `my_robot`",
+                "Lidar: Add `hokuyo.dae` to `meshes`",
+                "Lidar: Create a Hokuyo link with a collision, inertial, and visual element",
+                "Lidar: Create a Hokuyo joint",
+                "Launch: Launch `empty.world` file and visualize the robot’s newest features"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to add two sensors to your robot:"
+            }
+          ]
+        },
+        {
+          "id": 781632,
+          "key": "da36a836-b5c0-457f-b545-1b3104b501d5",
+          "title": "Gazebo Plugins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "da36a836-b5c0-457f-b545-1b3104b501d5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781710,
+              "key": "e1c26db0-77c1-4b07-9149-f3ad578e4eaa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gazebo Plugins",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781630,
+              "key": "a8b8434f-9221-4d58-a92b-4a728b1ad335",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You added sensors to your robot, allowing it to visualize the world around it! But how exactly does the **camera** sensor takes those images in simulation? How does a **lidar** sensor take laser measurements in simulation? How exactly does your robot **move** in a simulated environment? \n\nURDF in itself can't help with that. However, Gazebo allows for plugins that implement specific use-cases. \n\n## Sensor and Actuators Plugins\nWe will cover the use of three such plugins:\n\n- A plugin for the **camera** sensor.\n- A plugin for the **Hokuyo lidar** sensor.\n- A plugin for the **wheel joints** actuator.\n\n## Add Plugins\n\nDownload the [my_robot.gazebo](https://s3-us-west-1.amazonaws.com/udacity-robotics/my_robot.gazebo) file, which includes the 3 plugins mentioned above, and place it inside the `urdf` directory of `my_robot`.\n \n## Gazebo Plugin Files\n\nSince we have a two-wheeled mobile robot, we will use a plugin that implements a differential drive controller. Let's take a look at how the plugin is defined in the `my_robot.gazebo` file.\n\n```\n  <gazebo>\n    <plugin name=\"differential_drive_controller\" filename=\"libgazebo_ros_diff_drive.so\">\n      <legacyMode>false</legacyMode>\n      <alwaysOn>true</alwaysOn>\n      <updateRate>10</updateRate>\n      <leftJoint>left_wheel_hinge</leftJoint>\n      <rightJoint>right_wheel_hinge</rightJoint>\n      <wheelSeparation>0.4</wheelSeparation>\n      <wheelDiameter>0.2</wheelDiameter>\n      <torque>10</torque>\n      <commandTopic>cmd_vel</commandTopic>\n      <odometryTopic>odom</odometryTopic>\n      <odometryFrame>odom</odometryFrame>\n      <robotBaseFrame>robot_footprint</robotBaseFrame>\n      <publishWheelTF>false</publishWheelTF>\n      <publishWheelJointState>false</publishWheelJointState>\n      <rosDebugLevel>na</rosDebugLevel>\n      <wheelAcceleration>0</wheelAcceleration>\n      <wheelTorque>5</wheelTorque>\n      <odometrySource>world</odometrySource>\n      <publishTf>1</publishTf>\n      <publishOdomTF>true</publishOdomTF>\n    </plugin>\n  </gazebo>\n```\n\n`libgazebo_ros_diff_drive.so` is the shared object file created from compiling the C++ source code. The plugin accepts information specific to your robot's model, such as wheel separation, joint names, and more. Then it calculates and publishes the robot's odometry information to the topics that you specified, like `odom`. In an upcoming section, you will send velocity commands to your robot to move it in a specific direction. This controller helps achieve that result.\n\nIf you'd like to understand how this plugin was created, you can refer to its C++ [source code](https://bitbucket.org/osrf/gazebo/src/afe08834571835008fa7419f1feba5b7f89b9d62/plugins/DiffDrivePlugin.cc?at=gazebo7&fileviewer=file-view-default). \n\nGazebo already has several such plugins publicly available. We will utilize the preexisting plugins for the [camera sensor](http://gazebosim.org/tutorials?tut=ros_gzplugins#Camera) and the preexisting plugins for the Hokuyo lidar sensor. Both of these are already included in the `my_robot.gazebo` file linked previously.\n\n## ROS Communication\n\nYou need to define the topics to which each sensor publishes. \n\nFor the wheel joints, it's the `cmd_vel` topic.\n\n```\n<commandTopic>cmd_vel</commandTopic>\n```\n\nFor the camera, it's the `rgb/image_raw` topic.\n\n```\n<imageTopicName>rgb/image_raw</imageTopicName>\n```\n\nAnd for the lidar, it's the `scan` topic\n```\n<topicName>/scan</topicName>\n```\n\n## Import Plugins\n\nBefore we proceed to test these sensors and actuators with ROS, you need to make sure that your plugins are imported by your URDF `my_robot.xacro` file as well.\nImport the sensors plugins by adding the following code to the top of the file (immediately before you define the `robot_footprint` link):\n\n```\n<xacro:include filename=\"$(find my_robot)/urdf/my_robot.gazebo\" />\n```\n\n## Next\n\nNow, you’re ready to test these sensors with ROS!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781631,
+              "key": "fee68b15-a131-4181-ab23-a175b1e33e21",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fee68b15-a131-4181-ab23-a175b1e33e21",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a `my_robot.gazebo` file in the `urdf` directory of `my_robot`",
+                "Include the `my_robot.gazebo` file in `my_robot.xacro` file"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to add the Gazebo sensor plugins to your robot:"
+            }
+          ]
+        },
+        {
+          "id": 781638,
+          "key": "29a89470-51e0-4b5f-8ebb-20f23f20f65d",
+          "title": "RViz Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "29a89470-51e0-4b5f-8ebb-20f23f20f65d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781633,
+              "key": "51648688-617d-43d0-b7f1-1a2e7d98b90b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# RViz Basics",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781634,
+              "key": "25f9fcc2-dd59-4fcf-80d6-b82578c419c4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b324_rviz/rviz.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/25f9fcc2-dd59-4fcf-80d6-b82578c419c4",
+              "caption": "",
+              "alt": "",
+              "width": 400,
+              "height": 260,
+              "instructor_notes": null
+            },
+            {
+              "id": 781635,
+              "key": "5345c899-2afd-49b2-a1ef-7d739f932d7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## RViz\n\nRViz stands for ROS Visualization. RViz is our one-stop tool to visualize all three core aspects of a robot: perception, decision-making, and actuation.\n\nWhile Gazebo is a physics simulator, RViz can visualize any type of sensor data being published over a ROS topic: camera images, point clouds, ultrasonic measurements, lidar data, inertial measurements, and more. This data can be a live stream directly from the sensor or pre-recorded data stored as a **bagfile**. \n\nYou can also visualize live joint angle values from a robot and hence construct a real-time 3D representation of any robot. Having said that, RViz is not a simulator and does not interface with a physics engine. So RViz models neither collisions nor dynamics. RViz is not an alternative to Gazebo, but rather a complementary tool to keep an eye on every single process under the hood of a robotic system.\n\n## Running RViz\n\nSince RViz is a ROS package, it requires roscore. In a terminal spin up roscore:\n```\n$ roscore\n```\nIn another terminal, run rviz:\n```\n$ rosrun rviz rviz\n```\n“rviz” is a node located in an “rviz” package. Once launched, RViz should look something like this:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781636,
+              "key": "65a4ecd2-a41b-4855-bd4a-a6098491f69a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b341_rviz-anonotated/rviz-anonotated.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/65a4ecd2-a41b-4855-bd4a-a6098491f69a",
+              "caption": "",
+              "alt": "",
+              "width": 2667,
+              "height": 1500,
+              "instructor_notes": null
+            },
+            {
+              "id": 781637,
+              "key": "38743632-b3be-44ca-aebf-4df926edd80c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The empty window in the center is called **3D view**. This is where you will spend most of your time observing the robot model, the sensors, and other meta-data. \n\nThe panel on the left is a list of loaded **displays**, while the one on the right shows different **views** available. \n\nAt the top we have a number of useful **tools**. The bottom bar displays information like time elapsed, frames per second, and some handy instructions for the selected tool.\n\n## Displays\n\nFor anything to appear in the **3D view**, you first need to load a proper display. A display could be as simple as a basic 3D shape or a complex robot model. \n\nDisplays can also be used to visualize sensor data streams like 3D point clouds, lidar scans, or depth images. \n\nRViz by default starts with two fixed property fields that cannot be removed: **Global Options** and **Global Status**. One governs simple global settings, while the other detects and displays useful status notifications.\n\nFor more information on RViz, check out their official guide [here](http://wiki.ros.org/rviz/UserGuide). ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 781644,
+          "key": "ce4559b3-3a72-4284-9973-fa53da7e3f4b",
+          "title": "RViz Integration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ce4559b3-3a72-4284-9973-fa53da7e3f4b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781639,
+              "key": "f05a5a59-8bec-4b27-875a-3321c0fd8332",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# RViz Integration",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781640,
+              "key": "63376b4c-09e7-497e-a00d-6cd02ec89853",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this section, you will display your model into RViz and visualize data from the **camera** and **lidar** sensors. You will also **actuate** your robot and drive it around!\n\n## Modify robot_description\n\nStart by modifying the `robot_description.launch` file. Open it and add these lines after the first `param` definition.\n\n```\n  <!-- Send fake joint values-->\n  <node name=\"joint_state_publisher\" pkg=\"joint_state_publisher\" type=\"joint_state_publisher\">\n    <param name=\"use_gui\" value=\"false\"/>\n  </node>\n \n  <!-- Send robot states to tf -->\n  <node name=\"robot_state_publisher\" pkg=\"robot_state_publisher\" type=\"robot_state_publisher\" respawn=\"false\" output=\"screen\"/>\n```\n\nThose elements add two nodes - the **joint_state_publisher** and the **robot_state_publisher**. \n* `joint_state_publisher`:  Publishes joint state messages for the robot, such as the angles for the non-fixed joints. \n* `robot_state_publisher`: Publishes the robot's state to tf (transform tree). Your robot model has several frames corresponding to each link/joint. The robot_state_publisher publishes the 3D poses of all of these links. This offers a convenient and efficient advantage, especially for more complicated robots. \n\n## Modify `world.launch`\n\nNext, you need to launch RViz along with Gazebo. Open the `world.launch` file and add these elements after the `urdf_spawner` node definition:\n ```\n<!--launch rviz-->\n<node name=\"rviz\" pkg=\"rviz\" type=\"rviz\" respawn=\"false\"/>\n```\nThis will create a node that launches the package `rviz`. Let's launch it 🚀\n\n## Launch!\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```\nThis time both Gazebo and RViz should launch!\n\n### RViz Setup\n\nSetup RViz to visualize the sensor readings. On the left side of RViz, under `Displays`:\n- Select `odom` for **fixed frame**\n- Click the **Add** button and \n    - add `RobotModel` and your robot model should load up in RViz.\n    - add `Camera` and select the **Image topic** that was defined in the camera Gazebo plugin\n    - add `LaserScan` and select the **topic** that was defined in the Hokuyo Gazebo plugin\n\n### Add Objects\n\nIn Gazebo, add a box, sphere or cylinder object in front of your robot. Your robot’s sensors should be able to visualize it. You can check the `Camera` viewer on the bottom left side of RViz to see a picture of the new object. Also, you can see a red `Laser` scan inside the scene, reflecting from your object.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781641,
+              "key": "c9de0284-258e-457a-98e3-246f71602a1c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b362_robot-in-rviz/robot-in-rviz.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c9de0284-258e-457a-98e3-246f71602a1c",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 781642,
+              "key": "6076701c-bb3e-446b-93fd-cfbe70056d8f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Drive Around\n\nWhile everything above is still running, test the robot’s actuators and drive it around. Open a new terminal window and publish velocity commands to the robot’s wheel actuators:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rostopic pub /cmd_vel geometry_msgs/Twist  \"linear:\n  x: 0.1\n  y: 0.0\n  z: 0.0\nangular:\n  x: 0.0\n  y: 0.0\n  z: 0.1\" \n```\n\nThis command publishes messages to `cmd_vel`, a topic which was defined in the drive controller plugin. The values set for `linear.x` and `angular.z` will enable the robot to start moving in a circle!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781643,
+              "key": "4faf8c24-7b2d-4a34-9ead-aae030491dc0",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4faf8c24-7b2d-4a34-9ead-aae030491dc0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Launch file: Modify the `robot_description.launch` file and add the `joint_state_publisher` and `robot_state_publisher` nodes",
+                "Launch file: Modify the `world.launch` file and add the `rviz` node",
+                "Launch file: Launch `world.launch` file that will open both RViz and Gazebo",
+                "Rviz: Setup Rviz to visualize the robot and the sensors",
+                "Sensors test : In Gazebo, add objects in front of your robot",
+                "Actuators test : Publish to `/cmd_vel` to drive robot around"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to test the robot’s sensors and actuators with RViz:"
+            }
+          ]
+        },
+        {
+          "id": 781652,
+          "key": "3bd8dd08-33a5-4ebc-9876-35c472f6a808",
+          "title": "House your Robot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bd8dd08-33a5-4ebc-9876-35c472f6a808",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781712,
+              "key": "b611f00f-985c-4b9a-9bc3-ea71e9458d69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# House your Robot",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781645,
+              "key": "7f5450dc-db8f-4b25-8b24-25599915ef0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So far, you created a robot model from scratch, added sensors to it to visualize its surroundings, and developed a package to launch the robot in a simulated environment. That's a real accomplishment!\n\nBut you haven’t yet placed the robot in an environment. Let’s house it inside the world you built in **Build My World** project. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781646,
+              "key": "eda1e130-d00f-4f8a-97e0-54428e6b7f78",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc934f_screen-shot-2018-11-26-at-4.32.03-pm-2/screen-shot-2018-11-26-at-4.32.03-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eda1e130-d00f-4f8a-97e0-54428e6b7f78",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1073,
+              "instructor_notes": null
+            },
+            {
+              "id": 781647,
+              "key": "c533d59a-857a-41a0-8434-eebba36be37e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Adding the World File\n\nCopy the `<yourname>.world` file from the `world` directory of the ** Build My World** project and paste it in the `worlds` directory of `my_robot.` \n\nInside your package’s `worlds` directory you should now see two files - the `empty.world` that we created earlier and the `<yourname>.world` file that you just added. \n\nFeel free to delete the `empty.world` file. We won’t need it anymore. \n\n## Launch the World \n\nEdit the `world.launch` file and add a reference to the `<yourname>.world` file that you just added. To do so, open the `world.launch` file and edit this line: \n``` \n<arg name=\"world_file\" default=\"$(find my_robot)/worlds/empty.world\"/>\n```\nReplace it with this:\n```\n<arg name=\"world_file\" default=\"$(find my_robot)/worlds/<yourname>.world\"/>\n```\n\n## Launch!\n\nNow, that you’ve added your world file to the `my_robot` package, let’s launch and visualize our robot inside our home.\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781648,
+              "key": "9f30b1d7-93d1-43bd-9800-d1946d022fc7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc9382_screen-shot-2018-11-26-at-4.33.30-pm-2/screen-shot-2018-11-26-at-4.33.30-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9f30b1d7-93d1-43bd-9800-d1946d022fc7",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1072,
+              "instructor_notes": null
+            },
+            {
+              "id": 781649,
+              "key": "737da470-6d9d-44ab-8878-f34124cec9fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Initialize the Robot’s Position and Orientation\n\nAs you can see, my robot’s initial position is outside of my world! You might face the same problem. I have to change my robot’s initial pose: its position and orientation. This can be done through editing the `world.launch` file:\n```\n  <!-- Robot pose -->\n  <arg name=\"x\" default=\"0\"/>\n  <arg name=\"y\" default=\"0\"/>\n  <arg name=\"z\" default=\"0\"/>\n  <arg name=\"roll\" default=\"0\"/>\n  <arg name=\"pitch\" default=\"0\"/>\n  <arg name=\"yaw\" default=\"0\"/>\n```\nThe best way to figure out these numbers is to change the robot’s position and orientation within Gazebo, record its pose, and then update the launch file. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781650,
+              "key": "594e1342-42d4-4a5f-9ff8-51597db4f924",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc93a2_screen-shot-2018-11-26-at-4.29.06-pm-2/screen-shot-2018-11-26-at-4.29.06-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/594e1342-42d4-4a5f-9ff8-51597db4f924",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1069,
+              "instructor_notes": null
+            },
+            {
+              "id": 781651,
+              "key": "7e581d4e-e0db-4c24-ae9b-592acc4217fe",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7e581d4e-e0db-4c24-ae9b-592acc4217fe",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "World file: Add `<yourname>.world` to the `worlds` directory of `my_robot`",
+                "Launch file: Edit `world.launch` and include `<yourname>.world` instead of `empty.world`",
+                "Launch: Launch `world.launch` file, change your robot position and/or orientation and take note of it",
+                "Launch: Edit `world.launch` file, and change robot’s initial position and orientation",
+                "Launch: Relaunch `world.launch` file, and visualize your robot housed in your world"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to house your robot inside your world:"
+            }
+          ]
+        },
+        {
+          "id": 781655,
+          "key": "87cc05f2-e29a-4940-92e6-3dd4e6efbf65",
+          "title": "Setting up ball_chaser",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87cc05f2-e29a-4940-92e6-3dd4e6efbf65",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781714,
+              "key": "b65362c0-b2d5-4b92-9087-e509d1350eb5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Setting up ball_chaser",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781653,
+              "key": "9705cce8-4ac1-4dc0-add4-efe38a0cb21f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The second major task in this project is to create the ```ball_chaser``` ROS package. Within this package, you'll analyze the image captured by the camera to determine the position of a white ball. Then you’ll drive the robot toward the ball. The nodes in `ball_chaser` will communicate with the `my_robot` package by subscribing to the robot camera sensor and publishing to the robot’s wheel joints.\n\n## Package Nodes\n\nThe `ball_chaser` package will have two C++ nodes: the `drive_bot` and `process_image`\n\n* `drive_bot`: This server node will provide a `ball_chaser/command_robot` **service** to drive the robot around by controlling its linear x and angular z velocities. The service will **publish** a message containing the velocities to the wheel joints. \n* `process_image`: This client node will **subscribe** to the robot’s camera images and analyze each image to determine the position of the white ball. Once ball position is determined, the client node will request a service to drive the robot either left, right or forward.\n\nNow, follow along with the steps to set up `ball_chaser`.\n\n## Create the `ball_chaser` Package\n\n**1- Navigate to the `src` directory of your `catkin_ws` and create the `ball_chaser` package:**\n\nWe will be writing nodes in C++. Since we already know in advance that this package will contain C++ source code and messages, let’s create the package with those dependencies:\n```sh\n$ cd /home/workspace/catkin_ws/src/\n$ catkin_create_pkg ball_chaser roscpp std_msgs message_generation\n```\n\n**2- Next, create an `srv` and a `launch` folder, which will further define the structure of your package:**\n```sh\n$ cd /home/workspace/catkin_ws/src/ball_chaser/\n$ mkdir srv\n$ mkdir launch\n```\nRemember, `srv` is the directory where you store **service** files and **launch** is the directory where you store launch files. The `src` directory where you will store C++ programs is created by default. \n\n## Build the Package \n\n``` sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\nNow you should be ready to write some code!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781654,
+              "key": "ca54aa1b-5ae5-4ef3-a063-ea680f533c88",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ca54aa1b-5ae5-4ef3-a063-ea680f533c88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the `ball_chaser` package inside `catkin_ws/src`",
+                "Create an `src` and a `launch` directory in `ball_chaser`",
+                "Build `ball_chaser` package with ROS"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to set up the `ball_chaser` package:"
+            }
+          ]
+        },
+        {
+          "id": 781658,
+          "key": "1c2b47b5-87c9-4c2b-bff5-7e522eddbd51",
+          "title": "ROS Node: drive_bot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1c2b47b5-87c9-4c2b-bff5-7e522eddbd51",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781715,
+              "key": "04c524d0-8de9-4064-8a05-ede87f248681",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#  ROS Node: drive_bot",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781656,
+              "key": "6feb7d83-e806-4991-9893-b74c1fa277cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This server node provides a `ball_chaser/command_robot` **service** to drive the robot around by setting its linear x and angular z velocities. The service server **publishes** messages containing the velocities for the wheel joints. \n\nAfter writing this node, you will be able to request the `ball_chaser/command_robot` service, either from the terminal or from a client node, to drive the robot by controlling its linear x and angular z velocities. \n\n## Reference\n\nThe `drive_bot.cpp` node is similar to the `arm_mover.cpp` node that you already wrote. Both nodes contain a ROS **publisher** and **service**. But this time, instead of publishing messages to the arm joint angles, you have to publish messages to the wheels joint angles. Please refer to the `arm_mover.cpp` node before you begin coding the `drive_bot.cpp` node. \n\n## ROS Service File\n\n**1- Write the `DriveToTarget.srv` file**\n\nCreate a `DriveToTarget.srv` file under the `srv` directory of `ball_chaser`. Then, define the `DriveToTarget.srv` file as follows:\n\n**Request**:\n* `linear_x` type **float64** \n* `angular_z` type **float64**\n\n**Response**:  \n* `msg_feedback` type **string**\n\n**2- Test `DriveToTarget.srv`** \n\nAfter writing the service file, test it with ROS. Open a new terminal and execute the following:\n```\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rossrv show DriveToTarget\n```\n\nYou should receive this response: \n```\n[ball_chaser/DriveToTarget]:\nfloat64 linear_x\nfloat64 angular_z\n---\nstring msg_feedback\n```\n\n## `drive_bot.cpp` Node\n\nNow it’s time to write the `drive_bot.cpp` server node that will provide the `ball_chaser/command_robot` service. Create the script under the `src` directory of your `ball_chaser` package. It might be a bit challenging to write this script from scratch, thus I am providing you with some hints. \n\nAttached below is a program that will continuously publish to the robot `/cmd_vel` topic. This code will drive your robot forward:\n```C++\n#include \"ros/ros.h\"\n#include \"geometry_msgs/Twist.h\"\n//TODO: Include the ball_chaser \"DriveToTarget\" header file\n\n// ROS::Publisher motor commands;\nros::Publisher motor_command_publisher;\n\n// TODO: Create a handle_drive_request callback function that executes whenever a drive_bot service is requested\n// This function should publish the requested linear x and angular velocities to the robot wheel joints\n// After publishing the requested velocities, a message feedback should be returned with the requested wheel velocities\n\nint main(int argc, char** argv)\n{\n    // Initialize a ROS node\n    ros::init(argc, argv, \"drive_bot\");\n\n    // Create a ROS NodeHandle object\n    ros::NodeHandle n;\n\n    // Inform ROS master that we will be publishing a message of type geometry_msgs::Twist on the robot actuation topic with a publishing queue size of 10\n    motor_command_publisher = n.advertise<geometry_msgs::Twist>(\"/cmd_vel\", 10);\n\n    // TODO: Define a drive /ball_chaser/command_robot service with a handle_drive_request callback function\n\n    // TODO: Delete the loop, move the code to the inside of the callback function and make the necessary changes to publish the requested velocities instead of constant values\n    while (ros::ok()) {\n        // Create a motor_command object of type geometry_msgs::Twist\n        geometry_msgs::Twist motor_command;\n        // Set wheel velocities, forward [0.5, 0.0]\n        motor_command.linear.x = 0.5;\n        motor_command.angular.z = 0.0;\n        // Publish angles to drive the robot\n        motor_command_publisher.publish(motor_command);\n    }\n\n    // TODO: Handle ROS communication events\n    //ros::spin();\n\n    return 0;\n}\n```\n\nTake a look at this program and try to understand what is happening. Then, copy it to `drive_bot.cpp`, and make the necessary changes to define a `ball_chaser/command_robot` service. \n\n## Edit CMakeLists.txt\n\nAfter you write the server node in C++, you’ll have to add the following dependencies:\n* Add the `add_compile_options` for C++ 11 dependency, this step is optional and depends on your code \n* Add the `add_service_files` dependency which defines the DriveToTarget.srv file\n* Add the `generate_messages` dependency\n* Add `include_directories` dependency\n* Add the `add_executable`, `target_link_libraries`, and `add_dependencies` dependency for your `drive_bot.cpp`script\n\n## Build Package \n\nNow that you’ve included specific instructions for your `drive_bot.cpp` code in `CMakeLists.txt` file, compile it with:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\n## Test `drive_bot.cpp`\n\nTo test if the service you wrote is working, first launch the robot inside your world. Then call the `/ball_chaser/command_robot` service to drive the robot forward, left, and then right.\n\n**1- Launch the robot inside your world**\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```\n\n**2- Run the `drive_bot` node**\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rosrun ball_chaser drive_bot\n```\n\n**3- Request a `ball_chaser/command_robot` service**\n\nTest the service by requesting different sets of velocities from the terminal.\n \nOpen a new terminal while all the nodes are running and type:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n\n$ rosservice call /ball_chaser/command_robot \"linear_x: 0.5\nangular_z: 0.0\"  # This request should drive your robot forward\n\n$ rosservice call /ball_chaser/command_robot \"linear_x: 0.0\nangular_z: 0.5\"  # This request should drive your robot left\n\n$ rosservice call /ball_chaser/command_robot \"linear_x: 0.0\nangular_z: -0.5\"  # This request should drive your robot right\n\n$ rosservice call /ball_chaser/command_robot \"linear_x: 0.0\nangular_z: 0.0\"  # This request should bring your robot to a complete stop\n\n```\n\n## Launch Files \n\nLet’s add the `drive_bot` node to a launch file. Create a `ball_chaser.launch` file under the `launch` directory of your `ball_chaser` package and then copy this code to it:\n```\n<launch>\n  \n <!-- The drive_bot node -->\n  <node name=\"drive_bot\" type=\"drive_bot\" pkg=\"ball_chaser\" output=\"screen\">\n  </node>\n\n</launch>\n```\nThis code will launch your `drive_bot` node, which is contained in the `ball_chaser` package. The server node outputs all the logs to the terminal window. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781657,
+              "key": "7eca364c-8148-4f0f-bf2b-c49d54e4d7e5",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7eca364c-8148-4f0f-bf2b-c49d54e4d7e5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "ROS Service: Create the `DriveToTarget.srv` file in the `srv` directory of `ball_chaser`",
+                "ROS Service: Test `DriveToTarget.srv` in the terminal",
+                "ROS Node: Write the `drive_bot.cpp` C++ node",
+                "CMakeLists: Edit ball_chaser’s `CMakeLists.txt` and add dependencies for `drive_bot`",
+                "Build: Build the `ball_chaser` package to compile the `drive_bot.cpp` file",
+                "ROS Service: Request `/ball_chaser/command_robot` services from the terminal to test it",
+                "Launch Files: Add the `drive_bot` node to a newly created `ball_chaser.launch` file"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to create the `drive_bot` node :"
+            }
+          ]
+        },
+        {
+          "id": 781668,
+          "key": "63d68142-bd6b-45d9-9943-3175a917aba7",
+          "title": "Model a White Ball",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "63d68142-bd6b-45d9-9943-3175a917aba7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781716,
+              "key": "6a27570c-3bb0-4ded-bd62-094c525971d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Model a White Ball",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781659,
+              "key": "0f3a0d12-ed63-4325-a1e7-4b3592110737",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before you proceed to code the `process_image` client node, you have to model a white ball and place it in your Gazebo World scene. \n\nAfter modeling the white ball, you'll control its position in Gazebo by placing it at different positions in front of the robot’s camera. The `process_image` client node will be responsible for analyzing the robot’s image and requesting services from the server `drive_bot` node to drive the robot towards it. \n\nNow, let’s go ahead and model the white ball using the Model Editor tool in Gazebo!\n\n## Model Editor \n\nHere’s a reminder of how to open the model editor:\n```sh\n$ gazebo # then Edit-> Model Editor\n```\n\n## Insert Sphere\n\nUnder the **simple shapes** menu of the Model Editor tool, click on a sphere and insert it anywhere in the scene. \n\n## Edit Size\n\nDouble click on the sphere, and change its radius to **0.1** both in `Visual` and `Collision`.\n\n## Change Color \n\nTo change the ball’s color to white, set its **Visual** Ambient, Diffuse, Specular, and Emissive `RGBA` values to 1. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781660,
+              "key": "9dbcee5b-390c-4fa9-bc92-12740d3d0879",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b3cf_model-a-ball/model-a-ball.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9dbcee5b-390c-4fa9-bc92-12740d3d0879",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 781661,
+              "key": "0c1c55ad-897c-4577-8fbf-cae7385a00bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Save\n\nSave the white ball model as `my_ball` under the `/home/workspace` directory. Then exit the Model Editor tool and go back to the Gazebo main world. \n\n## Insert Ball\n\nNow that you are back in the Gazebo main world, you can click on “Insert” and drop the white ball anywhere in the scene. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781662,
+              "key": "bed1cce3-411d-428b-978e-5289d1947f39",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b3e1_white-ball-empty-scene/white-ball-empty-scene.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bed1cce3-411d-428b-978e-5289d1947f39",
+              "caption": "",
+              "alt": "",
+              "width": 1918,
+              "height": 990,
+              "instructor_notes": null
+            },
+            {
+              "id": 781663,
+              "key": "170cf1d7-7561-4064-9814-618f4509babb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Relaunch Nodes\n\nNow that you modeled the white ball, relaunch the nodes inside `world.launch`. Then verify that you can insert a `my_ball` anywhere inside your world. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781664,
+              "key": "4e2a8d35-1c55-433f-9974-b649978d4b1f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc92d1_screen-shot-2018-11-26-at-4.35.40-pm-2/screen-shot-2018-11-26-at-4.35.40-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4e2a8d35-1c55-433f-9974-b649978d4b1f",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1070,
+              "instructor_notes": null
+            },
+            {
+              "id": 781665,
+              "key": "3a87345e-0038-441a-b3ca-507155188834",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Save\n\nPlace the white ball anywhere outside of your building structure, so that the robot would not see it. Then, save a copy of this new world under `/home/workspace/catkin_ws/src/my_robot/worlds` by replacing your old `<yourname>.world` file. Whenever you launch this newly saved world you should be able to see your building environment, in addition, the white ball.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781666,
+              "key": "b9f973b4-68dd-41d8-ac77-4db46fe90627",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc9318_screen-shot-2018-11-26-at-4.35.52-pm-2/screen-shot-2018-11-26-at-4.35.52-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b9f973b4-68dd-41d8-ac77-4db46fe90627",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1071,
+              "instructor_notes": null
+            },
+            {
+              "id": 781667,
+              "key": "e01e0adb-a6c4-4ff1-8641-cfe6917b8ce3",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e01e0adb-a6c4-4ff1-8641-cfe6917b8ce3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Open the Model Editor tool in Gazebo",
+                "In the Model Editor tool, insert a sphere and edit its radius and color",
+                "Save the model as `my_ball` under `/home/workspace` and exit the Model Editor",
+                "Test that you can insert `my_ball` in an empty scene and in your world",
+                "Place the white ball outside of the building structure and save a copy of this newly created world"
+              ],
+              "positive_feedback": "Good job!",
+              "video_feedback": null,
+              "description": "Follow these steps to model a white ball and include it in your world:"
+            }
+          ]
+        },
+        {
+          "id": 781674,
+          "key": "4504a836-ac6a-4459-80f2-8252e0f6cbf2",
+          "title": "ROS Node: process_image",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4504a836-ac6a-4459-80f2-8252e0f6cbf2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781717,
+              "key": "dcfbecae-b5d9-4e96-ad49-16cbb96f480b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS Node: process_image",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781669,
+              "key": "02a4261b-0635-4571-a1da-166ec148d033",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The second node that you’ll write in this project is the `process_image` node. This client node will **subscribe** to the robot’s camera images and analyze them to determine the position of the white ball. Once the ball position is determined, the client node will request a service from the `drive_bot` server node to drive the robot toward the ball. The robot can drive either left, right or forward, depending on the robot position inside the image.\n\nAfter you write this node, place the white ball in front of the robot’s camera. If everything works, your node should analyze the image, detect the ball’s position, and then request a `ball_chaser/command_robot` service to drive the robot towards the ball!\n\n## Reference\n\nThe `process_image.cpp` client node is similar to the `look_away.cpp` client node that you wrote in this lesson. Both nodes contain a ROS **subscriber** and **client**. Please review the `look_away.cpp` node before you start coding the `process_image.cpp` node. \n\n## Analyzing the Images\n \nTo identify the ball’s **presence** and **position** inside the image, you will use a simple approach. First, search for white pixels inside the array image. Since the ball is the only object in the world that is white, white pixels indicate the ball’s presence. Then, once you find that the ball, identify its position with respect to the camera - either the left, middle, or right side of the image. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781670,
+              "key": "c2c240a2-157a-4a87-b56d-5fd8d23b7f3e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4b428_analyze-image/analyze-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c2c240a2-157a-4a87-b56d-5fd8d23b7f3e",
+              "caption": "",
+              "alt": "",
+              "width": 1778,
+              "height": 1012,
+              "instructor_notes": null
+            },
+            {
+              "id": 781671,
+              "key": "a0785008-1a74-45e1-b82c-f4a061c5926f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You’ll have to subscribe to the `/camera/rgb/image_raw` topic to get instantaneous images from the robot’s camera. Inside the callback function, retrieve the image by reading the image data message. The image message contains many fields, such as the image height, data and more. Check out the complete [ROS `sensor_msgs/Image` documentation](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/Image.html).\nNow that you have the image messages, you have to loop through the image data. For each pixel compare it to a value of 255 indicating a bright white pixel, if this pixel is found try to identify in which section of the image it fall either left, mid, or right. Then, request a service to drive toward that direction. \n\n## Write `process_image.cpp`\n\nNow it’s time to write the `process_image.cpp` client node. This node will analyze the image and request services to drive the robot. Create the source code file within the `src` directory of your `ball_chaser` package. It might be a bit challenging to write this program from scratch, thus I am providing you with some hints. Attached below is a piece of the complete code with multiple hints to help you finish the implementation.\n\n```C++\n#include \"ros/ros.h\"\n#include \"ball_chaser/DriveToTarget.h\"\n#include <sensor_msgs/Image.h>\n\n// Define a global client that can request services\nros::ServiceClient client;\n\n// This function calls the command_robot service to drive the robot in the specified direction\nvoid drive_robot(float lin_x, float ang_z)\n{\n    // TODO: Request a service and pass the velocities to it to drive the robot\n}\n\n// This callback function continuously executes and reads the image data\nvoid process_image_callback(const sensor_msgs::Image img)\n{\n\n    int white_pixel = 255;\n    \n    // TODO: Loop through each pixel in the image and check if there's a bright white one\n    // Then, identify if this pixel falls in the left, mid, or right side of the image\n    // Depending on the white ball position, call the drive_bot function and pass velocities to it\n    // Request a stop when there's no white ball seen by the camera\n}\n\nint main(int argc, char** argv)\n{\n    // Initialize the process_image node and create a handle to it\n    ros::init(argc, argv, \"process_image\");\n    ros::NodeHandle n;\n\n    // Define a client service capable of requesting services from command_robot\n    client = n.serviceClient<ball_chaser::DriveToTarget>(\"/ball_chaser/command_robot\");\n\n    // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function\n    ros::Subscriber sub1 = n.subscribe(\"/camera/rgb/image_raw\", 10, process_image_callback);\n\n    // Handle ROS communication events\n    ros::spin();\n\n    return 0;\n}\n```\n\nCopy this code to `process_image.cpp`, and make the necessary changes. \n\n## Edit CMakeLists.txt\n\nIn addition to all the dependencies you added earlier for `drive_bot.cpp`, these are the dependencies that you should add for `process_image.cpp` :\n\n* Add `add_executable` \n* Add `target_link_libraries`\n* Add `add_dependencies` \n\n## Build Package\n\nNow that you’ve included specific instructions for your `process_image.cpp` code in `CMakeLists.txt`, compile it with:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\n## Launch File\n\nEdit the `ball_chaser.launch` file saved under `/home/workspace/catkin_ws/src/ball_chaser/launch` and add the `process_image` node to it. \n\nNow, launching this file should run the `drive_bot` and `process_image`! \n\n## Test `process_image`\n\nTo test if the code you just wrote is working as expected, first launch the robot inside your world and then run both the `drive_bot` and `process_image` nodes.\n\n**1- Launch the robot inside your world**\n\nThis can be done by launching the `world.launch` file:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch my_robot world.launch\n```\n\n**2- Run `drive_bot` and ` process_image`** \n\nThis can be done by executing `ball_chaser.launch`:\n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ roslaunch ball_chaser ball_chaser.launch\n```\n\n### 3- Visualize\n\nTo visualize the robot’s camera images, you can subscribe to camera RGB image topic from RViz. Or you can run the rqt_image_view node: \n```sh\n$ cd /home/workspace/catkin_ws/\n$ source devel/setup.bash\n$ rosrun rqt_image_view rqt_image_view  \n```\n\nNow place the white ball at different positions in front of the robot and see if the robot is capable of chasing the ball! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781672,
+              "key": "8cc97f76-7136-4a99-b8a1-5e19c979156f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfc9289_screen-shot-2018-11-26-at-4.38.15-pm-2/screen-shot-2018-11-26-at-4.38.15-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8cc97f76-7136-4a99-b8a1-5e19c979156f",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1071,
+              "instructor_notes": null
+            },
+            {
+              "id": 781673,
+              "key": "15ad38ac-1513-4b43-89ad-01ba2f18f942",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "15ad38ac-1513-4b43-89ad-01ba2f18f942",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "ROS Node: Write the `process_image.cpp` C++ node",
+                "CMakeLists: Edit ball_chaser’s `CMakeLists.txt` and add dependencies for `process_image`",
+                "Build: Build the `ball_chaser` package to compile the `process_image.cpp` file",
+                "Launch Files: Add the `process_image` node to the `ball_chaser.launch` file",
+                "Testing: Launch all the nodes in this project and test your `process_image.cpp` file"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Follow these steps to create the `process_image` node:"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

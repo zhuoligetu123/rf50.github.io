@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.160
+Congratulations! You now have the experience of creating catkin workspaces,
+
+00:00:05.160 --> 00:00:09.810
+working with packages, dependencies and troubleshooting build errors.
+
+00:00:09.810 --> 00:00:13.169
+In the next lesson, you'll write additional ROS nodes for
+
+00:00:13.169 --> 00:00:17.054
+the simple ARM package that you've already added to your catkin workspace.
+
+00:00:17.054 --> 00:00:19.710
+Before you actually begin writing ROS nodes,
+
+00:00:19.710 --> 00:00:21.690
+make sure to take a peek at the links in
+
+00:00:21.690 --> 00:00:25.185
+the official ROS Wiki Documentation regarding these topics.
+
+00:00:25.184 --> 00:00:28.169
+The documentation is an extremely useful resource for
+
+00:00:28.170 --> 00:00:32.439
+us developers and will be valuable to you throughout the rest of the program.
+

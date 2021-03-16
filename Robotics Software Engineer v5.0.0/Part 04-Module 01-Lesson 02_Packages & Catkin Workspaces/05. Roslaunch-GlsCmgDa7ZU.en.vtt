@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.835
+Up until this point,
+
+00:00:01.835 --> 00:00:05.650
+you have been launching nodes using the roslaunch command.
+
+00:00:05.650 --> 00:00:07.569
+As I mentioned previously,
+
+00:00:07.569 --> 00:00:11.664
+a ROS system usually consists of many running nodes.
+
+00:00:11.664 --> 00:00:15.719
+Running all of the nodes by hand can be torturers.
+
+00:00:15.720 --> 00:00:19.469
+This is where the roslaunch command comes to save the day.
+
+00:00:19.469 --> 00:00:25.629
+Roslaunch allows you to launch the ROS master and multiple nodes with one simple command,
+
+00:00:25.629 --> 00:00:28.929
+set default parameters on the parameter server,
+
+00:00:28.929 --> 00:00:33.234
+automatically respond processes that have died, and much more.
+
+00:00:33.234 --> 00:00:35.710
+To use roslaunch, you must first make
+
+00:00:35.710 --> 00:00:39.250
+sure that your workspace has been built and sourced.
+
+00:00:39.250 --> 00:00:42.289
+Remember, to build the catkin workspace,
+
+00:00:42.289 --> 00:00:46.939
+you use the command catkinmake while you were in the root directory of the workspace.
+
+00:00:46.939 --> 00:00:54.019
+So, let's move to the root of the workspace and let's issue the build command catkinmake.
+
+00:00:54.020 --> 00:00:59.010
+Once the workspace has been built you can source it's setup script.
+
+00:00:59.009 --> 00:01:05.209
+The setup script lives in the newly created directory devel in the root of the workspace.
+
+00:01:05.209 --> 00:01:10.339
+In the same fashion as the setup.bash script in the OPT ROS directory,
+
+00:01:10.340 --> 00:01:15.549
+the workspace setup.bash is responsible for setting environment variables.
+
+00:01:15.549 --> 00:01:19.923
+The workspace environment variables help the system find all of the packages,
+
+00:01:19.924 --> 00:01:24.920
+libraries, and other resources provided by your catkin workspace.
+
+00:01:24.920 --> 00:01:27.745
+So, let's source that now.
+
+00:01:27.745 --> 00:01:30.005
+With your workspace sourced,
+
+00:01:30.004 --> 00:01:32.170
+you can now launch simple arm.
+
+00:01:32.170 --> 00:01:35.769
+Use the command roslaunch followed by the package name,
+
+00:01:35.769 --> 00:01:39.344
+simple arm, and the name of the launch file.
+
+00:01:39.344 --> 00:01:46.549
+Here, I'm going to use tab completion and it's robot_spawn.launch.
+
+00:01:47.819 --> 00:01:50.334
+Awesome. There we go.
+
+00:01:50.334 --> 00:01:54.519
+We've launched the arm using the launch file in the simple arm package.
+
+00:01:54.519 --> 00:01:56.679
+A number of things just happened.
+
+00:01:56.680 --> 00:02:02.900
+Perhaps, the most apparent is that I now have a robotic arm running in Gazebo.
+
+00:02:02.900 --> 00:02:07.690
+The robot I'm simulating here is a simple two degrees of freedom robotic arm.
+
+00:02:07.689 --> 00:02:10.704
+There is a little black bow on the end of the arm.
+
+00:02:10.705 --> 00:02:13.690
+That bow represents a camera.
+
+00:02:13.689 --> 00:02:16.539
+It's not just Gazebo that's running though,
+
+00:02:16.539 --> 00:02:20.090
+if you switch over to the console window and scroll
+
+00:02:20.090 --> 00:02:23.060
+up you can see that roslaunch has provided
+
+00:02:23.060 --> 00:02:25.699
+a brief summary of all of the nodes that has been
+
+00:02:25.699 --> 00:02:29.405
+launched and all of the parameters that has been set.
+
+00:02:29.405 --> 00:02:34.039
+I won't spend any time talking about all of the details of the launch file here,
+
+00:02:34.039 --> 00:02:36.304
+but I encourage you to check it out.
+
+00:02:36.305 --> 00:02:40.165
+It's in the launch directory within the simple arm package.
+
+00:02:40.164 --> 00:02:43.224
+Now, that you understand how to create a workspace,
+
+00:02:43.224 --> 00:02:46.379
+and the package, build and launch everything,
+
+00:02:46.379 --> 00:02:49.269
+you're prepared for the next step.
+

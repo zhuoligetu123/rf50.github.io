@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.509
+In addition to getting a list of all active nodes,
+
+00:00:03.509 --> 00:00:06.464
+you will often desire a list of all topics.
+
+00:00:06.464 --> 00:00:12.884
+You can obtain the list of topics by using the command, rostopic list.
+
+00:00:12.884 --> 00:00:17.100
+This will give you a list of all the topics.
+
+00:00:17.100 --> 00:00:20.580
+We can see that there are some topics associated
+
+00:00:20.579 --> 00:00:23.669
+with rosout node that we discussed a moment ago,
+
+00:00:23.670 --> 00:00:28.740
+and there are some topics grouped together under a turtle one namespace.
+
+00:00:28.739 --> 00:00:30.404
+As you may have guessed,
+
+00:00:30.405 --> 00:00:35.865
+all of the topics grouped under the turtle1 namespace are provided by a turtlesim node,
+
+00:00:35.865 --> 00:00:40.495
+and are associated with a turtle we see in the virtual world.
+
+00:00:40.494 --> 00:00:42.659
+Publishing a message to
+
+00:00:42.659 --> 00:00:48.134
+the cmd_vel topic will commend the turtle to move with a given velocity.
+
+00:00:48.134 --> 00:00:52.199
+Turtle1 also contains a color sensor,
+
+00:00:52.200 --> 00:00:58.935
+and a turtlesim node publishes readings from this sensor on the color sensor topic.
+
+00:00:58.935 --> 00:01:02.390
+Lastly, the turtlesim node publishes
+
+00:01:02.390 --> 00:01:07.474
+the position and orientation of the turtle to the post topic.
+
+00:01:07.474 --> 00:01:11.890
+While the topic names here are somewhat indicative of their purpose,
+
+00:01:11.890 --> 00:01:13.849
+this won't always be the case.
+
+00:01:13.849 --> 00:01:19.309
+Sometimes, you will need to get more information about a specific topic.
+

@@ -1,0 +1,311 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Dive Deeper into Packages
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Packages &amp; Catkin Workspaces
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview of Catkin Workspaces and Packages.html">
+       01. Overview of Catkin Workspaces and Packages
+      </a>
+     </li>
+     <li class="">
+      <a href="02. ROS in the Udacity Workspace.html">
+       02. ROS in the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Create a Catkin Workspace.html">
+       03. Create a Catkin Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Add a Package.html">
+       04. Add a Package
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Roslaunch.html">
+       05. Roslaunch
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Rosdep.html">
+       06. Rosdep
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Dive Deeper into Packages.html">
+       07. Dive Deeper into Packages
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Recap.html">
+       08. Recap
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. Dive Deeper into Packages
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="dive-deeper-into-packages">
+          Dive Deeper into Packages
+         </h1>
+         <p>
+          You'll begin your dive into ROS packages by creating one of your own. All ROS packages should reside under the
+          <code>
+           src
+          </code>
+          directory.
+         </p>
+         <p>
+          Assuming you have already sourced your ROS environment and your catkin workspace, navigate to the src directory:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/catkin_ws/src</code></pre>
+         <p>
+          The syntax for creating a catkin package is:
+         </p>
+         <pre><code class="sh language-sh">$ catkin_create_pkg &lt;your_package_name&gt; [dependency1 dependency2 …]</code></pre>
+         <p>
+          The name of your package is arbitrary but you will run into trouble if you have multiple packages with the same name in your catkin workspace. Try to make it descriptive and unique without being excessively long. Let’s name ours “first_package” and we won’t specify any dependencies. By convention, package names are lowercase.
+         </p>
+         <pre><code class="sh language-sh">$ catkin_create_pkg first_package</code></pre>
+         <p>
+          Voilà. You just created your first catkin package! Navigating inside our newly created package reveals that it contains just two files:
+          <code>
+           CMakeLists.txt
+          </code>
+          and
+          <code>
+           package.xml
+          </code>
+          . This is a minimum working catkin package. It is not very interesting because it doesn't do anything, but it meets all the requirements for a catkin package. One of the main functions of these two files is to describe dependencies and how catkin should interact with them. We won’t pay much attention to them right now.
+         </p>
+         <p>
+          I mentioned earlier that ROS packages have a conventional directory structure. Let’s take a look at a more typical package.
+         </p>
+         <ul>
+          <li>
+           scripts (python executables)
+          </li>
+          <li>
+           src (C++ source files)
+          </li>
+          <li>
+           msg (for custom message definitions)
+          </li>
+          <li>
+           srv (for service message definitions)
+          </li>
+          <li>
+           include -&gt; headers/libraries that are needed as dependencies
+          </li>
+          <li>
+           config -&gt; configuration files
+          </li>
+          <li>
+           launch -&gt; provide a more automated way of starting nodes
+          </li>
+         </ul>
+         <p>
+          Other folders may include
+         </p>
+         <ul>
+          <li>
+           urdf (Universal Robot Description Files)
+          </li>
+          <li>
+           meshes (CAD files in .dae (Collada) or .stl (STereoLithography) format)
+          </li>
+          <li>
+           worlds (XML like files that are used for Gazebo simulation environments)
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/ros-package-format.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          There are many packages that you can install. To see a list of available packages for the Kinetic distribution, take some time to explore
+          <a href="http://www.ros.org/browse/list.php" rel="noopener noreferrer" target="_blank">
+           the list of ROS package online
+          </a>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Recap.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Dive Deeper into Packages')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

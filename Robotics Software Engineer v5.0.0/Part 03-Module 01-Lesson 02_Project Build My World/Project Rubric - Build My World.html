@@ -1,0 +1,454 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Build My World
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project: Build My World
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Sample Simulation World.html">
+       02. Sample Simulation World
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Gazebo in the Workspace.html">
+       03. Gazebo in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Project Cheat Sheet.html">
+       04. Project Cheat Sheet
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Build My World.html">
+       Project Description - Build My World
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Build My World.html">
+       Project Rubric - Build My World
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          Build My World
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div>
+        <h2>
+         <p>
+          Basic Requirements
+         </p>
+        </h2>
+        <table class="table table-bordered table-hover">
+         <thead>
+          <tr class="thead-dark">
+           <th>
+            Criteria
+           </th>
+           <th>
+            Meet Specification
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr scope="row">
+           <td>
+            <p>
+             Does the project include a
+             <strong>
+              world
+             </strong>
+             directory containing the Gazebo world file, a
+             <strong>
+              model
+             </strong>
+             directory containing a structure and an object model files, a
+             <strong>
+              script
+             </strong>
+             directory containing the C++ plugin code, and a
+             <strong>
+              CMakeLists.txt
+             </strong>
+             file?
+            </p>
+           </td>
+           <td>
+            <p>
+             The student submitted all required files specified in the criteria.
+            </p>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div>
+        <h2>
+         <p>
+          Building
+         </p>
+        </h2>
+        <table class="table table-bordered table-hover">
+         <thead>
+          <tr class="thead-dark">
+           <th>
+            Criteria
+           </th>
+           <th>
+            Meet Specification
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr scope="row">
+           <td>
+            <p>
+             Does the project include a house with walls?
+            </p>
+           </td>
+           <td>
+            <p>
+             The student designeda structure and stored it in the model directory.
+            </p>
+            <p>
+             Structure basic requirements:
+            </p>
+            <ul>
+             <li>
+              Structure is different than the one shown in the sample simulation world.
+             </li>
+             <li>
+              Single floor.
+             </li>
+             <li>
+              Enough space for robots to navigate.
+             </li>
+             <li>
+              At least one feature.
+             </li>
+             <li>
+              At least one color.
+             </li>
+            </ul>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div>
+        <h2>
+         <p>
+          Modeling
+         </p>
+        </h2>
+        <table class="table table-bordered table-hover">
+         <thead>
+          <tr class="thead-dark">
+           <th>
+            Criteria
+           </th>
+           <th>
+            Meet Specification
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr scope="row">
+           <td>
+            <p>
+             Does the project include an object built using the
+             <strong>
+              Model Editor
+             </strong>
+             ?
+            </p>
+           </td>
+           <td>
+            <p>
+             The student designed an object and stored it in the model directory.
+            </p>
+            <p>
+             Model basic requirements:
+            </p>
+            <ul>
+             <li>
+              Object is different than the one shown in the sample simulation world.
+             </li>
+             <li>
+              Object links are connected through joints.
+             </li>
+            </ul>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div>
+        <h2>
+         <p>
+          Gazebo World
+         </p>
+        </h2>
+        <table class="table table-bordered table-hover">
+         <thead>
+          <tr class="thead-dark">
+           <th>
+            Criteria
+           </th>
+           <th>
+            Meet Specification
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr scope="row">
+           <td>
+            <p>
+             Doe the project contain a
+             <strong>
+              Gazebo world
+             </strong>
+             with multiple models?
+            </p>
+           </td>
+           <td>
+            <p>
+             The student created a Gazebo world and stored it in the world directory.
+            </p>
+            <p>
+             Gazebo World basic requirements:
+            </p>
+            <ul>
+             <li>
+              World is different than the one shown in the sample simulation world.
+             </li>
+             <li>
+              Contains the structure model.
+             </li>
+             <li>
+              Contains two instances of the object model.
+             </li>
+             <li>
+              Contains one model from the Gazebo online library.
+             </li>
+            </ul>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div>
+        <h2>
+         <p>
+          World Plugin
+         </p>
+        </h2>
+        <table class="table table-bordered table-hover">
+         <thead>
+          <tr class="thead-dark">
+           <th>
+            Criteria
+           </th>
+           <th>
+            Meet Specification
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr scope="row">
+           <td>
+            <p>
+             Does the project contain a C++
+             <strong>
+              world plugin
+             </strong>
+             ?
+            </p>
+           </td>
+           <td>
+            <p>
+             The student created a C++ plugin and stored it in the script directory. Also, the student created a CMakeLists.txt file and stored in the main project directory.
+            </p>
+            <p>
+             World plugin basic requirements:
+            </p>
+            <ul>
+             <li>
+              The plugin C++ code should print “Welcome to
+              <your name="">
+               ’s World!” message.
+              </your>
+             </li>
+             <li>
+              Do not submit the build directory!
+             </li>
+            </ul>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <div class="jumbotron">
+        <h3>
+         Tips to make your project standout:
+        </h3>
+        <p>
+         <p>
+          Stand out submissions should have multiple models that interact through model plugins inside the Gazebo world.
+         </p>
+        </p>
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Build My World')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

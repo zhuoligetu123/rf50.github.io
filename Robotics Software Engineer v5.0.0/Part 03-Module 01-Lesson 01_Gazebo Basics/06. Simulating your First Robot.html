@@ -1,0 +1,525 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Simulating your First Robot
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Gazebo Basics
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What is Gazebo.html">
+       02. What is Gazebo?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Gazebo in the Workspace.html">
+       03. Gazebo in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Gazebo Components.html">
+       04. Gazebo Components
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Understanding the GUI.html">
+       05. Understanding the GUI
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simulating your First Robot.html">
+       06. Simulating your First Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Writing a Plugin.html">
+       07. Writing a Plugin
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Exploring the Building Editor.html">
+       08. Exploring the Building Editor
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Outro.html">
+       09. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Simulating your First Robot
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="simulating-your-first-robot">
+          Simulating your First Robot
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="create-directories">
+          Create Directories
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Simulating your first Robot: Create Directories
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Simulating your first Robot Create Directories-hDZ5MXNTX0U.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Simulating your first Robot Create Directories-hDZ5MXNTX0U.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="1--create-directories-for-the-world-and-model-files">
+          1- Create directories for the world and model files
+         </h3>
+         <pre><code class="sh language-sh">$ mkdir /home/workspace/myrobot
+$ cd /home/workspace/myrobot
+$ mkdir world &amp;&amp; mkdir model</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="construct-the-robots-chassis">
+          Construct the Robot's Chassis
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Simulating your first Robot: Construct the Robot's Chassis
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Simulating your first Robot Construct the Robot's Chassis-IkG0PjAvdJI.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Simulating your first Robot Construct the Robot's Chassis-IkG0PjAvdJI.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="2--launch-gazebo-and-switch-to-the-model-editor">
+          2- Launch Gazebo and switch to the Model Editor
+         </h3>
+         <p>
+          First, launch Gazebo from the terminal:
+         </p>
+         <pre><code class="sh language-sh">$ gazebo</code></pre>
+         <p>
+          In Gazebo, click on edit -&gt; Model Editor.
+         </p>
+         <h3 id="3--create-the-robot-chassis">
+          3- Create the robot chassis
+         </h3>
+         <p>
+          In the model editor, drop a box anywhere in the scene and double click it to change its position and dimension as follows:
+          <br/>
+          Make sure to scroll down to the bottom to edit the object position
+         </p>
+         <ul>
+          <li>
+           <code>
+            Position
+           </code>
+           : [X, Y, Z] = [0, 0, 0.2]
+          </li>
+          <li>
+           <code>
+            Visual and Collision geometry
+           </code>
+           : [X, Y, Z] = [0.3, 1.0, 0.1]
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="attach-wheels-to-the-robots-chassis">
+          Attach Wheels to the Robot's Chassis
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Simulating your first Robot: Attach Wheels to the Robot
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Simulating your first Robot Attach Wheels to the Robot-7VIj6Cvogjc.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Simulating your first Robot Attach Wheels to the Robot-7VIj6Cvogjc.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="4--construct-the-robot-wheels">
+          4- Construct the robot wheels
+         </h3>
+         <p>
+          Insert a cylinder inside the scene and then edit its position and orientation:
+          <br/>
+          Make sure to scroll down to the bottom to edit the object position.
+         </p>
+         <ul>
+          <li>
+           <code>
+            Z pose
+           </code>
+           = 0.2
+          </li>
+          <li>
+           <code>
+            Roll
+           </code>
+           = 1.5707 rad
+          </li>
+          <li>
+           <code>
+            Visual and Collision geometry
+           </code>
+           : [Radius, Length] = [0.2, 0.1]
+          </li>
+         </ul>
+         <p>
+          Then, create a copy of this wheel and paste it on the other side of the robot.
+         </p>
+         <h3 id="5--connect-wheels-to-the-chassis-via-joints">
+          5- Connect wheels to the chassis via joints
+         </h3>
+         <ul>
+          <li>
+           <code>
+            Joint Types
+           </code>
+           : Revolute
+          </li>
+          <li>
+           <code>
+            Parent
+           </code>
+           : Chassis
+          </li>
+          <li>
+           <code>
+            Child
+           </code>
+           : Wheel
+          </li>
+          <li>
+           <code>
+            Joint Axis
+           </code>
+           : Z
+          </li>
+          <li>
+           <code>
+            Align Links Joint 1:
+           </code>
+           mid x; minimum y and reverse
+          </li>
+          <li>
+           <code>
+            Align Links Joint 2:
+           </code>
+           mid x; maximum y and reverse
+          </li>
+         </ul>
+         <h3 id="6--save-the-model-file">
+          6- Save the model file
+         </h3>
+         <ul>
+          <li>
+           <code>
+            Model
+           </code>
+           : Save it as
+           <strong>
+            robot
+           </strong>
+           in
+           <strong>
+            /home/workspace/myrobot/model
+           </strong>
+          </li>
+          <li>
+           Exit the Model Editor
+          </li>
+         </ul>
+         <h3 id="7--save-the-world-file">
+          7- Save the world file
+         </h3>
+         <ul>
+          <li>
+           <code>
+            World
+           </code>
+           : Save is as
+           <strong>
+            myworld
+           </strong>
+           in
+           <strong>
+            /home/workspace/myrobot/world
+           </strong>
+          </li>
+          <li>
+           Exit Gazebo
+          </li>
+         </ul>
+         <h2 id="launching-gazebo-world-file-from-disk">
+          Launching Gazebo world file from disk
+         </h2>
+         <p>
+          To load the world file with Gazebo open a terminal, change the working directory and launch it:
+         </p>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot/world/           
+$ gazebo myworld  </code></pre>
+         <h3 id="sdf-format">
+          SDF Format
+         </h3>
+         <p>
+          As you learned earlier, world and model files in Gazebo are formatted using the
+          <strong>
+           Simulation Description Format
+          </strong>
+          or
+          <a href="http://sdformat.org/spec?ver=1.6&amp;elem=world" rel="noopener noreferrer" target="_blank">
+           SDF
+          </a>
+          for short. You can now open the contents of either the world file or model file and check to see if it follows the
+          <strong>
+           SDF
+          </strong>
+          format. To open the contents of the world file inside a terminal type in the following:
+         </p>
+         <pre><code class="ssh language-ssh">$ cd /home/workspace/myrobot/world/           
+$ gedit myworld  </code></pre>
+         <p>
+          The SDF format in this world file should follow this general structure:
+         </p>
+         <pre><code class="html language-html">&lt;?xml version="1.0" ?&gt;
+&lt;sdf version="1.5"&gt;
+  &lt;world name="default"&gt;
+    &lt;physics type="ode"&gt;
+      ...
+    &lt;/physics&gt;
+
+    &lt;scene&gt;
+      ...
+    &lt;/scene&gt;
+
+    &lt;model name="box"&gt;
+      ...
+    &lt;/model&gt;
+
+    &lt;model name="sphere"&gt;
+      ...
+    &lt;/model&gt;
+
+    &lt;light name="spotlight"&gt;
+      ...
+    &lt;/light&gt;
+
+  &lt;/world&gt;
+&lt;/sdf&gt;</code></pre>
+         <p>
+          Next, you will learn how to write a Plugin to interact with your World in Gazebo.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Writing a Plugin.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Simulating your First Robot')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

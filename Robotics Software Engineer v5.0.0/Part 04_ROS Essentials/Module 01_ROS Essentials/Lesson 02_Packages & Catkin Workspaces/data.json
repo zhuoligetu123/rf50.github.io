@@ -1,0 +1,452 @@
+{
+  "data": {
+    "lesson": {
+      "id": 778120,
+      "key": "eba928a4-27ba-4e6a-a5f9-6a409da46b25",
+      "title": "Packages & Catkin Workspaces",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about ROS workspace structure, essential command line utilities, and how to manage software packages within a project. Harnessing these will be key to building shippable software using ROS.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/eba928a4-27ba-4e6a-a5f9-6a409da46b25/778120/1543375980669/Packages+%26+Catkin+Workspaces+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/eba928a4-27ba-4e6a-a5f9-6a409da46b25/778120/1543375977278/Packages+%26+Catkin+Workspaces+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 778091,
+          "key": "3ccaf0e5-0421-483b-9971-eaba1286c61b",
+          "title": "Overview of Catkin Workspaces and Packages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ccaf0e5-0421-483b-9971-eaba1286c61b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778088,
+              "key": "b628be16-9f64-410f-8754-2568f0da0413",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overview of Catkin Workspaces and Packages ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778089,
+              "key": "d52de686-b39e-4cd6-b4cc-874040885269",
+              "title": "Overview Of Catkin Workspaces and Packages ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XWbaXD91gnU",
+                "china_cdn_id": "XWbaXD91gnU.mp4"
+              }
+            },
+            {
+              "id": 778090,
+              "key": "e73b5fbc-dd3f-4501-977f-1c0e524f92b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Catkin packages\n\nROS software is organized and distributed into packages, which are directories that might contain source code for ROS nodes, libraries, datasets, and more. Each package also contains a file with build instructions - the CMakeLists.txt file - and a package.xml file with information about the package. Packages enable ROS users to organize useful functionality in a convenient and reusable format.\n\n## Catkin workspaces\n\nA catkin workspace is a top-level directory where you build, install, and modify catkin packages. The workspace contains all of the packages for your project, along with several other directories for the catkin system to use when building executables and other targets from your source code. \n\n## Lesson Roadmap\n* Create a catkin workspace\n* Add packages\n* Manage inter-package dependencies\n* Compile packages",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778094,
+          "key": "d7dc2c8b-490c-4aba-bc2a-8609d7895ec9",
+          "title": "ROS in the Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d7dc2c8b-490c-4aba-bc2a-8609d7895ec9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778092,
+              "key": "9db282d3-7b16-4531-842c-f9de141be7bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS in the Workspace\n\nTo follow along with the exercises in this lesson, you will need to run ROS in the workspace. Follow these steps:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` The workspace is best supported on **Google Chrome** and might not load on other browsers. \n\nYou're now ready to follow along in your workspace with this lesson!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778208,
+              "key": "4f74e934-dbc1-40bf-a5dd-848a43a6f265",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c778094xREACTlw89c17h",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-7wjid",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 778101,
+          "key": "a5368ea8-3c59-49d4-b1ba-cd0ce6d2ee17",
+          "title": "Create a Catkin Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5368ea8-3c59-49d4-b1ba-cd0ce6d2ee17",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778095,
+              "key": "ee167157-541a-4960-9aa0-a73078245091",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create a Catkin Workspace\n\n## Step 1: Create a catkin workspace and a sub directory\n\nAll of the ROS-related code you develop throughout this course will reside in your catkin workspace. You only need to create and initialize the workspace once. \n\nFirst, create the top level catkin workspace directory and a sub-directory named `src` (pronounced  source). The top level directory name is arbitrary, but is often called `catkin_ws` (an abbreviation of catkin_workspace), so we will follow this convention. You can create these two directories in `/home/workspace/` with a single command: \n```sh\n$ mkdir -p /home/workspace/catkin_ws/src\n```\n## Step 2: Navigate to the source directory\n\nNext, navigate to the `src` directory with the cd command:\n```sh\n$ cd /home/workspace/catkin_ws/src\n```\n\n## Step 3: Initialize the catkin workspace\n\nNow you can initialize the catkin workspace which will create a `CMakeLists.txt` file:\n```sh\n$ catkin_init_workspace\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778096,
+              "key": "c1b2ede5-f8f6-45ab-8b24-65fdf1b5bbcf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7f5f_catkin-init-workspace/catkin-init-workspace.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c1b2ede5-f8f6-45ab-8b24-65fdf1b5bbcf",
+              "caption": "",
+              "alt": "",
+              "width": 735,
+              "height": 226,
+              "instructor_notes": null
+            },
+            {
+              "id": 778097,
+              "key": "75717fd8-d62c-47e5-8746-3f78536dd56a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let’s list the contents of the current directory to see what changed.\n```sh\n$ ls -l\n```\n\nNotice that a symbolic link (`CMakeLists.txt`) has been created to `/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake`\n\n## Step 4: Return to top level directory\nReturn to the catkin_ws,\n```sh\n$ cd /home/workspace/catkin_ws\n```\n\n## Step 5: Build the Workspace\n\n```sh\n$ catkin_make\n```\n\n**Note**: you must issue this command from within the top level directory (i.e., within `catkin_ws` NOT `catkin_ws/src`)\n\nWhile it is not essential that you have a deep understanding of the catkin build system, particularly if you are doing most of your development work in Python, it is helpful to learn about it. We encourage you to read the [ROS wiki](http://wiki.ros.org/catkin/conceptual_overview). \n\nAfter the command is executed you will notice the output of the build processes being echoed to your display. When it has finished you should see the following lines at the end of the output:\n```\n-- BUILD_SHARED_LIBS is on\n-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/workspace/catkin_ws/build\n####\n#### Running command: \"make -j4 -l4\" in \"/home/workspace/catkin_ws/build\"\n####\n```\n\nBut what else has changed? Use the `ls` command again to see what is new.\n```sh\n$ ls\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778098,
+              "key": "852738fb-731e-447c-b1bc-2d22556494c0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7f6e_ls/ls.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/852738fb-731e-447c-b1bc-2d22556494c0",
+              "caption": "",
+              "alt": "",
+              "width": 737,
+              "height": 228,
+              "instructor_notes": null
+            },
+            {
+              "id": 778099,
+              "key": "40c6e6ce-8fd3-4e77-ad75-1f6697afc7f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You now have two new directories: `build` and `devel`. The aptly named `build` directory is the build space for C++ packages and, for the most part, you will not interact with it. The `devel` directory does contain something of interest, a file named `setup.bash`. This setup.bash script must be sourced before using the catkin workspace with `source devel/setup.bash`\n\n## Step 6: Commentary\n\nCongratulations! You just created your first catkin workspace.\n\n## Optional\nBefore you begin to work with and develop your own ROS package, you can take a moment to get acquainted with catkin workspace conventional directory structure as described in the ROS Enhancement Proposal (REP) 128 by clicking [here](http://www.ros.org/reps/rep-0128.html). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778100,
+              "key": "9fdb8fdc-9224-4994-aef0-7de4242d4f56",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7f7d_cmakelists/cmakelists.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9fdb8fdc-9224-4994-aef0-7de4242d4f56",
+              "caption": "",
+              "alt": "",
+              "width": 738,
+              "height": 227,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 778105,
+          "key": "d03adfd0-07a2-487c-92e5-c11374dc709f",
+          "title": "Add a Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d03adfd0-07a2-487c-92e5-c11374dc709f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778102,
+              "key": "1aeeded2-17e5-43b1-b00b-f10fdc0e729a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Add a Package",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785494,
+              "key": "a0cf12cc-14db-48a2-9c53-984efef9e689",
+              "title": "Add a Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yGxHsCVcuk4",
+                "china_cdn_id": "yGxHsCVcuk4.mp4"
+              }
+            },
+            {
+              "id": 778104,
+              "key": "04059b70-c44d-4165-8ff9-b21c169667ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cloning  the simple_arm Package \nOne of the biggest benefits of using ROS is that it has a really large community of users and developers who have already created a lot of code that you can reuse. \n\nLet’s clone an existing package and add it to our newly created workspace.\n\nStart by navigating to the `src` directory and cloning the `simple_arm` package for this lesson from its GitHub repo.\n\n```sh\n$ cd /home/workspace/catkin_ws/src/\n$ git clone -b first_interaction https://github.com/udacity/RoboND-simple_arm/ simple_arm\n```\n\n## Building the simple_arm package \nAfter the repo has finished cloning, you can change directory to the top-level of the ROS workspace and build the new package.\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\n## Getting Errors?\n\nSometimes you might get a missing package error while building the catkin workspace. For example: \"Could not find a package configuration file provided by controller_manager\"\n\nI happen to know that `controller_manager` refers to a ROS package from ROS Control. We can fix this by installing the associated Linux package, which itself contains and will install the necessary ROS package. But, if I didn't already know this, I would probably have to rely on a Google search to figure out the exact name of the package required. \n\nFor your convenience, this package is already installed in the workspace and you shouldn’t receive the error. But, you can always re-install the package with this command: \n\n```sh\n$ sudo apt-get install ros-kinetic-controller-manager\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778109,
+          "key": "3e8240e2-336e-4c60-95d3-5ea6eb2e224d",
+          "title": "Roslaunch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e8240e2-336e-4c60-95d3-5ea6eb2e224d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778106,
+              "key": "1d7985bb-5f8b-48f8-93e3-e05791e64de6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Roslaunch",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778107,
+              "key": "d4117156-3c03-4bc6-a6aa-62f23211cc93",
+              "title": "Roslaunch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GlsCmgDa7ZU",
+                "china_cdn_id": "GlsCmgDa7ZU.mp4"
+              }
+            },
+            {
+              "id": 778108,
+              "key": "6f1c2bec-d690-4b76-8b73-f05093cac82f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "`roslaunch` allows you to do the following\n* Launch the ROS Master and multiple nodes with one simple command\n* Set default parameters on the parameter server\n* Automatically re-spawn processes that have died\n\nTo use `roslaunch`, you must first make sure that your workspace has been built and sourced:\n\n```sh\n$ cd /home/workspace/catkin_ws/\n$ catkin_make\n```\n\nOnce the workspace has been built, you can source it’s setup script:\n```sh\n$ source devel/setup.bash\n```\n\nWith your workspace sourced you can now launch `simple_arm`:\n```sh\n$ roslaunch simple_arm robot_spawn.launch\n```\n\nAnd there you have it! Your very own two-degrees-of-freedom arm in simulation!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778111,
+          "key": "6e902153-1158-4937-b098-63f3523086a2",
+          "title": "Rosdep",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e902153-1158-4937-b098-63f3523086a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778110,
+              "key": "9a53a42a-b788-4152-9287-131264ea6dff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Rosdep\n\n## ROS Package Dependencies\nROS packages have two types of dependencies: build dependencies and run dependencies. \n\nThe `rosdep` tool will check for a package's missing dependencies, download them, and install them.\n\nTo check for missing dependencies in a ROS package: \n\n```sh\n$ rosdep check <package name>\n```\n**Note**: In order for the command to work, the workspace must be first sourced with `source devel/setup.bash`.\n\nThis gives you a list of the system dependencies that are missing, and tells you where to get them.\n\nTo have `rosdep` install packages, invoke the following command from the root of the catkin workspace\n```sh\n$ rosdep install -i <package name>\n```\n\n## `simple_arm` Package Dependencies\nFortunately, the build and run dependencies for `simple_arm` package have been already installed in the workspace. You can double-check using `rosdep check`: \n```sh\n$ cd /home/workspace/catkin_ws/ \n$ source devel/setup.bash\n$ rosdep check simple_arm\n```\n**Output:** All system dependencies have been satisfied.\n\n## What’s next?\n\nWith all of the packages properly installed, you will now learn more about ROS packages by creating yours from scratch, in preparation for writing your own nodes!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778115,
+          "key": "5ce8e74a-b21f-414b-a5be-bf3c00c6f24c",
+          "title": "Dive Deeper into Packages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5ce8e74a-b21f-414b-a5be-bf3c00c6f24c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778112,
+              "key": "707dc736-512c-4b8a-9a85-42c3daf9a4e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Dive Deeper into Packages\n\nYou'll begin your dive into ROS packages by creating one of your own. All ROS packages should reside under the `src` directory.\n\nAssuming you have already sourced your ROS environment and your catkin workspace, navigate to the src directory:\n```sh\n$ cd /home/workspace/catkin_ws/src\n```\n\nThe syntax for creating a catkin package is:\n```sh\n$ catkin_create_pkg <your_package_name> [dependency1 dependency2 …]\n```\n\nThe name of your package is arbitrary but you will run into trouble if you have multiple packages with the same name in your catkin workspace. Try to make it descriptive and unique without being excessively long. Let’s name ours “first_package” and we won’t specify any dependencies. By convention, package names are lowercase.\n```sh\n$ catkin_create_pkg first_package\n```\n\nVoilà. You just created your first catkin package! Navigating inside our newly created package reveals that it contains just two files: `CMakeLists.txt` and `package.xml`. This is a minimum working catkin package. It is not very interesting because it doesn't do anything, but it meets all the requirements for a catkin package. One of the main functions of these two files is to describe dependencies and how catkin should interact with them. We won’t pay much attention to them right now. \n\nI mentioned earlier that ROS packages have a conventional directory structure. Let’s take a look at a more typical package. \n* scripts (python executables)\n* src (C++ source files)\n* msg (for custom message definitions)\n* srv (for service message definitions)\n* include -> headers/libraries that are needed as dependencies\n* config -> configuration files\n* launch -> provide a more automated way of starting nodes\n\nOther folders may include\n* urdf (Universal Robot Description Files)\n* meshes (CAD files in .dae (Collada) or .stl (STereoLithography) format)\n* worlds (XML like files that are used for Gazebo simulation environments)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778113,
+              "key": "fdc1f03a-b898-4ce2-a895-3ca5db694f00",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb8061_ros-package-format/ros-package-format.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fdc1f03a-b898-4ce2-a895-3ca5db694f00",
+              "caption": "",
+              "alt": "",
+              "width": 553,
+              "height": 358,
+              "instructor_notes": null
+            },
+            {
+              "id": 778114,
+              "key": "084609c4-be1d-455b-9e1a-af53f00041cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are many packages that you can install. To see a list of available packages for the Kinetic distribution, take some time to explore [the list of ROS package online](http://www.ros.org/browse/list.php).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778119,
+          "key": "214885ff-d7ab-401c-8157-685ac4a64374",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "214885ff-d7ab-401c-8157-685ac4a64374",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778116,
+              "key": "88410291-5bac-4165-93e4-e53da01d11fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778117,
+              "key": "3da5c6db-e464-4a21-862d-5df2a0f41507",
+              "title": "Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Q52ubdhes48",
+                "china_cdn_id": "Q52ubdhes48.mp4"
+              }
+            },
+            {
+              "id": 778118,
+              "key": "4e52a721-4967-44c2-82a1-5f0ea99634fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations!\nYou now have some experience\n* Creating workspaces\n* Adding packages\n* Managing Dependencies\n* Troubleshooting build errors\n\n## Note \nBefore you begin the next lesson, it might be valuable to take a peek at the official [ROS wiki](http://wiki.ros.org). There, you will be able to find in-depth documentation about some of the topics that have been covered up to this point.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.714
+Welcome to the build my word project.
+
+00:00:02.714 --> 00:00:06.165
+In this module, you'll learn how to create a Gazebo word,
+
+00:00:06.165 --> 00:00:08.085
+interact with it through plugins,
+
+00:00:08.085 --> 00:00:10.905
+and design models using Gazebo tools
+
+00:00:10.904 --> 00:00:14.730
+such as the moderator tool and the building editor tool.
+
+00:00:14.730 --> 00:00:19.954
+Now, you will utilize what you learn to build your own robotic simulated environment.
+
+00:00:19.954 --> 00:00:22.909
+In this project, you will design a Gazebo word,
+
+00:00:22.910 --> 00:00:27.259
+use it as a simulation environment for all your upcoming projects.
+
+00:00:27.260 --> 00:00:30.435
+Specifically, you will use the building editor tool
+
+00:00:30.434 --> 00:00:34.199
+to design and build a sculpture to house your future robot.
+
+00:00:34.200 --> 00:00:38.900
+Furthermore, you would design an object using the moderator tool.
+
+00:00:38.899 --> 00:00:43.695
+Then, you would include multiple instances of that object in your world.
+
+00:00:43.695 --> 00:00:45.865
+You will also import a model of
+
+00:00:45.865 --> 00:00:50.280
+the Gazebo online library and include it in your Gazebo word theme.
+
+00:00:50.280 --> 00:00:51.960
+To interact with your word,
+
+00:00:51.960 --> 00:00:54.020
+you will write the word program to display
+
+00:00:54.020 --> 00:00:56.930
+a welcome message for anyone visiting the word.
+
+00:00:56.929 --> 00:01:02.159
+I hope you're excited to unleash your creativity and have fun working with Gazebo.
+

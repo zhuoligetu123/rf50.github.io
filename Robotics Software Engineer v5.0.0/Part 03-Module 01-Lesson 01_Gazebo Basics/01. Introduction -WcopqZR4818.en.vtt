@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.895
+Welcome to the gazebo basics lesson.
+
+00:00:02.895 --> 00:00:07.685
+Here you will get hands-on experience with a three-dimensional robotics simulator.
+
+00:00:07.684 --> 00:00:12.000
+Robotic simulators allow you to model a 3D simulated version
+
+00:00:12.000 --> 00:00:16.289
+of your surroundings and real-world robot with exact same physics.
+
+00:00:16.289 --> 00:00:20.324
+You can also add sensors to the virtual robot, interact with it,
+
+00:00:20.324 --> 00:00:23.369
+activate its joints and so much more,
+
+00:00:23.370 --> 00:00:26.144
+almost the same as working with the real-world robot.
+
+00:00:26.144 --> 00:00:31.050
+The big advantage of working in a simulator is saving both time and cost.
+
+00:00:31.050 --> 00:00:34.410
+As an engineer, you don't always want to be testing your code on
+
+00:00:34.409 --> 00:00:38.849
+a real robot and then crashing it and spending time fixing it.
+
+00:00:38.850 --> 00:00:44.645
+Instead, you want to test your code in a simulator where mistakes are far less costly.
+
+00:00:44.645 --> 00:00:46.130
+With a single key press,
+
+00:00:46.130 --> 00:00:49.445
+you can reset your simulated robot to its initial state.
+
+00:00:49.445 --> 00:00:52.249
+After intensive testing your code in simulator,
+
+00:00:52.249 --> 00:00:56.005
+you can deploy the final version of your code on a real robot.
+
+00:00:56.005 --> 00:00:58.340
+One of the most common 3D physics
+
+00:00:58.340 --> 00:01:02.240
+based simulators using the robotics word is called gazebo.
+
+00:01:02.240 --> 00:01:05.629
+Engineers are extensively using gazebo to test
+
+00:01:05.629 --> 00:01:10.015
+their software in simulation before they deploy it on the real world robot.
+
+00:01:10.015 --> 00:01:15.305
+In this lesson, you will learn the basics of gazebo to simulate the robotic environment.
+
+00:01:15.305 --> 00:01:20.405
+First, you'll get the basic understanding of the gazebo simulator and its features.
+
+00:01:20.405 --> 00:01:23.510
+Throughout the lesson, you will be able to practice working with
+
+00:01:23.510 --> 00:01:27.570
+gazebo through the Udacity workspace that runs in your browser.
+
+00:01:27.569 --> 00:01:31.189
+Then, you will learn the main components of the simulator.
+
+00:01:31.189 --> 00:01:33.230
+Next, we'll take a look inside
+
+00:01:33.230 --> 00:01:36.969
+gazebo so that you can understand this graphical user interface.
+
+00:01:36.969 --> 00:01:41.120
+You will then simulate your first robot in the modulator.
+
+00:01:41.120 --> 00:01:43.329
+To interact with your simulated world,
+
+00:01:43.329 --> 00:01:45.295
+you'll learn how to write plug-ins.
+
+00:01:45.295 --> 00:01:50.105
+Finally, you will explore the building editor to design a building in gazebo.
+
+00:01:50.105 --> 00:01:53.079
+All right now, let's get started.
+
