@@ -1,0 +1,345 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Localization and Navigation Testing
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Home Service Robot
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Working Environment.html">
+       02. Working Environment
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Shell Scripts.html">
+       03. Shell Scripts
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simulation Set Up.html">
+       04. Simulation Set Up
+      </a>
+     </li>
+     <li class="">
+      <a href="05. SLAM Testing.html">
+       05. SLAM Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Localization and Navigation Testing.html">
+       06. Localization and Navigation Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Navigation Goal Node.html">
+       07. Navigation Goal Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Virtual Objects.html">
+       08. Virtual Objects
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Your Home Service Robot.html">
+       09. Your Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Project Workspace.html">
+       10. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace Home Service Robot.html">
+       11. Project Workspace: Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Home Service Robot.html">
+       Project Description - Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Home Service Robot.html">
+       Project Rubric - Home Service Robot
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Localization and Navigation Testing
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="localization-and-navigation-testing">
+          Localization and Navigation Testing
+         </h1>
+         <p>
+          The next task of this project is to pick two different goals and test your robot's ability to reach them and orient itself with respect to them. We will refer to these goals as the pickup and drop off zones. This section is only for testing purposes to make sure our robot is able to reach these positions before autonomously commanding it to travel towards them.
+         </p>
+         <p>
+          We will be using the ROS Navigation stack, which is based on the Dijkstra's, a variant of the Uniform Cost Search algorithm, to plan our robot trajectory from start to goal position. The ROS navigation stack permits your robot to avoid any obstacle on its path by re-planning a new trajectory once your robot encounters them. You are familiar with this navigation stack from the localization project where you interfaced with it and sent a specific goal for your robot to reach while localizing itself with AMCL. If you are planning to modify the ROS navigation algorithm or you are curious to know how it's done, take a look at this official tutorial which teaches you how to write a global path planner as a plugin in ROS.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Testing Navigation
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Testing Navigation-t-0li7H131A.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Testing Navigation-t-0li7H131A.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Navigation Test Task List
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Write a
+           <strong>
+            test_navigation.sh
+           </strong>
+           shell script that launches these files:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="72a3b765-8549-47b2-a0c4-af09c6900188--0" type="checkbox"/>
+            <label for="72a3b765-8549-47b2-a0c4-af09c6900188--0">
+             <p>
+              Add
+              <strong>
+               turtlebot_world.launch
+              </strong>
+              to deploy a turtlebot in your environment
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="72a3b765-8549-47b2-a0c4-af09c6900188--1" type="checkbox"/>
+            <label for="72a3b765-8549-47b2-a0c4-af09c6900188--1">
+             <p>
+              Add
+              <strong>
+               amcl_demo.launch
+              </strong>
+              to localize the turtlebot
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="72a3b765-8549-47b2-a0c4-af09c6900188--2" type="checkbox"/>
+            <label for="72a3b765-8549-47b2-a0c4-af09c6900188--2">
+             <p>
+              Add
+              <strong>
+               view_navigation.launch
+              </strong>
+              to observe the map in rviz
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="test-it">
+          Test it
+         </h2>
+         <p>
+          Once you launch all the nodes, you will initially see the particles around your robot, which means that AMCL recognizes the initial robot pose. Now, manually point out to two different goals, one at a time, and direct your robot to reach them and orient itself with respect to them.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Navigation Goal Node.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Localization and Navigation Testing')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

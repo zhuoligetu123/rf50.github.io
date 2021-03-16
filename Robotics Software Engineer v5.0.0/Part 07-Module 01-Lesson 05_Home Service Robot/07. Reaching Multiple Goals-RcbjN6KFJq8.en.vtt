@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.219
+Now, I will show you my robot traveling to the two predefined goals.
+
+00:00:05.219 --> 00:00:11.410
+I'll open the terminal, and run my script.
+
+00:00:24.350 --> 00:00:28.840
+You can see my robot traveling to the pickup zone.
+
+00:00:39.530 --> 00:00:42.855
+Once it reached and orient itself,
+
+00:00:42.854 --> 00:00:44.714
+it displays another message.
+
+00:00:44.715 --> 00:00:50.075
+Now, the robot will wait for five seconds assuming that it's picking up an object.
+
+00:00:50.075 --> 00:00:52.220
+Once wait time is over,
+
+00:00:52.219 --> 00:00:56.129
+the robot travels to my desired drop-off zone.
+
+00:01:04.959 --> 00:01:09.159
+Here's my robot reaching a drop-off zone and displaying
+
+00:01:09.159 --> 00:01:13.920
+a message assuming that it's dropped the virtual object.
+

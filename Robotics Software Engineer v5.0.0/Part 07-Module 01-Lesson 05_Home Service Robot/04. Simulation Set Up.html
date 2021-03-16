@@ -1,0 +1,413 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Simulation Set Up
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Home Service Robot
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Working Environment.html">
+       02. Working Environment
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Shell Scripts.html">
+       03. Shell Scripts
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simulation Set Up.html">
+       04. Simulation Set Up
+      </a>
+     </li>
+     <li class="">
+      <a href="05. SLAM Testing.html">
+       05. SLAM Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Localization and Navigation Testing.html">
+       06. Localization and Navigation Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Navigation Goal Node.html">
+       07. Navigation Goal Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Virtual Objects.html">
+       08. Virtual Objects
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Your Home Service Robot.html">
+       09. Your Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Project Workspace.html">
+       10. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace Home Service Robot.html">
+       11. Project Workspace: Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Home Service Robot.html">
+       Project Description - Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Home Service Robot.html">
+       Project Rubric - Home Service Robot
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          04. Simulation Set Up
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="simulation-setup">
+          Simulation Setup
+         </h1>
+         <h3 id="catkin-workspace">
+          Catkin Workspace
+         </h3>
+         <p>
+          To program your home service robot, you will need to interface it with different ROS packages. Some of these packages are
+          <strong>
+           official ROS packages
+          </strong>
+          which offer great tools and others are
+          <strong>
+           packages that you’ll create
+          </strong>
+          . The goal of this section is to prepare and build your
+          <code>
+           catkin workspace
+          </code>
+          .
+         </p>
+         <p>
+          Here’s the list of the official ROS packages that you will need to grab, and other packages and directories that you’ll need to create at a later stage as you go through the project. Your
+          <code>
+           catkin_ws/src
+          </code>
+          directory should look as follows:
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="official-ros-packages">
+          Official ROS packages
+         </h3>
+         <p>
+          Import these packages now and install them in the
+          <code>
+           src
+          </code>
+          directory of your
+          <code>
+           catkin workspace
+          </code>
+          . Be sure to clone the full GitHub directory and not just the package itself.
+         </p>
+         <ol>
+          <li>
+           <a href="http://wiki.ros.org/gmapping" rel="noopener noreferrer" target="_blank">
+            gmapping:
+           </a>
+           With the
+           <strong>
+            gmapping_demo.launch
+           </strong>
+           file, you can easily perform SLAM and build a map of the environment with a robot equipped with laser range finder sensors or RGB-D cameras.
+          </li>
+          <li>
+           <a href="http://wiki.ros.org/turtlebot_teleop" rel="noopener noreferrer" target="_blank">
+            turtlebot_teleop:
+           </a>
+           With the
+           <strong>
+            keyboard_teleop.launch
+           </strong>
+           file, you can manually control a robot using keyboard commands.
+          </li>
+          <li>
+           <a href="http://wiki.ros.org/turtlebot_rviz_launchers" rel="noopener noreferrer" target="_blank">
+            turtlebot_rviz_launchers:
+           </a>
+           With the
+           <strong>
+            view_navigation.launch
+           </strong>
+           file, you can load a preconfigured rviz workspace. You’ll save a lot of time by launching this file, because it will automatically load the robot model, trajectories, and map for you.
+          </li>
+          <li>
+           <a href="http://wiki.ros.org/turtlebot_gazebo" rel="noopener noreferrer" target="_blank">
+            turtlebot_gazebo:
+           </a>
+           With the
+           <strong>
+            turtlebot_world.launch
+           </strong>
+           you can deploy a turtlebot in a gazebo environment by linking the world file to it.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4 id="your-packages-and-directories">
+          Your Packages and Directories
+         </h4>
+         <p>
+          You’ll install these packages and create the directories as you go through the project.
+         </p>
+         <ol>
+          <li>
+           <strong>
+            map:
+           </strong>
+           Inside this directory, you will store your gazebo world file and the map generated from SLAM.
+          </li>
+          <li>
+           <strong>
+            scripts:
+           </strong>
+           Inside this directory, you’ll store your shell scripts.
+          </li>
+          <li>
+           <strong>
+            rvizConfig:
+           </strong>
+           Inside this directory, you’ll store your customized rviz configuration files.
+          </li>
+          <li>
+           <strong>
+            pick_objects:
+           </strong>
+           You will write a node that commands your robot to drive to the pickup and drop off zones.
+          </li>
+          <li>
+           <strong>
+            add_markers:
+           </strong>
+           You will write a node that model the object with a marker in rviz.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Your package should look like this now:
+         </p>
+         <pre><code>    ├──                                # Official ROS packages
+    |
+    ├── slam_gmapping                  # gmapping_demo.launch file                   
+    │   ├── gmapping
+    │   ├── ...
+    ├── turtlebot                      # keyboard_teleop.launch file
+    │   ├── turtlebot_teleop
+    │   ├── ...
+    ├── turtlebot_interactions         # view_navigation.launch file      
+    │   ├── turtlebot_rviz_launchers
+    │   ├── ...
+    ├── turtlebot_simulator            # turtlebot_world.launch file 
+    │   ├── turtlebot_gazebo
+    │   ├── ...
+    ├──                                # Your packages and direcotries
+    |
+    ├── map                          # map files
+    │   ├── ...
+    ├── scripts                   # shell scripts files
+    │   ├── ...
+    ├──rvizConfig                      # rviz configuration files
+    │   ├── ...
+    ├──pick_objects                    # pick_objects C++ node
+    │   ├── src/pick_objects.cpp
+    │   ├── ...
+    ├──add_markers                     # add_marker C++ node
+    │   ├── src/add_markers.cpp
+    │   ├── ...
+    └──</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="05. SLAM Testing.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. Simulation Set Up')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

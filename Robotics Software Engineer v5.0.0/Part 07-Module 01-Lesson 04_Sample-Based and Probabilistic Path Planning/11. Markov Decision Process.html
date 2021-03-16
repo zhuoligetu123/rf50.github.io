@@ -1,0 +1,492 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Markov Decision Process
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Sample-Based and Probabilistic Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction to Sample-Based &amp; Probabilistic Path Planning.html">
+       01. Introduction to Sample-Based &amp; Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Why Sample-Based Planning.html">
+       02. Why Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Weakening Requirements.html">
+       03. Weakening Requirements
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Sample-Based Planning.html">
+       04. Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Probabilistic Roadmap (PRM).html">
+       05. Probabilistic Roadmap (PRM)
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Rapidly Exploring Random Tree Method (RRT).html">
+       06. Rapidly Exploring Random Tree Method (RRT)
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Path Smoothing.html">
+       07. Path Smoothing
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Overall Concerns.html">
+       08. Overall Concerns
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Sample-Based Planning Wrap-Up.html">
+       09. Sample-Based Planning Wrap-Up
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Introduction to Probabilistic Path Planning.html">
+       10. Introduction to Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Markov Decision Process.html">
+       11. Markov Decision Process
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Policies.html">
+       12. Policies
+      </a>
+     </li>
+     <li class="">
+      <a href="13. State Utility.html">
+       13. State Utility
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Value Iteration Algorithm.html">
+       14. Value Iteration Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Probabilistic Path Planning Wrap-Up.html">
+       15. Probabilistic Path Planning Wrap-Up
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          11. Markov Decision Process
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="markov-decision-process">
+          Markov Decision Process
+         </h1>
+         <h2 id="recycling-robot-example">
+          Recycling Robot Example
+         </h2>
+         <p>
+          Let's say we have a recycling robot, as an example. The robot’s goal is to drive around its environment and pick up as many cans as possible. It has a set of
+          <strong>
+           states
+          </strong>
+          that it could be in, and a set of
+          <strong>
+           actions
+          </strong>
+          that it could take. The robot receives a
+          <strong>
+           reward
+          </strong>
+          for picking up cans; however, it can also receive a negative reward (a penalty) if it runs out of battery and get stranded.
+         </p>
+         <p>
+          The robot has a non-deterministic
+          <strong>
+           transition model
+          </strong>
+          (sometimes called the
+          <em>
+           one-step dynamics
+          </em>
+          ). This means that an action cannot guarantee to lead a robot from one state to another state. Instead, there is a probability associated with resulting in each state.
+         </p>
+         <p>
+          Say at an arbitrary time step t, the state of the robot's battery is high (
+          <span class="mathquill ud-math">
+           S_t = high
+          </span>
+          ). In response, the agent decides to search for cans (
+          <span class="mathquill ud-math">
+           A_t = search
+          </span>
+          ). In such a case, there is a 70% chance of the robot’s battery charge remaining high and a 30% chance that it will drop to low.
+         </p>
+         <p>
+          Let’s revisit the definition of an MDP before moving forward.
+         </p>
+         <h2 id="mdp-definition">
+          MDP Definition
+         </h2>
+         <p>
+          A Markov Decision Process is defined by:
+         </p>
+         <ul>
+          <li>
+           A set of states:
+           <span class="mathquill ud-math">
+            \mathcal{S}
+           </span>
+           ,
+          </li>
+          <li>
+           Initial state:
+           <span class="mathquill ud-math">
+            \mathcal{s_0}
+           </span>
+           ,
+          </li>
+          <li>
+           A set of actions:
+           <span class="mathquill ud-math">
+            \mathcal{A}
+           </span>
+           ,
+          </li>
+          <li>
+           The transition model:
+           <span class="mathquill ud-math">
+            T(s,a,s')
+           </span>
+           ,
+          </li>
+          <li>
+           A set of rewards:
+           <span class="mathquill ud-math">
+            \mathcal{R}
+           </span>
+           .
+          </li>
+         </ul>
+         <p>
+          The transition model is the probability of reaching a state
+          <span class="mathquill ud-math">
+           s'
+          </span>
+          from a state
+          <span class="mathquill ud-math">
+           s
+          </span>
+          by executing action
+          <span class="mathquill ud-math">
+           a
+          </span>
+          . It is often written as
+          <span class="mathquill ud-math">
+           T(s,a,s')
+          </span>
+          .
+         </p>
+         <p>
+          The Markov assumption states that the probability of transitioning from
+          <span class="mathquill ud-math">
+           s
+          </span>
+          to
+          <span class="mathquill ud-math">
+           s'
+          </span>
+          is only dependent on the present state,
+          <span class="mathquill ud-math">
+           s
+          </span>
+          , and not on the path taken to get to
+          <span class="mathquill ud-math">
+           s
+          </span>
+          .
+         </p>
+         <p>
+          One notable difference between MDPs in probabilistic path planning and MDPs in reinforcement learning, is that in path planning the robot is fully aware of all of the items listed above (state, actions, transition model, rewards). Whereas in RL, the robot was aware of its state and what actions it had available, but it was not aware of the rewards or the transition model.
+         </p>
+         <h2 id="mobile-robot-example">
+          Mobile Robot Example
+         </h2>
+         <p>
+          In our mobile robot example, movement actions are non-deterministic. Every action will have a probability less than 1 of being successfully executed. This can be due to a number of reasons such as wheel slip, internal errors, difficult terrain, etc. The image below showcases a possible transition model for our exploratory rover, for a scenario where it is trying to move forward one cell.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/artboard-1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          As you can see, the intended action of moving forward one cell is only executed with a probability of 0.8 (80%). With a probability of 0.1 (10%), the rover will move left, or right. Let’s also say that bumping into a wall will cause the robot to remain in its present cell.
+         </p>
+         <p>
+          Let’s provide the rover with a simple example of an environment for it to plan a path in. The environment shown below has the robot starting in the top left cell, and the robot’s goal is in the bottom right cell. The mountains represent terrain that is more difficult to pass, while the pond is a hazard to the robot. Moving across the mountains will take the rover longer than moving on flat land, and moving into the pond may drown and short circuit the robot.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/mdpimage-v5.gif"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="combinatorial-path-planning-solution">
+          Combinatorial Path Planning Solution
+         </h3>
+         <p>
+          If we were to apply A* search to this discretized 4-connected environment, the resultant path would have the robot move right 2 cells, then down 2 cells, and right once more to reach the goal (or R-R-D-R-D, which is an equally optimal path). This truly is the shortest path, however, it takes the robot right by a very dangerous area (the pond). There is a significant chance that the robot will end up in the pond, failing its mission.
+         </p>
+         <p>
+          If we are to path plan using MDPs, we might be able to get a better result!
+         </p>
+         <h3 id="probabilistic-path-planning-solution">
+          Probabilistic Path Planning Solution
+         </h3>
+         <p>
+          In each state (cell), the robot will receive a certain reward,
+          <span class="mathquill ud-math">
+           R(s)
+          </span>
+          . This reward could be positive or negative, but it cannot be infinite. It is common to provide the following rewards,
+         </p>
+         <ul>
+          <li>
+           small negative rewards to states that are not the goal state(s) - to represent the cost of time passing (a slow moving robot would incur a greater penalty than a speedy robot),
+          </li>
+          <li>
+           large positive rewards for the goal state(s), and
+          </li>
+          <li>
+           large negative rewards for hazardous states - in hopes of convincing the robot to avoid them.
+          </li>
+         </ul>
+         <p>
+          These rewards will help guide the rover to a path that is efficient, but also safe - taking into account the uncertainty of the rover’s motion.
+         </p>
+         <p>
+          The image below displays the environment with appropriate rewards assigned.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/mdpimage-39-v1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          As you can see, entering a state that is not the goal state has a reward of -1 if it is a flat-land tile, and -3 if it is a mountainous tile. The hazardous pond has a reward of -50, and the goal has a reward of 100.
+         </p>
+         <p>
+          With the robot’s transition model identified and appropriate rewards assigned to all areas of the environment, we can now construct a policy. Read on to see how that’s done in probabilistic path planning!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="12. Policies.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Markov Decision Process')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

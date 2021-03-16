@@ -1,0 +1,367 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.485
+Hey everyone? And welcome to the Google project walk-through video.
+
+00:00:04.485 --> 00:00:07.620
+Today, I'm going to show you how you can start
+
+00:00:07.620 --> 00:00:13.540
+the sample solution and then submit your code to the KIT lab in Germany.
+
+00:00:15.260 --> 00:00:18.960
+First, go through the project details and
+
+00:00:18.960 --> 00:00:23.175
+then start reading the Udacity Workspace instructions.
+
+00:00:23.175 --> 00:00:28.660
+You should get familiar with this instruction before you start your workspace.
+
+00:00:38.650 --> 00:00:41.555
+Now that you've read these instructions,
+
+00:00:41.555 --> 00:00:43.730
+go to your Project Workspace.
+
+00:00:43.730 --> 00:00:51.780
+As always, enable the GPU otherwise you won't be able to visualize RViz or Gazebo.
+
+00:01:01.640 --> 00:01:05.900
+Always keep an eye to the red indicator next to the Menu.
+
+00:01:05.900 --> 00:01:08.750
+For now, I don't see any red indicator.
+
+00:01:08.750 --> 00:01:10.625
+But if you see it,
+
+00:01:10.625 --> 00:01:13.505
+click on MENU and reset the data.
+
+00:01:13.505 --> 00:01:18.490
+This ensures that you get the latest version of the project.
+
+00:01:18.490 --> 00:01:20.675
+For the purpose of demonstration,
+
+00:01:20.675 --> 00:01:22.520
+I'm going to reset the data.
+
+00:01:22.520 --> 00:01:25.130
+Before you do that, make sure to backup
+
+00:01:25.130 --> 00:01:29.250
+your code because you lose it once you reset the data.
+
+00:01:32.240 --> 00:01:37.770
+I just reset my data and waiting for a GPU to load again.
+
+00:01:41.360 --> 00:01:47.340
+Now, I'm going to expand this to better visualize the workspace.
+
+00:01:47.930 --> 00:01:54.140
+Let's follow the project instructions and see how I can start the sample code.
+
+00:01:54.140 --> 00:01:58.230
+First, I have to update and upgrade the system.
+
+00:02:21.470 --> 00:02:25.805
+Now that the system has been updated and upgraded,
+
+00:02:25.805 --> 00:02:28.890
+let's move on with the instructions.
+
+00:02:29.600 --> 00:02:34.240
+Next, I have to install all the package dependencies.
+
+00:02:47.390 --> 00:02:52.550
+You can see that all the required packages has been installed successfully.
+
+00:02:52.550 --> 00:02:58.380
+Moving on, let's build and source our catkin workspace.
+
+00:03:17.600 --> 00:03:23.220
+The catkin workspace has been successfully built, let's source it.
+
+00:03:32.300 --> 00:03:37.830
+Following, let's go to the desktop and then start the project.
+
+00:03:44.450 --> 00:03:49.180
+Here you can see the visual version of iWuntu.
+
+00:03:50.090 --> 00:03:52.290
+Don't worry about this error,
+
+00:03:52.290 --> 00:03:57.670
+just hit OK. Now open a terminal,
+
+00:03:59.750 --> 00:04:07.000
+navigate to the script folder of the RLL planning project,
+
+00:04:07.430 --> 00:04:11.200
+and then restart the project file.
+
+00:04:12.230 --> 00:04:15.860
+You cannot see the external terminals starting,
+
+00:04:15.860 --> 00:04:19.850
+each one of them, starting a bunch of graphs notes.
+
+00:04:20.660 --> 00:04:28.090
+First, the Gazebo and the RViz simulation part is going to start.
+
+00:04:43.870 --> 00:04:48.220
+Just going to put them side by side to better visualize them,
+
+00:04:48.220 --> 00:04:53.480
+you can always use the command and arrows button to do that.
+
+00:04:54.530 --> 00:04:58.495
+You can see that my project type solution has started.
+
+00:04:58.495 --> 00:05:00.310
+In this sample solution,
+
+00:05:00.310 --> 00:05:03.550
+the grasping object is moving from the start goal to
+
+00:05:03.550 --> 00:05:08.405
+an easy goal one located on the same line.
+
+00:05:08.405 --> 00:05:11.430
+You can see that the pose is valid,
+
+00:05:11.430 --> 00:05:16.880
+and then the grasping object has moved and successfully been deployed to the goal pose.
+
+00:05:25.570 --> 00:05:29.240
+Duration of this job is 9.95 seconds.
+
+00:05:29.240 --> 00:05:37.500
+Now the hooker arm is replacing back the grasping object at the start position.
+
+00:05:53.810 --> 00:05:56.265
+Now to terminate the project,
+
+00:05:56.265 --> 00:05:58.570
+hit ENTER into terminal.
+
+00:05:58.610 --> 00:06:02.205
+Now that you've seen a sample code running ,
+
+00:06:02.205 --> 00:06:03.890
+let's take a look at the content of
+
+00:06:03.890 --> 00:06:08.880
+the catkin workspace and see how the sample code was programmed.
+
+00:06:11.060 --> 00:06:14.270
+Under catkin workspace, SRC,
+
+00:06:14.270 --> 00:06:18.695
+you can see the project solution as well as the project SDK.
+
+00:06:18.695 --> 00:06:23.220
+I'm going to open the project solution folder.
+
+00:06:24.080 --> 00:06:27.885
+Here, you can see a bunch of folders.
+
+00:06:27.885 --> 00:06:30.149
+Under the launch folder,
+
+00:06:30.149 --> 00:06:34.570
+I'm going to open the planning underscore iface of launch file.
+
+00:06:34.570 --> 00:06:41.430
+In this file, you can see the start and goal pose of the grasping object.
+
+00:06:41.510 --> 00:06:46.235
+The X and Y positions are positioned in meters,
+
+00:06:46.235 --> 00:06:50.100
+whereas the angle is an angle in radians.
+
+00:06:51.830 --> 00:06:55.580
+You'll have to edit this file and change the start
+
+00:06:55.580 --> 00:06:58.595
+and goal pose to work on your phase one,
+
+00:06:58.595 --> 00:07:02.250
+phase two, and later on, the context phase.
+
+00:07:02.300 --> 00:07:09.420
+In this file, you can edit the round three times default value to true.
+
+00:07:09.580 --> 00:07:15.000
+This would run your projects solution three times in a row.
+
+00:07:15.700 --> 00:07:20.480
+Make sure to enable that to true once you're done cording your background in
+
+00:07:20.480 --> 00:07:26.830
+algorithm and you're ready to test before submitting your code to the KIT lab in Germany.
+
+00:07:26.830 --> 00:07:31.675
+Moving on, let's go back to the solution folder.
+
+00:07:31.675 --> 00:07:34.880
+And then under the scripts folder,
+
+00:07:34.880 --> 00:07:39.210
+let's open the path underscore planner by script.
+
+00:07:46.070 --> 00:07:50.560
+In here, you're going to implement your path planning algorithm.
+
+00:07:50.560 --> 00:07:53.130
+For the sample code,
+
+00:07:53.130 --> 00:07:55.980
+we're retrieving the input values,
+
+00:07:55.980 --> 00:07:59.560
+then mark underscore width and mark underscore length,
+
+00:07:59.560 --> 00:08:03.510
+which are both the given map dimensions.
+
+00:08:03.710 --> 00:08:08.755
+Then, we're retrieving the start and go poses.
+
+00:08:08.755 --> 00:08:12.760
+Later, we're printing all these values.
+
+00:08:23.130 --> 00:08:28.420
+Next, we're checking if it's possible to directly move from the start
+
+00:08:28.420 --> 00:08:34.390
+pose to the goal pose using the check underscore SRV function.
+
+00:08:37.340 --> 00:08:44.410
+If valid, were directly moving to that pose using the move underscore SRV function.
+
+00:08:44.930 --> 00:08:49.005
+Otherwise, we're printing an invalid pose statement.
+
+00:08:49.005 --> 00:08:52.350
+For both the practice maze and the context maze,
+
+00:08:52.350 --> 00:08:56.850
+you'll have to use these check underscore SRV function and move
+
+00:08:56.850 --> 00:09:02.315
+underscore SRV function to successfully check for any pose and moved toward it.
+
+00:09:02.315 --> 00:09:07.285
+Makes sure to at least five millimeter to the next pose.
+
+00:09:07.285 --> 00:09:12.395
+After you finish writing your path planning algorithm and testing it,
+
+00:09:12.395 --> 00:09:16.770
+feel free to move and submitted to the KIT lab in Germany.
+
+00:09:18.020 --> 00:09:23.575
+Now, I'll show you how to submit your code to be KIT lab in Germany.
+
+00:09:23.575 --> 00:09:27.625
+First, go through the submission instructions.
+
+00:09:27.625 --> 00:09:31.160
+These instructions are divided into three steps.
+
+00:09:31.160 --> 00:09:34.625
+First, you have to install your JWT file,
+
+00:09:34.625 --> 00:09:41.450
+then you have to submit your job and later check the status of your job.
+
+00:09:41.450 --> 00:09:44.360
+Let me start with the first step.
+
+00:09:44.360 --> 00:09:48.360
+I'm going to download my JWT file.
+
+00:09:56.830 --> 00:10:00.690
+Let me copy the content of this file,
+
+00:10:02.890 --> 00:10:07.160
+then go to the JWT folder in my workspace.
+
+00:10:07.160 --> 00:10:10.725
+Under this folder you can see JWT file,
+
+00:10:10.725 --> 00:10:12.590
+where you have to open it,
+
+00:10:12.590 --> 00:10:20.130
+delete its content and replace it with a JWT content file that you downloaded earlier.
+
+00:10:23.170 --> 00:10:28.355
+The next step is to submit your job to the KIT lab in Germany.
+
+00:10:28.355 --> 00:10:34.010
+To do that, you open a terminal and write submit.
+
+00:10:37.900 --> 00:10:42.890
+Now it's prompting you to write yes in capital letter if you
+
+00:10:42.890 --> 00:10:47.710
+want to write over any previous planner code submissions and scores.
+
+00:10:47.710 --> 00:10:50.920
+This should be all in capital.
+
+00:10:51.380 --> 00:10:55.840
+It's not submitting my code to the robot learning lab,
+
+00:10:55.840 --> 00:10:58.730
+here, I'm going to have to write yes if I want
+
+00:10:58.730 --> 00:11:02.190
+my name to be published on the leaderboard.
+
+00:11:04.370 --> 00:11:08.050
+I will name this as testing.
+
+00:11:09.890 --> 00:11:13.450
+My submission has been completed.
+
+00:11:13.460 --> 00:11:17.920
+Next step, is to check the status of my job.
+
+00:11:19.250 --> 00:11:23.680
+I'll simply write check underscore jobs.
+
+00:11:25.060 --> 00:11:30.535
+Here is a list of all the jobs I've been submitting to the KIT lab in Germany.
+
+00:11:30.535 --> 00:11:34.540
+The latest one should be at the end of this.
+
+00:11:36.610 --> 00:11:41.525
+So now I'm waiting for feedback from them to see if my submission
+
+00:11:41.525 --> 00:11:47.620
+has failed or passed. Let me check again.
+
+00:11:49.100 --> 00:11:52.560
+Here you can see that my simulation has failed,
+
+00:11:52.560 --> 00:11:55.820
+and that's because my code is unable to move
+
+00:11:55.820 --> 00:12:00.630
+the grasping objects from the given start pose to the goal one.
+
+00:12:01.970 --> 00:12:08.374
+You can collect the log of each terminal by clicking on these links and finally,
+
+00:12:08.374 --> 00:12:14.280
+you can watch a video of you record on the real hardware in case it does the submission.
+

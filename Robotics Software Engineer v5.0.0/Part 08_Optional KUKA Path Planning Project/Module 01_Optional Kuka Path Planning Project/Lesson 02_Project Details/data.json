@@ -1,0 +1,602 @@
+{
+  "data": {
+    "lesson": {
+      "id": 675764,
+      "key": "14af9cfe-057e-4a30-9aa3-c0c223e4f0c1",
+      "title": "Project Details",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Helpful instruction to help you get started with the project",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/14af9cfe-057e-4a30-9aa3-c0c223e4f0c1/675764/1544269630871/Project+Details+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/14af9cfe-057e-4a30-9aa3-c0c223e4f0c1/675764/1544269628402/Project+Details+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 675767,
+          "key": "80fc674b-b4a1-49a9-bfbe-fe8e9882ff56",
+          "title": "Project Specification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "80fc674b-b4a1-49a9-bfbe-fe8e9882ff56",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680915,
+              "key": "44d4e9f7-542f-4446-be53-72fb1814630d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Specification\nTypically, path planning algorithms are applied on *known* maps.  However, in this project, you’ll have to search almost blindly, which makes for a challenging problem. Here’s what we know about the maze:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682830,
+              "key": "b988d3c6-b7c6-4bc7-b7ed-eafd7d548d95",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b5ecce3_screen-shot-2018-07-24-at-12.04.45-am/screen-shot-2018-07-24-at-12.04.45-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b988d3c6-b7c6-4bc7-b7ed-eafd7d548d95",
+              "caption": "",
+              "alt": "",
+              "width": 2697,
+              "height": 2081,
+              "instructor_notes": null
+            },
+            {
+              "id": 680917,
+              "key": "2a63f51c-719c-4195-aed3-a19b288fe365",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Only its width, and length!**<br>\nIn addition to the maze dimensions (1.2m x 1.6m), the *start and goal states* are provided as inputs to your algorithm.  The *path toward the goal state* is your output.\n Inside a launch file, you’ll edit the start pose and the goal pose of the object. \n\nSince the map is unknown and the object is not equipped with any sensor, you might be wondering…how do we detect obstacles and move the cuboid object with the robotic arm?\n\nWe’ve included two services that you can call in your python script; `Move` and `CheckPath`:\n* `Move`: Command the robot by sending a 2D pose. The robot will move the object on a linear path to this pose. Your moving point should be at least **5mm** away from the starting one. And if you are to rotate the arm, then you need to make sure you are rotating by at least **0.35** radians.  \n* `CheckPath`: Verify if a linear path between two 2D poses is valid.\n\n**Note**:  Even if you gain familiarity with the maze through repetition or by examining videos and logs, your algorithm must **not** be permitted to make use of this knowledge by hard-coding the map or learning from previous episodes.  Each time the robot begins its maze problem, it should be completely ignorant of where the walls are or what the map of the maze looks like!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680918,
+              "key": "42681c10-749e-44fd-9395-801ecb7e2fa6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To summarize, you will have two main files to edit in this project:  a launch file where you can specify the start/goal poses, and a python script to code your path planning algorithm. \n\nThere are 4 launch files in this project which you’ll launch later to start the Gazebo and RVIZ simulation, and all the other nodes:\n1. **moveit_planning_execution.launch**(rll_planning_project package): Starts the setup simulation in Gazebo and Rviz. \n2. **planning_iface.launch**(rll_planning_project package): Starts the planning interface. \n3. **path_planner.launch**(rll_planning_project package): Starts your path planning algorithm code. \n4. **run_project.launch**(rll_project_runner package): Starts a single planning and path execution.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681118,
+              "key": "5b7053ac-caf6-4dee-83d4-fd88cb0a441e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You'll have a chance to launch each of these files separately in different terminals or use a provided shell script file that will launch all the nodes in separate instances of xterm terminals. The first method is preferable for debugging since you can easily identify the errors. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675765,
+          "key": "653e0d56-9a4b-4ac7-b29f-475c8194f3cb",
+          "title": "Getting Started",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "653e0d56-9a4b-4ac7-b29f-475c8194f3cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680919,
+              "key": "e6cc0e0c-8673-4e60-a25b-43d7ae4b0981",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Getting Started\nTo get started, navigate to the project workspace concept. Under `home/workspace/catkin-ws/src`, you will see the project SDK(**rll_sdk**) and planning(**rll_planning_project**) packages. You will be mainly working with the planning package where you’ll edit a launch file to change the object start/goal pose, and you'll edit a python script to code the path planning algorithm. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680921,
+              "key": "459e1ccb-247f-408d-b415-a9d145fc5e4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Python script: `path_planner.py`\nLet’s first take a look at the Python path planning script. Navigate to `/home/workspace/catkin_ws/src/rll_planning_project/scripts` and open the `path_planner.py` script. Here, you will find a sample solution where we first retrieve the input values, print them, call the `CheckPath` service and check if it’s possible to move directly from the start pose toward the goal pose.  If it’s valid,  the `Move` service is called to move the object linearly toward the goal pose. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680922,
+              "key": "70e7fafd-0008-469c-909b-52a4471faccd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Launch file: `planning_iface.launch`\nMoving on, let’s take a look at the launch file you'll need to modify.  Navigate to `/home/workspace/catkin_ws/src/rll_planning_project/launch` and open `planning_iface.launch`. There’s a long list of parameters needed for the project.   You’ll only need to edit the start 2D pose and goal 2D pose parameters.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680923,
+              "key": "564c2a91-b302-43d8-a39d-49924bda60d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Run the Sample Solution\nIt’s time to run the project with the sample solution. **Enable the GPU, GO TO DESKTOP**, and follow these steps for a successful run:\n1. Update/upgrade the system\n```sh\napt-get update -y\napt-get upgrade -y```\n2. Install all the packages dependencies\n```sh\ncd /home/workspace/catkin_ws/\nrosdep install --from-paths src --ignore-src -r -y\n```\n3. Build and source your `catkin_ws`\n```sh\ncd /home/workspace/catkin_ws/\ncatkin_make\nsource devel/setup.bash\n```\n4. Launch all the project nodes\n```sh\n# We’ve combined all the launch files in a `start_project.sh` script. \n# Note: This script will only run if you are in the visual desktop, don't try to run it inside the workspace terminal!\ncd /home/workspace/catkin_ws/src/rll_planning_project/scripts/\n./start_project.sh\n```\nYou'll need to repeat these steps after each reboot!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681313,
+              "key": "473a38b1-93bb-42db-b597-74622f746b38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stopping a Run\nHit Enter key in the main terminal to instantly kill the project execution and all the ROS nodes. You need to wait at least 30 seconds before starting a new run because the nodes will take some time to fully terminate. If you encountered an error, don't worry about it - just relaunch the nodes either manually or with the shell script file provided. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682520,
+              "key": "2a535fd5-fd7e-49d6-8bd2-be71a55275b3",
+              "title": "KUKASampleCode",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZEW-gsCAWRs",
+                "china_cdn_id": "ZEW-gsCAWRs.mp4"
+              }
+            },
+            {
+              "id": 680924,
+              "key": "828621bf-4354-4424-afd5-aa4307d5f493",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Video Review\nLook closely at the video and try to identify the 4 cycles mentioned earlier: \n1. First, the KUKA gripper will move to the object start position, orient itself with respect to the object, grab the object, and lift it up.  \n2. At this stage, your path planning code will be executed. Your code will search for a path and navigate the robot through the maze by commanding 2D positions, and an orientation angle, in order to get around corners in the maze\n3. You will have a total time of 8 minutes to search for a path and move toward the goal pose. Once reached, your cuboid object will be placed in the goal pose. \n4. Finally, the robot will lift the object from the goal pose, return it back to the start pose, drop it, and get ready for another run. \n \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682516,
+              "key": "d308687f-7a45-4010-a202-cbf6de0186f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Gazebo and Rviz\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682517,
+              "key": "b1e8c6a4-77ef-4401-b574-5349a773bc33",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b5af54e_screen-shot-2018-07-27-at-12.22.10-pm/screen-shot-2018-07-27-at-12.22.10-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b1e8c6a4-77ef-4401-b574-5349a773bc33",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 682519,
+              "key": "deadf88a-9f4e-4376-8a3f-abfc0a37002e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Gazebo**: Visual maze(red color) which is a replica of the real maze located at the KIT Lab in Germany.  \n\n**Rviz**: Collision maze(yellow color) which is the same as the visual maze but with thicker walls and some extra ones. Inside the collision maze, you can still see the visual maze that has thinner walls. The red block indicates the goal pose of the object. \n\nAs a safety measure, we added a tolerance value to the visual maze to prevent any collision between the object or robot and the maze walls in the real world. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675769,
+          "key": "4878e87f-3f46-45f0-82f9-05a6cb8f75d8",
+          "title": "Scoring Criteria",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4878e87f-3f46-45f0-82f9-05a6cb8f75d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680925,
+              "key": "11017847-08e4-49a2-b5bb-48401a89f120",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Scoring\nAfter launching all the nodes in this project, the robot will go through the different cycles and then generate a score. Your score is simply the total time it took the robot to plan and execute a path from start to goal. The clock starts right after the object is lifted from the start pose and stops whenever your robot reaches the goal pose.    On the hardware system, your code will be run three times, with the median time selected as your reported score.\n\nThings to always keep in mind while planning and executing a path:\n* Do not exceed 8 minutes for planning plus execution - this will result in a failed run.\n* Do not send any invalid pose - this will result in a failure and your code will be immediately aborted!\n* Always call the `Move` service before moving to a new pose.\n ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 694308,
+          "key": "a89e3e1e-c5e6-4970-9d17-5e39a81fc831",
+          "title": "Path Planning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a89e3e1e-c5e6-4970-9d17-5e39a81fc831",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 694309,
+              "key": "e535493b-de02-4c9e-8c4c-64393debd25f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Path Planning\nEarlier, you launched the sample solution which executed a path from start to goal. Now, let’s make this problem more challenging by changing the start and end pose values of the object. \n\nNavigate to the `/home/workspace/catkin_ws/src/rll_planning_project/launch` directory, open the `planning_iface.launch` file, and change the start and 2D pose of the object. Try your code for different configurations of start and goal poses. \n\nThe `Contest Maze ` is over and now we are back to the `Practice Phase Maze 1`.  \n\n`Practice Phase Maze 1` Start/Goal configuration:\n ```html\n  <!-- Start 2D pose  -->\n  <arg name=\"start_pos_x\" default=\"0.38\" />\n  <arg name=\"start_pos_y\" default=\"0.0\" />\n  <arg name=\"start_pos_theta\" default=\"0.0\" />\n  <!-- Goal 2D pose  -->\n  <arg name=\"goal_pos_x\" default=\"-0.37\" />\n  <arg name=\"goal_pos_y\" default=\"0.5\" />\n  <arg name=\"goal_pos_theta\" default=\"0.0\" />\n```\nNow, code a path planning algorithm to search for a path and move the object from its new start pose to its new goal pose. At each launch, note your score down and try to improve your planner to be as fast as possible. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 694311,
+              "key": "89fe1b6e-f002-4e4f-bf0f-bb6af525f09d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Pre-Submitting\nOnce you finish coding the path planning algorithm and succesfully testing it in simulation, you'll want to jump in and submit your code to the hardware. Before you do that, you need to test your code more than once! Actually, **three times** since your code will run **three times** on the hardware, with the median time selected as your reported time. To test your code three times in simulation, change the `run_three_times` argument value in the `planning_iface.launch` file to true:\n```html \n<!-- call the path planner three times and take the median as duration -->\n<arg name=\"run_three_times\" default=\"true\"/>\n```\nThen, run your code and check if your able to succesfully move the object from start to goal three times continuously. The reason why we're asking you to do that is to make sure that you accounted for multiple runs by resetting your global variables. After that, feel free to move on and submit your code. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675768,
+          "key": "3597c7c2-41e3-46c6-8201-560e097172a2",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3597c7c2-41e3-46c6-8201-560e097172a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 682513,
+              "key": "4503b97c-6a71-4b45-8bc8-3c343f783ef4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n# Warning\nWe constantly push updates to the workspace image so keep an eye out for the little red indicator next to MENU in the lower left corner. This indicates that there is new content or an update provided with the Udacity Workspace. However, it will only be added to your workspace if you go through the **RESET DATA** step. Be sure to download and backup any work you've done before doing this as all of your work will be overwritten with a new classroom instance.\n\nAlso, always **enable the GPU** and **GO TO DESKTOP**!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 675796,
+              "key": "4ae10313-3448-40a9-bb62-81db9080dba0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewSylhoZt9mQ",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-r1noZYqm7",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "submit()\n{\n    /home/workspace/opt/cmd_ud/submit.sh.x\n}\nexport -f submit\n\ncheck_jobs()\n{\n    /home/workspace/opt/cmd_ud/check_jobs.sh.x\n}\nexport -f check_jobs",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "GO TO DESKTOP"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 680899,
+          "key": "3f28d188-db69-46ba-b04a-cd77996a7dfd",
+          "title": "Submission Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f28d188-db69-46ba-b04a-cd77996a7dfd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689333,
+              "key": "fe4194b5-0fa9-4592-8d0b-e81c45150862",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Submitting your project during the **PRACTICE PHASE**\nOnce you’ve gotten your project working in the simulator, you can submit it to run on the real KUKA arm!  Once submitted, your “job” will be put in a queue at the KIT Robotics Learning Lab (RLL).  Your job will first be run in a simulator, to make sure it can run successfully on the hardware.  \n\nThere are only a few steps for your submission:\n1. Manually fetch your user code and install it in your workspace\n2. Enter `submit` on the command line in a terminal window\n3. To check on your jobs, enter `check_jobs` on the command line in a terminal window.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 689332,
+              "key": "ec29841a-3933-4236-8b38-33d953223018",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Install your user code - the `jwt` file\nThe `jwt` file is your user code and must be available at `/home/workspace/JWT/jwt` in order to submit a project. You can download your user code by [clicking here](https://project-assistant.udacity.com/auth_tokens/new).  \nYou may need to **navigate to the link a second time** after logging in for the file to automatically download. Once you've downloaded your `jwt`, copy the contents into: `/home/workspace/JWT/jwt`. \n\n### Submit your job\nYour python script must reside at `/home/workspace/catkin_ws/rll_planning_project/scripts/path_planner.py`.  This is the only file that will be uploaded.  If the submission succeeded, you’ll see the “Submission Complete” feedback.  Note that this does not indicate any status of the code itself, only that the job was successfully submitted to the queue.  You may only have one job at a time in the queue.  \n\nDuring the submission process, you must positively “opt in” if you wish to see your time and rank on the leaderboard.\n\n**Note:** In case the submission process fails, refresh the workspace and try again.\n\n### Check on your job(s)\nOnce your job is submitted, it will be given a job number and placed in a queue at the KIT RLL.  To check on your job, enter `check_jobs` on the command line.  You’ll receive a status update on all the jobs you’ve entered.  Here is an example of two failed jobs and another sitting in the queue partially done:\n```json\n{\n    \"5b61d7d3f7971f68ce977d43\": {\n        \"job_data\": null,\n        \"job_result\": \"sim failure\",\n        \"job_status\": \"finished\",\n        \"position\": -1\n    },\n    \"5b631f18f7971f14d02942c6\": {\n        \"job_data\": null,\n        \"job_result\": \"sim failure\",\n        \"job_status\": \"finished\",\n        \"position\": -1\n    },\n    \"5b634ca8f7971f14d02942c7\": {\n        \"job_data\": {\n            \"duration\": 144.0544441403444594\n        },\n        \"job_result\": \"sim success\",\n        \"job_status\": \"waiting for real\",\n        \"position\": 2\n    }\n}\n```\nNote that the last job has a “duration” time associated with it.  However, the job has not run on the “real” yet, so this is just the simulation run time.  If the job runs successfully on the “real” arm, you should see an entry something like this:\n\n```json\n {   \"5b634ca8f7971f14d0222222\": {\n        \"job_data\": {\n            \"duration\": 99.123451234\n        },\n        \"job_result\": \"real success\",\n        \"job_status\": \"finished\",\n        \"position\": -1\n    }\n}\n```\nAt this point, the score (time) will be entered in the leaderboard database.  If you have opted in, your time and rank will be visible on the leaderboard under whatever name you’ve chosen to post with.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 695161,
+              "key": "424fed62-dc18-4702-a412-34e53cd56ccb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Submitting your project during the **CONTEST PHASE**\nThe same command, `submit`, should be used to submit your project.  The submission system will operate a little differently during this phase:\n\n* During submission, you will be presented with the Terms and Conditions for the contest and must positively agree to them to enter the contest.\n* You will not receive any log links or video feedback until the contest is over, though you will receive job status with the `check_jobs` command.\n* All jobs that pass the simulator will be added to a queue to run on the real KUKA arm.  The real runs for each entry will only take place after the contest closes.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 692477,
+          "key": "cf35df27-f9ca-4241-a095-1b86db1a53b0",
+          "title": "Project Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cf35df27-f9ca-4241-a095-1b86db1a53b0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 692478,
+              "key": "3ef8bf01-94e9-4924-bdbd-52b397ce50c9",
+              "title": "KUKA Project Walkthrough Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eB_l8Azxykg",
+                "china_cdn_id": "eB_l8Azxykg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 693082,
+          "key": "c4470e9e-779a-4c13-ad85-dd8128ebd78e",
+          "title": "Hints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4470e9e-779a-4c13-ad85-dd8128ebd78e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 693088,
+              "key": "354d30c6-64f9-4319-8e58-c86aa44c535c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# KUKA Project Hints!!!\n\n## There are two main differences between classic path planning algorithms that you’ve learned earlier and the path planning algorithm that you’ll have to write in the KUKA project\n1. Classic path planning algorithms assume a known map where the position of obstacles and free spaces are known. However, in the KUKA project the maze is unknown! The only information you have is the map dimensions, start pose, and goal pose.\n2. Classic path planning algorithms applied earlier assume a change in position only. The orientation angle of the robot is kept fixed. With the KUKA project, however, you need to change both the position of the gripper and its orientation to move anywhere inside the maze.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693089,
+              "key": "73e3904a-a772-49e8-8184-4b04b060439e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Applying what you learned earlier about classic path planning algorithms to the KUKA project\n1. Since the maze is unknown, you have to implement \"a search as you go\" technique. Using the map dimensions you can represent the maze in a matrix form. Begin searching from the start pose, identifying if a cell is free or occupied, and as you're searching update the matrix until you reach the goal pose.\n2. Define a set of angles that enables you to move anywhere inside the maze. To update the status (occupied or free) of a cell in the matrix, you can change the orientation angle of your gripper and check if you're able to move with each of the predefined angles towards the cell. The cell will be updated as free if any of the predefined angles returns a valid response. On the contrary, the cell will be updated as occupied if all the predefined angles return an invalid response.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693090,
+              "key": "e6711b2a-7b97-444a-82a6-9645620aa739",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Visual Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693091,
+              "key": "cb3429b9-8985-4b1f-aefa-e7ade09e7586",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/August/5b744825_screen-shot-2018-08-15-at-5.29.08-pm/screen-shot-2018-08-15-at-5.29.08-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb3429b9-8985-4b1f-aefa-e7ade09e7586",
+              "caption": "",
+              "alt": "",
+              "width": 1048,
+              "height": 800,
+              "instructor_notes": null
+            },
+            {
+              "id": 693092,
+              "key": "24d64b75-e07a-4a01-b1ec-234756804f3a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is an example of how you can represent `Maze 1` practice phase in a matrix form. As a reminder, this is `Maze 1` start and goal configuration: \n```html\n<!-- Start 2D pose  -->\n  <arg name=\"start_pos_x\" default=\"0.38\" />\n  <arg name=\"start_pos_y\" default=\"0.0\" />\n  <arg name=\"start_pos_theta\" default=\"0.0\" />\n  <!-- Goal 2D pose  -->\n  <arg name=\"goal_pos_x\" default=\"-0.37\" />\n  <arg name=\"goal_pos_y\" default=\"0.5\" />\n  <arg name=\"goal_pos_theta\" default=\"0.0\" />\n```\n* Transforming the maze **(1.2mx1.6m)** into a matrix size **(12x16)**. I am using a very small resolution here for demonstration. You need to test which resolution works best for you. \n* Transforming `Maze 1` start and goal poses to matrix coordinates: \n * Start pose **(0.38, 0, 0)** to matrix coordinate **(9, 8, 0)**\n * Goal pose **(-0.37, 0.5, 0)** to matrix coordinate **(2, 13, 0)**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693093,
+              "key": "cc4b646c-936c-4b8c-823f-44b98c5a861c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you’ve transformed world coordinates into matrix ones, implement a **search as you go** technique where you start with the **S** cell and then update the status of adjacent cells. \n\nUpdating the status of adjacent **Cell 1**:\n\nDefining a set of angles in radians to navigate the maze: **[0, 0.78, 1.57]**\n* **(9, 8,0)** to **(9,9,0)** Valid or Invalid?\n* **(9, 8,0)** to **(9,9,0.78)** Valid or Invalid\n* **(9, 8,0)** to **(9,9,1.57)** Valid or Invalid?\n\n**Cell 1** will be considered as occupied if all these questions return an invalid answer!\n\nNow, move on to the second adjacent cell, check for movement with different angles, and update your matrix. Then, move to another undiscovered cell and so on until you build a map and reach the goal **G**. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693094,
+              "key": "962635e8-747c-4bd2-9db7-4c28e83dea7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to start searching and planning?\nAs a good start, solve an easy problem where both the start pose and goal pose are on the same line. Search your way toward the goal by keeping the angle of your gripper constant. Once you solve this problem, assign a set of angles to each direction of movement as you’ve seen in the earlier visual example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693439,
+              "key": "594a00b0-4124-46ab-8ba6-0e55f899a625",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/August/5b759bac_screen-shot-2018-08-16-at-6.42.50-pm/screen-shot-2018-08-16-at-6.42.50-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/594a00b0-4124-46ab-8ba6-0e55f899a625",
+              "caption": "",
+              "alt": "",
+              "width": 1094,
+              "height": 826,
+              "instructor_notes": null
+            },
+            {
+              "id": 693096,
+              "key": "65bfb94d-fa33-41bf-a87d-f547289a48ab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Discovering if cells **1 to 4** are occupied or free by keeping the gripper angle constant:\n* Cell 1 - **(9, 8,0)** to **(9,9,0)** Valid or Invalid?\n* Cell 2 - **(9, 8,0)** to **(8,8,0)** Valid or Invalid?\n* Cell 3 - **(9, 8,0)** to **(9, 7,0)**Valid or Invalid?\n* Cell 4 - **(9, 8,0)** to **(10,8,0)** Valid or Invalid?\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675770,
+          "key": "c984e3b8-3867-4524-9554-c3f32bc2d6a1",
+          "title": "Maze #1 Leaderboard",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c984e3b8-3867-4524-9554-c3f32bc2d6a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681318,
+              "key": "33b44193-f3c5-4d63-864d-0d6f729ed50b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " <iframe width=\"850\" height=\"1000\" src=\"https://s3-us-west-1.amazonaws.com/udacity-robotics/Kuka/assets/maze1_leaderboard.html\"> </iframe>\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 689786,
+          "key": "b1a37d25-bba6-480f-927d-ad3450fbcdbf",
+          "title": "Maze #2 Leaderboard",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1a37d25-bba6-480f-927d-ad3450fbcdbf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689787,
+              "key": "c96b2ac0-67f4-4cc6-ab37-fb9ab77496f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " <iframe width=\"850\" height=\"1000\" src=\"https://s3-us-west-1.amazonaws.com/udacity-robotics/Kuka/assets/maze2_leaderboard.html\"> </iframe>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 689788,
+          "key": "9e805fd7-26db-46e9-b132-4f84909fd605",
+          "title": "Contest Maze Leaderboard",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9e805fd7-26db-46e9-b132-4f84909fd605",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689789,
+              "key": "9a648d3e-2f3b-4989-92e0-44aabae4c2f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " <iframe width=\"850\" height=\"1000\" src=\"https://s3-us-west-1.amazonaws.com/udacity-robotics/Kuka/assets/contest_maze_leaderboard.html\"> </iframe>",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.040
+Welcome to the final project of
+
+00:00:02.040 --> 00:00:05.445
+the Udacity Robotics Software Engineer Nanodegree Program.
+
+00:00:05.445 --> 00:00:08.505
+Throughout this journey, you localize robots,
+
+00:00:08.505 --> 00:00:13.035
+map environments, and plan trajectories for robots to navigate in.
+
+00:00:13.035 --> 00:00:16.670
+Now, you will group these localization, slab,
+
+00:00:16.670 --> 00:00:20.840
+and start planning robotic algorithms into a home service robot.
+
+00:00:20.839 --> 00:00:25.410
+The goal of this project is to program a robot that can autonomously map and
+
+00:00:25.410 --> 00:00:30.074
+environment and navigate to pick up and dropped virtual objects.
+
+00:00:30.074 --> 00:00:33.089
+This project will mainly test your abilities
+
+00:00:33.090 --> 00:00:35.900
+and skills in setting the correct parameters,
+
+00:00:35.899 --> 00:00:39.228
+communicating between different nodes of different packages,
+
+00:00:39.228 --> 00:00:41.420
+coding nodes B-C Plus Plus,
+
+00:00:41.420 --> 00:00:44.015
+publishing and subscribing to different topics,
+
+00:00:44.015 --> 00:00:46.814
+writing launch files, and many others.
+
+00:00:46.814 --> 00:00:52.699
+The home service robot project is composed of multiple steps: First,
+
+00:00:52.700 --> 00:00:55.015
+you will learn the building editor in Gazebo,
+
+00:00:55.015 --> 00:00:57.560
+which is a user-friendly tool that enables you to
+
+00:00:57.560 --> 00:01:01.039
+professionally model real-world environments in simulation.
+
+00:01:01.039 --> 00:01:03.619
+Then, you will interface slab with
+
+00:01:03.619 --> 00:01:07.019
+a wall follower node to autonomously map and environment.
+
+00:01:07.019 --> 00:01:08.545
+After building the map,
+
+00:01:08.545 --> 00:01:12.049
+you will test your robot abilities in reaching multiple goals and
+
+00:01:12.049 --> 00:01:16.620
+orient itself with respect to them using the Ross navigation stack.
+
+00:01:16.620 --> 00:01:19.250
+Finally, you will model virtual objects
+
+00:01:19.250 --> 00:01:22.534
+with markers and learn how to deploy them with Ross.
+
+00:01:22.534 --> 00:01:27.034
+I will be walking you through the different steps in this project and in the end,
+
+00:01:27.034 --> 00:01:31.204
+expect you to put everything together to build the home service robot.
+
+00:01:31.204 --> 00:01:35.719
+Hopefully, you will later build upon this project to deploy such a robot in
+
+00:01:35.719 --> 00:01:38.179
+your house and make it your day-to-day servicing
+
+00:01:38.180 --> 00:01:41.020
+robot that can deliver anything you need.
+
+00:01:41.019 --> 00:01:44.079
+All right now, let's get started.
+

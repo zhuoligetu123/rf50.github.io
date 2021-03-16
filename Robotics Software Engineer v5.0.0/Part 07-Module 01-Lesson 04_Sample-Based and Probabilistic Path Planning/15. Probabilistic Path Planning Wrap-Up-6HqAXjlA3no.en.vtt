@@ -1,0 +1,22 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.879
+Great, you've seen how Markov decision processes can be applied to path planning,
+
+00:00:04.879 --> 00:00:06.355
+to generate a policy,
+
+00:00:06.355 --> 00:00:11.115
+and how the policy can be used to guide the rover from any state to the goal.
+
+00:00:11.115 --> 00:00:13.830
+You've learned about the value iteration algorithm
+
+00:00:13.830 --> 00:00:16.125
+that is able to find the optimal policy,
+
+00:00:16.125 --> 00:00:19.679
+and now you're ready to put an algorithm into action.
+

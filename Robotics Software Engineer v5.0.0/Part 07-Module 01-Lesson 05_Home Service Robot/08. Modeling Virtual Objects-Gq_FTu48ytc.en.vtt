@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.320 --> 00:00:03.699
+I'll show you how I successfully modified
+
+00:00:03.700 --> 00:00:07.679
+the node to publish a cube at the pickup and drop-off zones.
+
+00:00:07.679 --> 00:00:14.199
+First, I'll open the terminal and launch my script.
+
+00:00:21.500 --> 00:00:26.039
+You can see my object initially appearing at the pickup zone
+
+00:00:26.039 --> 00:00:30.849
+then we will wait five seconds for the object to be picked up.
+
+00:00:37.490 --> 00:00:41.070
+Now, the object has disappeared meaning,
+
+00:00:41.070 --> 00:00:42.750
+that it has been picked up.
+
+00:00:42.750 --> 00:00:47.730
+We will wait another five seconds for the object to be delivered.
+
+00:00:53.390 --> 00:00:56.270
+Finally, we can see the marker at
+
+00:00:56.270 --> 00:01:00.660
+the drop-off zone meaning that the virtual object has been delivered.
+

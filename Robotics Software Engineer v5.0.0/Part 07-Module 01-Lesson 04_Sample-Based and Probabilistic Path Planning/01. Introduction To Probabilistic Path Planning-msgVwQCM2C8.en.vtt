@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.279
+The examples that we investigated in
+
+00:00:02.279 --> 00:00:05.684
+discretes or combinatorial planning were quite simple.
+
+00:00:05.684 --> 00:00:08.894
+They were two-dimensional examples of limited size.
+
+00:00:08.894 --> 00:00:11.503
+There are times when you can simplify your environment
+
+00:00:11.503 --> 00:00:14.324
+and robot to a two-dimensional representation.
+
+00:00:14.324 --> 00:00:18.019
+For instance, a vacuum robot traversing somebody's house.
+
+00:00:18.019 --> 00:00:22.850
+In such a case, there isn't a need for a complex three-dimensional representation,
+
+00:00:22.850 --> 00:00:25.580
+as a little robot can't do anything more than
+
+00:00:25.579 --> 00:00:29.389
+translate and rotate on the 2D plane that is the floor.
+
+00:00:29.390 --> 00:00:32.689
+But there will also be times when you find yourself limited by
+
+00:00:32.689 --> 00:00:37.254
+the two-dimensional representation and will need to work in a three-dimensional world,
+
+00:00:37.255 --> 00:00:40.580
+with robots that have six degrees of freedom or more.
+
+00:00:40.579 --> 00:00:44.479
+Such a scenario is a lot more challenging to perform path planning in.
+
+00:00:44.479 --> 00:00:48.654
+It may be possible to apply the algorithms that you learned in the previous lesson,
+
+00:00:48.655 --> 00:00:53.030
+however, the efficiency of these algorithms becomes more and more critical.
+
+00:00:53.030 --> 00:00:56.870
+Performing a complete discretization of the entire space and
+
+00:00:56.869 --> 00:01:00.984
+applying a graph search algorithm to the space may be too costly.
+
+00:01:00.984 --> 00:01:05.569
+To tackle the path planning problems of larger size and greater dimension,
+
+00:01:05.569 --> 00:01:08.090
+there exists alternate algorithms that fall under
+
+00:01:08.090 --> 00:01:10.850
+the umbrella of sample-based path planning.
+
+00:01:10.849 --> 00:01:15.469
+Instead of conducting a complete discretization of the configuration space,
+
+00:01:15.469 --> 00:01:18.769
+these algorithms randomly sample the space hoping that
+
+00:01:18.769 --> 00:01:23.259
+the collection of samples will adequately represent the configuration space.
+
+00:01:23.260 --> 00:01:27.859
+Sample based path planning is the first topic that you'll learn in this lesson.
+
+00:01:27.859 --> 00:01:30.650
+The second is probabilistic path planning,
+
+00:01:30.650 --> 00:01:33.200
+which we'll look at how we can explicitly consider
+
+00:01:33.200 --> 00:01:37.120
+the uncertainty of robot motion when planning paths.
+

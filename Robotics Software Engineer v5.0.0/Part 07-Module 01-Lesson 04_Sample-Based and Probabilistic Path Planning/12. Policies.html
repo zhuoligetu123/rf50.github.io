@@ -1,0 +1,519 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Policies
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Sample-Based and Probabilistic Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction to Sample-Based &amp; Probabilistic Path Planning.html">
+       01. Introduction to Sample-Based &amp; Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Why Sample-Based Planning.html">
+       02. Why Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Weakening Requirements.html">
+       03. Weakening Requirements
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Sample-Based Planning.html">
+       04. Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Probabilistic Roadmap (PRM).html">
+       05. Probabilistic Roadmap (PRM)
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Rapidly Exploring Random Tree Method (RRT).html">
+       06. Rapidly Exploring Random Tree Method (RRT)
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Path Smoothing.html">
+       07. Path Smoothing
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Overall Concerns.html">
+       08. Overall Concerns
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Sample-Based Planning Wrap-Up.html">
+       09. Sample-Based Planning Wrap-Up
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Introduction to Probabilistic Path Planning.html">
+       10. Introduction to Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Markov Decision Process.html">
+       11. Markov Decision Process
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Policies.html">
+       12. Policies
+      </a>
+     </li>
+     <li class="">
+      <a href="13. State Utility.html">
+       13. State Utility
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Value Iteration Algorithm.html">
+       14. Value Iteration Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Probabilistic Path Planning Wrap-Up.html">
+       15. Probabilistic Path Planning Wrap-Up
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          12. Policies
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="policies">
+          Policies
+         </h1>
+         <p>
+          Recall from the Reinforcement Learning lesson that a solution to a Markov Decision Process is called a policy, and is denoted with the letter
+          <span class="mathquill ud-math">
+           \pi
+          </span>
+          .
+         </p>
+         <h2 id="definition">
+          Definition
+         </h2>
+         <p>
+          A
+          <strong>
+           policy
+          </strong>
+          is a mapping from states to actions. For every state, a policy will inform the robot of which action it should take.
+          <br/>
+          An
+          <strong>
+           optimal policy
+          </strong>
+          , denoted
+          <span class="mathquill ud-math">
+           \pi^*
+          </span>
+          , informs the robot of the
+          <em>
+           best
+          </em>
+          action to take from any state, to maximize the overall reward. We’ll study optimal policies in more detail below.
+         </p>
+         <p>
+          If you aren’t comfortable with policies, it is highly recommended that you return to the RL lesson and re-visit the sections that take you through the Gridworld Example, State-Value Functions, and Bellman Equations. These lessons demonstrate what a policy is, how state-value is calculated, and how the Bellman equations can be used to compute the optimal policy. These lessons also step you through a gridworld example that is
+          <em>
+           simpler
+          </em>
+          than the one you will be working with here, so it is wise to get acquainted with the RL example first.
+         </p>
+         <h2 id="developing-a-policy">
+          Developing a Policy
+         </h2>
+         <p>
+          The image below displays the set of actions that the robot can take in its environment. Note that there are no arrows leading away from the pond, as the robot is considered DOA (dead on arrival) after entering the pond. As well, no arrows leave the goal as the path planning problem is complete once the robot reaches the goal - after all, this is an
+          <em>
+           episodic task
+          </em>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/mdpimage-43-v3.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          From this set of actions, a policy can be generated by selecting one action per state. Before we revisit the process of selecting the appropriate action for each policy, let’s look at how some of the values above were calculated. After all, -5.9 seems like quite an odd number!
+         </p>
+         <h3 id="calculating-expected-rewards">
+          Calculating Expected Rewards
+         </h3>
+         <p>
+          Recall that the reward for entering an empty cell is -1, a mountainous cell -3, the pond -50, and the goal +100. These are the rewards defined according to the environment. However, if our robot wanted to move from one cell to another, it it not guaranteed to succeed. Therefore, we must calculate the
+          <strong>
+           expected reward
+          </strong>
+          , which takes into account not just the rewards set by the environment, but the robot's transition model too.
+         </p>
+         <p>
+          Let’s look at the bottom mountain cell first. From here, it is intuitively obvious that moving right is the best action to take, so let’s calculate that one. If the robot’s movements were deterministic, the cost of this movement would be trivial (moving to an open cell has a reward of -1). However, since our movements are non-deterministic, we need to evaluate the
+          <em>
+           expected
+          </em>
+          reward of this movement. The robot has a probability of 0.8 of successfully moving to the open cell, a probability of 0.1 of moving to the cell above, and a probability of 0.1 of bumping into the wall and remaining in its present cell.
+         </p>
+         <div class="mathquill">
+          expected \ reward = 0.8 * (-1) + 0.1 * (-3) + 0.1 * (-3)
+         </div>
+         <div class="mathquill">
+          expected \ reward = -1.4
+         </div>
+         <p>
+          All of the expected rewards are calculated in this way, taking into account the transition model for this particular robot.
+         </p>
+         <p>
+          You may have noticed that a few expected rewards are missing in the image above. Can you calculate their values?
+         </p>
+         <h3 id="expected-reward-quiz">
+          Expected Reward Quiz
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <p>
+           <strong>
+            QUESTION:
+           </strong>
+           <p>
+            What is the expected reward for moving from the bottom-left cell to the cell above it?
+           </p>
+          </p>
+          <div class="" form-group"="">
+           <label for="answer">
+            <strong>
+             ANSWER:
+            </strong>
+           </label>
+           <textarea class="form-control" id="answer"></textarea>
+          </div>
+         </div>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <p>
+           <i>
+            NOTE: The solutions are expressed in RegEx pattern. Udacity uses these patterns to check the given answer
+           </i>
+          </p>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <p>
+           <strong>
+            QUESTION:
+           </strong>
+           <p>
+            What is the expected reward for moving from the empty cell on the right to the goal,one cell below it?
+           </p>
+          </p>
+          <div class="" form-group"="">
+           <label for="answer">
+            <strong>
+             ANSWER:
+            </strong>
+           </label>
+           <textarea class="form-control" id="answer"></textarea>
+          </div>
+         </div>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <p>
+           <i>
+            NOTE: The solutions are expressed in RegEx pattern. Udacity uses these patterns to check the given answer
+           </i>
+          </p>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <p>
+           <strong>
+            QUESTION:
+           </strong>
+           <p>
+            What is the expected reward for moving from the empty cell on the right to the cell to its left?
+           </p>
+          </p>
+          <div class="" form-group"="">
+           <label for="answer">
+            <strong>
+             ANSWER:
+            </strong>
+           </label>
+           <textarea class="form-control" id="answer"></textarea>
+          </div>
+         </div>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <p>
+           <i>
+            NOTE: The solutions are expressed in RegEx pattern. Udacity uses these patterns to check the given answer
+           </i>
+          </p>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Hopefully, after completing the quizzes, you are more comfortable with how the expected rewards are calculated. The image below has all of the expected rewards filled in.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/mdpimage-73-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="selecting-a-policy">
+          Selecting a Policy
+         </h2>
+         <p>
+          Now that we have an understanding of our expected rewards, we can select a policy and evaluate how efficient it is. Once again, a policy is just a mapping from states to actions. If we review the set of actions depicted in the image above, and select just one action for each state - i.e. exactly one arrow leaving each cell (with the exception of the hazard and goal states) - then we have ourselves a policy.
+         </p>
+         <p>
+          However, we’re not looking for
+          <em>
+           any
+          </em>
+          policy, we’d like to find the
+          <em>
+           optimal
+          </em>
+          policy. For this reason, we’ll need to study the utility of each state to then determine the
+          <em>
+           best
+          </em>
+          action to take from each state. That’s what the next concept is all about!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="13. State Utility.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Policies')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

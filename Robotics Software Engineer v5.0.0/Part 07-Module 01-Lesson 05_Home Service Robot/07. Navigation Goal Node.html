@@ -1,0 +1,528 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Navigation Goal Node
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Home Service Robot
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Working Environment.html">
+       02. Working Environment
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Shell Scripts.html">
+       03. Shell Scripts
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simulation Set Up.html">
+       04. Simulation Set Up
+      </a>
+     </li>
+     <li class="">
+      <a href="05. SLAM Testing.html">
+       05. SLAM Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Localization and Navigation Testing.html">
+       06. Localization and Navigation Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Navigation Goal Node.html">
+       07. Navigation Goal Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Virtual Objects.html">
+       08. Virtual Objects
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Your Home Service Robot.html">
+       09. Your Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Project Workspace.html">
+       10. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace Home Service Robot.html">
+       11. Project Workspace: Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Home Service Robot.html">
+       Project Description - Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Home Service Robot.html">
+       Project Rubric - Home Service Robot
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. Navigation Goal Node
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="reaching-multiple-goals">
+          Reaching Multiple Goals
+         </h1>
+         <p>
+          Earlier, you tested your robot capabilities in reaching multiple goals by manually commanding it to travel with the 2D NAV Goal arrow in rviz. Now, you will write a node that will communicate with the ROS navigation stack and autonomously send successive goals for your robot to reach. As mentioned earlier, the ROS navigation stack creates a path for your robot based on
+          <strong>
+           Dijkstra's
+          </strong>
+          algorithm, a variant of the
+          <strong>
+           Uniform Cost Search
+          </strong>
+          algorithm, while avoiding obstacles on its path.
+         </p>
+         <p>
+          There is an official ROS tutorial that teaches you how to send a single goal position and orientation to the navigation stack. You are already familiar with this code from the Localization project where you used it to send your robot to a pre-defined goal. Check out the
+          <a href="http://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals" rel="noopener noreferrer" target="_blank">
+           tutorial
+          </a>
+          and go through its documentation.
+         </p>
+         <p>
+          Here’s the C++ code of this node which sends a
+          <strong>
+           single goal
+          </strong>
+          for the robot to reach. I included some extra comments to help you understand it:
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <pre><code class="C++ language-C++">#include &lt;ros/ros.h&gt;
+#include &lt;move_base_msgs/MoveBaseAction.h&gt;
+#include &lt;actionlib/client/simple_action_client.h&gt;
+
+// Define a client for to send goal requests to the move_base server through a SimpleActionClient
+typedef actionlib::SimpleActionClient&lt;move_base_msgs::MoveBaseAction&gt; MoveBaseClient;
+
+int main(int argc, char** argv){
+  // Initialize the simple_navigation_goals node
+  ros::init(argc, argv, "simple_navigation_goals");
+
+  //tell the action client that we want to spin a thread by default
+  MoveBaseClient ac("move_base", true);
+
+  // Wait 5 sec for move_base action server to come up
+  while(!ac.waitForServer(ros::Duration(5.0))){
+    ROS_INFO("Waiting for the move_base action server to come up");
+  }
+
+  move_base_msgs::MoveBaseGoal goal;
+
+  // set up the frame parameters
+  goal.target_pose.header.frame_id = "base_link";
+  goal.target_pose.header.stamp = ros::Time::now();
+
+  // Define a position and orientation for the robot to reach
+  goal.target_pose.pose.position.x = 1.0;
+  goal.target_pose.pose.orientation.w = 1.0;
+
+   // Send the goal position and orientation for the robot to reach
+  ROS_INFO("Sending goal");
+  ac.sendGoal(goal);
+
+  // Wait an infinite time for the results
+  ac.waitForResult();
+
+  // Check if the robot reached its goal
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    ROS_INFO("Hooray, the base moved 1 meter forward");
+  else
+    ROS_INFO("The base failed to move forward 1 meter for some reason");
+
+  return 0;
+}</code></pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Reaching Multiple Goals
+         </p>
+        </h3>
+        <video controls="">
+         <source src="07. Reaching Multiple Goals-RcbjN6KFJq8.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="07. Reaching Multiple Goals-RcbjN6KFJq8.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="customize-the-code">
+          Customize the code
+         </h2>
+         <p>
+          You will need to modify this code and edit its node name to
+          <strong>
+           pick_objects
+          </strong>
+          . Then, edit the
+          <strong>
+           frame_id
+          </strong>
+          to
+          <code>
+           map
+          </code>
+          , since your fixed frame is the map and not base_link. After that, you will need to modify the code and include an extra goal position and orientation for your robot to reach.
+         </p>
+         <p>
+          The first goal should be your desired pickup goal and the second goal should be your desired drop off goal. The robot has to travel to the desired pickup zone, display a message that it reached its destination, wait 5 seconds, travel to the desired drop off zone, and display a message that it reached the drop off zone.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Reaching Multiple Goals
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these instructions to autonomously command the robot to travel to both desired pickup and drop off zones:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--0" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--0">
+             <p>
+              Create a
+              <strong>
+               pick_objects
+              </strong>
+              package with
+              <code>
+               move_base_msgs
+              </code>
+              ,
+              <code>
+               actionlib
+              </code>
+              , and
+              <code>
+               roscpp
+              </code>
+              dependencies
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--1" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--1">
+             <p>
+              Create a
+              <strong>
+               pick_objects
+              </strong>
+              C++ node
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--2" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--2">
+             <p>
+              Edit the C++ node and modify it's
+              <strong>
+               node name
+              </strong>
+              and
+              <strong>
+               frame_id
+              </strong>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--3" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--3">
+             <p>
+              Modify the C++ node and publish a second goal for the robot to reach
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--4" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--4">
+             <p>
+              Display messages to track if robot successfully reached both zones
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--5" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--5">
+             <p>
+              Pause 5 seconds after reaching the pickup zone
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--6" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--6">
+             <p>
+              Edit the
+              <strong>
+               CMakeLists.txt
+              </strong>
+              file and add
+              <code>
+               directories
+              </code>
+              ,
+              <code>
+               executable
+              </code>
+              , and
+              <code>
+               target link libraries
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--7" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--7">
+             <p>
+              Build your
+              <code>
+               catkin_ws
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="6c8cd979-193d-4718-bb34-d1c665ca05a9--8" type="checkbox"/>
+            <label for="6c8cd979-193d-4718-bb34-d1c665ca05a9--8">
+             <p>
+              Create a
+              <strong>
+               pick_objects.sh
+              </strong>
+              script file that launches the
+              <strong>
+               turtlebot
+              </strong>
+              ,
+              <strong>
+               AMCL
+              </strong>
+              ,
+              <strong>
+               rviz
+              </strong>
+              and your
+              <strong>
+               pick_objects
+              </strong>
+              node.
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Nicely done!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Virtual Objects.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Navigation Goal Node')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

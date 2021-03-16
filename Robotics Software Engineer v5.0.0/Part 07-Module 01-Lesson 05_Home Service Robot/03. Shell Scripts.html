@@ -1,0 +1,493 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Shell Scripts
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Home Service Robot
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Overview.html">
+       01. Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Working Environment.html">
+       02. Working Environment
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Shell Scripts.html">
+       03. Shell Scripts
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Simulation Set Up.html">
+       04. Simulation Set Up
+      </a>
+     </li>
+     <li class="">
+      <a href="05. SLAM Testing.html">
+       05. SLAM Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Localization and Navigation Testing.html">
+       06. Localization and Navigation Testing
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Navigation Goal Node.html">
+       07. Navigation Goal Node
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Virtual Objects.html">
+       08. Virtual Objects
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Your Home Service Robot.html">
+       09. Your Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Project Workspace.html">
+       10. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Project Workspace Home Service Robot.html">
+       11. Project Workspace: Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Description - Home Service Robot.html">
+       Project Description - Home Service Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="Project Rubric - Home Service Robot.html">
+       Project Rubric - Home Service Robot
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          03. Shell Scripts
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="shell-scripts">
+          Shell Scripts
+         </h1>
+         <p>
+          A shell script is a file containing a series of commands and could be executed. It is commonly used to set up environment, run a program, etc.
+         </p>
+         <p>
+          You already know how to build a
+          <code>
+           roslaunch
+          </code>
+          file. It is very convenient to launch multiple ROS nodes and set parameters from a single
+          <code>
+           roslaunch
+          </code>
+          command. However, when developing robotic software with different packages, it might get harder to track errors and bugs generated from different nodes.
+         </p>
+         <p>
+          That's when shell scripts come in handy! After you create a shell script file to launch one or many nodes each in separate terminals, you will have the power to track the output of different nodes and keep the convenience of running a single command to launch all nodes.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="your-launchsh-script">
+          Your
+          <code>
+           launch.sh
+          </code>
+          Script
+         </h2>
+         <p>
+          Let us start by creating this
+          <code>
+           launch.sh
+          </code>
+          script in the Udacity Workspace. Its goal is to launch Gazebo and Rviz in separate instances of terminals. Note that we are using
+          <code>
+           xterm
+          </code>
+          terminal in the script here.
+         </p>
+         <pre><code>#!/bin/sh
+xterm  -e  " gazebo " &amp;
+sleep 5
+xterm  -e  " source /opt/ros/kinetic/setup.bash; roscore" &amp; 
+sleep 5
+xterm  -e  " rosrun rviz rviz" </code></pre>
+         <p>
+          The
+          <code>
+           launch.sh
+          </code>
+          shell script launches three terminals and issues one or multiple commands in each terminal. Let’s break down this script to understand the meaning of each line.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="code-breakdown">
+          Code Breakdown
+         </h3>
+         <p>
+          <code>
+           #!/bin/sh
+          </code>
+         </p>
+         <p>
+          This statement is called a
+          <code>
+           shebang
+          </code>
+          . It must be included in every shell script you write since it specifies the full path of the UNIX interpreter to execute it.
+         </p>
+         <p>
+          <code>
+           xterm -e " gazebo " &amp;
+          </code>
+         </p>
+         <p>
+          With the
+          <code>
+           xterm -e
+          </code>
+          statement, we launch a new instance of an
+          <code>
+           xterminal
+          </code>
+          . Inside this terminal, we launch gazebo using the command
+          <code>
+           "gazebo"
+          </code>
+          . Then we add an ampersand
+          <code>
+           &amp;
+          </code>
+          to indicate that another instance of an xterm terminal will be created in a separate statement.
+         </p>
+         <p>
+          <code>
+           sleep 5
+          </code>
+         </p>
+         <p>
+          We pause this script for 5 seconds using
+          <code>
+           sleep
+          </code>
+          .
+         </p>
+         <p>
+          <code>
+           xterm -e " source /opt/ros/kinetic/setup.bash; roscore" &amp;
+          </code>
+         </p>
+         <p>
+          We launch a second instance of the xterm terminal. Inside this terminal, we source the ROS workspace and launch the ROS master node.
+         </p>
+         <p>
+          <code>
+           sleep 5
+          </code>
+         </p>
+         <p>
+          We pause this script for another 5 seconds.
+         </p>
+         <p>
+          <code>
+           xterm -e " rosrun rviz rviz"
+          </code>
+         </p>
+         <p>
+          We are launching a third instance of the xterm terminal, and running rviz.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Save your script file and give it
+          <code>
+           execute
+          </code>
+          pemission by
+          <code>
+           chmod +x launch.sh
+          </code>
+          . Then launch the shell script with
+          <code>
+           ./launch.sh
+          </code>
+          .
+         </p>
+         <p>
+          After launching this script, we’ll have three open xterm terminals, and we will be able to track any errors or bugs that occur. To recap, this script will open the first terminal and launch gazebo. Then it will pause for 5 seconds and open a second terminal to launch the ROS master. It will pause for another 5 seconds and, finally, open a third terminal to launch RVIZ.
+         </p>
+         <p>
+          Try to launch your script in the Workspace and verify its functions!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Shell Script
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Now it's your turn to experiment with shell scripts and customize them by following these steps:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="79e82f86-0cfd-442b-966b-e398f709ac3f--0" type="checkbox"/>
+            <label for="79e82f86-0cfd-442b-966b-e398f709ac3f--0">
+             <p>
+              Install xterm with
+              <code>
+               sudo apt-get install xterm
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="79e82f86-0cfd-442b-966b-e398f709ac3f--1" type="checkbox"/>
+            <label for="79e82f86-0cfd-442b-966b-e398f709ac3f--1">
+             <p>
+              Create a
+              <strong>
+               launch.sh
+              </strong>
+              file
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="79e82f86-0cfd-442b-966b-e398f709ac3f--2" type="checkbox"/>
+            <label for="79e82f86-0cfd-442b-966b-e398f709ac3f--2">
+             <p>
+              Write one or multiple commands to be executed by the terminals
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="79e82f86-0cfd-442b-966b-e398f709ac3f--3" type="checkbox"/>
+            <label for="79e82f86-0cfd-442b-966b-e398f709ac3f--3">
+             <p>
+              Turn your script into an executable one with
+              <code>
+               chmod +x launch.sh
+              </code>
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="79e82f86-0cfd-442b-966b-e398f709ac3f--4" type="checkbox"/>
+            <label for="79e82f86-0cfd-442b-966b-e398f709ac3f--4">
+             <p>
+              Launch the shell script file with
+              <code>
+               ./launch.sh
+              </code>
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Good job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="04. Simulation Set Up.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Shell Scripts')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

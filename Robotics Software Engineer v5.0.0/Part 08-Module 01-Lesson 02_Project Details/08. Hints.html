@@ -1,0 +1,516 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Hints
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project Details
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Project Specification.html">
+       01. Project Specification
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Getting Started.html">
+       02. Getting Started
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Scoring Criteria.html">
+       03. Scoring Criteria
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Path Planning.html">
+       04. Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Project Workspace.html">
+       05. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Submission Instructions.html">
+       06. Submission Instructions
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Project Walkthrough.html">
+       07. Project Walkthrough
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Hints.html">
+       08. Hints
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Maze #1 Leaderboard.html">
+       09. Maze #1 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Maze #2 Leaderboard.html">
+       10. Maze #2 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Contest Maze Leaderboard.html">
+       11. Contest Maze Leaderboard
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          08. Hints
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="kuka-project-hints">
+          KUKA Project Hints!!!
+         </h1>
+         <h2 id="there-are-two-main-differences-between-classic-path-planning-algorithms-that-you’ve-learned-earlier-and-the-path-planning-algorithm-that-you’ll-have-to-write-in-the-kuka-project">
+          There are two main differences between classic path planning algorithms that you’ve learned earlier and the path planning algorithm that you’ll have to write in the KUKA project
+         </h2>
+         <ol>
+          <li>
+           Classic path planning algorithms assume a known map where the position of obstacles and free spaces are known. However, in the KUKA project the maze is unknown! The only information you have is the map dimensions, start pose, and goal pose.
+          </li>
+          <li>
+           Classic path planning algorithms applied earlier assume a change in position only. The orientation angle of the robot is kept fixed. With the KUKA project, however, you need to change both the position of the gripper and its orientation to move anywhere inside the maze.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="applying-what-you-learned-earlier-about-classic-path-planning-algorithms-to-the-kuka-project">
+          Applying what you learned earlier about classic path planning algorithms to the KUKA project
+         </h2>
+         <ol>
+          <li>
+           Since the maze is unknown, you have to implement "a search as you go" technique. Using the map dimensions you can represent the maze in a matrix form. Begin searching from the start pose, identifying if a cell is free or occupied, and as you're searching update the matrix until you reach the goal pose.
+          </li>
+          <li>
+           Define a set of angles that enables you to move anywhere inside the maze. To update the status (occupied or free) of a cell in the matrix, you can change the orientation angle of your gripper and check if you're able to move with each of the predefined angles towards the cell. The cell will be updated as free if any of the predefined angles returns a valid response. On the contrary, the cell will be updated as occupied if all the predefined angles return an invalid response.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="visual-example">
+          Visual Example
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-08-15-at-5.29.08-pm.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          This is an example of how you can represent
+          <code>
+           Maze 1
+          </code>
+          practice phase in a matrix form. As a reminder, this is
+          <code>
+           Maze 1
+          </code>
+          start and goal configuration:
+         </p>
+         <pre><code class="html language-html">&lt;!-- Start 2D pose  --&gt;
+  &lt;arg name="start_pos_x" default="0.38" /&gt;
+  &lt;arg name="start_pos_y" default="0.0" /&gt;
+  &lt;arg name="start_pos_theta" default="0.0" /&gt;
+  &lt;!-- Goal 2D pose  --&gt;
+  &lt;arg name="goal_pos_x" default="-0.37" /&gt;
+  &lt;arg name="goal_pos_y" default="0.5" /&gt;
+  &lt;arg name="goal_pos_theta" default="0.0" /&gt;</code></pre>
+         <ul>
+          <li>
+           Transforming the maze
+           <strong>
+            (1.2mx1.6m)
+           </strong>
+           into a matrix size
+           <strong>
+            (12x16)
+           </strong>
+           . I am using a very small resolution here for demonstration. You need to test which resolution works best for you.
+          </li>
+          <li>
+           Transforming
+           <code>
+            Maze 1
+           </code>
+           start and goal poses to matrix coordinates:
+           <ul>
+            <li>
+             Start pose
+             <strong>
+              (0.38, 0, 0)
+             </strong>
+             to matrix coordinate
+             <strong>
+              (9, 8, 0)
+             </strong>
+            </li>
+            <li>
+             Goal pose
+             <strong>
+              (-0.37, 0.5, 0)
+             </strong>
+             to matrix coordinate
+             <strong>
+              (2, 13, 0)
+             </strong>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now that you’ve transformed world coordinates into matrix ones, implement a
+          <strong>
+           search as you go
+          </strong>
+          technique where you start with the
+          <strong>
+           S
+          </strong>
+          cell and then update the status of adjacent cells.
+         </p>
+         <p>
+          Updating the status of adjacent
+          <strong>
+           Cell 1
+          </strong>
+          :
+         </p>
+         <p>
+          Defining a set of angles in radians to navigate the maze:
+          <strong>
+           [0, 0.78, 1.57]
+          </strong>
+         </p>
+         <ul>
+          <li>
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (9,9,0)
+           </strong>
+           Valid or Invalid?
+          </li>
+          <li>
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (9,9,0.78)
+           </strong>
+           Valid or Invalid
+          </li>
+          <li>
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (9,9,1.57)
+           </strong>
+           Valid or Invalid?
+          </li>
+         </ul>
+         <p>
+          <strong>
+           Cell 1
+          </strong>
+          will be considered as occupied if all these questions return an invalid answer!
+         </p>
+         <p>
+          Now, move on to the second adjacent cell, check for movement with different angles, and update your matrix. Then, move to another undiscovered cell and so on until you build a map and reach the goal
+          <strong>
+           G
+          </strong>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="how-to-start-searching-and-planning">
+          How to start searching and planning?
+         </h2>
+         <p>
+          As a good start, solve an easy problem where both the start pose and goal pose are on the same line. Search your way toward the goal by keeping the angle of your gripper constant. Once you solve this problem, assign a set of angles to each direction of movement as you’ve seen in the earlier visual example.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-08-16-at-6.42.50-pm.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Discovering if cells
+          <strong>
+           1 to 4
+          </strong>
+          are occupied or free by keeping the gripper angle constant:
+         </p>
+         <ul>
+          <li>
+           Cell 1 -
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (9,9,0)
+           </strong>
+           Valid or Invalid?
+          </li>
+          <li>
+           Cell 2 -
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (8,8,0)
+           </strong>
+           Valid or Invalid?
+          </li>
+          <li>
+           Cell 3 -
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (9, 7,0)
+           </strong>
+           Valid or Invalid?
+          </li>
+          <li>
+           Cell 4 -
+           <strong>
+            (9, 8,0)
+           </strong>
+           to
+           <strong>
+            (10,8,0)
+           </strong>
+           Valid or Invalid?
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="09. Maze #1 Leaderboard.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Hints')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

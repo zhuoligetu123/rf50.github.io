@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.080
+The remainder of this lesson will focus on probabilistic path planning.
+
+00:00:04.080 --> 00:00:08.504
+Recall the exploratory rover introduced at the start of the previous lesson.
+
+00:00:08.505 --> 00:00:10.770
+It's task was to find a path from
+
+00:00:10.769 --> 00:00:15.410
+its drop-off location to the goal location that would be safe for humans to follow.
+
+00:00:15.410 --> 00:00:18.254
+The terrain contains a lot of different hazards.
+
+00:00:18.254 --> 00:00:22.245
+The operator of the rover is willing to take whatever risk is necessary,
+
+00:00:22.245 --> 00:00:25.515
+but would naturally want to minimize it as much as possible.
+
+00:00:25.515 --> 00:00:30.585
+The algorithms that you have learned thus far are unable to adequately model the risk.
+
+00:00:30.585 --> 00:00:34.215
+For instance, a combinatorial path planning algorithm
+
+00:00:34.215 --> 00:00:38.285
+would have no difficulty finding this path to the goal location.
+
+00:00:38.284 --> 00:00:41.238
+The path may be the best by all other means,
+
+00:00:41.238 --> 00:00:43.699
+but due to the uncertainty of the rover motion,
+
+00:00:43.700 --> 00:00:47.540
+there is a chance that the rover will meet its demise along this path.
+
+00:00:47.539 --> 00:00:49.789
+It is possible to inflate the size of
+
+00:00:49.789 --> 00:00:53.104
+the rover to ensure that there is enough room to maneuver.
+
+00:00:53.104 --> 00:00:54.644
+But as you have seen,
+
+00:00:54.645 --> 00:00:57.234
+the algorithm will no longer be complete.
+
+00:00:57.234 --> 00:01:01.759
+Another idea is to give negative rewards to dangerous areas of
+
+00:01:01.759 --> 00:01:06.394
+the map so that the search algorithm is more likely to select alternate paths.
+
+00:01:06.394 --> 00:01:09.274
+Similar to what you did in reinforcement learning,
+
+00:01:09.275 --> 00:01:11.510
+this is a step in the right direction,
+
+00:01:11.510 --> 00:01:14.594
+and would cause the rover to avoid dangerous areas.
+
+00:01:14.594 --> 00:01:18.439
+But it does not actually considered the uncertainty of the rover motion.
+
+00:01:18.439 --> 00:01:21.469
+What we'd really like is to model the uncertainty
+
+00:01:21.469 --> 00:01:24.590
+by considering a non-deterministic transition model.
+
+00:01:24.590 --> 00:01:26.795
+For instance, the following one.
+
+00:01:26.795 --> 00:01:29.465
+Since path execution is uncertain,
+
+00:01:29.465 --> 00:01:32.210
+an algorithm that takes the uncertainty into account
+
+00:01:32.209 --> 00:01:35.929
+explicitly is more likely to produce realistic paths.
+
+00:01:35.930 --> 00:01:37.685
+So, where does that leave us?
+
+00:01:37.685 --> 00:01:40.415
+We're back to Markov decision processes.
+
+00:01:40.415 --> 00:01:42.185
+In the remainder of this lesson,
+
+00:01:42.185 --> 00:01:44.780
+you will learn probabilistic path planning using
+
+00:01:44.780 --> 00:01:50.000
+Markov decision processes and add one additional algorithm to your repertoire.
+

@@ -1,0 +1,450 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   A*: Visualization
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Modeling the Problem.html">
+       02. Modeling the Problem
+      </a>
+     </li>
+     <li class="">
+      <a href="03. BFS Expansion List.html">
+       03. BFS: Expansion List
+      </a>
+     </li>
+     <li class="">
+      <a href="04. BFS Expansion Vector.html">
+       04. BFS: Expansion Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="05. BFS Shortest Path.html">
+       05. BFS: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="06. A Shortest Path.html">
+       06. A*: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Comparison.html">
+       07. Comparison
+      </a>
+     </li>
+     <li class="">
+      <a href="08. A Real-World Map.html">
+       08. A*: Real-World Map
+      </a>
+     </li>
+     <li class="">
+      <a href="09. A Visualization.html">
+       09. A*: Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Udacity Workspace.html">
+       10. Udacity Workspace
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          09. A*: Visualization
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="a-visualization">
+          A*: Visualization
+         </h1>
+         <h2 id="path-planning">
+          Path Planning
+         </h2>
+         <p>
+          So far, you’ve generated the shortest path using the A* algorithm, but it was really hard to see it. Now, you'll edit the visualization function that you previously coded and modify it to plot the shortest path.
+         </p>
+         <h2 id="udacity-workspace">
+          Udacity Workspace
+         </h2>
+         <p>
+          For this quiz, you'll use the
+          <a href="https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/451b7eed-6813-422a-a4d0-ce5db5ee1bca/lessons/411e2410-8f65-4764-a02a-e219ac36c776/concepts/fc59506b-6059-45a2-9d4d-204f7343988a?contentVersion=1.0.0&amp;contentLocale=en-us" rel="noopener noreferrer" target="_blank">
+           Udacity Workspace
+          </a>
+          . Move to the next concept, enable the GPU, Go to Desktop, and follow these instructions. Remember to disable the GPU once you are done generating the image.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="instruction">
+          Instruction
+         </h1>
+         <h3 id="clone-the-lab-from-github">
+          Clone the Lab from GitHub
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/
+$ git clone https://github.com/udacity/RoboND-A-Visualization</code></pre>
+         <h3 id="next-edit-maincpp">
+          Next, edit
+          <code>
+           main.cpp
+          </code>
+         </h3>
+         <p>
+          Modify the
+          <code>
+           visualization
+          </code>
+          function and plot the start position, goal position, and path using the
+          <code>
+           matplotlib
+          </code>
+          python library.
+          <strong>
+           Note that you are required to use letter 'o' (not number character '0') and the asterisk '*' to mark the start and end states in visualization!
+          </strong>
+         </p>
+         <pre><code class="C++ language-C++">void visualization(Map map, Planner planner)
+{
+    //Graph Format
+    plt::title("Path");
+    plt::xlim(0, map.mapHeight);
+    plt::ylim(0, map.mapWidth);
+
+    // Draw every grid of the map:
+    for (double x = 0; x &lt; map.mapHeight; x++) {
+        cout &lt;&lt; "Remaining Rows= " &lt;&lt; map.mapHeight - x &lt;&lt; endl;
+        for (double y = 0; y &lt; map.mapWidth; y++) {
+            if (map.map[x][y] == 0) { //Green unkown state
+                plt::plot({ x }, { y }, "g.");
+            }
+            else if (map.map[x][y] &gt; 0) { //Black occupied state
+                plt::plot({ x }, { y }, "k.");
+            }
+            else { //Red free state
+                plt::plot({ x }, { y }, "r.");
+            }
+        }
+    }
+
+    // TODO: Plot start and end states in blue colors using o and * respectively
+
+    // TODO: Plot the robot path in blue color using a .
+
+    //Save the image and close the plot
+    plt::save("./Images/Path.png");
+    plt::clf();
+}</code></pre>
+         <p>
+          Here are some helpful commands you can use to generate plots with the
+          <code>
+           matplotlib
+          </code>
+          library:
+         </p>
+         <ul>
+          <li>
+           <em>
+            Set Title
+           </em>
+           :
+           <code>
+            plt::title("Your Title");
+           </code>
+          </li>
+          <li>
+           <em>
+            Set Limits
+           </em>
+           :
+           <code>
+            plt::xlim(x-axis lower limit, x-axis upper limit );
+           </code>
+          </li>
+          <li>
+           <em>
+            Plot Data
+           </em>
+           :
+           <code>
+            plt::plot({ x-value }, { y-value }, "Color and Shape");
+           </code>
+          </li>
+          <li>
+           <em>
+            Save Plot
+           </em>
+           :
+           <code>
+            plt::save("File name and directory")
+           </code>
+           ;
+          </li>
+          <li>
+           <em>
+            Close Plot
+           </em>
+           :
+           <code>
+            plt::clf()
+           </code>
+           ;
+          </li>
+         </ul>
+         <p>
+          Check out this
+          <a href="https://github.com/lava/matplotlib-cpp" rel="noopener noreferrer" target="_blank">
+           link
+          </a>
+          for more information on the
+          <code>
+           matplotlib
+          </code>
+          C++ library. For information regarding the plot color and shape refer to the LineSpec and LineColor section of the
+          <a href="https://www.mathworks.com/help/matlab/ref/plot.html?requestedDomain=true" rel="noopener noreferrer" target="_blank">
+           MATLAB
+          </a>
+          documentation.
+         </p>
+         <h3 id="then-compile-the-program">
+          Then, compile the program
+         </h3>
+         <pre><code class="sh language-sh">$ cd RoboND-A-Visualization/
+$ rm -rf Images/*    #Delete the folder content and not the folder itself!
+$ g++ main.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7</code></pre>
+         <h3 id="finally-run-the-program">
+          Finally, run the program
+         </h3>
+         <pre><code class="sh language-sh">$ ./app</code></pre>
+         <p>
+          If you get a warning regarding the
+          <code>
+           matplotlib
+          </code>
+          library, just ignore it.
+         </p>
+         <p>
+          Now, wait for the program to generate the path and store it in the
+          <code>
+           /home/workspace/RoboND-A-Visualization/Images
+          </code>
+          directory!
+         </p>
+         <h2 id="generated-path">
+          Generated Path
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/path.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="map-legend">
+          Map Legend
+         </h2>
+         <ul>
+          <li>
+           <span style="color:green">
+            Green: Unkown/Undiscovered zone
+           </span>
+          </li>
+          <li>
+           <span style="color:red">
+            Red: Free zone
+           </span>
+          </li>
+          <li>
+           <span style="color:black">
+            Black: Occupied zone
+           </span>
+          </li>
+          <li>
+           <span style="color:blue">
+            Blue: Shortest Path
+           </span>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="10. Udacity Workspace.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. A*: Visualization')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

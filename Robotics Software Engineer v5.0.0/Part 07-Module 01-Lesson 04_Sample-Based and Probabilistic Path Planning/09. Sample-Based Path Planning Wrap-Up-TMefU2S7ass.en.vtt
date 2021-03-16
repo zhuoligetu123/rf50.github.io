@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.660
+This concludes our discussion of sample-based path planning.
+
+00:00:03.660 --> 00:00:05.985
+As you saw in the previous few concepts
+
+00:00:05.985 --> 00:00:09.960
+probabilistic roadmaps and rapidly exploring random trees are
+
+00:00:09.960 --> 00:00:12.990
+two alternate algorithms for path planning which are
+
+00:00:12.990 --> 00:00:16.635
+especially applicable in large high-dimensional spaces.
+
+00:00:16.635 --> 00:00:19.020
+Although the algorithms are not complete,
+
+00:00:19.019 --> 00:00:21.765
+they are considered to be probabilistically complete.
+
+00:00:21.765 --> 00:00:26.024
+As their completeness grows exponentially with the number of samples collected.
+
+00:00:26.024 --> 00:00:31.599
+The algorithms that you learned here are incredibly applicable in real world robotics.
+

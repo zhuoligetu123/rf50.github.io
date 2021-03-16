@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.270
+Welcome to the cuckoo path planning project.
+
+00:00:03.270 --> 00:00:06.960
+In this project, you'll build software to move an object through
+
+00:00:06.960 --> 00:00:12.434
+a maze with an industrial six degrees of freedom cuckoo robotic arm.
+
+00:00:12.435 --> 00:00:17.054
+First, you'll run your project in a gazebo simulator here in the classroom.
+
+00:00:17.054 --> 00:00:21.390
+You'll use path planning algorithms to figure out which moves the arm should
+
+00:00:21.390 --> 00:00:26.160
+make in order to get from a starting point of the maze to the goal.
+
+00:00:26.160 --> 00:00:32.490
+You'll use the robotic operating system or ROS to interface with the simulation robot.
+
+00:00:32.490 --> 00:00:35.969
+Once you've got your algorithm working in the simulator,
+
+00:00:35.969 --> 00:00:38.189
+you can submit to the hardware phase of
+
+00:00:38.189 --> 00:00:42.199
+the project where you will have the opportunity to watch your code
+
+00:00:42.200 --> 00:00:48.770
+run on a real cuckoo arm located at the KIT robot learning lab in Germany.
+
+00:00:48.770 --> 00:00:52.925
+Your objective is to build an efficient path planning algorithm
+
+00:00:52.924 --> 00:00:57.265
+that can solve the maze no matter what start and goal poses are given,
+
+00:00:57.265 --> 00:01:00.994
+and to get to that solution as quickly as possible.
+
+00:01:00.994 --> 00:01:05.120
+In this lesson, you'll receive an overview of the project and we'll
+
+00:01:05.120 --> 00:01:10.135
+introduce some supplemental materials to help you with ROS and path planning.
+
+00:01:10.135 --> 00:01:12.109
+Let's get started.
+

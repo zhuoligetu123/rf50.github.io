@@ -1,0 +1,468 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Getting Started
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project Details
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Project Specification.html">
+       01. Project Specification
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Getting Started.html">
+       02. Getting Started
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Scoring Criteria.html">
+       03. Scoring Criteria
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Path Planning.html">
+       04. Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Project Workspace.html">
+       05. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Submission Instructions.html">
+       06. Submission Instructions
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Project Walkthrough.html">
+       07. Project Walkthrough
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Hints.html">
+       08. Hints
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Maze #1 Leaderboard.html">
+       09. Maze #1 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Maze #2 Leaderboard.html">
+       10. Maze #2 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Contest Maze Leaderboard.html">
+       11. Contest Maze Leaderboard
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          02. Getting Started
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="getting-started">
+          Getting Started
+         </h1>
+         <p>
+          To get started, navigate to the project workspace concept. Under
+          <code>
+           home/workspace/catkin-ws/src
+          </code>
+          , you will see the project SDK(
+          <strong>
+           rll_sdk
+          </strong>
+          ) and planning(
+          <strong>
+           rll_planning_project
+          </strong>
+          ) packages. You will be mainly working with the planning package where you’ll edit a launch file to change the object start/goal pose, and you'll edit a python script to code the path planning algorithm.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="python-script-path_plannerpy">
+          Python script:
+          <code>
+           path_planner.py
+          </code>
+         </h2>
+         <p>
+          Let’s first take a look at the Python path planning script. Navigate to
+          <code>
+           /home/workspace/catkin_ws/src/rll_planning_project/scripts
+          </code>
+          and open the
+          <code>
+           path_planner.py
+          </code>
+          script. Here, you will find a sample solution where we first retrieve the input values, print them, call the
+          <code>
+           CheckPath
+          </code>
+          service and check if it’s possible to move directly from the start pose toward the goal pose.  If it’s valid,  the
+          <code>
+           Move
+          </code>
+          service is called to move the object linearly toward the goal pose.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="launch-file-planning_ifacelaunch">
+          Launch file:
+          <code>
+           planning_iface.launch
+          </code>
+         </h2>
+         <p>
+          Moving on, let’s take a look at the launch file you'll need to modify.  Navigate to
+          <code>
+           /home/workspace/catkin_ws/src/rll_planning_project/launch
+          </code>
+          and open
+          <code>
+           planning_iface.launch
+          </code>
+          . There’s a long list of parameters needed for the project.   You’ll only need to edit the start 2D pose and goal 2D pose parameters.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="run-the-sample-solution">
+          Run the Sample Solution
+         </h2>
+         <p>
+          It’s time to run the project with the sample solution.
+          <strong>
+           Enable the GPU, GO TO DESKTOP
+          </strong>
+          , and follow these steps for a successful run:
+         </p>
+         <ol>
+          <li>
+           Update/upgrade the system
+          </li>
+         </ol>
+         <pre><code class="sh language-sh">apt-get update -y
+apt-get upgrade -y```
+2. Install all the packages dependencies</code></pre>
+         <p>
+          sh
+          <br/>
+          cd /home/workspace/catkin_ws/
+          <br/>
+          rosdep install --from-paths src --ignore-src -r -y
+         </p>
+         <pre><code>3. Build and source your `catkin_ws`</code></pre>
+         <p>
+          sh
+          <br/>
+          cd /home/workspace/catkin_ws/
+          <br/>
+          catkin_make
+          <br/>
+          source devel/setup.bash
+         </p>
+         <pre><code>4. Launch all the project nodes</code></pre>
+         <p>
+          sh
+         </p>
+         <h1 id="we’ve-combined-all-the-launch-files-in-a-start_projectsh-script">
+          We’ve combined all the launch files in a
+          <code>
+           start_project.sh
+          </code>
+          script.
+         </h1>
+         <h1 id="note-this-script-will-only-run-if-you-are-in-the-visual-desktop-dont-try-to-run-it-inside-the-workspace-terminal">
+          Note: This script will only run if you are in the visual desktop, don't try to run it inside the workspace terminal!
+         </h1>
+         <p>
+          cd /home/workspace/catkin_ws/src/rll_planning_project/scripts/
+          <br/>
+          ./start_project.sh
+          <br/>
+          ```
+          <br/>
+          You'll need to repeat these steps after each reboot!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="stopping-a-run">
+          Stopping a Run
+         </h2>
+         <p>
+          Hit Enter key in the main terminal to instantly kill the project execution and all the ROS nodes. You need to wait at least 30 seconds before starting a new run because the nodes will take some time to fully terminate. If you encountered an error, don't worry about it - just relaunch the nodes either manually or with the shell script file provided.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          KUKASampleCode
+         </p>
+        </h3>
+        <video controls="">
+         <source src="02. KUKASampleCode-ZEW-gsCAWRs.mp4" type="video/mp4"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="video-review">
+          Video Review
+         </h2>
+         <p>
+          Look closely at the video and try to identify the 4 cycles mentioned earlier:
+         </p>
+         <ol>
+          <li>
+           First, the KUKA gripper will move to the object start position, orient itself with respect to the object, grab the object, and lift it up.
+          </li>
+          <li>
+           At this stage, your path planning code will be executed. Your code will search for a path and navigate the robot through the maze by commanding 2D positions, and an orientation angle, in order to get around corners in the maze
+          </li>
+          <li>
+           You will have a total time of 8 minutes to search for a path and move toward the goal pose. Once reached, your cuboid object will be placed in the goal pose.
+          </li>
+          <li>
+           Finally, the robot will lift the object from the goal pose, return it back to the start pose, drop it, and get ready for another run.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="gazebo-and-rviz">
+          Gazebo and Rviz
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-07-27-at-12.22.10-pm.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          <strong>
+           Gazebo
+          </strong>
+          : Visual maze(red color) which is a replica of the real maze located at the KIT Lab in Germany.
+         </p>
+         <p>
+          <strong>
+           Rviz
+          </strong>
+          : Collision maze(yellow color) which is the same as the visual maze but with thicker walls and some extra ones. Inside the collision maze, you can still see the visual maze that has thinner walls. The red block indicates the goal pose of the object.
+         </p>
+         <p>
+          As a safety measure, we added a tolerance value to the visual maze to prevent any collision between the object or robot and the maze walls in the real world.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="03. Scoring Criteria.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Getting Started')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

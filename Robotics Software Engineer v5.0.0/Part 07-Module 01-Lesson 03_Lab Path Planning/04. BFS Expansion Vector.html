@@ -1,0 +1,595 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   BFS: Expansion Vector
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Modeling the Problem.html">
+       02. Modeling the Problem
+      </a>
+     </li>
+     <li class="">
+      <a href="03. BFS Expansion List.html">
+       03. BFS: Expansion List
+      </a>
+     </li>
+     <li class="">
+      <a href="04. BFS Expansion Vector.html">
+       04. BFS: Expansion Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="05. BFS Shortest Path.html">
+       05. BFS: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="06. A Shortest Path.html">
+       06. A*: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Comparison.html">
+       07. Comparison
+      </a>
+     </li>
+     <li class="">
+      <a href="08. A Real-World Map.html">
+       08. A*: Real-World Map
+      </a>
+     </li>
+     <li class="">
+      <a href="09. A Visualization.html">
+       09. A*: Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Udacity Workspace.html">
+       10. Udacity Workspace
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          04. BFS: Expansion Vector
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="bfs-expansion-vector">
+          BFS: Expansion Vector
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now that you have expanded the cells until you've reached the goal, you are asked to print the order in which each cell was expanded. For that, you’ll need to modify the search function and create a 2D
+          <strong>
+           expansion
+          </strong>
+          vector that is equal in size to the map. Each cell in the expansion vector will store the order at which it was expanded. Some of the cells were never expanded, and should show a value of
+          <strong>
+           -1
+          </strong>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="hint">
+          Hint
+         </h2>
+         <p>
+          Take a look at the expansion list generated after running the code:
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-04-20-at-2.37.58-pm.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          You can see that we started with the first cell and ended at the goal cell which was expanded after
+          <strong>
+           20
+          </strong>
+          iterations. All the obstacles and some cells were never expanded and thus are showing a value of
+          <strong>
+           -1
+          </strong>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now, go ahead and modify the search function to generate and print the expansion 2D vector.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="573531-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#573531-main-cpp" id="tab-573531-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="573531-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#573531-solution-cpp" id="tab-573531-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-573531-main-cpp" class="tab-pane active show" id="573531-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Map class
+class Map {
+public:
+    const static int mapWidth = 6;
+    const static int mapHeight = 5;
+    vector&lt;vector&lt;int&gt; &gt; grid = {
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 1, 0 }
+    };
+};
+
+// Planner class
+class Planner : Map {
+public:
+    int start[2] = { 0, 0 };
+    int goal[2] = { mapHeight - 1, mapWidth - 1 };
+    int cost = 1;
+
+    string movements_arrows[4] = { "^", "&lt;", "v", "&gt;" };
+
+    vector&lt;vector&lt;int&gt; &gt; movements{
+        { -1, 0 },
+        { 0, -1 },
+        { 1, 0 },
+        { 0, 1 }
+    };
+};
+
+// Template function to print 2D vectors of any type
+template &lt;typename T&gt;
+void print2DVector(T Vec)
+{
+    for (int i = 0; i &lt; Vec.size(); ++i) {
+        for (int j = 0; j &lt; Vec[0].size(); ++j) {
+            cout &lt;&lt; Vec[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+/* #### TODO: Modify the search function to generate and print the expansion 2D vector #### */
+void search(Map map, Planner planner)
+{
+    // Create a closed 2 array filled with 0s and first element 1
+    vector&lt;vector&lt;int&gt; &gt; closed(map.mapHeight, vector&lt;int&gt;(map.mapWidth));
+    closed[planner.start[0]][planner.start[1]] = 1;
+
+    // Defined the triplet values
+    int x = planner.start[0];
+    int y = planner.start[1];
+    int g = 0;
+
+    // Store the expansions
+    vector&lt;vector&lt;int&gt; &gt; open;
+    open.push_back({ g, x, y });
+
+    // Flags
+    bool found = false;
+    bool resign = false;
+
+    int x2;
+    int y2;
+
+    // While I am still searching for the goal and the problem is solvable
+    while (!found &amp;&amp; !resign) {
+        // Resign if no values in the open list and you can't expand anymore
+        if (open.size() == 0) {
+            resign = true;
+            cout &lt;&lt; "Failed to reach a goal" &lt;&lt; endl;
+        }
+        // Keep expanding
+        else {
+            // Remove triplets from the open list
+            sort(open.begin(), open.end());
+            reverse(open.begin(), open.end());
+            vector&lt;int&gt; next;
+            // Stored the poped value into next
+            next = open.back();
+            open.pop_back();
+
+            x = next[1];
+            y = next[2];
+            g = next[0];
+            
+            // Check if we reached the goal:
+            if (x == planner.goal[0] &amp;&amp; y == planner.goal[1]) {
+                found = true;
+                cout &lt;&lt; "[" &lt;&lt; g &lt;&lt; ", " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; "]" &lt;&lt; endl;
+            }
+
+            //else expand new elements
+            else {
+                for (int i = 0; i &lt; planner.movements.size(); i++) {
+                    x2 = x + planner.movements[i][0];
+                    y2 = y + planner.movements[i][1];
+                    if (x2 &gt;= 0 &amp;&amp; x2 &lt; map.grid.size() &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; map.grid[0].size()) {
+                        if (closed[x2][y2] == 0 and map.grid[x2][y2] == 0) {
+                            int g2 = g + planner.cost;
+                            open.push_back({ g2, x2, y2 });
+                            closed[x2][y2] = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+int main()
+{
+    // Instantiate map and planner objects
+    Map map;
+    Planner planner;
+
+    // Search for the expansions
+    search(map, planner);
+
+    return 0;
+}
+</pre>
+           </div>
+           <div aria-labelledby="tab-573531-solution-cpp" class="tab-pane" id="573531-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Map class
+class Map {
+public:
+    const static int mapWidth = 6;
+    const static int mapHeight = 5;
+    vector&lt;vector&lt;int&gt; &gt; grid = {
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 1, 0 }
+    };
+};
+
+// Planner class
+class Planner : Map {
+public:
+    int start[2] = { 0, 0 };
+    int goal[2] = { mapHeight - 1, mapWidth - 1 };
+    int cost = 1;
+
+    string movements_arrows[4] = { "^", "&lt;", "v", "&gt;" };
+
+    vector&lt;vector&lt;int&gt; &gt; movements{
+        { -1, 0 },
+        { 0, -1 },
+        { 1, 0 },
+        { 0, 1 }
+    };
+};
+
+// Template function to print 2D vectors of any type
+template &lt;typename T&gt;
+void print2DVector(T Vec)
+{
+    for (int i = 0; i &lt; Vec.size(); ++i) {
+        for (int j = 0; j &lt; Vec[0].size(); ++j) {
+            cout &lt;&lt; Vec[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+// Search function will generate the expansions
+void search(Map map, Planner planner)
+{
+    // Create a closed 2 array filled with 0s and first element 1
+    vector&lt;vector&lt;int&gt; &gt; closed(map.mapHeight, vector&lt;int&gt;(map.mapWidth));
+    closed[planner.start[0]][planner.start[1]] = 1;
+
+    // Create expand array filled with -1
+    vector&lt;vector&lt;int&gt; &gt; expand(map.mapHeight, vector&lt;int&gt;(map.mapWidth, -1));
+
+    // Defined the triplet values
+    int x = planner.start[0];
+    int y = planner.start[1];
+    int g = 0;
+
+    // Store the expansions
+    vector&lt;vector&lt;int&gt; &gt; open;
+    open.push_back({ g, x, y });
+
+    // Flags and counters
+    bool found = false;
+    bool resign = false;
+    int count = 0;
+
+    int x2;
+    int y2;
+
+    // While I am still searching for the goal and the problem is solvable
+    while (!found &amp;&amp; !resign) {
+        // Resign if no values in the open list and you can't expand anymore
+        if (open.size() == 0) {
+            resign = true;
+            cout &lt;&lt; "Failed to reach a goal" &lt;&lt; endl;
+        }
+        // Keep expanding
+        else {
+            // Remove triplets from the open list
+            sort(open.begin(), open.end());
+            reverse(open.begin(), open.end());
+            vector&lt;int&gt; next;
+            // Stored the poped value into next
+            next = open.back();
+            open.pop_back();
+
+            x = next[1];
+            y = next[2];
+            g = next[0];
+
+            // Fill the expand vectors with count
+            expand[x][y] = count;
+            count += 1;
+            
+            // Check if we reached the goal:
+            if (x == planner.goal[0] &amp;&amp; y == planner.goal[1]) {
+                found = true;
+                //cout &lt;&lt; "[" &lt;&lt; g &lt;&lt; ", " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; "]" &lt;&lt; endl;
+            }
+
+            //else expand new elements
+            else {
+                for (int i = 0; i &lt; planner.movements.size(); i++) {
+                    x2 = x + planner.movements[i][0];
+                    y2 = y + planner.movements[i][1];
+                    if (x2 &gt;= 0 &amp;&amp; x2 &lt; map.grid.size() &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; map.grid[0].size()) {
+                        if (closed[x2][y2] == 0 and map.grid[x2][y2] == 0) {
+                            int g2 = g + planner.cost;
+                            open.push_back({ g2, x2, y2 });
+                            closed[x2][y2] = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Print the expansion List
+    print2DVector(expand);
+}
+
+int main()
+{
+    // Instantiate map and planner objects
+    Map map;
+    Planner planner;
+
+    // Search for the expansions
+    search(map, planner);
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="05. BFS Shortest Path.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('04. BFS: Expansion Vector')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

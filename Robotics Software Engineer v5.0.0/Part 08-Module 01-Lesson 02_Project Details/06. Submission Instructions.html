@@ -1,0 +1,402 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Submission Instructions
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project Details
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Project Specification.html">
+       01. Project Specification
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Getting Started.html">
+       02. Getting Started
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Scoring Criteria.html">
+       03. Scoring Criteria
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Path Planning.html">
+       04. Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Project Workspace.html">
+       05. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Submission Instructions.html">
+       06. Submission Instructions
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Project Walkthrough.html">
+       07. Project Walkthrough
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Hints.html">
+       08. Hints
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Maze #1 Leaderboard.html">
+       09. Maze #1 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Maze #2 Leaderboard.html">
+       10. Maze #2 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Contest Maze Leaderboard.html">
+       11. Contest Maze Leaderboard
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Submission Instructions
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="submitting-your-project-during-the-practice-phase">
+          Submitting your project during the
+          <strong>
+           PRACTICE PHASE
+          </strong>
+         </h1>
+         <p>
+          Once you’ve gotten your project working in the simulator, you can submit it to run on the real KUKA arm!  Once submitted, your “job” will be put in a queue at the KIT Robotics Learning Lab (RLL).  Your job will first be run in a simulator, to make sure it can run successfully on the hardware.
+         </p>
+         <p>
+          There are only a few steps for your submission:
+         </p>
+         <ol>
+          <li>
+           Manually fetch your user code and install it in your workspace
+          </li>
+          <li>
+           Enter
+           <code>
+            submit
+           </code>
+           on the command line in a terminal window
+          </li>
+          <li>
+           To check on your jobs, enter
+           <code>
+            check_jobs
+           </code>
+           on the command line in a terminal window.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="install-your-user-code---the-jwt-file">
+          Install your user code - the
+          <code>
+           jwt
+          </code>
+          file
+         </h3>
+         <p>
+          The
+          <code>
+           jwt
+          </code>
+          file is your user code and must be available at
+          <code>
+           /home/workspace/JWT/jwt
+          </code>
+          in order to submit a project. You can download your user code by
+          <a href="https://project-assistant.udacity.com/auth_tokens/new" rel="noopener noreferrer" target="_blank">
+           clicking here
+          </a>
+          .
+          <br/>
+          You may need to
+          <strong>
+           navigate to the link a second time
+          </strong>
+          after logging in for the file to automatically download. Once you've downloaded your
+          <code>
+           jwt
+          </code>
+          , copy the contents into:
+          <code>
+           /home/workspace/JWT/jwt
+          </code>
+          .
+         </p>
+         <h3 id="submit-your-job">
+          Submit your job
+         </h3>
+         <p>
+          Your python script must reside at
+          <code>
+           /home/workspace/catkin_ws/rll_planning_project/scripts/path_planner.py
+          </code>
+          .  This is the only file that will be uploaded.  If the submission succeeded, you’ll see the “Submission Complete” feedback.  Note that this does not indicate any status of the code itself, only that the job was successfully submitted to the queue.  You may only have one job at a time in the queue.
+         </p>
+         <p>
+          During the submission process, you must positively “opt in” if you wish to see your time and rank on the leaderboard.
+         </p>
+         <p>
+          <strong>
+           Note:
+          </strong>
+          In case the submission process fails, refresh the workspace and try again.
+         </p>
+         <h3 id="check-on-your-jobs">
+          Check on your job(s)
+         </h3>
+         <p>
+          Once your job is submitted, it will be given a job number and placed in a queue at the KIT RLL.  To check on your job, enter
+          <code>
+           check_jobs
+          </code>
+          on the command line.  You’ll receive a status update on all the jobs you’ve entered.  Here is an example of two failed jobs and another sitting in the queue partially done:
+         </p>
+         <pre><code class="json language-json">{
+    "5b61d7d3f7971f68ce977d43": {
+        "job_data": null,
+        "job_result": "sim failure",
+        "job_status": "finished",
+        "position": -1
+    },
+    "5b631f18f7971f14d02942c6": {
+        "job_data": null,
+        "job_result": "sim failure",
+        "job_status": "finished",
+        "position": -1
+    },
+    "5b634ca8f7971f14d02942c7": {
+        "job_data": {
+            "duration": 144.0544441403444594
+        },
+        "job_result": "sim success",
+        "job_status": "waiting for real",
+        "position": 2
+    }
+}</code></pre>
+         <p>
+          Note that the last job has a “duration” time associated with it.  However, the job has not run on the “real” yet, so this is just the simulation run time.  If the job runs successfully on the “real” arm, you should see an entry something like this:
+         </p>
+         <pre><code class="json language-json"> {   "5b634ca8f7971f14d0222222": {
+        "job_data": {
+            "duration": 99.123451234
+        },
+        "job_result": "real success",
+        "job_status": "finished",
+        "position": -1
+    }
+}</code></pre>
+         <p>
+          At this point, the score (time) will be entered in the leaderboard database.  If you have opted in, your time and rank will be visible on the leaderboard under whatever name you’ve chosen to post with.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="submitting-your-project-during-the-contest-phase">
+          Submitting your project during the
+          <strong>
+           CONTEST PHASE
+          </strong>
+         </h1>
+         <p>
+          The same command,
+          <code>
+           submit
+          </code>
+          , should be used to submit your project.  The submission system will operate a little differently during this phase:
+         </p>
+         <ul>
+          <li>
+           During submission, you will be presented with the Terms and Conditions for the contest and must positively agree to them to enter the contest.
+          </li>
+          <li>
+           You will not receive any log links or video feedback until the contest is over, though you will receive job status with the
+           <code>
+            check_jobs
+           </code>
+           command.
+          </li>
+          <li>
+           All jobs that pass the simulator will be added to a queue to run on the real KUKA arm.  The real runs for each entry will only take place after the contest closes.
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Project Walkthrough.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Submission Instructions')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

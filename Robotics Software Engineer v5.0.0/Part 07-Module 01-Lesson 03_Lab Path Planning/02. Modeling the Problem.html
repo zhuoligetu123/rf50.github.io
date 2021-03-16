@@ -1,0 +1,605 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Modeling the Problem
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Modeling the Problem.html">
+       02. Modeling the Problem
+      </a>
+     </li>
+     <li class="">
+      <a href="03. BFS Expansion List.html">
+       03. BFS: Expansion List
+      </a>
+     </li>
+     <li class="">
+      <a href="04. BFS Expansion Vector.html">
+       04. BFS: Expansion Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="05. BFS Shortest Path.html">
+       05. BFS: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="06. A Shortest Path.html">
+       06. A*: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Comparison.html">
+       07. Comparison
+      </a>
+     </li>
+     <li class="">
+      <a href="08. A Real-World Map.html">
+       08. A*: Real-World Map
+      </a>
+     </li>
+     <li class="">
+      <a href="09. A Visualization.html">
+       09. A*: Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Udacity Workspace.html">
+       10. Udacity Workspace
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          02. Modeling the Problem
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="modeling-the-problem">
+          Modeling the Problem
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The purpose of this lab is to find the shortest path for a robot moving inside a 5x6 map from start to goal position using different path planning algorithms. The robot can only move in four directions: up, left, down, and right. We will first model this problem using classes in C++ and later solve it with the BFS and A* algorithms.
+         </p>
+         <h3 id="given">
+          Given
+         </h3>
+         <p>
+          <strong>
+           Grid(
+           <code>
+            5x6
+           </code>
+           )
+          </strong>
+          :
+         </p>
+         <div style="text-align: center;">
+          0 1 0 0 0 0
+          <br/>
+          0 1 0 0 0 0
+          <br/>
+          0 1 0 0 0 0
+          <br/>
+          0 1 0 0 0 0
+          <br/>
+          0 0 0 1 1 0
+          <br/>
+         </div>
+         <p>
+          Where 1's represent obstacles and 0's represent free space.
+         </p>
+         <p>
+          <strong>
+           Robot Start position:
+          </strong>
+          <code>
+           0
+          </code>
+          ,
+          <code>
+           0
+          </code>
+         </p>
+         <p>
+          <strong>
+           Robot Goal Position:
+          </strong>
+          <code>
+           4
+          </code>
+          ,
+          <code>
+           5
+          </code>
+         </p>
+         <p>
+          <strong>
+           Direction of Movement:
+          </strong>
+          Up(
+          <code>
+           -1,0
+          </code>
+          ) - left(
+          <code>
+           0,-1
+          </code>
+          ) - down(
+          <code>
+           1,0
+          </code>
+          ) - right(
+          <code>
+           0,1
+          </code>
+          )
+         </p>
+         <p>
+          The
+          <em>
+           Direction of Movement
+          </em>
+          vector is a collection of four different 2D vectors each of which enables you to move between grid cells in the map.
+         </p>
+         <p>
+          <strong>
+           Movement Arrows:
+          </strong>
+          Up(
+          <code>
+           ^
+          </code>
+          ) - left(
+          <code>
+           &lt;
+          </code>
+          ) - down(
+          <code>
+           v
+          </code>
+          ) - right(
+          <code>
+           &gt;
+          </code>
+          )
+         </p>
+         <p>
+          The
+          <em>
+           Movement Arrows
+          </em>
+          vector store the robot actions, this vector will be used later in this lab to visualize the robot orientation at each grid cell on the shortest path.
+         </p>
+         <p>
+          <strong>
+           Cost of Movement:
+          </strong>
+          <code>
+           1
+          </code>
+         </p>
+         <p>
+          The
+          <em>
+           Cost of Movement
+          </em>
+          value indicates how much it cost to move from one cell to another. Here, the cost is equal for all possible movements.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Modeling the Problem
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           In this quiz, you'll have three main tasks to accomplish in order to model the problem:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="7744d842-8fe5-490d-9876-453dffc5aee8--0" type="checkbox"/>
+            <label for="7744d842-8fe5-490d-9876-453dffc5aee8--0">
+             <p>
+              Define a Map class and initialize the grid, its width, and height.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7744d842-8fe5-490d-9876-453dffc5aee8--1" type="checkbox"/>
+            <label for="7744d842-8fe5-490d-9876-453dffc5aee8--1">
+             <p>
+              Define a Planner class and initialize the robot's start position, goal position, cost of movement, movements arrows, and values.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="7744d842-8fe5-490d-9876-453dffc5aee8--2" type="checkbox"/>
+            <label for="7744d842-8fe5-490d-9876-453dffc5aee8--2">
+             <p>
+              Define a
+              <code>
+               print2DVector
+              </code>
+              function which will print 2D vectors of any data type.
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="note">
+          Note
+         </h2>
+         <p>
+          Throughout this lab, you'll be working with 1D and 2D vectors in C++. Vectors allow you to easily manage and manipulate the data with pre-built functions. For example: the
+          <code>
+           pop_back
+          </code>
+          function can be used to delete the last element in the vector.
+         </p>
+         <p>
+          If you are not already familiar with vectors, I recommend you read the following two sources before you start coding:
+         </p>
+         <ol>
+          <li>
+           <a href="https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/" rel="noopener noreferrer" target="_blank">
+            2D Vectors
+           </a>
+           : Learn how to define and use 2D Vectors in C++.
+          </li>
+          <li>
+           <a href="http://www.cplusplus.com/reference/vector/vector/" rel="noopener noreferrer" target="_blank">
+            Documentation
+           </a>
+           : Learn the vectors iterators and modifiers.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="573515-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#573515-main-cpp" id="tab-573515-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="573515-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#573515-solution-cpp" id="tab-573515-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-573515-main-cpp" class="tab-pane active show" id="573515-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+/* TODO: Define a Map class
+   Inside the map class, define the mapWidth, mapHeight and grid as a 2D vector
+*/
+
+/* TODO: Define a Planner class
+   Inside the Planner class, define the start, goal, cost, movements, and movements_arrows
+   Note: The goal should be defined it terms of the mapWidth and mapHeight
+*/
+
+/* TODO: Define a print2DVector function which will print 2D vectors of any data type
+   Example
+   
+   Input: 
+   vector&lt;vector&lt;int&gt; &gt; a{{ 1, 0 },{ 0, 1 }};
+   print2DVector(a);
+   vector&lt;vector&lt;string&gt; &gt; b{{ "a", "b" },{ "c", "d" }};
+   print2DVector(b);
+   
+   Output:
+   1 0
+   0 1
+   a b
+   c d
+   Hint: You need to use templates
+*/
+
+/*############ Don't modify the main function############*/
+int main()
+{
+    // Instantiate map and planner objects
+    Map map;
+    Planner planner;
+
+    // Print classes variables
+    cout &lt;&lt; "Map:" &lt;&lt; endl;
+    print2DVector(map.grid);
+    cout &lt;&lt; "Start: " &lt;&lt; planner.start[0] &lt;&lt; " , " &lt;&lt; planner.start[1] &lt;&lt; endl;
+    cout &lt;&lt; "Goal: " &lt;&lt; planner.goal[0] &lt;&lt; " , " &lt;&lt; planner.goal[1] &lt;&lt; endl;
+    cout &lt;&lt; "Cost: " &lt;&lt; planner.cost &lt;&lt; endl;
+    cout &lt;&lt; "Robot Movements: " &lt;&lt; planner.movements_arrows[0] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[1] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[2] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[3] &lt;&lt; endl;
+    cout &lt;&lt; "Delta:" &lt;&lt; endl;
+    print2DVector(planner.movements);
+
+    return 0;
+}
+</pre>
+           </div>
+           <div aria-labelledby="tab-573515-solution-cpp" class="tab-pane" id="573515-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Map class
+class Map {
+public:
+    const static int mapWidth = 6;
+    const static int mapHeight = 5;
+    vector&lt;vector&lt;int&gt; &gt; grid = {
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 1, 0 }
+    };
+};
+
+// Planner class
+class Planner : Map {
+public:
+    int start[2] = { 0, 0 };
+    int goal[2] = { mapHeight - 1, mapWidth - 1 };
+    int cost = 1;
+
+    string movements_arrows[4] = { "^", "&lt;", "v", "&gt;" };
+
+    vector&lt;vector&lt;int&gt; &gt; movements{
+        { -1, 0 },
+        { 0, -1 },
+        { 1, 0 },
+        { 0, 1 }
+    };
+};
+
+// Template function to print 2D vectors of any type
+template &lt;typename T&gt;
+void print2DVector(T Vec)
+{
+    for (int i = 0; i &lt; Vec.size(); ++i) {
+        for (int j = 0; j &lt; Vec[0].size(); ++j) {
+            cout &lt;&lt; Vec[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+int main()
+{
+    // Instantiate map and planner objects
+    Map map;
+    Planner planner;
+
+    // Print classes variables
+    cout &lt;&lt; "Map:" &lt;&lt; endl;
+    print2DVector(map.grid);
+    cout &lt;&lt; "Start: " &lt;&lt; planner.start[0] &lt;&lt; " , " &lt;&lt; planner.start[1] &lt;&lt; endl;
+    cout &lt;&lt; "Goal: " &lt;&lt; planner.goal[0] &lt;&lt; " , " &lt;&lt; planner.goal[1] &lt;&lt; endl;
+    cout &lt;&lt; "Cost: " &lt;&lt; planner.cost &lt;&lt; endl;
+    cout &lt;&lt; "Robot Movements: " &lt;&lt; planner.movements_arrows[0] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[1] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[2] &lt;&lt; " , " &lt;&lt; planner.movements_arrows[3] &lt;&lt; endl;
+    cout &lt;&lt; "Delta:" &lt;&lt; endl;
+    print2DVector(planner.movements);
+
+    return 0;
+}
+</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="03. BFS Expansion List.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Modeling the Problem')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,181 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.165
+One common sample-based path planning method,
+
+00:00:03.165 --> 00:00:06.915
+is called the probabilistic roadmap or PRM for short.
+
+00:00:06.915 --> 00:00:09.705
+PRM randomly samples the workspace,
+
+00:00:09.705 --> 00:00:12.570
+building up a graph to represent the free space.
+
+00:00:12.570 --> 00:00:16.649
+It does so without needing to construct the C space or discretize it.
+
+00:00:16.649 --> 00:00:18.539
+All that PRM requires,
+
+00:00:18.539 --> 00:00:20.204
+is a collision check function,
+
+00:00:20.204 --> 00:00:23.129
+to test whether a randomly generated node lies in
+
+00:00:23.129 --> 00:00:26.529
+the freespace or is in collision with an obstacle.
+
+00:00:26.530 --> 00:00:29.750
+Let's add a few more random samples to this workspace,
+
+00:00:29.750 --> 00:00:31.774
+and see how PRM works.
+
+00:00:31.774 --> 00:00:35.030
+The process of building up a graph is called the learning phase.
+
+00:00:35.030 --> 00:00:37.640
+Since that's what the PRM does by sampling
+
+00:00:37.640 --> 00:00:40.765
+random configurations and adding them to the graph.
+
+00:00:40.765 --> 00:00:46.355
+It does so by generating a new random configuration represented by a node in the graph,
+
+00:00:46.354 --> 00:00:48.814
+and checking to see if it is in collision.
+
+00:00:48.814 --> 00:00:51.544
+If it is not, like the node D C here,
+
+00:00:51.545 --> 00:00:54.984
+then PRM will try to connect the node to its neighbors.
+
+00:00:54.984 --> 00:00:57.394
+There are a few different ways of doing so.
+
+00:00:57.395 --> 00:01:01.280
+PRM can look for any number of neighbors within a certain radius of
+
+00:01:01.280 --> 00:01:05.495
+the node or it could look for the nodes K nearest neighbors.
+
+00:01:05.495 --> 00:01:07.639
+Once the neighbors have been selected,
+
+00:01:07.638 --> 00:01:12.019
+PRM will see if they can successfully create an edge to each of its neighbors.
+
+00:01:12.019 --> 00:01:14.899
+As you see here, one edge is in collision with
+
+00:01:14.900 --> 00:01:18.230
+an obstacle while the other three are safe to add.
+
+00:01:18.230 --> 00:01:20.719
+This node has been added to the graph,
+
+00:01:20.719 --> 00:01:24.664
+and now this process can be repeated for another randomly generated node.
+
+00:01:24.665 --> 00:01:29.090
+The local planner must find a path between two nodes or return that,
+
+00:01:29.090 --> 00:01:30.905
+such a path does not exist.
+
+00:01:30.905 --> 00:01:32.769
+It must do so quickly,
+
+00:01:32.769 --> 00:01:36.859
+since this step is repeated for every neighbor of every new node.
+
+00:01:36.859 --> 00:01:39.140
+One easy way to accomplish this,
+
+00:01:39.140 --> 00:01:41.780
+is to draw a straight line between the two nodes,
+
+00:01:41.780 --> 00:01:45.094
+and then check if any part of it collides with an obstacle.
+
+00:01:45.094 --> 00:01:48.905
+To do this, you can place a number of evenly spaced samples
+
+00:01:48.905 --> 00:01:52.670
+on the line and see whether any one of them is in a collision.
+
+00:01:52.670 --> 00:01:58.070
+You can work incrementally starting on one side of the edge and moving towards the other,
+
+00:01:58.069 --> 00:02:00.199
+or you can take a binary approach,
+
+00:02:00.200 --> 00:02:02.630
+checking the sample at the midpoint first.
+
+00:02:02.629 --> 00:02:05.750
+In this case, that returns a collision right away.
+
+00:02:05.750 --> 00:02:09.650
+But if you didn't, you could continue breaking the edge up into segments,
+
+00:02:09.650 --> 00:02:12.034
+checking each midpoint sample for a collision.
+
+00:02:12.034 --> 00:02:14.990
+If all of the samples which are no collision found,
+
+00:02:14.990 --> 00:02:17.659
+then the edge can be added to the graph.
+
+00:02:17.659 --> 00:02:22.400
+The process of adding new nodes and connecting them to the graph continues.
+
+00:02:22.400 --> 00:02:25.340
+Eventually, a certain criteria is met,
+
+00:02:25.340 --> 00:02:29.104
+such as a specific number of nodes or edges have been created,
+
+00:02:29.104 --> 00:02:31.994
+or a particular amount of time has elapsed.
+
+00:02:31.995 --> 00:02:34.715
+At this point, the learning phase is over.
+
+00:02:34.715 --> 00:02:37.015
+Then, PRM enters the query phase.
+
+00:02:37.014 --> 00:02:41.144
+Where it uses the resulting graph to find a path from start to goal.
+
+00:02:41.145 --> 00:02:44.485
+First, it must connect each of these to the graph.
+
+00:02:44.485 --> 00:02:48.155
+PRM does so by looking for the nodes closest to the start
+
+00:02:48.155 --> 00:02:52.205
+and goal and using the local planner to try to build a connection.
+
+00:02:52.205 --> 00:02:54.500
+If this process is successful,
+
+00:02:54.500 --> 00:02:56.824
+then a search algorithm like A star search,
+
+00:02:56.824 --> 00:03:00.019
+can be applied to find the path from start to goal.
+
+00:03:00.020 --> 00:03:02.665
+The resulting path may not be optimal,
+
+00:03:02.664 --> 00:03:06.689
+but it proves that moving from start to goal is feasible.
+

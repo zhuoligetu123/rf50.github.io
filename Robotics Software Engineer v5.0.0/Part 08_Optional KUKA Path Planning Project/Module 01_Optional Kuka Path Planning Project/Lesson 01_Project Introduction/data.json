@@ -1,0 +1,280 @@
+{
+  "data": {
+    "lesson": {
+      "id": 675753,
+      "key": "65969269-afc8-4482-bae6-fadc7c761408",
+      "title": "Project Introduction",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Plan a path through a maze for an industrial Kuka Manipulator Arm, then watch your code run on real hardware!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/65969269-afc8-4482-bae6-fadc7c761408/675753/1544270536173/Project+Introduction+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/65969269-afc8-4482-bae6-fadc7c761408/675753/1544270533625/Project+Introduction+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 675754,
+          "key": "e92e1049-7bac-441b-b545-686c0d6ab397",
+          "title": "Welcome!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e92e1049-7bac-441b-b545-686c0d6ab397",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689025,
+              "key": "368595b4-bb39-4dd6-803a-a3ac12779fc6",
+              "title": "01 Kuka Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4vqn2loK3ao",
+                "china_cdn_id": "4vqn2loK3ao.mp4"
+              }
+            },
+            {
+              "id": 680902,
+              "key": "bdc08d09-556f-4664-96f3-165c298a2528",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The KUKA Path Planning Project\nWelcome to the KUKA path planning project! In this project, you will solve a maze given a start and goal state. You will implement a path planning algorithm to search for a path, and then move an object from start to goal state inside the maze with the help of a 6-DOF industrial KUKA arm. Later, you will have a chance to submit your code and watch it on a real KUKA arm located at the KIT Lab in Germany!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 689034,
+              "key": "6812c336-e762-4554-9035-72af34922952",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## PRACTICE PHASE\nAny RoboND student may try the project and \"submit\" it to the KIT Robotic Learning Lab during the PRACTICE PHASE of the project (see **Schedule**).   There are two sets of poses for the mazes that will be run, and a running leaderboard will be available to see how you're doing!  The results, logs, and videos will be available on a continuous basis from these runs, provided by KIT.\n\n## CONTEST PHASE\nAfter the PRACTICE PHASE is over, the CONTEST PHASE will begin. In order to enter the final CONTEST PHASE, you must submit your code using the \"contest-submit\" instructions.  See the **Project Details** lesson. This final phase will accept entries for only a few days.  This phase will use *hidden* poses and you won't be able to see any results until all the entries are run after the close of the contest.\n\nSpecial note:  You must be eligible per the **Contest Terms and Conditions** to participate in the CONTEST PHASE.  In particular, the contest is only open to United States residents (please see the **Contest Terms and Conditions** concept for all details).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 689038,
+              "key": "d6520f1b-dcb5-425a-81d1-a36c06a187d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Schedule\n\nAugust 1, 2018 | Project opens with the first practice pose set `Maze 1` | PRACTICE PHASE\n--- | --- | ---\nAugust <font color=\"red\">20</font>, 2018 | `Maze 1` closed; second practice pose set opens `Maze 2` | PRACTICE PHASE\nAugust 24, 2018 | `Maze 2` closed;  | PRACTICE PHASE\nAugust 25, 2018| contest opens (hidden pose set) `Contest Maze` | CONTEST PHASE\nAugust 28, 2018| `Contest Maze`closed; final runs begin | CONTEST PHASE\nAugust 29, 2018| `Contest Maze`closed;  first practice pose set opens `Maze 1` | PRACTICE PHASE\n\nDuring the PRACTICE PHASE, results logs and videos will be released as completed.  During the CONTEST PHASE, results will be released only after all runs are completed.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675755,
+          "key": "ce11a31f-79d6-44da-81bb-48aaaaf7a005",
+          "title": "Meet KIT and KUKA",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ce11a31f-79d6-44da-81bb-48aaaaf7a005",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689035,
+              "key": "e4d7894d-9221-4e68-85b4-5a441e7141dd",
+              "title": "Udacity Robot Learning Lab  MHS Update",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Trailer on the KIT and KUKA from Intersect 2018",
+              "video": {
+                "youtube_id": "MThf6RUd3Gw",
+                "china_cdn_id": "MThf6RUd3Gw.mp4"
+              }
+            },
+            {
+              "id": 680903,
+              "key": "515634bc-a1be-4e1a-abf5-0dfdf5b666db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# KIT and KUKA\nThe KUKA path planning project is brought to you in partnership with KUKA Robotics and the Karlsruhe Institute of Technology (KIT) Robotic Learning Lab (RLL). KUKA Robotics, a leading manufacturer of industrial robots, has provided the KIT lab with real-world 6-DOF (degrees of freedom) industrial robotic arms for you to interface with.  \nThe KIT lab has provided the real-world setup as well as the project SDK (software development kit), which is a replica of the physical lab setup in gazebo simulation. They also built the web interface we'll use to submit your code to the hardware, and from which you'll view video captures of your code running on the hardware!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680904,
+              "key": "c07d30e9-35b2-49cf-be14-039b8cfac829",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\"KUKA is truly excited about the Robot Learning Lab at KIT, and our collaboration with Udacity. Together, we’re pushing robotics research, scalable online education, and worldwide community-building. This unique offering establishes a new model for globally training and educating excellent talents\" <br>\n &nbsp; &nbsp; &nbsp; -- by DR. Rainer Bischoff, Head of Corporate Research, KUKA\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 675762,
+          "key": "7b520600-3ab1-4f1f-bf83-84327e0133a6",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b520600-3ab1-4f1f-bf83-84327e0133a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680906,
+              "key": "4d567fb9-98b5-4f38-9148-0636b289db33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Overview\nIn this project, you’ll implement a path planning algorithm by navigating a maze. In general, path planning problems through mazes are reduced to two dimensions: the x and y position of the object. However, this project will extend the search space by a third dimension, the orientation of the gripper around the vertical z-axis.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682511,
+              "key": "e046ed82-7658-4c4a-b3d0-f5794754ba9e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b5aed8e_screen-shot-2018-07-27-at-12.22.55-pm/screen-shot-2018-07-27-at-12.22.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e046ed82-7658-4c4a-b3d0-f5794754ba9e",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2050,
+              "instructor_notes": null
+            },
+            {
+              "id": 680908,
+              "key": "b283b1d8-9532-4a27-a7ed-2a2480d46514",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Execution Cycle\nAt each run, the robot will follow this cycle:\n1. First, the KUKA gripper will move to the object start position, orient itself with respect to the object, grab the object, and lift it up.  \n2. At this stage, your path planning code will be executed. Your code will search for a path and navigate the robot through the maze by commanding 2D positions, and an orientation angle, in order to get around corners in the maze\n3. You will have a total time of 8 minutes to search for a path and move toward the goal pose. Once reached, your cuboid object will be placed in the goal pose. \n4. Finally, the robot will lift the object from the goal pose, return it back to the start pose, drop it, and get ready for another run. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 682919,
+          "key": "37df2da7-545b-4226-a522-9376c6c90e10",
+          "title": "Contest Terms & Conditions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "37df2da7-545b-4226-a522-9376c6c90e10",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 682920,
+              "key": "a5ae8606-dafe-499d-9a99-159a39b694c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Robotics Nanodegree Program Challenge with Kuka and KIT\nWe're so happy you've decided to participate in the Robotics Nanodegree Program Challenge with Kuka and KIT (“Contest”) for the Robotics Software Engineer Nanodegree Program! \n\nPlease be sure to read through the [Contest General Terms and Conditions](https://www.udacity.com/legal/contests) (“T&Cs”) as well as these Contest details below before submitting entering the contest as this will govern your participation in the Contest. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682921,
+              "key": "96ff0171-c94a-478b-9674-9e386d2a23bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Contest Dates: \nAugust 25, 2018 (12:00 am GMT +2) - August 28 (11:59 pm GMT +2)\n## Eligibility to Enter: \nIn addition to the other requirements set forth herein and in the T&Cs, to participate and claim the prize package, entrant must be 1) a US resident; and 2) either currently enrolled in or a graduate of Term 1 of the Program. Only one (1) winner will be selected and there is no option for team submissions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682922,
+              "key": "2fe22ddb-1292-4448-bdfa-81d355e1b170",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Contest Entry:\n### Submission:\nParticipants will compete by submitting their code (“Code”) to program a Kuka robotics arm to navigate a physical 2D maze in the fastest time possible. Students who are currently enrolled or who have successfully completed Term 1 of the Robotics Software Nanodegree Program (“Program”) will find the **Kuka Project Challenge** in the extracurricular section the Program classroom.  The code must successfully pass the simulator before it can be run on the Kuka robotic arm at the lab in Germany. To “pass” the simulator, the Code must successfully navigate the robotic arm through the maze from the starting point to the goal point without any errors and without hitting or attempting to move through the walls of the maze. \n\nSubject to the Code passing the simulation, it, will be added to the queue to run on the physical robotic arm and run by the KIT team in Karlsruhe, Germany at the Kuka Learning Lab (“Lab”).\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682923,
+              "key": "34576974-882b-48d6-8030-d5e3f0902865",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Run-Time:\n Participant submissions will be timed at the Lab using standardized software. The Kuka robotics arm will only begin to move after it has planned the path and poses according to the Code provided by the participant. The run-time for the challenge therefore includes both the robotic arm’s time to plan and then execute its movement along the maze. The clock, controlled by KIT’s program for executing the code, will begin when the Code starts to run and end when the robotic arm has moved the object to the goal location within the maze. Reducing the time required to plan the robotic arm’s path is a critical component to winning this Contest.\n\nTo account for small natural variations that occur in  the code’s run-time,  it will be run on the arm three separate times. The **median or (middle)** run-time will be the participant’s recorded time for the Contest. Participants are therefore encouraged to submit Code that runs consistently well rather than Code that is prone to wide variability. A participant’s best and worst run-time will be discarded and not considered for determining the Winner of the Contest. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682924,
+              "key": "0e4b6c52-77ed-4bf3-954f-e3f30a6732de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Ties:\nIn the event that two or more participants’ Codes have the same run-time (rounded to the nearest 1/100th of a second), the participant with the faster **average** run-time, as determined as the average of the three run-times of their code, will be declared the winner.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682925,
+              "key": "37ae00df-bb58-46ce-bf44-7c51450cd86c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Leaderboard and Leaderboard Participation:\nThroughout the challenge, participants will have the opportunity to view their run-time as well as the run-times of fellow participants on a leaderboard in the Kuka Challenge classroom. \n\nPlease note that participants are not required to participate in the publicly viewable leaderboard to participate in this Contest. If a participant elects to not to opt-in to the leaderboard, their run-times for each phase will not be visible to other participants. To the extent you opt to be visible in the leaderboard, please keep in mind that this leaderboard will be visible to others in the classroom. You should not share personal information on the leaderboard (e.g., real name, etc.). Please use an anonymous moniker. If you choose to provide your real personal information in the leaderboard, you acknowledge and agree that it will be viewable by others and that such sharing is subject to our Privacy Policy (including the social sharing provisions). If you choose to opt-out after initially opting-in, you may do so, but information you shared prior to opting-out may be residually available/viewable. \n\nThe top 5 entrant’s scores will be placed on a leaderboard that can be viewed within the classroom. Student’s real names will not be used on the Leaderboard. Even if you choose not to put your name on the publicly viewable leaderboard, you will be able to see your own run-time so that you can rank it against the leaderboard and your run-time for the final submission will be eligible to win the challenge.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682926,
+              "key": "1a784ae4-68e6-4df9-83c7-bc66b50696b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Winner Notification:\nOn September 1, 2018, Udacity will notify the Winner via the email associated with their Udacity account and provide additional information on how to claim the prize. Winner will forfeit eligibility if they fail to respond within 7 days. \n### Contest Prize:\nOne (1) prize package will be awarded to one (1) winner consisting of:\n* One (1) 1 round trip economy plane ticket to Munich, Germany from your home of record inside the U.S.\n* One (1) regular admittance ticket to the NVIDIA GTC Conference & workshop in Munich, Germany from Oct. 9-11, 2018\n* One (1) economy class train ticket from Munich, Germany to Karlsruhe, Germany to visit the KIT lab\n* 6 nights’ accommodation for one person in Munich & Karlsruhe, Germany capped at $200/night\n* Daily per diem for meals for one person capped at USD $75.00/daily\n* A 1-day visit with head of KIT lab (to be coordinated directly with KIT)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682927,
+              "key": "370b76e0-4ac0-4368-9b9e-98ddf9245f32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "ARV approximately USD **$3,310.00**\n### Disclaimers:\nCertain portions of this Contest are run by and/or under the control of our partners KIT or KUKA. Entrant acknowledges that Udacity has no control over or responsibility for technical or other portions of this Contest that are provided by these partners. \n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

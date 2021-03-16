@@ -1,0 +1,432 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Rapidly Exploring Random Tree Method (RRT)
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Sample-Based and Probabilistic Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction to Sample-Based &amp; Probabilistic Path Planning.html">
+       01. Introduction to Sample-Based &amp; Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Why Sample-Based Planning.html">
+       02. Why Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Weakening Requirements.html">
+       03. Weakening Requirements
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Sample-Based Planning.html">
+       04. Sample-Based Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Probabilistic Roadmap (PRM).html">
+       05. Probabilistic Roadmap (PRM)
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Rapidly Exploring Random Tree Method (RRT).html">
+       06. Rapidly Exploring Random Tree Method (RRT)
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Path Smoothing.html">
+       07. Path Smoothing
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Overall Concerns.html">
+       08. Overall Concerns
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Sample-Based Planning Wrap-Up.html">
+       09. Sample-Based Planning Wrap-Up
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Introduction to Probabilistic Path Planning.html">
+       10. Introduction to Probabilistic Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Markov Decision Process.html">
+       11. Markov Decision Process
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Policies.html">
+       12. Policies
+      </a>
+     </li>
+     <li class="">
+      <a href="13. State Utility.html">
+       13. State Utility
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Value Iteration Algorithm.html">
+       14. Value Iteration Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Probabilistic Path Planning Wrap-Up.html">
+       15. Probabilistic Path Planning Wrap-Up
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. Rapidly Exploring Random Tree Method (RRT)
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Rapidly Exploring Random Tree(PRT)
+         </p>
+        </h3>
+        <video controls="">
+         <source src="06. Rapidly Exploring Random Tree(PRT)-kOS76UR7Fo8.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="06. Rapidly Exploring Random Tree(PRT)-kOS76UR7Fo8.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="algorithm">
+          Algorithm
+         </h2>
+         <p>
+          The pseudocode for the RRT learning phase is provided below.
+         </p>
+         <pre>
+<strong>Initialize</strong> two empty trees.
+<strong>Add</strong> start node to tree #1.
+<strong>Add</strong> goal node to tree #2.
+<strong>For</strong> n iterations, or until an edge connects trees #1 &amp; #2:
+
+    <strong>Generate</strong> a random configuration (alternating trees).
+    <strong>If</strong> the configuration is collision free: 
+        <strong>Find</strong> the closest neighbour on the tree to the configuration 
+        <strong>If</strong> the configuration is less than a distance <span class="mathquill ud-math">\delta</span> away from the neighbour:
+            <strong>Try to connect</strong> the two with a local planner.
+    <strong>Else</strong>:
+        <strong>Replace</strong> the randomly generated configuration 
+            with a new configuration that falls along the same path, 
+            but a distance <span class="mathquill ud-math">\delta</span> from the neighbour.
+        <strong>Try to connect</strong> the two with a local planner. 
+
+    <strong>If</strong> node is added successfully: 
+        <strong>Try to connect</strong> the new node to the closest neighbour.
+</pre>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="setting-parameters">
+          Setting Parameters
+         </h2>
+         <p>
+          Just like with PRM, there are a few parameters that can be tuned to make RRT more efficient for a given application.
+         </p>
+         <p>
+          The first of these parameters is the
+          <strong>
+           sampling method
+          </strong>
+          (ie. how a random configuration is generated). As discussed in the video, you can sample uniformly - which would favour wide unexplored spaces, or you can sample with a bias - which would cause the search to advance greedily in the direction of the goal. Greediness can be beneficial in simple planning problems, however in some environments it can cause the robot to get stuck in a local minima. It is common to utilize a uniform sampling method with a
+          <em>
+           small
+          </em>
+          hint of bias.
+         </p>
+         <p>
+          The next parameter that can be tuned is
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          . As RRT starts to generate random configurations, a large proportion of these configurations will lie further than a distance
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          from the closest configuration in the graph. In such a situation, a randomly generated node will dictate the direction of growth, while
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          is the growth rate.
+         </p>
+         <p>
+          Choosing a small
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          will result in a large density of nodes and small growth rate. On the other hand, choosing a large
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          may result in lost detail, as well as an increasing number of nodes being unable to connect to the graph due to the greater chance of collisions with obstacles.
+          <span class="mathquill ud-math">
+           \delta
+          </span>
+          must be chosen carefully, with knowledge of the environment and requirements of the solution.
+         </p>
+         <h2 id="single-query-planner">
+          Single-Query Planner
+         </h2>
+         <p>
+          Since the RRT method explores the graph starting with the start and goal nodes, the resultant graph cannot be applied to solve additional queries. RRT is a single-query planner.
+         </p>
+         <p>
+          RRT is, however, much quicker than PRM at solving a path planning problem. This is so
+          <em>
+           because
+          </em>
+          it takes into account the start and end nodes, and limits growth to the area surrounding the existing graph instead of reaching out into all distant corners, the way PRM does. RRT is more efficient than PRM at solving large path planning problems (ex. ones with hundreds of dimensions) in dynamic environments.
+         </p>
+         <p>
+          Generally speaking, RRT is able to solve problems with 7 dimensions in a matter of milliseconds, and may take several minutes to solve problems with over 20 dimensions. In comparison, such problems would be impossible to solve with the combinatorial path planning method.
+         </p>
+         <h2 id="rrt--non-holonomic-systems">
+          RRT &amp; Non-holonomic Systems
+         </h2>
+         <p>
+          While we will not go into significant detail on this topic, the RRT method supports planning for non-holonomic systems, while the PRM method does not. This is so because the RRT method can take into consideration the additional constraints (such as a car’s turning radius at a particular speed) when adding nodes to a graph, the same way it already takes into consideration how far away a new node is from an existing tree.
+         </p>
+         <h2 id="quiz">
+          Quiz
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following statements are true about the Rapidly Exploring Random Tree method?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1524582021592" name="615204" type="checkbox" value="a1524582021592"/>
+           <label for="a1524582021592">
+            <p>
+             When a randomly generated configuration is greater than a distance,
+             <span class="mathquill ud-math">
+              \delta
+             </span>
+             , from its closest neighbour, then the configuration is abandoned.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1524582053992" name="615204" type="checkbox" value="a1524582053992"/>
+           <label for="a1524582053992">
+            <p>
+             RRT can be applied to path planning with non-holonomic systems.
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1524599571119" name="615204" type="checkbox" value="a1524599571119"/>
+           <label for="a1524599571119">
+            <p>
+             If
+             <span class="mathquill ud-math">
+              \delta
+             </span>
+             is set to a large value, the algorithm’s efficiency will drop, as the local planner is more likely to encounter collisions along a longer path.
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <ul>
+           <li>
+            RRT can be applied to path planning with non-holonomic systems.
+           </li>
+           <li>
+            If
+            <span class="mathquill">
+             \delta
+            </span>
+            is set to a large value, the algorithm’s efficiency will drop, as the local planner is more likely to encounter collisions along a longer path.
+           </li>
+          </ul>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Path Smoothing.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Rapidly Exploring Random Tree Method (RRT)')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

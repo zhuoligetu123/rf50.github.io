@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.390
+Now, I will show you how I will manually command
+
+00:00:03.390 --> 00:00:08.044
+my robot to reach two distinct positions with ROS navigation stack.
+
+00:00:08.044 --> 00:00:12.370
+I will open a terminal and launch my script.
+
+00:00:23.660 --> 00:00:27.285
+Now that both Gazebo and rviz are open,
+
+00:00:27.285 --> 00:00:33.219
+I can use the 2D in F goal to ask my robot to reach this first position.
+
+00:00:41.450 --> 00:00:47.770
+You can see how my robot is being localized with the AMCL package.
+
+00:00:57.740 --> 00:01:02.255
+Now, I will ask my robot to go to a second position.
+
+00:01:02.255 --> 00:01:05.850
+Let's say this one over here.
+
+00:01:08.840 --> 00:01:15.880
+The robot starts rotating and then traveling towards it.
+
+00:01:26.150 --> 00:01:29.855
+Voila! The robot successfully reached
+
+00:01:29.855 --> 00:01:34.420
+two distinct position and oriented itself with respect to them.
+

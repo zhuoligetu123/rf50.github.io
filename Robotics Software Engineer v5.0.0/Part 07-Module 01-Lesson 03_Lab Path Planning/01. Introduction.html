@@ -1,0 +1,362 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Introduction
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Modeling the Problem.html">
+       02. Modeling the Problem
+      </a>
+     </li>
+     <li class="">
+      <a href="03. BFS Expansion List.html">
+       03. BFS: Expansion List
+      </a>
+     </li>
+     <li class="">
+      <a href="04. BFS Expansion Vector.html">
+       04. BFS: Expansion Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="05. BFS Shortest Path.html">
+       05. BFS: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="06. A Shortest Path.html">
+       06. A*: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Comparison.html">
+       07. Comparison
+      </a>
+     </li>
+     <li class="">
+      <a href="08. A Real-World Map.html">
+       08. A*: Real-World Map
+      </a>
+     </li>
+     <li class="">
+      <a href="09. A Visualization.html">
+       09. A*: Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Udacity Workspace.html">
+       10. Udacity Workspace
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          01. Introduction
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="introduction">
+          Introduction
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Welcome to the path planning lab! Here, you will get a chance to code two of the path planning algorithms that you’ve learned earlier.
+         </p>
+         <p>
+          You will first code the
+          <strong>
+           Breadth-first search
+          </strong>
+          algorithm in C++. This algorithm is divided into different coding quizzes. You will challenge yourself and code each one of them to finally generate the shortest path of a robot moving from start to goal.
+         </p>
+         <p>
+          Then, you will move on and make the necessary changes to code the
+          <strong>
+           A star
+          </strong>
+          algorithm.
+          <br/>
+          After coding both the BFS and A* algorithms, you will visually compare the expansion lists generated. After a close inspection, you will judge which of these algorithms is more efficient.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Later in this lab, you will apply the A* algorithm to a real-world problem. The real-world problem is nothing but the map that you’ve generated using the occupancy grid mapping algorithm.
+         </p>
+         <p>
+          Alright now, let’s get started!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Lab: Path Planning
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Here's a detailed list of the steps in this lab. Check them off as you complete them:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--0" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--0">
+             <p>
+              Modeling the Problem
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--1" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--1">
+             <p>
+              BFS: Expansion List
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--2" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--2">
+             <p>
+              BFS: Expansion Vector
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--3" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--3">
+             <p>
+              BFS: Shortest Path
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--4" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--4">
+             <p>
+              A*: Shortest Path
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--5" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--5">
+             <p>
+              Comparison
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--6" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--6">
+             <p>
+              A*: Real-World Map
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="da8673d1-bdc5-4838-ba77-f880aeee8006--7" type="checkbox"/>
+            <label for="da8673d1-bdc5-4838-ba77-f880aeee8006--7">
+             <p>
+              A*: Visualization
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="02. Modeling the Problem.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Introduction')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

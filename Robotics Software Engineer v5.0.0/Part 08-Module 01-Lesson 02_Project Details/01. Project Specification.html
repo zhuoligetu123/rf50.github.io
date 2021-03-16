@@ -1,0 +1,372 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Project Specification
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Project Details
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Project Specification.html">
+       01. Project Specification
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Getting Started.html">
+       02. Getting Started
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Scoring Criteria.html">
+       03. Scoring Criteria
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Path Planning.html">
+       04. Path Planning
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Project Workspace.html">
+       05. Project Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Submission Instructions.html">
+       06. Submission Instructions
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Project Walkthrough.html">
+       07. Project Walkthrough
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Hints.html">
+       08. Hints
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Maze #1 Leaderboard.html">
+       09. Maze #1 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Maze #2 Leaderboard.html">
+       10. Maze #2 Leaderboard
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Contest Maze Leaderboard.html">
+       11. Contest Maze Leaderboard
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          01. Project Specification
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="project-specification">
+          Project Specification
+         </h1>
+         <p>
+          Typically, path planning algorithms are applied on
+          <em>
+           known
+          </em>
+          maps.  However, in this project, you’ll have to search almost blindly, which makes for a challenging problem. Here’s what we know about the maze:
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screen-shot-2018-07-24-at-12.04.45-am.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          <strong>
+           Only its width, and length!
+          </strong>
+          <br/>
+          <br>
+           In addition to the maze dimensions (1.2m x 1.6m), the
+           <em>
+            start and goal states
+           </em>
+           are provided as inputs to your algorithm.  The
+           <em>
+            path toward the goal state
+           </em>
+           is your output.
+           <br/>
+           Inside a launch file, you’ll edit the start pose and the goal pose of the object.
+          </br>
+         </p>
+         <p>
+          Since the map is unknown and the object is not equipped with any sensor, you might be wondering…how do we detect obstacles and move the cuboid object with the robotic arm?
+         </p>
+         <p>
+          We’ve included two services that you can call in your python script;
+          <code>
+           Move
+          </code>
+          and
+          <code>
+           CheckPath
+          </code>
+          :
+         </p>
+         <ul>
+          <li>
+           <code>
+            Move
+           </code>
+           : Command the robot by sending a 2D pose. The robot will move the object on a linear path to this pose. Your moving point should be at least
+           <strong>
+            5mm
+           </strong>
+           away from the starting one. And if you are to rotate the arm, then you need to make sure you are rotating by at least
+           <strong>
+            0.35
+           </strong>
+           radians.
+          </li>
+          <li>
+           <code>
+            CheckPath
+           </code>
+           : Verify if a linear path between two 2D poses is valid.
+          </li>
+         </ul>
+         <p>
+          <strong>
+           Note
+          </strong>
+          :  Even if you gain familiarity with the maze through repetition or by examining videos and logs, your algorithm must
+          <strong>
+           not
+          </strong>
+          be permitted to make use of this knowledge by hard-coding the map or learning from previous episodes.  Each time the robot begins its maze problem, it should be completely ignorant of where the walls are or what the map of the maze looks like!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          To summarize, you will have two main files to edit in this project:  a launch file where you can specify the start/goal poses, and a python script to code your path planning algorithm.
+         </p>
+         <p>
+          There are 4 launch files in this project which you’ll launch later to start the Gazebo and RVIZ simulation, and all the other nodes:
+         </p>
+         <ol>
+          <li>
+           <strong>
+            moveit_planning_execution.launch
+           </strong>
+           (rll_planning_project package): Starts the setup simulation in Gazebo and Rviz.
+          </li>
+          <li>
+           <strong>
+            planning_iface.launch
+           </strong>
+           (rll_planning_project package): Starts the planning interface.
+          </li>
+          <li>
+           <strong>
+            path_planner.launch
+           </strong>
+           (rll_planning_project package): Starts your path planning algorithm code.
+          </li>
+          <li>
+           <strong>
+            run_project.launch
+           </strong>
+           (rll_project_runner package): Starts a single planning and path execution.
+          </li>
+         </ol>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          You'll have a chance to launch each of these files separately in different terminals or use a provided shell script file that will launch all the nodes in separate instances of xterm terminals. The first method is preferable for debugging since you can easily identify the errors.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="02. Getting Started.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Project Specification')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

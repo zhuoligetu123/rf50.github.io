@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.054
+When you look at the paths produced by PRM and RRT,
+
+00:00:04.054 --> 00:00:07.334
+thereby no means optimal and can be quite jerky.
+
+00:00:07.334 --> 00:00:09.839
+Instead of using these paths directly,
+
+00:00:09.839 --> 00:00:14.684
+some post-processing can be applied to smooth out the paths and improve the results.
+
+00:00:14.683 --> 00:00:17.039
+One simple algorithm that can be used,
+
+00:00:17.039 --> 00:00:19.589
+is often referred to as a path shortcutter.
+
+00:00:19.589 --> 00:00:22.530
+It looks for ways to shorten the resulting path,
+
+00:00:22.530 --> 00:00:25.545
+by connecting two non-neighboring nodes together.
+
+00:00:25.545 --> 00:00:29.360
+If it is able to find a pair of nodes whose edge is collision free,
+
+00:00:29.359 --> 00:00:34.155
+then the original path between the two nodes is replaced with the shortcut edge.
+
+00:00:34.155 --> 00:00:36.600
+If this process is successful,
+
+00:00:36.600 --> 00:00:39.030
+then a search algorithm like A star search can
+
+00:00:39.030 --> 00:00:41.910
+be applied to find the path from start to goal.
+
+00:00:41.909 --> 00:00:44.294
+The resultant path may not be optimal,
+
+00:00:44.295 --> 00:00:48.270
+but it proves that moving from start to goal, is feasible.
+

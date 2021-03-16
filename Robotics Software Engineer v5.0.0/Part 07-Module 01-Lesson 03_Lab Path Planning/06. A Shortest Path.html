@@ -1,0 +1,1229 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   A*: Shortest Path
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Lab: Path Planning
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Modeling the Problem.html">
+       02. Modeling the Problem
+      </a>
+     </li>
+     <li class="">
+      <a href="03. BFS Expansion List.html">
+       03. BFS: Expansion List
+      </a>
+     </li>
+     <li class="">
+      <a href="04. BFS Expansion Vector.html">
+       04. BFS: Expansion Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="05. BFS Shortest Path.html">
+       05. BFS: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="06. A Shortest Path.html">
+       06. A*: Shortest Path
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Comparison.html">
+       07. Comparison
+      </a>
+     </li>
+     <li class="">
+      <a href="08. A Real-World Map.html">
+       08. A*: Real-World Map
+      </a>
+     </li>
+     <li class="">
+      <a href="09. A Visualization.html">
+       09. A*: Visualization
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Udacity Workspace.html">
+       10. Udacity Workspace
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. A*: Shortest Path
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="a-shortest-path">
+          A*: Shortest Path
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          You’ll now implement the A* algorithm and find the shortest path by modifying your previous code. As you know, A* is based on a heuristic function. Thus, we will implement a Manhattan-based heuristic vector and compute the Manhattan distance of each cell with respect to the goal position where:
+         </p>
+         <div class="mathquill">
+          x_{d} = x_{goal} - x_{cellposition}
+         </div>
+         <div class="mathquill">
+          y_{d} = y_{goal} - y_{cellposition}
+         </div>
+         <div class="mathquill">
+          Manhattan \ distance \ d = \left | x_{d} \right | +\left | y_{d} \right |
+         </div>
+         <p>
+          By computing the Manhattan distance of each cell, we'll obtain this heuristic vector
+         </p>
+         <div style="text-align: center;">
+          **Manhattan Heuristic Vector**
+         </div>
+         <div style="text-align: center;">
+          9 8 7 6 5 4
+          <br/>
+          8 7 6 5 4 3
+          <br/>
+          7 6 5 4 3 2
+          <br/>
+          6 5 4 3 2 1
+          <br/>
+          5 4 3 2 1 0
+          <br/>
+         </div>
+         <p>
+          You can always experiment with other heuristic-based vectors such as the Euclidean distance or the  Chebyshev distance where:
+         </p>
+         <div class="mathquill">
+          Euclidean \ distance \ d = \sqrt{ x_{d}^{2} + y_{d}^{2}}
+         </div>
+         <div style="text-align: center;">
+          **Euclidean Heuristic Vector**
+         </div>
+         <div style="text-align: center;">
+          6 5 5 4 4 4
+          <br/>
+          5 5 4 3 3 3
+          <br/>
+          5 4 3 2 2 2
+          <br/>
+          5 4 3 2 1 1
+          <br/>
+          5 4 3 2 1 0
+          <br/>
+         </div>
+         <div class="mathquill">
+          Chebyshev \ distance \ d = max( \left | x_{d} \right |, \left | y_{d} \right |)
+         </div>
+         <div style="text-align: center;">
+          **Chebyshev Heuristic Vector**
+         </div>
+         <div style="text-align: center;">
+          5 4 4 4 4 4
+          <br/>
+          5 4 3 3 3 3
+          <br/>
+          5 4 3 2 2 2
+          <br/>
+          5 4 3 2 1 1
+          <br/>
+          5 4 3 2 1 0
+          <br/>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="expansion">
+          Expansion
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          And now instead of expanding cells with lowest path cost
+          <strong>
+           g
+          </strong>
+          , you’ll expand cells with lowest
+          <strong>
+           f
+          </strong>
+          value which is the sum of the path cost
+          <strong>
+           g
+          </strong>
+          and the heuristic value
+          <strong>
+           h
+          </strong>
+          of that cell.
+         </p>
+         <div class="mathquill">
+          f = g + h
+         </div>
+         <p>
+          Each cell is now represented with a quadruplet
+          <strong>
+           [f,g,x,y]
+          </strong>
+          instead of a triplet
+          <strong>
+           [g,x,y]
+          </strong>
+          .
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          A*: Shortest path
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these steps and make the necessary changes to find the shortest path using the A* algorithm:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="a576c20d-137f-4ff5-bbe8-54adc81e5e66--0" type="checkbox"/>
+            <label for="a576c20d-137f-4ff5-bbe8-54adc81e5e66--0">
+             <p>
+              Define a Manhattan-based
+              <strong>
+               heuristic
+              </strong>
+              vector inside the Map class.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="a576c20d-137f-4ff5-bbe8-54adc81e5e66--1" type="checkbox"/>
+            <label for="a576c20d-137f-4ff5-bbe8-54adc81e5e66--1">
+             <p>
+              Introduce an
+              <strong>
+               f
+              </strong>
+              value.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="a576c20d-137f-4ff5-bbe8-54adc81e5e66--2" type="checkbox"/>
+            <label for="a576c20d-137f-4ff5-bbe8-54adc81e5e66--2">
+             <p>
+              Represent cells in terms of a quadruplet
+              <strong>
+               [f,g,x,y]
+              </strong>
+              and expand the ones with the lowest
+              <strong>
+               f
+              </strong>
+              value
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="a576c20d-137f-4ff5-bbe8-54adc81e5e66--3" type="checkbox"/>
+            <label for="a576c20d-137f-4ff5-bbe8-54adc81e5e66--3">
+             <p>
+              Print both the
+              <strong>
+               expansion
+              </strong>
+              vector and the
+              <strong>
+               policy
+              </strong>
+              vector
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Job!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="hint">
+          Hint
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Here's how the cells are being expanded with the
+          <strong>
+           A
+          </strong>
+          * algorithm until the goal is reached:
+         </p>
+         <table>
+          <thead>
+           <tr>
+            <th id="**map**">
+             <strong>
+              Map
+             </strong>
+            </th>
+            <th id="**¨c0c**" style="text-align:center;">
+             <strong>
+              <code>
+               0
+              </code>
+             </strong>
+            </th>
+            <th id="**¨c1c**" style="text-align:center;">
+             <strong>
+              <code>
+               1
+              </code>
+             </strong>
+            </th>
+            <th id="**¨c2c**" style="text-align:center;">
+             <strong>
+              <code>
+               2
+              </code>
+             </strong>
+            </th>
+            <th id="**¨c3c**" style="text-align:center;">
+             <strong>
+              <code>
+               3
+              </code>
+             </strong>
+            </th>
+            <th id="**¨c4c**" style="text-align:center;">
+             <strong>
+              <code>
+               4
+              </code>
+             </strong>
+            </th>
+            <th id="**¨c5c**" style="text-align:center;">
+             <strong>
+              <code>
+               5
+              </code>
+             </strong>
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <strong>
+              <code>
+               0
+              </code>
+             </strong>
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <strong>
+              <code>
+               1
+              </code>
+             </strong>
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <strong>
+              <code>
+               2
+              </code>
+             </strong>
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <strong>
+              <code>
+               3
+              </code>
+             </strong>
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <strong>
+              <code>
+               4
+              </code>
+             </strong>
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             1
+            </td>
+            <td style="text-align:center;">
+             0
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Expansion #: 0
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 0 0 0 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 0 0 0]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 1
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 1 1 0 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 1 1 0]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 2
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 2 2 0 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 2 2 0]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 3
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 3 3 0 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 3 3 0]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 4
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 4 4 0 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 4 4 0]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 5
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 5 4 1 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 5 4 1]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 6
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [9 6 4 2 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [9 6 4 2]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 7
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [11 7 3 2 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [11 7 3 2]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 8
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [13 8 2 2 ],
+          <br/>
+          [11 8 3 3 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [11 8 3 3]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 9
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [13 9 2 3 ],
+          <br/>
+          [13 8 2 2 ],
+          <br/>
+          [11 9 3 4 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [11 9 3 4]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 10
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [13 10 2 4 ],
+          <br/>
+          [13 9 2 3 ],
+          <br/>
+          [13 8 2 2 ],
+          <br/>
+          [11 10 3 5 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [11 10 3 5]
+         </p>
+         <hr/>
+         <p>
+          Expansion #: 11
+          <br/>
+          <br/>
+          Open List:
+          <br/>
+          [13 11 2 5 ],
+          <br/>
+          [13 10 2 4 ],
+          <br/>
+          [13 9 2 3 ],
+          <br/>
+          [13 8 2 2 ],
+          <br/>
+          [11 11 4 5 ]
+          <br/>
+          <br/>
+          <br/>
+          Cell Picked:
+          <br/>
+          [11 11 4 5]
+         </p>
+         <hr/>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4>
+          Start Quiz:
+         </h4>
+         <div>
+          <div class="nav nav-tabs nav-fill" id="question-tabs" role="tablist">
+           <a aria-controls="573538-main-cpp" aria-selected="true" class="nav-item nav-link active show" data-toggle="tab" href="#573538-main-cpp" id="tab-573538-main-cpp" role="tab">
+            main.cpp
+           </a>
+           <a aria-controls="573538-solution-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab" href="#573538-solution-cpp" id="tab-573538-solution-cpp" role="tab">
+            solution.cpp
+           </a>
+          </div>
+          <div class="tab-content" id="question-tab-contents" style="padding: 20px 0;">
+           <div aria-labelledby="tab-573538-main-cpp" class="tab-pane active show" id="573538-main-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// TODO: Add a Manhattan-based heuristic vector to the Map class
+class Map {
+public:
+    const static int mapWidth = 6;
+    const static int mapHeight = 5;
+    vector&lt;vector&lt;int&gt; &gt; grid = {
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 1, 0 }
+    };
+};
+
+// Planner class
+class Planner : Map {
+public:
+    int start[2] = { 0, 0 };
+    int goal[2] = { mapHeight - 1, mapWidth - 1 };
+    int cost = 1;
+
+    string movements_arrows[4] = { "^", "&lt;", "v", "&gt;" };
+
+    vector&lt;vector&lt;int&gt; &gt; movements{
+        { -1, 0 },
+        { 0, -1 },
+        { 1, 0 },
+        { 0, 1 }
+    };
+};
+
+// Template function to print 2D vectors of any type
+template &lt;typename T&gt;
+void print2DVector(T Vec)
+{
+    for (int i = 0; i &lt; Vec.size(); ++i) {
+        for (int j = 0; j &lt; Vec[0].size(); ++j) {
+            cout &lt;&lt; Vec[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+/* #### TODO: Modify the search function and implement the A* algorithm #### */
+void search(Map map, Planner planner)
+{
+    // Create a closed 2 array filled with 0s and first element 1
+    vector&lt;vector&lt;int&gt; &gt; closed(map.mapHeight, vector&lt;int&gt;(map.mapWidth));
+    closed[planner.start[0]][planner.start[1]] = 1;
+
+    // Create expand array filled with -1
+    vector&lt;vector&lt;int&gt; &gt; expand(map.mapHeight, vector&lt;int&gt;(map.mapWidth, -1));
+
+    // Create action array filled with -1
+    vector&lt;vector&lt;int&gt; &gt; action(map.mapHeight, vector&lt;int&gt;(map.mapWidth, -1));
+
+    // Defined the triplet values
+    int x = planner.start[0];
+    int y = planner.start[1];
+    int g = 0;
+
+    // Store the expansions
+    vector&lt;vector&lt;int&gt; &gt; open;
+    open.push_back({ g, x, y });
+
+    // Flags and counters
+    bool found = false;
+    bool resign = false;
+    int count = 0;
+
+    int x2;
+    int y2;
+
+    // While I am still searching for the goal and the problem is solvable
+    while (!found &amp;&amp; !resign) {
+        // Resign if no values in the open list and you can't expand anymore
+        if (open.size() == 0) {
+            resign = true;
+            cout &lt;&lt; "Failed to reach a goal" &lt;&lt; endl;
+        }
+        // Keep expanding
+        else {
+            // Remove triplets from the open list
+            sort(open.begin(), open.end());
+            reverse(open.begin(), open.end());
+            vector&lt;int&gt; next;
+            // Stored the poped value into next
+            next = open.back();
+            open.pop_back();
+
+            x = next[1];
+            y = next[2];
+            g = next[0];
+
+            // Fill the expand vectors with count
+            expand[x][y] = count;
+            count += 1;
+
+            // Check if we reached the goal:
+            if (x == planner.goal[0] &amp;&amp; y == planner.goal[1]) {
+                found = true;
+                //cout &lt;&lt; "[" &lt;&lt; g &lt;&lt; ", " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; "]" &lt;&lt; endl;
+            }
+
+            //else expand new elements
+            else {
+                for (int i = 0; i &lt; planner.movements.size(); i++) {
+                    x2 = x + planner.movements[i][0];
+                    y2 = y + planner.movements[i][1];
+                    if (x2 &gt;= 0 &amp;&amp; x2 &lt; map.grid.size() &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; map.grid[0].size()) {
+                        if (closed[x2][y2] == 0 and map.grid[x2][y2] == 0) {
+                            int g2 = g + planner.cost;
+                            open.push_back({ g2, x2, y2 });
+                            closed[x2][y2] = 1;
+                            action[x2][y2] = i;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Print the expansion List
+    //print2DVector(expand);
+
+    // Find the path with robot orientation
+    vector&lt;vector&lt;string&gt; &gt; policy(map.mapHeight, vector&lt;string&gt;(map.mapWidth, "-"));
+
+    // Going backward
+    x = planner.goal[0];
+    y = planner.goal[1];
+    policy[x][y] = '*';
+
+    while (x != planner.start[0] or y != planner.start[1]) {
+        x2 = x - planner.movements[action[x][y]][0];
+        y2 = y - planner.movements[action[x][y]][1];
+        policy[x2][y2] = planner.movements_arrows[action[x][y]];
+        x = x2;
+        y = y2;
+    }
+
+    // Print the path with arrows
+    print2DVector(policy);
+}
+
+int main()
+{
+    // Instantiate map and planner objects
+    Map map;
+    Planner planner;
+
+    // Search for the expansions
+    search(map, planner);
+
+    return 0;
+}
+</pre>
+           </div>
+           <div aria-labelledby="tab-573538-solution-cpp" class="tab-pane" id="573538-solution-cpp" role="tabpanel">
+            <pre><code></code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// Map class
+class Map {
+public:
+    const static int mapWidth = 6;
+    const static int mapHeight = 5;
+    vector&lt;vector&lt;int&gt; &gt; grid = {
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 1, 0 }
+    };
+
+    vector&lt;vector&lt;int&gt; &gt; heuristic = {
+        { 9, 8, 7, 6, 5, 4 },
+        { 8, 7, 6, 5, 4, 3 },
+        { 7, 6, 5, 4, 3, 2 },
+        { 6, 5, 4, 3, 2, 1 },
+        { 5, 4, 3, 2, 1, 0 }
+    };
+};
+
+// Planner class
+class Planner : Map {
+public:
+    int start[2] = { 0, 0 };
+    int goal[2] = { mapHeight - 1, mapWidth - 1 };
+    int cost = 1;
+
+    string movements_arrows[4] = { "^", "&lt;", "v", "&gt;" };
+
+    vector&lt;vector&lt;int&gt; &gt; movements{
+        { -1, 0 },
+        { 0, -1 },
+        { 1, 0 },
+        { 0, 1 }
+    };
+};
+
+// Template function to print 2D vectors of any type
+template &lt;typename T&gt;
+void print2DVector(T Vec)
+{
+    for (int i = 0; i &lt; Vec.size(); ++i) {
+        for (int j = 0; j &lt; Vec[0].size(); ++j) {
+            cout &lt;&lt; Vec[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+// Search function will generate the expansions
+void search(Map map, Planner planner)
+{
+    // Create a closed 2 array filled with 0s and first element 1
+    vector&lt;vector&lt;int&gt; &gt; closed(map.mapHeight, vector&lt;int&gt;(map.mapWidth));
+    closed[planner.start[0]][planner.start[1]] = 1;
+
+    // Create expand array filled with -1
+    vector&lt;vector&lt;int&gt; &gt; expand(map.mapHeight, vector&lt;int&gt;(map.mapWidth, -1));
+
+    // Create action array filled with -1
+    vector&lt;vector&lt;int&gt; &gt; action(map.mapHeight, vector&lt;int&gt;(map.mapWidth, -1));
+
+    // Defined the quadruplet values
+    int x = planner.start[0];
+    int y = planner.start[1];
+    int g = 0;
+    int f = g + map.heuristic[x][y];
+
+    // Store the expansions
+    vector&lt;vector&lt;int&gt; &gt; open;
+    open.push_back({ f, g, x, y });
+
+    // Flags and Counts
+    bool found = false;
+    bool resign = false;
+    int count = 0;
+
+    int x2;
+    int y2;
+
+    // While I am still searching for the goal and the problem is solvable
+    while (!found &amp;&amp; !resign) {
+        // Resign if no values in the open list and you can't expand anymore
+        if (open.size() == 0) {
+            resign = true;
+            cout &lt;&lt; "Failed to reach a goal" &lt;&lt; endl;
+        }
+        // Keep expanding
+        else {
+            // Remove quadruplets from the open list
+            sort(open.begin(), open.end());
+            reverse(open.begin(), open.end());
+            vector&lt;int&gt; next;
+            // Stored the poped value into next
+            next = open.back();
+            open.pop_back();
+
+            x = next[2];
+            y = next[3];
+            g = next[1];
+
+            // Fill the expand vectors with count
+            expand[x][y] = count;
+            count += 1;
+            
+            // Check if we reached the goal:
+            if (x == planner.goal[0] &amp;&amp; y == planner.goal[1]) {
+                found = true;
+                //cout &lt;&lt; "[" &lt;&lt; g &lt;&lt; ", " &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; "]" &lt;&lt; endl;
+            }
+
+            //else expand new elements
+            else {
+                for (int i = 0; i &lt; planner.movements.size(); i++) {
+                    x2 = x + planner.movements[i][0];
+                    y2 = y + planner.movements[i][1];
+                    if (x2 &gt;= 0 &amp;&amp; x2 &lt; map.grid.size() &amp;&amp; y2 &gt;= 0 &amp;&amp; y2 &lt; map.grid[0].size()) {
+                        if (closed[x2][y2] == 0 and map.grid[x2][y2] == 0) {
+                            int g2 = g + planner.cost;
+                            f = g2 + map.heuristic[x2][y2];
+                            open.push_back({ f, g2, x2, y2 });
+                            closed[x2][y2] = 1;
+                            action[x2][y2] = i;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Print the expansion List
+    print2DVector(expand);
+
+    // Find the path with robot orientation
+    vector&lt;vector&lt;string&gt; &gt; policy(map.mapHeight, vector&lt;string&gt;(map.mapWidth, "-"));
+
+    // Going backward
+    x = planner.goal[0];
+    y = planner.goal[1];
+    policy[x][y] = '*';
+
+    while (x != planner.start[0] or y != planner.start[1]) {
+        x2 = x - planner.movements[action[x][y]][0];
+        y2 = y - planner.movements[action[x][y]][1];
+        policy[x2][y2] = planner.movements_arrows[action[x][y]];
+        x = x2;
+        y = y2;
+    }
+
+    // Print the robot path
+    cout &lt;&lt; endl; 
+    print2DVector(policy);
+}
+
+int main()
+{
+    // Instantiate a planner and map objects
+    Map map;
+    Planner planner;
+
+    search(map, planner);
+
+    return 0;
+}</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Comparison.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. A*: Shortest Path')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>
