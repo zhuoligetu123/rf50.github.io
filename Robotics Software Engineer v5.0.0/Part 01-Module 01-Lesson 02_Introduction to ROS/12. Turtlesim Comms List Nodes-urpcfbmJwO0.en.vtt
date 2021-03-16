@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.394
+Now, that you know how to start the Ross Master and are able to run nodes,
+
+00:00:04.394 --> 00:00:07.769
+you can begin to investigate the topics and messages
+
+00:00:07.769 --> 00:00:11.954
+associated with turtlesim node and turtle teleop keynote.
+
+00:00:11.955 --> 00:00:16.109
+We'll pick up this discussion from where we left off earlier.
+
+00:00:16.109 --> 00:00:20.714
+Meaning roscore, turtlesim node,
+
+00:00:20.714 --> 00:00:24.179
+and the turtle teleop key node are all running.
+
+00:00:24.179 --> 00:00:27.765
+Let's investigate what's going on behind the scenes.
+
+00:00:27.765 --> 00:00:30.644
+If you had just stumbled upon the system,
+
+00:00:30.644 --> 00:00:33.960
+you might be inclined to ask which nodes are running.
+
+00:00:33.960 --> 00:00:40.219
+To answer this, you should open a new terminal and use the command Ross node list.
+
+00:00:40.219 --> 00:00:43.820
+This command will query the Ross master for a list of
+
+00:00:43.820 --> 00:00:49.850
+all the active nodes on the system and bring them to the console. There we have it.
+
+00:00:49.850 --> 00:00:53.465
+A list of three nodes running on the system.
+
+00:00:53.465 --> 00:00:57.125
+Two of the nodes, should look relatively familiar
+
+00:00:57.125 --> 00:01:00.770
+as we explicitly lost them just a moment ago,
+
+00:01:00.770 --> 00:01:02.495
+but what's the third?
+
+00:01:02.494 --> 00:01:07.474
+Rosout, is a node that is automatically launched by the Ross Master.
+
+00:01:07.474 --> 00:01:09.844
+It's responsible for aggregating,
+
+00:01:09.844 --> 00:01:14.730
+filtering and recording log messages to a text file.
+

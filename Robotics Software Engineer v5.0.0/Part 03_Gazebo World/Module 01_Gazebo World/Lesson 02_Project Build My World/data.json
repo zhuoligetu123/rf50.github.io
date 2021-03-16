@@ -1,0 +1,253 @@
+{
+  "data": {
+    "lesson": {
+      "id": 729196,
+      "key": "962ef39a-4b29-4756-8dc1-05aca4075619",
+      "title": "Project: Build My World",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will design a Gazebo World environment by including multiple models and use it as a base for all your upcoming projects. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/962ef39a-4b29-4756-8dc1-05aca4075619/729196/1543375919184/Project%3A+Build+My+World+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/962ef39a-4b29-4756-8dc1-05aca4075619/729196/1543375917095/Project%3A+Build+My+World+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "0d2ed518-2c1c-4ef9-bbf8-6c1355986a9e",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 10080,
+        "semantic_type": "Project",
+        "title": "Build My World",
+        "description": "## Summary of Tasks\nLet’s summarize what you should do in this project to create a simulation world for all your projects in this Robotics Software Engineer Nanodegree Program. \n1. Build a single floor wall structure using the **Building Editor** tool in Gazebo. Apply at least one feature, one color, and optionally one texture to your structure. Make sure there's enough space between the walls for a robot to navigate.  \n2. Model any object of your choice using the **Model Editor** tool in Gazebo. Your model links should be connected with joints. \n3. Import your structure and two instances of your model inside an empty **Gazebo World**.\n4. Import at least one model from the **Gazebo online library** and implement it in your existing Gazebo world. \n5. Write a C++ **World Plugin** to interact with your world. Your code should display “Welcome to <your name>’s World!” message as soon as you launch the Gazebo world file. \n\nThese tasks are just the basic requirements for you to pass the project! Feel free to have fun designing and importing multiple models. \n\n## Evaluation\nOnce you finish designing your world in Gazebo, check the [Project Rubric](https://review.udacity.com/#!/rubrics/2346/view) to see if your world meets the specifications. If so, then you are ready to submit!\n\n## Submission Folder\nHere are the files that you need to include in your project submission folder:\n* **model** folder:\n * Any object or robot designed in the Model Editor tool of Gazebo\n * A single floor structure designed in the Building Editor tool of Gazebo\n* **world** folder:\n * Gazebo world file that includes the models\n* **script** folder:\n * Gazebo world plugin C++ script\n* **CMakeLists.txt** file to link the C++ code to libraries\n\n## Ready to submit your project?\nClick on the \"Submit Project\" button and follow the instructions to submit!\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n\n\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2346",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 729191,
+          "key": "3af9e630-7d85-4e49-a2dd-591a123e1010",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3af9e630-7d85-4e49-a2dd-591a123e1010",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729830,
+              "key": "67e3588f-a98a-44ca-93cd-5e51573e6924",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UWbLY8LjP-A",
+                "china_cdn_id": "UWbLY8LjP-A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 729195,
+          "key": "3cf7c98e-b648-4044-b1c6-615ec0b29274",
+          "title": "Sample Simulation World",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3cf7c98e-b648-4044-b1c6-615ec0b29274",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782005,
+              "key": "57af5489-79e5-40dc-8c73-3a3c5d2ea8ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sample Simulation World\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729192,
+              "key": "c899e634-b7e1-4837-96ac-919ac5abe46a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To help you get started, I’ve included a sample simulation. Reviewing the sample, its aspects, and the directory structure will help you build your own world in Gazebo. Please note that you have only visual access to the sample simulation as it's not provided to you in the Udacity Workspace or anywhere else.\n\nWe are providing you with a Udacity Workspace for your project. You can find this Workspace under the headline **Gazebo in the Workspace**. Whenever you feel ready, launch the Workspace, go to desktop, and start the project!\n\n## Output Image\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 766919,
+              "key": "7dcbd65c-a59f-4372-86c8-444883f26862",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bea1c39_screen-shot-2018-11-12-at-4.20.50-pm-2/screen-shot-2018-11-12-at-4.20.50-pm-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7dcbd65c-a59f-4372-86c8-444883f26862",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 729194,
+              "key": "1b4b03d9-3417-4b1a-9a70-364dee64296a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Project Aspects\nInside the Gazebo world you can identify:  \n* **Udacity Office**: A building model designed on the Building Editor tool of Gazebo. The structure contains features, and colors.  \n* **Green humanoid robot**: Two instances of a model designed on the Model Editor tool of Gazebo. \n* **Tables**: A model imported from the Gazebo online library.\n* **Terminal**: A welcome message generated from a world plugin and printed to the terminal. \n\n## Directory Structure\nThe sample simulation world folder has the following directory structure:\n```\n    .Project1                          # Build My World Project \n    ├── model                          # Model files \n    │   ├── Building\n    │   │   ├── model.config\n    │   │   ├── model.sdf\n    │   ├── HumanoidRobot\n    │   │   ├── model.config\n    │   │   ├── model.sdf\n    ├── script                         # Gazebo World plugin C++ script      \n    │   ├── welcome_message.cpp\n    ├── world                          # Gazebo main World containing models \n    │   ├── UdacityOffice.world\n    ├── CMakeLists.txt                 # Link libraries \n    └──                              \n```\n## Your task\nNote that your project should have the same aspects and should follow the same directory structure as the sample project! Pick a place where you want to deploy your robot, for example: your apartment, your office, or your favorite restaurant. In addition, create any model of your choice and import a model from the Gazebo library.  \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729200,
+          "key": "f3baac19-0d9d-4868-aa47-3a52d2fc5a5f",
+          "title": "Gazebo in the Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3baac19-0d9d-4868-aa47-3a52d2fc5a5f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729201,
+              "key": "8b827d4e-55ae-4d2e-a839-435f913120a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gazebo in the Workspace\n\nYou can chose to work on your project in the Udacity Workspace. As before, follow these simple steps to boot up Gazebo in your Workspace:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.` \n* Open the visual desktop by clicking on `Go to Desktop.` The workspace is best supported on **Google Chrome** and might not load on other browsers. \n* Then, update and upgrade the Workspace image to get the latest features of Gazebo. To do so, open a terminal, and write the following statement:\n```sh\n$ sudo apt-get update && sudo apt-get upgrade -y \n```\n\n **Note**: Remember to update and upgrade your image after each reboot since these updates(or any package that you install) are not permanent. Ignore any error you get while upgrading. \n\n\n* Now launch Gazebo from the terminal by typing:\n```sh\n$ gazebo\n```\n\nBe advised that occasionally Gazebo gets stuck in a loading loop. If Gazebo does not fully load after about one minute, try closing it by pressing Ctrl+C while the Gazebo terminal is active. Then, try running the command again to restart Gazebo.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729203,
+              "key": "0a1ead9f-e721-48c9-8cc0-4cdf8d9654bd",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "vieweglnxv0nnz",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-ssjjlmkjilk",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 951547,
+          "key": "fdc36211-c805-4dde-b3b2-7b77624fe04d",
+          "title": "Project Cheat Sheet",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fdc36211-c805-4dde-b3b2-7b77624fe04d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "Robotics P1 Cheat Sheet",
+                "uri": "https://video.udacity-data.com/topher/2019/October/5da11bf1_robotics-p1-lessons-cheat-sheet/robotics-p1-lessons-cheat-sheet.pdf"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 953158,
+              "key": "d7f55469-83d9-4c31-ba38-c5d1293e0427",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Project Cheat Sheet",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951548,
+              "key": "8e568633-9895-4243-89b6-07dc8cd47d40",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5da11af6_0001/0001.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8e568633-9895-4243-89b6-07dc8cd47d40",
+              "caption": "",
+              "alt": "",
+              "width": 550,
+              "height": 440,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

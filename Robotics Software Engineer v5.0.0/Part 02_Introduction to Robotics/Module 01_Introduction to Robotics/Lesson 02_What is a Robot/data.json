@@ -1,0 +1,292 @@
+{
+  "data": {
+    "lesson": {
+      "id": 783364,
+      "key": "7e13572c-cc9d-4cd3-a5f1-fc6281adce7c",
+      "title": "What is a Robot?",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the essential element of robotics.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7e13572c-cc9d-4cd3-a5f1-fc6281adce7c/783364/1544905951320/What+is+a+Robot%3F+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7e13572c-cc9d-4cd3-a5f1-fc6281adce7c/783364/1544905948986/What+is+a+Robot%3F+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 783353,
+          "key": "84eaa9a9-e128-481c-ad88-2bee7d919b18",
+          "title": "What is a Robot?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84eaa9a9-e128-481c-ad88-2bee7d919b18",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783350,
+              "key": "7ae65d7c-c23e-4b13-a68d-3c3562a0e0d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is a Robot?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783351,
+              "key": "363f27da-ac4d-43cf-8a80-0f32ee9a7e48",
+              "title": "What is a Robot?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uPKVNO_C8ME",
+                "china_cdn_id": "uPKVNO_C8ME.mp4"
+              }
+            },
+            {
+              "id": 783352,
+              "key": "ffa019c8-c1c0-417b-962e-ec9e053d18b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let’s explore the three essential elements of robotics: \n* Perception\n* Decision Making\n* Action",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783355,
+          "key": "d2f34fe6-f1a8-4efd-a197-d3642a4198da",
+          "title": "Perception",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d2f34fe6-f1a8-4efd-a197-d3642a4198da",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783354,
+              "key": "63859a21-df1f-4bd9-ae98-996020057264",
+              "title": "Perception",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tZPgjFSu1Jk",
+                "china_cdn_id": "tZPgjFSu1Jk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783357,
+          "key": "22ad103b-bd7c-4a69-92b6-4a5a8ce045c2",
+          "title": "Decision Making",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22ad103b-bd7c-4a69-92b6-4a5a8ce045c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783356,
+              "key": "5f9d4906-2672-4c37-a155-c8b739e6923e",
+              "title": "Decision Making",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DiD13auPObw",
+                "china_cdn_id": "DiD13auPObw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783359,
+          "key": "110030ed-a319-40e8-8297-1234277f0c2f",
+          "title": "Action",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "110030ed-a319-40e8-8297-1234277f0c2f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783358,
+              "key": "e1abb945-c292-4483-9eb5-0980bdee37e9",
+              "title": "Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xfataqUp7uo",
+                "china_cdn_id": "xfataqUp7uo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783363,
+          "key": "e62b0c8d-4e91-404d-b3e6-21e0a5dd1663",
+          "title": "Essential Elements of Robotics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e62b0c8d-4e91-404d-b3e6-21e0a5dd1663",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783360,
+              "key": "fa6fe82e-5f9e-4888-af1c-db255e84153c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Essential Elements of Robotics",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783361,
+              "key": "532fdc50-6d85-4276-9a9c-61a86af70c15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sense, Think, Act\n\nThe field of robotics is vast, but all robots, no matter what task they are performing, are essentially carrying out the same three step process of perception, decision making and action. Sometimes this is called: sense, think, act. \n\nHere's a quiz to test your intuition around which elements of robotics fall into each of these categories.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783433,
+              "key": "73b58f81-47b0-4277-8311-43e80f8e443e",
+              "title": "Essential Elements of Robotics",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "73b58f81-47b0-4277-8311-43e80f8e443e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the following robot components to their corresponding essential element of robotics. If you're unfamiliar with any of these components go ahead and do a search to find out more. "
+                },
+                "concepts_label": "Robot Component or Action",
+                "answers_label": "Sense, Think or Act?",
+                "concepts": [
+                  {
+                    "text": "Lidar",
+                    "correct_answer": {
+                      "id": "a1542148005612",
+                      "text": "Sense"
+                    }
+                  },
+                  {
+                    "text": "Motion Planning Algorithm",
+                    "correct_answer": {
+                      "id": "a1542148040715",
+                      "text": "Think"
+                    }
+                  },
+                  {
+                    "text": "Motor Actuator",
+                    "correct_answer": {
+                      "id": "a1542148041453",
+                      "text": "Act"
+                    }
+                  },
+                  {
+                    "text": "Natural Language Processing Algorithm",
+                    "correct_answer": {
+                      "id": "a1542148042155",
+                      "text": "Think"
+                    }
+                  },
+                  {
+                    "text": "Produce Speaker Output",
+                    "correct_answer": {
+                      "id": "a1542148068235",
+                      "text": "Act"
+                    }
+                  },
+                  {
+                    "text": "Inertial Measurement Unit",
+                    "correct_answer": {
+                      "id": "a1542148069389",
+                      "text": "Sense"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1542148040715",
+                    "text": "Think"
+                  },
+                  {
+                    "id": "a1542148041453",
+                    "text": "Act"
+                  },
+                  {
+                    "id": "a1542148069389",
+                    "text": "Sense"
+                  },
+                  {
+                    "id": "a1542148005612",
+                    "text": "Sense"
+                  },
+                  {
+                    "id": "a1542148068235",
+                    "text": "Act"
+                  },
+                  {
+                    "id": "a1542148042155",
+                    "text": "Think"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

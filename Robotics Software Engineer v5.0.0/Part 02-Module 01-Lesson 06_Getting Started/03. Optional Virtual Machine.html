@@ -1,0 +1,590 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Optional: Virtual Machine
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Getting Started
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Udacity Workspace Instructions.html">
+       01. Udacity Workspace Instructions
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Explore the Udacity Workspace.html">
+       02. Explore the Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Optional Virtual Machine.html">
+       03. Optional: Virtual Machine
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Prep Material.html">
+       04. Prep Material
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          03. Optional: Virtual Machine
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="optional-virtual-machine">
+          Optional: Virtual Machine
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Alternatively, you may prefer to work on a local Linux host, instead of the Udacity Workspace in the cloud. In that case, we provide a virtual machine (VM) that includes everything you need.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/vm-desktop.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="setting-up-the-vm">
+          Setting up the VM
+         </h2>
+         <h3 id="download-the-image">
+          Download the image
+         </h3>
+         <p>
+          The provided VM image is around (4+GB)! So, find yourself a good internet connection and download the
+          <a href="https://s3-us-west-1.amazonaws.com/udacity-robotics/Virtual+Machines/Lubuntu_071917/RoboVM_V2.1.0.zip" rel="noopener noreferrer" target="_blank">
+           compressed VM disk image
+          </a>
+          .
+         </p>
+         <h3 id="validate-the-image">
+          Validate the image
+         </h3>
+         <p>
+          If you need to validate the download of the image, here is the MD5 checksum:
+         </p>
+         <p>
+          <code>
+           MD5(Ubuntu 64-bit Robo V2.1.0.ova)= 95bfba89fbdac5f2c0a2be2ae186ddbb
+          </code>
+         </p>
+         <p>
+          It may also be a good idea to keep a backup of this VM image to avoid downloading again if you need it. But just in case you do not do that there is a backup snapshot built into the VM that will allow you to restore it to its original state at any time!
+         </p>
+         <h3 id="extract-the-image">
+          Extract the Image
+         </h3>
+         <p>
+          To extract the compressed image in Windows:
+         </p>
+         <ol>
+          <li>
+           Download the appropriate version of 7-zip from
+           <a href="http://www.7-zip.org/download.html" rel="noopener noreferrer" target="_blank">
+            here
+           </a>
+          </li>
+          <li>
+           Right-click and select "7-zip" &gt; "Extract Here"
+          </li>
+         </ol>
+         <p>
+          To extract at the command line in macOS or Linux:
+         </p>
+         <ol>
+          <li>
+           Open the terminal and navigate to directory containing the compressed image
+          </li>
+          <li>
+           execute
+           <code>
+            $ unzip robond_vm.zip
+           </code>
+          </li>
+         </ol>
+         <h3 id="downloading-a-vm-player">
+          Downloading a VM Player
+         </h3>
+         <p>
+          Inside the zipped archive, in addition to the VM disk image, there are two other small configuration files that you may need.
+         </p>
+         <p>
+          We recommend using
+          <a href="http://www.vmware.com/" rel="noopener noreferrer" target="_blank">
+           VMWare
+          </a>
+          to run the VM.  VMWare provides the
+          <a href="http://www.vmware.com/products/player/playerpro-evaluation.html" rel="noopener noreferrer" target="_blank">
+           Workstation Player
+          </a>
+          free for Windows and Linux operating systems.
+         </p>
+         <p>
+          The
+          <a href="http://www.vmware.com/products/fusion.html" rel="noopener noreferrer" target="_blank">
+           VMWare Fusion Player for Mac
+          </a>
+          only comes with a brief free trial period. To use the free Workstation player for Windows on a Mac, you can use BootCamp (a built in Mac tool) to create a Windows partition on your Mac and download the player for WIndows.  Alternatively, you can check out a free trial of VMWare Fusion and consider buying it.
+         </p>
+         <p>
+          Download the appropriate player for your operating system and follow these OS-specific instructions:
+         </p>
+         <h4 id="macos">
+          macOS
+         </h4>
+         <ol>
+          <li>
+           Download and install VMware Player
+          </li>
+          <li>
+           Download the image from supplied link
+          </li>
+          <li>
+           Unzip the image
+          </li>
+          <li>
+           Open VMware application
+          </li>
+          <li>
+           Click “File”, then “New”
+          </li>
+          <li>
+           Select “Import an existing virtual machine”
+          </li>
+          <li>
+           Click “Choose File…” and navigate to your unzipped image
+          </li>
+          <li>
+           Click “Save” when prompted for virtual machine name
+          </li>
+          <li>
+           <strong>
+            If
+           </strong>
+           an error appears, click “Retry”
+          </li>
+          <li>
+           From here you should be launched into your new shiny virtual machine!
+          </li>
+         </ol>
+         <h4 id="linux">
+          Linux
+         </h4>
+         <ol>
+          <li>
+           Download and install VMware Player
+          </li>
+          <li>
+           Download the image from supplied link
+          </li>
+          <li>
+           Unzip the image
+          </li>
+          <li>
+           Open VMware Player
+          </li>
+          <li>
+           Select “File” -&gt; “Open a Virtual Machine“
+          </li>
+          <li>
+           Navigate to the directory of the unzipped image and select the image
+          </li>
+          <li>
+           If the player fails to open the image perform steps 5 and 6 one more time
+          </li>
+          <li>
+           Select the imported image on the left side of the player
+          </li>
+          <li>
+           Click “Run”
+          </li>
+          <li>
+           From here you should be launched into your new shiny virtual machine!
+          </li>
+         </ol>
+         <h4 id="windows">
+          Windows
+         </h4>
+         <ol>
+          <li>
+           Download and install VMware Player
+          </li>
+          <li>
+           Download the image from supplied link
+          </li>
+          <li>
+           Unzip the image
+          </li>
+          <li>
+           Open VMware
+          </li>
+          <li>
+           Press "Open a Virtual Machine"
+          </li>
+          <li>
+           Navigate to the folder that contains the VM files
+          </li>
+          <li>
+           Select the larger
+           <strong>
+            .ova
+           </strong>
+           file
+          </li>
+          <li>
+           Wait file to be imported (may take some time)
+          </li>
+          <li>
+           <strong>
+            If
+           </strong>
+           an error appears click “Retry”
+          </li>
+          <li>
+           From here you should be launched into your new shiny virtual machine!
+          </li>
+         </ol>
+         <h3 id="allocating-resources">
+          Allocating Resources
+         </h3>
+         <p>
+          Before getting your VM up and running, you will need to make sure that you allocate enough resources for it to operate efficiently. With your VM shutdown, navigate to the VM settings under the menu for your VM. Look for a section labeled "Processors and Memory"; this is where you will change the number of cores and amount of RAM that you allocate from your own machine to the VM. If you have the resources on your machine, we recommend allocating at least 2 processor cores and 4 GB of RAM. If you are able to allocate more resources, feel free to do so. The more you allocate the better performance you will get! You're now all set to boot up your VM!
+         </p>
+         <h2 id="first-boot">
+          First Boot
+         </h2>
+         <p>
+          Upon your first boot you will be prompted to choose a keyboard layout of your choice. Once you select a keyboard you will not be prompted for this again. If you would like to change your option you can reset this feature by entering
+          <code>
+           udacity_reset
+          </code>
+          in a terminal of your choice and restarting the VM.
+         </p>
+         <p>
+          Once you are up and running, you might be asked to input a password to enter the VM.
+          <strong>
+           The password for the VM is
+           <code>
+            robo-nd
+           </code>
+          </strong>
+         </p>
+         <p>
+          To open a terminal in your VM press
+          <code>
+           ctrl-Alt-t
+          </code>
+          (or
+          <code>
+           ctrl-option-t
+          </code>
+          on a Mac). You should get a terminal window that looks like this:
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/vm-terminal.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          You're now ready to follow along in your VM with the lessons in this program!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Check the box when you have your virtual machine up and running!
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="1bba8323-1a4f-44f9-999d-f881b4272385--0" type="checkbox"/>
+            <label for="1bba8323-1a4f-44f9-999d-f881b4272385--0">
+             <p>
+              Install virtual machine software
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1bba8323-1a4f-44f9-999d-f881b4272385--1" type="checkbox"/>
+            <label for="1bba8323-1a4f-44f9-999d-f881b4272385--1">
+             <p>
+              Download the Udacity VM image
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="1bba8323-1a4f-44f9-999d-f881b4272385--2" type="checkbox"/>
+            <label for="1bba8323-1a4f-44f9-999d-f881b4272385--2">
+             <p>
+              Run your virtual machine
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great! You have the Udacity VM running and ready to go!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="common-questions">
+          Common Questions
+         </h2>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="question-what-are-are-the-minimum-specs-to-run-the-vm-on-windows-10">
+          Question: What are are the minimum specs to run the VM on Windows 10?
+         </h3>
+         <p>
+          <strong>
+           Answer:
+          </strong>
+          It depends on your host machine configuration. As a general rule, good performance requires 2 GB of RAM, 20 GB disk space, 4 logical cores.
+          <br/>
+          Tip: Monitor the memory use and if you frequently see high(&gt; 90%) swap values, then increase the VM memory.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="question-why-cant-we-use-virtualbox-to-run-the-vm">
+          Question: Why can't we use VirtualBox to run the VM?
+         </h3>
+         <p>
+          <strong>
+           Answer:
+          </strong>
+          The 3D graphics capabilities of VirtualBox are inferior to VMware, which is important since we will be using graphically intensive applications. Many people have reported slow performance even with VMware, and worse yet with VirtualBox, so best to avoid VirtualBox for now.
+         </p>
+         <p>
+          Besides, VMware has free versions available for Windows and Linux, and free-trial version available for macOS.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="04. Prep Material.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Optional: Virtual Machine')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

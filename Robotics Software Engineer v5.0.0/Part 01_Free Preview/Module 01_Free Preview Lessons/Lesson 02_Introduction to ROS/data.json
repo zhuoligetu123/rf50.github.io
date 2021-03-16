@@ -1,0 +1,1285 @@
+{
+  "data": {
+    "lesson": {
+      "id": 778087,
+      "key": "12b76d5f-7fee-4b2d-8bc3-902f68869c4d",
+      "title": "Introduction to ROS",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Obtain an architectural overview of the Robot Operating System Framework and setup your own ROS environment in the Udacity Workspace.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/12b76d5f-7fee-4b2d-8bc3-902f68869c4d/778087/1543375973727/Introduction+to+ROS+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/12b76d5f-7fee-4b2d-8bc3-902f68869c4d/778087/1543375970353/Introduction+to+ROS+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 778003,
+          "key": "5d8f1bf8-7480-4c8c-b42f-055fec3b0c87",
+          "title": "Welcome to ROS Essentials",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d8f1bf8-7480-4c8c-b42f-055fec3b0c87",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778002,
+              "key": "4bfe3d15-c51e-469b-ac99-bf72c5780876",
+              "title": "Welcome to ROS Essentials",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "a_nxgoQthIQ",
+                "china_cdn_id": "a_nxgoQthIQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 778005,
+          "key": "388ca2fc-1127-4bcc-a405-9a22a2d345a3",
+          "title": "Build Robots with ROS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "388ca2fc-1127-4bcc-a405-9a22a2d345a3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778004,
+              "key": "fc02550c-adf2-42e3-bd64-d583790bf154",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Build Robots with ROS\nBuilding a robot used to be a long and cumbersome process. Essentially all of the components had to be built from scratch. \n\nIn this lesson, we’ll introduce the Robot Operating System, or “ROS”, which is a software framework that greatly simplifies robot development. There are many advantages to developing robots with ROS. Let’s start by illustrating some of its components and features.\n\n## Components and Features \nROS is an open-source software framework for robotics development. It is not an operating system in the typical sense. But like an OS, it provides a means of communicating with hardware. It also provides a way for different processes to communicate with one another via message passing. Lastly, ROS features a slick build and package management system called catkin, allowing you to develop and deploy software with ease. ROS also has tools for visualization, simulation, and analysis, as well as extensive community support and interfaces to numerous powerful software libraries.\n\n## Summary\nSummary of ROS components and features:\n* Open-source!\n* Hardware abstraction of device drivers\n* Communication via message passing\n* Slick build and package management\n* Tools for visualization, simulation, analysis\n* Powerful software libraries \n\n## Short Documentary\nCheck out this awesome [short documentary on ROS](https://www.bloomberg.com/news/videos/2017-05-17/the-silicon-valley-startup-creating-robot-dna-video) that Bloomberg published recently.  \n\n## History\nBefore diving deeper, let’s take a brief tour of the history of ROS.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778007,
+          "key": "bce9977e-83f6-45e5-9d99-67f617d1dfbd",
+          "title": "Brief History of ROS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bce9977e-83f6-45e5-9d99-67f617d1dfbd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778006,
+              "key": "cdcddb49-a44e-4255-ac58-ba5677f4fbeb",
+              "title": "Brief History of ROS ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X7rDHf4Ocbo",
+                "china_cdn_id": "X7rDHf4Ocbo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 778011,
+          "key": "f55b6be5-d8cf-42bc-89a7-be04a150eb9a",
+          "title": "Nodes and Topics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f55b6be5-d8cf-42bc-89a7-be04a150eb9a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778008,
+              "key": "708bd23c-3ea0-4ef5-a32c-e9f1ecd736c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Nodes and Topics",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778009,
+              "key": "2e073aaa-9939-49a4-8f0f-ab00dfabda30",
+              "title": "Nodes and Topics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wJQpR6QsTYw",
+                "china_cdn_id": "wJQpR6QsTYw.mp4"
+              }
+            },
+            {
+              "id": 778010,
+              "key": "2a28e34a-7607-4012-a06a-af7c58246fff",
+              "title": "Nodes and Topics",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2a28e34a-7607-4012-a06a-af7c58246fff",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Check the box next to all of the **True** statements",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Robots may be very different in form and function, but they all perform the same high-level tasks of perception, decision making, and actuation.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Nodes on a robotic system all communicate through the ROS master.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "The parameter server acts as a central repository where nodes on a system can look up parameter values.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Nodes pass messages to one another via topics, which you can think of as a pipe connecting two nodes.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "A \"pub-sub\" architecture is one in which the ROS master publishes messages on topics and nodes subscribe to receive them.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk6",
+                    "text": "A single node may simultaneously publish and subscribe to many topics.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 778015,
+          "key": "36a2928e-de7d-4bd2-aae5-24732dab3fdd",
+          "title": "Message Passing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36a2928e-de7d-4bd2-aae5-24732dab3fdd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778012,
+              "key": "9f147eba-3f19-400b-9e89-fa57da66363c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Message Passing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778013,
+              "key": "deba7771-4df1-46e0-8cb1-db7147d4a9bb",
+              "title": "Message Passing ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gmLgqgcS3fE",
+                "china_cdn_id": "gmLgqgcS3fE.mp4"
+              }
+            },
+            {
+              "id": 778014,
+              "key": "dcd6ddb2-592e-4a63-ad0f-e48659ecdcd1",
+              "title": "Message Passing",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dcd6ddb2-592e-4a63-ad0f-e48659ecdcd1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements about ROS messages are correct?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Messages are used to pass only text based content between nodes.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Your ROS distribution will typically have just one predefined message type.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Messages come in hundreds of different types and may contain many different types of data.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "In addition to default message types, you can define your own custom message types.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 778019,
+          "key": "9c70020e-be09-4664-a2f0-c7a2d04d091a",
+          "title": "Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9c70020e-be09-4664-a2f0-c7a2d04d091a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778016,
+              "key": "221f98de-9caa-43ff-beb6-fb671d1a1daf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Services",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778017,
+              "key": "d4289555-2f45-4363-890f-9ba5f7af28ed",
+              "title": "Services ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "w1tfx050yhA",
+                "china_cdn_id": "w1tfx050yhA.mp4"
+              }
+            },
+            {
+              "id": 778018,
+              "key": "3c6b017c-c1fb-4b37-9584-ac661c7105d6",
+              "title": "Services",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3c6b017c-c1fb-4b37-9584-ac661c7105d6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements about services are correct?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "In ROS terminology, \"service\" is just another name for \"topic\"",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Services are similar to topics in that they facilitate the passing of messages between nodes.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Services use a request-response message passing scheme, rather than the pub-sub method used with topics.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A request message on a service might actually trigger a new sensor measurement, like a new camera image, with settings like exposure time specified in the message.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 778021,
+          "key": "94bbf267-a635-4d6f-aeff-7a47603497e4",
+          "title": "Compute Graph",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "94bbf267-a635-4d6f-aeff-7a47603497e4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778020,
+              "key": "a204a4a5-91ab-413a-9bc1-44d22ebc7e19",
+              "title": "Compute Graph",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Zjig2iL9TQU",
+                "china_cdn_id": "Zjig2iL9TQU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 778035,
+          "key": "40ad063b-bcb9-4f08-8622-c0d0d19588c1",
+          "title": "Turtlesim Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "40ad063b-bcb9-4f08-8622-c0d0d19588c1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778022,
+              "key": "f8546172-9ca3-442b-bf0e-df9aafa718c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778023,
+              "key": "1c767ffd-2d4a-440d-aa37-a308de1dac40",
+              "title": "Turtlesim Overview ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pB8mqNpbesU",
+                "china_cdn_id": "pB8mqNpbesU.mp4"
+              }
+            },
+            {
+              "id": 778024,
+              "key": "035fda8d-7d47-4f1d-bc51-5b5232487fde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on the history of Turtles in Robotics \r\nAs we mentioned in the video, William Grey Walter's influence is still felt today. He referred to his robots as 'turtles' and, as you will see, the moniker stuck. \n\nThe image below is William Walter's Elsie (the robot mentioned in the video)  without her protective covering. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778186,
+              "key": "9da6c893-b786-44ca-8b51-631e55cddb6a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7754_elsie/elsie.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9da6c893-b786-44ca-8b51-631e55cddb6a",
+              "caption": "Elsie without her protective cover",
+              "alt": "Elsie without her protective cover",
+              "width": 556,
+              "height": 477,
+              "instructor_notes": null
+            },
+            {
+              "id": 778026,
+              "key": "6e78da4b-fe79-44d9-85e6-c560317460cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Long after William Walter’s work with Elmer and Elsie, Dr. Seymour Papert, a professor at MIT, began to use turtle robots for education. One of the characteristics of Papert's robots was their ability to draw on paper. \n\nIn addition to being involved with the creation and development of MIT’s turtle robots, Dr. Papert is also known as the creator and evangelist for the educational programming language LOGO.\n\nDespite being a general-purpose language, LOGO is known for its use of  “[turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics)”, a system that allows users to draw by sending simple commands to a robotic turtle. The robotic turtle mentioned here could be either a real turtle robot, or a virtual on-screen cursor within the LOGO programming environment.\n\nThe image below shows an example of Valiant Technology’s Turtle robot drawing on a sheet of paper.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778027,
+              "key": "ba63b08d-a74e-480e-9aaf-e7282292bab8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb77af_turtlegraphics/turtlegraphics.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ba63b08d-a74e-480e-9aaf-e7282292bab8",
+              "caption": "Robot using turtle graphics",
+              "alt": "Robot using turtle graphics",
+              "width": 216,
+              "height": 160,
+              "instructor_notes": null
+            },
+            {
+              "id": 778028,
+              "key": "dfb6a1cf-c6ef-44a2-8eaa-cdf089a1b1d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While turtle graphics seem simple, people have used them to create a wide variety of interesting drawings and art.\n\nThe image below depicts some drawings of three dimensional spheres creating using turtle graphics. The website [turtleart.org](http://turtleart.org) hosts a gallery containing even more outstanding examples!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778029,
+              "key": "5d87e11e-7a24-4841-975f-da3ea35476f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb77de_threedim/threedim.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5d87e11e-7a24-4841-975f-da3ea35476f6",
+              "caption": "Three dimensional Turtle Graphic",
+              "alt": "Three dimensional Turtle Graphic",
+              "width": 303,
+              "height": 238,
+              "instructor_notes": null
+            },
+            {
+              "id": 778030,
+              "key": "421a4a7f-602e-4c8e-94c1-f3487716ede1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you'd like to have some fun with turtle graphics, feel free to try out the [Turtle Graphics 1.01](https://scratch.mit.edu/projects/1250518/) project, which allows you to experiment with turtle graphics through MIT’s graphical programming environment scratch.\n\nBelow is the result of a program written using Turtle Graphics. Looking at this image, answer the quiz question about it. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778031,
+              "key": "b01b472f-e993-4c62-a546-4816b44fc0d0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7809_turtlescreenshot/turtlescreenshot.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b01b472f-e993-4c62-a546-4816b44fc0d0",
+              "caption": "A screenshot of Turtle Graphics 1.01",
+              "alt": "A screenshot of Turtle Graphics 1.01",
+              "width": 455,
+              "height": 345,
+              "instructor_notes": null
+            },
+            {
+              "id": 778032,
+              "key": "eebc65c1-49a6-47f4-a40f-54942dd3cc20",
+              "title": "Turtlesim Overview",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eebc65c1-49a6-47f4-a40f-54942dd3cc20",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Look at the image above. What commands might this program have executed to get the turtle to this point?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Turn left 90 degrees.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Turn right 90 degrees.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Move back 40 steps.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Move forward 40 steps.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778033,
+              "key": "0fe6198c-cf15-4192-b94f-22c77d51951a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This tradition of turtles in robotics is alive and well today. In fact, each recent version of ROS has been named after some sort of turtle. In addition to this turtle-centric naming convention, the Open-Source Robotics Foundation also adds a new turtle to `turtle_sim` with each release.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778034,
+              "key": "09486f5e-7264-45ef-a628-fe7a8e780dd9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7835_ros-versions/ros-versions.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/09486f5e-7264-45ef-a628-fe7a8e780dd9",
+              "caption": "ROS Versions",
+              "alt": "ROS Versions",
+              "width": 691,
+              "height": 983,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 778038,
+          "key": "035e82a3-d9d6-4966-94fb-8d186a17ac86",
+          "title": "ROS in the Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "035e82a3-d9d6-4966-94fb-8d186a17ac86",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778036,
+              "key": "1cf792f9-29e2-499e-961e-d38cd1c313b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS in the Workspace\n\nTo follow along with the exercises in these lessons, you will need to run ROS in the Udacity Workspace. Follow these steps:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` The Workspace is best supported on **Google Chrome** and might not load on other browsers.\n\nYou're now ready to follow along in your Workspace with the ROS essentials examples!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778189,
+              "key": "f1ee104a-b755-4721-9e66-4489cb602055",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c778038xREACT6he63nvg",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-ll9kg",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 778048,
+          "key": "d6a19828-614b-4f1d-bd3f-fd93ddea7bb7",
+          "title": "Source the ROS Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d6a19828-614b-4f1d-bd3f-fd93ddea7bb7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778039,
+              "key": "0eadbad0-895a-4dd5-ab6d-2f8537b08042",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Source the ROS Environment ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778040,
+              "key": "598e1fb2-e6ba-442f-8eea-0e7edbfb21ec",
+              "title": "Source the ROS Environment",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CUdc3CACoyg",
+                "china_cdn_id": "CUdc3CACoyg.mp4"
+              }
+            },
+            {
+              "id": 778041,
+              "key": "40020350-cfb6-41a6-b891-3c127dcf5a00",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Environment Setup \n\nBefore we begin using ROS in a terminal, we must first ensure that all of the environment variables are present. To do this, we must source the setup script provided by ROS\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778042,
+              "key": "3e2b4d81-f83f-4290-acd0-20d70a116beb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb795a_sourceros/sourceros.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3e2b4d81-f83f-4290-acd0-20d70a116beb",
+              "caption": "",
+              "alt": "",
+              "width": 737,
+              "height": 226,
+              "instructor_notes": null
+            },
+            {
+              "id": 778043,
+              "key": "f7f4e785-33d7-4f00-93b8-03ab6394be2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Caveat\n\nMake sure you use the bash command `source` rather than `./`. There’s a subtle distinction between the two commands, in that `source` executes the script in the current session, while `./` will start a new session, containing a copy of the current environment. When a script executed via `./` is exited, all environment variables set by it will be lost. We don’t want this. For more information on environment variables and terminal sessions, please see [here](https://help.ubuntu.com/community/EnvironmentVariables). \n\n## Automatically Configuring the Environment \nSetting up the ROS environment every time you open a new terminal window can be painful and tedious. To avoid the tedium, we can simply add the command to source the workspace to our `~/.bashrc file`. This  will cause our environment to be sourced any time a new terminal session is created. Fortunately, this command has been already added for you. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778044,
+              "key": "10e5ec08-d1bd-4aab-81a5-e0369d3bae8e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7967_bashrc/bashrc.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/10e5ec08-d1bd-4aab-81a5-e0369d3bae8e",
+              "caption": "",
+              "alt": "",
+              "width": 1647,
+              "height": 698,
+              "instructor_notes": null
+            },
+            {
+              "id": 778045,
+              "key": "54578a51-0df8-4638-926a-4c190ae8a66b",
+              "title": "Source the ROS Environment",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "54578a51-0df8-4638-926a-4c190ae8a66b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which one of the statements below is *true* regarding the bash `source` command?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Executes the bash script within the existing environment.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Executes the command within a new environment.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778046,
+              "key": "a1d16088-0527-48e8-8bf5-ee7deec195ad",
+              "title": "Source the ROS Environment",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a1d16088-0527-48e8-8bf5-ee7deec195ad",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which one of the statements below is *true* regarding the bash `./` command?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Ensures that any environment variables set by bash script are maintained after the script has finished running.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Environment used by the executed command is destroyed when script is done running",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 778047,
+              "key": "dea75cb2-3246-4f38-b610-4baab6f95f2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your are now ready to run the turtlesim!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778055,
+          "key": "c5661a96-cfb6-4edd-ac81-ec45dca03a4b",
+          "title": "Run Turtlesim",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5661a96-cfb6-4edd-ac81-ec45dca03a4b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778049,
+              "key": "a4926ead-65df-4408-9bcc-2b0733f633dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Run Turtlesim",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778050,
+              "key": "afb6ea43-1124-4b4f-b9cb-c2161de3dd21",
+              "title": "Run Turtlesim",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tCo-jEAcAtc",
+                "china_cdn_id": "tCo-jEAcAtc.mp4"
+              }
+            },
+            {
+              "id": 778051,
+              "key": "b0d57c5a-4c72-4626-baeb-85dba5c25a43",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you’ve added ROS’ environment variables to your terminal session, you can run the turtlesim package!\n\n## Starting the Master process \nBefore you can run any ROS nodes, you must start the Master process.\n\nThe Master process is responsible for the following (and more):\n* Providing naming and registration services to other running nodes\n* Tracking all publishers and subscribers\n* Aggregating log messages generated by the nodes\n* Facilitating connections between nodes\n\nTo run the master process, execute the command \n```sh\nroscore```\n If all goes well (and it should), you will see output similar to this:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778052,
+              "key": "99246195-6a41-44c1-94fe-65936c781442",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb79d8_roscore/roscore.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/99246195-6a41-44c1-94fe-65936c781442",
+              "caption": "",
+              "alt": "",
+              "width": 736,
+              "height": 477,
+              "instructor_notes": null
+            },
+            {
+              "id": 778053,
+              "key": "dfbe217a-6db4-4eb5-818d-25f949179c1b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This indicates that ROS Master is running! To terminate the ROS Master process, you can simply send the SIGINT signal to the process by pressing ctrl-c in the roscore terminal window.\n\nWe are now ready to begin launching nodes!\n\n## Running Turtlesim Nodes \n\nNow that the ROS Master is running, we can run our first two ROS nodes.\n\nTo do so, we will execute the `rosrun` command in a new terminal window, passing as parameters the name of the package we wish to run, and the name of the actual node.\n\n## Note\nYou can open a second instance of you current terminal using `CTRL + SHIFT + T`.\n\nTab completion is your friend. Each ROS distribution comes with a staggering number of packages, and an even more staggering number of nodes. In the bash shell, a single-tap of the tab key will autocomplete the command, if there is a single match. A double-tap of the tab key will result in a list of all possible matches, in the case that a single match cannot be found.\n\nFirst we will start the `turtlesim_node`, in the `turtlesim` package using the following command in a second terminal instance. \n\n```sh\n$ rosrun turtlesim turtlesim_node\n```\n\nNext, we will start the `turtle_teleop_key node`, also from the `turtlesim` package in a third terminal instance.\n\n```sh\n$ rosrun turtlesim turtle_teleop_key\n```\n\nBy using the arrow keys with the `turtle_teleop_key` node’s console selected, we are able to move the turtle in turtlesim!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778054,
+              "key": "e13502dc-c7b9-47a5-b7b8-d0530e1fa21b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb79ed_turtlesim/turtlesim.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e13502dc-c7b9-47a5-b7b8-d0530e1fa21b",
+              "caption": "",
+              "alt": "",
+              "width": 1558,
+              "height": 714,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 778061,
+          "key": "1d512887-fc1b-49b2-97bd-9909b810791a",
+          "title": "Turtlesim Comms: List Nodes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d512887-fc1b-49b2-97bd-9909b810791a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778056,
+              "key": "8d0c53f7-4ee9-412a-8bad-68bb5d6a8e0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Comms: List Nodes \n\n## Turtlesim Comms: List All Active Nodes\n\nIn the following sections, we will investigate Turtlesim communication commands, and will cover the following steps:\n* Listing all active nodes\n* Listing all topics\n* Getting information about topics\n* Showing message information\n* Echoing messages in real-time\n\nNow that we’ve launched `turtlesim_node` and played around with sending commands via the `turtle_teleop_key` node, let’s dig deeper, to see what’s actually happening underneath the surface...",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778057,
+              "key": "76a85f8e-a604-4b05-b467-9df6cb7cab7e",
+              "title": "Turtlesim Comms: List Nodes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "urpcfbmJwO0",
+                "china_cdn_id": "urpcfbmJwO0.mp4"
+              }
+            },
+            {
+              "id": 778058,
+              "key": "2e8af131-1f0d-4420-b7fc-e11b06f41ed6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Listing all Active Nodes\nTo get a list of all nodes that are active and have been registered with the ROS Master, we can use the command `rosnode list`. Let’s do so now:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778059,
+              "key": "cc6f7425-f994-48c1-bc1c-d7f2acd2a478",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7a42_rosnode-list/rosnode-list.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cc6f7425-f994-48c1-bc1c-d7f2acd2a478",
+              "caption": "",
+              "alt": "",
+              "width": 737,
+              "height": 189,
+              "instructor_notes": null
+            },
+            {
+              "id": 778060,
+              "key": "b2ee295b-a616-4076-8874-1689355e8334",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see that there are three active nodes that have been registered with the ROS Master: `/rosout`, `/teleop_turtle`, and `/turtlesim`.\n\n* `/rosout`: This node is launched by roscore. It subscribes to the standard /rosout topic, the topic to which all nodes send log messages.\n* `/teleop_turtle`: This is our keyboard teleop node. Notice that its not named turtle_teleop_key. There’s no requirement that a node’s broadcasted name is the same as the name of it’s associated executable.\n* `/turtlesim`: The node name associated with the turtlebot_sim node. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778067,
+          "key": "636c2b60-efb0-4d91-88a5-9e70f051ba48",
+          "title": "Turtlesim Comms: List Topics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "636c2b60-efb0-4d91-88a5-9e70f051ba48",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778062,
+              "key": "3d464e18-b0dc-416d-bbf7-725e35bd4247",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Comms: List Topics ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778063,
+              "key": "1bea5446-673b-4d52-9df2-8f857d2ca857",
+              "title": "Turtlesim Comms: List Topics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eyCGtcNYaew",
+                "china_cdn_id": "eyCGtcNYaew.mp4"
+              }
+            },
+            {
+              "id": 778064,
+              "key": "dd5bce42-9fb2-4198-86f0-0563d13356aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Listing All Topics\nIn a similar fashion, we are able to query the ROS Master for a list of all topics. To do so, we use the command `rostopic list`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778065,
+              "key": "b615705f-f93b-4f9b-b177-8cf5281acd62",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7a76_rostopic-list/rostopic-list.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b615705f-f93b-4f9b-b177-8cf5281acd62",
+              "caption": "",
+              "alt": "",
+              "width": 736,
+              "height": 190,
+              "instructor_notes": null
+            },
+            {
+              "id": 778066,
+              "key": "bd0aee58-bf80-4f9b-8191-9eaca48c139a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* `/rosout_agg`: Aggregated feed of messages published to /rosout.\n* `/turtle1/cmd_vel`: Topic on which velocity commands are sent/received. Publishing a velocity message to this topic will command turtle1 to move.\n* `/turtle1/color_sensor`: Each turtle in turtlesim is equipped with a color sensor, and readings from the sensor are published to this topic.\n* `/turtle1/pose`: The position and orientation of turtle1 are published to this topic.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778073,
+          "key": "8d2cb570-8b79-48dd-a2ca-a2b98ba64c89",
+          "title": "Turtlesim Comms: Get Topic Info",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8d2cb570-8b79-48dd-a2ca-a2b98ba64c89",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778068,
+              "key": "15d26e7d-5922-4533-afed-b87426e1da57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Comms: Get Topic Info ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778069,
+              "key": "7710b4a3-a79f-4200-ab72-b2fbae3be2c0",
+              "title": "Turtlesim Comms: Get Topic Info",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZVdL3Ac1gjs",
+                "china_cdn_id": "ZVdL3Ac1gjs.mp4"
+              }
+            },
+            {
+              "id": 778070,
+              "key": "5cd9b7b1-4ce4-4a13-b0a8-118eb8af9d46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Get Information About a Specific Topic\nIf we wish to get information about a specific topic, who is publishing to it, subscribed to it, or the type of message associated with it, we can use the command `rostopic info` .\nLet’s check into the `/turtle1/cmd_vel` topic:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778071,
+              "key": "3f4e75fd-f5b4-4eaa-920c-b7849b7e82aa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7aa6_rostopic-info/rostopic-info.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3f4e75fd-f5b4-4eaa-920c-b7849b7e82aa",
+              "caption": "",
+              "alt": "",
+              "width": 735,
+              "height": 245,
+              "instructor_notes": null
+            },
+            {
+              "id": 778072,
+              "key": "e55da44c-763b-4e28-b7f9-f8aec0e2dc4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you might expect, there are two nodes registered on this topic. One publisher, the `teleop_turtle` node, and one subscriber, the `turtlesim` node. Additionally, we see that the type of message used on this topic is `geometry_msgs/Twist`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778079,
+          "key": "287d2269-d1ef-40ce-b21b-742553876315",
+          "title": "Turtlesim Comms: Message Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "287d2269-d1ef-40ce-b21b-742553876315",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778074,
+              "key": "408e8e3e-f309-4761-966b-9c62b63f3263",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Comms: Message Information ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778075,
+              "key": "e71dc6c5-f723-4a7a-b929-61f541d75bc2",
+              "title": "Turtlesim Comms: Message Information",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bP4CQJ77iEw",
+                "china_cdn_id": "bP4CQJ77iEw.mp4"
+              }
+            },
+            {
+              "id": 778076,
+              "key": "147d440f-b757-4426-afb3-af08fea35e97",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Turtlesim Comms: Show Message Information \n\nLet’s get some more information about the `geometry_msgs/Twist` message on the `/turtle1/cmd_vel` topic, to do so, we will use the `rosmsg` info command.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778077,
+              "key": "f9432073-1d76-4e35-8cf2-0996a5c59e97",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7ac7_rosmsg-info/rosmsg-info.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f9432073-1d76-4e35-8cf2-0996a5c59e97",
+              "caption": "",
+              "alt": "",
+              "width": 735,
+              "height": 299,
+              "instructor_notes": null
+            },
+            {
+              "id": 778078,
+              "key": "3f633621-50fd-4a3f-a608-bc589712282b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see that a `Twist` message consists nothing more than two `Vector3` messages. One for linear velocity, and another for angular velocity, with each velocity component (x,y,z) represented by a float64.\n\n## Note\n \nSometimes the message definition doesn’t provide an ample amount of detail about a message type. For instance, in the example above, how can we be sure that linear and angular vectors above refer to velocities, and not positions? One way to get more detail would be to look at the comments in the message’s definition file. To do so, we can issue the following command: `rosed geometry_msgs` `Twist.msg`.\n\nMore information about `rosed`, including how to select which editor is used by default, can be found [here](http://wiki.ros.org/ROS/Tutorials/UsingRosEd).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 778084,
+          "key": "7045df3a-a168-446c-9771-5b9a61f41efa",
+          "title": "Turtlesim Comms: Echo a Topic",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7045df3a-a168-446c-9771-5b9a61f41efa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778080,
+              "key": "80a1d231-b34b-400c-b13a-1dbcaa872d05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Turtlesim Comms: Echo a Topic ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778081,
+              "key": "eb2a2a4b-ccd8-483c-8bdd-f1b58f59a4ce",
+              "title": "Turtlesim Comms: Echo A Topic",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9CN3S_iNdCg",
+                "china_cdn_id": "9CN3S_iNdCg.mp4"
+              }
+            },
+            {
+              "id": 778082,
+              "key": "72c807da-8129-4065-a98b-8bd8f256593d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Turtlesim Comms: Echo Messages on a Topic \n\nSometimes it may be useful to look at a topic’s published messages in real time. To do so, we can use the command `rostopic echo`. Let’s take a look at the `/turtle1/cmd_vel` topic.\n\n```sh\n$ rostopic echo /turtle1/cmd_vel\n```\n\nIf we then command the turtle to move from the `turtle_teleop_key` window, we will be able to see the output message in real-time!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778083,
+              "key": "4ca7681b-fcb2-40f8-ba0a-6ff546ee8d06",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdb7b25_echo-topic/echo-topic.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4ca7681b-fcb2-40f8-ba0a-6ff546ee8d06",
+              "caption": "",
+              "alt": "",
+              "width": 736,
+              "height": 253,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 778086,
+          "key": "235a3dfc-5a64-46b3-98df-892f5da90e4e",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "235a3dfc-5a64-46b3-98df-892f5da90e4e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 778085,
+              "key": "268a7b9b-b5aa-4c5e-8ff1-050a10423e4a",
+              "title": "C3 L1 A68 HS Recap V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F92jZ2xw450",
+                "china_cdn_id": "F92jZ2xw450.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.609
+In order to launch the turtle swim package,
+
+00:00:02.609 --> 00:00:08.009
+you must first ensure that all of the ROS environment variables have been set correctly.
+
+00:00:08.009 --> 00:00:11.400
+Each ROS distribution provides a handy script
+
+00:00:11.400 --> 00:00:15.044
+specifically for this purpose called setup.bash.
+
+00:00:15.044 --> 00:00:19.859
+The script is in the OPT ROS kinetic directory.
+
+00:00:19.859 --> 00:00:23.684
+You can run it with the bash command source.
+
+00:00:23.684 --> 00:00:27.149
+Among other things, the environment variables,
+
+00:00:27.149 --> 00:00:31.294
+Delta bash shell where ROS commands and packages can be found.
+
+00:00:31.295 --> 00:00:35.270
+One simple way to determine if the environment variables have been set,
+
+00:00:35.270 --> 00:00:38.075
+is to use the bash tab completion feature.
+
+00:00:38.075 --> 00:00:41.815
+Typing ROS followed by double tapping the tab key,
+
+00:00:41.814 --> 00:00:48.574
+gave us an extensive list of all the commands beginning with the characters ROS.
+
+00:00:48.575 --> 00:00:53.955
+This list would be much shorter had we not source ros setup.bash.
+
+00:00:53.954 --> 00:00:55.659
+Later on in this module,
+
+00:00:55.659 --> 00:00:59.389
+will become more familiar with some of the commands listed here.
+
+00:00:59.390 --> 00:01:04.284
+Having to source the ros setup.bash script for each new terminal you open,
+
+00:01:04.284 --> 00:01:06.494
+is quickly going to become painful.
+
+00:01:06.495 --> 00:01:08.185
+To combat the monogamy,
+
+00:01:08.185 --> 00:01:11.734
+we added the command for you in the bashrc file.
+
+00:01:11.734 --> 00:01:17.829
+Bashrc is a shell script that automatically runs whenever you start the bash session.
+
+00:01:17.829 --> 00:01:21.765
+Since this workspace uses bash as its default shell,
+
+00:01:21.765 --> 00:01:27.590
+it starts a new bash session and runs the bashrc file every time you open a new terminal.
+
+00:01:27.590 --> 00:01:30.230
+That's it for setting up your environment,
+
+00:01:30.230 --> 00:01:32.920
+you're now ready to run the turtle swim.
+

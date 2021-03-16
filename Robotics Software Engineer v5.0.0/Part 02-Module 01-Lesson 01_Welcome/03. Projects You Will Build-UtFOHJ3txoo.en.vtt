@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.050 --> 00:00:05.054
+Over the course of this Robotics Software Engineer Nanodegree program,
+
+00:00:05.054 --> 00:00:07.589
+you will build five projects.
+
+00:00:07.589 --> 00:00:12.675
+Each project will demonstrate the skills you learned in the preceding lessons.
+
+00:00:12.675 --> 00:00:18.750
+These five projects will constitute a great portfolio for potential employers.
+
+00:00:18.750 --> 00:00:25.170
+We will kick off the program by prototyping robots in a simulator called Gazebo.
+
+00:00:25.170 --> 00:00:27.240
+In the Build My Word project,
+
+00:00:27.239 --> 00:00:30.659
+you will work with Gazebo to simulate an environment,
+
+00:00:30.660 --> 00:00:34.659
+comprise of a building to house your future robot.
+
+00:00:34.659 --> 00:00:40.084
+Next, you will learn the robot operating system or ROS for short.
+
+00:00:40.085 --> 00:00:42.109
+In the Go Chase It project,
+
+00:00:42.109 --> 00:00:46.129
+you will use rows to design and build a mobile robot.
+
+00:00:46.130 --> 00:00:50.630
+You will house you knew robot in the world you built in the first project.
+
+00:00:50.630 --> 00:00:56.185
+Eventually, you will program your robot to chase a ball through this world.
+
+00:00:56.185 --> 00:01:00.609
+Both the world that you create in the first project and robotic design in
+
+00:01:00.609 --> 00:01:06.930
+this project will form the base for all your upcoming projects in this program.
+
+00:01:07.180 --> 00:01:10.404
+After studying ROS and Gazebo,
+
+00:01:10.403 --> 00:01:14.479
+you will learn to manage uncertainty with probabilistic algorithms.
+
+00:01:14.480 --> 00:01:16.219
+In the third module,
+
+00:01:16.219 --> 00:01:19.579
+you will learn probabilistic localization algorithms to estimate
+
+00:01:19.579 --> 00:01:23.650
+the robot's position and orientation. In the Where Am I?
+
+00:01:23.650 --> 00:01:28.700
+project you will develop an autonomous driving system to localize the robot.
+
+00:01:28.700 --> 00:01:32.795
+First, you will navigate your robot through a series of waypoints.
+
+00:01:32.795 --> 00:01:37.480
+Then you will localize it with the localization package in ROS.
+
+00:01:37.480 --> 00:01:41.120
+After that, you will study mapping algorithms.
+
+00:01:41.120 --> 00:01:46.250
+By combining mapping with the skills you learnt within the previous lessons,
+
+00:01:46.250 --> 00:01:52.344
+you will be able to implement simultaneous localization and mapping, or SLAM.
+
+00:01:52.344 --> 00:01:55.019
+In the Map My World Robot project,
+
+00:01:55.019 --> 00:01:56.685
+you would use SLAM package,
+
+00:01:56.685 --> 00:02:04.025
+with ROS to simultaneously localize your robot and create 2D and 3D maps of your world.
+
+00:02:04.025 --> 00:02:09.860
+Finally, you will learn how to search for a path and navigate it with classical,
+
+00:02:09.860 --> 00:02:13.205
+sample-based, and probabilistic algorithms.
+
+00:02:13.205 --> 00:02:15.545
+In the Home Service Robot project,
+
+00:02:15.544 --> 00:02:19.639
+you will integrate everything you learnt in this Nanodegree program to build
+
+00:02:19.639 --> 00:02:26.375
+a home service robot that will navigate to pick up and deliver objects inside your world.
+
+00:02:26.375 --> 00:02:29.750
+There is a lot to learn and it will be a challenge.
+
+00:02:29.750 --> 00:02:33.604
+But once you've completed this Nanodegree program you'd have developed
+
+00:02:33.604 --> 00:02:37.759
+an impressive set of robotic skills and build amazing projects.
+

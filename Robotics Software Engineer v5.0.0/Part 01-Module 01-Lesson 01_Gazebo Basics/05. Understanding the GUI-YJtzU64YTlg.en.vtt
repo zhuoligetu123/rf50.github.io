@@ -1,0 +1,223 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+Now that you are familiar with Gazebo components,
+
+00:00:03.120 --> 00:00:06.150
+let's move forward and understand the GUI.
+
+00:00:06.150 --> 00:00:12.030
+First, we will launch Gazebo from the terminal by typing in Gazebo.
+
+00:00:13.730 --> 00:00:16.769
+Once it has loaded completely,
+
+00:00:16.769 --> 00:00:18.629
+you should see something like this.
+
+00:00:18.629 --> 00:00:24.015
+The Gazebo GUI is divided into four major sections: the scene,
+
+00:00:24.015 --> 00:00:28.935
+the site panel, the toolbars, and the menu.
+
+00:00:28.934 --> 00:00:33.089
+The scene is where you will be spending most of your time,
+
+00:00:33.090 --> 00:00:36.290
+whether you're creating assimilation or running one.
+
+00:00:36.289 --> 00:00:39.174
+While you can use a trackpad to navigate inside the scene,
+
+00:00:39.174 --> 00:00:41.209
+a mouse is highly recommended.
+
+00:00:41.210 --> 00:00:45.829
+You can bend the scene by pressing and dragging the left mouse button.
+
+00:00:45.829 --> 00:00:47.585
+In addition to that,
+
+00:00:47.585 --> 00:00:49.640
+if you hold down the Shift key,
+
+00:00:49.640 --> 00:00:52.314
+you can also rotate the view.
+
+00:00:52.314 --> 00:00:56.479
+You can zoom in or out by using the mouse scroll,
+
+00:00:56.479 --> 00:01:01.294
+or by pressing and dragging the right mouse button.
+
+00:01:01.295 --> 00:01:04.579
+Next, we have a toolbar at the top.
+
+00:01:04.579 --> 00:01:09.259
+This toolbar provides quick access to some of the cursor modes,
+
+00:01:09.260 --> 00:01:11.975
+geometric shapes, and views.
+
+00:01:11.974 --> 00:01:13.909
+Let's look through your options.
+
+00:01:13.909 --> 00:01:19.984
+Simple shapes, you can insert basic 3D models like cubes,
+
+00:01:19.984 --> 00:01:26.234
+spheres, or cylinders into the scene.
+
+00:01:26.234 --> 00:01:29.540
+Select mode, this is
+
+00:01:29.540 --> 00:01:35.465
+the most commonly used cursor mode and this one allows you to navigate the scene.
+
+00:01:35.465 --> 00:01:37.415
+Translate mode,
+
+00:01:37.415 --> 00:01:43.219
+the translate mode cursor allows you to change the position of any model in the scene.
+
+00:01:43.219 --> 00:01:45.745
+Simply select the cursor mode,
+
+00:01:45.745 --> 00:01:52.079
+and then use the proper axis to drag the object around, until you're satisfied.
+
+00:01:52.299 --> 00:01:56.739
+Rotate mode, similar to the translation mode,
+
+00:01:56.739 --> 00:02:02.729
+this cursor mode allows you to change the orientation of any given model.
+
+00:02:03.010 --> 00:02:07.640
+Scale mode, this mode allows you to change
+
+00:02:07.640 --> 00:02:12.335
+the scale and hence the overall size of any model.
+
+00:02:12.335 --> 00:02:19.205
+Lights, you can also add different light source like a spotlight,
+
+00:02:19.205 --> 00:02:24.525
+point light, or directional light to the scene.
+
+00:02:24.525 --> 00:02:31.969
+View change, this tool lets you view the scene from different perspectives like top view,
+
+00:02:31.969 --> 00:02:37.134
+side view, front view, or bottom view.
+
+00:02:37.134 --> 00:02:42.949
+You can also press the Home button to return to the home position of the camera.
+
+00:02:42.949 --> 00:02:49.579
+The left panel has three different tabs: World, Insert, and Layers.
+
+00:02:49.580 --> 00:02:55.325
+The World tab displays all the lights and models currently in the scene.
+
+00:02:55.324 --> 00:02:57.964
+By clicking on any individual model,
+
+00:02:57.965 --> 00:03:00.889
+you can view or edit its basic properties,
+
+00:03:00.889 --> 00:03:05.145
+like position and orientation.
+
+00:03:05.145 --> 00:03:09.650
+You can also change some of the physics properties of the scene like
+
+00:03:09.650 --> 00:03:14.164
+gravity or magnetic field via the physics option.
+
+00:03:14.164 --> 00:03:17.120
+Insert tab, this is where you will find
+
+00:03:17.120 --> 00:03:20.000
+all the objects and models to be added to the scene.
+
+00:03:20.000 --> 00:03:25.159
+You can left click to expand or collapse a list of models.
+
+00:03:25.159 --> 00:03:27.479
+To place an object in the scene,
+
+00:03:27.479 --> 00:03:29.994
+left-click the object of interest.
+
+00:03:29.995 --> 00:03:33.085
+This will bind the object to your mouse cursor.
+
+00:03:33.085 --> 00:03:36.099
+Now, you can place it anywhere in the scene
+
+00:03:36.099 --> 00:03:40.460
+by cleft-clicking it again at your desired location.
+
+00:03:40.710 --> 00:03:44.210
+Layers, this is an optional feature.
+
+00:03:44.210 --> 00:03:47.085
+This tab will be empty in most cases.
+
+00:03:47.085 --> 00:03:49.050
+To learn more about the layers,
+
+00:03:49.050 --> 00:03:52.400
+check out the link in the description below.
+
+00:03:52.550 --> 00:03:57.960
+Bottom toolbar, the bottom toolbar has a neat,
+
+00:03:57.960 --> 00:03:59.570
+play and pause button.
+
+00:03:59.569 --> 00:04:06.340
+This button allows you to pause the simulation and conveniently move objects around.
+
+00:04:10.310 --> 00:04:15.319
+This toolbar also displays data about the simulation,
+
+00:04:15.319 --> 00:04:17.800
+such as the simulation time,
+
+00:04:17.800 --> 00:04:22.235
+the real-time, and the relationship between the two.
+
+00:04:22.235 --> 00:04:26.270
+There is also a frame per second counter that
+
+00:04:26.269 --> 00:04:30.799
+can be found to go to your system performance for any given scene.
+
+00:04:30.800 --> 00:04:36.579
+The menu, some of the menu options are duplicated in the toolbars,
+
+00:04:36.579 --> 00:04:41.334
+or as right-click contents menu options in the scene.
+
+00:04:41.334 --> 00:04:43.750
+If you click on Edit,
+
+00:04:43.750 --> 00:04:47.644
+you can switch to the Building Editor to design buildings,
+
+00:04:47.644 --> 00:04:51.420
+or the Model Editor to build models.
+
+00:04:51.420 --> 00:04:56.319
+We will be working with both of these features in the upcoming concepts.
+
+00:04:56.319 --> 00:05:00.084
+All right. Now that you've understood the Gazebo GUI,
+
+00:05:00.084 --> 00:05:03.959
+let's move on and simulate our first robot.
+

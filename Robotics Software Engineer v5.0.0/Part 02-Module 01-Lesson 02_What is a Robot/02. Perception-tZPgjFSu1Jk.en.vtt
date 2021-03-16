@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.605
+Robots perceive the world around them through the use of sensors.
+
+00:00:04.605 --> 00:00:07.919
+You can think of robot sensors as analogous to
+
+00:00:07.919 --> 00:00:12.660
+our human senses like sight, hearing, and touch.
+
+00:00:12.660 --> 00:00:16.469
+There are many different types of sensors used in robotics.
+
+00:00:16.469 --> 00:00:19.843
+Robots eyes might be analogous to cameras,
+
+00:00:19.844 --> 00:00:23.730
+lidar, radar, or even ultrasound.
+
+00:00:23.730 --> 00:00:27.105
+A microphone could be a robot's ears.
+
+00:00:27.105 --> 00:00:29.879
+Giving a robot a sense of touch might be
+
+00:00:29.879 --> 00:00:33.615
+achieved through the use of temperature or pressure sensors.
+
+00:00:33.615 --> 00:00:39.469
+Even senses like taste and smell can be achieved using chemical analyzers.
+
+00:00:39.469 --> 00:00:42.859
+Robots can also be equipped with sensors that have
+
+00:00:42.859 --> 00:00:47.450
+no human analogue like GPS to establish exact position on earth,
+
+00:00:47.450 --> 00:00:49.609
+a barometer to track altitude,
+
+00:00:49.609 --> 00:00:52.984
+or even a magnetic field sensor with actinic.
+
+00:00:52.984 --> 00:00:55.460
+In this program, you will gain experience with
+
+00:00:55.460 --> 00:00:58.799
+a wide range of sensor modalities and sensor data.
+

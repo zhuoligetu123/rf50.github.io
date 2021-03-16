@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.690
+Now that you've got your ROS environment variables in place,
+
+00:00:03.690 --> 00:00:05.849
+you're ready to run some turtlesim_nodes.
+
+00:00:05.849 --> 00:00:09.390
+The first thing is to start the rosmaster process.
+
+00:00:09.390 --> 00:00:17.295
+To do this, all you need to do is run the command roscore. There we go.
+
+00:00:17.295 --> 00:00:22.350
+We've been hit with a wall of text ending with the line started core service.
+
+00:00:22.350 --> 00:00:25.755
+You don't need to worry about all of the detail printed to the console.
+
+00:00:25.754 --> 00:00:27.974
+None of that is relevant to us right now.
+
+00:00:27.975 --> 00:00:30.554
+As long as you don't see any color furet texts
+
+00:00:30.554 --> 00:00:33.929
+indicating that there is an error, you're good to go.
+
+00:00:33.929 --> 00:00:38.115
+Now that the master process is running you're able to run nodes.
+
+00:00:38.115 --> 00:00:42.565
+The first node that you are going to run is turtlesim_node itself.
+
+00:00:42.564 --> 00:00:48.699
+To run the node, you'll want to open a new terminal and execute the rosrun command.
+
+00:00:48.700 --> 00:00:52.915
+The first parameter you'd be passing to the rosrun command is turtlesim,
+
+00:00:52.914 --> 00:00:57.244
+which is the name of the ROS package containing the turtlesim_nodes.
+
+00:00:57.244 --> 00:01:02.570
+Following turtlesim_node, which is the name of the node executable,
+
+00:01:02.570 --> 00:01:07.045
+residing in the package that you wish to run. There you have it.
+
+00:01:07.045 --> 00:01:09.070
+You're running the simulator and you've got
+
+00:01:09.069 --> 00:01:12.614
+a little turtle waiting to be commanded around the window.
+
+00:01:12.614 --> 00:01:14.549
+To command the turtle to move,
+
+00:01:14.549 --> 00:01:17.959
+you must run another node called the turtle_teleop_node.
+
+00:01:17.959 --> 00:01:22.679
+Once again, you need to open another terminal window and you
+
+00:01:22.680 --> 00:01:24.760
+will run the same command you run a moment ago
+
+00:01:24.760 --> 00:01:27.665
+with the exception of the node executable name,
+
+00:01:27.665 --> 00:01:31.609
+rosrun, turtlesim our a package name,
+
+00:01:31.609 --> 00:01:36.620
+and turtle_teleop_ key, the name of the node executable you wish run.
+
+00:01:36.620 --> 00:01:40.355
+If you ever forget the name of the package or node that you wish to run,
+
+00:01:40.355 --> 00:01:42.575
+tab completion can be helpful.
+
+00:01:42.575 --> 00:01:44.405
+I'll show you how that works.
+
+00:01:44.405 --> 00:01:46.700
+Let's say, I don't know the node name,
+
+00:01:46.700 --> 00:01:51.659
+but I know that it started with turtle and then I hit tab, tab.
+
+00:01:51.659 --> 00:01:56.884
+I see that the turtlesim package has two nodes that start with the word turtle.
+
+00:01:56.885 --> 00:02:00.439
+There's a turtlesim_node, the node that we just run,
+
+00:02:00.438 --> 00:02:02.074
+and there's turtle_teleop_ key,
+
+00:02:02.075 --> 00:02:04.060
+the note that we are trying to run.
+
+00:02:04.060 --> 00:02:09.969
+So, rosrun, turtlesim, turtle_teleop_key.
+
+00:02:10.189 --> 00:02:14.520
+Okay. Now a turtlesim teleop_node is running.
+
+00:02:14.520 --> 00:02:17.439
+With a turtle_teleop console selected,
+
+00:02:17.438 --> 00:02:21.484
+you can use the arrow keys to drive your turtle around the virtual world.
+
+00:02:21.485 --> 00:02:26.425
+Let's give this a try. There we go.
+
+00:02:26.425 --> 00:02:28.775
+We are now ready to begin investigating
+
+00:02:28.775 --> 00:02:33.200
+the turtlesim communication commands or "comms" for short
+

@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.410
+Now that you have an understanding of some of the fundamental concepts of loss,
+
+00:00:04.410 --> 00:00:07.380
+we can dive right into the Command Line where we create
+
+00:00:07.379 --> 00:00:10.890
+little turtle robots with a package called TurtleSim.
+
+00:00:10.890 --> 00:00:13.350
+We should probably stop so I can explain
+
+00:00:13.349 --> 00:00:16.949
+what little turtles have to do with robotics in the first place.
+
+00:00:16.949 --> 00:00:21.839
+The use of turtles in robotics goes way back to the 1940s.
+
+00:00:21.839 --> 00:00:27.149
+Early roboticist William Grey Walter created some of the first autonomous devices,
+
+00:00:27.149 --> 00:00:31.289
+turtle robots which he called Elmer and Elsie.
+
+00:00:31.289 --> 00:00:33.780
+In the 1960s at MIT,
+
+00:00:33.780 --> 00:00:37.785
+Seymour Papert used turtle robots in robotics education.
+
+00:00:37.784 --> 00:00:40.949
+Seymour's robots could perform a few basic functions.
+
+00:00:40.950 --> 00:00:44.030
+They could move forward or backwards by a given distance,
+
+00:00:44.030 --> 00:00:46.609
+rotate by a given angle and they could
+
+00:00:46.609 --> 00:00:49.759
+drop the pen from their bellies allowing them to throw as they move.
+
+00:00:49.759 --> 00:00:53.509
+These primitive functions could be triggered simultaneously allowing
+
+00:00:53.509 --> 00:00:57.784
+the robots to move along complex trajectories and make sophisticated drawings.
+
+00:00:57.784 --> 00:01:02.644
+This connection between robots and turtles continues to this very day.
+
+00:01:02.645 --> 00:01:04.790
+In your first exercise with us,
+
+00:01:04.790 --> 00:01:08.400
+you'll be launching your own simulator turtle robot.
+

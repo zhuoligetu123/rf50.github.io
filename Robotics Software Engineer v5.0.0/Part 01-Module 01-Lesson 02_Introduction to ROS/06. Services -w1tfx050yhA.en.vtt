@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.384
+Passing messages over topics between publishers and subscribers is useful,
+
+00:00:05.384 --> 00:00:08.969
+but it's not a one size fits all communications solution.
+
+00:00:08.970 --> 00:00:12.735
+There are times when the request response pattern is useful.
+
+00:00:12.734 --> 00:00:14.625
+For these types of interactions,
+
+00:00:14.625 --> 00:00:17.445
+ROS provides what are called services.
+
+00:00:17.445 --> 00:00:23.010
+Like topics, services allow the passing of messages between nodes.
+
+00:00:23.010 --> 00:00:28.545
+However, unlike topics, services have no publishers or subscribers.
+
+00:00:28.545 --> 00:00:33.510
+Instead, nodes interact with services on a one-to-one basis
+
+00:00:33.509 --> 00:00:38.795
+using request and response messages. Here's an example.
+
+00:00:38.795 --> 00:00:43.954
+Let's say that the behavior executor node wants to capture an image from the camera.
+
+00:00:43.954 --> 00:00:47.824
+We could just have it subscribe to the camera images topic.
+
+00:00:47.825 --> 00:00:52.490
+It would then receive a new image each time the camera node publishes one.
+
+00:00:52.490 --> 00:00:55.719
+However, this might be undesirable if
+
+00:00:55.719 --> 00:00:59.945
+the executor only wants to capture an image every once in a while.
+
+00:00:59.945 --> 00:01:03.048
+Instead of subscribing to the camera images topic,
+
+00:01:03.048 --> 00:01:05.540
+we'll define a new service for the camera node.
+
+00:01:05.540 --> 00:01:08.375
+Let's call this service capture-image.
+
+00:01:08.375 --> 00:01:12.379
+The request message definition might be a custom message type called
+
+00:01:12.379 --> 00:01:16.459
+exposure time and the response might be an image message.
+
+00:01:16.459 --> 00:01:20.689
+The behavior executor node or any other node for that matter,
+
+00:01:20.689 --> 00:01:25.980
+can issue a call to the capture images service with a given exposure time setting.
+
+00:01:25.980 --> 00:01:29.210
+The camera node would then respond to the request
+
+00:01:29.209 --> 00:01:33.159
+by sending a message containing the resulting image.
+

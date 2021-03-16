@@ -1,0 +1,580 @@
+{
+  "data": {
+    "lesson": {
+      "id": 783427,
+      "key": "e0c61e8d-7eac-4807-8737-d2bd321ae7a2",
+      "title": "Getting Started",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Get started by exploring the Udacity Workspace, optionally installing a Virtual Machine, and learning prep materials to help you succeed in this program. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 783399,
+          "key": "47784838-aea6-4834-9ebb-79fbb3e135af",
+          "title": "Udacity Workspace Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "47784838-aea6-4834-9ebb-79fbb3e135af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783384,
+              "key": "08e2a676-4494-4038-963a-c0160a8c13c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Udacity Workspace Instructions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783385,
+              "key": "19072fa0-c0cf-4402-a94c-76baf9e62177",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Power of Udacity Workspaces\n\nUdacity is thrilled to offer you one-button access to a GPU-driven Light Ubuntu Linux desktop in the cloud. \n\nWhat does that mean to you? And why is it so important? \n\nAs a student in this program, you are not required to spend extra money to buy a high-performance Linux PC, boot a Linux OS inside a Virtual Machine, or install a dual boot. All that you need is a decent Internet connection and a Google Chrome browser. With that, you can work on computationally intensive robotic tasks in the cloud!      \n\n## Udacity Workspace in the Classroom\n\nIn a number of labs and projects for this program, you will find your computer environment already available in a \"Udacity Workspace\" online. This online tool includes GPU access where needed. \r\rThe workspace will open an IDE in the browser, backed by a light Ubuntu (Lubuntu) host.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783386,
+              "key": "e92e2ca3-a69c-460e-99d0-45cc36453831",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb513f_ide/ide.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e92e2ca3-a69c-460e-99d0-45cc36453831",
+              "caption": "\n",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783387,
+              "key": "2bb44543-9824-4d55-ae14-cf8623372686",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If your lab or project requires a GPU, you'll see a dialog for enabling a GPU Workspace. This dialog is because your GPU usage in the classroom is limited. You can see your remaining time in the lower left corner of the page, as well as an indicator showing whether or not the GPU is enabled.  \n\nNote that ***you must enable GPU*** in order to start the visual desktop. Without a GPU, you can only use the Udacity Workspace terminal in your browser.\n\n## Uploading and Downloading\n\nTo upload files and folders from your computer to the Workspace, click on the upper left <span class=\"mathquill\">\"+\"</span> sign.  A menu appears with file management options.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783388,
+              "key": "190c3918-d9da-4077-af71-cfd6e29e5ef8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb5150_upload/upload.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/190c3918-d9da-4077-af71-cfd6e29e5ef8",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783389,
+              "key": "da51c85c-5665-4ac9-b3d4-88b623e5ba64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To download, copy, rename, or move files in the Workspace, *right-click* the file to see the menu choices.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783390,
+              "key": "854539f0-6bdf-448e-9668-757e870b787e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb515e_menu-choices/menu-choices.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/854539f0-6bdf-448e-9668-757e870b787e",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783391,
+              "key": "2b55d9a1-e4ea-4770-bf5d-10bed3500546",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Guidelines\n\n* Store all your files in the `/home/workspace` directory so you can still access them after rebooting Ubuntu. **Any file stored outside of /home/workspace/ directory will be deleted after rebooting!!!**\n* You'll get an automated message after the first two minutes and then every 30 minutes to check if you are still using the server. Be sure to confirm or else you'll lose access to your current session and all of the files stored outside of the `/home/workspace` directory.  \n* Remember to disable your GPU once you are done with your session since you will only get 50 hours of GPU time. To disable the GPU, return to the classroom and next to the remaining GPU time, hit **DISABLE**. \n\n## Booting the Desktop\n1. Enable GPU Mode (if needed and provided)\n2. Click **GO TO DESKTOP**\n3. Wait for at least two minutes for Lubuntu to load\n4. Ignore the *Error(No session for PID ##)* when the desktop opens\n\nVoila! A Lubuntu desktop should now load in another browser tab!\n\n**Note**: Booting the Desktop will only work on Google Chrome! Do not bookmark visual desktop links or share them with anyone because you will not be able to get back to them. Udacity Workspaces uses a different instance, and hence a different link, at each boot.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783392,
+              "key": "a8c62c5e-c0d7-4733-8c43-9b09c4abb69b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb5179_visual-desktop/visual-desktop.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a8c62c5e-c0d7-4733-8c43-9b09c4abb69b",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783393,
+              "key": "ea61f907-8ffc-4dac-bbfe-0d7dc34d3263",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Desktop Tips\n\nUse the **Clipboard** in the toolbar on the left to copy and paste text snippets between your local machine and the Ubuntu server. Simply copy a snippet from your PC, paste it in the paste toolbar section, and then copy it back to an application in your Lubuntu desktop. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783394,
+              "key": "c99d1311-9749-40ea-9567-7a5c7aacd01d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb5186_copy-paste/copy-paste.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c99d1311-9749-40ea-9567-7a5c7aacd01d",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783395,
+              "key": "81382057-a03f-4a04-9111-90b12a06aa27",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Troubleshooting\n\nIf you have any difficulties with the **GO TO DESKTOP** step, try **REFRESH WORKSPACE** from the Menu on the instructions page:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783396,
+              "key": "263bacaa-b17c-45c8-9160-88fecd582c99",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb519b_refresh/refresh.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/263bacaa-b17c-45c8-9160-88fecd582c99",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 783397,
+              "key": "215a95ad-1d19-4db7-8eb3-5d3c56fb53d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Keep an eye out for the little red indicator next to **MENU** in the lower left corner. This indicates that there is new content or an update provided with the Udacity Workspace. \n\nIn order to add this new content to *your* workspace, you must complete the **RESET DATA** step. Be sure to download and backup any work you've done before executing this step, as all of your work will be overwritten with a new classroom instance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783398,
+              "key": "469efdc9-52ac-4afa-8580-d8d39e501df3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb51ae_reset/reset.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/469efdc9-52ac-4afa-8580-d8d39e501df3",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 783403,
+          "key": "f5129e35-b834-467d-8f95-3ce39bda3582",
+          "title": "Explore the Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f5129e35-b834-467d-8f95-3ce39bda3582",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783400,
+              "key": "167bf73b-79cb-4692-9daf-138425702114",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Explore the Udacity Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783401,
+              "key": "4310c773-7fdb-4e44-b6af-758e7dea0fc9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now’s your chance to explore the Udacity Workspace. Follow these steps to load the visual desktop:\n\n* Enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` Remember that the Workspace is best supported on **Google Chrome** and might not load on other browsers. \n\nThen, familiarize yourself with the Udacity Workspace by creating new files, copying items, and much more.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783438,
+              "key": "5e2b3f86-1e10-4326-bedf-47ec3e3262fc",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c783403xREACTrnhw9f2t",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-y7pg8",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 783414,
+          "key": "e8451596-f9a4-4ac3-8aca-e40d7d60efcc",
+          "title": "Optional: Virtual Machine",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e8451596-f9a4-4ac3-8aca-e40d7d60efcc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783404,
+              "key": "2eec783e-e709-4532-862f-df918cd79b93",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Optional: Virtual Machine",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783405,
+              "key": "57b5bd25-a571-43b8-bd44-00988244fb9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Alternatively, you may prefer to work on a local Linux host, instead of the Udacity Workspace in the cloud. In that case, we provide a virtual machine (VM) that includes everything you need. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783406,
+              "key": "bb6b6562-6e3a-42e4-8cdf-b66494cec1a4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb526b_vm-desktop/vm-desktop.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bb6b6562-6e3a-42e4-8cdf-b66494cec1a4",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 783407,
+              "key": "f9ca9554-8fc7-4e46-bb96-aaaf6e6fe96f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting up the VM\n\n### Download the image\nThe provided VM image is around (4+GB)! So, find yourself a good internet connection and download the [ compressed VM disk image](https://s3-us-west-1.amazonaws.com/udacity-robotics/Virtual+Machines/Lubuntu_071917/RoboVM_V2.1.0.zip). \n\n### Validate the image\n\nIf you need to validate the download of the image, here is the MD5 checksum:\n\n`MD5(Ubuntu 64-bit Robo V2.1.0.ova)= 95bfba89fbdac5f2c0a2be2ae186ddbb`\n\nIt may also be a good idea to keep a backup of this VM image to avoid downloading again if you need it. But just in case you do not do that there is a backup snapshot built into the VM that will allow you to restore it to its original state at any time!\n\n### Extract the Image\nTo extract the compressed image in Windows:\n1. Download the appropriate version of 7-zip from [here](http://www.7-zip.org/download.html)\n2. Right-click and select \"7-zip\" > \"Extract Here\"\n\nTo extract at the command line in macOS or Linux:\n1. Open the terminal and navigate to directory containing the compressed image\n2. execute `$ unzip robond_vm.zip`\n\n### Downloading a VM Player\nInside the zipped archive, in addition to the VM disk image, there are two other small configuration files that you may need.  \n\nWe recommend using [VMWare](http://www.vmware.com/) to run the VM.  VMWare provides the [Workstation Player](http://www.vmware.com/products/player/playerpro-evaluation.html) free for Windows and Linux operating systems.  \n\nThe [VMWare Fusion Player for Mac](http://www.vmware.com/products/fusion.html) only comes with a brief free trial period. To use the free Workstation player for Windows on a Mac, you can use BootCamp (a built in Mac tool) to create a Windows partition on your Mac and download the player for WIndows.  Alternatively, you can check out a free trial of VMWare Fusion and consider buying it.  \n\nDownload the appropriate player for your operating system and follow these OS-specific instructions:\n\n#### macOS\n\n1. Download and install VMware Player\n2. Download the image from supplied link\n3. Unzip the image \n4. Open VMware application\n5. Click “File”, then “New”\n6. Select “Import an existing virtual machine”\n7. Click “Choose File…” and navigate to your unzipped image\n8. Click “Save” when prompted for virtual machine name \n9. **If** an error appears, click “Retry”\n10. From here you should be launched into your new shiny virtual machine!\n\n#### Linux\n\n1. Download and install VMware Player\n2. Download the image from supplied link\n3. Unzip the image \n4. Open VMware Player\n5. Select “File” -> “Open a Virtual Machine“\n6. Navigate to the directory of the unzipped image and select the image\n7. If the player fails to open the image perform steps 5 and 6 one more time\n8. Select the imported image on the left side of the player\n9. Click “Run”\n10. From here you should be launched into your new shiny virtual machine!\n\n#### Windows\n\n1. Download and install VMware Player\n2. Download the image from supplied link\n3. Unzip the image \n4. Open VMware\n5. Press \"Open a Virtual Machine\"\n6. Navigate to the folder that contains the VM files\n7. Select the larger **.ova** file\n8. Wait file to be imported (may take some time)\n9. **If** an error appears click “Retry”\n10. From here you should be launched into your new shiny virtual machine!\n\n### Allocating Resources\nBefore getting your VM up and running, you will need to make sure that you allocate enough resources for it to operate efficiently. With your VM shutdown, navigate to the VM settings under the menu for your VM. Look for a section labeled \"Processors and Memory\"; this is where you will change the number of cores and amount of RAM that you allocate from your own machine to the VM. If you have the resources on your machine, we recommend allocating at least 2 processor cores and 4 GB of RAM. If you are able to allocate more resources, feel free to do so. The more you allocate the better performance you will get! You're now all set to boot up your VM!\n\n## First Boot\n\nUpon your first boot you will be prompted to choose a keyboard layout of your choice. Once you select a keyboard you will not be prompted for this again. If you would like to change your option you can reset this feature by entering `udacity_reset` in a terminal of your choice and restarting the VM.\n\nOnce you are up and running, you might be asked to input a password to enter the VM.  **The password for the VM is `robo-nd`**\n\nTo open a terminal in your VM press`ctrl-Alt-t` (or `ctrl-option-t` on a Mac). You should get a terminal window that looks like this:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783408,
+              "key": "0c3f0189-e417-45e9-a13b-ca070ecc6ccd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb527d_vm-terminal/vm-terminal.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c3f0189-e417-45e9-a13b-ca070ecc6ccd",
+              "caption": "",
+              "alt": "",
+              "width": 656,
+              "height": 407,
+              "instructor_notes": null
+            },
+            {
+              "id": 783409,
+              "key": "aaf0a7a3-384f-4a64-aa77-18614f3f8185",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You're now ready to follow along in your VM with the lessons in this program!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783410,
+              "key": "1bba8323-1a4f-44f9-999d-f881b4272385",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1bba8323-1a4f-44f9-999d-f881b4272385",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Install virtual machine software",
+                "Download the Udacity VM image",
+                "Run your virtual machine"
+              ],
+              "positive_feedback": "Great! You have the Udacity VM running and ready to go!",
+              "video_feedback": null,
+              "description": "Check the box when you have your virtual machine up and running!"
+            },
+            {
+              "id": 783411,
+              "key": "ea331686-79ae-455f-9696-8c1294d95974",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Common Questions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783412,
+              "key": "72b8f3e0-dc56-47d7-95c1-dad64b6bd0de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Question: What are are the minimum specs to run the VM on Windows 10?\n**Answer:** It depends on your host machine configuration. As a general rule, good performance requires 2 GB of RAM, 20 GB disk space, 4 logical cores.\nTip: Monitor the memory use and if you frequently see high(> 90%) swap values, then increase the VM memory.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783413,
+              "key": "c4f5046c-2301-4f63-b437-0058531b4555",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Question: Why can't we use VirtualBox to run the VM?\n\n**Answer:** The 3D graphics capabilities of VirtualBox are inferior to VMware, which is important since we will be using graphically intensive applications. Many people have reported slow performance even with VMware, and worse yet with VirtualBox, so best to avoid VirtualBox for now.\n\nBesides, VMware has free versions available for Windows and Linux, and free-trial version available for macOS.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783426,
+          "key": "adc1f9f4-b8a3-4783-8a32-1005e2029c7c",
+          "title": "Prep Material",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "adc1f9f4-b8a3-4783-8a32-1005e2029c7c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783415,
+              "key": "e97bcbc7-138e-4488-b96f-3276c3265ed6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Prep Material",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783416,
+              "key": "6a5ff6b8-2fd6-4d73-9029-761d53fc7115",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before you start tackling the lessons and projects in this program, you need to be familiar with:\n* GitHub and Markdown\n* Linux (command line)\n* C++",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783417,
+              "key": "55f49198-ebb6-434f-9150-22bf225210fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## GitHub and Markdown",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783418,
+              "key": "3d5325d0-df93-4058-b878-83a82e37f415",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb5296_github-logo/github-logo.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d5325d0-df93-4058-b878-83a82e37f415",
+              "caption": "",
+              "alt": "",
+              "width": 400,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 783419,
+              "key": "3e7f61c1-adc0-4572-a102-cf23590ba545",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you are unfamiliar with GitHub , Udacity has a brief [GitHub tutorial](https://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html) to get you started. Udacity also provides a more detailed [free course on git and GitHub.](https://www.udacity.com/course/how-to-use-git-and-github--ud775) \n\nTo learn about REAMDE files and Markdown, Udacity provides a [free course on READMEs](https://www.udacity.com/course/writing-readmes--ud777), as well. \n\nGitHub also provides a [tutorial about creating Markdown files](https://guides.github.com/features/mastering-markdown/).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783420,
+              "key": "151457a4-3a2d-4de3-8e03-9c7e54e94255",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Linux Command Line",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783421,
+              "key": "6a6ee540-cd8d-4e04-93a5-6d2a2b72d6d5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb52a4_liux-command-line/liux-command-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a6ee540-cd8d-4e04-93a5-6d2a2b72d6d5",
+              "caption": "",
+              "alt": "",
+              "width": 1472,
+              "height": 956,
+              "instructor_notes": null
+            },
+            {
+              "id": 783422,
+              "key": "9bb946a2-4dfb-4763-bf58-a7251dd2d69e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This Nanodegree program depends heavily on the Linux command line. If you’re unfamiliar with this tool, check out the free  [Udacity Linux Command Line Basics course](https://classroom.udacity.com/courses/ud595). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783423,
+              "key": "c82b531f-c7e7-4eeb-a2da-ddcd3b3c16ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## C++",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783424,
+              "key": "177f6c94-709b-41e1-8548-c45618423503",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beb52b4_c-logo/c-logo.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/177f6c94-709b-41e1-8548-c45618423503",
+              "caption": "",
+              "alt": "",
+              "width": 400,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 783425,
+              "key": "068bca74-2e86-4331-a968-bf753c78c1a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The quizes, labs, and projects in this program are all in C++ so you need a solid understanding of this programming language. If you’re unfalimar with C++, check out the [Sololearn C++ tutorial](https://www.sololearn.com/Course/CPlusPlus/) or the [Udacity free C++ for Programmers course](https://www.udacity.com/course/c-for-programmers--ud210). ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

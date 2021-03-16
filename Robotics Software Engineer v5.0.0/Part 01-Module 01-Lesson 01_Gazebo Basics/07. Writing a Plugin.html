@@ -1,0 +1,362 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Writing a Plugin
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Gazebo Basics
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. What is Gazebo.html">
+       02. What is Gazebo?
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Gazebo in the Workspace.html">
+       03. Gazebo in the Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Gazebo Components.html">
+       04. Gazebo Components
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Understanding the GUI.html">
+       05. Understanding the GUI
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Simulating your First Robot.html">
+       06. Simulating your First Robot
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Writing a Plugin.html">
+       07. Writing a Plugin
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Exploring the Building Editor.html">
+       08. Exploring the Building Editor
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Outro.html">
+       09. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          07. Writing a Plugin
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="writing-a-plugin">
+          Writing a Plugin
+         </h1>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Writing a Plugin
+         </p>
+        </h3>
+        <video controls="">
+         <source src="07. Writing a Plugin-9dNNn8GhVi4.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="07. Writing a Plugin-9dNNn8GhVi4.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="simple-steps-to-interact-with-a-world-in-gazebo-through-a-world-plugin">
+          Simple steps to interact with a World in Gazebo through a World plugin
+         </h2>
+         <h3 id="1--create-a-directory-for-scripts-inside-“myrobot”-to-store-a-hellocpp-file">
+          1- Create a directory for scripts inside “myrobot” to store a
+          <code>
+           hello.cpp
+          </code>
+          file
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot
+$ mkdir script
+$ cd script
+$ gedit hello.cpp</code></pre>
+         <p>
+          Inside
+          <code>
+           hello.cpp
+          </code>
+          , include this code:
+         </p>
+         <pre><code class="C++ language-C++">#include &lt;gazebo/gazebo.hh&gt;
+
+namespace gazebo
+{
+  class WorldPluginMyRobot : public WorldPlugin
+  {
+    public: WorldPluginMyRobot() : WorldPlugin()
+            {
+              printf("Hello World!\n");
+            }
+
+    public: void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
+            {
+            }
+  };
+  GZ_REGISTER_WORLD_PLUGIN(WorldPluginMyRobot)
+}</code></pre>
+         <h3 id="2--create-a-cmakeliststxt-file">
+          2- Create a CMakeLists.txt file
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot
+$ gedit CMakeLists.txt</code></pre>
+         <p>
+          Inside,
+          <code>
+           CMakeLists.txt
+          </code>
+          , include the following:
+         </p>
+         <pre><code class="C++ language-C++">cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+find_package(gazebo REQUIRED)
+include_directories(${GAZEBO_INCLUDE_DIRS})
+link_directories(${GAZEBO_LIBRARY_DIRS})
+list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
+
+add_library(hello SHARED script/hello.cpp)
+target_link_libraries(hello ${GAZEBO_LIBRARIES})</code></pre>
+         <h3 id="3--create-a-build-directory-and-compile-the-code">
+          3- Create a build directory and compile the code
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot
+$ mkdir build
+$ cd build/
+$ cmake ../
+$ make # You might get errors if your system is not up to date!
+$ export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/workspace/myrobot/build</code></pre>
+         <h3 id="4--open-your-world-file-and-attach-the-plugin-to-it">
+          4- Open your world file and attach the plugin to it
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot/world/
+$ gedit myworld</code></pre>
+         <p>
+          Copy this code
+          <br/>
+          ```html
+          <br/>
+          <plugin filename="libhello.so" name="hello">
+          </plugin>
+         </p>
+         <pre><code>and paste it under </code></pre>
+         <p>
+          html
+          <br/>
+          <world name="default">
+           ```
+          </world>
+         </p>
+         <h3 id="5--launch-the-world-file-in-gazebo-to-load-both-the-world-and-the-plugin">
+          5- Launch the world file in Gazebo to load both the world and the plugin
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/myrobot/world/
+$ gazebo myworld</code></pre>
+         <h3 id="6--visualize-the-output">
+          6- Visualize the output
+         </h3>
+         <ul>
+          <li>
+           A
+           <code>
+            Hello World!
+           </code>
+           message is printed in the terminal. This message interacts with the Gazebo World that includes your two-wheeled robot.
+          </li>
+         </ul>
+         <h2 id="troubleshooting">
+          Troubleshooting
+         </h2>
+         <p>
+          In case your plugins failed to load, you'll have to check and troubleshoot your error. The best way to troubleshoot errors with Gazebo is to launch it with the verbose as such:
+         </p>
+         <pre><code class="sh language-sh">$ gazebo myworld --verbose</code></pre>
+         <h2 id="github-repo">
+          GitHub Repo
+         </h2>
+         <p>
+          I hope you followed along with these instructions, built your first model in Gazebo, included in an empty world, and interacted with the world through a World Plugin. You can always clone this lab from GitHub by clicking
+          <a href="https://github.com/udacity/RoboND-myrobot" rel="noopener noreferrer" target="_blank">
+           here
+          </a>
+          . Follow the instructions in the Readme file to launch the world.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="08. Exploring the Building Editor.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('07. Writing a Plugin')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

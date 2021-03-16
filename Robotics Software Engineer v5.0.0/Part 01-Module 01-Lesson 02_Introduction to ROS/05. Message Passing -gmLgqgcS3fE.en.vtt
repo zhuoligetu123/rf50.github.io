@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.024
+Now that we've discussed topics,
+
+00:00:02.024 --> 00:00:05.040
+let's talk about the messages transmitted over them.
+
+00:00:05.040 --> 00:00:08.745
+ROS has a wide variety of predefined message types.
+
+00:00:08.744 --> 00:00:14.369
+There are messages types for communicating physical quantities such as positions,
+
+00:00:14.369 --> 00:00:18.899
+velocities, accelerations, rotations, and duration.
+
+00:00:18.899 --> 00:00:24.659
+There are also messages for communicating sensor readings such as laser scans,
+
+00:00:24.660 --> 00:00:28.004
+images, point clouds, and inertial measurements.
+
+00:00:28.004 --> 00:00:32.744
+The number of message types available in ROS is actually quite staggering.
+
+00:00:32.744 --> 00:00:35.280
+Doing a simple search on my system,
+
+00:00:35.280 --> 00:00:38.804
+I was able to count over 200 different message types.
+
+00:00:38.804 --> 00:00:42.210
+However, even with so many useful message types,
+
+00:00:42.210 --> 00:00:45.590
+there would still be times when you want to define your own.
+
+00:00:45.590 --> 00:00:47.945
+We'll tackle that later in this lesson.
+
+00:00:47.945 --> 00:00:53.884
+It's important to note that messages can contain any kind of data not just text.
+
+00:00:53.884 --> 00:00:59.674
+Here's an example of the message types associated with the topics we looked at earlier.
+
+00:00:59.674 --> 00:01:03.663
+In this case, the topic called camera_images transports
+
+00:01:03.664 --> 00:01:08.015
+image messages from the camera node to the position estimator node.
+
+00:01:08.015 --> 00:01:12.109
+Similarly, the wheel_encoders topic transports
+
+00:01:12.109 --> 00:01:17.400
+rotation messages from the wheel encoder node to the position estimator node.
+

@@ -1,0 +1,347 @@
+{
+  "data": {
+    "lesson": {
+      "id": 783349,
+      "key": "411ebd27-78de-4e0e-b683-0e1e0f669810",
+      "title": "Welcome",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this first lesson, you'll meet your instructors, learn about the structure of this program, and see the services available to you as a student.  ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/411ebd27-78de-4e0e-b683-0e1e0f669810/783349/1551502425181/Welcome+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/411ebd27-78de-4e0e-b683-0e1e0f669810/783349/1551502422639/Welcome+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 783313,
+          "key": "6d6b61af-7ec9-4387-ba18-fc6e033247fe",
+          "title": "The World of Robotics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6d6b61af-7ec9-4387-ba18-fc6e033247fe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783312,
+              "key": "a9c71e3c-6442-4733-8e1b-6e52ee529dac",
+              "title": "L01 A01 L State Of The Industry With SEb 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9PoZXr8dxFA",
+                "china_cdn_id": "9PoZXr8dxFA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783315,
+          "key": "680a8d23-5792-4d75-aee2-5af4da3ee29b",
+          "title": "Meet Your Instructors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "680a8d23-5792-4d75-aee2-5af4da3ee29b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783314,
+              "key": "c9b624cf-440a-4b35-9e8b-01aea3de7022",
+              "title": "Meet Your Instructors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ffI6E9PjTdc",
+                "china_cdn_id": "ffI6E9PjTdc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783319,
+          "key": "e3977cdd-1efc-4458-abde-6f52a7357fc1",
+          "title": "Projects You Will Build",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e3977cdd-1efc-4458-abde-6f52a7357fc1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783316,
+              "key": "5cdda81f-cef5-45e3-a391-f20e7310cec5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Projects You Will Build",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783317,
+              "key": "4c67989f-89c6-44d0-8ae5-0f89af980a15",
+              "title": "Projects You Will Build",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UtFOHJ3txoo",
+                "china_cdn_id": "UtFOHJ3txoo.mp4"
+              }
+            },
+            {
+              "id": 783318,
+              "key": "6b3daa61-1f50-49d6-8d3b-44b8f75d0883",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "List of projects that you will build throughout this program:\n* Project 1: Build My World \n* Project 2: Go Chase It!\n* Project 3: Where Am I?\n* Project 4: Map My World Robot\n* Project 5: Home Service Robot ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783324,
+          "key": "ee10d07f-cd8c-4b97-9080-a70579a4fd3c",
+          "title": "Student Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee10d07f-cd8c-4b97-9080-a70579a4fd3c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783320,
+              "key": "991e4eed-2f8b-4443-bd82-deb9faf589dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Support\n\nUdacity is committed to supporting you in completing this Nanodegree program! To that end, we have built several different channels to connect you with support from Udacity's network of mentors and reviewers, as well as your fellow students.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783321,
+              "key": "3c80e3f4-34dd-406e-9c1f-b96adcfc4614",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Student Hub\n\nJoin Student Hub to ask questions or chat with your fellow classmates and mentors. There are also community activities! Enter Student Hub by clicking on the blue message box button on the left sidebar.\n\n<center><a href=\"https://study-hall.udacity.com/\" target=\"_blank\"><button style=\"box-sizing: border-box; border-radius: 4px; background: #02B3E4; border: none; height: 44px; padding: 0 25px; color: white; cursor: pointer; font-family: Open Sans,sans-serif; display: inline-block; border: none; font-size: 12px; letter-spacing: 1px; font-weight: 600; text-transform: uppercase;\">STUDENT HUB</button></a></center>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783322,
+              "key": "bbada649-04f0-4695-91fe-350a0d15830a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Knowledge\n\n### Find Commonly Asked Questions and Answers\n\"Knowledge\" is where students post questions and get answers from the Udacity community. You can browse existing answers to questions about projects, technical issues and content. If you don't find the answer to your question, post it yourself to get a response from your classmates and Udacity mentors! \n\nCheck out Knowledge by clicking the button below. You can also access Knowledge by clicking the `Knowledge` panel on the bottom left of the navigation bar.\n\n<center><a href=\"https://knowledge.udacity.com/\" target=\"_blank\"><button style=\"box-sizing: border-box; border-radius: 4px; background: #02B3E4; border: none; height: 44px; padding: 0 25px; color: white; cursor: pointer; font-family: Open Sans,sans-serif; display: inline-block; border: none; font-size: 12px; letter-spacing: 1px; font-weight: 600; text-transform: uppercase;\">KNOWLEDGE</button></a></center>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783323,
+              "key": "93aa8c61-babd-493d-a5f7-f753d1257cf0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reviews\n\nA Udacity project reviewer will send you detailed feedback each time you submit a project. Sometimes, a reviewer might ask you to resubmit in order to meet specifications. In that case, an indication of required changes will also be provided. Note that you can submit a project as many times as needed to pass.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783326,
+          "key": "0eb0611a-1277-4861-bf1a-f2b26d4d673f",
+          "title": "Community Code of Conduct",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0eb0611a-1277-4861-bf1a-f2b26d4d673f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783325,
+              "key": "45635a1b-7876-441e-bec8-ca72d258723d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Community Code of Conduct\n\nYour experience in the Nanodegree program and community should be engaging, fulfilling, and positive. To that end, we have outlined the following system for reporting behavior that does not live up to Udacity’s standards, so that our staff can quickly address the issue. \n\nIf you witness or are experiencing any violations of our policies, please get in touch with us. All reports of suspected violations to the [Terms Of Service](https://www.udacity.com/legal/terms-of-service), [Community Code Of Conduct](https://www.udacity.com/legal/community-guidelines) or [Honor Code](https://www.udacity.com/legal/community-guidelines) should be submitted to [report@udacity.com](mailto:report@udacity.com). Below are examples of prohibited actions:\n\n- **Harassment:** Inappropriate, harassing, abusive, discriminatory, derogatory or violent comments or conduct. \n- **Discrimination:** Offensive comments related to gender or gender identity, sexual orientation, race, ethnicity, religion, national origin, disability or disease.\n- **Distributing inappropriate content:** Use of sexual, violent, graphic, or derogatory images.\n- **Bullying:** Deliberate intimidation, threats of violence or violent language directed against another person.\n- **Sexual harassment:** Unwelcome sexual attention.\n- **Defamation:** Obscene, fraudulent, indecent, or libelous acts that defame, abuse, harass, discriminate against or threaten others.\n- **Plagiarism:** Will not cheat on any homework assignment, projects or exams for the online courses and, specifically, will not plagiarize materials created by others.\n- **Self-injury or Suicide:** If you or someone you know is exhibiting signs of self-injury or suicide, find help at the [Suicide Prevention Lifeline](https://suicidepreventionlifeline.org/) in the U.S. and [Befrienders.org](https://www.befrienders.org/) globally. \n\nWhen a potential violation is brought to our attention, we will make every effort to investigate the case thoroughly and make a decision that is fair to all parties.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783330,
+          "key": "401f5dd8-f788-4fe2-9456-3a047552d9a2",
+          "title": "Deadline Policy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "401f5dd8-f788-4fe2-9456-3a047552d9a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783327,
+              "key": "5e23bf31-9877-4815-91cd-0a5799c9f0e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Deadline Policy\n\nWhen we use the term “deadline” with regards to Nanodegree program projects, we use it as a final deadline for passing all the projects. In contrary, a “due date” is an ongoing suggested due date for individual projects.\n\nIt is important to understand the distinctions between the two, as your progress in the program is measured against the deadlines we’ve established. Please see below for an explanation of what each usage means.\n\n## Term Deadline\n\nPassing a project, in this context, means that a Udacity Reviewer has marked your project as “Meets Specifications.” In order to complete a term, you have to pass all projects by the last day of the term.\n\nIf you do not pass all projects by the last day of the term, the following happens:\n\n* You will receive a 4-week extension to complete any outstanding projects. You will receive this extension a maximum of one time. Once you submit and pass all projects, you can enroll in the next term, which will potentially be with a later class. If you do not submit and pass all projects within the 4-week extension, you will be removed from the program.\n\n\n## Suggested Project Due Dates",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783328,
+              "key": "06ae5bba-4d84-4c2f-8351-f97e8d04297d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b21b079_project-due-1/project-due-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/06ae5bba-4d84-4c2f-8351-f97e8d04297d",
+              "caption": "Project Deadline ",
+              "alt": "Project Deadline ",
+              "width": 1076,
+              "height": 78,
+              "instructor_notes": null
+            },
+            {
+              "id": 783329,
+              "key": "0347221d-ed1c-437e-98f4-d48bda8f946d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The deadlines you see in your classroom are suggestions for when you should ideally pass each project. They are meant to help keep you on track so that you maintain an appropriate pace throughout the program—one that will see you graduate on time! \n\nPlease note that you can submit your project as many times as you need to. There are no penalties if you miss these suggested project due dates. However, you will be at risk of not passing all projects on time if you miss these due dates and fall behind. So, it is a recommended best practice to meet each suggested due date.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783332,
+          "key": "4c2ea0b1-f094-4f03-8689-77c43f31b007",
+          "title": "Content Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c2ea0b1-f094-4f03-8689-77c43f31b007",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783331,
+              "key": "c4e009b1-17a8-4034-988a-eb2c53be5e9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ** How long will I have access to Nanodegree program content after I graduate? **\n\nStudents who are enrolled in, or enroll in a term-based (i.e. not a subscription-based) Nanodegree program with a term that ends on or after October 3, 2018, will have extended access to a static version of the classroom content of their Nanodegree program for 12 months after the applicable Nanodegree program term end date. Access will include classroom content that will not be updated over time and services such as Knowledge Q&A. Such access will not include certain services, such as Student Hub, project reviews, workspaces, labs or quizzes.\n\nStudents who were enrolled in and graduated from a term-based Nanodegree program with a term that ended before October 3, 2018, and who had access to classroom content for that Nanodegree program up to that date, will have extended access to a static version of the classroom content of their Nanodegree program for 12 months that ends on October 3, 2019. Access will include classroom content that will not be updated over time along with services, such as Knowledge Q&A. This access will not include certain services, such as Student Hub, project reviews, workspaces, labs or quizzes.\n\nhttps://udacity.zendesk.com/hc/en-us/articles/360015665011-How-long-will-I-have-access-to-Nanodegree-program-content-after-I-graduate-",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783348,
+          "key": "c6e0e4fa-a813-4078-bdb0-0ec67487d918",
+          "title": "Let's Get Started!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c6e0e4fa-a813-4078-bdb0-0ec67487d918",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783345,
+              "key": "15a6a293-86d8-4a60-996e-3cac08dc321f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Let's Get Started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814575,
+              "key": "9d070f6a-28a3-4507-8be3-897e330f40c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you know what you will learn and where you can get help, you are ready to begin this journey in robotics. Let's get started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783346,
+              "key": "73508418-4deb-48db-ac22-81b220582262",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0d81cc_2-20-intro-to-rl-for-robotics1x/2-20-intro-to-rl-for-robotics1x.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/73508418-4deb-48db-ac22-81b220582262",
+              "caption": "",
+              "alt": "",
+              "width": 500,
+              "height": 500,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.605
+While message definitions and topic information can be informative,
+
+00:00:04.605 --> 00:00:08.100
+sometimes the best way to understand what is going on is
+
+00:00:08.099 --> 00:00:11.939
+to look at the messages themselves as they are published to a topic.
+
+00:00:11.939 --> 00:00:15.660
+For example, when the turtle rotates left and right,
+
+00:00:15.660 --> 00:00:18.225
+which axis is it actually rotating about?
+
+00:00:18.225 --> 00:00:20.400
+What are the units of rotation?
+
+00:00:20.399 --> 00:00:24.184
+A rotation expressed in terms of degree or radians?
+
+00:00:24.184 --> 00:00:26.320
+To get the answer of this question,
+
+00:00:26.320 --> 00:00:29.240
+you can use the command rostopic echo.
+
+00:00:29.239 --> 00:00:31.820
+Let's dive right into its usage,
+
+00:00:31.820 --> 00:00:40.000
+rostopic echo, and then the name of the topic, turtle1 cmd _vel.
+
+00:00:40.000 --> 00:00:42.859
+Again, if you've forgotten the name of a topic,
+
+00:00:42.859 --> 00:00:48.350
+you can easily find it by using tab completion or by using the command rostopic list,
+
+00:00:48.350 --> 00:00:50.495
+which you were introduced to earlier.
+
+00:00:50.494 --> 00:00:52.189
+When you hit Enter,
+
+00:00:52.189 --> 00:00:55.085
+the terminal cursor will move to a new line
+
+00:00:55.085 --> 00:00:58.340
+and it will appear as though nothing has happened.
+
+00:00:58.340 --> 00:01:01.550
+Fear not, rostopic echo is simply waiting
+
+00:01:01.549 --> 00:01:05.045
+for a message to be published on the cmd _vel topic.
+
+00:01:05.045 --> 00:01:07.775
+In order to publish a message to the topic,
+
+00:01:07.775 --> 00:01:13.715
+we must jump all the way back to the console window for a turtle_teleop _key node.
+
+00:01:13.715 --> 00:01:17.280
+I'm going to hit the left arrow key.
+
+00:01:17.280 --> 00:01:24.245
+As expected, the turtle turned counterclockwise by some angle for about one second.
+
+00:01:24.245 --> 00:01:28.219
+I'd estimate that the actual number is greater than 90 degrees,
+
+00:01:28.219 --> 00:01:31.519
+but perhaps less than 135 degrees.
+
+00:01:31.519 --> 00:01:36.140
+Let's go back to the rostopic echo terminal and see what happened.
+
+00:01:36.140 --> 00:01:37.775
+As you can see,
+
+00:01:37.775 --> 00:01:39.215
+we've got the message.
+
+00:01:39.215 --> 00:01:42.260
+All of the velocity components are zero with
+
+00:01:42.260 --> 00:01:46.190
+the exception of the z-component of the angular velocity.
+
+00:01:46.189 --> 00:01:48.754
+Here, we see a value of two.
+
+00:01:48.754 --> 00:01:52.399
+This tell us that when the turtle rotates counterclockwise,
+
+00:01:52.400 --> 00:01:55.260
+it is doing so around the z-axis.
+
+00:01:55.260 --> 00:01:58.520
+The magnitude of the velocity tell us that the units
+
+00:01:58.519 --> 00:02:02.164
+associated with the movement are probably in radiance per second.
+
+00:02:02.165 --> 00:02:06.890
+A quick math check tells us that two radians correspond to
+
+00:02:06.890 --> 00:02:12.090
+approximately 114.6 degrees. There we have it.
+
+00:02:12.090 --> 00:02:16.310
+You should now have some understanding about rostopic echo and
+
+00:02:16.310 --> 00:02:20.890
+how it can be used for investigating the messages passing over a topic.
+
+00:02:20.889 --> 00:02:24.469
+As a side note, the developers are for us elected
+
+00:02:24.469 --> 00:02:27.830
+to standardize around SI unit whenever applicable.
+
+00:02:27.830 --> 00:02:30.140
+So length is measured in meters.
+
+00:02:30.139 --> 00:02:32.014
+Mass is measured in kilograms.
+
+00:02:32.014 --> 00:02:33.829
+Time is measured in seconds.
+
+00:02:33.830 --> 00:02:36.930
+Angles are measured in radians and so on.
+
+00:02:36.930 --> 00:02:40.835
+You've now completed a brief tour of the ros command line tools.
+
+00:02:40.835 --> 00:02:42.770
+Armed with this knowledge and
+
+00:02:42.770 --> 00:02:46.115
+a general understanding of the ROS communications architecture,
+
+00:02:46.115 --> 00:02:48.020
+you should be prepared to move on to
+
+00:02:48.020 --> 00:02:52.320
+the next step setting out your first catkin workspace.
+

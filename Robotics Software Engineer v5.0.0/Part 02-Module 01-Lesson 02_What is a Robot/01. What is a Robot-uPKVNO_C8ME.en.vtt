@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.705
+This program is all about robotics.
+
+00:00:03.705 --> 00:00:05.910
+Before we jump right into it,
+
+00:00:05.910 --> 00:00:08.910
+let's ask the question, what is a robot?
+
+00:00:08.910 --> 00:00:11.880
+If you look up the definition of a robot online,
+
+00:00:11.880 --> 00:00:15.300
+you read that a robot is a machine capable of
+
+00:00:15.300 --> 00:00:19.304
+carrying out a complex series of actions automatically,
+
+00:00:19.304 --> 00:00:22.814
+especially, one programmable by a computer.
+
+00:00:22.815 --> 00:00:26.550
+Indeed, a robot is a machine designed by
+
+00:00:26.550 --> 00:00:30.734
+humans and can come in many different shapes and sizes.
+
+00:00:30.734 --> 00:00:34.350
+It doesn't necessarily need to look like us, humans.
+
+00:00:34.350 --> 00:00:37.320
+In fact, most robot don't.
+
+00:00:37.320 --> 00:00:41.475
+A robot's shape depends mainly on its purpose.
+
+00:00:41.475 --> 00:00:47.435
+For example, a cleaning robot might look like a small remote controlled toy car.
+
+00:00:47.435 --> 00:00:51.125
+A flying robot might look like a mini-helicopter,
+
+00:00:51.125 --> 00:00:54.125
+a mini-winged aircraft or a quad-copter.
+
+00:00:54.125 --> 00:00:55.564
+On the other hand,
+
+00:00:55.564 --> 00:00:57.739
+a robot that interacts with people,
+
+00:00:57.740 --> 00:00:59.675
+often looks like us.
+
+00:00:59.674 --> 00:01:02.659
+Whether a robot looks like us or not,
+
+00:01:02.659 --> 00:01:05.390
+any machine that you refer to as a robot
+
+00:01:05.390 --> 00:01:08.644
+should have the three essential ingredients of robotics;
+
+00:01:08.644 --> 00:01:12.769
+perception, decision-making, and action.
+
+00:01:12.769 --> 00:01:17.599
+These three ingredients are dependent on each other and are connected in a cycle.
+
+00:01:17.599 --> 00:01:22.789
+A robot uses its sensors to perceive the world around it.
+
+00:01:22.790 --> 00:01:27.490
+Then, robot analyzes the sensor measurements to make decisions.
+
+00:01:27.489 --> 00:01:34.009
+Finally, the robot uses its actuators to take actions based on decisions made.
+
+00:01:34.010 --> 00:01:38.870
+Roboticists often debate if household appliances such
+
+00:01:38.870 --> 00:01:43.780
+as a washing machine or a toaster should be referred to as a robot.
+
+00:01:43.780 --> 00:01:47.974
+What do you think? Is any household appliance a robot?
+
+00:01:47.974 --> 00:01:49.655
+To answer this question,
+
+00:01:49.655 --> 00:01:52.579
+you should identify if your household appliance has
+
+00:01:52.579 --> 00:01:57.209
+the three essentially ingredients of robotics that we'll be exploring in this lesson.
+

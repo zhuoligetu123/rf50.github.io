@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.654
+Great work! In this lesson,
+
+00:00:02.654 --> 00:00:06.000
+you've seen a high level overview of the concepts behind ROS.
+
+00:00:06.000 --> 00:00:08.189
+We looked at how the ROS master,
+
+00:00:08.189 --> 00:00:10.859
+ROS's functions as a parameter server.
+
+00:00:10.859 --> 00:00:14.519
+And how it enables node to be connected over topics.
+
+00:00:14.519 --> 00:00:17.750
+Also, you've seen how ROS nodes communicate over
+
+00:00:17.750 --> 00:00:21.289
+these topics using Message Passing and Services.
+
+00:00:21.289 --> 00:00:25.849
+This pops up architecture is a powerful and flexible design paradigm,
+
+00:00:25.850 --> 00:00:29.425
+that will allow you to build a variety of robotics applications.
+
+00:00:29.425 --> 00:00:32.520
+Additionally, you've explored The [inaudible] and Package.
+
+00:00:32.520 --> 00:00:35.115
+Using ROS's powerful command line tools.
+
+00:00:35.115 --> 00:00:39.990
+These tools will help you build and debug ROS based systems going forward.
+
+00:00:39.990 --> 00:00:44.490
+Next, you will learn how to build a basic cross package called "Simple Art".
+
+00:00:44.490 --> 00:00:46.929
+For real world robotics applications,
+
+00:00:46.929 --> 00:00:49.519
+you will always start by creating a new workspace,
+
+00:00:49.520 --> 00:00:51.660
+and then adding software packages to it.
+
+00:00:51.659 --> 00:00:55.169
+Which is exactly what we're going to do in the next lesson.
+

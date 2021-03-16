@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.850
+While perception and decision-making are
+
+00:00:02.850 --> 00:00:05.580
+probably the most challenging pieces of robotics,
+
+00:00:05.580 --> 00:00:08.759
+the most exciting part is definitely action.
+
+00:00:08.759 --> 00:00:13.830
+Robots can take action in many ways and for many different purposes.
+
+00:00:13.830 --> 00:00:16.440
+Like moving from one place to another,
+
+00:00:16.440 --> 00:00:18.690
+speeding up or slowing down,
+
+00:00:18.690 --> 00:00:24.990
+taking a new sensor measurement or even communicating with humans or other robots.
+
+00:00:24.989 --> 00:00:28.379
+Motors and actuators might turn wheels or
+
+00:00:28.379 --> 00:00:33.284
+propellers on a mobile robot or activate joints in robotic arm.
+
+00:00:33.284 --> 00:00:36.839
+A robot might take other actions as well,
+
+00:00:36.840 --> 00:00:40.230
+like power on a laser scanner to take a measurement or
+
+00:00:40.229 --> 00:00:44.594
+emit a light or sound or send a communication message.
+
+00:00:44.594 --> 00:00:50.649
+In this course, you'll get a chance to build and simulate active robotic systems.
+

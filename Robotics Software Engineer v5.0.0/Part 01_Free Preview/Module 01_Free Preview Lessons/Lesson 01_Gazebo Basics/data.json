@@ -1,0 +1,644 @@
+{
+  "data": {
+    "lesson": {
+      "id": 729176,
+      "key": "9b7f4396-2279-4c4b-a785-4142bd00ad8c",
+      "title": "Gazebo Basics",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to simulate your first robot in Gazebo and interact with its world using a Plugin.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/9b7f4396-2279-4c4b-a785-4142bd00ad8c/729176/1543375558206/Gazebo+Basics+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/9b7f4396-2279-4c4b-a785-4142bd00ad8c/729176/1543375555222/Gazebo+Basics+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 729143,
+          "key": "be23129a-12cd-451c-b768-8585f203515a",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be23129a-12cd-451c-b768-8585f203515a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729139,
+              "key": "a02356bd-973a-47cd-9c23-dd33d907ca18",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785474,
+              "key": "45b717ec-b765-4578-ba63-4aa0c5abac0a",
+              "title": "Introduction ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WcopqZR4818",
+                "china_cdn_id": "WcopqZR4818.mp4"
+              }
+            },
+            {
+              "id": 729141,
+              "key": "97ec7d64-a6b1-419f-b948-994bf2d61503",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Gazebo Basics Lesson Roadmap\n\n* What is Gazebo?\n* Gazebo in the Workspace\n* Gazebo Components\n* Understanding the GUI \n* Simulating your First Robot\n* Writing a Plugin\n* Exploring the Building Editor",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729180,
+              "key": "f477be4d-5c25-460c-9486-8b9b9744e249",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/September/5baeb679_gazebo-logo/gazebo-logo.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f477be4d-5c25-460c-9486-8b9b9744e249",
+              "caption": "",
+              "alt": "",
+              "width": 687,
+              "height": 319,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 729147,
+          "key": "a4126a12-7e7e-46ef-8d75-38c720934e83",
+          "title": "What is Gazebo?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4126a12-7e7e-46ef-8d75-38c720934e83",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729144,
+              "key": "0892b482-dbc5-4d70-a47c-cd951588d95e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is Gazebo?\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729145,
+              "key": "6305581c-7bb1-4523-805b-e0d8672246d2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/September/5baeb6cd_gazebo-gui/gazebo-gui.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6305581c-7bb1-4523-805b-e0d8672246d2",
+              "caption": "",
+              "alt": "",
+              "width": 3360,
+              "height": 2100,
+              "instructor_notes": null
+            },
+            {
+              "id": 729146,
+              "key": "20416471-feee-48a1-8f1d-ce6116deed55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Gazebo is a physics-based, high fidelity 3D simulator for robotics. Gazebo provides the ability to accurately simulate one or more robots in complex indoor and outdoor environments filled with static and dynamic objects, realistic lighting, and programmable interactions.\n\nGazebo facilitates robotic design, rapid prototyping, testing, and simulation of real-life scenarios. While Gazebo is platform agnostic and runs on Windows, Mac, and Linux, it is mostly used in conjunction with the Robotics Operating System (ROS) running on Linux systems. You will learn how to use ROS in the upcoming lessons.  Simply put, Gazebo is an essential tool for every roboticist.\r\r## Gazebo Features\n\nGazebo has eight features that you can take advantage of:\n1. **Dynamics Simulation:** Model a robot's dynamics with a high-performance physics engine.\n2. **Advanced 3D Graphics:** Render your environment with high-fidelity graphics, including lighting, shadows, and textures. \n3. **Sensors:** Add sensors to your robot, generate data, and simulate noise.\n4. **Plugins:** Write a plugin to interact with your world, robot, or sensor.\n5. **Model Database:** Download a robot or environment from Gazebo library or build your own through their engine.\n6. **Socket-Based Communication:** Interact with Gazebo running on a remote server through [socket-based](https://en.wikipedia.org/wiki/Network_socket) communication.\n7. **Cloud Simulation:** Run Gazebo on a server and interact with it through a browser.\n8. **Command Line Tools:** Control your simulated environment through the command line tools.\n\nThis lesson will focus on Gazebo’s four main features including **Dynamics Simulation**, **Advanced 3D Graphics**, **Plugins**,  and **Model Database.** For more information on Gazebo and its history visit the [Gazebo website](http://gazebosim.org/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729150,
+          "key": "61ce00e8-b2ab-4f97-a566-1aac50ca3cb5",
+          "title": "Gazebo in the Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "61ce00e8-b2ab-4f97-a566-1aac50ca3cb5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729148,
+              "key": "fa0bb7d4-6527-4bf6-b90f-49942739f35c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gazebo in the Workspace\n\nFollow these simple steps to boot up Gazebo in your Workspace:\n\n* First, enable the GPU on your workspace by clicking `Enable GPU.`\n* Open the visual desktop by clicking on `Go to Desktop.` The workspace is best supported on **Google Chrome** and might not load on other browsers.\n* Then, update and upgrade the Workspace image to get the latest features of Gazebo. To do so, open a terminal, and write the following statement:\n```sh\n$ sudo apt-get update && sudo apt-get upgrade -y \n```\n**Note**: Remember to update and upgrade your image after each reboot since these updates(or any package that you install) are not permanent. Ignore any error you get while upgrading. \n\n\n* Now launch Gazebo from the terminal by typing:\n```sh\n$ gazebo\n```\n\nBe advised that occasionally Gazebo gets stuck in a loading loop. If Gazebo does not fully load after about one minute, try closing it by pressing Ctrl+C while the Gazebo terminal is active. Then, try running the command again to restart Gazebo.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729188,
+              "key": "984c21bc-a235-44b2-b80d-ff376bb99c61",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view6dp3k14q9zb",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-1ykyo89go3a",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Go TO Desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 729152,
+          "key": "8b12a23a-f47d-4eab-85bb-2a04f7de7281",
+          "title": "Gazebo Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b12a23a-f47d-4eab-85bb-2a04f7de7281",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729151,
+              "key": "dd584a9b-91ea-496d-a59d-b8bcd331dc49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gazebo Components\n\nThere are six components involved in running an instance of a Gazebo simulation:\n\n1. Gazebo Server \n2. Gazebo Client\n3. World Files\n4. Model Files\n5. Environment Variables\n6. Plugins\n\n## 1- Gazebo Server \n\nThe first main component involved in running an instance of a Gazebo simulation is the Gazebo Server or also known by **gzserver**.\n\n**gzserver** performs most of the heavy-lifting for Gazebo. It is responsible for parsing the description files related to the scene we are trying to simulate, as well as the objects within. It then simulates the complete scene using a physics and sensor engine.\n\nWhile the server can be launched independently by using the following command in a terminal:\n```sh\n$ gzserver\n```\nIt does not have any GUI component. Running **gzserver** in a so-called headless mode can come in handy in certain situations, but we will talk more about that in future lessons. \n\n## 2- Gazebo Client\n\nThe second main component involved in running an instance of a Gazebo simulation is the Gazebo Client or also known by **gzclient**.\n\n**gzclient** on the other hand provides the very essential Graphical Client that connects to the **gzserver** and renders the simulation scene along with useful interactive tools. While you can technically run **gzclient** by itself using the following command:\n```sh\n$ gzclient\n``` \nit does nothing at all (except consume your compute resources), since it does not have a **gzserver** to connect to and receive instructions from. \n\n### Combining Gazebo Server and Gazebo Client\n\nIt is a common practice to run **gzserver** first, followed by **gzclient**, allowing some time to initialize the simulation scene, objects within, and associated parameters before rendering it. To make our lives easier, there is a single intuitive command that necessarily launches both the components sequentially:\n```sh\n$ gazebo\n``` \n\n## 3- World Files \n\nA **world** file in Gazebo contains all the elements in the simulated environment. These elements are your robot model, its environment, lighting, sensors, and other objects. You have the ability to save your simulation to a world file that usually has a `.world` extension. \n\nGazebo can also read the content of a world file from your disk to generate the simulation. To launch the simulation from a **world** file, type:\n```sh\n$ gazebo <yourworld>.world\n``` \n\nThe **world** file is formatted using the **Simulation Description Format** or [SDF](http://sdformat.org/spec?ver=1.6&elem=world) for short. Here’s the basic format of an **SDF** **world** file: \n```html\n<?xml version=\"1.0\" ?>\n<sdf version=\"1.5\">\n  <world name=\"default\">\n    <physics type=\"ode\">\n      ...\n    </physics>\n    \n    <scene>\n      ...\n    </scene>\n\n    <model name=\"box\">\n      ...\n    </model>\n\n    <model name=\"sphere\">\n      ...\n    </model>\n\n    <light name=\"spotlight\">\n      ...\n    </light>\n\n  </world>\n</sdf>\n``` \n\n## 4- Model Files \n\nFor simplification, you must create a separate **SDF** file of your robot with exactly the same format as your **world** file. This **model** file should only represent a single model (ex: a robot) and can be imported by your **world** file. The reason why you need to keep your model in a separate file is to use it in other projects. To include a **model** file of a robot or any other model inside your **world** file, you can add the following code to the **world’s** **SDF** file:\n```html\n<include>\n  <uri>model://model_file_name</uri>\n</include>\n```\n\n## 5- Environment Variables\n\nThere are many environment variables that Gazebo uses, primarily to locate files (world, model, …) and set up communications between **gzserver** and **gzclient**. While working on a robotic project, you’ll leave these variables as default.\nHere’s an example of a variable that Gazebo uses:\n\n`GAZEBO_MODEL_PATH:` List of directories where Gazebo looks to populate a model file. \n \n## 6- Plugins\n\nTo interact with a world, model, or sensor in Gazebo, you can write plugins. These plugins can be either loaded from the command line or added to your **SDF** world file.  You’ll learn about World Plugins later in the lesson.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729158,
+          "key": "1ab85484-7812-4394-9f7f-a576f2c6f697",
+          "title": "Understanding the GUI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1ab85484-7812-4394-9f7f-a576f2c6f697",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729153,
+              "key": "ba007411-3bd2-4904-ad6d-259cf2100745",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Understanding the GUI",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729714,
+              "key": "b76f089f-bac3-4112-8d9a-217e60f7043f",
+              "title": "Understanding the GUI",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YJtzU64YTlg",
+                "china_cdn_id": "YJtzU64YTlg.mp4"
+              }
+            },
+            {
+              "id": 729155,
+              "key": "d6385c6f-252a-4490-b655-07861171e94a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The Gazebo GUI is divided into four major sections:\n1. Scene \n2. Side Panel\n3. Toolbars\n4. Menu\n\n## Scene\nThe scene is where you will be spending most of your time, whether creating a simulation or running one. While you can use a trackpad to navigate inside the scene, a mouse is highly recommended.\n\nYou can pan the scene by pressing the left mouse button and dragging. If you hold down SHIFT in addition, you can now rotate the view. You can zoom in and out by using the mouse scroll or pressing and dragging the RMB.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729156,
+              "key": "7ea4f98b-45b5-4e91-92d5-9e5c5b5f16c7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/September/5baeb813_gazebo-mouse/gazebo-mouse.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7ea4f98b-45b5-4e91-92d5-9e5c5b5f16c7",
+              "caption": "",
+              "alt": "",
+              "width": 2153,
+              "height": 872,
+              "instructor_notes": null
+            },
+            {
+              "id": 729157,
+              "key": "984bb3eb-472f-425a-bd6a-d40bd70d2326",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Side Panel\nThe side panel on the left consists of three tabs: \n1. World\n2. Insert\n3. Layers\n\n### `World`\nThis tab displays the lights and models currently in the scene. By clicking on individual model, you can view or edit its basic parameters like position and orientation. In addition, you can also change the physics of the scene like gravity and magnetic field via the Physics option. The GUI option provides access to the default camera view angle and pose.\n\n### `Insert`\nThis is where you will find objects (models) to add to the simulation scene. Left click to expand or collapse a list of models. To place an object in the scene, simply left-click the object of interest under the Insert tab; this will bind the object to your mouse cursor, and now you can place it anywhere in the scene by left-clicking at that location.\n\n### `Layers` \nThis is an optional feature, so this tab will be empty in most cases. To learn more about Layers, click [here](http://gazebosim.org/tutorials?tut=visual_layers&cat=build_robot).\n\n## Top Toolbar\nNext, we have a toolbar at the top. It provides quick access to some cursor types, geometric shapes, and views.\n\n### `Select mode` \nSelect mode is the most commonly used cursor mode. It allows you to navigate the scene.\n\n### `Translate mode` \nOne way to change an object's position is to select the object in the world tab on the side panel and then change its pose via properties. This is cumbersome and also unnatural, the translate mode cursor allows you to change the position of any model in the scene. Simply select the cursor mode and then use the proper axis to drag the object to its desired location.\n\n### `Rotate mode`\nSimilar to translate mode, this cursor mode allows you to change the orientation of any given model.\n\n### `Scale mode`\nScale mode allows you to change the scale, and hence, overall size of any model.\n\n### `Undo/Redo`\nSince we humans are best at making mistakes, the undo tool helps us revert our mistakes. On the other hand if you undid something that you did not intend to, the redo tool can come to the rescue. \n\n### `Simple shapes`\nYou can insert basic 3D models like cubes, spheres, or cylinders into the scene.\n\n### `Lights`\nAdd different light sources like a spotlight, point light, or directional light to the scene.\n\n### `Copy/Paste`\nThese tools let you copy/paste models in the scene. On the other hand, you can simply press Ctrl+C to copy and Ctrl+V to paste any model. \n\n### `Align`\nThis tool allows you to align one model with another along one of the three principal axes.\n\n### `Change view`\nThe change view tool lets you view the scene from different perspectives like top view, side view, front view, bottom view. \n\n## Bottom Toolbar\nThe Bottom Toolbar has a neat play and pause button. This button allows you to pause the simulation and conveniently move objects around. This toolbar also displays data about the simulation, such as the simulation time, the real time, and the relationship between the two. There is also an frames-per-second counter that can be found to gauge your system's performance for any given scene. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751770,
+              "key": "96c5e607-1869-42bf-b3d2-dac70ed7c247",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Menu\nThe Menu: Some of the menu options are duplicated in the Toolbars or as right-click context menu options in the Scene. If you click on Edit, you can switch to the Building Editor to design building or the Model Editor to build models. We will be working in both of these features in the upcoming concepts. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751771,
+              "key": "eb526b9a-6463-4e83-8bbd-b0c811b4aabc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bc52383_menu/menu.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eb526b9a-6463-4e83-8bbd-b0c811b4aabc",
+              "caption": "",
+              "alt": "",
+              "width": 1200,
+              "height": 365,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 729162,
+          "key": "2879a5a3-45e8-4c97-843d-f71c241c0753",
+          "title": "Simulating your First Robot",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2879a5a3-45e8-4c97-843d-f71c241c0753",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729159,
+              "key": "de31b9ba-32ef-4818-934e-65eaefa200ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simulating your First Robot",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785480,
+              "key": "711ed72e-6f21-444c-9101-1da8fbf3a544",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create Directories\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785475,
+              "key": "f4d3305a-35d0-40db-8c29-d52acf4021a1",
+              "title": "Simulating your first Robot: Create Directories",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hDZ5MXNTX0U",
+                "china_cdn_id": "hDZ5MXNTX0U.mp4"
+              }
+            },
+            {
+              "id": 785481,
+              "key": "290f8edd-fe09-4497-91eb-8e2b4c4fa237",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 1- Create directories for the world and model files\n\n```sh\n$ mkdir /home/workspace/myrobot\n$ cd /home/workspace/myrobot\n$ mkdir world && mkdir model\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785482,
+              "key": "e20a4619-00e6-4ffc-91b6-d0fcf3eb016d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Construct the Robot's Chassis",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785476,
+              "key": "19c8a5c4-aee2-4404-b427-7c6591a987ed",
+              "title": "Simulating your first Robot: Construct the Robot's Chassis",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IkG0PjAvdJI",
+                "china_cdn_id": "IkG0PjAvdJI.mp4"
+              }
+            },
+            {
+              "id": 785484,
+              "key": "29b02f6f-6f0e-4291-a8dd-846d3bfb9867",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 2- Launch Gazebo and switch to the Model Editor\n\nFirst, launch Gazebo from the terminal: \n```sh\n$ gazebo\n```\nIn Gazebo, click on edit -> Model Editor.\n\n### 3- Create the robot chassis \n\nIn the model editor, drop a box anywhere in the scene and double click it to change its position and dimension as follows:\nMake sure to scroll down to the bottom to edit the object position\n * `Position`: [X, Y, Z] = [0, 0, 0.2] \n * `Visual and Collision geometry`: [X, Y, Z] = [0.3, 1.0, 0.1]\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785483,
+              "key": "ebc2de35-dd59-4cd0-a1f1-878862d2c9e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Attach Wheels to the Robot's Chassis",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785477,
+              "key": "648dbd30-487a-4f17-9e0f-288c17ab7629",
+              "title": "Simulating your first Robot: Attach Wheels to the Robot",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7VIj6Cvogjc",
+                "china_cdn_id": "7VIj6Cvogjc.mp4"
+              }
+            },
+            {
+              "id": 729161,
+              "key": "bd657493-b73b-4efe-ad4d-7cf1ef39a760",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 4- Construct the robot wheels\n\nInsert a cylinder inside the scene and then edit its position and orientation: \nMake sure to scroll down to the bottom to edit the object position.\n * `Z pose` = 0.2 \n * `Roll` = 1.5707 rad\n * `Visual and Collision geometry`: [Radius, Length] = [0.2, 0.1]\n\nThen, create a copy of this wheel and paste it on the other side of the robot.\n\n### 5- Connect wheels to the chassis via joints\n * `Joint Types`: Revolute\n * `Parent`: Chassis\n * `Child`: Wheel\n * `Joint Axis`: Z\n * `Align Links Joint 1:` mid x; minimum y and reverse\n * `Align Links Joint 2:` mid x; maximum y and reverse\n\n### 6- Save the model file\n * `Model`: Save it as **robot** in  **/home/workspace/myrobot/model**\n *  Exit the Model Editor \n\n### 7- Save the world file\n * `World`: Save is as **myworld** in **/home/workspace/myrobot/world** \n *  Exit Gazebo \n\n## Launching Gazebo world file from disk \nTo load the world file with Gazebo open a terminal, change the working directory and launch it:\n```sh\n$ cd /home/workspace/myrobot/world/           \n$ gazebo myworld  \n```\n\n### SDF Format\n\nAs you learned earlier, world and model files in Gazebo are formatted using the **Simulation Description Format** or [SDF](http://sdformat.org/spec?ver=1.6&elem=world) for short. You can now open the contents of either the world file or model file and check to see if it follows the **SDF**  format. To open the contents of the world file inside a terminal type in the following:\n```ssh\n$ cd /home/workspace/myrobot/world/           \n$ gedit myworld  \n```\nThe SDF format in this world file should follow this general structure: \n```html\n<?xml version=\"1.0\" ?>\n<sdf version=\"1.5\">\n  <world name=\"default\">\n    <physics type=\"ode\">\n      ...\n    </physics>\n    \n    <scene>\n      ...\n    </scene>\n\n    <model name=\"box\">\n      ...\n    </model>\n\n    <model name=\"sphere\">\n      ...\n    </model>\n\n    <light name=\"spotlight\">\n      ...\n    </light>\n\n  </world>\n</sdf>\n``` \n\nNext, you will learn how to write a Plugin to interact with your World in Gazebo. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729166,
+          "key": "afacabeb-de29-4e84-a6f5-3b53de32bbf2",
+          "title": "Writing a Plugin",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "afacabeb-de29-4e84-a6f5-3b53de32bbf2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729163,
+              "key": "9debbd63-3ca6-4ffc-ba0d-687430a6ed75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Writing a Plugin ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729716,
+              "key": "b087d600-7980-4789-aa17-95e16b3f658f",
+              "title": "Writing a Plugin",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9dNNn8GhVi4",
+                "china_cdn_id": "9dNNn8GhVi4.mp4"
+              }
+            },
+            {
+              "id": 729165,
+              "key": "50c1b4d2-3330-450f-83d3-ea3abd761ca9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Simple steps to interact with a World in Gazebo through a World plugin\n\n### 1- Create a directory for scripts inside “myrobot” to store a `hello.cpp` file\n```sh\n$ cd /home/workspace/myrobot\n$ mkdir script\n$ cd script\n$ gedit hello.cpp\n```\nInside `hello.cpp`, include this code:\n\n``` C++\n#include <gazebo/gazebo.hh>\n\nnamespace gazebo\n{\n  class WorldPluginMyRobot : public WorldPlugin\n  {\n    public: WorldPluginMyRobot() : WorldPlugin()\n            {\n              printf(\"Hello World!\\n\");\n            }\n\n    public: void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)\n            {\n            }\n  };\n  GZ_REGISTER_WORLD_PLUGIN(WorldPluginMyRobot)\n}\n```\n\n### 2- Create a CMakeLists.txt file\n```sh\n$ cd /home/workspace/myrobot\n$ gedit CMakeLists.txt\n```\nInside, `CMakeLists.txt`, include the following: \n```C++\ncmake_minimum_required(VERSION 2.8 FATAL_ERROR)\n\nfind_package(gazebo REQUIRED)\ninclude_directories(${GAZEBO_INCLUDE_DIRS})\nlink_directories(${GAZEBO_LIBRARY_DIRS})\nlist(APPEND CMAKE_CXX_FLAGS \"${GAZEBO_CXX_FLAGS}\")\n\nadd_library(hello SHARED script/hello.cpp)\ntarget_link_libraries(hello ${GAZEBO_LIBRARIES})\n```\n### 3- Create a build directory and compile the code\n```sh\n$ cd /home/workspace/myrobot\n$ mkdir build\n$ cd build/\n$ cmake ../\n$ make # You might get errors if your system is not up to date!\n$ export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/workspace/myrobot/build\n```\n### 4- Open your world file and attach the plugin to it \n```sh\n$ cd /home/workspace/myrobot/world/\n$ gedit myworld\n```\nCopy this code\n```html    \n<plugin name=\"hello\" filename=\"libhello.so\"/>\n``` \nand paste it under \n```html\n<world name=\"default\">```\n\n### 5- Launch the world file in Gazebo to load both the world and the plugin \n ```sh\n$ cd /home/workspace/myrobot/world/\n$ gazebo myworld\n```\n\n### 6- Visualize the output \n* A `Hello World!` message is printed in the terminal. This message interacts with the Gazebo World that includes your two-wheeled robot.\n\n## Troubleshooting\nIn case your plugins failed to load, you'll have to check and troubleshoot your error. The best way to troubleshoot errors with Gazebo is to launch it with the verbose as such:\n```sh\n$ gazebo myworld --verbose\n``` \n## GitHub Repo\nI hope you followed along with these instructions, built your first model in Gazebo, included in an empty world, and interacted with the world through a World Plugin. You can always clone this lab from GitHub by clicking [here](https://github.com/udacity/RoboND-myrobot). Follow the instructions in the Readme file to launch the world.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729170,
+          "key": "00f1b2c7-0fe6-4bad-9bf6-79efb1a9070d",
+          "title": "Exploring the Building Editor",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "00f1b2c7-0fe6-4bad-9bf6-79efb1a9070d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729167,
+              "key": "96353392-9621-44c5-b549-30e8e666036e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exploring the Building Editor",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729731,
+              "key": "075642df-3152-4bc9-946b-75f6a8beeb14",
+              "title": "Exploring the Building Editor ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TQ9XSYq_hM8",
+                "china_cdn_id": "TQ9XSYq_hM8.mp4"
+              }
+            },
+            {
+              "id": 751751,
+              "key": "01adf704-1b7d-41e4-8d51-931c991d135f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bc51981_screen-shot-2018-10-15-at-3.47.56-pm/screen-shot-2018-10-15-at-3.47.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/01adf704-1b7d-41e4-8d51-931c991d135f",
+              "caption": "",
+              "alt": "",
+              "width": 1734,
+              "height": 1682,
+              "instructor_notes": null
+            },
+            {
+              "id": 729169,
+              "key": "6cc3dd6c-c916-4091-92c6-cb5e547dda26",
+              "title": "Building Editor",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6cc3dd6c-c916-4091-92c6-cb5e547dda26",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Open a terminal and launch Gazebo",
+                "Click edit and launch the Building Editor",
+                "Inside the 2D view section, create walls and edit their length, height, and thickness",
+                "Add features such as window, door, and/or stairs",
+                "Add colors and/or textures",
+                "Save your model to `/home/workspace/myrobot/model`",
+                "Exit the building editor and go back to the Gazebo main interface"
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "Follow these steps to design a house for your robot with the **Building Editor** tool in Gazebo:"
+            }
+          ]
+        },
+        {
+          "id": 729175,
+          "key": "179c9946-f117-4d32-8406-d7ec2e0fe38d",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "179c9946-f117-4d32-8406-d7ec2e0fe38d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729171,
+              "key": "66e21886-fc6a-4e06-b0fc-b554509e2fba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729829,
+              "key": "6cd627cd-e23d-434e-be0e-7fdf14184f87",
+              "title": "Outro ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JVE7hn1Ztr4",
+                "china_cdn_id": "JVE7hn1Ztr4.mp4"
+              }
+            },
+            {
+              "id": 729173,
+              "key": "ffbc5f0a-ea95-487c-9a60-f6d67b738483",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tutorials\nClick [here](http://gazebosim.org/tutorials) to access Gazebo official tutorials. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729174,
+              "key": "00dae378-0cbd-44de-8c9a-38f2769a5daf",
+              "title": "Outro",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "00dae378-0cbd-44de-8c9a-38f2769a5daf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I explored the tutorials.",
+                "I built at least an additional robot such as a humanoid, 4 wheeled mobile robot, robotic arm, or other."
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "What’s next ?"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

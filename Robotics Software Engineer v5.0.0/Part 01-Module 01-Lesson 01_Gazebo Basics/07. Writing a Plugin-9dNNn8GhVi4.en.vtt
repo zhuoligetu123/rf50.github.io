@@ -1,0 +1,145 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.294
+Now, that you've built a robot modeling gazebo and included it in a word Scene,
+
+00:00:05.294 --> 00:00:09.464
+let's write a C++ plugin to interact with this word.
+
+00:00:09.464 --> 00:00:16.605
+The aim is to print the hello world message as soon as the word is located in gazebo.
+
+00:00:16.605 --> 00:00:24.255
+First, create a script folder in myrobot directory to store the C++ code.
+
+00:00:24.254 --> 00:00:29.564
+Navigate to myrobot, create the script directory,
+
+00:00:29.565 --> 00:00:32.850
+then enter the script directory,
+
+00:00:32.850 --> 00:00:37.539
+and create a hello.cpp file.
+
+00:00:40.909 --> 00:00:46.589
+Inside hello.cpp, you need to write the plugin code to interact with
+
+00:00:46.590 --> 00:00:52.205
+the gazebo that will print the hello world message as soon as the simulation starts.
+
+00:00:52.204 --> 00:00:54.634
+Let's break it down into sections.
+
+00:00:54.634 --> 00:00:58.070
+First, with include, you're including
+
+00:00:58.070 --> 00:01:02.674
+a core set of basic gazebo functions to use in your code.
+
+00:01:02.674 --> 00:01:05.480
+Then, you are creating a plugin,
+
+00:01:05.480 --> 00:01:11.880
+WorldPluginMyRobot class that inherits from the gazebo WorldPlugin class.
+
+00:01:11.879 --> 00:01:16.459
+This class offers multiple functions and variables,
+
+00:01:16.459 --> 00:01:20.689
+but we'll be only using the constructor and one of the functions.
+
+00:01:20.689 --> 00:01:23.299
+Inside the constructor of this class,
+
+00:01:23.299 --> 00:01:26.224
+we are printing the hello world statement.
+
+00:01:26.224 --> 00:01:30.905
+The load function is mandatory and should always be included,
+
+00:01:30.905 --> 00:01:34.674
+as it receives information from the world file.
+
+00:01:34.674 --> 00:01:40.084
+The last step is to register the plugin with the simulator.
+
+00:01:40.084 --> 00:01:43.654
+To manage and build the C++ code effectively,
+
+00:01:43.655 --> 00:01:46.055
+you should compile it with CMake.
+
+00:01:46.055 --> 00:01:50.625
+CMake takes a CMake list.txt file as input.
+
+00:01:50.625 --> 00:01:54.930
+This text file describe to CMake how to build the code,
+
+00:01:54.930 --> 00:01:56.445
+where to install it,
+
+00:01:56.444 --> 00:01:59.339
+add, and link libraries to it.
+
+00:01:59.340 --> 00:02:01.935
+Back to myrobot directory,
+
+00:02:01.935 --> 00:02:05.984
+create the CMake list.txt file.
+
+00:02:05.984 --> 00:02:10.335
+Inside this file, paste the following instructions.
+
+00:02:10.335 --> 00:02:15.579
+The first line of code defines the minimum required version of CMake.
+
+00:02:15.579 --> 00:02:24.030
+Then, the text file is instructing CMake which directories to include and link to.
+
+00:02:24.030 --> 00:02:27.094
+Next, you'll have to build the code.
+
+00:02:27.094 --> 00:02:33.349
+To do so, create a build directory, navigate to it,
+
+00:02:33.349 --> 00:02:43.169
+and now build the code with CMake, and make.
+
+00:02:44.270 --> 00:02:49.930
+Note that you might get errors if your system is not up to date.
+
+00:02:49.930 --> 00:02:56.080
+Then, you will have to add the library path to the gazebo plugin path.
+
+00:02:56.080 --> 00:03:00.120
+Use the export command in the terminal.
+
+00:03:00.120 --> 00:03:04.520
+You still have to include this plugin file in your world file.
+
+00:03:04.520 --> 00:03:09.480
+So, navigate to the world directory and open the world file.
+
+00:03:11.479 --> 00:03:13.799
+Inside the world file,
+
+00:03:13.800 --> 00:03:17.930
+write a single line of code to include the plugin file.
+
+00:03:17.930 --> 00:03:21.890
+Finally, launch the world file in gazebo,
+
+00:03:21.889 --> 00:03:24.629
+and see if the plugin works.
+
+00:03:28.789 --> 00:03:34.134
+Here, you can see the hello world message printed in a terminal,
+
+00:03:34.134 --> 00:03:36.829
+which proves that the plugin is successfully
+
+00:03:36.830 --> 00:03:41.080
+capable of interacting with the world rebuilt.
+

@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.734
+So far, you have simulated a robot in Gazebo.
+
+00:00:03.734 --> 00:00:07.814
+Now, you will learn how to design a building to house it in.
+
+00:00:07.815 --> 00:00:10.800
+Since many robots are placed indoors,
+
+00:00:10.800 --> 00:00:13.950
+inside commercial or residential buildings,
+
+00:00:13.949 --> 00:00:16.699
+you will learn how to simulate such a space.
+
+00:00:16.699 --> 00:00:20.019
+There's a user-friendly cat tool in Gazebo known
+
+00:00:20.019 --> 00:00:23.585
+as the building editor which helps you accomplish this task.
+
+00:00:23.585 --> 00:00:25.880
+Let's get back to our workspace,
+
+00:00:25.879 --> 00:00:28.000
+and explore the building editor tool.
+
+00:00:28.000 --> 00:00:30.405
+To open the building editor,
+
+00:00:30.405 --> 00:00:33.880
+first launch Gazebo from a terminal,
+
+00:00:35.450 --> 00:00:39.734
+and then click edit building editor.
+
+00:00:39.734 --> 00:00:43.768
+The building editor is divided into three main sections,
+
+00:00:43.768 --> 00:00:46.964
+the palate, the 2D view,
+
+00:00:46.965 --> 00:00:48.510
+and the 3D view.
+
+00:00:48.509 --> 00:00:50.085
+Inside the 2D view,
+
+00:00:50.085 --> 00:00:52.980
+there's a graph paper and the scale.
+
+00:00:52.979 --> 00:00:56.265
+Here, you can design a building floor plan.
+
+00:00:56.265 --> 00:01:00.935
+To do that, you have to select from the pallet walls,
+
+00:01:00.935 --> 00:01:05.600
+windows, doors or even stairs.
+
+00:01:05.599 --> 00:01:10.534
+You can also add colors and texture to your building.
+
+00:01:10.534 --> 00:01:12.604
+With the import tool,
+
+00:01:12.605 --> 00:01:17.620
+you can import a map that you previously drew with your favorite cat software.
+
+00:01:17.620 --> 00:01:19.439
+Inside the 3D view,
+
+00:01:19.439 --> 00:01:21.974
+you can see a preview of your building.
+
+00:01:21.974 --> 00:01:27.844
+For now, create a space by drawing this U-shape in the building editor.
+
+00:01:27.844 --> 00:01:31.519
+I chose this sketch because of its simplicity.
+
+00:01:31.519 --> 00:01:38.959
+This shape has the dimensions of 10 meters by 10 meters with a thickness of 2.5 meters.
+
+00:01:38.959 --> 00:01:44.030
+Now, adjust the scale then select walls,
+
+00:01:44.030 --> 00:01:47.070
+and start drawing the floor plan.
+
+00:01:56.329 --> 00:02:02.954
+Next, you can double-click on any wall to 2D view to edit its height,
+
+00:02:02.954 --> 00:02:07.269
+length, start, and end position.
+
+00:02:07.640 --> 00:02:13.180
+Finally, apply a blue color to your house.
+
+00:02:16.669 --> 00:02:18.769
+In the 3D view,
+
+00:02:18.770 --> 00:02:21.594
+you can see a preview of the house you just built.
+
+00:02:21.594 --> 00:02:24.259
+Once you are satisfied with your design,
+
+00:02:24.259 --> 00:02:28.139
+save it to the model directory of your project.
+
+00:02:39.590 --> 00:02:45.935
+Now, this model can be easily imported to the Gazebo word to house a robot.
+
+00:02:45.935 --> 00:02:53.129
+Finally, exit the building editor and go back to the Gazebo word main interface.
+

@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.490
+Congratulations, you've just built three fundamental application with Gazebo.
+
+00:00:05.490 --> 00:00:08.009
+In the model editor tool of Gazebo,
+
+00:00:08.009 --> 00:00:12.449
+you simulated a two-wheeled robot and included it in a Gazebo world.
+
+00:00:12.449 --> 00:00:16.289
+Next, you have the plug-in to interact with the world.
+
+00:00:16.289 --> 00:00:18.794
+Then, in the building editor tool,
+
+00:00:18.795 --> 00:00:21.179
+you both have space to house your robot.
+
+00:00:21.179 --> 00:00:24.780
+I hope you are now able to differentiate between a model,
+
+00:00:24.780 --> 00:00:27.975
+a world, and a plug-in in Gazebo.
+
+00:00:27.975 --> 00:00:33.304
+This is just the beginning as there is a lot more to learn with Gazebo.
+
+00:00:33.304 --> 00:00:37.009
+You will be learning some of the advanced topics in the next lessons.
+
+00:00:37.009 --> 00:00:39.739
+For now, spend some time practicing and
+
+00:00:39.740 --> 00:00:42.700
+explore the official Gazebo tutorials on their site.
+
+00:00:42.700 --> 00:00:46.595
+I included the link for you and description section below.
+
+00:00:46.594 --> 00:00:48.769
+Once you feel that you practice enough,
+
+00:00:48.770 --> 00:00:50.970
+move on to the project.
+
