@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.459
+At this point, you might be thinking,
+
+00:00:02.459 --> 00:00:04.890
+I could really use a break from performing
+
+00:00:04.889 --> 00:00:08.804
+math calculations or there must be a better way.
+
+00:00:08.804 --> 00:00:10.650
+Well, there is.
+
+00:00:10.650 --> 00:00:14.040
+You'll briefly be introduced to the notation used to represent
+
+00:00:14.039 --> 00:00:17.137
+multidimensional measurement and motion constraints.
+
+00:00:17.138 --> 00:00:21.540
+And then you'll learn about information matrices and information vectors.
+
+00:00:21.539 --> 00:00:25.199
+These are data structures that will store constraint to information
+
+00:00:25.199 --> 00:00:29.549
+and simplify the process of solving the linear system of equations.
+
+00:00:29.550 --> 00:00:31.245
+In a linear system,
+
+00:00:31.245 --> 00:00:36.100
+adding a constraint is as easy as adding several values to the matrix and vector.
+
+00:00:36.100 --> 00:00:39.965
+Then, when you've added all the information, you can solve it.
+
+00:00:39.965 --> 00:00:43.640
+After that, we're going to face the unfortunate truth that
+
+00:00:43.640 --> 00:00:47.494
+much of what robots experience in the world just isn't linear.
+
+00:00:47.494 --> 00:00:51.079
+We're going to look at how we can cope with this by once again,
+
+00:00:51.079 --> 00:00:56.884
+linearizing the nonlinear motion and measurement models using our favorite Jacobian's.
+
+00:00:56.884 --> 00:01:02.239
+Lastly, it is not always efficient to solve a system of equations analytically.
+
+00:01:02.240 --> 00:01:05.180
+So we will revisit a numerical technique that you learned
+
+00:01:05.180 --> 00:01:08.820
+earlier and apply it to graph optimization.
+

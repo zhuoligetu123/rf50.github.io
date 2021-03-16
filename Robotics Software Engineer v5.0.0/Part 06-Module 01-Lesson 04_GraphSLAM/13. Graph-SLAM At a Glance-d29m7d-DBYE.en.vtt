@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.970
+Congratulations on learning graph SLAM.
+
+00:00:02.970 --> 00:00:05.940
+I found this algorithm quite challenging to learn.
+
+00:00:05.940 --> 00:00:07.770
+There's a fair bit of math to sift
+
+00:00:07.769 --> 00:00:11.099
+through and there are a lot of intricacies to its operation.
+
+00:00:11.099 --> 00:00:14.698
+If I were you, I would be proud of getting this far.
+
+00:00:14.698 --> 00:00:16.649
+Since the start of this lesson,
+
+00:00:16.649 --> 00:00:20.820
+you've learned how to construct a graph of poses and features how to
+
+00:00:20.820 --> 00:00:25.185
+define the constraints both in one-dimensional and multi-dimensional systems,
+
+00:00:25.184 --> 00:00:28.169
+and how to solve a system of equations to determine
+
+00:00:28.170 --> 00:00:32.255
+the most likely set of poses given the observations.
+
+00:00:32.255 --> 00:00:34.150
+You then looked at how to handle
+
+00:00:34.149 --> 00:00:37.884
+non-linear measurement in motion constraints by linearizing them,
+
+00:00:37.884 --> 00:00:41.320
+and how to solve a system of equations iteratively until
+
+00:00:41.320 --> 00:00:44.804
+convergence to achieve the best results.
+
+00:00:44.804 --> 00:00:48.010
+That's a lot to cover in one lesson, but you did it.
+
+00:00:48.009 --> 00:00:53.349
+Next, you'll be learning a specific graph-based SLAM approach called RTAB-Map.
+
+00:00:53.350 --> 00:00:56.560
+Erica will help you understand some practical applications of
+
+00:00:56.560 --> 00:01:00.950
+RTAB-Map that will prepare you to implement it in future projects.
+

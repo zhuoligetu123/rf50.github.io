@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.160
+Welcome. In this lesson,
+
+00:00:02.160 --> 00:00:05.745
+you'll be learning about another flavor of slam called GraphSLAM.
+
+00:00:05.745 --> 00:00:10.620
+GraphSLAM is a slam algorithm that solves the full slam problem.
+
+00:00:10.618 --> 00:00:14.684
+This means that the algorithm recovers the entire path and map,
+
+00:00:14.685 --> 00:00:17.940
+instead of just the most recent pose and map.
+
+00:00:17.940 --> 00:00:23.150
+This difference allows it to consider dependencies between current and previous poses.
+
+00:00:23.149 --> 00:00:27.734
+One example of our GraphSLAM would be applicable is an underground mining.
+
+00:00:27.734 --> 00:00:29.480
+Large machines called bores,
+
+00:00:29.480 --> 00:00:32.355
+spent every day cutting away at the rockface.
+
+00:00:32.353 --> 00:00:34.390
+The environment changes rapidly,
+
+00:00:34.390 --> 00:00:38.094
+and it's important to keep an accurate map of the workspace.
+
+00:00:38.094 --> 00:00:40.920
+One way to map this space would be to drive a vehicle with
+
+00:00:40.920 --> 00:00:45.265
+a LIDAR around the environment and collects data about the surroundings.
+
+00:00:45.265 --> 00:00:46.814
+Then, after the fact,
+
+00:00:46.814 --> 00:00:51.009
+the data can be analyzed to create an accurate map of the environment.
+
+00:00:51.009 --> 00:00:53.009
+As you learn about GraphSLAM,
+
+00:00:53.009 --> 00:00:55.768
+you will understand some of the benefits of the algorithm,
+
+00:00:55.770 --> 00:01:00.840
+including the reduced need for significant onboard processing capability.
+
+00:01:00.840 --> 00:01:03.405
+One advantage that can be immediately appreciated
+
+00:01:03.405 --> 00:01:06.855
+is GraphSLAM's improved accuracy over FastSLAM.
+
+00:01:06.855 --> 00:01:11.520
+FastSLAM uses particles to estimate the robot's most likely pose.
+
+00:01:11.519 --> 00:01:13.739
+However, at any point in time,
+
+00:01:13.739 --> 00:01:18.034
+it's possible that there isn't a particle in the most likely location.
+
+00:01:18.034 --> 00:01:23.519
+In fact, the chances are slim to none especially, in large environments.
+
+00:01:23.519 --> 00:01:25.978
+Since GraphSLAM solves the full slam problem,
+
+00:01:25.980 --> 00:01:31.189
+this means that it can work with all of the data at once to find the optimal solution.
+
+00:01:31.188 --> 00:01:35.500
+FastSLAM uses tidbits of information with a finite number of particles,
+
+00:01:35.500 --> 00:01:37.188
+so there is room for error.
+
+00:01:37.188 --> 00:01:40.949
+In this lesson, you will learn the fundamentals of GraphSLAM;
+
+00:01:40.950 --> 00:01:42.510
+how to construct the graphs,
+
+00:01:42.510 --> 00:01:47.145
+how to optimize within their constraints to create the most likely set of poses and map,
+
+00:01:47.144 --> 00:01:51.000
+and how to overcome some of GraphSLAM's limitations.
+

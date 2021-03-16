@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.609
+So far, we have managed to represent
+
+00:00:02.609 --> 00:00:06.449
+the probability of grid cells using the factorization method.
+
+00:00:06.450 --> 00:00:09.449
+Due to factorization, we are now solving
+
+00:00:09.449 --> 00:00:11.969
+a binary estimation problem in which
+
+00:00:11.970 --> 00:00:16.310
+grid cells holds a static state that do not change over time.
+
+00:00:16.309 --> 00:00:21.984
+By static, I mean that the state of the system does not change during sensing.
+
+00:00:21.984 --> 00:00:25.577
+Locally, a filter to this problem exists,
+
+00:00:25.577 --> 00:00:28.149
+and is known as the Binary Bayes Filter.
+
+00:00:28.149 --> 00:00:30.699
+The Binary Bayes Filter solves
+
+00:00:30.699 --> 00:00:34.570
+the static problems by taking the log odds ratio of the belief.
+
+00:00:34.570 --> 00:00:39.145
+With static state, the belief is now a function of the measurements only.
+
+00:00:39.145 --> 00:00:41.935
+Depending on the measurement values reflected,
+
+00:00:41.935 --> 00:00:44.664
+the state of the grid cell is updated,
+
+00:00:44.664 --> 00:00:48.594
+and this belief is known by the inverse measurement model
+
+00:00:48.594 --> 00:00:53.155
+which represents the binary state of grid cells with respect to measurements.
+
+00:00:53.155 --> 00:00:56.710
+The inverse measurement model is generally used when
+
+00:00:56.710 --> 00:01:00.609
+measurements are more complex than the binary static state.
+
+00:01:00.609 --> 00:01:05.170
+Let's take an example of a mobile robot equipped with an RGB-D camera.
+
+00:01:05.170 --> 00:01:09.894
+Here's the robot mission is to estimate if this door is open or closed.
+
+00:01:09.894 --> 00:01:14.213
+The field of measurements represented by the camera images is huge
+
+00:01:14.213 --> 00:01:19.239
+compared to a simple binary state of the door either open or close.
+
+00:01:19.239 --> 00:01:22.299
+In such situation, it's always easier to use
+
+00:01:22.299 --> 00:01:25.869
+an inverse sensor model than a forward sensor model.
+
+00:01:25.870 --> 00:01:27.910
+As I mentioned earlier,
+
+00:01:27.909 --> 00:01:30.229
+the Binary Bayes Filter will solve
+
+00:01:30.230 --> 00:01:34.594
+the inverse measurement model with the log odds ratio representation.
+
+00:01:34.594 --> 00:01:39.019
+To represent the belief in log odds ratio for lt,
+
+00:01:39.019 --> 00:01:42.619
+Binary Bayes Filter divides the belief by
+
+00:01:42.620 --> 00:01:47.390
+its negate and then take the logarithmic form of this expression.
+
+00:01:47.390 --> 00:01:48.844
+The advantage of using
+
+00:01:48.844 --> 00:01:54.920
+a log odds ratio representation is to avoid probability instabilities near zero or one.
+

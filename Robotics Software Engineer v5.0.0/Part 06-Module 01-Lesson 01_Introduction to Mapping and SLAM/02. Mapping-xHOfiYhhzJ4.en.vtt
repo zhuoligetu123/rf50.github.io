@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+Robot mapping sounds quite similar to localization.
+
+00:00:03.180 --> 00:00:06.585
+Instead of assuming an old map and estimating your pose,
+
+00:00:06.585 --> 00:00:09.785
+you're assuming an old path and estimating your environment.
+
+00:00:09.785 --> 00:00:11.633
+So, what can be so hard?
+
+00:00:11.632 --> 00:00:13.689
+Well, your posts can be defined with
+
+00:00:13.689 --> 00:00:17.574
+some finite number of state variables such as the robot's x and y position.
+
+00:00:17.574 --> 00:00:20.184
+In most applications, there are only a handful.
+
+00:00:20.184 --> 00:00:23.844
+On the other hand, a map generally lies in a continuous space,
+
+00:00:23.844 --> 00:00:27.429
+and as a result, there are infinitely many variables used to describe it.
+
+00:00:27.429 --> 00:00:29.469
+Couple this with the uncertainties present in
+
+00:00:29.469 --> 00:00:32.289
+perception and the mapping task becomes even more challenging.
+
+00:00:32.289 --> 00:00:34.524
+I suppose, there may be
+
+00:00:34.524 --> 00:00:38.125
+other challenges too depending on the nature of the space that you are mapping.
+
+00:00:38.125 --> 00:00:40.960
+For instance, the geometry and whether the space is
+
+00:00:40.960 --> 00:00:44.079
+repetitive in the sense that many different places look alike.
+
+00:00:44.079 --> 00:00:45.725
+Exactly, you're right.
+
+00:00:45.725 --> 00:00:49.215
+If you're driving through a forest which only contains trees of one type,
+
+00:00:49.215 --> 00:00:51.780
+the kind where they are neatly planted in rows.
+
+00:00:51.780 --> 00:00:53.670
+You're going to have a lot of trouble distinguishing
+
+00:00:53.670 --> 00:00:56.024
+between trees and establishing correspondences.
+
+00:00:56.024 --> 00:00:58.140
+Thus, making it challenging to map the environment.
+
+00:00:58.140 --> 00:01:02.054
+In this module, you will be learning how to map an environment.
+
+00:01:02.054 --> 00:01:04.620
+There are a number of different mapping algorithms
+
+00:01:04.620 --> 00:01:07.859
+and we will be focusing on the occupancy grid mapping algorithm.
+
+00:01:07.859 --> 00:01:10.064
+With this algorithm, you can map
+
+00:01:10.064 --> 00:01:14.819
+any arbitrary environment by dividing it into a finite number of grid cells.
+
+00:01:14.819 --> 00:01:17.939
+By estimating the sets of each individual cell,
+
+00:01:17.939 --> 00:01:21.170
+you will end up with an estimated map of your environment.
+

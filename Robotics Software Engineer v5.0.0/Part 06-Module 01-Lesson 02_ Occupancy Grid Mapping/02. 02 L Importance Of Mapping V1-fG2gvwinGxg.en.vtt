@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+You just saw that nothing is required in
+
+00:00:03.120 --> 00:00:06.780
+undiscovered areas since the priority map is unavailable.
+
+00:00:06.780 --> 00:00:09.794
+But what if you just want to deploy a robot in your home?
+
+00:00:09.794 --> 00:00:13.259
+Well, you can almost always provide the robot with the map of
+
+00:00:13.259 --> 00:00:17.100
+your home and expect it to perform and navigate accurately.
+
+00:00:17.100 --> 00:00:23.350
+In this example, we'll test if a robot with a priority map will navigate as expected.
+
+00:00:23.480 --> 00:00:29.385
+Here's an example of a mobile robot with a robotic arm deployed inside the home.
+
+00:00:29.385 --> 00:00:32.925
+The map of this home is uploaded to the robot which is
+
+00:00:32.924 --> 00:00:36.500
+unable to perform instantaneous mapping of the environment.
+
+00:00:36.500 --> 00:00:43.009
+Now, the robot is being asked to pick up a cup from room A and deliver it to room B.
+
+00:00:43.009 --> 00:00:48.545
+It has computed its trajectory and starts navigating from room A to room B.
+
+00:00:48.545 --> 00:00:53.380
+Currently, the robot is only performing localization.
+
+00:00:53.380 --> 00:00:58.175
+Great! It has successfully moved from room A to room B,
+
+00:00:58.174 --> 00:01:00.229
+and delivered the cup.
+
+00:01:00.229 --> 00:01:03.079
+Let's try it again, but this time
+
+00:01:03.079 --> 00:01:06.560
+the resident of this house has rearranged the furniture.
+
+00:01:06.560 --> 00:01:11.314
+As a result, the passage between room A and B is now blocked.
+
+00:01:11.314 --> 00:01:16.549
+The robot is once again commanded to deliver an item to room B.
+
+00:01:16.549 --> 00:01:18.474
+This time, a plate.
+
+00:01:18.474 --> 00:01:21.579
+It picks up the plate, start navigating,
+
+00:01:21.579 --> 00:01:26.105
+and suddenly hits one of the pieces of furniture and get stopped.
+
+00:01:26.105 --> 00:01:28.055
+So, why did this happen,
+
+00:01:28.055 --> 00:01:31.160
+and how can we keep this from happening again?
+
+00:01:31.159 --> 00:01:36.604
+Well, the robot is unable to adapt to changes and update its own map.
+
+00:01:36.605 --> 00:01:42.245
+Mapping is critical in dynamic environments where objects may shift over time.
+
+00:01:42.245 --> 00:01:45.785
+If the map has been updated after differentials walls,
+
+00:01:45.784 --> 00:01:49.159
+rearrange, the robot would have taken a different passage.
+
+00:01:49.159 --> 00:01:51.759
+Thus, in changing environments,
+
+00:01:51.760 --> 00:01:54.454
+the robot should always perform instantaneous mapping
+
+00:01:54.454 --> 00:01:57.469
+in both discovered and undiscovered areas,
+
+00:01:57.469 --> 00:02:00.019
+even if the priority map is available.
+

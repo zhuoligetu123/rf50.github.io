@@ -1,0 +1,398 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Nonlinear Constraints
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      GraphSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Graphs.html">
+       02. Graphs
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Constraints.html">
+       03. Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Front-End vs Back-End.html">
+       04. Front-End vs Back-End
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Maximum Likelihood Estimation.html">
+       05. Maximum Likelihood Estimation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MLE Example.html">
+       06. MLE Example
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Numerical Solution to MLE.html">
+       07. Numerical Solution to MLE
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mid-Lesson Overview.html">
+       08. Mid-Lesson Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="09. 1-D to n-D.html">
+       09. 1-D to n-D
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Information Matrix and Vector.html">
+       10. Information Matrix and Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inference.html">
+       11. Inference
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Nonlinear Constraints.html">
+       12. Nonlinear Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Graph-SLAM at a Glance.html">
+       13. Graph-SLAM at a Glance
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to 3D SLAM With RTAB-Map.html">
+       14. Intro to 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="15. 3D SLAM With RTAB-Map.html">
+       15. 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Visual Bag-of-Words.html">
+       16. Visual Bag-of-Words
+      </a>
+     </li>
+     <li class="">
+      <a href="17. RTAB-Map Memory Management.html">
+       17. RTAB-Map Memory Management
+      </a>
+     </li>
+     <li class="">
+      <a href="18. RTAB-Map Optimization and Output.html">
+       18. RTAB-Map Optimization and Output
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Outro.html">
+       19. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          12. Nonlinear Constraints
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="nonlinear-constraints">
+          Nonlinear Constraints
+         </h1>
+         <p>
+          In the Localization lesson, you were introduced to nonlinear motion and measurement models. The idea that a robot only moves in a linear fashion is quite limiting, and so it became important to understand how to work with nonlinear models. In localization, nonlinear models couldn’t be applied directly, as they would have turned the Gaussian distribution into a much more complicated distribution that could not be computed in closed form (analytically, in a finite number of steps). The same is true of nonlinear models in SLAM - most motion and measurement constraints are nonlinear, and must be linearized before they can be added to the information matrix and information vector. Otherwise, it would be impractical, if not impossible, to solve the system of equations analytically.
+         </p>
+         <p>
+          Luckily, you will be able to apply the same procedure that you learned in the
+          <a href="https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/f5048868-4bd8-4e8d-8c6b-69bd559ed9db/lessons/f002d591-94af-4c70-aeac-ac2ed6f7b527/concepts/bb377b96-eed0-49e8-bad9-5d416ee80cd1" rel="noopener noreferrer" target="_blank">
+           EKF lesson
+          </a>
+          of Localization to linearize nonlinear constraints for SLAM.
+         </p>
+         <p>
+          If you recall, a Taylor Series approximates a function using the sum of an infinite number of terms. A linear approximation can be computed by using only the first two terms and ignoring all higher order terms. In multi-dimensional models, the first derivative is replaced by a Jacobian - a matrix of partial derivatives.
+         </p>
+         <h2 id="linearizing-constraints">
+          Linearizing Constraints
+         </h2>
+         <p>
+          A linearization of the measurement and motion constraints is the following,
+         </p>
+         <div class="mathquill">
+          g(u_t, x_{t-1}) \simeq g(u_t,\mu_{t-1}) + G_t(x_{t-1} - \mu_{t-1})
+         </div>
+         <div class="mathquill">
+          h(y_t) \simeq h(\mu_t)+H_t^i(y_t - \mu_t)
+         </div>
+         <p>
+          To linearize each constraint, you need a value for
+          <span class="mathquill ud-math">
+           \mu_{t-1}
+          </span>
+          or
+          <span class="mathquill ud-math">
+           \mu_t
+          </span>
+          to linearize about. This value is quite important since the linearization of a nonlinear function can change significantly depending on which value you choose to do so about. So, what
+          <span class="mathquill ud-math">
+           \mu_{t-1}
+          </span>
+          or
+          <span class="mathquill ud-math">
+           \mu_t
+          </span>
+          is a reasonable estimate for each constraint?
+         </p>
+         <p>
+          Well, when presented with a completed graph of nonlinear constraints, you can apply only the motion constraints to create a pose estimate,
+          <span class="mathquill ud-math">
+           [x_0 … x_t]^T
+          </span>
+          ,  and use this primitive estimate in place of
+          <span class="mathquill ud-math">
+           \mu
+          </span>
+          to linearize all of the constraints. Then, once all of the constraints are linearized and added to the matrix and vector, a solution can be computed as before, using
+          <span class="mathquill ud-math">
+           \mu = \Omega^{-1}\xi
+          </span>
+          .
+         </p>
+         <p>
+          This solution is unlikely to be an accurate solution. The pose vector used for linearization will be erroneous, since applying just the motion constraints will lead to a graph with a lot of drift, as errors accumulate with every motion. Errors in this initial pose vector will propagate through the calculations and affect the accuracy of the end result. This is especially so because the errors may increase in magnitude significantly during a poorly positioned linearization (where the estimated
+          <span class="mathquill ud-math">
+           \mu_t
+          </span>
+          is far from reality, or the estimated
+          <span class="mathquill ud-math">
+           \mu_t
+          </span>
+          lies on a curve where a small step in either direction will make a big difference).
+         </p>
+         <p>
+          To reduce this error, we can repeat the linearization process several times, each time using a better and better estimate to linearize the constraints about.
+         </p>
+         <h2 id="iterative-optimization">
+          Iterative Optimization
+         </h2>
+         <p>
+          The first iteration will see the constraints linearized about the pose estimate created using solely motion constraints. Then, the system of equations will be solved to produce a solution,
+          <span class="mathquill ud-math">
+           \mu
+          </span>
+          .
+         </p>
+         <p>
+          The next iteration will use this solution,
+          <span class="mathquill ud-math">
+           \mu
+          </span>
+          , as the estimate used to linearize about. The thought is that this estimate would be a little bit better than the previous; after all, it takes into account the measurement constraints too.
+         </p>
+         <p>
+          This process continues, with all consequent iterations using the previous solution as the vector of poses to linearize the constraints about. Each solution incrementally improves on the previous, and after some number of iterations the solution converges.
+         </p>
+         <h2 id="summary">
+          Summary
+         </h2>
+         <p>
+          Nonlinear constraints can be linearized using Taylor Series, but this inevitably introduces some error. To reduce this error, the linearization of every constraint must occur as close as possible to the true location of the pose or measurement relating to the constraint. To accomplish this, an iterative solution is used, where the point of linearization is improved with every iteration. After several iterations, the result,
+          <span class="mathquill ud-math">
+           \mu
+          </span>
+          , becomes a much more reasonable estimate for the true locations of all robot poses and features.
+         </p>
+         <p>
+          The workflow for GraphSLAM with nonlinear constraints is summarized below:
+         </p>
+         <ul>
+          <li>
+           Collect data, create graph of constraints,
+          </li>
+          <li>
+           Until convergence:
+           <ul>
+            <li>
+             Linearize all constraints about an estimate,
+             <span class="mathquill ud-math">
+              \mu
+             </span>
+             , and add linearized constraints to the information matrix &amp; vector,
+            </li>
+            <li>
+             Solve system of equations using
+             <span class="mathquill ud-math">
+              \mu = \Omega^{-1}\xi
+             </span>
+             .
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="13. Graph-SLAM at a Glance.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Nonlinear Constraints')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

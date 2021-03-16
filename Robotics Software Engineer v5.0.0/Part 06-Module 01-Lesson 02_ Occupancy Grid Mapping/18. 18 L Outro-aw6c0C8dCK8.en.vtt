@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.580
+Great job completing this lesson.
+
+00:00:02.580 --> 00:00:06.480
+So far, you've assumed exact trouble poses and learn how
+
+00:00:06.480 --> 00:00:10.905
+a static environment can be mapped with the occupancy grid mapping algorithm.
+
+00:00:10.904 --> 00:00:15.599
+This algorithm decompose the world into grid cells and implement
+
+00:00:15.599 --> 00:00:20.399
+a binary Bayes filter to estimate the occupancy of each cell individually.
+
+00:00:20.399 --> 00:00:23.579
+You've also learned how to fuse measurements from
+
+00:00:23.579 --> 00:00:27.929
+different sensors using De Morgan's law to build a single map.
+
+00:00:27.929 --> 00:00:31.589
+The mapping with null poses problem is a challenging one.
+
+00:00:31.589 --> 00:00:34.259
+But unfortunately, by solving this problem,
+
+00:00:34.259 --> 00:00:37.304
+you are still unable to generate maps in the real world.
+
+00:00:37.304 --> 00:00:41.814
+That's because both the poses and the map will be unknown to you.
+
+00:00:41.814 --> 00:00:45.349
+So, get ready to learn how to map real-world environments
+
+00:00:45.350 --> 00:00:49.320
+by solving a much more challenging problem in the upcoming lessons.
+

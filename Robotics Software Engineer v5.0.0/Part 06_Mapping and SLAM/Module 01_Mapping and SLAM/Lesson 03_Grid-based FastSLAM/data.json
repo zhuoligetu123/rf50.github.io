@@ -1,0 +1,1390 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462520,
+      "key": "72a73c04-a318-425f-97eb-7c38cca1efb0",
+      "title": "Grid-based FastSLAM",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to simultaneously map an environment and localize a robot relative to the map with the Grid-based FastSLAM algorithm. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/72a73c04-a318-425f-97eb-7c38cca1efb0/462520/1544270586020/Grid-based+FastSLAM+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/72a73c04-a318-425f-97eb-7c38cca1efb0/462520/1544270582555/Grid-based+FastSLAM+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 527790,
+          "key": "822d147f-5929-4023-a565-b3beac6e1af1",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "822d147f-5929-4023-a565-b3beac6e1af1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552120,
+              "key": "12a3a37d-0fef-4359-9181-77d10d150c4b",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oOJEtvCGEiw",
+                "china_cdn_id": "oOJEtvCGEiw.mp4"
+              }
+            },
+            {
+              "id": 552457,
+              "key": "0e391179-905e-44ca-8282-07b3f00483b9",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e391179-905e-44ca-8282-07b3f00483b9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the inputs and outputs to the SLAM problem?\n",
+                "answers": [
+                  {
+                    "id": "a1519341454155",
+                    "text": "Input: Map+Controls , Output: Measurements+Trajectory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341456447",
+                    "text": "Input: Map+Trajectory , Output: Measurements+Controls",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341456998",
+                    "text": "Input: Measurements+Controls , Output: Map+Trajectory",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519341458453",
+                    "text": "Input: Measurements, Output: Map+Trajectory",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527893,
+          "key": "7e9286bb-f623-4f25-906d-1da36cb1bfc0",
+          "title": "Online SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7e9286bb-f623-4f25-906d-1da36cb1bfc0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552121,
+              "key": "d7c2eaa5-c34c-466e-81ac-ce3530ee2d8c",
+              "title": "Online SLAM",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bQ9aQj46cMI",
+                "china_cdn_id": "bQ9aQj46cMI.mp4"
+              }
+            },
+            {
+              "id": 552676,
+              "key": "dd123260-1d00-4d21-8203-1267bbd54fe3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Online SLAM Problem\n* At time **t-1**, the robot will estimate its current pose **x<sub>t-1</sub>** and the map **m** given its current measurements **z<sub>t-1</sub>** and controls **u<sub>t-1</sub>**. \n* At time **t**, the robot will estimate its new pose **x<sub>t</sub>** and the map **m** given only its current measurements **z<sub>t</sub>** and controls **u<sub>t</sub>**. \n* At time **t+1**, the robot will estimate its current pose **x<sub>t+1</sub>** and the map **m** given the measurements **z<sub>t+1</sub>** and controls **u<sub>t+1</sub>**. \n\nThis problem can be modeled with the probability equation **p(x<sub>t</sub> , m | z<sub>1:t</sub> , u<sub>1:t</sub>)** where we solve the posterior represented by the instantaneous pose **x<sub>t</sub>** and the map **m** given the measurements **z<sub>1:t</sub>** and controls **u<sub>1:t</sub>**. Thus, with online SLAM we estimate variables that occur at time **t** only. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552458,
+              "key": "13196ff7-8821-450e-9849-6bee977552cb",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "13196ff7-8821-450e-9849-6bee977552cb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How will the robot solve the **Online** SLAM problem at `t+2`?\n",
+                "answers": [
+                  {
+                    "id": "a1519341578351",
+                    "text": "The robot will estimate the “x<sub>t+2</sub>” pose and map “m” given the measurements “z<sub>t+1</sub>” and controls “u<sub>t+1</sub>”",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341584166",
+                    "text": "The robot will estimate the “x<sub>t+2</sub>” pose and map “m<sub>2</sub>” given the measurements “z<sub>t+2</sub>” and controls “u<sub>t+2</sub>”",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341584782",
+                    "text": "The robot will estimate the “x<sub>t+2</sub>” pose and map “m” given the measurements “z<sub>t+2</sub>” and controls “u<sub>t+2</sub>”",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519341585302",
+                    "text": "The robot will estimate the “x<sub>t+1</sub>” pose and map “m” given the measurements “z<sub>t+1</sub>” and controls “u<sub>t+1</sub>”",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527894,
+          "key": "c44d8150-023e-4622-8d67-bf3a102559dd",
+          "title": "Full SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c44d8150-023e-4622-8d67-bf3a102559dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552123,
+              "key": "ec296b7b-38ac-497e-a091-207da2cdf870",
+              "title": "Full SLAM ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "L7aE6TFt2zw",
+                "china_cdn_id": "L7aE6TFt2zw.mp4"
+              }
+            },
+            {
+              "id": 552677,
+              "key": "62526ebd-89b9-4c92-9b60-0f258d395917",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Full SLAM Problem\n* At time **t-1**, the robot will estimate the robot pose **x<sub>t-1</sub>** and map **m**, given the measurements **z<sub>t-1</sub> **and controls **u<sub>t-1</sub>**. \n* At time **t**, the robot will estimate the entire path **x<sub>t-1:t</sub>** and map **m**, given all the measurements **z<sub>t-1:t</sub>** and controls **u<sub>t-1:t</sub>**. \n* At time **t+1**, the robot will estimate the entire path **x<sub>t-1:t+1</sub>** and map **m**, given all the measurements **z<sub>t-1:t+1</sub>** and controls **u<sub>t-1:t+1</sub>**. \n\nThis problem can be modeled with the probability equation **p(x<sub>1:t</sub> , m | z<sub>1:t</sub> u<sub>1:t</sub>)**, where we solve the posterior represented by the robot's trajectory **x<sub>1:t</sub>** and the map **m** given all the measurements **z<sub>1:t</sub>** and controls **u<sub>1:t</sub>**. Thus, with full SLAM problem we estimate all the variables that occur throughout the robot travel time. \n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552459,
+              "key": "30aaf518-3c71-47a5-82e7-96803b203f88",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "30aaf518-3c71-47a5-82e7-96803b203f88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How will the robot solve the **Full** SLAM problem from `t-1` to `t+2`?",
+                "answers": [
+                  {
+                    "id": "a1519341717743",
+                    "text": "The robot will estimate the “x<sub>t+2</sub>” pose and map “m” given the measurements “z<sub>t+2</sub>” and controls “u<sub>t+2</sub>”",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341723614",
+                    "text": "The robot will estimate the robot's trajectory “x<sub>t-1:t+2</sub>” and map “m” given the measurements “z<sub>t-1:t+2</sub>” and controls “u<sub>t-1:t+2</sub>”",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519341724223",
+                    "text": "The robot will estimate the robot's trajectory “x<sub>t-1:t+1</sub>” and map “m” given the measurements “z<sub>t-1:t+1</sub>” and controls “u<sub>t-1:t+1</sub>”",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341724790",
+                    "text": "The robot will estimate the “x<sub>t+2</sub>” pose and map “m” given the measurements “z<sub>t:t+2</sub>” and controls “u<sub>t:t+2</sub>”",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527895,
+          "key": "22ddb0ec-1f53-4448-ad08-7aed21f57379",
+          "title": "Nature of SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22ddb0ec-1f53-4448-ad08-7aed21f57379",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552429,
+              "key": "a9f8f793-04d3-40bf-bc96-4285db89ddf4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f446c_nd209-c3-l3-a05-correspondence-1/nd209-c3-l3-a05-correspondence-1.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a9f8f793-04d3-40bf-bc96-4285db89ddf4",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 534691,
+              "key": "194bf8c3-b7d5-4a28-8740-99d791bd89f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Forms\nYou’ve just learned the first key feature of the SLAM problem which has to do with its two forms. The online SLAM problem computes a posterior over the current pose along with the map and the full SLAM problem computes a posterior over the entire path along with the map.\n\n#### Nature\nNow, the second key feature of the SLAM problem relates to its nature. \nSLAM problems generally have a continuous and a discrete element. \n\n#### Nature - Continuous\nLet’s start with the continuous component of the SLAM problem. \nDuring SLAM, a robot continuously collects odometry information to estimate the robot poses and continuously senses the environment to estimate the location of the object or landmark. Thus, both robots poses and object location are continuous aspects of the SLAM problem.\n\n#### Nature - Discrete\nNow, moving to the second component of the SLAM problem.\nAs I mentioned earlier, robots continuously sense the environment to estimate the location of the objects, when doing so SLAM algorithms have to identify if a relation exists between any newly detected objects and previously detected ones. This helps the robot understand if it has been in this same location before. At each moment, the robot has to answer the question, “Have I been here before?”. The answer to this question is binary - either yes or no - and that’s what makes the relation between objects a discrete component of the SLAM problem.This discrete relation between objects is known by correspondence.   \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552462,
+              "key": "3fe88880-acfc-49c5-81a8-8fa92b85dd90",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3fe88880-acfc-49c5-81a8-8fa92b85dd90",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "While performing SLAM, a mobile robot is establishing a relation between newly and previously detected objects. Which key feature and component of the SLAM problem this has to do with?",
+                "answers": [
+                  {
+                    "id": "a1519341928194",
+                    "text": "Form: Online SLAM Problem",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341951544",
+                    "text": "Form: Full SLAM Problem",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341952159",
+                    "text": "Nature: Continuous",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519341952686",
+                    "text": "Nature: Discrete.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519341954832",
+                    "text": "Others",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527896,
+          "key": "f374d3c4-e82c-47ee-9eed-2de7aa23cd12",
+          "title": "Correspondence",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f374d3c4-e82c-47ee-9eed-2de7aa23cd12",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552125,
+              "key": "8b137586-7aa8-483e-bed4-785c9c4d9dac",
+              "title": "Correspondence",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9fe6Tzx8H78",
+                "china_cdn_id": "9fe6Tzx8H78.mp4"
+              }
+            },
+            {
+              "id": 542756,
+              "key": "73677026-0509-42f6-beab-1ce4849fedee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've learned the two **key features** of the SLAM problem, let's summarize them:\n\n**1-Forms**\n  - **Online SLAM**: Robot estimates its current pose and the map using current measurements and controls. \n \n  - **Full SLAM**: Robot estimates its entire trajectory and the map using all the measurements and controls.\n\n**2- Nature**\n  - **Continuous**:  Robot continuously senses its pose and the location of the objects. \n  - **Discrete**: Robot has to identify if a relation exists between any newly detected and previously detected objects.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552464,
+              "key": "afcbecc3-2b79-48f4-88a4-837577919900",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "afcbecc3-2b79-48f4-88a4-837577919900",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the **Full** SLAM problem, what's the posterior under **unknown correspondences** ?",
+                "answers": [
+                  {
+                    "id": "a1519342093669",
+                    "text": "x<sub>1:t</sub>, m",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342098976",
+                    "text": "z<sub>1:t</sub>, u<sub>1:t</sub> ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342099679",
+                    "text": "x<sub>t</sub>, m, c<sub>1:t</sub>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342104232",
+                    "text": "x<sub>1:t</sub>, m, c<sub>1:t</sub>     ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519342109521",
+                    "text": "x<sub>1:t</sub>, m, c<sub>t</sub>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342110216",
+                    "text": "x<sub>t</sub>, m, c<sub>t</sub>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527897,
+          "key": "a32e1806-265e-46b3-9729-a5016b2ac326",
+          "title": "SLAM Challenges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a32e1806-265e-46b3-9729-a5016b2ac326",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552493,
+              "key": "3e8339a8-d401-4da4-9716-4a37306bfcbb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f7c3d_l3-slam-challenges-01/l3-slam-challenges-01.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3e8339a8-d401-4da4-9716-4a37306bfcbb",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534697,
+              "key": "d01345e0-5d61-41ca-b8f1-306b3f981bed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### SLAM Challenges\nComputing the full posterior composed of the robot pose, the map and the correspondence under SLAM poses a big challenge in robotics mainly due to the **continuous** and **discrete** portion.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552431,
+              "key": "e7868f1b-bd3e-4a05-a027-d169cb7c4e0a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f45b1_nd209-c3l3-a06-l-slam-challenges-2/nd209-c3l3-a06-l-slam-challenges-2.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e7868f1b-bd3e-4a05-a027-d169cb7c4e0a",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 534698,
+              "key": "f76220c9-def1-43dc-9fbd-37ab95879e6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Continuous\nThe continuous parameter space composed of the robot poses and the location of the objects is highly dimensional. While mapping the environment and localizing itself, the robot will encounter many objects and have to keep track of each one of them. Thus, the number of variables will increase with time, and this makes the problem highly dimensional and challenging to compute the posterior. \n\n#### Discrete\nNext, the discrete parameter space is composed out of the correspondence values, and is also highly dimensional due to the large number of correspondence variables. Not only that, the correspondence values increase exponentially over time since the robot will keep sensing the environment and relating the newly detected objects to the previously detected ones. Even if you assume known correspondence values, the posterior over maps is still highly dimensional as we saw in the mapping lessons.\n\nYou can now see why it’s infeasible to compute the posterior under unknown correspondence. Thus, SLAM algorithms will have to rely on approximation while estimating a posterior in order to conserve computational memory. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 542779,
+              "key": "b77ecd1b-174a-4c1e-8aa0-cb2a2edb5fa4",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b77ecd1b-174a-4c1e-8aa0-cb2a2edb5fa4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all the components that make SLAM a less challenging problem.",
+                "answers": [
+                  {
+                    "id": "a1518121856523",
+                    "text": "Unkown correspondences",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518121885617",
+                    "text": "Few objects",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518121886223",
+                    "text": "Noisy Measurements",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518121886797",
+                    "text": "Small space",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527898,
+          "key": "82696f86-098e-46ed-a407-4bd030b37ceb",
+          "title": "Particle Filter Approach to SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82696f86-098e-46ed-a407-4bd030b37ceb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552127,
+              "key": "3aea314b-424d-410e-8442-02cfbaaeceb8",
+              "title": "Particle Filter Approach To SLAM",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0DiiZi5t75U",
+                "china_cdn_id": "0DiiZi5t75U.mp4"
+              }
+            },
+            {
+              "id": 542809,
+              "key": "86eeb51e-dd88-4245-97b5-9a0b33ec24a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We just saw that adding another dimension to a particle so that it will hold the robot pose, weight, and the map and then solving through MCL in its current form will fail.  This is because the map is modeled with many variables resulting in high dimensionality. Thus, the particle filter approach to SLAM in this current form will scale exponentially and is doomed to fail.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552470,
+              "key": "eab53816-2c4c-4219-90b2-872fc8dab2b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, you'll be introduced to **FastSLAM** and you'll learn how SLAM problems can be solved under a custom particle filter approach. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527899,
+          "key": "b0832fad-6e4d-49ca-83e9-afdff813a8ca",
+          "title": "Introduction to FastSLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0832fad-6e4d-49ca-83e9-afdff813a8ca",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552128,
+              "key": "95e80780-38c3-42f0-a08e-3af53e3a6304",
+              "title": "Introduction To FastSLAM ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HIrt25hK-oI",
+                "china_cdn_id": "HIrt25hK-oI.mp4"
+              }
+            },
+            {
+              "id": 542814,
+              "key": "4c159eb9-79b2-4dd9-aa5d-951fb8638161",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The **FastSLAM** algorithm solves the Full SLAM problem with known correspondences. \n- **Estimating the Trajectory:** FastSLAM estimates a posterior over the trajectory using a particle filter approach. This will give an advantage to SLAM to solve the problem of mapping with known poses. \n- **Estimating the Map:** FastSLAM uses a low dimensional Extended Kalman Filter to solve independent features of the map which are modeled with local Gaussian. \n\nThe custom approach of representing the posterior with particle filter and Gaussian is known by the **Rao-Blackwellized** particle filter approach.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552466,
+              "key": "38c2be84-0a38-4a32-a94c-1cbdf0bf4940",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "38c2be84-0a38-4a32-a94c-1cbdf0bf4940",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which algorithm(s) will the FastSLAM implements to solve the SLAM problem?",
+                "answers": [
+                  {
+                    "id": "a1519342350543",
+                    "text": "MCL + Low-Dimensional EKF",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519342356553",
+                    "text": "MCL",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342358527",
+                    "text": "Low-Dimensional EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342359321",
+                    "text": "EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342360207",
+                    "text": "MCL + EKF",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527900,
+          "key": "a59b8076-fd9e-4ea2-92ec-99f2a0e7770d",
+          "title": "FastSLAM Instances",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a59b8076-fd9e-4ea2-92ec-99f2a0e7770d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552695,
+              "key": "ab616c08-e99a-46bc-a807-c26ef4fb22b2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a9090c3_c91/c91.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ab616c08-e99a-46bc-a807-c26ef4fb22b2",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534702,
+              "key": "af630af6-a7f5-4714-b3cc-06811f687bc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We’ve seen that the FastSLAM algorithm can solve the full SLAM problem with known correspondences. Since FastSLAM uses a particle filter approach to solve SLAM problems, some roboticists consider it a powerful algorithm capable of solving both the **Full SLAM** and **Online SLAM** problems.\n- FastSLAM estimates the full robot path, and hence it solves the **Full SLAM** problem.\n- On the other hand, each particle in FastSLAM estimates instantaneous poses, and thus FastSLAM also solves the **Online SLAM** problem.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552696,
+              "key": "5c5edbf8-85a1-450d-bd8e-26edf499c75d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a9090cd_c92/c92.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5c5edbf8-85a1-450d-bd8e-26edf499c75d",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534706,
+              "key": "667f0cd9-e730-446d-8aa0-c21b7e1174bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, three different instances of the FastSLAM algorithm exist.\n\n#### FastSLAM 1.0\nThe FastSLAM 1.0 algorithm is simple and easy to implement, but this algorithm is known to be inefficient since particle filters generate sample inefficiency. \n\n#### FastSLAM 2.0\nThe FastSLAM 2.0 algorithm overcomes the inefficiency of FastSLAM 1.0 by imposing a different distribution, which results in a low number of particles. Keep in mind that both of the FastSLAM 1.0 and 2.0 algorithms use a low dimensional Extended Kalman filter to estimate the posterior over the map features. \n\n#### Grid-based FastSLAM\nThe third instance of FastSLAM is really an extension to FastSLAM known as the grid-based FastSLAM algorithm, which adapts FastSLAM to grid maps. In this lesson, you will learn grid-based FastSLAM. For more information on the fastSLAM 1.0 and 2.0 algorithms refer to the probabilistic robotics book.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552468,
+              "key": "3aaafee8-90ba-4ee6-9616-0d902eddca8c",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3aaafee8-90ba-4ee6-9616-0d902eddca8c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these algorithms use a large number of particles and a low-dimensional Extended Kalman Filter to solve the SLAM problem?",
+                "answers": [
+                  {
+                    "id": "a1519342512968",
+                    "text": "FastSLAM 1.0",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519342518512",
+                    "text": "FastSLAM 2.0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342519057",
+                    "text": "Grid-based FastSLAM",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342519625",
+                    "text": "EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519342534239",
+                    "text": "MCL",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527901,
+          "key": "0c85ef42-bd16-4236-a81f-4cee828c79f5",
+          "title": "Adapting FastSLAM to Grid Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c85ef42-bd16-4236-a81f-4cee828c79f5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552697,
+              "key": "98945d12-4391-472d-9f33-b7dc9c2edd34",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90910a_l3c10-adapting-fastslam-to-grid-maps-01/l3c10-adapting-fastslam-to-grid-maps-01.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/98945d12-4391-472d-9f33-b7dc9c2edd34",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534718,
+              "key": "48f0ea89-c85f-452a-aefa-9a8701e505cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### FastSLAM 1.0 & 2.0\nThe main advantage of the FastSLAM algorithm is that it uses a particle filter approach to solve the SLAM problem. Each particle will hold a guess of the robot trajectory, and by doing so, the SLAM problem is reduced to mapping with known poses.\nBut, in fact, this algorithm presents a big disadvantage since it must always assume that there are known landmark positions, and thus with FastSLAM we are not able to model an arbitrary environment. Now, what if landmark positions are unavailable to us? Are we still able to solve the SLAM problem? \n\n#### Grid-based FastSLAM\nYes, with the grid mapping algorithm you can model the environment using grid maps without predefining any landmark position. So by extending the FastSLAM algorithm to occupancy grid maps, you can now solve the SLAM problem in an arbitrary environment. While mapping a real-world environment, you will mostly be using mobile robots equipped with range sensors. You’ll then extend the FastSLAM algorithm and solve the SLAM problem in term of grid maps. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552448,
+              "key": "f6703040-ed52-418e-87e2-7681d13f22cf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f4c75_nd209-c3l3-a10-l-adapting-fastslam-to-grid-maps-1/nd209-c3l3-a10-l-adapting-fastslam-to-grid-maps-1.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f6703040-ed52-418e-87e2-7681d13f22cf",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 534720,
+              "key": "ffe2da77-e619-4743-9f8b-780d239dd7e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Robot Trajectory\nJust as in the FastSLAM algorithm, with the grid-based FastSLAM each particle holds a guess of the robot trajectory. \n\n#### Map\nIn addition, each particle maintains its own map. The grid-based FastSLAM algorithm will update each particle by solving the mapping with known poses problem using the occupancy grid mapping algorithm.    \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 542846,
+              "key": "75a177cc-959a-49bc-b466-689c1a5665ac",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "75a177cc-959a-49bc-b466-689c1a5665ac",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these algorithms are part of the Grid-based FastSLAM algorithm?",
+                "answers": [
+                  {
+                    "id": "a1518130359851",
+                    "text": "EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518130382711",
+                    "text": "Low-Dimensional EKF",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518130383319",
+                    "text": "MCL",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518130383899",
+                    "text": "Occupancy Grid Mapping ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518130400050",
+                    "text": "Sparse Extended Kalman Filter",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527902,
+          "key": "5bfe22dc-0721-4ae9-89ec-afd0b7873a0f",
+          "title": "Grid-based FastSLAM Techniques",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5bfe22dc-0721-4ae9-89ec-afd0b7873a0f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552129,
+              "key": "d01dbc9d-397e-4e02-8494-9a3561219be0",
+              "title": "Grid-based FastSLAM Techniques",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0VwPYaQk98U",
+                "china_cdn_id": "0VwPYaQk98U.mp4"
+              }
+            },
+            {
+              "id": 542867,
+              "key": "a44c4039-3f16-4317-95ee-ddf8cb7f9266",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To adapt FastSLAM to grid mapping, we need three different techniques:\n1. **Sampling Motion-`<span class=\"mathquill\">p(x_{t} | x_{t-1}^{[k]} , u_{t})</span>`:** Estimates the current pose given the k-th particle previous pose and the current controls u. \n2. **Map Estimation-`<span class=\"mathquill\">p(m_{t} | z_{t}, x_{t}^{[k]} , m_{t-1}^{[k]})</span>`:** Estimates the current map given the current measurements, the current k-th particle pose, and the previous k-th particle map\n3. **Importance Weight-`<span class=\"mathquill\">p(z_{t} | x_{t}^{[k]} , m^{[k]})</span>`:** Estimates the current likelihood of the measurement given the current k-th particle pose and the current k-th particle map.\n\n\n\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552688,
+              "key": "d9c7cc7d-184e-4e88-9c52-5f68190b0865",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d9c7cc7d-184e-4e88-9c52-5f68190b0865",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How is each of these techniques solved under the Grid-based FastSLAM algorithm?\n",
+                "answers": [
+                  {
+                    "id": "a1519421951532",
+                    "text": "**Sampling motion** technique can be solved with **EKF**.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519421961065",
+                    "text": "**Sampling motion** technique can be solved with **MCL**.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519421962393",
+                    "text": "**Importance weight** technique can be solved with **EKF**.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519421962955",
+                    "text": "**Importance weight** technique can be solved with **MCL**.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519421964721",
+                    "text": "**Map estimation** technique can be solved with **MCL**.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519421965281",
+                    "text": "**Map estimation** technique can be solved with **Occupancy Grid Mapping**.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527903,
+          "key": "3f82103d-57de-4954-b6d5-248081755bee",
+          "title": "The Grid-based FastSLAM Algorithm",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f82103d-57de-4954-b6d5-248081755bee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552130,
+              "key": "fede1c30-2a92-42e0-a1f9-28ea6db9d799",
+              "title": "The Grid-based FastSLAM Algorithm",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yFKc-2j6BMs",
+                "china_cdn_id": "yFKc-2j6BMs.mp4"
+              }
+            },
+            {
+              "id": 542887,
+              "key": "f124b9ce-6043-472e-8adc-9dbca104c9f6",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f124b9ce-6043-472e-8adc-9dbca104c9f6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Put the following steps in the correct order of the Grid-based FastSLAM algorithm:\n"
+                },
+                "concepts_label": "Steps",
+                "answers_label": "Concepts",
+                "concepts": [
+                  {
+                    "text": "Step 1",
+                    "correct_answer": {
+                      "id": "a1518136897786",
+                      "text": "Previous Belief"
+                    }
+                  },
+                  {
+                    "text": "Step 2",
+                    "correct_answer": {
+                      "id": "a1518136929785",
+                      "text": "Sampling Motion"
+                    }
+                  },
+                  {
+                    "text": "Step 3",
+                    "correct_answer": {
+                      "id": "a1518136930983",
+                      "text": "Importance Weight"
+                    }
+                  },
+                  {
+                    "text": "Step 4",
+                    "correct_answer": {
+                      "id": "a1518136931944",
+                      "text": "Map Estimation"
+                    }
+                  },
+                  {
+                    "text": "Step 5",
+                    "correct_answer": {
+                      "id": "a1518136932866",
+                      "text": "Resampling"
+                    }
+                  },
+                  {
+                    "text": "Step 6",
+                    "correct_answer": {
+                      "id": "a1518136950189",
+                      "text": "New Belief"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1518136950189",
+                    "text": "New Belief"
+                  },
+                  {
+                    "id": "a1518136932866",
+                    "text": "Resampling"
+                  },
+                  {
+                    "id": "a1518136930983",
+                    "text": "Importance Weight"
+                  },
+                  {
+                    "id": "a1518136929785",
+                    "text": "Sampling Motion"
+                  },
+                  {
+                    "id": "a1518136931944",
+                    "text": "Map Estimation"
+                  },
+                  {
+                    "id": "a1518136897786",
+                    "text": "Previous Belief"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527904,
+          "key": "4cfabb18-f06a-4691-b8bb-f5ae71f304b6",
+          "title": "gmapping ROS Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4cfabb18-f06a-4691-b8bb-f5ae71f304b6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552421,
+              "key": "d5538f26-c1dc-4194-8c62-bf98670b6ff9",
+              "title": "gmapping ROS Package",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "45kWFvCgTdA",
+                "china_cdn_id": "45kWFvCgTdA.mp4"
+              }
+            },
+            {
+              "id": 534722,
+              "key": "2370d679-1478-4c36-b11c-230e8bb99671",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you’ve learned the Grid-based FastSLAM algorithm, let’s test its power by solving the SLAM problem in simulation. In this lab, you’ll implement a `gmapping` ROS package which is based on the Grid-based FastSLAM algorithm to map an environment.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552735,
+              "key": "75bc25b1-02d9-42b3-ac4c-b070c4bd6483",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90a8be_l3c13-gmapping-ros-package/l3c13-gmapping-ros-package.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/75bc25b1-02d9-42b3-ac4c-b070c4bd6483",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534723,
+              "key": "61d7ec97-504b-4e37-b413-cbc077b6cb9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "`gmapping` provides laser based SLAM. Meaning that you can feed its node with the robot laser measurements and odometry values and expect it to provide you with a 2D occupancy grid map of the environment. The map will be updated as the robot moves and collect sensory information using its laser range finder sensor. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534724,
+              "key": "2f87391b-1bf2-49c1-b6ab-e66cd89deab6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### `gmapping` package documentation\nAccess this [link](http://wiki.ros.org/gmapping) and go over the documentation of the `gmapping` ROS package\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552480,
+              "key": "764a6e28-de44-49e8-9fc9-bbb3bf90e250",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Deploying a Turltebot in a Willow Garage environment\nYou will be deploying a turtlebot in a willow garage environment inside the [Udacity Workspace]( https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/451b7eed-6813-422a-a4d0-ce5db5ee1bca/lessons/411e2410-8f65-4764-a02a-e219ac36c776/concepts/fc59506b-6059-45a2-9d4d-204f7343988a?contentVersion=1.0.0&contentLocale=en-us). Thus, navigate to the next concept, enable GPU, and GO TO DESKTOP.   \n\n## Create a `catkin_ws` in `/home/workspace/`\n``` sh\n$ mkdir -p /home/workspace/catkin_ws/src\n$ cd /home/workspace/catkin_ws/src\n$ catkin_init_workspace\n$ cd ..\n$ catkin_make\n```\n## Perform a System Update/Upgrade\n```sh\n$ apt-get update\n$ apt-get upgrade -y\n```\n## Clone `turtlebot_gazebo` and `turtlebot_teleop` in src\n```sh\n$ cd src/\n$ git clone https://github.com/turtlebot/turtlebot_simulator\n$ git clone https://github.com/turtlebot/turtlebot\n```\n\n## Install packages dependencies\nThe dependencies are already installed in the workspace but it's always good to check!\n```sh\n$ cd ..\n$ source devel/setup.bash\n$ rosdep -i install turtlebot_gazebo\n$ rosdep -i install turtlebot_teleop\n```\n\n## Build the packages\n```sh\n$ catkin_make\n$ source devel/setup.bash\n```\n\n## Deploying a Turltebot in a Willow Garage environment\n```sh\n$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=worlds/willowgarage.world\n```\nNow, interface the `gmapping` package with your robot to perform SLAM! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534725,
+              "key": "fe873df1-e027-4979-8a83-fe448e87b1b2",
+              "title": "SLAM with gmapping",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fe873df1-e027-4979-8a83-fe448e87b1b2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I cloned the `gmapping` package inside the src folder of my catkin workspace.",
+                "I installed the system dependencies, and built my catkin workspace.",
+                "I launched the nodes of the three different packages.",
+                "I run rviz, edited the configuration settings, and subscribed to the published map.",
+                "I teleoperated the robot, and performed SLAM.",
+                "I obtained a map of the environment"
+              ],
+              "positive_feedback": "Great Work!",
+              "video_feedback": null,
+              "description": "Follow these tasks to map an environment with a Grid-based FastSLAM ROS package:"
+            }
+          ]
+        },
+        {
+          "id": 621563,
+          "key": "7959827e-edde-4f74-a0ad-d821a95e629e",
+          "title": "Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7959827e-edde-4f74-a0ad-d821a95e629e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621564,
+              "key": "8d792128-6d2e-40c3-a15d-3be854da92d0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewc16f0692",
+              "pool_id": "autonomousgpu",
+              "view_id": "c16f0692-6c3f-421c-bf47-73dd7bbe41a4",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 527905,
+          "key": "2201dcef-bee9-4693-8cb5-a1d41be181c2",
+          "title": "SLAM with ROS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2201dcef-bee9-4693-8cb5-a1d41be181c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552420,
+              "key": "d365b6be-3c1b-416a-93b9-95a3ed9c3dc5",
+              "title": "SLAM With ROS ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "APwvoT_w9Cw",
+                "china_cdn_id": "APwvoT_w9Cw.mp4"
+              }
+            },
+            {
+              "id": 552715,
+              "key": "6dbcf587-fbb4-4be9-bf38-61397df76359",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# SLAM with ROS\nHere's the [LAB solution](https://github.com/udacity/RoboND-SLAMLAb)! While scrolling through the instructions, you will notice that some statements are a bit different than the one presented in the videos. The reason behind that is the different environment used. In the videos, a **Virtual Machine** booted with LUbuntu is used. Here in the description, you are presented with instructions on how to replicate the steps in the **Udacity Workspace**. The only difference between what you see and what is listed is the directory of the `catkin_ws`. In VM, you can store it anywhere you want, preferably in the root `~` directory. Whereas, in the workspace, you will have to store it under `/home/workspace/` so it won't get deleted after a reboot.\n\n\n#### First, clone the gmapping package, install its system dependencies, and build your catkin workspace\n```sh\n$ cd /home/workspace/catkin_ws/src\n$ git clone https://github.com/ros-perception/slam_gmapping\n$ rosdep install gmapping\n$ cd..\n$ catkin_make\n```\n#### Terminal 1\nLaunch the turtlebot in a Willow Garage environment\n```sh\n$ cd /home/workspace/catkin_ws\n$ source devel/setup.bash\n$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=worlds/willowgarage.world \n```\nTurtlebot should now appear in a Willow Garage environment. \n\n#### Terminal 2\nLaunch the keyboard teleop node\n```sh\n$ cd /home/workspace/catkin_ws\n$ source devel/setup.bash\n$ roslaunch turtlebot_teleop keyboard_teleop.launch\n```\nDon’t move your robot yet!\n\n#### Terminal 3\nRun the slam_gmapping node\n```sh\n$ cd /home/workspace/catkin_ws\n$ source devel/setup.bash\n$ rosrun gmapping slam_gmapping\n```\nThe node should start registering your first scan. \n\n#### Terminal 4\nRun rviz and subscribe to different published topics to visualize the map  \n```sh\n$ rosrun rviz rviz\n```\nEdit the rviz configuration as follows:\n- Change the **Fixed Frame** to `map`\n- Keep **Reference Frame** as default \n- Add a **RobotModel**\n- Add a **camera** and select the `/camera/rgb/image_raw` topic\n- Add a **map** and select the `/map` topic\n\nNow, map the environment by driving your robot using keyboard commands. \n\n#### Terminal 5\nSave a map of the environment and share it with your classmates \n```sh\n$ cd /home/workspace/\n$ rosrun map_server map_saver -f myMap\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534738,
+              "key": "5d85bb4f-b539-4f1f-a4b5-fdd9c5c0676b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "With the [map_server](http://wiki.ros.org/map_server) you can load and save maps. Running map_server will generate the **map.pgm** and the **map.yaml** files:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552504,
+              "key": "10387936-0199-479a-b400-9393979ee579",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f8a30_willow-garage-map.png/willow-garage-map.png.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/10387936-0199-479a-b400-9393979ee579",
+              "caption": "**map.pgm** of the Willow Garage environment  ",
+              "alt": "",
+              "width": 584,
+              "height": 526,
+              "instructor_notes": null
+            },
+            {
+              "id": 552501,
+              "key": "7b026be0-2e11-4ac4-bdf7-58f1c8d9d238",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1- **map.pgm**: Picture of the map in occupancy grid representation \n - *White pixels*: Free cells\n - *Black pixels*: Occupied cells\n - *Gray pixels*: Unknown state\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552505,
+              "key": "e48e60b3-c40d-406d-abb4-7101e49b9379",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f8a8f_screen-shot-2018-02-22-at-7.28.47-pm/screen-shot-2018-02-22-at-7.28.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e48e60b3-c40d-406d-abb4-7101e49b9379",
+              "caption": "** map.yaml** of the Willow Garage environment ",
+              "alt": "",
+              "width": 1532,
+              "height": 338,
+              "instructor_notes": null
+            },
+            {
+              "id": 552502,
+              "key": "bb78528c-8d78-4168-be7f-7fe181e970e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2- **map.yaml**: The map metadata \n * *image*: Map name\n * *resolution*: Resolution of the map (meters/pixel)\n * *origin*: Pose of the lower-left pixel in the map (x, y, Θ)\n * *Occupied_thresh*: Cell is considered occupied if its probability is greater than this threshold.  \n * *free_thresh*: Cell is considered unoccupied or free if its probability is less than this threshold. \n * *negate*: This value will check whether the notation of black colored cell=occupied and white colored cell = free should be preserved   ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621571,
+              "key": "bafc6523-f179-405f-bd5d-794548a3d822",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wondering why you got a bad quality map?\nThat’s because the gmapping parameters values used were the default values. In general, it’s essential to tune them in order to get a 100% accurate map. These parameters are all listed under the gmapping documentation, where you can look at them yourself. If you experiment with some of these parameter values, you should be able to get better maps. \n\nFor example, you might try, reducing the angularUpdate and linearUpdate values so the map gets updated for smaller ranges of movements, reducing the x and y limits, which represent the initial map size, increasing the number of particles.\nYou can try tweaking these parameters and/or any other parameter you think should be changed. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527906,
+          "key": "5f10fadf-00fb-4a82-add4-6e8814f52ae5",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5f10fadf-00fb-4a82-add4-6e8814f52ae5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552131,
+              "key": "0d70e52a-46ee-4123-929e-b20bc169f60f",
+              "title": "Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "l7vdjOekQhE",
+                "china_cdn_id": "l7vdjOekQhE.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

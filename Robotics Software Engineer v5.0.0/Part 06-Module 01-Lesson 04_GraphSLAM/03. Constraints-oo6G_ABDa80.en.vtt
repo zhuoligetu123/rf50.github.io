@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.509
+One way to look at soft constraints is to interpret
+
+00:00:03.509 --> 00:00:07.455
+them as masses connected by rubber bands or springs.
+
+00:00:07.455 --> 00:00:10.155
+When no external forces are acting on them,
+
+00:00:10.154 --> 00:00:13.969
+the springs will naturally bring the system into a configuration,
+
+00:00:13.970 --> 00:00:17.885
+where the forces experienced by all of the springs are minimized.
+
+00:00:17.885 --> 00:00:21.660
+When the nodes are connected in a linear function as so,
+
+00:00:21.660 --> 00:00:24.480
+the resting configuration is easy to find,
+
+00:00:24.480 --> 00:00:30.155
+but the process becomes more challenging as nodes become more and more interconnected.
+
+00:00:30.155 --> 00:00:35.215
+The springs will all try to push or pull the system in their own ways.
+
+00:00:35.215 --> 00:00:38.502
+This is very similar to how constraints work in a graph.
+
+00:00:38.502 --> 00:00:41.190
+Every motion or measurement constraint pulls
+
+00:00:41.189 --> 00:00:44.414
+a system closer to that constraints desired state.
+
+00:00:44.414 --> 00:00:47.144
+Since the measurement and motions are uncertain,
+
+00:00:47.145 --> 00:00:52.225
+constraints will conflict with each other and there will always be some error present.
+
+00:00:52.225 --> 00:00:55.890
+In the end, the goal is to find the node configuration that
+
+00:00:55.890 --> 00:01:00.000
+minimizes the overall error present in all the constraints.
+

@@ -1,0 +1,1362 @@
+{
+  "data": {
+    "lesson": {
+      "id": 486540,
+      "key": "dcd13183-d4de-4fc2-9c85-66f6d6c20702",
+      "title": "GraphSLAM",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to simultaneously map an environment and localize a robot relative to the map with the GraphSLAM algorithm. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/dcd13183-d4de-4fc2-9c85-66f6d6c20702/486540/1544270407588/GraphSLAM+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/dcd13183-d4de-4fc2-9c85-66f6d6c20702/486540/1544270402157/GraphSLAM+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 533805,
+          "key": "0d95aac3-db30-4879-bea0-f74cfcb949ae",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0d95aac3-db30-4879-bea0-f74cfcb949ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552724,
+              "key": "8b36929e-f5d7-46f0-ae35-eca10149240f",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zya9-JPqkLE",
+                "china_cdn_id": "zya9-JPqkLE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 533806,
+          "key": "a05ebb75-01f2-481f-be81-85b9bf8cc62c",
+          "title": "Graphs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a05ebb75-01f2-481f-be81-85b9bf8cc62c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553263,
+              "key": "08e854c2-20d4-46c4-a01d-f210934f3c4a",
+              "title": "Graphs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: At timestamp 1:45 when Julia says the poses will be labeled x1 and x2, she means to say x0 and x1 as in the diagram.",
+              "video": {
+                "youtube_id": "a7qFQMwMb4k",
+                "china_cdn_id": "a7qFQMwMb4k.mp4"
+              }
+            },
+            {
+              "id": 543504,
+              "key": "c450efac-491c-4496-a03a-1c302c110a9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary of Notation\n- **Poses** are represented with triangles.\n- **Features** from the environment are represented with stars.\n- **Motion constraints** tie together two poses, and are represented by a solid line.\n- **Measurement constraints** tie together a feature and a pose, and are represented by a dashed line.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553242,
+              "key": "75f5cdb7-403f-4602-8164-87638859f613",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 533807,
+          "key": "4b3b4ae6-93d0-46c9-ad92-5309f3ed5336",
+          "title": "Constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b3b4ae6-93d0-46c9-ad92-5309f3ed5336",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553268,
+              "key": "eba1fdea-5fa8-4bac-b59c-89c9a24b37c0",
+              "title": "Constraints",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oo6G_ABDa80",
+                "china_cdn_id": "oo6G_ABDa80.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 533808,
+          "key": "1955f75c-5f3b-4d23-96fe-a0452e387ba5",
+          "title": "Front-End vs Back-End",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1955f75c-5f3b-4d23-96fe-a0452e387ba5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553270,
+              "key": "e87c5a19-3a89-426c-bbb2-778ce9ac3d21",
+              "title": "Front End Vs Back End ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mLKwe-AAJc8",
+                "china_cdn_id": "mLKwe-AAJc8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 533809,
+          "key": "5ab66e6c-0b22-490a-aa6e-9e50f550e517",
+          "title": "Maximum Likelihood Estimation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5ab66e6c-0b22-490a-aa6e-9e50f550e517",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543385,
+              "key": "2dfa9998-7d51-437a-8441-790d19b1a046",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Maximum Likelihood Estimation\n\nAt the core of GraphSLAM is graph optimization - the process of minimizing the error present in all of the constraints in the graph. Let’s take a look at what these constraints look like, and learn to apply a principle called *maximum likelihood estimation* (MLE) to structure and solve the optimization problem for the graph. \n\n## Likelihood\n\nLikelihood is a complementary principle to probability. While probability tries to estimate the outcome given the parameters, likelihood tries to estimate the parameters that best explain the outcome. For example, \n\n> **Probability:** What is the probability of rolling a 2 on a 6-sided die? \n\n(Answer: 1/6)\n \n> **Likelihood:** I’ve rolled a die 100 times, and a 2 was rolled 10% of the time, how many sides does my die have? \n\n(Answer: 10 sides)\n\nWhen applied to SLAM, likelihood tries to estimate the most likely configuration of state and feature locations given the motion and measurement observations.\n\n\n### Probability & Likelihood Quiz ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553079,
+              "key": "a0d266a5-9f1f-4c86-bb58-6b0f5dc715c7",
+              "title": "Probability & Likelihood Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a0d266a5-9f1f-4c86-bb58-6b0f5dc715c7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "To solidify your understanding of the difference between probability and likelihood, label the following problems with their respective terms."
+                },
+                "concepts_label": "Example",
+                "answers_label": "Type of Problem",
+                "concepts": [
+                  {
+                    "text": "The chance of being selected for a Udacity scholarship is 10% if there are 1000 applicants for 100 spots (assuming that everyone is equally qualified).",
+                    "correct_answer": {
+                      "id": "a1519668349789",
+                      "text": "Probability"
+                    }
+                  },
+                  {
+                    "text": "The weather forecast predicts a 30% chance of rain for this evening. ",
+                    "correct_answer": {
+                      "id": "a1519668386118",
+                      "text": "Probability"
+                    }
+                  },
+                  {
+                    "text": "The grass is wet, and I didn’t water it. It’s likely that it rained earlier today.",
+                    "correct_answer": {
+                      "id": "a1519668387021",
+                      "text": "Likelihood"
+                    }
+                  },
+                  {
+                    "text": "A fair coin has a 50% chance of coming up heads, and 50% chance of coming up tails. ",
+                    "correct_answer": {
+                      "id": "a1519668388285",
+                      "text": "Probability"
+                    }
+                  },
+                  {
+                    "text": "A coin was tossed 1,000 times, and came up heads 756 times. It is likely that the coin is rigged.",
+                    "correct_answer": {
+                      "id": "a1519668437524",
+                      "text": "Likelihood"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1519668349789",
+                    "text": "Probability"
+                  },
+                  {
+                    "id": "a1519668437524",
+                    "text": "Likelihood"
+                  },
+                  {
+                    "id": "a1519668387021",
+                    "text": "Likelihood"
+                  },
+                  {
+                    "id": "a1519668388285",
+                    "text": "Probability"
+                  },
+                  {
+                    "id": "a1519668386118",
+                    "text": "Probability"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 552729,
+              "key": "a763ea22-1761-42e2-9452-30e4089eca10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Feature Measurement Example\n\nLet’s look at a very simple example - one where our robot is taking repeated measurements of a feature in the environment. This example will walk you through the steps required to solve it, which can then be applied to more complicated problems.\n\nThe robot’s initial pose has a variance of 0 - simply because this is its start location. Recall that wherever the start location may be - we call it location 0 in our relative map. Every action pose and measurement hereafter will be uncertain. In GraphSLAM, we will continue to make the assumption that motion and measurement data has Gaussian noise. \n\nThe robot takes a measurement of a feature, <span class=\"mathquill\">m_1</span>, and it returns a distance of 1.8 metres.\n\nIf we return to our spring analogy - 1.8m is the spring’s resting length. This is the spring’s most desirable length; however, it is possible for the spring to be compressed or elongated to accommodate other forces (constraints) that are acting on the system.\n\nThis probability distribution for this measurement can be defined as so,\n\n<div class=\"mathquill\">p(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{1}{2}\\frac{(z_1-(x_0 + 1.8))^2}{\\sigma^2}}</div>\n\nIn simpler terms, the probability distribution is highest when z1 and x0 are 1.8 meters apart. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552767,
+              "key": "ca46d6c1-17fc-46be-8a3a-66f0b0e38632",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c2f2_l4c5-01-maximum-likelihood-v2/l4c5-01-maximum-likelihood-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ca46d6c1-17fc-46be-8a3a-66f0b0e38632",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543386,
+              "key": "8195c207-1558-4332-8cfa-3a718fa8656f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "However, since the location of the first pose, <span class=\"mathquill\">x_0</span> is set to 0, this term can simply be removed from the equation.\n\n<div class=\"mathquill\">p(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{1}{2}\\frac{(z_1-1.8)^2}{\\sigma^2}}</div>\n\nNext, the robot takes another measurement of the same feature in the environment. This time, the data reads 2.2m. With two conflicting measurements, this is now an overdetermined system - as there are more equations than unknowns! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552769,
+              "key": "fd1fca64-23ad-4a97-a170-8641fc32b13d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c354_l4c5-03-maximum-likelihood-v2/l4c5-03-maximum-likelihood-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fd1fca64-23ad-4a97-a170-8641fc32b13d",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543388,
+              "key": "22c9d8c4-cd1d-46b1-a43f-5413d42d91ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "With two measurements, the most probable location of the feature can be represented by the product of the two probabilities. \n\n<div class=\"mathquill\">p(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}} * \\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{1}{2}\\frac{(z_1-2.2)^2}{\\sigma^2}}</div>\n\nIn this trivial example, it is probably quite clear to you that the most likely location of the feature is at the 2.0 meter mark. However, it is valuable to go through the maximum likelihood estimation process to understand the steps entailed, to then be able to apply it to more complicated systems.\n\nTo solve this problem analytically, a few steps can be taken to reduce the equations into a simpler form. \n\n### Remove Scaling Factors\n\nThe value of m that maximizes the equation does not depend on the constants in front of each of the exponentials. These are scaling factors, however in SLAM we are not usually interested in the absolute value of the probabilities, but finding the maximum likelihood estimate. For this reason, the factors can simply be removed. \n\n<div class=\"mathquill\">\\color{red}\\cancel\\frac{1}{\\sigma\\sqrt{2\\pi}}\\color{black}e^{-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}} * \\color{red}\\cancel\\frac{1}{\\sigma\\sqrt{2\\pi}}\\color{black}e^{-\\frac{1}{2}\\frac{(z_1- 2.2)^2}{\\sigma^2}}</div>\n\n### Log-Likelihood\n\nThe product of the probabilities has been simplified, but the equation is still rather complicated - with exponentials present. There exists a mathematical property that can be applied here to convert this product of exponentials into the sum of their exponents. \n\nFirst, we must use the following property, <span class=\"mathquill\">e^ae^b=e^{a+b}</span>, to combine the two exponentials into one. \n\n<div class=\"mathquill\">e^{-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}} * e^{-\\frac{1}{2}\\frac{(z_1- 2.2)^2}{\\sigma^2}}</div>\n\n<div class=\"mathquill\">= e^{-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}-\\frac{1}{2}\\frac{(z_1- 2.2)^2}{\\sigma^2}}</div>\n\nNext, instead of working with the likelihood, we can take its natural logarithm and work with it instead. \n\n<div class=\"mathquill\">ln(e^{-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}-\\frac{1}{2}\\frac{(z_1- 2.2)^2}{\\sigma^2}})</div>\n\n<div class=\"mathquill\">= {-\\frac{1}{2}\\frac{(z_1 - 1.8)^2}{\\sigma^2}-\\frac{1}{2}\\frac{(z_1- 2.2)^2}{\\sigma^2}}</div>\n\nThe natural logarithm is a [monotonic function](https://en.wikipedia.org/wiki/Monotonic_function) - in the log’s case - it is always increasing - as can be seen in the graph below. There can only be a one-to-one mapping of its values. This means that optimizing the logarithm of the likelihood is no different from maximizing the likelihood itself.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552733,
+              "key": "901e5918-555e-4ace-887c-8ec1867730b6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90a725_l4c5-04-maximum-likelihood-v1/l4c5-04-maximum-likelihood-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/901e5918-555e-4ace-887c-8ec1867730b6",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543389,
+              "key": "0e97379f-4262-4ad9-807c-55172b4ecf63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One thing to note when working with logs of likelihoods, is that they are always negative. This is because probabilities assume values between 0 and 1, and the log of any value between 0 and 1 is negative. This can be seen in the graph above. For this reason, when working with log-likelihoods, optimization entails _minimizing_ the _negative_ log-likelihood; whereas in the past, we were trying to maximize the likelihood.\n\nLastly, as was done before, the constants in front of the equation can be removed without consequence. As well, for the purpose of this example, we will assume that the same sensor was used in obtaining both measurements - and will thus ignore the variance in the equation.\n\n<div class=\"mathquill\">(z_1-1.8)^2+(z_1- 2.2)^2</div>\n\n### Optimization\n\nAt this point, the equation has been reduced greatly. To get it to its simplest form, all that is left is to multiply out all of the terms. \n\n<div class=\"mathquill\">2z_1^2 - 8z_1 + 8.08</div>\n\nTo find the minimum of this equation, you can take the first derivative of the equation and set it to equal 0. \n\n<div class=\"mathquill\">4z_1 - 8 = 0</div>\n<div class=\"mathquill\">4z_1 = 8</div>\n<div class=\"mathquill\">z_1 = 2</div>\n\nBy doing this, you are finding the location on the curve where the slope (or _gradient_, in multi-dimensional equations) is equal to zero - the trough! This property can be visualized easily by looking at a graph of the error function. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552776,
+              "key": "35050fbc-bd8c-41c2-a867-4d2e04e33ef4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90dc4c_l4c6-04mle-example-images-v3/l4c6-04mle-example-images-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/35050fbc-bd8c-41c2-a867-4d2e04e33ef4",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543391,
+              "key": "30f4f7b5-28c2-4833-aa8e-720e17a3f3f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In more complex examples, the curve may be multimodal, or exist over a greater number of dimensions. If the curve is multimodal, it may be unclear whether the locations discovered by the first derivative are in fact troughs, or peaks. In such a case, the second derivative of the function can be taken - which should clarify whether the local feature is a local minimum or maximum. \n\n## Overview\n\nThe procedure that you executed here is the _analytical_ solution to an MLE problem. The steps included,\n\n- Removing inconsequential constants,\n- Converting the equation from one of _likelihood estimation_ to one of _negative log-likelihood estimation_, and\n- Calculating the first derivative of the function and setting it equal to zero to find the extrema.\n\nIn GraphSLAM, the first two steps can be applied to _every_ constraint. Thus, any measurement or motion constraint can simply be labelled with its negative log-likelihood error. For a measurement constraint, this would resemble the following,\n\n<div class=\"mathquill\">\\frac{(z_t - (x_t + m_t))^2}{\\sigma^2}</div>\n\nAnd for a motion constraint, the following,\n\n<div class=\"mathquill\">\\frac{(x_t - (x_{t-1} + u_t))^2}{\\sigma^2}</div>\n\nThus, from now on, constraints will be labelled with their negative log-likelihood error,",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552770,
+              "key": "23eda5d4-2644-465e-a940-fd3dd30cdc44",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c38e_l4c5-05-maximum-likelihood-v2/l4c5-05-maximum-likelihood-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23eda5d4-2644-465e-a940-fd3dd30cdc44",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543393,
+              "key": "86377431-ce72-49f2-9817-69845ee792b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "with the estimation function trying to minimize the sum of all constraints,\n\n<div class=\"mathquill\">J_{GraphSLAM} = \\sum_t\\frac{(x_t - (x_{t-1} + u_t))^2}{\\sigma^2} + \\sum_t\\frac{(z_t - (x_t + m_t))^2}{\\sigma^2}</div>\n\nIn the next section, you will work through a more complicated estimation example to better understand maximum likelihood estimation, since it really is the basis of GraphSLAM.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 533810,
+          "key": "4933e6a7-1e39-4fe9-b7a8-dfba4af178ab",
+          "title": "MLE Example",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4933e6a7-1e39-4fe9-b7a8-dfba4af178ab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 534781,
+              "key": "46310191-fb4d-4ec2-8f32-d5ea718f623a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# MLE Example \n\nIn the previous example you looked at a robot taking repeated measurements of the same feature in the environment. This example demonstrated the fundamentals of maximum likelihood estimation, but was very limited since it was only estimating one parameter - <span class=\"mathquill\">z_1</span>. \n\nIn this example, you will have the opportunity to get hands-on with a more complicated 1-dimensional estimation problem.\n\n## Motion and Measurement Example\n\nThe robot starts at an arbitrary location that will be labeled 0, and then proceeds to measure a feature in front of it - the sensor reads that the feature is 7 meters way. The resultant graph is shown in the image below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552771,
+              "key": "d0fe1925-d4b4-4e91-b362-63a2b2b53ea5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c3ae_l4c6-01mle-example-images-v2/l4c6-01mle-example-images-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d0fe1925-d4b4-4e91-b362-63a2b2b53ea5",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543394,
+              "key": "ca40d05b-0eac-4a57-a13e-95c0bc682988",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After taking its first measurement, the following Gaussian distribution describes the robot’s most likely location. The distribution is highest when the two poses are 3 metres apart. \n\n<div class=\"mathquill\">p(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(z_1-(x_0 + 7))^2}{2\\sigma^2}}</div>\n\nRecall that since we constrained the robot’s initial location to 0, <span class=\"mathquill\">x_0</span> can actually be removed from the equation. \n\nNext, the robot moves forward by what it records to be 10 meters, and takes another measurement of the same feature. This time, the feature is read to be 4 meters behind the robot. The resultant graph looks like so,\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552772,
+              "key": "0795ed22-9029-4cef-9f7c-e769a01b2890",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c40a_l4c6-02mle-example-images-v2/l4c6-02mle-example-images-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0795ed22-9029-4cef-9f7c-e769a01b2890",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 543395,
+              "key": "73062821-7446-406a-8919-b7e4bacdc2ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it’s up to you to determine what the two new constraints look like!\n\n### Constraints Quizzes\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534774,
+              "key": "9587678f-3420-410b-a42b-243728d7c588",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9587678f-3420-410b-a42b-243728d7c588",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is the correct constraint for the robot’s motion from <span class=\"mathquill\">x_0</span> to <span class=\"mathquill\">x_1</span>?",
+                "answers": [
+                  {
+                    "id": "a1517957518720",
+                    "text": "<span class=\"mathquill\">\\frac{(x_1 - (x_0 + 10))^2}{\\sigma^2}</span>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1517957534616",
+                    "text": "<span class=\"mathquill\">\\frac{(x_1 - (x_0 - 10))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957535808",
+                    "text": "<span class=\"mathquill\">\\frac{(x_0 - (x_1 + 3))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957536440",
+                    "text": "<span class=\"mathquill\">\\frac{(x_1 - (x_0 - 3))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 534776,
+              "key": "05d39492-cf2f-4c0d-871f-be0fe4e94c17",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05d39492-cf2f-4c0d-871f-be0fe4e94c17",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is the correct constraint for the robot’s measurement from <span class=\"mathquill\">x_1</span> to <span class=\"mathquill\">z_1</span>?",
+                "answers": [
+                  {
+                    "id": "a1517957576481",
+                    "text": "<span class=\"mathquill\">\\frac{(x_1 - (z_1 - 3))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957587818",
+                    "text": "<span class=\"mathquill\">\\frac{(z_1 - (x_1 + 4))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957588442",
+                    "text": "<span class=\"mathquill\">\\frac{(z_1 - (x_1 + 3))^2}{\\sigma^2}</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957588912",
+                    "text": "<span class=\"mathquill\">\\frac{(z_1 - (x_1 - 4))^2}{\\sigma^2}</span>",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 543529,
+              "key": "3dd39fad-7edd-4592-8708-e0274cf44b3e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Sum of Constraints\n\nThe completed graph, with all of its labelled constraints can be seen below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552773,
+              "key": "683d77ff-62a8-4d62-9a3e-85679a077fbd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90c434_l4c6-03mle-example-images-v2/l4c6-03mle-example-images-v2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/683d77ff-62a8-4d62-9a3e-85679a077fbd",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 533867,
+              "key": "a521f4e8-21a9-41d7-b64c-9046352bab41",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, the task at hand is to minimize the sum of all constraints: \n\n<div class=\"mathquill\">J_{GraphSLAM} = \\frac{(z_1-7)^2}{\\sigma^2} + \\frac{(x_1 - (x_0 + 10))^2}{\\sigma^2} + \\frac{(z_1 - (x_1 - 4))^2}{\\sigma^2}</div>\n\nTo do this, you will need to take the first derivative of the function and set it to equal zero. Seems easy, but wait - there are two variables! You’ll have to take the derivative with respect to each, and then solve the system of equations to calculate the values of the variables.\n\nFor this calculation, assume that the measurements and motion have equal variance.\n\nSee if you can work through this yourself to find the values of the variables, but if you’re finding this task challenging and would like a hint, skip ahead to the solution to the quiz where I will step you through the process.\n\n### Optimization Quiz\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534777,
+              "key": "b287f739-142b-44b9-9e54-d7e153eb6a6f",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b287f739-142b-44b9-9e54-d7e153eb6a6f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the estimated locations of <span class=\"mathquill\">z_1</span> and <span class=\"mathquill\">x_1</span> based on your calculations?",
+                "answers": [
+                  {
+                    "id": "a1517957642119",
+                    "text": "<span class=\"mathquill\">z_1 = 6.5, x_1 = 10.5 </span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957651426",
+                    "text": "<span class=\"mathquill\">z_1 = 7, x_1 = 11 </span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957652003",
+                    "text": "<span class=\"mathquill\">z_1 = 6.5, x_1 = 10.75 </span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957652546",
+                    "text": "<span class=\"mathquill\">z_1 = 6.67, x_1 = 10.33</span>",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 534780,
+              "key": "f478ae0e-63c5-4c28-84de-f0f1cad5c088",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you’ve gotten this far, you’ve figured out that in the above example you needed to take the derivative of the error equation with respect to two different variables - <span class=\"mathquill\">z_1</span> and <span class=\"mathquill\">x_1</span> - and then perform variable elimination to calculate the most likely values for <span class=\"mathquill\">z_1</span> and <span class=\"mathquill\">x_1</span>. This process will only get more complicated and tedious as the graph grows. \n\n### Optimization with Non-Trivial Variances\n\nTo make matters a little bit more complicated, let’s actually take into consideration the variances of each measurement and motion. Turns out that our robot has the fanciest wheels on the market - they’re solid rubber (they won’t deflate at different rates) - with the most expensive encoders. But, it looks like the funds ran dry after the purchase of the wheels - the sensor is of very poor quality. \n\nRedo your math with the following new information,\n\n- Motion variance: 0.02,\n- Measurement variance: 0.1.\n\n### Optimization Quiz 2\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534778,
+              "key": "d7b499e2-6ee6-480c-9e36-bfcfb9424695",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d7b499e2-6ee6-480c-9e36-bfcfb9424695",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the estimated locations of <span class=\"mathquill\">z_1</span> and <span class=\"mathquill\">x_1</span> based on your calculations when taking into account the variances?",
+                "answers": [
+                  {
+                    "id": "a1517957707976",
+                    "text": "<span class=\"mathquill\">z_1 = 6.61, x_1 = 10.12 </span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957717938",
+                    "text": "<span class=\"mathquill\">z_1 = 6.66, x_1 = 10.33 </span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1517957718515",
+                    "text": "<span class=\"mathquill\">z_1 = 6.54, x_1 = 10.09</span>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1517957719075",
+                    "text": "<span class=\"mathquill\">z_1 = 6.6, x_1 = 10.25 </span>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 534779,
+              "key": "add25e21-6c73-468b-a689-d90514993bb3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That seemed to be a fair bit more work than the first example! At this point, we just have three constraints - imagine how difficult this process would be if we had collected measurement and motion data over a period of half-an hour, as may happen when mapping a real-life environment. The calculations would be tedious - even for a computer!\n\nSolving the system analytically has the advantage of finding _the_ correct answer. However, doing so can be very computationally intensive - especially as you move into multi-dimensional problems with complex probability distributions. In this example, the steps were easy to perform, but it only takes a short stretch of the imagination to think of how complicated these steps can become in complex multidimensional problems.\n\nWell, _what is the alternative?_ you may ask. Finding the maximum value can be done in two ways - *analytically* and *numerically*. Solving the problem numerically allows for a solution to be found rather quickly, however its accuracy may be sub-optimal. Next, you will look at how to solve complicated MLE problems numerically. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 533811,
+          "key": "ad845699-c2ec-43e0-8f71-b7680d97a020",
+          "title": "Numerical Solution to MLE",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad845699-c2ec-43e0-8f71-b7680d97a020",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551135,
+              "key": "c523f723-d350-43db-991d-cd5acc7f5a06",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Numerical Solution to MLE \n\nThe method that you applied in the previous two examples was very effective at finding a solution quickly - but that is not always the case. In more complicated problems, finding the analytical solution may involve lengthy computations.\n\nLuckily there is an alternative - numerical solutions to maximum likelihood problems can be found in a fraction of the time. We will explore what a numerical solution to the previous example would look like. \n\n## Numerical solution\n\nThe graph of the error function from the previous example is seen below. In this example, it is very easy to see where the global minimum is located. However, in more complicated examples with multiple dimensions this is not as trivial. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552737,
+              "key": "c59e3258-f302-492d-9f07-39309e7ff628",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90a962_l4c7-01-numerical-solution-to-mle-v1/l4c7-01-numerical-solution-to-mle-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c59e3258-f302-492d-9f07-39309e7ff628",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 533932,
+              "key": "74b9f73f-557b-4370-80e9-87e9f66da8b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This MLE can be solved numerically by applying an optimization algorithm. The goal of an optimization algorithm is to _speedily_ find the optimal solution - in this case, the local minimum. There are several different algorithms that can tackle this problem; in SLAM, the [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent), [Levenberg-Marquardt](https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm), and [conjugate gradient](https://en.wikipedia.org/wiki/Conjugate_gradient_method) algorithms are quite common. A brief summary of gradient descent.\n\n## Quick Refresher on Gradient Descent\n\nRecall that the gradient of a function is a vector that points in the direction of the greatest rate of change; or in the case of an extrema, is equal to zero. \n\nIn gradient descent - you make an initial guess, and then adjust it incrementally in the direction _opposite_ the gradient. Eventually, you should reach a minimum of the function.\n\nThis algorithm does have a shortcoming - in complex distributions, the initial guess can change the end result significantly. Depending on the initial guess, the algorithm converges on two different local minima. The algorithm has no way to determine where the global minimum is - it very naively moves down the steepest slope, and when it reaches a local minima, it considers its task complete. One solution to this problem is to use stochastic gradient descent (SGD), an iterative method of gradient descent using subsamples of data.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 534621,
+          "key": "4cc00863-b75a-4eb4-9ace-c4000e9e4bc6",
+          "title": "Mid-Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4cc00863-b75a-4eb4-9ace-c4000e9e4bc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553276,
+              "key": "5db53322-f464-43df-9e08-21308e27158d",
+              "title": "Mid-Lesson Overview ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_xbQgoFqNgE",
+                "china_cdn_id": "_xbQgoFqNgE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 534622,
+          "key": "727440c1-e8fa-40b3-b193-4a459cee0c03",
+          "title": "1-D to n-D",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "727440c1-e8fa-40b3-b193-4a459cee0c03",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 534628,
+              "key": "51785b8a-fcee-4f4c-9ad6-38d6e65488b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# 1-D to n-D \n\n## 1-Dimensional Graphs\n\nIn the previous examples, you were working with 1-dimensional graphs. The robot's motion and measurements were limited to one dimension - they could either be performed forwards or backwards. \n\nIn such a case, each constraint could be represented in the following form,\n\n**1-D Measurement constraint:** <span class=\"mathquill\">\\large \\frac{(z_t - (x_t + m_t))^2}{\\sigma^2}</span>\n\n**1-D Motion constraint:** <span class=\"mathquill\">\\large \\frac{(x_t - (x_{t-1} + u_t))^2}{\\sigma^2}</span>\n\n## n-Dimensional Graphs\nIn multi-dimensional systems, we must use matrices and covariances to represent the constraints. This generalization can be applied to system of 2-dimensions, 3-dimensions, and really any n-number of dimensions. The equations for the constraints would look like so,\n\n**n-D Measurement constraint: **<span class=\"mathquill\">(z_t-h(x_t,m_j))^TQ_t^{-1}(z_t-h(x_t,m_j))</span>\n\n**n-D Motion constraint:** <span class=\"mathquill\">(x_t-g(u_t,x_{t-1}))^TR_t^{-1}(x_t-g(u_t,x_{t-1}))</span>\n\nWhere <span class=\"mathquill\">h()</span> and <span class=\"mathquill\">g()</span> represent the measurement and motion functions, and <span class=\"mathquill\">Q_t</span> and <span class=\"mathquill\">R_t</span> are the covariances of the measurement and motion noise. These naming conventions should be familiar to you, as they were all introduced in the Localization module.\n\nThe multidimensional formula for the sum of all constraints is presented below.\n\n<span class=\"mathquill\">J_{GraphSLAM} = x_0^T \\Omega x_0 + \\sum_t(x_t-g(u_t,x_{t-1}))^TR_t^{-1}(x_t-g(u_t,x_{t-1})) </span>\n<span class=\"mathquill\"> \\quad + \\sum_t(z_t-h(x_t,m_j))^TQ_t^{-1}(z_t-h(x_t,m_j))</span>\n\nThe first element in the sum is the initial constraint - it sets the first robot pose to equal to the origin of the map. The covariance, <span class=\"mathquill\">\\Omega_0</span>, represents complete confidence. Essentially, \n\n<div class=\"mathquill\">\\Omega_0 = \n\\begin{bmatrix}\n\\infty & 0 & 0 \\\\\n0 & \\infty & 0\\\\\n0 & 0 & \\infty\n\\end{bmatrix}\n</div>\n\nNow that we are working with multi-dimensional graphs and multi-dimensional constraints, it makes sense to use a more intelligent data structure to work with our data. The information matrix and information vector are just that! \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 534623,
+          "key": "9c317cc5-7909-4145-8649-8658b70a8869",
+          "title": "Information Matrix and Vector",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9c317cc5-7909-4145-8649-8658b70a8869",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552747,
+              "key": "4b8cf662-aa89-416b-97c8-95dbb7d80fa5",
+              "title": "Information Matrix and Information Vector ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3rsLNj2fQ4Y",
+                "china_cdn_id": "3rsLNj2fQ4Y.mp4"
+              }
+            },
+            {
+              "id": 551141,
+              "key": "f8029c7f-8f87-4a2d-bdf5-3e8b3608d7f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\n- A **motion constraint** ties together two poses,\n- A **measurement constraint** ties together the feature and the pose from which is was measured,\n- Each operation updates 4 cells in the information matrix and 2 cells in the information vector,\n- All other cells remain 0. Matrix is called ‘sparse’ due to large number of zero elements,\n- **Sparsity** is a very helpful property for solving the system of equations.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553143,
+              "key": "7be3c388-dd29-4133-a6b7-1b28b735ba78",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 534745,
+          "key": "c365e479-d2b9-4bb9-abc6-69b463080e2b",
+          "title": "Inference",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c365e479-d2b9-4bb9-abc6-69b463080e2b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551142,
+              "key": "74b157cb-5fca-46a2-a3da-eab2b644d635",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Inference \n\nOnce the information matrix and information vector have been populated, the path and map can be recovered by the following operation,\n\n<div class=\"mathquill\">\\mu = \\Omega^{-1}\\xi</div>\n\nThe result is a vector, <span class=\"mathquill\">\\mu</span> defined over all poses and features, containing the best estimate for each. This operation is _very_ similar to what you encountered before in the simple one-dimensional case, with a bit of added structure. Just as before, all constraints are considered when computing the solution.\n\nCompleting the above operation requires solving a system of equations. In small systems, this is an easily realizable task, but as the size of the graph and matrix grows - efficiency becomes a concern. \n\nThe efficiency of this operation, specifically the matrix inversion, depends greatly on the topology of the system.\n\n## Linear Graph\n\nIf the robot moves through the environment once, without ever returning to a previously visited location, then the topology is linear. Such a graph will produce a rather sparse matrix that, with some effort, can be reordered to move all non-zero elements to near the diagonal. This will allow the above equation to be completed in linear time. \n\n## Cyclical Graph\n\nA more common topology is cyclical, in which a robot revisits a location that it has been to before, after some time has passed. In such a case, features in the environment will be linked to multiple poses - ones that are not consecutive, but spaced far apart. The further apart in time that these poses are - the more problematic, as such a matrix cannot be reordered to move non-zero cells closer to the diagonal. The result is a matrix that is more computationally challenging to recover. \n\nHowever, all hope is not lost - a variable elimination algorithm can be used to simplify the matrix, allowing for the inversion and product to be computed quicker. \n\n## Variable Elimination\n\nVariable elimination can be applied iteratively to remove all cyclical constraints. Just like it sounds, variable elimination entails removing a variable (ex. feature) entirely from the graph and matrix. This can be done by adjusting existing links or adding new links to accommodate for those links that will be removed. \n\nIf you recall the spring analogy, variable elimination removes features, but keeps the _net_ forces in the springs unaltered by adjusting the tension on other springs or adding new springs where needed. \n\nThis process is demonstrated in the following two images. The first image shows the graph, matrix, and vector as they were presented in the previous video. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552741,
+              "key": "d8ff8e27-17b5-4894-9e79-61c9756ac81b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90aa15_l4c11-01-inference-images-v1/l4c11-01-inference-images-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d8ff8e27-17b5-4894-9e79-61c9756ac81b",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 551144,
+              "key": "78c67fad-25e9-434e-a8a9-4e62e5099a66",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The second image shows the elimination of <span class=\"mathquill\">m_1</span>. You can see that in this process the matrix will have five cells reset to zero (indicated in red), and four cells will have their values adjusted (indicated in green) to accommodate the variable elimination. Similarly, the information vector will have one cell removed and two adjusted.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552740,
+              "key": "9d538eb5-e3a2-4863-a294-0e93f85034af",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a90aa0d_l4c11-02-inference-images-v1/l4c11-02-inference-images-v1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d538eb5-e3a2-4863-a294-0e93f85034af",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 551145,
+              "key": "d3a14fa5-ae64-46d3-91d4-85a0bcbb3b80",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This process is repeated for all of the features, and in the end the matrix is defined over all robot poses. At this point, the same procedure as before can be applied, <span class=\"mathquill\">\\mu = \\Omega^{-1}\\xi</span>. \n\nPerforming variable elimination on the information matrix/vector prior to performing inference is less computationally intense than attempting to solve the inference problem directly on the unaltered data. \n\nIn practice, the analytical inference method described above is seldom applied, as numerical methods are able to converge on a sufficiently accurate estimate in a fraction of the time. More will be said on this topic later, but first it is important to explore how nonlinear constraints are handled in GraphSLAM.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 534748,
+          "key": "bb130b31-3c90-48df-bc6c-b41b0f551cfb",
+          "title": "Nonlinear Constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb130b31-3c90-48df-bc6c-b41b0f551cfb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 549213,
+              "key": "317aea6f-156b-4e7d-bbc7-66b0fabb3dec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Nonlinear Constraints\n\nIn the Localization lesson, you were introduced to nonlinear motion and measurement models. The idea that a robot only moves in a linear fashion is quite limiting, and so it became important to understand how to work with nonlinear models. In localization, nonlinear models couldn’t be applied directly, as they would have turned the Gaussian distribution into a much more complicated distribution that could not be computed in closed form (analytically, in a finite number of steps). The same is true of nonlinear models in SLAM - most motion and measurement constraints are nonlinear, and must be linearized before they can be added to the information matrix and information vector. Otherwise, it would be impractical, if not impossible, to solve the system of equations analytically.\n\nLuckily, you will be able to apply the same procedure that you learned in the [EKF lesson](https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/f5048868-4bd8-4e8d-8c6b-69bd559ed9db/lessons/f002d591-94af-4c70-aeac-ac2ed6f7b527/concepts/bb377b96-eed0-49e8-bad9-5d416ee80cd1) of Localization to linearize nonlinear constraints for SLAM. \n\nIf you recall, a Taylor Series approximates a function using the sum of an infinite number of terms. A linear approximation can be computed by using only the first two terms and ignoring all higher order terms. In multi-dimensional models, the first derivative is replaced by a Jacobian - a matrix of partial derivatives. \n\n## Linearizing Constraints\n\nA linearization of the measurement and motion constraints is the following, \n\n<div class=\"mathquill\">g(u_t, x_{t-1}) \\simeq g(u_t,\\mu_{t-1}) + G_t(x_{t-1} - \\mu_{t-1})</div>\n\n<div class=\"mathquill\">h(y_t) \\simeq h(\\mu_t)+H_t^i(y_t - \\mu_t)</div>\n\nTo linearize each constraint, you need a value for <span class=\"mathquill\">\\mu_{t-1}</span> or <span class=\"mathquill\">\\mu_t</span> to linearize about. This value is quite important since the linearization of a nonlinear function can change significantly depending on which value you choose to do so about. So, what <span class=\"mathquill\">\\mu_{t-1}</span> or <span class=\"mathquill\">\\mu_t</span> is a reasonable estimate for each constraint? \n\nWell, when presented with a completed graph of nonlinear constraints, you can apply only the motion constraints to create a pose estimate, <span class=\"mathquill\">[x_0 … x_t]^T</span>,  and use this primitive estimate in place of <span class=\"mathquill\">\\mu</span> to linearize all of the constraints. Then, once all of the constraints are linearized and added to the matrix and vector, a solution can be computed as before, using <span class=\"mathquill\">\\mu = \\Omega^{-1}\\xi</span>.\n\nThis solution is unlikely to be an accurate solution. The pose vector used for linearization will be erroneous, since applying just the motion constraints will lead to a graph with a lot of drift, as errors accumulate with every motion. Errors in this initial pose vector will propagate through the calculations and affect the accuracy of the end result. This is especially so because the errors may increase in magnitude significantly during a poorly positioned linearization (where the estimated <span class=\"mathquill\">\\mu_t</span> is far from reality, or the estimated <span class=\"mathquill\">\\mu_t</span> lies on a curve where a small step in either direction will make a big difference). \n\nTo reduce this error, we can repeat the linearization process several times, each time using a better and better estimate to linearize the constraints about.\n\n## Iterative Optimization\n\nThe first iteration will see the constraints linearized about the pose estimate created using solely motion constraints. Then, the system of equations will be solved to produce a solution, <span class=\"mathquill\">\\mu</span>.\n\nThe next iteration will use this solution, <span class=\"mathquill\">\\mu</span>, as the estimate used to linearize about. The thought is that this estimate would be a little bit better than the previous; after all, it takes into account the measurement constraints too.\n\nThis process continues, with all consequent iterations using the previous solution as the vector of poses to linearize the constraints about. Each solution incrementally improves on the previous, and after some number of iterations the solution converges.\n\n## Summary\n\nNonlinear constraints can be linearized using Taylor Series, but this inevitably introduces some error. To reduce this error, the linearization of every constraint must occur as close as possible to the true location of the pose or measurement relating to the constraint. To accomplish this, an iterative solution is used, where the point of linearization is improved with every iteration. After several iterations, the result, <span class=\"mathquill\">\\mu</span>, becomes a much more reasonable estimate for the true locations of all robot poses and features.\n\nThe workflow for GraphSLAM with nonlinear constraints is summarized below:\n\n- Collect data, create graph of constraints,\n- Until convergence:\n   - Linearize all constraints about an estimate, <span class=\"mathquill\">\\mu</span>, and add linearized constraints to the information matrix & vector,\n   - Solve system of equations using <span class=\"mathquill\">\\mu = \\Omega^{-1}\\xi</span>.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 543396,
+          "key": "2dca2c48-32fc-4d41-9c7f-8b585024f154",
+          "title": "Graph-SLAM at a Glance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2dca2c48-32fc-4d41-9c7f-8b585024f154",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552725,
+              "key": "edffb45c-9564-445b-ae3d-405a0f0440b4",
+              "title": "Graph-SLAM At a Glance",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d29m7d-DBYE",
+                "china_cdn_id": "d29m7d-DBYE.mp4"
+              }
+            },
+            {
+              "id": 578861,
+              "key": "07c8484b-f4de-4bd9-b868-7c2d6fbeacfb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you'd like to dive deeper into the mathematics of GraphSLAM, feel free to explore the following resources:\n\n[A Tutorial on Graph-Based SLAM, Grisetti](http://www2.informatik.uni-freiburg.de/~stachnis/pdf/grisetti10titsmag.pdf)\n\n[The GraphSLAM Algorithm with Applications to Large-Scale Mapping of Urban Structures, Thrun](http://robot.cc/papers/thrun.graphslam.pdf)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578862,
+              "key": "6e4fa3fd-a253-4a8b-9973-ca8cf374ff8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 549240,
+          "key": "fd703ef9-8504-48f3-b9cb-a0d7f95fcb9b",
+          "title": "Intro to 3D SLAM With RTAB-Map",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd703ef9-8504-48f3-b9cb-a0d7f95fcb9b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552876,
+              "key": "2ace5b7b-81c1-4940-8193-b1b5cf00425f",
+              "title": "Intro To 3D SLAM With RTAB Map ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CbVNZ0J5Pmg",
+                "china_cdn_id": "CbVNZ0J5Pmg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 549241,
+          "key": "68652963-1e60-4f6c-8b8d-d625877bf9bf",
+          "title": "3D SLAM With RTAB-Map",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "68652963-1e60-4f6c-8b8d-d625877bf9bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553083,
+              "key": "da68a3da-e3ca-43a3-8879-77fcbb0e973e",
+              "title": "3D SLAM With RTAB-Map ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YpDVapcNaVw",
+                "china_cdn_id": "YpDVapcNaVw.mp4"
+              }
+            },
+            {
+              "id": 550763,
+              "key": "04d936ec-f84e-45b3-857a-528da6261635",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8c8536_loop-closure/loop-closure.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/04d936ec-f84e-45b3-857a-528da6261635",
+              "caption": "",
+              "alt": "",
+              "width": 744,
+              "height": 341,
+              "instructor_notes": null
+            },
+            {
+              "id": 550762,
+              "key": "5e27c000-9a27-4068-8c02-183cefcdcaf1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThe importance of loop closure is best understood by seeing a map result without it! \n\nWhen loop closure is disabled, you can see parts of the map output that are repeated, and the resulting map looks a lot more choppy. It is not an accurate representation of the environment. This is caused by the robot not using loop closure to compare new images and locations to ones that are previously viewed, and instead it registers them as new locations. When loop closure is enabled, the map is significantly smoother and is an accurate representation of the room.\n\nFor example, on the left, where loop closure is disabled, you'll see highlighted where the door is represented as multiple corners and parts of a door, where on the right, you see a single clearly defined door.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 549242,
+          "key": "6318b994-8948-4870-b59b-71c9362b5d7f",
+          "title": "Visual Bag-of-Words",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6318b994-8948-4870-b59b-71c9362b5d7f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552877,
+              "key": "d6b7c77d-7cb7-441e-9ae9-c26ffd101e4c",
+              "title": "Visual Bag Of Words ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7-T3Vo5bWnI",
+                "china_cdn_id": "7-T3Vo5bWnI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 549243,
+          "key": "e0e54926-f523-4509-88f7-126f13c32fb2",
+          "title": "RTAB-Map Memory Management",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e0e54926-f523-4509-88f7-126f13c32fb2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 553514,
+              "key": "bae5e82b-5518-4252-90c2-e7a47fb9da63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553465,
+              "key": "3210a365-001c-481b-ad50-38ae06d10130",
+              "title": "RTAB-Map Memory Management",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Cs4mO5y4xYY",
+                "china_cdn_id": "Cs4mO5y4xYY.mp4"
+              }
+            },
+            {
+              "id": 553517,
+              "key": "c3b2ad99-fc62-446b-a0bb-872d7fe70dd7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553516,
+              "key": "09e22696-3db3-48e1-b29f-c7c785085a70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "RTAB-Map uses a memory management technique to limit the number of locations considered as candidates during loop closure detection. This technique is a key feature of RTAB-Map and allows for loop closure to be done in real time.\n\nThe overall strategy is to keep the most recent and frequently observed locations in the robot’s <strong>Working Memory (WM)</strong>, and transfer the others into <strong>Long-Term Memory (LTM)</strong>. \n\n- When a new image is acquired, a new node is created in the <strong>Short Term Memory (STM)</strong>. \n\n- When creating a node, recall that features are extracted and compared to the vocabulary to find all of the words in the image, creating a bag-of-words for this node.\n\n- Nodes are assigned a weight in the STM based on how long the robot spent in the location - where a longer time means a higher weighting.\n- The STM has a fixed size of S. When STM reaches S nodes, the oldest node is moved to WM to be considered for loop closure detection. \n\n- Loop closure  happens in the WM.\n \n- WM size depends on a fixed time limit T. When the time required to process new data reaches T, some nodes of graph are transferred from WM to LTM - as a result, WM size is kept nearly constant. \n\n- Oldest and less weighted nodes in WM are transferred to LTM before others, so WM is made up of nodes seen for longer periods of time. \n\n- LTM is not used for loop closure detection and graph optimization. \n\n- If loop closure is detected, neighbours in LTM of an old node can be transferred back to the WM (a process called retrieval). \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 553592,
+              "key": "ecde5aa7-e3d6-428f-94e6-ea8b65cc0334",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a95f80b_screenshot-from-2018-02-27-14-32-35/screenshot-from-2018-02-27-14-32-35.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ecde5aa7-e3d6-428f-94e6-ea8b65cc0334",
+              "caption": "",
+              "alt": "",
+              "width": 640,
+              "height": 568,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 549244,
+          "key": "23ac100a-15df-4a2f-b003-78fe4a8503ad",
+          "title": "RTAB-Map Optimization and Output",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "23ac100a-15df-4a2f-b003-78fe4a8503ad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552928,
+              "key": "9431f96f-0fff-411d-9718-a4f2a47d6f25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# RTAB-Map Optimization and Output\n\nHere we will discuss graph and map optimization, as well as time complexity considerations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552930,
+              "key": "2822b91c-e6bf-4e3d-b008-11111a3cb36d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Graph Optimization \n\n\nWhen a loop closure hypothesis is accepted, a new constraint is added to the map’s graph, then a graph optimizer minimizes the errors in the map. RTAB-Map supports 3 different graph optimizations: Tree-based network optimizer, or TORO, General Graph Optimization, or G2O and GTSAM (Smoothing and Mapping).\n\nAll of these optimizations use node poses and link transformations as constraints. When a loop closure is detected, errors introduced by the odometry can be propagated to all links, correcting the map.\n\nRecall that Landmarks are used in the graph optimization process for other methods, whereas RTAB-Map doesn't use them. Only odometry constraints and loop closure constraints are optimized.\n\nYou can see the impact of graph optimization in the comparison below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552936,
+              "key": "16553831-db58-444c-a3c8-1a02353197ca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a932e60_5/5.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/16553831-db58-444c-a3c8-1a02353197ca",
+              "caption": "",
+              "alt": "",
+              "width": 789,
+              "height": 439,
+              "instructor_notes": null
+            },
+            {
+              "id": 552721,
+              "key": "9d404338-b10f-4662-982b-e4f5e6abf6c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Map assembly and Output\n\n\nThe possible outputs of RTAB-Map are a 2d Occupancy grid map, 3d occupancy grid map (3d octomap), or a 3D point cloud. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552931,
+              "key": "8082cb4d-a27e-4a41-a629-8e362b1edeca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a932de6_4/4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8082cb4d-a27e-4a41-a629-8e362b1edeca",
+              "caption": "",
+              "alt": "",
+              "width": 787,
+              "height": 439,
+              "instructor_notes": null
+            },
+            {
+              "id": 553520,
+              "key": "77546bb9-01bd-4cc3-bc0e-96b56a0c9f4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Graph SLAM  Complexity and the Complexity of RTAB-Map\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552932,
+              "key": "48a0383e-e364-4174-8985-0008727f0f31",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a932e1b_2/2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/48a0383e-e364-4174-8985-0008727f0f31",
+              "caption": "",
+              "alt": "",
+              "width": 792,
+              "height": 450,
+              "instructor_notes": null
+            },
+            {
+              "id": 552933,
+              "key": "adee8b6c-5479-40cb-a3a4-1b4f41ca17f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Graph-SLAM complexity is linear, according to the number of nodes, which increases according to the size of the map.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552934,
+              "key": "8d0710d5-92ee-4b11-867d-9281d8d41bb5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a932e3a_3/3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8d0710d5-92ee-4b11-867d-9281d8d41bb5",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 445,
+              "instructor_notes": null
+            },
+            {
+              "id": 552935,
+              "key": "13c24d4c-4374-4f7a-8401-dbbed83c7cf5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By providing constraints associated with how many nodes are processed for loop closure by memory management, the time complexity becomes constant in RTAB-Map.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 549245,
+          "key": "604360d8-ec58-48d8-b8b4-e39bba9bdc14",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "604360d8-ec58-48d8-b8b4-e39bba9bdc14",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 552727,
+              "key": "4ef11d5a-c3ae-47ba-93b2-70208dc46a54",
+              "title": "Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PN6cQJA1N40",
+                "china_cdn_id": "PN6cQJA1N40.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

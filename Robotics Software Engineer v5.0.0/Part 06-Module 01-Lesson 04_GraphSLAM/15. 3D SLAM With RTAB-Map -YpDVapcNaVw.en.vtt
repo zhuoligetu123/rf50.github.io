@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.788
+Now, we will discuss the front end and back end specific to RTAB-Map.
+
+00:00:05.788 --> 00:00:09.030
+The front end of RTAB-Map focuses on sensor data used to
+
+00:00:09.029 --> 00:00:12.884
+obtain the constraints that are used for feature optimization approaches.
+
+00:00:12.884 --> 00:00:15.539
+Although landmark constraints are used for other graphs
+
+00:00:15.539 --> 00:00:18.884
+SLAM methods like the 2D graph SLAM method you saw earlier,
+
+00:00:18.885 --> 00:00:21.270
+RTAB-Map does not use them.
+
+00:00:21.269 --> 00:00:25.920
+Only odometry constraints and loop closure constraints are considered here.
+
+00:00:25.920 --> 00:00:28.965
+The odometry constraints can come from wheel encoders,
+
+00:00:28.964 --> 00:00:32.009
+IMU, lighter or visual odometry.
+
+00:00:32.009 --> 00:00:34.349
+Visual odometry is accomplished using
+
+00:00:34.350 --> 00:00:37.820
+2D features such as Speeded Up Robust Features or SURF.
+
+00:00:37.820 --> 00:00:43.859
+Remember that RTAB-Map is appearance based with no metric distance information.
+
+00:00:43.859 --> 00:00:47.879
+RTAB-Map can use a single monocular camera to detect loop closure.
+
+00:00:47.880 --> 00:00:49.905
+For metric graph SLAM,
+
+00:00:49.905 --> 00:00:52.469
+RTAB-Map requires an RGB-D camera or
+
+00:00:52.469 --> 00:00:57.644
+a stereo camera to compute the geometric constraint between the images of a loop closure.
+
+00:00:57.645 --> 00:01:01.320
+A laser range finder can also be used to improve or refine
+
+00:01:01.320 --> 00:01:05.349
+this geometric constraint by providing a more precise localization.
+
+00:01:05.349 --> 00:01:08.479
+The front end also involves graph management,
+
+00:01:08.480 --> 00:01:13.204
+which includes node creation and loop closure detection using bag-of-words.
+
+00:01:13.204 --> 00:01:16.939
+The back end of RTAB-Map includes graph optimization,
+
+00:01:16.939 --> 00:01:20.359
+an assembly of an occupancy grid from the data of the graph.
+
+00:01:20.359 --> 00:01:24.950
+We will discuss these components in more detail starting with loop closure.
+
+00:01:24.950 --> 00:01:28.579
+As you've heard, loop closure detection is the process of finding
+
+00:01:28.579 --> 00:01:32.599
+a match between the current and previously visited locations in SLAM.
+
+00:01:32.599 --> 00:01:37.039
+There are two types of loop closure detection: local and global.
+
+00:01:37.040 --> 00:01:41.180
+Many probabilistic SLAM methods use local loop closure detection
+
+00:01:41.180 --> 00:01:45.825
+where matches are found between a new observation and a limited map region.
+
+00:01:45.825 --> 00:01:49.620
+The size and location of this limited map region is determined by
+
+00:01:49.620 --> 00:01:53.022
+the uncertainty associated with the robot's position.
+
+00:01:53.022 --> 00:01:56.940
+This type of approach fails if the estimated position is incorrect.
+
+00:01:56.939 --> 00:01:58.679
+As you've already seen,
+
+00:01:58.680 --> 00:02:02.250
+it is likely that the events in the real world that the robot is operating
+
+00:02:02.250 --> 00:02:05.870
+in will cause errors in the estimated position.
+
+00:02:05.870 --> 00:02:07.620
+In a global loop closure approach,
+
+00:02:07.620 --> 00:02:10.884
+a new location is compared with previously viewed locations.
+
+00:02:10.884 --> 00:02:12.544
+If no match is found,
+
+00:02:12.544 --> 00:02:14.884
+the new location is added to memory.
+
+00:02:14.884 --> 00:02:17.989
+As the map grows and more locations are added,
+
+00:02:17.990 --> 00:02:20.390
+the amount of time to check whether the location has
+
+00:02:20.389 --> 00:02:23.164
+been previously seen increases linearly.
+
+00:02:23.164 --> 00:02:26.449
+If the time it takes to search and compare new images to the
+
+00:02:26.449 --> 00:02:29.810
+one stored in memory becomes larger than the acquisition time,
+
+00:02:29.810 --> 00:02:31.955
+the map becomes ineffective.
+
+00:02:31.955 --> 00:02:36.094
+RTAB-Map uses a global loop closure approach combined with
+
+00:02:36.094 --> 00:02:40.949
+other techniques to ensure that the loop closure process happens in real time.
+
+00:02:40.949 --> 00:02:43.759
+As you can see here, the ultimate map output
+
+00:02:43.759 --> 00:02:47.419
+is significantly improved with loop closure detection
+

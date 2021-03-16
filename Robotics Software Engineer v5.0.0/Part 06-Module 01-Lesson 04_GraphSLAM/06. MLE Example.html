@@ -1,0 +1,781 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   MLE Example
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      GraphSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Graphs.html">
+       02. Graphs
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Constraints.html">
+       03. Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Front-End vs Back-End.html">
+       04. Front-End vs Back-End
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Maximum Likelihood Estimation.html">
+       05. Maximum Likelihood Estimation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MLE Example.html">
+       06. MLE Example
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Numerical Solution to MLE.html">
+       07. Numerical Solution to MLE
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mid-Lesson Overview.html">
+       08. Mid-Lesson Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="09. 1-D to n-D.html">
+       09. 1-D to n-D
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Information Matrix and Vector.html">
+       10. Information Matrix and Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inference.html">
+       11. Inference
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Nonlinear Constraints.html">
+       12. Nonlinear Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Graph-SLAM at a Glance.html">
+       13. Graph-SLAM at a Glance
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to 3D SLAM With RTAB-Map.html">
+       14. Intro to 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="15. 3D SLAM With RTAB-Map.html">
+       15. 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Visual Bag-of-Words.html">
+       16. Visual Bag-of-Words
+      </a>
+     </li>
+     <li class="">
+      <a href="17. RTAB-Map Memory Management.html">
+       17. RTAB-Map Memory Management
+      </a>
+     </li>
+     <li class="">
+      <a href="18. RTAB-Map Optimization and Output.html">
+       18. RTAB-Map Optimization and Output
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Outro.html">
+       19. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          06. MLE Example
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="mle-example">
+          MLE Example
+         </h1>
+         <p>
+          In the previous example you looked at a robot taking repeated measurements of the same feature in the environment. This example demonstrated the fundamentals of maximum likelihood estimation, but was very limited since it was only estimating one parameter -
+          <span class="mathquill ud-math">
+           z_1
+          </span>
+          .
+         </p>
+         <p>
+          In this example, you will have the opportunity to get hands-on with a more complicated 1-dimensional estimation problem.
+         </p>
+         <h2 id="motion-and-measurement-example">
+          Motion and Measurement Example
+         </h2>
+         <p>
+          The robot starts at an arbitrary location that will be labeled 0, and then proceeds to measure a feature in front of it - the sensor reads that the feature is 7 meters way. The resultant graph is shown in the image below.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c6-01mle-example-images-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          After taking its first measurement, the following Gaussian distribution describes the robot’s most likely location. The distribution is highest when the two poses are 3 metres apart.
+         </p>
+         <div class="mathquill">
+          p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(z_1-(x_0 + 7))^2}{2\sigma^2}}
+         </div>
+         <p>
+          Recall that since we constrained the robot’s initial location to 0,
+          <span class="mathquill ud-math">
+           x_0
+          </span>
+          can actually be removed from the equation.
+         </p>
+         <p>
+          Next, the robot moves forward by what it records to be 10 meters, and takes another measurement of the same feature. This time, the feature is read to be 4 meters behind the robot. The resultant graph looks like so,
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c6-02mle-example-images-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now it’s up to you to determine what the two new constraints look like!
+         </p>
+         <h3 id="constraints-quizzes">
+          Constraints Quizzes
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following is the correct constraint for the robot’s motion from
+             <span class="mathquill ud-math">
+              x_0
+             </span>
+             to
+             <span class="mathquill ud-math">
+              x_1
+             </span>
+             ?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1517957518720" name="534774" type="radio" value="a1517957518720"/>
+           <label for="a1517957518720">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(x_1 - (x_0 + 10))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957534616" name="534774" type="radio" value="a1517957534616"/>
+           <label for="a1517957534616">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(x_1 - (x_0 - 10))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957535808" name="534774" type="radio" value="a1517957535808"/>
+           <label for="a1517957535808">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(x_0 - (x_1 + 3))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957536440" name="534774" type="radio" value="a1517957536440"/>
+           <label for="a1517957536440">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(x_1 - (x_0 - 3))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <span class="mathquill">
+           \frac{(x_1 - (x_0 + 10))^2}{\sigma^2}
+          </span>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             Which of the following is the correct constraint for the robot’s measurement from
+             <span class="mathquill ud-math">
+              x_1
+             </span>
+             to
+             <span class="mathquill ud-math">
+              z_1
+             </span>
+             ?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1517957576481" name="534776" type="radio" value="a1517957576481"/>
+           <label for="a1517957576481">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(x_1 - (z_1 - 3))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957587818" name="534776" type="radio" value="a1517957587818"/>
+           <label for="a1517957587818">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(z_1 - (x_1 + 4))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957588442" name="534776" type="radio" value="a1517957588442"/>
+           <label for="a1517957588442">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(z_1 - (x_1 + 3))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957588912" name="534776" type="radio" value="a1517957588912"/>
+           <label for="a1517957588912">
+            <p>
+             <span class="mathquill ud-math">
+              \frac{(z_1 - (x_1 - 4))^2}{\sigma^2}
+             </span>
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <span class="mathquill">
+           \frac{(z_1 - (x_1 - 4))^2}{\sigma^2}
+          </span>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="sum-of-constraints">
+          Sum of Constraints
+         </h3>
+         <p>
+          The completed graph, with all of its labelled constraints can be seen below.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c6-03mle-example-images-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now, the task at hand is to minimize the sum of all constraints:
+         </p>
+         <div class="mathquill">
+          J_{GraphSLAM} = \frac{(z_1-7)^2}{\sigma^2} + \frac{(x_1 - (x_0 + 10))^2}{\sigma^2} + \frac{(z_1 - (x_1 - 4))^2}{\sigma^2}
+         </div>
+         <p>
+          To do this, you will need to take the first derivative of the function and set it to equal zero. Seems easy, but wait - there are two variables! You’ll have to take the derivative with respect to each, and then solve the system of equations to calculate the values of the variables.
+         </p>
+         <p>
+          For this calculation, assume that the measurements and motion have equal variance.
+         </p>
+         <p>
+          See if you can work through this yourself to find the values of the variables, but if you’re finding this task challenging and would like a hint, skip ahead to the solution to the quiz where I will step you through the process.
+         </p>
+         <h3 id="optimization-quiz">
+          Optimization Quiz
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             What are the estimated locations of
+             <span class="mathquill ud-math">
+              z_1
+             </span>
+             and
+             <span class="mathquill ud-math">
+              x_1
+             </span>
+             based on your calculations?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1517957642119" name="534777" type="radio" value="a1517957642119"/>
+           <label for="a1517957642119">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.5, x_1 = 10.5
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957651426" name="534777" type="radio" value="a1517957651426"/>
+           <label for="a1517957651426">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 7, x_1 = 11
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957652003" name="534777" type="radio" value="a1517957652003"/>
+           <label for="a1517957652003">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.5, x_1 = 10.75
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957652546" name="534777" type="radio" value="a1517957652546"/>
+           <label for="a1517957652546">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.67, x_1 = 10.33
+             </span>
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <span class="mathquill">
+           z_1 = 6.67, x_1 = 10.33
+          </span>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          If you’ve gotten this far, you’ve figured out that in the above example you needed to take the derivative of the error equation with respect to two different variables -
+          <span class="mathquill ud-math">
+           z_1
+          </span>
+          and
+          <span class="mathquill ud-math">
+           x_1
+          </span>
+          - and then perform variable elimination to calculate the most likely values for
+          <span class="mathquill ud-math">
+           z_1
+          </span>
+          and
+          <span class="mathquill ud-math">
+           x_1
+          </span>
+          . This process will only get more complicated and tedious as the graph grows.
+         </p>
+         <h3 id="optimization-with-non-trivial-variances">
+          Optimization with Non-Trivial Variances
+         </h3>
+         <p>
+          To make matters a little bit more complicated, let’s actually take into consideration the variances of each measurement and motion. Turns out that our robot has the fanciest wheels on the market - they’re solid rubber (they won’t deflate at different rates) - with the most expensive encoders. But, it looks like the funds ran dry after the purchase of the wheels - the sensor is of very poor quality.
+         </p>
+         <p>
+          Redo your math with the following new information,
+         </p>
+         <ul>
+          <li>
+           Motion variance: 0.02,
+          </li>
+          <li>
+           Measurement variance: 0.1.
+          </li>
+         </ul>
+         <h3 id="optimization-quiz-2">
+          Optimization Quiz 2
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <form>
+          <fieldset>
+           <legend>
+            <p>
+             What are the estimated locations of
+             <span class="mathquill ud-math">
+              z_1
+             </span>
+             and
+             <span class="mathquill ud-math">
+              x_1
+             </span>
+             based on your calculations when taking into account the variances?
+            </p>
+           </legend>
+          </fieldset>
+          <div>
+           <input id="a1517957707976" name="534778" type="radio" value="a1517957707976"/>
+           <label for="a1517957707976">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.61, x_1 = 10.12
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957717938" name="534778" type="radio" value="a1517957717938"/>
+           <label for="a1517957717938">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.66, x_1 = 10.33
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957718515" name="534778" type="radio" value="a1517957718515"/>
+           <label for="a1517957718515">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.54, x_1 = 10.09
+             </span>
+            </p>
+           </label>
+          </div>
+          <div>
+           <input id="a1517957719075" name="534778" type="radio" value="a1517957719075"/>
+           <label for="a1517957719075">
+            <p>
+             <span class="mathquill ud-math">
+              z_1 = 6.6, x_1 = 10.25
+             </span>
+            </p>
+           </label>
+          </div>
+         </form>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <span class="mathquill">
+           z_1 = 6.54, x_1 = 10.09
+          </span>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          That seemed to be a fair bit more work than the first example! At this point, we just have three constraints - imagine how difficult this process would be if we had collected measurement and motion data over a period of half-an hour, as may happen when mapping a real-life environment. The calculations would be tedious - even for a computer!
+         </p>
+         <p>
+          Solving the system analytically has the advantage of finding
+          <em>
+           the
+          </em>
+          correct answer. However, doing so can be very computationally intensive - especially as you move into multi-dimensional problems with complex probability distributions. In this example, the steps were easy to perform, but it only takes a short stretch of the imagination to think of how complicated these steps can become in complex multidimensional problems.
+         </p>
+         <p>
+          Well,
+          <em>
+           what is the alternative?
+          </em>
+          you may ask. Finding the maximum value can be done in two ways -
+          <em>
+           analytically
+          </em>
+          and
+          <em>
+           numerically
+          </em>
+          . Solving the problem numerically allows for a solution to be found rather quickly, however its accuracy may be sub-optimal. Next, you will look at how to solve complicated MLE problems numerically.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="07. Numerical Solution to MLE.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. MLE Example')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

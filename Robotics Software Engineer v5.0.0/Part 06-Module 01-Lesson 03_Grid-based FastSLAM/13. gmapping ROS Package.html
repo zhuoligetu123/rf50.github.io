@@ -1,0 +1,486 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   gmapping ROS Package
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Grid-based FastSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Online SLAM.html">
+       02. Online SLAM
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Full SLAM.html">
+       03. Full SLAM
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Nature of SLAM.html">
+       04. Nature of SLAM
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Correspondence.html">
+       05. Correspondence
+      </a>
+     </li>
+     <li class="">
+      <a href="06. SLAM Challenges.html">
+       06. SLAM Challenges
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Particle Filter Approach to SLAM.html">
+       07. Particle Filter Approach to SLAM
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Introduction to FastSLAM.html">
+       08. Introduction to FastSLAM
+      </a>
+     </li>
+     <li class="">
+      <a href="09. FastSLAM Instances.html">
+       09. FastSLAM Instances
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Adapting FastSLAM to Grid Maps.html">
+       10. Adapting FastSLAM to Grid Maps
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Grid-based FastSLAM Techniques.html">
+       11. Grid-based FastSLAM Techniques
+      </a>
+     </li>
+     <li class="">
+      <a href="12. The Grid-based FastSLAM Algorithm.html">
+       12. The Grid-based FastSLAM Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="13. gmapping ROS Package.html">
+       13. gmapping ROS Package
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Udacity Workspace.html">
+       14. Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="15. SLAM with ROS.html">
+       15. SLAM with ROS
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Outro.html">
+       16. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          13. gmapping ROS Package
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          gmapping ROS Package
+         </p>
+        </h3>
+        <video controls="">
+         <source src="13. gmapping ROS Package-45kWFvCgTdA.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="13. gmapping ROS Package-45kWFvCgTdA.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Now that you’ve learned the Grid-based FastSLAM algorithm, let’s test its power by solving the SLAM problem in simulation. In this lab, you’ll implement a
+          <code>
+           gmapping
+          </code>
+          ROS package which is based on the Grid-based FastSLAM algorithm to map an environment.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l3c13-gmapping-ros-package.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          <code>
+           gmapping
+          </code>
+          provides laser based SLAM. Meaning that you can feed its node with the robot laser measurements and odometry values and expect it to provide you with a 2D occupancy grid map of the environment. The map will be updated as the robot moves and collect sensory information using its laser range finder sensor.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4 id="gmapping-package-documentation">
+          <code>
+           gmapping
+          </code>
+          package documentation
+         </h4>
+         <p>
+          Access this
+          <a href="http://wiki.ros.org/gmapping" rel="noopener noreferrer" target="_blank">
+           link
+          </a>
+          and go over the documentation of the
+          <code>
+           gmapping
+          </code>
+          ROS package
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h4 id="deploying-a-turltebot-in-a-willow-garage-environment">
+          Deploying a Turltebot in a Willow Garage environment
+         </h4>
+         <p>
+          You will be deploying a turtlebot in a willow garage environment inside the
+          <a href="https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/451b7eed-6813-422a-a4d0-ce5db5ee1bca/lessons/411e2410-8f65-4764-a02a-e219ac36c776/concepts/fc59506b-6059-45a2-9d4d-204f7343988a?contentVersion=1.0.0&amp;contentLocale=en-us" rel="noopener noreferrer" target="_blank">
+           Udacity Workspace
+          </a>
+          . Thus, navigate to the next concept, enable GPU, and GO TO DESKTOP.
+         </p>
+         <h2 id="create-a-catkin_ws-in-homeworkspace">
+          Create a
+          <code>
+           catkin_ws
+          </code>
+          in
+          <code>
+           /home/workspace/
+          </code>
+         </h2>
+         <pre><code class="sh language-sh">$ mkdir -p /home/workspace/catkin_ws/src
+$ cd /home/workspace/catkin_ws/src
+$ catkin_init_workspace
+$ cd ..
+$ catkin_make</code></pre>
+         <h2 id="perform-a-system-updateupgrade">
+          Perform a System Update/Upgrade
+         </h2>
+         <pre><code class="sh language-sh">$ apt-get update
+$ apt-get upgrade -y</code></pre>
+         <h2 id="clone-turtlebot_gazebo-and-turtlebot_teleop-in-src">
+          Clone
+          <code>
+           turtlebot_gazebo
+          </code>
+          and
+          <code>
+           turtlebot_teleop
+          </code>
+          in src
+         </h2>
+         <pre><code class="sh language-sh">$ cd src/
+$ git clone https://github.com/turtlebot/turtlebot_simulator
+$ git clone https://github.com/turtlebot/turtlebot</code></pre>
+         <h2 id="install-packages-dependencies">
+          Install packages dependencies
+         </h2>
+         <p>
+          The dependencies are already installed in the workspace but it's always good to check!
+         </p>
+         <pre><code class="sh language-sh">$ cd ..
+$ source devel/setup.bash
+$ rosdep -i install turtlebot_gazebo
+$ rosdep -i install turtlebot_teleop</code></pre>
+         <h2 id="build-the-packages">
+          Build the packages
+         </h2>
+         <pre><code class="sh language-sh">$ catkin_make
+$ source devel/setup.bash</code></pre>
+         <h2 id="deploying-a-turltebot-in-a-willow-garage-environment-1">
+          Deploying a Turltebot in a Willow Garage environment
+         </h2>
+         <pre><code class="sh language-sh">$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=worlds/willowgarage.world</code></pre>
+         <p>
+          Now, interface the
+          <code>
+           gmapping
+          </code>
+          package with your robot to perform SLAM!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          SLAM with gmapping
+         </p>
+        </h3>
+        <div>
+         <div>
+          <h4>
+           Task Description:
+          </h4>
+          <p>
+           Follow these tasks to map an environment with a Grid-based FastSLAM ROS package:
+          </p>
+         </div>
+         <form>
+          <fieldset>
+           <legend>
+            Task List:
+           </legend>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--0" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--0">
+             <p>
+              I cloned the
+              <code>
+               gmapping
+              </code>
+              package inside the src folder of my catkin workspace.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--1" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--1">
+             <p>
+              I installed the system dependencies, and built my catkin workspace.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--2" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--2">
+             <p>
+              I launched the nodes of the three different packages.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--3" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--3">
+             <p>
+              I run rviz, edited the configuration settings, and subscribed to the published map.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--4" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--4">
+             <p>
+              I teleoperated the robot, and performed SLAM.
+             </p>
+            </label>
+           </div>
+           <div>
+            <input id="fe873df1-e027-4979-8a83-fe448e87b1b2--5" type="checkbox"/>
+            <label for="fe873df1-e027-4979-8a83-fe448e87b1b2--5">
+             <p>
+              I obtained a map of the environment
+             </p>
+            </label>
+           </div>
+          </fieldset>
+         </form>
+         <div>
+          <h4>
+           Task Feedback:
+          </h4>
+          <p>
+           Great Work!
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="14. Udacity Workspace.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('13. gmapping ROS Package')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

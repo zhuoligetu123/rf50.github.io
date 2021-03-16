@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.290
+The problem of generating a map under the assumption that the robot poses are
+
+00:00:04.290 --> 00:00:08.780
+known and non noisy is referred to as mapping with known poses.
+
+00:00:08.779 --> 00:00:12.070
+The mapping was known poses problem is represented
+
+00:00:12.070 --> 00:00:15.175
+in this graph where x represents the poses,
+
+00:00:15.175 --> 00:00:18.490
+z the measurements, and m the map.
+
+00:00:18.489 --> 00:00:21.939
+The Occupancy Grid Mapping Algorithm can estimate
+
+00:00:21.940 --> 00:00:26.155
+the posterior map giving noisy measurements and known poses.
+
+00:00:26.155 --> 00:00:28.420
+In most robotic applications,
+
+00:00:28.420 --> 00:00:32.575
+odometry data is noisy and robot poses are unknown to us,
+
+00:00:32.575 --> 00:00:37.930
+so you might be wondering why mapping is necessary under such a situation.
+
+00:00:37.929 --> 00:00:41.429
+Well, mapping usually happens after SLAM,
+
+00:00:41.429 --> 00:00:45.575
+thus, the power of mapping is in its post-processing.
+
+00:00:45.575 --> 00:00:52.230
+In SLAM, the problem changes from mapping with known poses to mapping with unknown poses.
+
+00:00:52.229 --> 00:00:55.019
+During SLAM, the robot built in map of
+
+00:00:55.020 --> 00:00:58.815
+the environment are localize itself relative to it.
+
+00:00:58.814 --> 00:01:02.655
+After SLAM, the occupancy grid mapping algorithm
+
+00:01:02.655 --> 00:01:06.881
+uses the exact robot poses filtered from SLAM.
+
+00:01:06.881 --> 00:01:11.219
+Then with the known poses from SLAM and noisy measurements,
+
+00:01:11.219 --> 00:01:16.519
+the mapping algorithm generate a map fit for path planning and navigation.
+

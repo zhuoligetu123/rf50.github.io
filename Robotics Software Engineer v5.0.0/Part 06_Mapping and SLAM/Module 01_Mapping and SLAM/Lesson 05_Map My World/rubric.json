@@ -1,0 +1,171 @@
+{
+  "id": 2352,
+  "project_id": 394,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(css|docx|gradle|htm|html|java|js|markdown|md|pdf|py|rmd|rst|sql|swift|txt|xml|yaml|yml)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": true,
+  "stand_out": "Try building different simulation environments and evaluate the performance between them! Also, document your work on SLAM, which will contribute towards the final Home Service Robot project!",
+  "hide_criteria": false,
+  "created_at": "2018-10-11T22:13:35.080Z",
+  "updated_at": "2019-08-29T09:57:13.365Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 737609,
+  "classroom_project_key": "14d5dfe0-fa04-4137-aca1-b8a7e7a50f9d",
+  "language": "en-us",
+  "ndkeys": [
+    "nd209",
+    "nd209-beta",
+    "nd209-cn"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 5238,
+      "name": "Basic Requirements",
+      "created_at": "2018-12-13T23:50:18.873Z",
+      "updated_at": "2018-12-13T23:51:06.251Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2352,
+      "rubric_items": [
+        {
+          "id": 15164,
+          "section_id": 5238,
+          "passed_description": "Student submited all required files:\nROS Package: robot and RTABMAP\nDb file generated (could be link to file if oversized)",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:51:20.998Z",
+          "updated_at": "2018-12-13T23:51:54.479Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student submit all required files?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5239,
+      "name": "Simulation Setup",
+      "created_at": "2018-12-13T23:50:21.497Z",
+      "updated_at": "2018-12-13T23:51:06.263Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 2352,
+      "rubric_items": [
+        {
+          "id": 15165,
+          "section_id": 5239,
+          "passed_description": "Student's simulation world and robot could properly load in Gazebo.",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:51:54.646Z",
+          "updated_at": "2018-12-13T23:52:31.213Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Did the student set up the simulation environment properly?",
+          "exceedable": false
+        },
+        {
+          "id": 15166,
+          "section_id": 5239,
+          "passed_description": "The student's environment should have clear features and geometric shapes to perform mapping.",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:52:31.378Z",
+          "updated_at": "2018-12-13T23:52:50.875Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Is the student's simulation suitable for mapping task?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5240,
+      "name": "Mapping Package",
+      "created_at": "2018-12-13T23:50:22.632Z",
+      "updated_at": "2018-12-13T23:51:06.272Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2352,
+      "rubric_items": [
+        {
+          "id": 15167,
+          "section_id": 5240,
+          "passed_description": "Student created the following launch files properly:\n`mapping.launch`\n`teleop.launch`\n`localization.launch`\nThe student's program should be able to launch without errors",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:52:51.176Z",
+          "updated_at": "2018-12-13T23:53:23.936Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Does the student correctly build all required launch files for RTAB-Mapping?",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5241,
+      "name": "Mapping Accuracy",
+      "created_at": "2018-12-13T23:50:23.894Z",
+      "updated_at": "2018-12-13T23:51:06.279Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 2352,
+      "rubric_items": [
+        {
+          "id": 15168,
+          "section_id": 5241,
+          "passed_description": "Student's map should contain at least 3 loop closures and the occupancy grid is identifiable",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:53:24.103Z",
+          "updated_at": "2018-12-13T23:53:45.596Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Was the student able to generate a 3D map using RTAB-Map?",
+          "exceedable": false
+        },
+        {
+          "id": 15169,
+          "section_id": 5241,
+          "passed_description": "Student's map should clearly portray the environment. The student should be able to display the characteristics of the landmark features.",
+          "exceeded_description": null,
+          "created_at": "2018-12-13T23:53:45.794Z",
+          "updated_at": "2018-12-13T23:54:08.183Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Does the student's 3D map portray environment characteristics?",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 394,
+    "name": "Map My World Robot",
+    "nanodegree_key": "nd209",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": 1144,
+    "entitlement_required": null,
+    "is_career": null,
+    "recruitment_family_id": 9,
+    "created_at": "2018-02-05T22:38:16.710Z",
+    "updated_at": "2020-05-25T22:55:10.484Z",
+    "price": "5.5",
+    "ungradeable_price": "3.0",
+    "audit_price": "0.0"
+  }
+}

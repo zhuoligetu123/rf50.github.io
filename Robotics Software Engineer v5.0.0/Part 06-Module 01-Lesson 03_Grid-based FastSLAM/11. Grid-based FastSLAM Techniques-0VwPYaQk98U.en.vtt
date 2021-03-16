@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.609
+Adapting the Fast SLAM algorithm to
+
+00:00:02.609 --> 00:00:06.089
+grid maps is altered in the grid-based Fast SLAM algorithm.
+
+00:00:06.089 --> 00:00:09.480
+Since the grid-based Fast SLAM algorithm uses
+
+00:00:09.480 --> 00:00:13.995
+a particle filter approach and represents the world in terms of grid maps,
+
+00:00:13.994 --> 00:00:16.634
+we will need to combine what we learned from
+
+00:00:16.635 --> 00:00:19.970
+MCL and the Occupancy Grid Mapping algorithm.
+
+00:00:19.969 --> 00:00:23.919
+Now, we will need three different techniques represented by
+
+00:00:23.920 --> 00:00:27.895
+three probability functions to adapt fast SLAM to grid mapping.
+
+00:00:27.894 --> 00:00:31.600
+These techniques are known as the sampling motion,
+
+00:00:31.600 --> 00:00:34.960
+map estimation, and the importance weight.
+
+00:00:34.960 --> 00:00:37.813
+Starting with the sampling motion technique.
+
+00:00:37.813 --> 00:00:41.200
+This technique estimates the current pose giving
+
+00:00:41.200 --> 00:00:45.700
+the K-th particle previous pose and the current controls you.
+
+00:00:45.700 --> 00:00:49.000
+The map estimation technique objective is to
+
+00:00:49.000 --> 00:00:52.164
+estimate the current map giving the current measurements,
+
+00:00:52.164 --> 00:00:54.445
+the current K-th particle pose,
+
+00:00:54.445 --> 00:00:57.085
+and the previous K-th particle map.
+
+00:00:57.085 --> 00:00:59.859
+Looking closely at this probability function,
+
+00:00:59.859 --> 00:01:04.900
+we can relate it to the mapping problem in which we aim to estimate the map,
+
+00:01:04.900 --> 00:01:06.940
+giving the robot's trajectory.
+
+00:01:06.939 --> 00:01:09.700
+So, to solve the map estimation problem,
+
+00:01:09.700 --> 00:01:12.715
+we can rely on the Occupancy Grid Mapping algorithm.
+
+00:01:12.715 --> 00:01:16.060
+And finally, there is the importance weight technique
+
+00:01:16.060 --> 00:01:20.379
+which computes the importance weight of each individual particle.
+
+00:01:20.379 --> 00:01:24.984
+This method estimates the current likelihood of the measurement
+
+00:01:24.984 --> 00:01:30.799
+giving the current K-th particle pose and the current K-th particle map.
+

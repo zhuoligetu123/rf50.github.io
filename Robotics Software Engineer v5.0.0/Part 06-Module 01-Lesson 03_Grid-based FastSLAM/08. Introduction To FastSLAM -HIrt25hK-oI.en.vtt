@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.500
+The fastSLAM algorithm, uses
+
+00:00:02.500 --> 00:00:05.049
+a custom particle filter approach to solve
+
+00:00:05.049 --> 00:00:08.300
+the full SLAM problem with known correspondences.
+
+00:00:08.300 --> 00:00:15.658
+Using particles, fastSLAM estimates a posterior over the robot path along with the map.
+
+00:00:15.657 --> 00:00:19.254
+Each of these particles holds the robot trajectory which will give
+
+00:00:19.254 --> 00:00:23.585
+an advantage to SLAM to solve the problem of mapping with known poses.
+
+00:00:23.585 --> 00:00:25.638
+In addition to the robot trajectory,
+
+00:00:25.638 --> 00:00:31.536
+each particle holds a map and each feature of the map is represented by a local Gaussian.
+
+00:00:31.536 --> 00:00:34.024
+With the fastSLAM algorithm,
+
+00:00:34.024 --> 00:00:37.707
+the problem is now divided into separate independent problem.
+
+00:00:37.707 --> 00:00:42.394
+Each of which aims to solve the problem of estimating features of the map.
+
+00:00:42.395 --> 00:00:45.275
+To solve these independent mini problems,
+
+00:00:45.274 --> 00:00:49.219
+FastSLAM will use the low dimensional extended Kalman filter.
+
+00:00:49.219 --> 00:00:52.144
+While math features are treated independently,
+
+00:00:52.145 --> 00:00:56.890
+dependency only exists between robot pose uncertainty.
+
+00:00:56.890 --> 00:00:59.756
+This custom approach of representing posterior with particle filter
+
+00:00:59.756 --> 00:01:06.000
+and Gaussian is known by the Rao-Blackwellized Particle Filter One.
+

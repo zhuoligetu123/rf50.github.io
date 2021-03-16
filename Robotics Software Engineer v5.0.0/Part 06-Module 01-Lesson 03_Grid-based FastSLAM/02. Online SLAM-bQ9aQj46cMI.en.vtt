@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.714
+Here's the graphical representation of the SLAM problem.
+
+00:00:03.714 --> 00:00:06.835
+Giving the measurements z and the control is u,
+
+00:00:06.835 --> 00:00:09.599
+you will learn how to solve the posterior map,
+
+00:00:09.599 --> 00:00:13.059
+m along with the posees, x.
+
+00:00:13.060 --> 00:00:16.214
+The SLAM problem comes in two different forms,
+
+00:00:16.214 --> 00:00:19.152
+the Online SLAM and the Full SLAM.
+
+00:00:19.152 --> 00:00:21.644
+Both forms are important in robotics,
+
+00:00:21.644 --> 00:00:24.780
+since you'll encounter SLAM algorithms that solve
+
+00:00:24.780 --> 00:00:29.070
+either the Online SLAM problem or the Full SLAM problem.
+
+00:00:29.070 --> 00:00:33.039
+Some algorithm will even solve both problems.
+
+00:00:33.039 --> 00:00:35.939
+Let's start with the Online SLAM problem.
+
+00:00:35.939 --> 00:00:39.554
+At time t-1, the robot will estimate its current pose,
+
+00:00:39.554 --> 00:00:41.963
+xz-1, and the map,
+
+00:00:41.963 --> 00:00:44.689
+m, giving its current measurements,
+
+00:00:44.689 --> 00:00:48.734
+Zt-1, and controls Ut-1.
+
+00:00:48.734 --> 00:00:51.195
+Then, at time t,
+
+00:00:51.195 --> 00:00:54.030
+the robot will estimate its new post, Xt,
+
+00:00:54.030 --> 00:01:00.660
+and the map, m, given only its current measurements Zt, and controls Ut.
+
+00:01:00.659 --> 00:01:04.469
+Notice how the previous measurements and controls are not taken into
+
+00:01:04.469 --> 00:01:09.465
+consideration when computing the new estimate of the pose and the map.
+
+00:01:09.465 --> 00:01:11.775
+Finally, at time, t+1,
+
+00:01:11.775 --> 00:01:16.609
+the robot will estimate its current post Xt+1 and the map, m,
+
+00:01:16.609 --> 00:01:21.819
+giving the measurements Zt+1 and controls Ut+1.
+
+00:01:21.819 --> 00:01:25.214
+Thus, with the Online SLAM problem,
+
+00:01:25.215 --> 00:01:31.734
+you solve instantaneous poses independently from previous measurements and controls.
+
+00:01:31.734 --> 00:01:35.814
+This problem can be model with the probability equation,
+
+00:01:35.814 --> 00:01:39.390
+P of xt, m, giving z1:t,
+
+00:01:39.390 --> 00:01:46.722
+u1:t, where we solve the posterior represented by instantaneous pose and the map,
+
+00:01:46.722 --> 00:01:48.989
+giving the measurements and controls.
+
+00:01:48.989 --> 00:01:51.439
+So with the Online SLAM,
+
+00:01:51.439 --> 00:01:56.000
+we estimate variables that occur at time t only.
+

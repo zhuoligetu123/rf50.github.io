@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.980
+I'm glad you've made it this far.
+
+00:00:01.980 --> 00:00:05.099
+Now, we're going to dive into a Graph-Based SLAM approach
+
+00:00:05.099 --> 00:00:08.594
+called Real-Time Appearance-Based Mapping or RTAB-Map.
+
+00:00:08.595 --> 00:00:12.269
+Appearance-Based SLAM means that the algorithm uses data collected from
+
+00:00:12.269 --> 00:00:16.064
+vision sensors to localize the robot and map the environment.
+
+00:00:16.065 --> 00:00:18.630
+In Appearance-Based methods, a process called
+
+00:00:18.629 --> 00:00:22.754
+loop closure is used to determine whether the robot has seen a location before.
+
+00:00:22.754 --> 00:00:25.664
+As the robot travels to new areas in its environment,
+
+00:00:25.664 --> 00:00:27.089
+the map is expanded,
+
+00:00:27.089 --> 00:00:31.199
+and the number of images that each new image must be compared to increases,
+
+00:00:31.199 --> 00:00:36.195
+this causes the loop closure to take longer with the complexity increasing linearly.
+
+00:00:36.195 --> 00:00:40.020
+RTAB-Map is optimized for large-scale and long-term SLAM
+
+00:00:40.020 --> 00:00:44.310
+by using multiple strategies to allow for loop closure to be done in real-time.
+
+00:00:44.310 --> 00:00:48.179
+In this context, this means that the loop closure is happening fast
+
+00:00:48.179 --> 00:00:52.155
+enough that the result can be obtained before the next camera images are acquired.
+
+00:00:52.155 --> 00:00:53.954
+In the remainder of this lesson,
+
+00:00:53.954 --> 00:00:56.129
+you will learn about how the front-end and back-end
+
+00:00:56.130 --> 00:00:59.085
+structure of RTAB-Map differs from traditional graph SLAM,
+
+00:00:59.085 --> 00:01:00.914
+the importance of loop closure,
+
+00:01:00.914 --> 00:01:04.754
+how the process is optimized using bag of words and memory management,
+
+00:01:04.754 --> 00:01:07.640
+and some practical implications of RTAB-Map.
+

@@ -1,0 +1,666 @@
+{
+  "data": {
+    "lesson": {
+      "id": 727920,
+      "key": "c6b200bf-a0a5-456c-a988-d2d4cda5e003",
+      "title": "Map My World",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Deploy RTAB-Map on your simulated robot to create 2D and 3D maps of your environment!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "14d5dfe0-fa04-4137-aca1-b8a7e7a50f9d",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Map My World",
+        "description": "Once you have completed your project, use the [**Project Rubric**](https://review.udacity.com/#!/rubrics/2352/view) to review the project. If you have covered all of the points in the rubric, then you are ready to submit! If you see room for improvement in **any** category in which you do not meet specifications, keep working! ",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2352",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/March/5ab1bf07_2-19-project-map-my-world-robot1x/2-19-project-map-my-world-robot1x.png",
+          "width": 500,
+          "height": 500
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 729005,
+          "key": "a279f0b7-5fff-4823-9426-28383e3b4aa6",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a279f0b7-5fff-4823-9426-28383e3b4aa6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 729710,
+              "key": "20dea88c-a67c-46dc-85ae-71a617048eb9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bb3ee4e_2-19-project-map-my-world-robot1x/2-19-project-map-my-world-robot1x.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/20dea88c-a67c-46dc-85ae-71a617048eb9",
+              "caption": "",
+              "alt": "",
+              "width": 450,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 729006,
+              "key": "f2a58e05-87fe-446c-9f4a-1986033a101c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overview\n\nWelcome to Project 3: `Map My World`! In this project you will create a 2D occupancy grid and 3D octomap from a simulated environment using your own robot with the RTAB-Map package. \n\nRTAB-Map (Real-Time Appearance-Based Mapping) is a popular solution for SLAM to develop robots that can map environments in 3D. RTAB-Map has good speed and memory management, and it provides custom developed tools for information analysis. Most importantly, the quality of the documentation on ROS Wiki (http://wiki.ros.org/rtabmap_ros) is very high. Being able to leverage RTAB-Map with your own robots will lead to a solid foundation for mapping and localization well beyond this Nanodegree program.\n\nFor this project we will be using the `rtabmap_ros` package, which is a ROS wrapper (API) for interacting with RTAB-Map. Keep this in mind when looking at the relative documentation.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 729008,
+              "key": "6774fb7f-0af8-4bb7-ad12-63cb28c28c32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Instructions\n\nUdacity provides you with a in-classroom Workspace with ROS configured to work on the project. If you need a refresher, check out the [Workspace tutorials](https://classroom.udacity.com/nanodegrees/nd209-beta/parts/5762c142-a09c-4379-b0e7-94a6693b47e8/modules/48156d08-abb1-4c03-a18d-9db738a0b92b/lessons/e0c61e8d-7eac-4807-8737-d2bd321ae7a2/concepts/47784838-aea6-4834-9ebb-79fbb3e135af).\n\nThe project flow will be as follows:\n\n1. You will develop your own package to interface with the `rtabmap_ros` package.\n\n2. You will build upon your localization project to make the necessary changes to interface the robot with RTAB-Map. An example of this is  the addition of an RGB-D camera.\n\n3. You will ensure that all files are in the appropriate places, all links are properly connected, naming is properly setup and topics are correctly mapped. Furthermore you will need to generate the appropriate launch files to launch the robot and map its surrounding environment.\n\n4. When your robot is launched you will `teleop` around the room to generate a proper map of the environment. \n\nWe are excited to see you grow with your ROS skills and we can't wait to see what your map looks like!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780487,
+          "key": "6861b087-baf6-4a67-bea3-c0d8875ad3f1",
+          "title": "Simulation Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6861b087-baf6-4a67-bea3-c0d8875ad3f1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780488,
+              "key": "cbf6f90a-81fd-4b5b-bfce-ddddf473445e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Simulation Setup\n\nSimilar to the last project, let us setup the simulation environment and the robot in Project 4 Workspace for our next tasks. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780642,
+              "key": "b8282cd0-b891-4292-a02d-eed5de6b432e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Navigate to Workspace by clicking the `Project Workspace` on the side bar. You might want to open it in a new window. You could use either the terminal in Classroom without GPU mode or the VNC Desktop with GPU mode to do the setup.\n\nSetup your `catkin_ws` folder as well as the `src` folder, then we need to grab the code from last project. Again, you could do that in two ways.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780653,
+              "key": "067168e5-be20-4a89-8ef4-04c31f776c73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Method 1: `git`\n\nIf you have pushed your submission for the localization project to GitHub, go ahead and create a new repository then duplicate your code from last project to it. \n\n```\ngit clone --bare https://github.com/exampleuser/old-repository.git\n\ncd old-repository.git\ngit push --mirror https://github.com/exampleuser/new-repository.git\n\ncd ..\nrm -rf old-repository.git\n```\n\n_Source: https://help.github.com/articles/duplicating-a-repository/_",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780655,
+              "key": "8e82ed7d-6ecb-4f0e-be1a-f42b72c2b07f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Method 2: Folder Upload\n\nIf you want to upload the package folder to the Project 4 Workspace, go to the project Workspace and click the `+` button, then select `Upload Folder` to upload your package folder!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780656,
+              "key": "28b24990-5644-4c89-91f2-69958010682c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be332b1_upload-folder-workspace/upload-folder-workspace.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/28b24990-5644-4c89-91f2-69958010682c",
+              "caption": "",
+              "alt": "",
+              "width": 373,
+              "height": 351,
+              "instructor_notes": null
+            },
+            {
+              "id": 780662,
+              "key": "d87356fb-037c-4a92-918d-7b516595d1e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Verify Your Simulation Setup\n\nDo a quick `catkin_make` and source the `devel/setup.bash` script. Launch the world to verify if the system is good to go!\n```\nroslaunch <YOUR PACKAGE NAME> world.launch\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780685,
+          "key": "78d7190f-1ed0-4750-8840-a790c9386aba",
+          "title": "RTAB-Map Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "78d7190f-1ed0-4750-8840-a790c9386aba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780693,
+              "key": "a1fc7dbb-c6a6-48b4-b123-248634747e82",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# RTAB-Map Pacakge\n\nAlthough ROS provides you with huge amount of packages, integrating a ROS package requires your understanding of the package itself and how it connects to your project. The best place to start is on the [RTAB-Map ROS Wiki page](http://wiki.ros.org/rtabmap_ros).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780694,
+              "key": "5d298c2f-323b-4678-8b2c-fe2be558bb03",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be345ed_rtab-map-ros-wiki/rtab-map-ros-wiki.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5d298c2f-323b-4678-8b2c-fe2be558bb03",
+              "caption": "",
+              "alt": "",
+              "width": 774,
+              "height": 514,
+              "instructor_notes": null
+            },
+            {
+              "id": 780706,
+              "key": "a9f8b05d-911a-4142-9182-0e8456cf2318",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "According to the [documentation](http://wiki.ros.org/rtabmap_ros/Tutorials/SetupOnYourRobot), the recommended robot configuration requires:\n- A 2D Laser, providing `sensor_msgs/LaserScan` messages\n- Odometry sensors, providing `nav_msgs/Odometry` messages\n- 3D Camera, compatible with `openni_launch`, `openni2_launch` or `freenect_launch ` ROS packages\n\nIt seems that we lack the 3D camera sensor!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729711,
+          "key": "bd74d186-98a4-4b4f-b343-7716a3c092eb",
+          "title": "Sensor Upgrade",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd74d186-98a4-4b4f-b343-7716a3c092eb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 730310,
+              "key": "250173d5-3650-4803-9b5e-5dac5f759790",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sensor Upgrade\n\nIn the previous projects you have been using an RGB camera; now it's time to give your robot an upgrade. Specifically, we will use a simulated Kinect camera for RTAB-Map.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814436,
+              "key": "1afecb2b-2838-4e95-8fe2-88dba734cdc4",
+              "title": "Upgrade your sensor!",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1afecb2b-2838-4e95-8fe2-88dba734cdc4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Add `optical` camera link",
+                "Change the plugin file",
+                "Verify Gazebo reference"
+              ],
+              "positive_feedback": "Good job upgrading your sensor!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 814434,
+              "key": "0a2780d6-9dd1-4363-af27-14670f43eee2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Add `optical` camera link\n\nFor RGB-D camera in URDF file, we need to add an extra link and an extra joint to the camera link in order to align the camera image in Gazebo properly with the robot. Note that the parent link of `camera_optical_joint` should be properly configured to the original camera link.\n\n\nAdd the following joint and link to the robot's `.xacro` file:\n```\n  <joint name=\"camera_optical_joint\" type=\"fixed\">\n    <origin xyz=\"0 0 0\" rpy=\"-1.5707 0 -1.5707\"/>\n    <parent link=\"camera_link\"/>\n    <child link=\"camera_link_optical\"/>\n  </joint>\n\n  <link name=\"camera_link_optical\">\n  </link>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 730311,
+              "key": "17eb045e-8bfa-4626-a259-f5208bba10c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configuring the RGB-D Camera\n\nTo do this we will need to replace the existing camera and its shared object file: `libgazebo_ros_camera.so` to that of the Kinect shared object file: `libgazebo_ros_openni_kinect.so`. Also, update the `<frameName>` to be the `camera_link_optical` link you created just now.\n\nOn top of this, additional parameters need to be set for the RGB-D camera as well as matching the topics published by the drivers of its real world counterpart. We have provided an example for the camera code below. Substitute that in your robot's `.gazebo` file!\n\n_Note: You could use the Classroom Workspace editor instead of the VNC Desktop to edit the `gazebo` file._",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780762,
+              "key": "aa2fb7fc-062c-4809-a7a2-2dce9b74795a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A snippet of camera code is provided below:\n```\n<!-- RGBD Camera -->\n  <gazebo reference=\"camera_link\">\n    <sensor type=\"depth\" name=\"camera1\">\n        <always_on>1</always_on>\n        <update_rate>20.0</update_rate>\n        <visualize>true</visualize>             \n        <camera>\n            <horizontal_fov>1.047</horizontal_fov>  \n            <image>\n                <width>640</width>\n                <height>480</height>\n                <format>R8G8B8</format>\n            </image>\n            <depth_camera>\n\n            </depth_camera>\n            <clip>\n                <near>0.1</near>\n                <far>20</far>\n            </clip>\n        </camera>\n         <plugin name=\"camera_controller\" filename=\"libgazebo_ros_openni_kinect.so\">\n            <alwaysOn>true</alwaysOn>\n            <updateRate>10.0</updateRate>\n            <cameraName>camera</cameraName>\n            <frameName>camera_link_optical</frameName>                   \n            <imageTopicName>rgb/image_raw</imageTopicName>\n            <depthImageTopicName>depth/image_raw</depthImageTopicName>\n            <pointCloudTopicName>depth/points</pointCloudTopicName>\n            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>              \n            <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>            \n            <pointCloudCutoff>0.4</pointCloudCutoff>                \n                <hackBaseline>0.07</hackBaseline>\n                <distortionK1>0.0</distortionK1>\n                <distortionK2>0.0</distortionK2>\n                <distortionK3>0.0</distortionK3>\n                <distortionT1>0.0</distortionT1>\n                <distortionT2>0.0</distortionT2>\n            <CxPrime>0.0</CxPrime>\n            <Cx>0.0</Cx>\n            <Cy>0.0</Cy>\n            <focalLength>0.0</focalLength>\n            </plugin>\n    </sensor>\n  </gazebo>\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729725,
+          "key": "af33921b-6ca3-46ac-8184-b9103ad973f9",
+          "title": "RTAB-Map Launch File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "af33921b-6ca3-46ac-8184-b9103ad973f9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 730312,
+              "key": "7a547a62-1665-48fe-9a26-06b0c60a3312",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Launch File\n\nWe have the `launch` file to launch Gazebo and Rviz. Now, similar to what we did to create the `amcl.launch` in last project, we need to add the `launch` file for RTAB-Map!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780833,
+              "key": "6ae0d6d5-e2fc-4b2e-8663-d098b81e5600",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `mapping.launch`\n\nOur mapping launch file acts as the main node that interfaces with all the required parts to be able to perform SLAM with `RTAB-Map`. A labeled template for the `mapping.launch` file has been provided below. Create `mapping.launch` file in the `launch` folder.\n\nRead through the code and the comments to understand what each part is accomplishing and why. Feel free to reach beyond this template with the documentation of RTAB-Map. You task here is to assign the correct topic to be remapped to the topics required by `rtabmap`.\n\n- `scan`\n- `rgb/image`\n- `depth/image`\n- `rgb/camera_info`\n\nYou should find the actual topics that your robot is publishing to, in the robot's `urdf` file. When you find the correct ones, substitute them in the `<arg>` tags at the beginning of this launch file. Then your mapping node could find all required information to perform RTAB-Mapping! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 730314,
+              "key": "7183579f-e299-495a-80f3-e14afcc28c57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<launch>\n  <!-- Arguments for launch file with defaults provided -->\n  <arg name=\"database_path\"     default=\"rtabmap.db\"/>\n  <arg name=\"rgb_topic\"   default=\"/camera/rgb/image_raw\"/>\n  <arg name=\"depth_topic\" default=\"/camera/depth/image_raw\"/>\n  <arg name=\"camera_info_topic\" default=\"/camera/rgb/camera_info\"/>  \n\n  \n  <!-- Mapping Node -->\n  <group ns=\"rtabmap\">\n    <node name=\"rtabmap\" pkg=\"rtabmap_ros\" type=\"rtabmap\" output=\"screen\" args=\"--delete_db_on_start\">\n\n      <!-- Basic RTAB-Map Parameters -->\n      <param name=\"database_path\"       type=\"string\" value=\"$(arg database_path)\"/>\n      <param name=\"frame_id\"            type=\"string\" value=\"base_footprint\"/>\n      <param name=\"odom_frame_id\"       type=\"string\" value=\"odom\"/>\n      <param name=\"subscribe_depth\"     type=\"bool\"   value=\"true\"/>\n      <param name=\"subscribe_scan\"      type=\"bool\"   value=\"true\"/>\n\n      <!-- RTAB-Map Inputs -->\n      <remap from=\"scan\" to=\"/scan\"/>\n      <remap from=\"rgb/image\" to=\"$(arg rgb_topic)\"/>\n      <remap from=\"depth/image\" to=\"$(arg depth_topic)\"/>\n      <remap from=\"rgb/camera_info\" to=\"$(arg camera_info_topic)\"/>\n\n      <!-- RTAB-Map Output -->\n      <remap from=\"grid_map\" to=\"/map\"/>\n\n      <!-- Rate (Hz) at which new nodes are added to map -->\n      <param name=\"Rtabmap/DetectionRate\" type=\"string\" value=\"1\"/>\n\n      <!-- 2D SLAM -->\n      <param name=\"Reg/Force3DoF\" type=\"string\" value=\"true\"/>\n\n      <!-- Loop Closure Detection -->\n      <!-- 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 9=KAZE -->\n      <param name=\"Kp/DetectorStrategy\" type=\"string\" value=\"0\"/>\n\n      <!-- Maximum visual words per image (bag-of-words) -->\n      <param name=\"Kp/MaxFeatures\" type=\"string\" value=\"400\"/>\n\n      <!-- Used to extract more or less SURF features -->\n      <param name=\"SURF/HessianThreshold\" type=\"string\" value=\"100\"/>\n\n      <!-- Loop Closure Constraint -->\n      <!-- 0=Visual, 1=ICP (1 requires scan)-->\n      <param name=\"Reg/Strategy\" type=\"string\" value=\"0\"/>\n\n      <!-- Minimum visual inliers to accept loop closure -->\n      <param name=\"Vis/MinInliers\" type=\"string\" value=\"15\"/>\n\n      <!-- Set to false to avoid saving data when robot is not moving -->\n      <param name=\"Mem/NotLinkedNodesKept\" type=\"string\" value=\"false\"/>\n    </node>\n  </group>\n</launch>\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780836,
+              "key": "8b142369-f2fc-4ab1-b06c-88a9ca1ca97b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### _Further Resources:_\n\n- [RTAB-Map Parameter Tutorial](http://wiki.ros.org/rtabmap_ros/Tutorials/Advanced%20Parameter%20Tuning)\n- [List of RTAB-Map Parameters](https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780806,
+          "key": "5b0bb9f6-985d-4b73-b184-b3735383e83d",
+          "title": "RTAB-Map Real Time Visualization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b0bb9f6-985d-4b73-b184-b3735383e83d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780846,
+              "key": "26414945-189e-4d74-adc2-85ec523b927f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Real Time Visulization\n\nAnother tool that you can use is rtabmapviz, which is an additional node for real time visualization of feature mapping, loop closures, and more. It’s not recommended to use this tool while mapping in simulation due to the computing overhead. rtabmapviz is great to deploy on a real robot during live mapping to ensure that you are getting the necessary features to complete loop closures.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780850,
+              "key": "c58e602b-8c83-44c6-817d-3926238b3f27",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be37e35_rtab-visualization/rtab-visualization.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c58e602b-8c83-44c6-817d-3926238b3f27",
+              "caption": "",
+              "alt": "",
+              "width": 1280,
+              "height": 745,
+              "instructor_notes": null
+            },
+            {
+              "id": 780853,
+              "key": "82b94c2e-a284-4519-b37f-1270d954ca4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you would like to enable it for mapping, add this code snippet to the `mapping.launch` file. This will launch the `rtabmapviz` GUI and provide you with realtime feature detection, loop closures, and other relevant information to the mapping process.\n\n```\n<!-- visualization with rtabmapviz -->\n    <node pkg=\"rtabmap_ros\" type=\"rtabmapviz\" name=\"rtabmapviz\" args=\"-d $(find rtabmap_ros)/launch/config/rgbd_gui.ini\" output=\"screen\">\n        <param name=\"subscribe_depth\"             type=\"bool\" value=\"true\"/>\n        <param name=\"subscribe_scan\"              type=\"bool\" value=\"true\"/>\n        <param name=\"frame_id\"                    type=\"string\" value=\"base_footprint\"/>\n\n        <remap from=\"rgb/image\"       to=\"$(arg rgb_topic)\"/>\n        <remap from=\"depth/image\"     to=\"$(arg depth_topic)\"/>\n        <remap from=\"rgb/camera_info\" to=\"$(arg camera_info_topic)\"/>\n        <remap from=\"scan\"            to=\"/scan\"/>\n    </node>\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 805953,
+          "key": "15b8f027-97e2-42da-ade1-dd0b440f0736",
+          "title": "ROS Teleop Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "15b8f027-97e2-42da-ade1-dd0b440f0736",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 805954,
+              "key": "47baee81-0f12-4745-b0d2-34092f560820",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ROS Teleop Package\n\nYou have used `teleop` node to control your robot by keyboard strokes in previous labs and projects. Here, we also need it so that we could navigate the robot in the environment and perform RTAB-Mapping.\n\nClone the `teleop` package to your Workspace `src` folder and complile! You could find the code here: https://github.com/ros-teleop/teleop_twist_keyboard",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805955,
+              "key": "57df3690-137a-4705-a3db-1d82dfe95c12",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/January/5c2ea7f5_screen-shot-2019-01-03-at-4.25.04-pm/screen-shot-2019-01-03-at-4.25.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/57df3690-137a-4705-a3db-1d82dfe95c12",
+              "caption": "",
+              "alt": "",
+              "width": 540,
+              "height": 485,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 780807,
+          "key": "3888dc22-93ca-4f82-8630-3659f9baff92",
+          "title": "Mapping: Map My World",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3888dc22-93ca-4f82-8630-3659f9baff92",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780861,
+              "key": "f0b8a2bd-00d2-47f8-9f34-59666a7be115",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Map My World!\n\nWe have everything ready to go. Launch the ROS nodes and let us start mapping.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781997,
+              "key": "9f3893e9-063c-439c-b2ec-1d6535d1fbeb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be5e67c_udacity-mtv/udacity-mtv.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9f3893e9-063c-439c-b2ec-1d6535d1fbeb",
+              "caption": "",
+              "alt": "",
+              "width": 1138,
+              "height": 283,
+              "instructor_notes": null
+            },
+            {
+              "id": 806033,
+              "key": "49d312b8-549b-492e-94c3-007a6eff1df7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "First, launch the Gazebo world and RViz, spawn the robot in the environment:\n```\nroslaunch <YOUR PACKAGE NAME> world.launch\n```\n\nThen, launch the `teleop` node:\n```\nrosrun teleop_twist_keyboard teleop_twist_keyboard.py\n```\n\nFinally, launch your mapping node:\n```\nroslaunch <YOUR PACKAGE NAME> mapping.launch\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 809344,
+              "key": "43e2e765-ff81-4e98-96ed-18c6e662daa8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Navigate your robot in the simulation to create map for the environment! When you are all set, terminal the node and you could find your map `db` file in the place you specified in the `launch` file. If you did not modify the argument, it will be located in the `/root/.ros/` folder.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805976,
+              "key": "7a7130d4-4e4b-4bdb-83ec-304c838f4a34",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Best Practices\nYou could start by lower velocity. Our goal is to create a great map with the least amount of passes as possible. Getting 3 loop closures will be sufficient for mapping the entire environment. You can maximize your loop closures by going over similar paths two or three times. This allows for the maximization of feature detection, facilitating faster loop closures! When you are done mapping, be sure to copy or move your database before moving on to map a new environment. Remember, relaunching the mapping node deletes any database in place on launch start up!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729727,
+          "key": "db142b8a-4c0c-4ae4-9dc8-0b58aa7d3372",
+          "title": "Mapping: Database Viewer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db142b8a-4c0c-4ae4-9dc8-0b58aa7d3372",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780838,
+              "key": "f8a45c81-cfa6-42d4-b8c8-059f6393072c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Database Analysis\n\nThe `rtabmap-databaseViewer` is a great tool for exploring your database when you are done generating it. It is isolated from ROS and allows for complete analysis of your mapping session. \n\nThis is how you will check for loop closures, generate 3D maps for viewing, extract images, check feature mapping rich zones, and much more! \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780841,
+              "key": "be63ba44-a727-48eb-9930-9b59050cd56f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be37dda_rtab-dbviewer/rtab-dbviewer.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/be63ba44-a727-48eb-9930-9b59050cd56f",
+              "caption": "",
+              "alt": "",
+              "width": 1853,
+              "height": 1053,
+              "instructor_notes": null
+            },
+            {
+              "id": 780839,
+              "key": "9d1b7ba8-9357-4c5f-8dd4-6568173c86a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let’s start by opening our mapping database:\n\nWe can do this like so: ` rtabmap-databaseViewer ~/.ros/rtabmap.db`\n\nOnce open, we will need to add some windows to get a better view of the relevant information, so:\n\n- Say yes to using the database parameters\n- View -> Constraint View\n- View -> Graph View\n\nThose options are enough to start, as there are many features built into the database viewer!\n\nLet’s talk about what you are seeing in the above image. On the left, you have your 2D grid map in all of its updated iterations and the path of your robot. In the middle you have different images from the mapping process. Here you can scrub through images to see all of the features from your detection algorithm. These features are in yellow. Then, what is the pink, you may ask? The pink indicates where two images have features in common and this information is being used to create neighboring links and loop closures! Finally, on the right you can see the constraint view. This is where you can identify where and how the neighboring links and loop closures were created.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780842,
+              "key": "81204e03-dbed-428b-9a9b-e59abd344dcc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be37df6_rtab-dbviewer-panel/rtab-dbviewer-panel.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/81204e03-dbed-428b-9a9b-e59abd344dcc",
+              "caption": "",
+              "alt": "",
+              "width": 471,
+              "height": 195,
+              "instructor_notes": null
+            },
+            {
+              "id": 780843,
+              "key": "17a1382c-0f3c-49f0-b7ad-3278db12de48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can see the number of loop closures in the bottom left. The codes stand for the following: Neighbor, Neighbor Merged, Global Loop closure, Local loop closure by space, Local loop closure by time, User loop closure, and Prior link.\n\nWhen it comes time to design your own environment, this tool can be a good resource for checking if the environment is feature-rich enough to make global loop closures. A good environment has many features that can be associated in order to achieve loop closures.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780808,
+          "key": "1cfdba1a-9ee7-4e33-8f6a-297d5826fbc6",
+          "title": "Optional: RTAB-Map Localization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1cfdba1a-9ee7-4e33-8f6a-297d5826fbc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780811,
+              "key": "d57d6b54-e853-4479-b4e1-f10340d88be1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Optional: RTAB-Map Localization\n\nIf you desire to perform localization using the map you created, there are only a few changes you need to make. You can start by duplicating your `mapping.launch` file and renaming the duplicated file to`localization.launch`.\n\nThe following changes also need to be made to the `localization.launch` file:\n\n- Remove the `args=\"--delete_db_on_start\"` from your node launcher since you will need your database to localize too.\n\n- Remove the `Mem/NotLinkedNodesKept` parameter\n\n- Add the `Mem/IncrementalMemory` parameter of type `string` and set it to `false` to finalize the changes needed to put the robot into localization mode.\n\nThis is another method for localization you can keep in mind when working on your next robotics project!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 729018,
+          "key": "2f5e9bbc-e738-4324-aa53-f1b48b65b156",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2f5e9bbc-e738-4324-aa53-f1b48b65b156",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 796822,
+              "key": "0e51b8d5-c788-4046-83f8-03725f1bb5c3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r714251c729018xREACTb2vzezx6",
+              "pool_id": "autonomousgpu",
+              "view_id": "react-wtzyz",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export PATH=/usr/bin:$PATH\nsource /opt/ros/kinetic/setup.bash",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Go To Desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.520
+Now that you've heard about some 3D data representations,
+
+00:00:03.520 --> 00:00:06.390
+let's move on to an implementation.
+
+00:00:06.389 --> 00:00:11.917
+The OctoMap framework is an open-source C++ library and ROS package based on Octrees,
+
+00:00:11.917 --> 00:00:15.204
+and it can be used to generate volumetric 3D models.
+
+00:00:15.205 --> 00:00:17.925
+OctoMap is not a 3D SLiM solution.
+
+00:00:17.925 --> 00:00:21.240
+It is the mapping framework and requires a pose estimate.
+
+00:00:21.239 --> 00:00:25.659
+It converts and integrates point clouds into 3D occupancy maps.
+
+00:00:25.660 --> 00:00:29.375
+OctoMap uses a probabilistic occupancy estimation
+
+00:00:29.375 --> 00:00:32.509
+modeled as a recursive binary Bayes filter.
+
+00:00:32.509 --> 00:00:34.024
+It is a static state filter,
+
+00:00:34.024 --> 00:00:36.954
+which assumes the environment doesn't change.
+
+00:00:36.954 --> 00:00:40.394
+Efficient updates are achieved using the log odds notation.
+
+00:00:40.395 --> 00:00:44.630
+Occupancy is represented volumetrically with modeling of free,
+
+00:00:44.630 --> 00:00:46.820
+occupied, and unmapped areas.
+
+00:00:46.820 --> 00:00:52.185
+Upper and lower bounds are placed on the log odds value of the occupancy estimate.
+
+00:00:52.185 --> 00:00:56.740
+This policy limits the number of updates required to change the state of the voxel.
+
+00:00:56.740 --> 00:01:00.155
+OctoMap supports multi-resolution map queries
+
+00:01:00.155 --> 00:01:03.500
+where the minimum voxel size determines the resolution.
+
+00:01:03.500 --> 00:01:06.030
+Tree pruning is also used to reduce
+
+00:01:06.030 --> 00:01:09.659
+redundant information between discrete occupancy states.
+
+00:01:09.659 --> 00:01:11.369
+Pruning is accomplished by defining
+
+00:01:11.370 --> 00:01:15.015
+a threshold probability that the voxel is occupied or free.
+
+00:01:15.015 --> 00:01:19.525
+Children that are identical to the parent in the tree can be pruned.
+
+00:01:19.525 --> 00:01:22.700
+Memory efficient representation is accomplished using
+
+00:01:22.700 --> 00:01:26.100
+a compression method that produces compact map files.
+
+00:01:26.099 --> 00:01:28.929
+Coherent map volumes are locally combined,
+
+00:01:28.930 --> 00:01:32.000
+including both mapped free areas and occupied space.
+

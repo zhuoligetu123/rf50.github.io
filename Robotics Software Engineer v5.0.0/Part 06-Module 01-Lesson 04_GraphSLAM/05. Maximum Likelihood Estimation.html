@@ -1,0 +1,938 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Maximum Likelihood Estimation
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      GraphSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Graphs.html">
+       02. Graphs
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Constraints.html">
+       03. Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Front-End vs Back-End.html">
+       04. Front-End vs Back-End
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Maximum Likelihood Estimation.html">
+       05. Maximum Likelihood Estimation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MLE Example.html">
+       06. MLE Example
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Numerical Solution to MLE.html">
+       07. Numerical Solution to MLE
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mid-Lesson Overview.html">
+       08. Mid-Lesson Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="09. 1-D to n-D.html">
+       09. 1-D to n-D
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Information Matrix and Vector.html">
+       10. Information Matrix and Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inference.html">
+       11. Inference
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Nonlinear Constraints.html">
+       12. Nonlinear Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Graph-SLAM at a Glance.html">
+       13. Graph-SLAM at a Glance
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to 3D SLAM With RTAB-Map.html">
+       14. Intro to 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="15. 3D SLAM With RTAB-Map.html">
+       15. 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Visual Bag-of-Words.html">
+       16. Visual Bag-of-Words
+      </a>
+     </li>
+     <li class="">
+      <a href="17. RTAB-Map Memory Management.html">
+       17. RTAB-Map Memory Management
+      </a>
+     </li>
+     <li class="">
+      <a href="18. RTAB-Map Optimization and Output.html">
+       18. RTAB-Map Optimization and Output
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Outro.html">
+       19. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          05. Maximum Likelihood Estimation
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="maximum-likelihood-estimation">
+          Maximum Likelihood Estimation
+         </h1>
+         <p>
+          At the core of GraphSLAM is graph optimization - the process of minimizing the error present in all of the constraints in the graph. Let’s take a look at what these constraints look like, and learn to apply a principle called
+          <em>
+           maximum likelihood estimation
+          </em>
+          (MLE) to structure and solve the optimization problem for the graph.
+         </p>
+         <h2 id="likelihood">
+          Likelihood
+         </h2>
+         <p>
+          Likelihood is a complementary principle to probability. While probability tries to estimate the outcome given the parameters, likelihood tries to estimate the parameters that best explain the outcome. For example,
+         </p>
+         <blockquote>
+          <p>
+           <strong>
+            Probability:
+           </strong>
+           What is the probability of rolling a 2 on a 6-sided die?
+          </p>
+         </blockquote>
+         <p>
+          (Answer: 1/6)
+         </p>
+         <blockquote>
+          <p>
+           <strong>
+            Likelihood:
+           </strong>
+           I’ve rolled a die 100 times, and a 2 was rolled 10% of the time, how many sides does my die have?
+          </p>
+         </blockquote>
+         <p>
+          (Answer: 10 sides)
+         </p>
+         <p>
+          When applied to SLAM, likelihood tries to estimate the most likely configuration of state and feature locations given the motion and measurement observations.
+         </p>
+         <h3 id="probability--likelihood-quiz">
+          Probability &amp; Likelihood Quiz
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          Probability &amp; Likelihood Quiz
+         </p>
+        </h3>
+        <div>
+         <p>
+          <strong>
+           QUIZ QUESTION:
+          </strong>
+          :
+          <p>
+           To solidify your understanding of the difference between probability and likelihood, label the following problems with their respective terms.
+          </p>
+         </p>
+         <p>
+          <strong>
+           ANSWER CHOICES:
+          </strong>
+         </p>
+         <button class="btn btn-primary">
+          <p>
+           The chance of being selected for a Udacity scholarship is 10% if there are 1000 applicants for 100 spots (assuming that everyone is equally qualified).
+          </p>
+         </button>
+         <button class="btn btn-primary">
+          <p>
+           The weather forecast predicts a 30% chance of rain for this evening.
+          </p>
+         </button>
+         <button class="btn btn-primary">
+          <p>
+           The grass is wet, and I didn’t water it. It’s likely that it rained earlier today.
+          </p>
+         </button>
+         <button class="btn btn-primary">
+          <p>
+           A fair coin has a 50% chance of coming up heads, and 50% chance of coming up tails.
+          </p>
+         </button>
+         <button class="btn btn-primary">
+          <p>
+           A coin was tossed 1,000 times, and came up heads 756 times. It is likely that the coin is rigged.
+          </p>
+         </button>
+         <br/>
+         <br/>
+         <table class="table">
+          <tr class="thead-dark table-hover">
+           <th>
+            <p>
+             Example
+            </p>
+           </th>
+           <th>
+            <p>
+             Type of Problem
+            </p>
+           </th>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             Probability
+            </p>
+           </td>
+           <td>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             Likelihood
+            </p>
+           </td>
+           <td>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             Likelihood
+            </p>
+           </td>
+           <td>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             Probability
+            </p>
+           </td>
+           <td>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             Probability
+            </p>
+           </td>
+           <td>
+           </td>
+          </tr>
+         </table>
+         <details>
+          <summary>
+           <strong>
+            SOLUTION:
+           </strong>
+          </summary>
+          <table class="table">
+           <tr class="thead-dark table-hover">
+            <th>
+             <p>
+              Example
+             </p>
+            </th>
+            <th>
+             <p>
+              Type of Problem
+             </p>
+            </th>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The chance of being selected for a Udacity scholarship is 10% if there are 1000 applicants for 100 spots (assuming that everyone is equally qualified).
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The weather forecast predicts a 30% chance of rain for this evening.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               A fair coin has a 50% chance of coming up heads, and 50% chance of coming up tails.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Likelihood
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The grass is wet, and I didn’t water it. It’s likely that it rained earlier today.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Likelihood
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               A coin was tossed 1,000 times, and came up heads 756 times. It is likely that the coin is rigged.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Likelihood
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The grass is wet, and I didn’t water it. It’s likely that it rained earlier today.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Likelihood
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               A coin was tossed 1,000 times, and came up heads 756 times. It is likely that the coin is rigged.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The chance of being selected for a Udacity scholarship is 10% if there are 1000 applicants for 100 spots (assuming that everyone is equally qualified).
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The weather forecast predicts a 30% chance of rain for this evening.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               A fair coin has a 50% chance of coming up heads, and 50% chance of coming up tails.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The chance of being selected for a Udacity scholarship is 10% if there are 1000 applicants for 100 spots (assuming that everyone is equally qualified).
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               The weather forecast predicts a 30% chance of rain for this evening.
+              </p>
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <p>
+              Probability
+             </p>
+            </td>
+            <td>
+             <button class="btn btn-primary">
+              <p>
+               A fair coin has a 50% chance of coming up heads, and 50% chance of coming up tails.
+              </p>
+             </button>
+            </td>
+           </tr>
+          </table>
+         </details>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="feature-measurement-example">
+          Feature Measurement Example
+         </h2>
+         <p>
+          Let’s look at a very simple example - one where our robot is taking repeated measurements of a feature in the environment. This example will walk you through the steps required to solve it, which can then be applied to more complicated problems.
+         </p>
+         <p>
+          The robot’s initial pose has a variance of 0 - simply because this is its start location. Recall that wherever the start location may be - we call it location 0 in our relative map. Every action pose and measurement hereafter will be uncertain. In GraphSLAM, we will continue to make the assumption that motion and measurement data has Gaussian noise.
+         </p>
+         <p>
+          The robot takes a measurement of a feature,
+          <span class="mathquill ud-math">
+           m_1
+          </span>
+          , and it returns a distance of 1.8 metres.
+         </p>
+         <p>
+          If we return to our spring analogy - 1.8m is the spring’s resting length. This is the spring’s most desirable length; however, it is possible for the spring to be compressed or elongated to accommodate other forces (constraints) that are acting on the system.
+         </p>
+         <p>
+          This probability distribution for this measurement can be defined as so,
+         </p>
+         <div class="mathquill">
+          p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\frac{(z_1-(x_0 + 1.8))^2}{\sigma^2}}
+         </div>
+         <p>
+          In simpler terms, the probability distribution is highest when z1 and x0 are 1.8 meters apart.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c5-01-maximum-likelihood-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          However, since the location of the first pose,
+          <span class="mathquill ud-math">
+           x_0
+          </span>
+          is set to 0, this term can simply be removed from the equation.
+         </p>
+         <div class="mathquill">
+          p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\frac{(z_1-1.8)^2}{\sigma^2}}
+         </div>
+         <p>
+          Next, the robot takes another measurement of the same feature in the environment. This time, the data reads 2.2m. With two conflicting measurements, this is now an overdetermined system - as there are more equations than unknowns!
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c5-03-maximum-likelihood-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          With two measurements, the most probable location of the feature can be represented by the product of the two probabilities.
+         </p>
+         <div class="mathquill">
+          p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}} * \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\frac{(z_1-2.2)^2}{\sigma^2}}
+         </div>
+         <p>
+          In this trivial example, it is probably quite clear to you that the most likely location of the feature is at the 2.0 meter mark. However, it is valuable to go through the maximum likelihood estimation process to understand the steps entailed, to then be able to apply it to more complicated systems.
+         </p>
+         <p>
+          To solve this problem analytically, a few steps can be taken to reduce the equations into a simpler form.
+         </p>
+         <h3 id="remove-scaling-factors">
+          Remove Scaling Factors
+         </h3>
+         <p>
+          The value of m that maximizes the equation does not depend on the constants in front of each of the exponentials. These are scaling factors, however in SLAM we are not usually interested in the absolute value of the probabilities, but finding the maximum likelihood estimate. For this reason, the factors can simply be removed.
+         </p>
+         <div class="mathquill">
+          \color{red}\cancel\frac{1}{\sigma\sqrt{2\pi}}\color{black}e^{-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}} * \color{red}\cancel\frac{1}{\sigma\sqrt{2\pi}}\color{black}e^{-\frac{1}{2}\frac{(z_1- 2.2)^2}{\sigma^2}}
+         </div>
+         <h3 id="log-likelihood">
+          Log-Likelihood
+         </h3>
+         <p>
+          The product of the probabilities has been simplified, but the equation is still rather complicated - with exponentials present. There exists a mathematical property that can be applied here to convert this product of exponentials into the sum of their exponents.
+         </p>
+         <p>
+          First, we must use the following property,
+          <span class="mathquill ud-math">
+           e^ae^b=e^{a+b}
+          </span>
+          , to combine the two exponentials into one.
+         </p>
+         <div class="mathquill">
+          e^{-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}} * e^{-\frac{1}{2}\frac{(z_1- 2.2)^2}{\sigma^2}}
+         </div>
+         <div class="mathquill">
+          = e^{-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}-\frac{1}{2}\frac{(z_1- 2.2)^2}{\sigma^2}}
+         </div>
+         <p>
+          Next, instead of working with the likelihood, we can take its natural logarithm and work with it instead.
+         </p>
+         <div class="mathquill">
+          ln(e^{-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}-\frac{1}{2}\frac{(z_1- 2.2)^2}{\sigma^2}})
+         </div>
+         <div class="mathquill">
+          = {-\frac{1}{2}\frac{(z_1 - 1.8)^2}{\sigma^2}-\frac{1}{2}\frac{(z_1- 2.2)^2}{\sigma^2}}
+         </div>
+         <p>
+          The natural logarithm is a
+          <a href="https://en.wikipedia.org/wiki/Monotonic_function" rel="noopener noreferrer" target="_blank">
+           monotonic function
+          </a>
+          - in the log’s case - it is always increasing - as can be seen in the graph below. There can only be a one-to-one mapping of its values. This means that optimizing the logarithm of the likelihood is no different from maximizing the likelihood itself.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c5-04-maximum-likelihood-v1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          One thing to note when working with logs of likelihoods, is that they are always negative. This is because probabilities assume values between 0 and 1, and the log of any value between 0 and 1 is negative. This can be seen in the graph above. For this reason, when working with log-likelihoods, optimization entails
+          <em>
+           minimizing
+          </em>
+          the
+          <em>
+           negative
+          </em>
+          log-likelihood; whereas in the past, we were trying to maximize the likelihood.
+         </p>
+         <p>
+          Lastly, as was done before, the constants in front of the equation can be removed without consequence. As well, for the purpose of this example, we will assume that the same sensor was used in obtaining both measurements - and will thus ignore the variance in the equation.
+         </p>
+         <div class="mathquill">
+          (z_1-1.8)^2+(z_1- 2.2)^2
+         </div>
+         <h3 id="optimization">
+          Optimization
+         </h3>
+         <p>
+          At this point, the equation has been reduced greatly. To get it to its simplest form, all that is left is to multiply out all of the terms.
+         </p>
+         <div class="mathquill">
+          2z_1^2 - 8z_1 + 8.08
+         </div>
+         <p>
+          To find the minimum of this equation, you can take the first derivative of the equation and set it to equal 0.
+         </p>
+         <div class="mathquill">
+          4z_1 - 8 = 0
+         </div>
+         <div class="mathquill">
+          4z_1 = 8
+         </div>
+         <div class="mathquill">
+          z_1 = 2
+         </div>
+         <p>
+          By doing this, you are finding the location on the curve where the slope (or
+          <em>
+           gradient
+          </em>
+          , in multi-dimensional equations) is equal to zero - the trough! This property can be visualized easily by looking at a graph of the error function.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c6-04mle-example-images-v3.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          In more complex examples, the curve may be multimodal, or exist over a greater number of dimensions. If the curve is multimodal, it may be unclear whether the locations discovered by the first derivative are in fact troughs, or peaks. In such a case, the second derivative of the function can be taken - which should clarify whether the local feature is a local minimum or maximum.
+         </p>
+         <h2 id="overview">
+          Overview
+         </h2>
+         <p>
+          The procedure that you executed here is the
+          <em>
+           analytical
+          </em>
+          solution to an MLE problem. The steps included,
+         </p>
+         <ul>
+          <li>
+           Removing inconsequential constants,
+          </li>
+          <li>
+           Converting the equation from one of
+           <em>
+            likelihood estimation
+           </em>
+           to one of
+           <em>
+            negative log-likelihood estimation
+           </em>
+           , and
+          </li>
+          <li>
+           Calculating the first derivative of the function and setting it equal to zero to find the extrema.
+          </li>
+         </ul>
+         <p>
+          In GraphSLAM, the first two steps can be applied to
+          <em>
+           every
+          </em>
+          constraint. Thus, any measurement or motion constraint can simply be labelled with its negative log-likelihood error. For a measurement constraint, this would resemble the following,
+         </p>
+         <div class="mathquill">
+          \frac{(z_t - (x_t + m_t))^2}{\sigma^2}
+         </div>
+         <p>
+          And for a motion constraint, the following,
+         </p>
+         <div class="mathquill">
+          \frac{(x_t - (x_{t-1} + u_t))^2}{\sigma^2}
+         </div>
+         <p>
+          Thus, from now on, constraints will be labelled with their negative log-likelihood error,
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c5-05-maximum-likelihood-v2.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          with the estimation function trying to minimize the sum of all constraints,
+         </p>
+         <div class="mathquill">
+          J_{GraphSLAM} = \sum_t\frac{(x_t - (x_{t-1} + u_t))^2}{\sigma^2} + \sum_t\frac{(z_t - (x_t + m_t))^2}{\sigma^2}
+         </div>
+         <p>
+          In the next section, you will work through a more complicated estimation example to better understand maximum likelihood estimation, since it really is the basis of GraphSLAM.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="06. MLE Example.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Maximum Likelihood Estimation')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

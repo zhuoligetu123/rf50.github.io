@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.519
+The goal of GraphSLAM is to create a graph of all robot poses and features
+
+00:00:05.519 --> 00:00:07.589
+encountered in the environment and find
+
+00:00:07.589 --> 00:00:10.994
+the most likely robot's path and map of the environment.
+
+00:00:10.994 --> 00:00:13.994
+This task can be broken up into two sections,
+
+00:00:13.994 --> 00:00:16.199
+the front-end and the back-end.
+
+00:00:16.199 --> 00:00:19.649
+The front-end of GraphSLAM looks at how to construct the graph
+
+00:00:19.649 --> 00:00:23.625
+using the odometry and sensory measurements collected by the robot.
+
+00:00:23.625 --> 00:00:27.397
+This includes interpreting sensory data, creating the graph,
+
+00:00:27.397 --> 00:00:31.785
+and continuing to add nodes and edges to it as the robot traverses the environment.
+
+00:00:31.785 --> 00:00:34.679
+Naturally, the front-end can differ greatly from
+
+00:00:34.679 --> 00:00:37.817
+application to application depending on the desired goal,
+
+00:00:37.817 --> 00:00:42.140
+including accuracy, the sensor used, and other factors.
+
+00:00:42.140 --> 00:00:45.125
+For instance, the front-end of a mobile robot
+
+00:00:45.125 --> 00:00:48.545
+applying SLAM in the office using a laser range finder
+
+00:00:48.545 --> 00:00:51.440
+would differ greatly from the front-end for a vehicle
+
+00:00:51.439 --> 00:00:55.744
+operating on a large outdoor environment and using a stereo camera.
+
+00:00:55.744 --> 00:00:58.189
+The front-end of GraphSLAM also has
+
+00:00:58.189 --> 00:01:00.979
+the challenge of solving the data association problem.
+
+00:01:00.979 --> 00:01:03.469
+In simpler terms, this means accurately
+
+00:01:03.469 --> 00:01:07.579
+identifying whether features in the environment have been previously seen.
+
+00:01:07.579 --> 00:01:11.064
+We will touch upon this in more detail at a later time.
+
+00:01:11.064 --> 00:01:14.549
+The back-end of GraphSLAM is where the magic happens.
+
+00:01:14.549 --> 00:01:18.825
+The input to the back-end is the completed graph with all of the constraints.
+
+00:01:18.825 --> 00:01:24.450
+And the output is the most probable configuration of robot poses and map features.
+
+00:01:24.450 --> 00:01:27.978
+The back-end is an optimization process that takes all of
+
+00:01:27.977 --> 00:01:32.669
+the constraints and find the system configuration that produces the smallest error.
+
+00:01:32.670 --> 00:01:36.825
+The back-end is a lot more consistent across applications.
+
+00:01:36.825 --> 00:01:39.840
+The front-end and the back-end can be completed in
+
+00:01:39.840 --> 00:01:42.510
+succession or can be performed alliteratively,
+
+00:01:42.510 --> 00:01:47.390
+with a back-end feeding an updated graph to the front-end for further processing
+

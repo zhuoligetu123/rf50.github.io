@@ -1,0 +1,1288 @@
+{
+  "data": {
+    "lesson": {
+      "id": 462519,
+      "key": "09ff9955-a893-43b2-a314-819a02f9231c",
+      "title": " Occupancy Grid Mapping",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to map an environment with the Occupancy Grid Mapping algorithm.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/09ff9955-a893-43b2-a314-819a02f9231c/462519/1544270614615/+Occupancy+Grid+Mapping+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/09ff9955-a893-43b2-a314-819a02f9231c/462519/1544270611253/+Occupancy+Grid+Mapping+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 527767,
+          "key": "cbd3df6c-468c-4a86-8194-ec18f7119503",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbd3df6c-468c-4a86-8194-ec18f7119503",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550930,
+              "key": "9bde2eb5-fb1a-43af-a7fb-f69f3c891bce",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "s2EjPF0Xn2w",
+                "china_cdn_id": "s2EjPF0Xn2w.mp4"
+              }
+            },
+            {
+              "id": 543012,
+              "key": "3a623c79-268b-4a5c-bf4a-600d2fa4f672",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Localization:**\n- *Assumption*: Known Map\n- *Estimation*: Robot's Trajectory\n\n**Mapping:**\n- *Assumption*: Robot's Trajectory\n- *Estimation*: Map\n\nIn this lesson, you'll learn how to **map** an environment with the **Occupancy Grid Mapping** algorithm!\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527768,
+          "key": "dd04840b-99b9-44fa-8da9-202b239c7c51",
+          "title": "Importance of Mapping",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd04840b-99b9-44fa-8da9-202b239c7c51",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 693477,
+              "key": "def5564a-2409-435e-a072-e501ae67d057",
+              "title": "02 L Importance Of Mapping V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fG2gvwinGxg",
+                "china_cdn_id": "fG2gvwinGxg.mp4"
+              }
+            },
+            {
+              "id": 543016,
+              "key": "5e1ff749-4475-497d-a6af-eee1321d975d",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5e1ff749-4475-497d-a6af-eee1321d975d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You just saw the importance of mapping in **dynamic** environments but what about **static** environments, are you still required to perform instantaneous mapping even if a priori map is available to you?",
+                "answers": [
+                  {
+                    "id": "a1518205360344",
+                    "text": "Yes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518205399638",
+                    "text": "No",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518205441917",
+                    "text": "Maybe",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527769,
+          "key": "4fc59d9e-c14d-41c0-842e-84278116815f",
+          "title": "Challenges and Difficulties",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4fc59d9e-c14d-41c0-842e-84278116815f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550932,
+              "key": "827b1e22-eea3-43e5-8dd1-22d8f7d39011",
+              "title": "Challenges and Difficulties ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nSNTCJtuO38",
+                "china_cdn_id": "nSNTCJtuO38.mp4"
+              }
+            },
+            {
+              "id": 543036,
+              "key": "4599f20c-7219-4923-b4c5-de6e787aa197",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While listing the different challenges and difficulties in mapping, I mentioned the words **discrete** and **continuous**. Here's what these words actually mean:\n\n\n- **Discrete Data:** You obtain this data by counting it. This data has finite values. *Example*: `Number` of robots in a room\n- **Continuous Data:** You obtain this data by measuring it. This data has an infinite number of steps, which form a continuum. *Example*: `Weight` of a robot\n\n \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 543021,
+              "key": "e2741ec5-b236-479c-a1e6-3b5adefe3033",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e2741ec5-b236-479c-a1e6-3b5adefe3033",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "A mobile robot is mapping a large environment while traveling in cycles and correlating between different objects seen at different points in time. What are the challenges and difficulties faced by this robot?",
+                "answers": [
+                  {
+                    "id": "a1518206754808",
+                    "text": "Challenge - Unknown Map",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518206776984",
+                    "text": "Challenge - Huge Hypothesis Space",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518206777607",
+                    "text": "Difficulty - Size",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518206778186",
+                    "text": "Difficulty - Noise",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518206778897",
+                    "text": "Difficulty - Perceptual Ambiguity",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518206796592",
+                    "text": "Difficulty - Cycles",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527771,
+          "key": "8121565b-3bb9-4f5e-9af0-31301861edce",
+          "title": "Mapping with Known Poses",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8121565b-3bb9-4f5e-9af0-31301861edce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550933,
+              "key": "851cbfa8-c5e3-43ce-8c47-9cf4d2c1451b",
+              "title": "Mapping with Known Poses",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LST_AieoenI",
+                "china_cdn_id": "LST_AieoenI.mp4"
+              }
+            },
+            {
+              "id": 551745,
+              "key": "624cce59-fea4-419b-99f5-85335f559b07",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "624cce59-fea4-419b-99f5-85335f559b07",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the **inputs** and **outputs** to the Mapping with Known Poses problem?",
+                "answers": [
+                  {
+                    "id": "a1519244158938",
+                    "text": "**Inputs**: Poses + Measurements + Controls, **Output**: Map",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244165462",
+                    "text": "**Inputs**: Map + Measurements,  **Output**: Pose",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244166073",
+                    "text": "**Inputs**: Controls + Measurements, **Outputs**: Map + Poses",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244166734",
+                    "text": "**Inputs**: Poses + Measurements, **Output**: Map",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527772,
+          "key": "b0a1f154-6c9a-4768-aa49-f0e7f183dede",
+          "title": "Posterior Probability",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0a1f154-6c9a-4768-aa49-f0e7f183dede",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551795,
+              "key": "40e0fbb8-de5e-4da5-9c51-d3a512c9d55a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8e126f_l2c5-01/l2c5-01.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/40e0fbb8-de5e-4da5-9c51-d3a512c9d55a",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 534619,
+              "key": "245fab83-7d53-4aa2-b947-ec73ec49b3a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Posterior Probability\n\nGoing back to the graphical model of mapping with known poses, our goal is to implement a mapping algorithm and estimate the map given noisy measurements and assuming known poses. \n\nThe Mapping with Known Poses problem can be represented with ```<span class=\"mathquill\">P(m | z_{1:t}, x_{1:t})</span>``` function. With this function, we can compute the posterior over the map given all the measurements up to time **t** and all the poses up to time **t** represented by the robot trajectory. \n\nIn estimating the map, we’ll exclude the controls **u** since the robot path is provided to us from SLAM. However, keep in mind that the robot controls will be included later in SLAM to estimate the robot’s trajectory. \n\n#### 2D Maps\n\nFor now, we will only estimate the posterior for two-dimensional maps. In the real world, a mobile robot with a two-dimensional laser rangefinder sensor is generally deployed on a flat surface to capture a slice of the 3D world. Those two-dimensional slices will be merged at each instant and partitioned into grid cells to estimate the posterior through the occupancy grid mapping algorithm. Three-dimensional maps can also be estimated through the occupancy grid algorithm, but at much higher computational memory because of the large number of noisy three-dimensional measurements that need to be filtered out.\n\n\n \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 543031,
+              "key": "b297f06b-7845-4727-96fa-14c686594953",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b297f06b-7845-4727-96fa-14c686594953",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the **robotic problems** with their corresponding **probability equations**:"
+                },
+                "concepts_label": "Robotic Problems",
+                "answers_label": "Probability Equations",
+                "concepts": [
+                  {
+                    "text": "Localization",
+                    "correct_answer": {
+                      "id": "a1518211695419",
+                      "text": "P(x<sub>1:t</sub> | u<sub>1:t</sub> , m , z<sub>1:t</sub>)"
+                    }
+                  },
+                  {
+                    "text": "Mapping",
+                    "correct_answer": {
+                      "id": "a1518211803677",
+                      "text": "P(m | z<sub>1:t</sub> , x<sub>1:t</sub>)"
+                    }
+                  },
+                  {
+                    "text": "SLAM",
+                    "correct_answer": {
+                      "id": "a1518211805095",
+                      "text": "P(x<sub>1:t</sub> , m | z<sub>1:t</sub> , u<sub>1:t</sub>)"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1518211805095",
+                    "text": "P(x<sub>1:t</sub> , m | z<sub>1:t</sub> , u<sub>1:t</sub>)"
+                  },
+                  {
+                    "id": "a1519168235418",
+                    "text": "P(x<sub>1:t</sub> | z<sub>1:t</sub> , u<sub>1:t</sub>)"
+                  },
+                  {
+                    "id": "a1518211803677",
+                    "text": "P(m | z<sub>1:t</sub> , x<sub>1:t</sub>)"
+                  },
+                  {
+                    "id": "a1518211695419",
+                    "text": "P(x<sub>1:t</sub> | u<sub>1:t</sub> , m , z<sub>1:t</sub>)"
+                  },
+                  {
+                    "id": "a1518211880521",
+                    "text": "P(x<sub>1:t</sub> , m | z<sub>1:t</sub>)"
+                  },
+                  {
+                    "id": "a1518211878845",
+                    "text": "P(m | z<sub>1:t</sub> , x<sub>1:t</sub> , u<sub>1:t</sub>)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527773,
+          "key": "896876a6-18bd-4510-a271-e7d17b22780f",
+          "title": "Grid Cells",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "896876a6-18bd-4510-a271-e7d17b22780f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550934,
+              "key": "d4852990-7e8b-4eb4-803e-f02da1e99e3b",
+              "title": "Grid Cells ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WxRLYM7qHbc",
+                "china_cdn_id": "WxRLYM7qHbc.mp4"
+              }
+            },
+            {
+              "id": 551744,
+              "key": "b84ab50d-4d5d-4735-91bb-194eed4da80e",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b84ab50d-4d5d-4735-91bb-194eed4da80e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In this 3x3 two-dimensional grid map, how many **obstacles** exist? And how many **combinations** of maps can be formed?\n<h1 style=\"text-align: center;\">1 0 1<br />0 1 0<br />1 0 1</h1>",
+                "answers": [
+                  {
+                    "id": "a1519244039578",
+                    "text": "**Obstacles=** 1, **Combinations=** 32",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244046466",
+                    "text": "**Obstacles=** 2, **Combinations=** 62",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244047255",
+                    "text": "**Obstacles=** 3, **Combinations=** 128",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244048112",
+                    "text": "**Obstacles=** 4, **Combinations=** 256",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519244054994",
+                    "text": "**Obstacles=** 5, **Combinations=** 512",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527774,
+          "key": "c2a0c279-383a-47cb-a1f2-91a1bf3a7724",
+          "title": "Computing the Posterior ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c2a0c279-383a-47cb-a1f2-91a1bf3a7724",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551794,
+              "key": "833bc48d-2712-4158-b72c-74cf20f2af43",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8dfff8_nd209-c3-l2-a07-computing-the-posterior/nd209-c3-l2-a07-computing-the-posterior.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/833bc48d-2712-4158-b72c-74cf20f2af43",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 534624,
+              "key": "fb82ac1f-de6c-4a3c-a0ec-05a2c37662f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### <div class=\"mathquill\">First\\ Approach: P(m | z_{1:t}, x_{1:t})</div>\n\nWe just saw that maps have high dimensionality so it will be too pricey in terms of computational memory to compute the posterior under this first approach. \n\n#### <div class=\"mathquill\">Second\\ Approach:P(m_{i} | z_{1:t}, x_{1:t})</div>\n\nA second or better approach to estimating the posterior map is to decompose this problem into many separate problems. In each of these problems, we will compute the posterior map **m<sub>i</sub>** at each instant. \nHowever, this approach still presents some drawbacks because we are computing the probability of each cell independently. Thus, we still need to find a different approach that addresses the dependencies between neighboring cells.\n\n#### <div class=\"mathquill\">Third\\ Approach:\\prod_{i} P( m_{i}| z_{1:t} , x_{1:t})</div>\nNow, the third approach is the best approach to computing the posterior map by relating cells and overcoming the huge computational memory, is to estimate the map with the product of marginals or factorization. \n\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 543243,
+              "key": "4c865916-ef49-46e5-a89b-eb4e15d0dd39",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4c865916-ef49-46e5-a89b-eb4e15d0dd39",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In this quiz, we'll get you back to your calculus where you will try to remember how to evaluate this function:\n<div class=\"mathquill\">\\prod_{P=0.7}^{1.0}\\ P^{2}</div>\n<div class=\"mathquill\">step = 0.1</div>",
+                "answers": [
+                  {
+                    "id": "a1518467512073",
+                    "text": "0.154016",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518467916057",
+                    "text": "0.7",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518467916668",
+                    "text": "1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518467917272",
+                    "text": "0.254016",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518467933532",
+                    "text": "1.7",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518467943475",
+                    "text": "0.5312",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 527775,
+          "key": "908a0aed-4947-47ad-91a9-a6b19e1febd6",
+          "title": "Filtering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "908a0aed-4947-47ad-91a9-a6b19e1febd6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550936,
+              "key": "9de40725-76da-4884-90c7-4cf77d3da490",
+              "title": "Filtering ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gvSuVqEI5OI",
+                "china_cdn_id": "gvSuVqEI5OI.mp4"
+              }
+            },
+            {
+              "id": 551729,
+              "key": "77c69fcc-75aa-42eb-84db-e6451293d0ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Forward vs. Inverse Measurement Model\n\n**Forward Measurement Model** - *P(z<sub>1:t</sub>| x)*: Estimating a posterior over the measurement given the system state.\n\n**Inverse Measurement Model** - *P(x | z<sub>1:t</sub>)*: Estimating a posterior over the system state given the measurement.\n\nThe inverse measurement model is generally used when measurements are more complex than the system's state.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 543251,
+              "key": "56f368a6-d657-41f5-9822-f7d49346702a",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "56f368a6-d657-41f5-9822-f7d49346702a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "A robot is trying to measure its distance towards the closest wall, its position is known. What type of measurement model would you implement to solve this problem? ",
+                "answers": [
+                  {
+                    "id": "a1518471271096",
+                    "text": "Forward Measurement Model",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518471323373",
+                    "text": "Inverse Measurement Model",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518471323946",
+                    "text": "Both",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518471328235",
+                    "text": "None",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 543246,
+              "key": "3a2967b7-e6f7-4e20-8c46-c39b95679818",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3a2967b7-e6f7-4e20-8c46-c39b95679818",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the log odds ratio representation of p(A|B)? Select all that apply",
+                "answers": [
+                  {
+                    "id": "a1518469651407",
+                    "text": "<div class=\"mathquill\">log(P(A|B))</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518469727100",
+                    "text": "<div class=\"mathquill\">log(\\frac{P(A|B)}{1-P(A|B)})</div>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518469727889",
+                    "text": "<div class=\"mathquill\">log(\\frac{P(A)}{1-P(A)})</div>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1518469728866",
+                    "text": "<div class=\"mathquill\">log(\\frac{P(A|B)}{P(\\neg A|B)})</div>",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1518469752356",
+                    "text": "<div class=\"mathquill\">log(\\frac{P(B)}{1-P(A|B)})</div>",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 543295,
+              "key": "1a2e645f-dff3-4a90-a5f3-511b66ebfe31",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The advantage of using a log odds ratio representation is to avoid probability instabilities near 0 or 1. Another advantage relates to system speed, accuracy, and simplicity. Check out these two sources for more information on log probability and numerical stability:\n\n1. [Log Probability](https://en.wikipedia.org/wiki/Log_probability)\n2. [Numerical Stability](https://en.wikipedia.org/wiki/Numerical_stability) \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527776,
+          "key": "d1f69b7a-d6a5-40fb-97e8-ce145a536f77",
+          "title": "Binary Bayes Filter Algorithm",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1f69b7a-d6a5-40fb-97e8-ce145a536f77",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551833,
+              "key": "4efc11f3-27c5-495e-b792-2632bdf04b43",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8e203c_l2c9-01/l2c9-01.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4efc11f3-27c5-495e-b792-2632bdf04b43",
+              "caption": "",
+              "alt": "",
+              "width": 4000,
+              "height": 2250,
+              "instructor_notes": null
+            },
+            {
+              "id": 534631,
+              "key": "ee55239d-0054-46ee-86bc-e47572d54e76",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Input\nThe binary Bayes filter algorithm computes the log odds of the posterior belief denoted by **l<sub>t</sub>**.\nInitially, the filter takes the previous log odds ratio of the belief **<sub>t-1</sub>** and the measurements **z<sub>t</sub>** as parameters.\n\n#### Computation\nThen, the filter computes the new posterior belief of the system **l<sub>t</sub>** by adding the previous belief **l<sub>t-1</sub>** to the log odds ratio of the inverse measurement model <span class=\"mathquill\">log \\frac{p(x|z_{t})}{1-p(x|z_{t})}</span> and subtracting the prior probability state also known by initial belief <span class=\"mathquill\">log \\frac{p(x)}{1-p(x)}</span>. The initial belief represents the initial state of the system before taking any sensor measurements into consideration.   \n\n#### Output\nFinally, the algorithm returns the posterior belief of the system **l<sub>t</sub>**, and a new iteration cycle begins. \n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527777,
+          "key": "7b52cba5-dcab-4948-894f-c77df7d8b603",
+          "title": "Occupancy Grid Mapping Algorithm",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b52cba5-dcab-4948-894f-c77df7d8b603",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 637692,
+              "key": "52027856-4502-43b4-a3e6-655d75b2ab88",
+              "title": "Occupancy Grid Mapping Algorithm",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sDQ0KRYuPJM",
+                "china_cdn_id": "sDQ0KRYuPJM.mp4"
+              }
+            },
+            {
+              "id": 551727,
+              "key": "3e144f7b-0491-4fe5-ac26-c1d2a05efca8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've learned the Occupancy Grid Mapping algorithm, you will get a chance to code it in C++! \n\nIn this quiz, a robot equipped with **eight sonar rangefinder sensors** circulates in an environment to map it. This robot is provided with its exact poses at each timestamp. The code structure is as follows:\n\n**Data Files**\n1. `measurement.txt`: The measurements from the sonar rangefinder sensors attached to the robot at each time stamp recorded over a period of 413 seconds. (timestamp, measurement 1:8).\n2. `poses.txt`: The exact robot poses at each timestamp recorded over a period of 413 seconds. (timestamp, x, y,  ϴ).\n\n**Global Functions**\n1. `inverseSensorModel():` You'll code this function as part of your second quiz after learning the inverse sensor model for sonar rangefinder sensors. \n2. `occupancyGridMapping():` You'll code this function as part of your first quiz.\n\n**Main Function**\n1. `File Scan:` Scanning both the measurement and poses files to retrieve the values. At each time stamp, the values are passed to the occupancy grid mapping function.  \n2. `Display Map:` After processing all the measurements and poses, the map is displayed. \n\n\nNow, code the **occupancyGridMapping()** function:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552818,
+              "key": "3de4fe1e-e180-4104-9a93-3cda9eb9acdc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a91e34e_screen-shot-2018-02-24-at-2.12.00-pm/screen-shot-2018-02-24-at-2.12.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3de4fe1e-e180-4104-9a93-3cda9eb9acdc",
+              "caption": "",
+              "alt": "",
+              "width": 1900,
+              "height": 1066,
+              "instructor_notes": null
+            },
+            {
+              "id": 552816,
+              "key": "a26d6cad-5e2a-43db-940f-4fec63cc5d82",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a26d6cad-5e2a-43db-940f-4fec63cc5d82",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Generate a grid (size 300x150) and then loop through all the cells",
+                "Inside the loop, compute the center of mass of each cell x<sub>i</sub> and y<sub>i</sub>",
+                "Inside the loop, check if each cell falls under the perceptual field of the measurements"
+              ],
+              "positive_feedback": "Great Job!",
+              "video_feedback": null,
+              "description": "Here are the steps that you need to follow in order to code the **occupancyGridMapping()** function:"
+            },
+            {
+              "id": 552817,
+              "key": "8a104222-798c-4987-bf85-921853fe3ee6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A cell would usually fall under the perceptual field of the measurements if the distance between the cell centroid and the robot pose is smaller or equal than the maximum measurements `Zmax`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 559631,
+              "key": "65580e4a-48e2-402a-9c89-b506d44c58e4",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "65580e4a-48e2-402a-9c89-b506d44c58e4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6342107367866368",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\n// Sensor characteristic: Min and Max ranges of the beams\ndouble Zmax = 5000, Zmin = 170;\n// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) log odds values\ndouble l0 = 0, locc = 0.4, lfree = -0.4;\n// Grid dimensions\ndouble gridWidth = 100, gridHeight = 100;\n// Map dimensions\ndouble mapWidth = 30000, mapHeight = 15000;\n// Robot size with respect to the map \ndouble robotXOffset = mapWidth / 5, robotYOffset = mapHeight / 3;\n// Defining an l vector to store the log odds values of each cell\nvector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeight));\n\ndouble inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])\n{\n    // You will be coding this section in the upcoming concept! \n    return 0.4;\n}\n\nvoid occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])\n{\n    //1 - TODO: Generate a grid (size 300x150) and then loop through all the cells\n            //2- TODO: Compute the center of mass of each cell xi and yi \n            //double xi = x * gridWidth + gridWidth / 2 - robotXOffset;\n            //double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;\n            //3- TODO: Check if each cell falls under the perceptual field of the measurements\n    \n    \n    \n    \n    \n    \n}\n\nint main()\n{\n    double timeStamp;\n    double measurementData[8];\n    double robotX, robotY, robotTheta;\n\n    FILE* posesFile = fopen(\"poses.txt\", \"r\");\n    FILE* measurementFile = fopen(\"measurement.txt\", \"r\");\n\n    // Scanning the files and retrieving measurement and poses at each timestamp\n    while (fscanf(posesFile, \"%lf %lf %lf %lf\", &timeStamp, &robotX, &robotY, &robotTheta) != EOF) {\n        fscanf(measurementFile, \"%lf\", &timeStamp);\n        for (int i = 0; i < 8; i++) {\n            fscanf(measurementFile, \"%lf\", &measurementData[i]);\n        }\n        occupancyGridMapping(robotX, robotY, (robotTheta / 10) * (M_PI / 180), measurementData);\n    }\n    \n    // Displaying the map\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            cout << l[x][y] << \" \";\n        }\n    }\n    \n    return 0;\n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "1686487 5110 5110 2320 2360 5110 5110 2160 1190\n1686915 5110 5110 2320 2360 5110 5110 2160 1190\n1687132 5110 5110 2320 2360 5110 5110 2160 1190\n1687555 5110 5110 2320 2360 5110 5110 2160 1190\n1687770 5110 5110 2320 2360 5110 5110 2160 1190\n1688194 5110 5110 2320 2360 5110 5110 2170 1190\n1688411 5110 5110 2320 2360 5110 5110 2160 1180\n1688627 5110 5110 1040 2360 5110 5110 2160 1180\n1688843 5110 5110 1040 2360 5110 5110 2170 1190\n1689054 5110 5110 2320 2370 5110 5110 2170 1190\n1689273 5110 5110 2320 2360 5110 5110 2160 1180\n1689479 5110 5110 2320 2360 5110 5110 2170 1190\n1689698 5110 5110 2320 2370 5110 5110 2170 1190\n1689906 5110 5110 2320 2370 5110 5110 2160 1180\n1690116 5110 5110 2320 2360 5110 5110 2160 1180\n1690338 5110 5110 2320 2360 5110 5110 2160 1190\n1690549 5110 5110 2320 2360 5110 5110 2160 1190\n1690759 5110 5110 2320 2360 5110 5110 2160 1190\n1690970 5110 5110 2320 2350 5110 5110 2160 1190\n1691192 5110 5110 2320 2350 5110 5110 2160 1190\n1691400 5110 5110 2320 2360 5110 5110 2160 1190\n1691822 5110 5110 2320 2350 5110 5110 2160 1190\n1692039 5110 5110 2320 2350 5110 5110 2160 1190\n1692258 5110 5110 2320 400 5110 5110 2160 1190\n1692470 5110 5110 2320 2360 5110 5110 2170 1190\n1692681 5110 5110 2320 2360 5110 5110 2160 1180\n1692900 5110 5110 2320 2350 5110 5110 2160 1180\n1693105 5110 5110 2320 2350 5110 5110 2170 1190\n1693319 5110 5110 2320 2360 5110 5110 2160 1190\n1693530 5110 5110 2320 2360 5110 5110 2160 1180\n1693751 5110 5110 2320 2360 5110 5110 2170 1180\n1693959 5110 5110 2320 2360 5110 5110 2170 1190\n1694178 5110 5110 2320 2360 5110 5110 2160 1190\n1694387 5110 5110 2320 2360 5110 5110 2160 1190\n1694811 5110 5110 2320 2350 5110 5110 2160 1190\n1695028 5110 5110 2320 2360 5110 5110 2160 1190\n1695243 5110 5110 2320 2360 5110 5110 2160 1190\n1695451 5110 5110 2320 2360 5110 5110 2160 1190\n1695665 5110 5110 2320 2360 5110 5110 2170 1190\n1695888 5110 5110 2320 2350 5110 5110 2170 1190\n1696098 5110 5110 2320 2350 5110 5110 2160 1180\n1696314 5110 5110 2320 2360 5110 5110 2160 1180\n1696524 5110 5110 2320 2360 5110 5110 2160 1190\n1696740 5110 5110 2320 2360 5110 5110 2160 1190\n1696952 5110 5110 2320 2360 5110 5110 2160 1180\n1697168 5110 5110 2320 2360 5110 5110 2160 1180\n1697377 5110 5110 2320 2360 5110 5110 2170 1190\n1697590 5110 5110 2310 2360 5110 5110 2170 1190\n1697802 5110 5110 2310 2360 5110 5110 2150 1180\n1698013 5110 5110 2290 2310 5060 5110 2150 1180\n1698233 5110 5110 2290 2310 5060 5110 2100 1190\n1698442 5110 2240 2210 2240 4970 5110 2100 1190\n1698652 5110 2240 2210 2240 4970 4950 2000 1260\n1698868 860 2120 2100 4260 4860 4830 1910 1260\n1699087 860 2010 2000 4140 5110 4830 1910 1260\n1699293 870 2010 2000 4140 5110 4700 1830 1260\n1699515 870 1900 1890 4020 5110 4700 1830 1260\n1699721 860 1900 1890 4020 5110 4590 1740 1260\n1699939 860 1800 1810 3910 5110 4480 1740 1260\n1700150 870 1700 1810 3910 5110 4480 5110 1220\n1700362 870 1700 2700 3800 5110 4370 5110 1220\n1700578 870 1600 2700 3800 5110 4370 5080 1180\n1700788 870 1600 2600 3680 5110 4250 5080 1180\n1701000 860 1500 2600 3680 5110 4250 5110 1180\n1701218 860 1500 2480 3570 5110 4140 5110 1180\n1701435 830 1410 2480 3570 5110 4140 5110 1180\n1701645 830 1410 2380 3450 5110 4030 5110 1180\n1701857 920 1320 2380 3450 5110 4030 5110 1260\n1702070 920 1320 2270 2290 5110 3900 5110 1260\n1702289 920 5010 2150 2170 5110 3790 5110 1270\n1702500 920 2070 2050 2170 5110 3790 5110 1270\n1702713 920 2070 2050 2170 5110 2270 2390 1270\n1702928 920 4800 1960 2170 5110 2270 2390 1270\n1703144 920 4800 1960 1990 5110 3620 1670 1270\n1703349 910 4720 1880 1990 5110 3620 1670 1220\n1703566 910 4720 1880 1910 5110 3470 5110 1220\n1703775 900 1810 1880 1910 5110 3470 5110 1210\n1703990 900 1810 1880 2800 5110 3410 5110 1210\n1704210 890 1700 1680 2800 5110 3410 5110 1210\n1704423 890 1700 1680 2800 5110 3340 5110 1220\n1704637 880 1590 1580 2600 5110 3340 5110 1220\n1704845 880 1590 1580 2600 5110 3210 3220 1220\n1705065 860 1480 2480 3550 5110 3210 3220 1220\n1705272 860 1480 2480 3550 5110 3130 3110 1230\n1705488 820 1380 2370 3450 5110 3020 3000 1230\n1705695 840 1300 2260 3320 5110 3020 3000 1230\n1705912 840 1300 2260 3320 5110 2900 2890 1240\n1706122 860 1200 2150 3220 5110 2900 2890 1240\n1706339 860 1200 2150 3220 5110 2820 2780 1260\n1706549 860 1140 2030 2070 5110 2820 2780 1260\n1706767 850 1140 2030 2070 5110 2820 2680 1250\n1706977 850 5110 1930 1960 5110 2820 2680 1250\n1707189 850 5110 1930 1960 5110 5110 2570 1260\n1707409 850 1850 1820 2870 5110 5110 2570 1260\n1707616 840 1850 1820 2870 5110 5110 2470 1260\n1707834 840 1740 1730 2780 5110 5110 2470 1260\n1708047 840 1740 1730 2780 5110 5110 2390 1260\n1708261 840 1640 1630 2680 5110 5110 2390 1260\n1708478 840 1550 1630 2580 5110 5110 2290 1260\n1708688 790 1440 1630 2580 5110 5110 2200 1270\n1708902 790 1440 2440 3120 5110 5010 2200 1270\n1709118 780 1340 2440 3120 5110 5010 2090 1270\n1709329 780 1340 2330 3000 5110 4900 2090 1270\n1709540 820 1250 2330 3000 5110 4900 2020 1270\n1709759 820 1250 2230 3610 5110 4780 2020 1270\n1709968 830 1170 2230 3610 5110 4780 1950 1280\n1710181 830 1170 2120 3490 5110 4670 1950 1280\n1710391 820 5110 2120 3490 5110 4670 1900 1280\n1710611 820 5110 2010 2030 5110 4550 1900 1280\n1710820 820 5110 2010 2030 5110 4550 5110 1280\n1711032 820 5110 1900 1920 5110 4450 5110 1280\n1711247 820 1850 1820 1920 5110 4450 5110 1280\n1711464 820 1850 1820 3190 5110 4340 5110 1280\n1711882 810 1630 1620 3110 5110 4230 5110 1280\n1712100 810 1630 1620 3000 5110 4120 5110 1280\n1712317 810 1520 1620 3000 5110 4120 5110 1330\n1712525 810 1520 1620 2910 5110 4020 5110 1330\n1712739 770 1410 2010 2910 5110 4020 5110 1370\n1712952 770 1410 2010 2790 5110 3910 5110 1370\n1713170 760 1310 1360 2690 5110 3910 5110 1380\n1713385 760 1310 1360 2690 5110 3800 5110 1380\n1713599 810 1230 1800 5110 5110 3800 5110 1380\n1713813 810 1230 1800 5110 5110 3690 5110 1360\n1714021 800 1140 1710 5110 5110 3690 5110 1360\n1714235 800 1140 1710 5110 5110 3590 5110 1320\n1714452 800 1080 1610 5110 5110 3590 5110 1320\n1714657 800 1080 1610 5110 5110 3480 5110 1310\n1714872 800 1520 1610 5110 5110 3370 3390 1310\n1715087 800 1520 2040 4990 5110 3370 3390 1310\n1715303 790 1520 2040 4990 5110 3270 3390 1310\n1715516 790 1310 1940 4880 5110 3270 3390 1310\n1715731 790 1310 1940 4880 5110 3160 3170 1320\n1715939 790 1220 1840 4780 5110 3160 3170 1320\n1716156 790 1220 1840 4780 5110 3080 3060 1320\n1716366 790 1130 1730 1830 5110 3080 3060 1320\n1716584 730 1130 1730 1830 5110 2970 2950 1330\n1716800 730 1050 1620 4540 5110 2970 2950 1330\n1717008 730 1050 1620 4540 5110 2890 2840 1330\n1717218 730 1550 1530 4540 5110 2890 2840 1330\n1717436 760 1550 1530 4540 5110 2890 2740 1340\n1717655 760 1430 1440 4310 5110 5110 2740 1340\n1718071 750 1240 1390 4190 5110 5110 2540 1350\n1718293 750 1240 5110 4090 5110 5110 2540 1350\n1718503 750 1150 5110 4090 5110 5110 2440 1350\n1718716 750 1150 5110 3970 5110 5110 2440 1350\n1718928 730 1070 5110 3970 5110 5110 2350 1350\n1719139 730 1070 5110 3850 5110 5110 2350 1350\n1719359 720 1020 5110 3850 5110 5110 2260 1360\n1719567 720 1020 5110 3730 5110 5110 2260 1360\n1719787 720 980 5110 3730 5110 5110 2190 1360\n1719994 720 980 5110 3620 5110 5110 2090 1360\n1720215 730 5110 5110 3620 5110 5110 2090 1370\n1720429 730 5110 5110 3510 5110 4850 2030 1370\n1720641 740 5110 3440 3510 5110 4850 2030 1360\n1720852 740 5110 3440 3390 5110 4730 5110 1360\n1721063 730 5110 3300 3390 5110 4730 5110 1370\n1721275 730 5110 3180 3270 5110 4610 5110 1370\n1721699 670 5110 3070 3150 5110 4500 5110 1380\n1721921 670 5110 3070 3030 5110 4400 5110 1390\n1722339 660 5110 2940 2910 5110 4400 5110 1400\n1722561 660 5010 2820 2800 5110 4400 5110 1400\n1722769 660 5010 2820 2800 5110 4180 5110 1430\n1722982 660 4890 2700 2680 5110 4180 5110 1430\n1723203 660 4890 2700 2680 5110 4070 5110 1470\n1723416 650 4780 2590 2570 5110 4070 5110 1470\n1723627 650 4780 2590 2570 5110 3960 5110 1490\n1723839 650 4690 2470 2570 5110 3960 5110 1490\n1724051 650 4690 2470 2570 5110 3860 5110 1490\n1724271 630 4600 2350 2360 5110 3730 5110 1440\n1724480 630 4500 2230 2240 5110 3730 5110 1440\n1724696 630 4500 2230 2240 5110 3730 5110 1420\n1724905 630 4400 2110 2140 5110 3730 5110 1420\n1725117 620 4400 2110 2140 5110 3550 5110 1420\n1725337 620 2080 2020 5110 5110 3550 5110 1420\n1725544 620 2080 2020 5110 5110 3430 5110 1430\n1725755 620 4260 1910 1950 5110 3430 5110 1430\n1725975 620 4260 1910 1950 5110 3340 5110 1420\n1726185 620 1880 1840 1900 5110 3340 5110 1420\n1726403 640 1780 1840 1900 5110 3260 5110 1420\n1726612 640 1780 1840 5110 5110 3190 5110 1420\n1726824 650 1700 1840 5110 5110 3190 5110 1400\n1727247 690 1620 5110 5110 5110 3120 5110 1390\n1727467 700 1520 1640 5110 5110 3000 5110 1370\n1727680 700 1520 1560 5110 5110 2880 5110 1370\n1727890 710 1440 1560 5110 5110 2880 5110 1350\n1728104 710 1440 5110 5110 5110 2790 5110 1350\n1728322 730 1350 5110 5110 5110 2790 5110 1330\n1728531 730 1350 5110 5110 5110 2680 5110 1330\n1728748 740 1290 5110 5110 5110 2680 5110 900\n1728962 740 1290 5110 5110 5110 2570 3140 900\n1729173 750 5110 5110 5110 5110 2570 3140 740\n1729390 750 5110 5110 5110 5110 890 3030 740\n1729808 780 5110 5110 5110 5110 840 2920 1290\n1730032 860 5110 5110 5110 5110 840 2920 1290\n1730238 860 5110 5110 5110 5110 2270 2240 1290\n1730456 870 5110 5110 5110 5110 2270 2240 1270\n1730664 870 5110 5110 1770 1290 5110 2120 1270\n1730878 890 5110 5110 1640 4930 5110 2040 1250\n1731094 890 5020 5110 2220 4930 5110 2040 1250\n1731307 890 5020 5110 2220 4820 5110 1920 1240\n1731521 880 3610 2800 5110 4820 5110 1920 1240\n1731731 880 3610 2800 5110 4710 5110 1830 1230\n1731943 850 4860 2880 5110 4710 5110 1830 1230\n1732160 850 4860 2880 5110 4710 4580 1750 1220\n1732378 850 4760 5110 5110 4710 4580 1750 1220\n1732589 850 4760 5110 5110 5110 4460 1650 1210\n1732800 870 4680 5110 5110 5110 4460 1650 1210\n1733019 2850 4680 5110 5110 5110 4350 5110 1200\n1733232 2850 4560 5110 5110 5110 4350 5110 1200\n1733443 2860 4560 5110 5110 5110 4220 5110 1200\n1733651 2860 4520 5110 5110 5110 4220 5110 1200\n1734076 2880 4430 5110 5110 5110 3940 5110 1350\n1734300 2880 5110 5110 5110 5110 3940 5110 1350\n1734717 2880 5110 5110 5110 5110 3830 5110 2320\n1734932 2890 5110 5110 5110 5110 3700 5110 2280\n1735146 2890 5110 5110 5110 5110 3580 5110 2280\n1735364 2890 5110 5110 5110 5110 3580 5110 2030\n1735577 2890 5110 5110 5110 5110 3460 5110 2030\n1735788 2890 5110 5110 5110 5110 3460 5110 1170\n1736006 2890 5110 5110 5110 5110 3340 5110 1170\n1736214 2900 5110 5110 5110 5110 3340 5110 1150\n1736425 2900 5110 5110 5110 5110 3240 5110 1150\n1736647 2900 5110 5110 5110 5110 3240 5110 1120\n1736854 2900 5110 5110 5110 5110 3130 5110 1120\n1737069 2910 5110 5110 5110 5110 3130 5110 1150\n1737280 2900 5110 5110 5110 5110 3010 5110 1160\n1737495 2900 5110 5110 5110 5110 2900 5110 1160\n1737708 2910 5110 5110 5110 5110 2900 5110 1160\n1737924 2910 5110 5110 5110 5110 2800 5110 1160\n1738140 2900 5110 5110 5110 5110 2800 5110 1160\n1738350 2900 5110 5110 5110 5110 2690 5110 1160\n1738567 2910 5110 5110 5110 5110 2690 5110 1160\n1738775 2910 5110 5110 5110 5110 2580 2570 1160\n1738986 2900 5110 5110 5110 5110 2580 2570 1150\n1739208 2900 5110 5110 5110 5110 1200 2460 1150\n1739419 2910 5040 5110 5110 5110 1200 2460 1160\n1739631 2910 5040 5110 5110 5110 2370 2340 1160\n1739843 2910 4920 5110 5110 5110 2370 2340 1160\n1740058 2910 4920 5110 5110 5110 2370 2230 1160\n1740271 2900 4810 5110 5110 5110 5110 2130 1160\n1740483 2900 4710 5110 5110 5110 5110 2130 1160\n1740693 2900 4710 5110 5110 5110 5110 2030 1160\n1740912 2890 4600 5110 5110 5110 5110 2030 1160\n1741123 2890 4600 5110 5110 5110 5110 1920 1170\n1741338 2900 4520 5110 5110 5110 5110 1920 1170\n1741554 2900 4520 5110 5110 5110 5110 1840 1160\n1741763 2900 4450 5110 5110 5110 5110 1840 1160\n1741976 2920 4450 5110 5110 5110 5110 1770 1170\n1742188 2920 4330 5110 5110 5110 5110 1770 1170\n1742405 2970 4330 5110 5110 5110 4560 5110 1170\n1742615 2970 4240 5110 5110 5110 4560 5110 1170\n1742834 2970 4240 5110 5110 5110 4560 5110 1170\n1743043 2970 4140 5110 5110 5110 4560 5110 1170\n1743254 2950 4140 5110 5110 5110 5110 5110 1170\n1743467 2950 4080 5110 5110 5110 5110 5110 1170\n1743688 2910 4000 5110 5110 5110 5110 5110 1190\n1743896 2890 3920 5110 5110 5110 5110 5110 1240\n1744112 2890 3920 5110 5110 5110 4000 5110 1240\n1744329 2880 3810 5110 5110 5110 4000 5110 1280\n1744535 2880 3810 5110 5110 5110 4000 5110 1280\n1744757 2940 3760 5110 5110 5110 4000 5110 1320\n1744967 2940 3760 5110 5110 5110 5110 5110 1320\n1745180 3040 3720 5110 5110 5110 5110 3820 1330\n1745392 3040 3720 5110 5110 5110 5110 3820 1330\n1745605 3020 5110 5110 5110 5110 5110 3790 5110\n1745822 3020 5110 3650 5110 2420 5110 3790 5110\n1746031 3010 5110 3650 5110 2420 5110 3790 5110\n1746251 3010 5110 3580 5110 2340 5110 5110 5110\n1746459 3000 5110 3510 5110 2340 5110 5110 5110\n1746677 3000 5110 4900 3500 5110 5110 5110 5110\n1746887 3000 5110 4900 3400 5110 5110 5110 5110\n1747096 5110 5110 4830 3400 5110 5110 5110 1720\n1747313 5110 5110 4830 3300 5110 5110 5110 1720\n1747522 5110 4320 5110 3300 5110 5110 5110 1720\n1747736 5110 4320 5110 3220 5110 5110 5110 1720\n1747952 5110 4250 5110 3220 5110 5110 5110 5110\n1748171 5110 4250 5110 3110 5110 5110 1860 5110\n1748379 4940 4160 5110 4540 5110 5110 1860 3500\n1748598 4940 4160 5110 4540 3010 5110 1780 3460\n1748805 4950 4090 5110 4430 3010 5110 1780 3460\n1749024 4950 4090 5110 4430 2870 4710 1700 3460\n1749234 4950 4000 5110 4330 2870 4710 1700 3460\n1749442 4950 4000 5110 4330 2760 5110 1700 3470\n1749655 4960 3930 5110 4330 2760 5110 1700 3470\n1749872 4960 3830 5110 5070 2660 5110 5110 3530\n1750093 4960 3830 5110 5070 2550 5110 5110 3530\n1750300 4960 3750 3760 4930 2550 5110 5110 3530\n1750517 4980 3750 3760 4930 2450 2460 4300 5110\n1750727 4980 3670 3660 4830 2330 2460 4300 5110\n1750945 4990 3670 3660 4830 2330 2460 5110 5110\n1751156 4990 3610 3550 4740 3730 2460 5110 5110\n1751369 4990 3610 3550 4740 3730 2220 5100 5110\n1751579 4990 3540 3460 5110 3610 2220 5100 5110\n1751799 5000 3540 3460 5110 3610 2080 5110 5110\n1752004 5000 3440 5110 5110 3500 2080 5110 5110\n1752218 5010 3440 5110 5110 3500 1970 1430 5110\n1752430 5010 3360 4380 5110 3370 1970 1430 5110\n1752653 5020 3360 4380 5110 3370 1860 4970 2900\n1752863 5020 3250 4270 5110 3250 1740 4970 2900\n1753078 2470 3160 4160 5110 3120 1630 4840 1160\n1753291 2430 3070 4160 5110 3120 1630 1670 1120\n1753497 2430 3070 3110 5110 3010 1560 1670 1120\n1753712 2410 2980 3110 5110 3010 1560 1530 2540\n1753931 2410 2980 2990 5110 2900 5110 1530 2540\n1754147 2390 2890 2990 5110 2900 5110 1410 1040\n1754359 2390 2890 2740 5110 2800 2790 1410 1040\n1754564 2380 2810 2740 5110 2800 2790 1320 2060\n1754779 2380 2810 3740 5110 2700 2680 1320 2060\n1754997 2350 2720 3640 5110 2700 2680 1220 980\n1755208 2350 2720 3640 5110 3540 2570 1150 980\n1755418 2350 2630 3540 5110 3540 2570 1150 980\n1755633 2350 2630 3540 5110 3440 2450 4020 980\n1755846 1340 2550 3450 5110 3440 2450 4020 1000\n1756067 1340 2550 3450 5110 3250 2330 3950 1000\n1756278 1320 2460 3320 5110 3130 2210 3860 1000\n1756488 1050 2370 3210 5110 3130 2210 3860 960\n1756702 1050 2370 3210 5110 3000 2110 3790 960\n1756913 1330 2050 3110 5110 3000 2110 3790 950\n1757128 1330 2050 3110 5110 2890 2010 2330 880\n1757348 1000 2230 3010 5110 2890 2010 2330 880\n1757559 1000 2230 3010 5110 2780 640 5110 800\n1757771 1350 1860 2900 5110 2780 640 5110 800\n1757985 1350 1860 2900 5110 2670 1820 1810 790\n1758404 1360 1070 2810 5110 2670 2580 1680 770\n1758623 1370 5110 1250 5110 2670 2580 1680 770\n1759045 1380 5110 1250 5110 5110 2470 1580 760\n1759260 1380 5110 1250 5110 5110 2350 1490 750\n1759475 1400 1470 1600 5110 5110 2230 1430 750\n1759692 1400 2200 2040 5110 5110 2230 1430 750\n1759904 1420 2200 2040 5110 5110 2090 1350 990\n1760117 1420 2410 2180 2310 3040 2090 1350 990\n1760331 1420 2410 2180 2310 3040 1960 2050 990\n1760544 1420 2180 2160 3060 2920 1960 2050 990\n1760754 1430 2180 2160 3060 2920 1850 1920 980\n1761179 1450 1560 5110 2970 2800 1740 1820 960\n1761606 1460 1970 5110 2970 2680 1620 1710 960\n1761821 1460 1860 5080 5110 2560 1500 1710 960\n1762041 1470 1770 5080 5110 2560 1500 1710 950\n1762253 1470 1770 4950 5110 2460 1400 1710 950\n1762463 1480 1680 4840 5110 3570 1300 1510 940\n1762886 910 1590 4730 5110 3440 5110 1420 930\n1763108 900 1520 4730 5110 3440 5110 1310 920\n1763315 900 1520 4640 5110 3470 4300 1310 920\n1763530 910 1430 4640 5110 3470 4300 1080 930\n1763742 910 1430 4530 5110 3470 1990 1080 930\n1763960 910 4650 4440 5110 3470 1990 980 920\n1764170 910 4650 4440 5110 5110 1880 980 920\n1764388 910 4650 4320 5110 5110 1880 980 920\n1764603 910 4650 4320 5110 5110 1770 3140 920\n1764811 910 5110 4210 5110 5110 1770 3140 920\n1765025 910 5110 4210 4870 5110 1680 3030 920\n1765242 900 5110 4100 4870 5110 1680 3030 920\n1765450 900 5110 4100 4750 5110 3280 2930 920\n1765669 900 5110 3980 4630 5110 3150 2860 940\n1765881 890 5110 3880 4630 5110 3150 2860 940\n1766097 890 5110 3880 4520 5110 3050 1350 650\n1766308 900 5110 3770 4390 5110 3050 1350 650\n1766518 900 5110 3770 4390 5110 2930 1240 640\n1766735 890 5110 3660 4280 5110 2930 1240 640\n1766948 890 5110 3660 4280 5110 2810 1140 650\n1767161 890 5110 3540 4170 5110 2810 1140 650\n1767372 890 5110 3540 4170 5110 2700 1040 4160\n1767582 890 5110 3440 4050 5110 2700 1040 4160\n1767796 890 5110 3440 4050 5110 2670 970 3120\n1768222 930 3370 3330 3930 5110 2500 2520 4230\n1768443 940 3260 3230 3820 5110 2500 2520 4230\n1768861 1490 3140 3130 3710 5110 2260 2210 4240\n1769085 1490 2990 3020 3590 5110 2260 2210 4240\n1769298 1490 2990 3020 3590 5110 2160 2020 4220\n1769504 1490 2920 2940 3500 5110 2160 2020 4220\n1769724 1490 2920 2940 3500 5110 2050 1880 660\n1769933 1490 2820 3350 3500 5110 2050 1880 660\n1770148 1490 2820 3350 3500 5110 1940 1930 640\n1770361 1490 2720 3240 4220 5110 1940 1930 640\n1770569 1490 2620 3240 4220 5110 1830 1930 650\n1770787 1490 2620 3110 4110 5110 1730 1930 650\n1771003 1490 2530 3110 4110 5110 1730 1720 640\n1771213 1490 2530 3000 5110 5110 1630 1720 640\n1771427 1490 2470 3000 5110 5110 1630 1720 650\n1771643 1490 2470 2880 5110 5110 1530 1720 650\n1771852 1500 2350 2880 5110 5110 1530 1520 1980\n1772067 1500 2270 2730 5110 5110 1430 1520 1210\n1772282 1500 2270 2600 5110 5110 1320 1520 1210\n1772500 1510 2210 2600 5110 5110 1320 1300 1190\n1772710 1510 2210 2570 5110 5110 1320 1220 1190\n1772921 1510 2740 2380 5110 5110 1320 1220 1210\n1773131 1510 2740 2380 5110 5110 5110 1100 1210\n1773344 1510 2640 2340 5110 5110 5110 1100 1240\n1773567 1510 2640 2340 5110 5110 5110 1000 1240\n1773777 1510 2540 2240 5110 5110 5110 1000 1240\n1773986 1510 2540 2240 5110 5110 4370 910 1240\n1774197 1520 2440 2130 5110 5110 4370 910 1250\n1774410 1520 2440 2130 5110 5110 4240 3590 1250\n1774632 1510 2060 2030 5110 5110 4240 3590 1240\n1774838 1510 2060 2030 5110 5110 4120 3500 1240\n1775264 1510 1830 1820 5110 5110 3990 3410 1190\n1775486 1510 1830 1820 5110 5110 3870 3390 1200\n1775696 1510 1730 2410 5110 5110 3870 3390 1200\n1775904 1510 1730 2410 5110 5110 3750 3250 630\n1776119 1520 1620 2290 5110 5110 3750 3250 630\n1776339 1520 1620 2290 5110 5110 3630 4780 620\n1776545 1520 1530 2190 5110 5110 3630 4780 620\n1776760 1520 1530 2190 5110 5110 3530 4700 620\n1776979 1510 1430 2100 5110 5110 3530 4700 620\n1777188 1510 1430 2100 5110 5110 3440 4620 620\n1777405 1510 1360 2010 5110 5110 3440 4620 620\n1777618 1500 1360 2010 5110 5110 3370 4570 640\n1777829 1500 1280 1930 3820 5110 3370 4570 640\n1778252 1400 1210 1830 3710 5110 3380 3170 680\n1778473 1400 1120 420 3610 5110 3380 3170 680\n1778892 1390 1060 1670 2570 5110 3290 3090 1280\n1779109 1380 1060 1670 2570 5110 3250 3050 5110\n1779324 1380 1040 1650 2550 5110 3240 3050 5110",
+                    "name": "measurement.txt"
+                  },
+                  {
+                    "text": "1686487 0 0 0\n1686915 0 0 0\n1687132 0 0 0\n1687555 0 0 0\n1687770 0 0 0\n1688194 0 0 0\n1688411 0 0 0\n1688627 0 0 0\n1688843 0 0 0\n1689054 0 0 0\n1689273 0 0 0\n1689479 0 0 0\n1689698 0 0 0\n1689906 0 0 0\n1690116 0 0 0\n1690338 0 0 0\n1690549 0 0 0\n1690759 0 0 0\n1690970 0 0 0\n1691192 0 0 0\n1691400 0 0 0\n1691822 0 0 0\n1692039 0 0 0\n1692258 0 0 0\n1692470 0 0 0\n1692681 0 0 0\n1692900 0 0 0\n1693105 0 0 0\n1693319 0 0 0\n1693530 0 0 0\n1693751 0 0 0\n1693959 0 0 0\n1694178 0 0 0\n1694387 0 0 0\n1694811 0 0 0\n1695028 0 0 0\n1695243 0 0 0\n1695451 0 0 0\n1695665 0 0 0\n1695888 0 0 0\n1696098 0 0 0\n1696314 0 0 0\n1696524 0 0 0\n1696740 0 0 0\n1696952 0 0 0\n1697168 0 0 0\n1697377 0 0 0\n1697590 10 0 3600\n1697802 33 0 0\n1698013 71 0 0\n1698233 122 0 1\n1698442 184 0 0\n1698652 249 0 0\n1698868 379 0 0\n1699087 445 0 0\n1699293 511 0 3600\n1699515 574 0 3599\n1699721 636 0 3599\n1699939 701 0 3597\n1700150 767 0 3596\n1700362 829 0 3595\n1700578 888 -1 3595\n1700788 951 -1 3594\n1701000 1015 -2 3594\n1701218 1077 -2 3594\n1701435 1142 -3 3593\n1701645 1208 -4 3592\n1701857 1274 -5 3592\n1702070 1340 -6 3592\n1702289 1470 -7 3591\n1702500 1530 -8 3591\n1702713 1581 -10 3570\n1702928 1624 -13 3549\n1703144 1675 -18 3547\n1703349 1733 -23 3549\n1703566 1792 -28 3550\n1703775 1855 -34 3551\n1703990 1918 -39 3553\n1704210 1981 -44 3555\n1704423 2039 -49 3556\n1704637 2103 -54 3557\n1704845 2167 -58 3558\n1705065 2223 -62 3562\n1705272 2283 -66 3563\n1705488 2411 -74 3567\n1705695 2477 -78 3569\n1705912 2540 -81 3570\n1706122 2601 -84 3572\n1706339 2668 -87 3574\n1706549 2731 -90 3577\n1706767 2792 -92 3578\n1706977 2857 -95 3580\n1707189 2919 -97 3582\n1707409 2982 -99 3584\n1707616 3039 -100 3586\n1707834 3097 -102 3585\n1708047 3161 -103 3585\n1708261 3216 -105 3582\n1708478 3338 -109 3581\n1708688 3401 -111 3581\n1708902 3468 -113 3580\n1709118 3531 -115 3581\n1709329 3595 -117 3583\n1709540 3657 -119 3584\n1709759 3718 -121 3585\n1709968 3781 -122 3586\n1710181 3845 -124 3588\n1710391 3906 -125 3590\n1710611 3970 -126 3592\n1710820 4029 -127 3592\n1711032 4080 -127 3592\n1711247 4136 -128 3592\n1711464 4202 -129 3591\n1711882 4388 -132 3590\n1712100 4451 -134 3589\n1712317 4514 -135 3588\n1712525 4579 -136 3587\n1712739 4646 -138 3588\n1712952 4711 -139 3589\n1713170 4772 -140 3591\n1713385 4836 -141 3592\n1713599 4900 -142 3592\n1713813 4957 -143 3593\n1714021 5010 -143 3592\n1714235 5068 -144 3591\n1714452 5133 -145 3590\n1714657 5199 -147 3589\n1714872 5329 -150 3586\n1715087 5395 -151 3585\n1715303 5460 -153 3584\n1715516 5518 -155 3583\n1715731 5576 -156 3582\n1715939 5639 -159 3581\n1716156 5704 -161 3580\n1716366 5768 -163 3579\n1716584 5831 -165 3579\n1716800 5894 -167 3581\n1717008 5957 -170 3582\n1717218 6022 -172 3583\n1717436 6081 -173 3583\n1717655 6143 -175 3585\n1718071 6322 -180 3587\n1718293 6383 -181 3589\n1718503 6444 -182 3589\n1718716 6507 -183 3590\n1718928 6571 -184 3592\n1719139 6637 -185 3592\n1719359 6699 -186 3593\n1719567 6760 -187 3594\n1719787 6825 -187 3594\n1719994 6890 -188 3593\n1720215 6953 -189 3592\n1720429 7013 -190 3591\n1720641 7077 -191 3591\n1720852 7143 -192 3590\n1721063 7206 -193 3589\n1721275 7336 -196 3587\n1721699 7462 -199 3586\n1721921 7528 -200 3585\n1722339 7658 -204 3584\n1722561 7721 -206 3585\n1722769 7785 -207 3586\n1722982 7849 -209 3586\n1723203 7914 -210 3586\n1723416 7978 -212 3585\n1723627 8042 -214 3585\n1723839 8104 -215 3584\n1724051 8168 -217 3583\n1724271 8297 -221 3581\n1724480 8362 -224 3580\n1724696 8425 -226 3580\n1724905 8485 -228 3584\n1725117 8540 -229 3591\n1725337 8595 -230 0\n1725544 8648 -229 12\n1725755 8697 -227 28\n1725975 8740 -224 42\n1726185 8783 -221 56\n1726403 8832 -215 70\n1726612 8875 -209 87\n1726824 8920 -202 103\n1727247 9026 -180 118\n1727467 9148 -155 112\n1727680 9208 -143 106\n1727890 9268 -132 101\n1728104 9328 -122 94\n1728322 9391 -111 89\n1728531 9455 -102 82\n1728748 9517 -93 77\n1728962 9578 -85 75\n1729173 9637 -77 72\n1729390 9700 -69 72\n1729808 9821 -54 71\n1730032 9887 -45 69\n1730238 9952 -37 68\n1730456 10018 -29 68\n1730664 10083 -22 66\n1730878 10215 -7 61\n1731094 10278 0 58\n1731307 10341 6 57\n1731521 10407 12 56\n1731731 10473 19 55\n1731943 10539 25 54\n1732160 10605 31 53\n1732378 10671 38 51\n1732589 10738 44 51\n1732800 10804 50 50\n1733019 10870 55 50\n1733232 10936 61 49\n1733443 11002 67 48\n1733651 11068 73 47\n1734076 11264 88 43\n1734300 11329 94 43\n1734717 11461 103 41\n1734932 11527 108 41\n1735146 11593 113 39\n1735364 11658 118 38\n1735577 11724 122 36\n1735788 11790 126 36\n1736006 11854 130 34\n1736214 11920 134 33\n1736425 11986 138 32\n1736647 12052 142 31\n1736854 12118 145 30\n1737069 12184 149 29\n1737280 12315 156 28\n1737495 12381 159 27\n1737708 12447 162 26\n1737924 12514 165 25\n1738140 12580 168 25\n1738350 12646 171 24\n1738567 12712 174 24\n1738775 12777 177 23\n1738986 12843 180 22\n1739208 12909 182 21\n1739419 12974 185 21\n1739631 13040 187 21\n1739843 13105 190 20\n1740058 13170 192 19\n1740271 13299 196 17\n1740483 13364 198 16\n1740693 13429 200 17\n1740912 13493 202 16\n1741123 13559 204 15\n1741338 13624 206 14\n1741554 13689 208 14\n1741763 13756 209 14\n1741976 13822 211 13\n1742188 13887 213 12\n1742405 13953 214 11\n1742615 14019 215 11\n1742834 14084 217 10\n1743043 14150 218 9\n1743254 14216 219 8\n1743467 14281 220 9\n1743688 14408 223 12\n1743896 14468 224 0\n1744112 14516 223 3572\n1744329 14556 220 3542\n1744535 14593 215 3512\n1744757 14631 208 3481\n1744967 14668 199 3450\n1745180 14707 187 3422\n1745392 14750 173 3396\n1745605 14789 157 3368\n1745822 14827 139 3344\n1746031 14867 119 3321\n1746251 14906 97 3298\n1746459 14946 73 3275\n1746677 15023 20 3235\n1746887 15062 -9 3217\n1747096 15099 -40 3198\n1747313 15139 -75 3181\n1747522 15180 -112 3165\n1747736 15220 -152 3150\n1747952 15259 -191 3136\n1748171 15298 -233 3123\n1748379 15334 -274 3109\n1748598 15366 -312 3097\n1748805 15401 -354 3083\n1749024 15436 -401 3072\n1749234 15472 -448 3060\n1749442 15503 -493 3048\n1749655 15536 -542 3038\n1749872 15599 -639 3018\n1750093 15632 -694 3008\n1750300 15662 -746 2998\n1750517 15693 -800 2990\n1750727 15723 -855 2981\n1750945 15751 -909 2974\n1751156 15779 -963 2967\n1751369 15805 -1016 2960\n1751579 15831 -1071 2954\n1751799 15857 -1127 2948\n1752004 15883 -1183 2942\n1752218 15908 -1240 2938\n1752430 15935 -1301 2938\n1752653 15961 -1361 2932\n1752863 15987 -1422 2927\n1753078 16036 -1542 2918\n1753291 16058 -1599 2913\n1753497 16080 -1656 2908\n1753712 16102 -1715 2902\n1753931 16123 -1773 2897\n1754147 16143 -1830 2893\n1754359 16163 -1888 2887\n1754564 16182 -1945 2883\n1754779 16201 -2004 2878\n1754997 16219 -2062 2872\n1755208 16237 -2119 2868\n1755418 16254 -2178 2863\n1755633 16271 -2238 2858\n1755846 16288 -2298 2853\n1756067 16304 -2358 2850\n1756278 16336 -2478 2843\n1756488 16351 -2539 2840\n1756702 16366 -2600 2835\n1756913 16380 -2660 2830\n1757128 16393 -2719 2826\n1757348 16406 -2779 2821\n1757559 16419 -2841 2814\n1757771 16431 -2902 2810\n1757985 16443 -2965 2805\n1758404 16463 -3087 2792\n1758623 16472 -3148 2785\n1759045 16490 -3272 2776\n1759260 16497 -3332 2775\n1759475 16514 -3460 2777\n1759692 16523 -3526 2778\n1759904 16532 -3591 2778\n1760117 16540 -3654 2779\n1760331 16549 -3716 2780\n1760544 16558 -3780 2783\n1760754 16567 -3844 2785\n1761179 16586 -3969 2788\n1761606 16606 -4098 2792\n1761821 16616 -4162 2793\n1762041 16626 -4224 2789\n1762253 16634 -4281 2783\n1762463 16652 -4408 2785\n1762886 16669 -4527 2771\n1763108 16675 -4586 2764\n1763315 16682 -4647 2755\n1763530 16687 -4708 2749\n1763742 16692 -4769 2742\n1763960 16696 -4830 2736\n1764170 16699 -4889 2727\n1764388 16701 -4948 2720\n1764603 16703 -5011 2718\n1764811 16705 -5076 2716\n1765025 16706 -5139 2713\n1765242 16707 -5202 2714\n1765450 16709 -5267 2716\n1765669 16712 -5391 2719\n1765881 16714 -5455 2720\n1766097 16717 -5516 2721\n1766308 16719 -5581 2723\n1766518 16722 -5645 2725\n1766735 16724 -5707 2727\n1766948 16727 -5772 2727\n1767161 16730 -5839 2726\n1767372 16733 -5903 2726\n1767582 16735 -5964 2727\n1767796 16738 -6029 2726\n1768222 16744 -6159 2728\n1768443 16747 -6223 2730\n1768861 16756 -6419 2730\n1769085 16759 -6483 2730\n1769298 16763 -6549 2729\n1769504 16766 -6613 2730\n1769724 16769 -6679 2730\n1769933 16772 -6745 2730\n1770148 16775 -6809 2730\n1770361 16779 -6876 2729\n1770569 16782 -6941 2729\n1770787 16785 -7005 2731\n1771003 16788 -7065 2734\n1771213 16791 -7123 2738\n1771427 16795 -7185 2739\n1771643 16800 -7248 2740\n1771852 16804 -7310 2741\n1772067 16813 -7442 2741\n1772282 16817 -7504 2740\n1772500 16821 -7567 2741\n1772710 16826 -7632 2739\n1772921 16830 -7696 2737\n1773131 16834 -7760 2735\n1773344 16838 -7827 2734\n1773567 16842 -7893 2734\n1773777 16845 -7959 2734\n1773986 16849 -8025 2733\n1774197 16853 -8091 2732\n1774410 16856 -8157 2732\n1774632 16860 -8222 2731\n1774838 16863 -8288 2730\n1775264 16873 -8482 2728\n1775486 16876 -8547 2727\n1775696 16879 -8613 2727\n1775904 16882 -8678 2727\n1776119 16884 -8742 2725\n1776339 16886 -8802 2720\n1776545 16888 -8859 2713\n1776760 16889 -8916 2705\n1776979 16889 -8968 2695\n1777188 16888 -9018 2683\n1777405 16885 -9068 2667\n1777618 16881 -9117 2649\n1777829 16876 -9167 2632\n1778252 16854 -9340 2630\n1778473 16849 -9384 2630\n1778892 16842 -9433 2630\n1779109 16842 -9437 2631\n1779324 16842 -9437 2631",
+                    "name": "poses.txt"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\n// Sensor characteristic: Min and Max ranges of the beams\ndouble Zmax = 5000, Zmin = 170;\n// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) log odds values\ndouble l0 = 0, locc = 0.4, lfree = -0.4;\n// Grid dimensions\ndouble gridWidth = 100, gridHeight = 100;\n// Map dimensions\ndouble mapWidth = 30000, mapHeight = 15000;\n// Robot size with respect to the map \ndouble robotXOffset = mapWidth / 5, robotYOffset = mapHeight / 3;\n// Defining an l vector to store the log odds values of each cell\nvector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeight));\n\ndouble inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])\n{\n    // You will be coding this section in the upcoming concept! \n    return 0.4;\n}\n\nvoid occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])\n{\n    //******************Code the Occupancy Grid Mapping Algorithm**********************//\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            double xi = x * gridWidth + gridWidth / 2 - robotXOffset;\n            double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;\n            if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax) {\n                l[x][y] = l[x][y] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;\n            }\n        }\n    }\n}\n\nint main()\n{\n    double timeStamp;\n    double measurementData[8];\n    double robotX, robotY, robotTheta;\n\n    FILE* posesFile = fopen(\"poses.txt\", \"r\");\n    FILE* measurementFile = fopen(\"measurement.txt\", \"r\");\n\n    // Scanning the files and retrieving measurement and poses at each timestamp\n    while (fscanf(posesFile, \"%lf %lf %lf %lf\", &timeStamp, &robotX, &robotY, &robotTheta) != EOF) {\n        fscanf(measurementFile, \"%lf\", &timeStamp);\n        for (int i = 0; i < 8; i++) {\n            fscanf(measurementFile, \"%lf\", &measurementData[i]);\n        }\n        occupancyGridMapping(robotX, robotY, (robotTheta / 10) * (M_PI / 180), measurementData);\n    }\n    \n    // Displaying the map\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            cout << l[x][y] << \" \";\n        }\n    }\n    \n    return 0;\n}\n",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 527778,
+          "key": "fd2a50fc-9352-419d-8b30-e15b39af9c0c",
+          "title": "Inverse Sensor Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd2a50fc-9352-419d-8b30-e15b39af9c0c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 637688,
+              "key": "7fe36f1b-a2b5-485d-bb96-ec64d66d5fcb",
+              "title": "Inverse Sensor Model",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JqCjlJxmR6o",
+                "china_cdn_id": "JqCjlJxmR6o.mp4"
+              }
+            },
+            {
+              "id": 559660,
+              "key": "e0d08dc6-296a-4329-ad78-cf5369a4bcf2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "** Summary of notations for the sonar rangefinder inverse sensor model:**\n* `<span class=\"mathquill\">m_{i}</span>`: Map at instant i or current cell that is being processed\n* `<span class=\"mathquill\">x_{i},y_{i}</span>`: Center of mass of the current cell m<sub>i</sub> \n* `r`: Range of the center of mass computed with respect to robot pose and center of mass\n* `k`: The sonar rangefinder cone that best aligns with the cell being considered computed with respect to the robot pose (x,y,<span class=\"mathquill\">\\theta</span>), center of mass (x<sub>i</sub>,y<sub>i</sub>), and sensor angle.\n* `<span class=\"mathquill\">\\beta</span> `: Opening angle of the conical region formed out of the measurement beams.\n* `<span class=\"mathquill\">\\alpha</span>`: Width of obstacles which is almost equal to the size of a cell. Please not that alpha is not the width of the conical region as the video mention but instead it's the width of a cell. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552488,
+              "key": "86cd714f-8328-41fb-8894-e42f209452b6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8f670f_screen-shot-2018-02-22-at-4.57.09-pm/screen-shot-2018-02-22-at-4.57.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86cd714f-8328-41fb-8894-e42f209452b6",
+              "caption": "",
+              "alt": "",
+              "width": 1272,
+              "height": 710,
+              "instructor_notes": null
+            },
+            {
+              "id": 559636,
+              "key": "aaede473-3dbb-4e35-b108-3085ffeee059",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this quiz, you'll code the **inverseSensorModel()** function which has two separate tasks:\n1. Compute `r` and `phi`\n2. Evaluate the three different cases of the algorithm",
+              "instructor_notes": ""
+            },
+            {
+              "id": 559633,
+              "key": "138806d7-02dd-485a-abd5-d2c3c3fc0af0",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "138806d7-02dd-485a-abd5-d2c3c3fc0af0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4929414241058816",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\n// Sensor characteristic: Min and Max ranges of the beams\ndouble Zmax = 5000, Zmin = 170;\n// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) log odds values\ndouble l0 = 0, locc = 0.4, lfree = -0.4;\n// Grid dimensions\ndouble gridWidth = 100, gridHeight = 100;\n// Map dimensions\ndouble mapWidth = 30000, mapHeight = 15000;\n// Robot size with respect to the map \ndouble robotXOffset = mapWidth / 5, robotYOffset = mapHeight / 3;\n// Defining an l vector to store the log odds values of each cell\nvector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeight));\n\ndouble inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])\n{\n    //******************Code the Inverse Sensor Model Algorithm**********************//\n    // Defining Sensor Characteristics\n    double Zk, thetaK, sensorTheta;\n    double minDelta = -1;\n    double alpha = 200, beta = 20;\n\n    //******************TODO: Compute r and phi**********************//\n   \n\n    //Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90]\n    for (int i = 0; i < 8; i++) {\n        if (i == 0) {\n            sensorTheta = -90 * (M_PI / 180);\n        }\n        else if (i == 1) {\n            sensorTheta = -37.5 * (M_PI / 180);\n        }\n        else if (i == 6) {\n            sensorTheta = 37.5 * (M_PI / 180);\n        }\n        else if (i == 7) {\n            sensorTheta = 90 * (M_PI / 180);\n        }\n        else {\n            sensorTheta = (-37.5 + (i - 1) * 15) * (M_PI / 180);\n        }\n\n        if (fabs(phi - sensorTheta) < minDelta || minDelta == -1) {\n            Zk = sensorData[i];\n            thetaK = sensorTheta;\n            minDelta = fabs(phi - sensorTheta);\n        }\n    }\n\n    //******************TODO: Evaluate the three cases**********************//\n    // You also have to consider the cells with Zk > Zmax or Zk < Zmin as unkown states\n    \n    \n    \n    \n    \n}\n\nvoid occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])\n{\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            double xi = x * gridWidth + gridWidth / 2 - robotXOffset;\n            double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;\n            if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax) {\n                l[x][y] = l[x][y] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;\n            }\n        }\n    }\n}\n\nint main()\n{\n    double timeStamp;\n    double measurementData[8];\n    double robotX, robotY, robotTheta;\n\n    FILE* posesFile = fopen(\"poses.txt\", \"r\");\n    FILE* measurementFile = fopen(\"measurement.txt\", \"r\");\n\n    // Scanning the files and retrieving measurement and poses at each timestamp\n    while (fscanf(posesFile, \"%lf %lf %lf %lf\", &timeStamp, &robotX, &robotY, &robotTheta) != EOF) {\n        fscanf(measurementFile, \"%lf\", &timeStamp);\n        for (int i = 0; i < 8; i++) {\n            fscanf(measurementFile, \"%lf\", &measurementData[i]);\n        }\n        occupancyGridMapping(robotX, robotY, (robotTheta / 10) * (M_PI / 180), measurementData);\n    }\n    \n    // Displaying the map\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            cout << l[x][y] << \" \";\n        }\n    }\n    \n    return 0;\n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "1686487 5110 5110 2320 2360 5110 5110 2160 1190\n1686915 5110 5110 2320 2360 5110 5110 2160 1190\n1687132 5110 5110 2320 2360 5110 5110 2160 1190\n1687555 5110 5110 2320 2360 5110 5110 2160 1190\n1687770 5110 5110 2320 2360 5110 5110 2160 1190\n1688194 5110 5110 2320 2360 5110 5110 2170 1190\n1688411 5110 5110 2320 2360 5110 5110 2160 1180\n1688627 5110 5110 1040 2360 5110 5110 2160 1180\n1688843 5110 5110 1040 2360 5110 5110 2170 1190\n1689054 5110 5110 2320 2370 5110 5110 2170 1190\n1689273 5110 5110 2320 2360 5110 5110 2160 1180\n1689479 5110 5110 2320 2360 5110 5110 2170 1190\n1689698 5110 5110 2320 2370 5110 5110 2170 1190\n1689906 5110 5110 2320 2370 5110 5110 2160 1180\n1690116 5110 5110 2320 2360 5110 5110 2160 1180\n1690338 5110 5110 2320 2360 5110 5110 2160 1190\n1690549 5110 5110 2320 2360 5110 5110 2160 1190\n1690759 5110 5110 2320 2360 5110 5110 2160 1190\n1690970 5110 5110 2320 2350 5110 5110 2160 1190\n1691192 5110 5110 2320 2350 5110 5110 2160 1190\n1691400 5110 5110 2320 2360 5110 5110 2160 1190\n1691822 5110 5110 2320 2350 5110 5110 2160 1190\n1692039 5110 5110 2320 2350 5110 5110 2160 1190\n1692258 5110 5110 2320 400 5110 5110 2160 1190\n1692470 5110 5110 2320 2360 5110 5110 2170 1190\n1692681 5110 5110 2320 2360 5110 5110 2160 1180\n1692900 5110 5110 2320 2350 5110 5110 2160 1180\n1693105 5110 5110 2320 2350 5110 5110 2170 1190\n1693319 5110 5110 2320 2360 5110 5110 2160 1190\n1693530 5110 5110 2320 2360 5110 5110 2160 1180\n1693751 5110 5110 2320 2360 5110 5110 2170 1180\n1693959 5110 5110 2320 2360 5110 5110 2170 1190\n1694178 5110 5110 2320 2360 5110 5110 2160 1190\n1694387 5110 5110 2320 2360 5110 5110 2160 1190\n1694811 5110 5110 2320 2350 5110 5110 2160 1190\n1695028 5110 5110 2320 2360 5110 5110 2160 1190\n1695243 5110 5110 2320 2360 5110 5110 2160 1190\n1695451 5110 5110 2320 2360 5110 5110 2160 1190\n1695665 5110 5110 2320 2360 5110 5110 2170 1190\n1695888 5110 5110 2320 2350 5110 5110 2170 1190\n1696098 5110 5110 2320 2350 5110 5110 2160 1180\n1696314 5110 5110 2320 2360 5110 5110 2160 1180\n1696524 5110 5110 2320 2360 5110 5110 2160 1190\n1696740 5110 5110 2320 2360 5110 5110 2160 1190\n1696952 5110 5110 2320 2360 5110 5110 2160 1180\n1697168 5110 5110 2320 2360 5110 5110 2160 1180\n1697377 5110 5110 2320 2360 5110 5110 2170 1190\n1697590 5110 5110 2310 2360 5110 5110 2170 1190\n1697802 5110 5110 2310 2360 5110 5110 2150 1180\n1698013 5110 5110 2290 2310 5060 5110 2150 1180\n1698233 5110 5110 2290 2310 5060 5110 2100 1190\n1698442 5110 2240 2210 2240 4970 5110 2100 1190\n1698652 5110 2240 2210 2240 4970 4950 2000 1260\n1698868 860 2120 2100 4260 4860 4830 1910 1260\n1699087 860 2010 2000 4140 5110 4830 1910 1260\n1699293 870 2010 2000 4140 5110 4700 1830 1260\n1699515 870 1900 1890 4020 5110 4700 1830 1260\n1699721 860 1900 1890 4020 5110 4590 1740 1260\n1699939 860 1800 1810 3910 5110 4480 1740 1260\n1700150 870 1700 1810 3910 5110 4480 5110 1220\n1700362 870 1700 2700 3800 5110 4370 5110 1220\n1700578 870 1600 2700 3800 5110 4370 5080 1180\n1700788 870 1600 2600 3680 5110 4250 5080 1180\n1701000 860 1500 2600 3680 5110 4250 5110 1180\n1701218 860 1500 2480 3570 5110 4140 5110 1180\n1701435 830 1410 2480 3570 5110 4140 5110 1180\n1701645 830 1410 2380 3450 5110 4030 5110 1180\n1701857 920 1320 2380 3450 5110 4030 5110 1260\n1702070 920 1320 2270 2290 5110 3900 5110 1260\n1702289 920 5010 2150 2170 5110 3790 5110 1270\n1702500 920 2070 2050 2170 5110 3790 5110 1270\n1702713 920 2070 2050 2170 5110 2270 2390 1270\n1702928 920 4800 1960 2170 5110 2270 2390 1270\n1703144 920 4800 1960 1990 5110 3620 1670 1270\n1703349 910 4720 1880 1990 5110 3620 1670 1220\n1703566 910 4720 1880 1910 5110 3470 5110 1220\n1703775 900 1810 1880 1910 5110 3470 5110 1210\n1703990 900 1810 1880 2800 5110 3410 5110 1210\n1704210 890 1700 1680 2800 5110 3410 5110 1210\n1704423 890 1700 1680 2800 5110 3340 5110 1220\n1704637 880 1590 1580 2600 5110 3340 5110 1220\n1704845 880 1590 1580 2600 5110 3210 3220 1220\n1705065 860 1480 2480 3550 5110 3210 3220 1220\n1705272 860 1480 2480 3550 5110 3130 3110 1230\n1705488 820 1380 2370 3450 5110 3020 3000 1230\n1705695 840 1300 2260 3320 5110 3020 3000 1230\n1705912 840 1300 2260 3320 5110 2900 2890 1240\n1706122 860 1200 2150 3220 5110 2900 2890 1240\n1706339 860 1200 2150 3220 5110 2820 2780 1260\n1706549 860 1140 2030 2070 5110 2820 2780 1260\n1706767 850 1140 2030 2070 5110 2820 2680 1250\n1706977 850 5110 1930 1960 5110 2820 2680 1250\n1707189 850 5110 1930 1960 5110 5110 2570 1260\n1707409 850 1850 1820 2870 5110 5110 2570 1260\n1707616 840 1850 1820 2870 5110 5110 2470 1260\n1707834 840 1740 1730 2780 5110 5110 2470 1260\n1708047 840 1740 1730 2780 5110 5110 2390 1260\n1708261 840 1640 1630 2680 5110 5110 2390 1260\n1708478 840 1550 1630 2580 5110 5110 2290 1260\n1708688 790 1440 1630 2580 5110 5110 2200 1270\n1708902 790 1440 2440 3120 5110 5010 2200 1270\n1709118 780 1340 2440 3120 5110 5010 2090 1270\n1709329 780 1340 2330 3000 5110 4900 2090 1270\n1709540 820 1250 2330 3000 5110 4900 2020 1270\n1709759 820 1250 2230 3610 5110 4780 2020 1270\n1709968 830 1170 2230 3610 5110 4780 1950 1280\n1710181 830 1170 2120 3490 5110 4670 1950 1280\n1710391 820 5110 2120 3490 5110 4670 1900 1280\n1710611 820 5110 2010 2030 5110 4550 1900 1280\n1710820 820 5110 2010 2030 5110 4550 5110 1280\n1711032 820 5110 1900 1920 5110 4450 5110 1280\n1711247 820 1850 1820 1920 5110 4450 5110 1280\n1711464 820 1850 1820 3190 5110 4340 5110 1280\n1711882 810 1630 1620 3110 5110 4230 5110 1280\n1712100 810 1630 1620 3000 5110 4120 5110 1280\n1712317 810 1520 1620 3000 5110 4120 5110 1330\n1712525 810 1520 1620 2910 5110 4020 5110 1330\n1712739 770 1410 2010 2910 5110 4020 5110 1370\n1712952 770 1410 2010 2790 5110 3910 5110 1370\n1713170 760 1310 1360 2690 5110 3910 5110 1380\n1713385 760 1310 1360 2690 5110 3800 5110 1380\n1713599 810 1230 1800 5110 5110 3800 5110 1380\n1713813 810 1230 1800 5110 5110 3690 5110 1360\n1714021 800 1140 1710 5110 5110 3690 5110 1360\n1714235 800 1140 1710 5110 5110 3590 5110 1320\n1714452 800 1080 1610 5110 5110 3590 5110 1320\n1714657 800 1080 1610 5110 5110 3480 5110 1310\n1714872 800 1520 1610 5110 5110 3370 3390 1310\n1715087 800 1520 2040 4990 5110 3370 3390 1310\n1715303 790 1520 2040 4990 5110 3270 3390 1310\n1715516 790 1310 1940 4880 5110 3270 3390 1310\n1715731 790 1310 1940 4880 5110 3160 3170 1320\n1715939 790 1220 1840 4780 5110 3160 3170 1320\n1716156 790 1220 1840 4780 5110 3080 3060 1320\n1716366 790 1130 1730 1830 5110 3080 3060 1320\n1716584 730 1130 1730 1830 5110 2970 2950 1330\n1716800 730 1050 1620 4540 5110 2970 2950 1330\n1717008 730 1050 1620 4540 5110 2890 2840 1330\n1717218 730 1550 1530 4540 5110 2890 2840 1330\n1717436 760 1550 1530 4540 5110 2890 2740 1340\n1717655 760 1430 1440 4310 5110 5110 2740 1340\n1718071 750 1240 1390 4190 5110 5110 2540 1350\n1718293 750 1240 5110 4090 5110 5110 2540 1350\n1718503 750 1150 5110 4090 5110 5110 2440 1350\n1718716 750 1150 5110 3970 5110 5110 2440 1350\n1718928 730 1070 5110 3970 5110 5110 2350 1350\n1719139 730 1070 5110 3850 5110 5110 2350 1350\n1719359 720 1020 5110 3850 5110 5110 2260 1360\n1719567 720 1020 5110 3730 5110 5110 2260 1360\n1719787 720 980 5110 3730 5110 5110 2190 1360\n1719994 720 980 5110 3620 5110 5110 2090 1360\n1720215 730 5110 5110 3620 5110 5110 2090 1370\n1720429 730 5110 5110 3510 5110 4850 2030 1370\n1720641 740 5110 3440 3510 5110 4850 2030 1360\n1720852 740 5110 3440 3390 5110 4730 5110 1360\n1721063 730 5110 3300 3390 5110 4730 5110 1370\n1721275 730 5110 3180 3270 5110 4610 5110 1370\n1721699 670 5110 3070 3150 5110 4500 5110 1380\n1721921 670 5110 3070 3030 5110 4400 5110 1390\n1722339 660 5110 2940 2910 5110 4400 5110 1400\n1722561 660 5010 2820 2800 5110 4400 5110 1400\n1722769 660 5010 2820 2800 5110 4180 5110 1430\n1722982 660 4890 2700 2680 5110 4180 5110 1430\n1723203 660 4890 2700 2680 5110 4070 5110 1470\n1723416 650 4780 2590 2570 5110 4070 5110 1470\n1723627 650 4780 2590 2570 5110 3960 5110 1490\n1723839 650 4690 2470 2570 5110 3960 5110 1490\n1724051 650 4690 2470 2570 5110 3860 5110 1490\n1724271 630 4600 2350 2360 5110 3730 5110 1440\n1724480 630 4500 2230 2240 5110 3730 5110 1440\n1724696 630 4500 2230 2240 5110 3730 5110 1420\n1724905 630 4400 2110 2140 5110 3730 5110 1420\n1725117 620 4400 2110 2140 5110 3550 5110 1420\n1725337 620 2080 2020 5110 5110 3550 5110 1420\n1725544 620 2080 2020 5110 5110 3430 5110 1430\n1725755 620 4260 1910 1950 5110 3430 5110 1430\n1725975 620 4260 1910 1950 5110 3340 5110 1420\n1726185 620 1880 1840 1900 5110 3340 5110 1420\n1726403 640 1780 1840 1900 5110 3260 5110 1420\n1726612 640 1780 1840 5110 5110 3190 5110 1420\n1726824 650 1700 1840 5110 5110 3190 5110 1400\n1727247 690 1620 5110 5110 5110 3120 5110 1390\n1727467 700 1520 1640 5110 5110 3000 5110 1370\n1727680 700 1520 1560 5110 5110 2880 5110 1370\n1727890 710 1440 1560 5110 5110 2880 5110 1350\n1728104 710 1440 5110 5110 5110 2790 5110 1350\n1728322 730 1350 5110 5110 5110 2790 5110 1330\n1728531 730 1350 5110 5110 5110 2680 5110 1330\n1728748 740 1290 5110 5110 5110 2680 5110 900\n1728962 740 1290 5110 5110 5110 2570 3140 900\n1729173 750 5110 5110 5110 5110 2570 3140 740\n1729390 750 5110 5110 5110 5110 890 3030 740\n1729808 780 5110 5110 5110 5110 840 2920 1290\n1730032 860 5110 5110 5110 5110 840 2920 1290\n1730238 860 5110 5110 5110 5110 2270 2240 1290\n1730456 870 5110 5110 5110 5110 2270 2240 1270\n1730664 870 5110 5110 1770 1290 5110 2120 1270\n1730878 890 5110 5110 1640 4930 5110 2040 1250\n1731094 890 5020 5110 2220 4930 5110 2040 1250\n1731307 890 5020 5110 2220 4820 5110 1920 1240\n1731521 880 3610 2800 5110 4820 5110 1920 1240\n1731731 880 3610 2800 5110 4710 5110 1830 1230\n1731943 850 4860 2880 5110 4710 5110 1830 1230\n1732160 850 4860 2880 5110 4710 4580 1750 1220\n1732378 850 4760 5110 5110 4710 4580 1750 1220\n1732589 850 4760 5110 5110 5110 4460 1650 1210\n1732800 870 4680 5110 5110 5110 4460 1650 1210\n1733019 2850 4680 5110 5110 5110 4350 5110 1200\n1733232 2850 4560 5110 5110 5110 4350 5110 1200\n1733443 2860 4560 5110 5110 5110 4220 5110 1200\n1733651 2860 4520 5110 5110 5110 4220 5110 1200\n1734076 2880 4430 5110 5110 5110 3940 5110 1350\n1734300 2880 5110 5110 5110 5110 3940 5110 1350\n1734717 2880 5110 5110 5110 5110 3830 5110 2320\n1734932 2890 5110 5110 5110 5110 3700 5110 2280\n1735146 2890 5110 5110 5110 5110 3580 5110 2280\n1735364 2890 5110 5110 5110 5110 3580 5110 2030\n1735577 2890 5110 5110 5110 5110 3460 5110 2030\n1735788 2890 5110 5110 5110 5110 3460 5110 1170\n1736006 2890 5110 5110 5110 5110 3340 5110 1170\n1736214 2900 5110 5110 5110 5110 3340 5110 1150\n1736425 2900 5110 5110 5110 5110 3240 5110 1150\n1736647 2900 5110 5110 5110 5110 3240 5110 1120\n1736854 2900 5110 5110 5110 5110 3130 5110 1120\n1737069 2910 5110 5110 5110 5110 3130 5110 1150\n1737280 2900 5110 5110 5110 5110 3010 5110 1160\n1737495 2900 5110 5110 5110 5110 2900 5110 1160\n1737708 2910 5110 5110 5110 5110 2900 5110 1160\n1737924 2910 5110 5110 5110 5110 2800 5110 1160\n1738140 2900 5110 5110 5110 5110 2800 5110 1160\n1738350 2900 5110 5110 5110 5110 2690 5110 1160\n1738567 2910 5110 5110 5110 5110 2690 5110 1160\n1738775 2910 5110 5110 5110 5110 2580 2570 1160\n1738986 2900 5110 5110 5110 5110 2580 2570 1150\n1739208 2900 5110 5110 5110 5110 1200 2460 1150\n1739419 2910 5040 5110 5110 5110 1200 2460 1160\n1739631 2910 5040 5110 5110 5110 2370 2340 1160\n1739843 2910 4920 5110 5110 5110 2370 2340 1160\n1740058 2910 4920 5110 5110 5110 2370 2230 1160\n1740271 2900 4810 5110 5110 5110 5110 2130 1160\n1740483 2900 4710 5110 5110 5110 5110 2130 1160\n1740693 2900 4710 5110 5110 5110 5110 2030 1160\n1740912 2890 4600 5110 5110 5110 5110 2030 1160\n1741123 2890 4600 5110 5110 5110 5110 1920 1170\n1741338 2900 4520 5110 5110 5110 5110 1920 1170\n1741554 2900 4520 5110 5110 5110 5110 1840 1160\n1741763 2900 4450 5110 5110 5110 5110 1840 1160\n1741976 2920 4450 5110 5110 5110 5110 1770 1170\n1742188 2920 4330 5110 5110 5110 5110 1770 1170\n1742405 2970 4330 5110 5110 5110 4560 5110 1170\n1742615 2970 4240 5110 5110 5110 4560 5110 1170\n1742834 2970 4240 5110 5110 5110 4560 5110 1170\n1743043 2970 4140 5110 5110 5110 4560 5110 1170\n1743254 2950 4140 5110 5110 5110 5110 5110 1170\n1743467 2950 4080 5110 5110 5110 5110 5110 1170\n1743688 2910 4000 5110 5110 5110 5110 5110 1190\n1743896 2890 3920 5110 5110 5110 5110 5110 1240\n1744112 2890 3920 5110 5110 5110 4000 5110 1240\n1744329 2880 3810 5110 5110 5110 4000 5110 1280\n1744535 2880 3810 5110 5110 5110 4000 5110 1280\n1744757 2940 3760 5110 5110 5110 4000 5110 1320\n1744967 2940 3760 5110 5110 5110 5110 5110 1320\n1745180 3040 3720 5110 5110 5110 5110 3820 1330\n1745392 3040 3720 5110 5110 5110 5110 3820 1330\n1745605 3020 5110 5110 5110 5110 5110 3790 5110\n1745822 3020 5110 3650 5110 2420 5110 3790 5110\n1746031 3010 5110 3650 5110 2420 5110 3790 5110\n1746251 3010 5110 3580 5110 2340 5110 5110 5110\n1746459 3000 5110 3510 5110 2340 5110 5110 5110\n1746677 3000 5110 4900 3500 5110 5110 5110 5110\n1746887 3000 5110 4900 3400 5110 5110 5110 5110\n1747096 5110 5110 4830 3400 5110 5110 5110 1720\n1747313 5110 5110 4830 3300 5110 5110 5110 1720\n1747522 5110 4320 5110 3300 5110 5110 5110 1720\n1747736 5110 4320 5110 3220 5110 5110 5110 1720\n1747952 5110 4250 5110 3220 5110 5110 5110 5110\n1748171 5110 4250 5110 3110 5110 5110 1860 5110\n1748379 4940 4160 5110 4540 5110 5110 1860 3500\n1748598 4940 4160 5110 4540 3010 5110 1780 3460\n1748805 4950 4090 5110 4430 3010 5110 1780 3460\n1749024 4950 4090 5110 4430 2870 4710 1700 3460\n1749234 4950 4000 5110 4330 2870 4710 1700 3460\n1749442 4950 4000 5110 4330 2760 5110 1700 3470\n1749655 4960 3930 5110 4330 2760 5110 1700 3470\n1749872 4960 3830 5110 5070 2660 5110 5110 3530\n1750093 4960 3830 5110 5070 2550 5110 5110 3530\n1750300 4960 3750 3760 4930 2550 5110 5110 3530\n1750517 4980 3750 3760 4930 2450 2460 4300 5110\n1750727 4980 3670 3660 4830 2330 2460 4300 5110\n1750945 4990 3670 3660 4830 2330 2460 5110 5110\n1751156 4990 3610 3550 4740 3730 2460 5110 5110\n1751369 4990 3610 3550 4740 3730 2220 5100 5110\n1751579 4990 3540 3460 5110 3610 2220 5100 5110\n1751799 5000 3540 3460 5110 3610 2080 5110 5110\n1752004 5000 3440 5110 5110 3500 2080 5110 5110\n1752218 5010 3440 5110 5110 3500 1970 1430 5110\n1752430 5010 3360 4380 5110 3370 1970 1430 5110\n1752653 5020 3360 4380 5110 3370 1860 4970 2900\n1752863 5020 3250 4270 5110 3250 1740 4970 2900\n1753078 2470 3160 4160 5110 3120 1630 4840 1160\n1753291 2430 3070 4160 5110 3120 1630 1670 1120\n1753497 2430 3070 3110 5110 3010 1560 1670 1120\n1753712 2410 2980 3110 5110 3010 1560 1530 2540\n1753931 2410 2980 2990 5110 2900 5110 1530 2540\n1754147 2390 2890 2990 5110 2900 5110 1410 1040\n1754359 2390 2890 2740 5110 2800 2790 1410 1040\n1754564 2380 2810 2740 5110 2800 2790 1320 2060\n1754779 2380 2810 3740 5110 2700 2680 1320 2060\n1754997 2350 2720 3640 5110 2700 2680 1220 980\n1755208 2350 2720 3640 5110 3540 2570 1150 980\n1755418 2350 2630 3540 5110 3540 2570 1150 980\n1755633 2350 2630 3540 5110 3440 2450 4020 980\n1755846 1340 2550 3450 5110 3440 2450 4020 1000\n1756067 1340 2550 3450 5110 3250 2330 3950 1000\n1756278 1320 2460 3320 5110 3130 2210 3860 1000\n1756488 1050 2370 3210 5110 3130 2210 3860 960\n1756702 1050 2370 3210 5110 3000 2110 3790 960\n1756913 1330 2050 3110 5110 3000 2110 3790 950\n1757128 1330 2050 3110 5110 2890 2010 2330 880\n1757348 1000 2230 3010 5110 2890 2010 2330 880\n1757559 1000 2230 3010 5110 2780 640 5110 800\n1757771 1350 1860 2900 5110 2780 640 5110 800\n1757985 1350 1860 2900 5110 2670 1820 1810 790\n1758404 1360 1070 2810 5110 2670 2580 1680 770\n1758623 1370 5110 1250 5110 2670 2580 1680 770\n1759045 1380 5110 1250 5110 5110 2470 1580 760\n1759260 1380 5110 1250 5110 5110 2350 1490 750\n1759475 1400 1470 1600 5110 5110 2230 1430 750\n1759692 1400 2200 2040 5110 5110 2230 1430 750\n1759904 1420 2200 2040 5110 5110 2090 1350 990\n1760117 1420 2410 2180 2310 3040 2090 1350 990\n1760331 1420 2410 2180 2310 3040 1960 2050 990\n1760544 1420 2180 2160 3060 2920 1960 2050 990\n1760754 1430 2180 2160 3060 2920 1850 1920 980\n1761179 1450 1560 5110 2970 2800 1740 1820 960\n1761606 1460 1970 5110 2970 2680 1620 1710 960\n1761821 1460 1860 5080 5110 2560 1500 1710 960\n1762041 1470 1770 5080 5110 2560 1500 1710 950\n1762253 1470 1770 4950 5110 2460 1400 1710 950\n1762463 1480 1680 4840 5110 3570 1300 1510 940\n1762886 910 1590 4730 5110 3440 5110 1420 930\n1763108 900 1520 4730 5110 3440 5110 1310 920\n1763315 900 1520 4640 5110 3470 4300 1310 920\n1763530 910 1430 4640 5110 3470 4300 1080 930\n1763742 910 1430 4530 5110 3470 1990 1080 930\n1763960 910 4650 4440 5110 3470 1990 980 920\n1764170 910 4650 4440 5110 5110 1880 980 920\n1764388 910 4650 4320 5110 5110 1880 980 920\n1764603 910 4650 4320 5110 5110 1770 3140 920\n1764811 910 5110 4210 5110 5110 1770 3140 920\n1765025 910 5110 4210 4870 5110 1680 3030 920\n1765242 900 5110 4100 4870 5110 1680 3030 920\n1765450 900 5110 4100 4750 5110 3280 2930 920\n1765669 900 5110 3980 4630 5110 3150 2860 940\n1765881 890 5110 3880 4630 5110 3150 2860 940\n1766097 890 5110 3880 4520 5110 3050 1350 650\n1766308 900 5110 3770 4390 5110 3050 1350 650\n1766518 900 5110 3770 4390 5110 2930 1240 640\n1766735 890 5110 3660 4280 5110 2930 1240 640\n1766948 890 5110 3660 4280 5110 2810 1140 650\n1767161 890 5110 3540 4170 5110 2810 1140 650\n1767372 890 5110 3540 4170 5110 2700 1040 4160\n1767582 890 5110 3440 4050 5110 2700 1040 4160\n1767796 890 5110 3440 4050 5110 2670 970 3120\n1768222 930 3370 3330 3930 5110 2500 2520 4230\n1768443 940 3260 3230 3820 5110 2500 2520 4230\n1768861 1490 3140 3130 3710 5110 2260 2210 4240\n1769085 1490 2990 3020 3590 5110 2260 2210 4240\n1769298 1490 2990 3020 3590 5110 2160 2020 4220\n1769504 1490 2920 2940 3500 5110 2160 2020 4220\n1769724 1490 2920 2940 3500 5110 2050 1880 660\n1769933 1490 2820 3350 3500 5110 2050 1880 660\n1770148 1490 2820 3350 3500 5110 1940 1930 640\n1770361 1490 2720 3240 4220 5110 1940 1930 640\n1770569 1490 2620 3240 4220 5110 1830 1930 650\n1770787 1490 2620 3110 4110 5110 1730 1930 650\n1771003 1490 2530 3110 4110 5110 1730 1720 640\n1771213 1490 2530 3000 5110 5110 1630 1720 640\n1771427 1490 2470 3000 5110 5110 1630 1720 650\n1771643 1490 2470 2880 5110 5110 1530 1720 650\n1771852 1500 2350 2880 5110 5110 1530 1520 1980\n1772067 1500 2270 2730 5110 5110 1430 1520 1210\n1772282 1500 2270 2600 5110 5110 1320 1520 1210\n1772500 1510 2210 2600 5110 5110 1320 1300 1190\n1772710 1510 2210 2570 5110 5110 1320 1220 1190\n1772921 1510 2740 2380 5110 5110 1320 1220 1210\n1773131 1510 2740 2380 5110 5110 5110 1100 1210\n1773344 1510 2640 2340 5110 5110 5110 1100 1240\n1773567 1510 2640 2340 5110 5110 5110 1000 1240\n1773777 1510 2540 2240 5110 5110 5110 1000 1240\n1773986 1510 2540 2240 5110 5110 4370 910 1240\n1774197 1520 2440 2130 5110 5110 4370 910 1250\n1774410 1520 2440 2130 5110 5110 4240 3590 1250\n1774632 1510 2060 2030 5110 5110 4240 3590 1240\n1774838 1510 2060 2030 5110 5110 4120 3500 1240\n1775264 1510 1830 1820 5110 5110 3990 3410 1190\n1775486 1510 1830 1820 5110 5110 3870 3390 1200\n1775696 1510 1730 2410 5110 5110 3870 3390 1200\n1775904 1510 1730 2410 5110 5110 3750 3250 630\n1776119 1520 1620 2290 5110 5110 3750 3250 630\n1776339 1520 1620 2290 5110 5110 3630 4780 620\n1776545 1520 1530 2190 5110 5110 3630 4780 620\n1776760 1520 1530 2190 5110 5110 3530 4700 620\n1776979 1510 1430 2100 5110 5110 3530 4700 620\n1777188 1510 1430 2100 5110 5110 3440 4620 620\n1777405 1510 1360 2010 5110 5110 3440 4620 620\n1777618 1500 1360 2010 5110 5110 3370 4570 640\n1777829 1500 1280 1930 3820 5110 3370 4570 640\n1778252 1400 1210 1830 3710 5110 3380 3170 680\n1778473 1400 1120 420 3610 5110 3380 3170 680\n1778892 1390 1060 1670 2570 5110 3290 3090 1280\n1779109 1380 1060 1670 2570 5110 3250 3050 5110\n1779324 1380 1040 1650 2550 5110 3240 3050 5110",
+                    "name": "measurement.txt"
+                  },
+                  {
+                    "text": "1686487 0 0 0\n1686915 0 0 0\n1687132 0 0 0\n1687555 0 0 0\n1687770 0 0 0\n1688194 0 0 0\n1688411 0 0 0\n1688627 0 0 0\n1688843 0 0 0\n1689054 0 0 0\n1689273 0 0 0\n1689479 0 0 0\n1689698 0 0 0\n1689906 0 0 0\n1690116 0 0 0\n1690338 0 0 0\n1690549 0 0 0\n1690759 0 0 0\n1690970 0 0 0\n1691192 0 0 0\n1691400 0 0 0\n1691822 0 0 0\n1692039 0 0 0\n1692258 0 0 0\n1692470 0 0 0\n1692681 0 0 0\n1692900 0 0 0\n1693105 0 0 0\n1693319 0 0 0\n1693530 0 0 0\n1693751 0 0 0\n1693959 0 0 0\n1694178 0 0 0\n1694387 0 0 0\n1694811 0 0 0\n1695028 0 0 0\n1695243 0 0 0\n1695451 0 0 0\n1695665 0 0 0\n1695888 0 0 0\n1696098 0 0 0\n1696314 0 0 0\n1696524 0 0 0\n1696740 0 0 0\n1696952 0 0 0\n1697168 0 0 0\n1697377 0 0 0\n1697590 10 0 3600\n1697802 33 0 0\n1698013 71 0 0\n1698233 122 0 1\n1698442 184 0 0\n1698652 249 0 0\n1698868 379 0 0\n1699087 445 0 0\n1699293 511 0 3600\n1699515 574 0 3599\n1699721 636 0 3599\n1699939 701 0 3597\n1700150 767 0 3596\n1700362 829 0 3595\n1700578 888 -1 3595\n1700788 951 -1 3594\n1701000 1015 -2 3594\n1701218 1077 -2 3594\n1701435 1142 -3 3593\n1701645 1208 -4 3592\n1701857 1274 -5 3592\n1702070 1340 -6 3592\n1702289 1470 -7 3591\n1702500 1530 -8 3591\n1702713 1581 -10 3570\n1702928 1624 -13 3549\n1703144 1675 -18 3547\n1703349 1733 -23 3549\n1703566 1792 -28 3550\n1703775 1855 -34 3551\n1703990 1918 -39 3553\n1704210 1981 -44 3555\n1704423 2039 -49 3556\n1704637 2103 -54 3557\n1704845 2167 -58 3558\n1705065 2223 -62 3562\n1705272 2283 -66 3563\n1705488 2411 -74 3567\n1705695 2477 -78 3569\n1705912 2540 -81 3570\n1706122 2601 -84 3572\n1706339 2668 -87 3574\n1706549 2731 -90 3577\n1706767 2792 -92 3578\n1706977 2857 -95 3580\n1707189 2919 -97 3582\n1707409 2982 -99 3584\n1707616 3039 -100 3586\n1707834 3097 -102 3585\n1708047 3161 -103 3585\n1708261 3216 -105 3582\n1708478 3338 -109 3581\n1708688 3401 -111 3581\n1708902 3468 -113 3580\n1709118 3531 -115 3581\n1709329 3595 -117 3583\n1709540 3657 -119 3584\n1709759 3718 -121 3585\n1709968 3781 -122 3586\n1710181 3845 -124 3588\n1710391 3906 -125 3590\n1710611 3970 -126 3592\n1710820 4029 -127 3592\n1711032 4080 -127 3592\n1711247 4136 -128 3592\n1711464 4202 -129 3591\n1711882 4388 -132 3590\n1712100 4451 -134 3589\n1712317 4514 -135 3588\n1712525 4579 -136 3587\n1712739 4646 -138 3588\n1712952 4711 -139 3589\n1713170 4772 -140 3591\n1713385 4836 -141 3592\n1713599 4900 -142 3592\n1713813 4957 -143 3593\n1714021 5010 -143 3592\n1714235 5068 -144 3591\n1714452 5133 -145 3590\n1714657 5199 -147 3589\n1714872 5329 -150 3586\n1715087 5395 -151 3585\n1715303 5460 -153 3584\n1715516 5518 -155 3583\n1715731 5576 -156 3582\n1715939 5639 -159 3581\n1716156 5704 -161 3580\n1716366 5768 -163 3579\n1716584 5831 -165 3579\n1716800 5894 -167 3581\n1717008 5957 -170 3582\n1717218 6022 -172 3583\n1717436 6081 -173 3583\n1717655 6143 -175 3585\n1718071 6322 -180 3587\n1718293 6383 -181 3589\n1718503 6444 -182 3589\n1718716 6507 -183 3590\n1718928 6571 -184 3592\n1719139 6637 -185 3592\n1719359 6699 -186 3593\n1719567 6760 -187 3594\n1719787 6825 -187 3594\n1719994 6890 -188 3593\n1720215 6953 -189 3592\n1720429 7013 -190 3591\n1720641 7077 -191 3591\n1720852 7143 -192 3590\n1721063 7206 -193 3589\n1721275 7336 -196 3587\n1721699 7462 -199 3586\n1721921 7528 -200 3585\n1722339 7658 -204 3584\n1722561 7721 -206 3585\n1722769 7785 -207 3586\n1722982 7849 -209 3586\n1723203 7914 -210 3586\n1723416 7978 -212 3585\n1723627 8042 -214 3585\n1723839 8104 -215 3584\n1724051 8168 -217 3583\n1724271 8297 -221 3581\n1724480 8362 -224 3580\n1724696 8425 -226 3580\n1724905 8485 -228 3584\n1725117 8540 -229 3591\n1725337 8595 -230 0\n1725544 8648 -229 12\n1725755 8697 -227 28\n1725975 8740 -224 42\n1726185 8783 -221 56\n1726403 8832 -215 70\n1726612 8875 -209 87\n1726824 8920 -202 103\n1727247 9026 -180 118\n1727467 9148 -155 112\n1727680 9208 -143 106\n1727890 9268 -132 101\n1728104 9328 -122 94\n1728322 9391 -111 89\n1728531 9455 -102 82\n1728748 9517 -93 77\n1728962 9578 -85 75\n1729173 9637 -77 72\n1729390 9700 -69 72\n1729808 9821 -54 71\n1730032 9887 -45 69\n1730238 9952 -37 68\n1730456 10018 -29 68\n1730664 10083 -22 66\n1730878 10215 -7 61\n1731094 10278 0 58\n1731307 10341 6 57\n1731521 10407 12 56\n1731731 10473 19 55\n1731943 10539 25 54\n1732160 10605 31 53\n1732378 10671 38 51\n1732589 10738 44 51\n1732800 10804 50 50\n1733019 10870 55 50\n1733232 10936 61 49\n1733443 11002 67 48\n1733651 11068 73 47\n1734076 11264 88 43\n1734300 11329 94 43\n1734717 11461 103 41\n1734932 11527 108 41\n1735146 11593 113 39\n1735364 11658 118 38\n1735577 11724 122 36\n1735788 11790 126 36\n1736006 11854 130 34\n1736214 11920 134 33\n1736425 11986 138 32\n1736647 12052 142 31\n1736854 12118 145 30\n1737069 12184 149 29\n1737280 12315 156 28\n1737495 12381 159 27\n1737708 12447 162 26\n1737924 12514 165 25\n1738140 12580 168 25\n1738350 12646 171 24\n1738567 12712 174 24\n1738775 12777 177 23\n1738986 12843 180 22\n1739208 12909 182 21\n1739419 12974 185 21\n1739631 13040 187 21\n1739843 13105 190 20\n1740058 13170 192 19\n1740271 13299 196 17\n1740483 13364 198 16\n1740693 13429 200 17\n1740912 13493 202 16\n1741123 13559 204 15\n1741338 13624 206 14\n1741554 13689 208 14\n1741763 13756 209 14\n1741976 13822 211 13\n1742188 13887 213 12\n1742405 13953 214 11\n1742615 14019 215 11\n1742834 14084 217 10\n1743043 14150 218 9\n1743254 14216 219 8\n1743467 14281 220 9\n1743688 14408 223 12\n1743896 14468 224 0\n1744112 14516 223 3572\n1744329 14556 220 3542\n1744535 14593 215 3512\n1744757 14631 208 3481\n1744967 14668 199 3450\n1745180 14707 187 3422\n1745392 14750 173 3396\n1745605 14789 157 3368\n1745822 14827 139 3344\n1746031 14867 119 3321\n1746251 14906 97 3298\n1746459 14946 73 3275\n1746677 15023 20 3235\n1746887 15062 -9 3217\n1747096 15099 -40 3198\n1747313 15139 -75 3181\n1747522 15180 -112 3165\n1747736 15220 -152 3150\n1747952 15259 -191 3136\n1748171 15298 -233 3123\n1748379 15334 -274 3109\n1748598 15366 -312 3097\n1748805 15401 -354 3083\n1749024 15436 -401 3072\n1749234 15472 -448 3060\n1749442 15503 -493 3048\n1749655 15536 -542 3038\n1749872 15599 -639 3018\n1750093 15632 -694 3008\n1750300 15662 -746 2998\n1750517 15693 -800 2990\n1750727 15723 -855 2981\n1750945 15751 -909 2974\n1751156 15779 -963 2967\n1751369 15805 -1016 2960\n1751579 15831 -1071 2954\n1751799 15857 -1127 2948\n1752004 15883 -1183 2942\n1752218 15908 -1240 2938\n1752430 15935 -1301 2938\n1752653 15961 -1361 2932\n1752863 15987 -1422 2927\n1753078 16036 -1542 2918\n1753291 16058 -1599 2913\n1753497 16080 -1656 2908\n1753712 16102 -1715 2902\n1753931 16123 -1773 2897\n1754147 16143 -1830 2893\n1754359 16163 -1888 2887\n1754564 16182 -1945 2883\n1754779 16201 -2004 2878\n1754997 16219 -2062 2872\n1755208 16237 -2119 2868\n1755418 16254 -2178 2863\n1755633 16271 -2238 2858\n1755846 16288 -2298 2853\n1756067 16304 -2358 2850\n1756278 16336 -2478 2843\n1756488 16351 -2539 2840\n1756702 16366 -2600 2835\n1756913 16380 -2660 2830\n1757128 16393 -2719 2826\n1757348 16406 -2779 2821\n1757559 16419 -2841 2814\n1757771 16431 -2902 2810\n1757985 16443 -2965 2805\n1758404 16463 -3087 2792\n1758623 16472 -3148 2785\n1759045 16490 -3272 2776\n1759260 16497 -3332 2775\n1759475 16514 -3460 2777\n1759692 16523 -3526 2778\n1759904 16532 -3591 2778\n1760117 16540 -3654 2779\n1760331 16549 -3716 2780\n1760544 16558 -3780 2783\n1760754 16567 -3844 2785\n1761179 16586 -3969 2788\n1761606 16606 -4098 2792\n1761821 16616 -4162 2793\n1762041 16626 -4224 2789\n1762253 16634 -4281 2783\n1762463 16652 -4408 2785\n1762886 16669 -4527 2771\n1763108 16675 -4586 2764\n1763315 16682 -4647 2755\n1763530 16687 -4708 2749\n1763742 16692 -4769 2742\n1763960 16696 -4830 2736\n1764170 16699 -4889 2727\n1764388 16701 -4948 2720\n1764603 16703 -5011 2718\n1764811 16705 -5076 2716\n1765025 16706 -5139 2713\n1765242 16707 -5202 2714\n1765450 16709 -5267 2716\n1765669 16712 -5391 2719\n1765881 16714 -5455 2720\n1766097 16717 -5516 2721\n1766308 16719 -5581 2723\n1766518 16722 -5645 2725\n1766735 16724 -5707 2727\n1766948 16727 -5772 2727\n1767161 16730 -5839 2726\n1767372 16733 -5903 2726\n1767582 16735 -5964 2727\n1767796 16738 -6029 2726\n1768222 16744 -6159 2728\n1768443 16747 -6223 2730\n1768861 16756 -6419 2730\n1769085 16759 -6483 2730\n1769298 16763 -6549 2729\n1769504 16766 -6613 2730\n1769724 16769 -6679 2730\n1769933 16772 -6745 2730\n1770148 16775 -6809 2730\n1770361 16779 -6876 2729\n1770569 16782 -6941 2729\n1770787 16785 -7005 2731\n1771003 16788 -7065 2734\n1771213 16791 -7123 2738\n1771427 16795 -7185 2739\n1771643 16800 -7248 2740\n1771852 16804 -7310 2741\n1772067 16813 -7442 2741\n1772282 16817 -7504 2740\n1772500 16821 -7567 2741\n1772710 16826 -7632 2739\n1772921 16830 -7696 2737\n1773131 16834 -7760 2735\n1773344 16838 -7827 2734\n1773567 16842 -7893 2734\n1773777 16845 -7959 2734\n1773986 16849 -8025 2733\n1774197 16853 -8091 2732\n1774410 16856 -8157 2732\n1774632 16860 -8222 2731\n1774838 16863 -8288 2730\n1775264 16873 -8482 2728\n1775486 16876 -8547 2727\n1775696 16879 -8613 2727\n1775904 16882 -8678 2727\n1776119 16884 -8742 2725\n1776339 16886 -8802 2720\n1776545 16888 -8859 2713\n1776760 16889 -8916 2705\n1776979 16889 -8968 2695\n1777188 16888 -9018 2683\n1777405 16885 -9068 2667\n1777618 16881 -9117 2649\n1777829 16876 -9167 2632\n1778252 16854 -9340 2630\n1778473 16849 -9384 2630\n1778892 16842 -9433 2630\n1779109 16842 -9437 2631\n1779324 16842 -9437 2631",
+                    "name": "poses.txt"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\n// Sensor characteristic: Min and Max ranges of the beams\ndouble Zmax = 5000, Zmin = 170;\n// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) log odds values\ndouble l0 = 0, locc = 0.4, lfree = -0.4;\n// Grid dimensions\ndouble gridWidth = 100, gridHeight = 100;\n// Map dimensions\ndouble mapWidth = 30000, mapHeight = 15000;\n// Robot size with respect to the map \ndouble robotXOffset = mapWidth / 5, robotYOffset = mapHeight / 3;\n// Defining an l vector to store the log odds values of each cell\nvector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeight));\n\ndouble inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])\n{\n    //******************Code the Inverse Sensor Model Algorithm**********************//\n    // Defining Sensor Characteristics\n    double Zk, thetaK, sensorTheta;\n    double minDelta = -1;\n    double alpha = 200, beta = 20;\n\n    //******************Compute r and phi**********************//\n    double r = sqrt(pow(xi - x, 2) + pow(yi - y, 2));\n    double phi = atan2(yi - y, xi - x) - theta;\n\n    //Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90]\n    for (int i = 0; i < 8; i++) {\n        if (i == 0) {\n            sensorTheta = -90 * (M_PI / 180);\n        }\n        else if (i == 1) {\n            sensorTheta = -37.5 * (M_PI / 180);\n        }\n        else if (i == 6) {\n            sensorTheta = 37.5 * (M_PI / 180);\n        }\n        else if (i == 7) {\n            sensorTheta = 90 * (M_PI / 180);\n        }\n        else {\n            sensorTheta = (-37.5 + (i - 1) * 15) * (M_PI / 180);\n        }\n\n        if (fabs(phi - sensorTheta) < minDelta || minDelta == -1) {\n            Zk = sensorData[i];\n            thetaK = sensorTheta;\n            minDelta = fabs(phi - sensorTheta);\n        }\n    }\n\n    //******************Evaluate the three cases**********************//\n    if (r > min((double)Zmax, Zk + alpha / 2) || fabs(phi - thetaK) > beta / 2 || Zk > Zmax || Zk < Zmin) {\n        return l0;\n    }\n    else if (Zk < Zmax && fabs(r - Zk) < alpha / 2) {\n        return locc;\n    }\n    else if (r <= Zk) {\n        return lfree;\n    }\n}\n\nvoid occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])\n{\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            double xi = x * gridWidth + gridWidth / 2 - robotXOffset;\n            double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;\n            if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax) {\n                l[x][y] = l[x][y] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;\n            }\n        }\n    }\n}\n\nint main()\n{\n    double timeStamp;\n    double measurementData[8];\n    double robotX, robotY, robotTheta;\n\n    FILE* posesFile = fopen(\"poses.txt\", \"r\");\n    FILE* measurementFile = fopen(\"measurement.txt\", \"r\");\n\n    // Scanning the files and retrieving measurement and poses at each timestamp\n    while (fscanf(posesFile, \"%lf %lf %lf %lf\", &timeStamp, &robotX, &robotY, &robotTheta) != EOF) {\n        fscanf(measurementFile, \"%lf\", &timeStamp);\n        for (int i = 0; i < 8; i++) {\n            fscanf(measurementFile, \"%lf\", &measurementData[i]);\n        }\n        occupancyGridMapping(robotX, robotY, (robotTheta / 10) * (M_PI / 180), measurementData);\n    }\n    \n    // Displaying the map\n    for (int x = 0; x < mapWidth / gridWidth; x++) {\n        for (int y = 0; y < mapHeight / gridHeight; y++) {\n            cout << l[x][y] << \" \";\n        }\n    }\n    \n    return 0;\n}\n",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 551825,
+          "key": "f8b5e95b-5d85-4020-9a3a-d52696a4a740",
+          "title": "Generate the Map",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8b5e95b-5d85-4020-9a3a-d52696a4a740",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551828,
+              "key": "99fa4825-4d82-4033-9975-373e7f1ac4ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Mapping\n\nSo far, you’ve coded the Occupancy Grid Mapping algorithm in C++ and generated an occupancy grid map 2D vector. Now, you'll code a visualization function that will loop through each cell. Then, you'll differentiate between occupied, free, and unknown cells depending on their log odds value. And, finally, you'll plot each cell on a graph to generate the map. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 551838,
+              "key": "54b35853-c39f-47cf-8141-a7eda4ac44ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Udacity Workspace \nFor this quiz, you will need to use the [Udacity Workspace](https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/451b7eed-6813-422a-a4d0-ce5db5ee1bca/lessons/411e2410-8f65-4764-a02a-e219ac36c776/concepts/fc59506b-6059-45a2-9d4d-204f7343988a?contentVersion=1.0.0&contentLocale=en-us). So, move to the next concept, enable the GPU, and  Go To Desktop. Then follow these instructions: \n\n### Clone the Lab from GitHub\n```sh\n$ cd /home/workspace/\n$ git clone https://github.com/udacity/RoboND-OccupancyGridMappingAlgorithm\n```\n### Next, edit `main.cpp`\nCode the visualization function which will plot the state of each grid cell using the matplotlib python library\n``` C++\nvoid visualization()\n{\n    //TODO: Initialize a plot named Map of size 300x150\n    \n    //TODO: Loop over the log odds values of the cells and plot each cell state. \n    //Unkown state: green color, occupied state: black color, and free state: red color \n    \n    //TODO: Save the image and close the plot \n}\n```\nHere are some helpful commands you can use to generate plots with the `matplotlib` library:\n* *Set Title*: `plt::title(\"Your Title\");`\n* *Set Limits*: `plt::xlim(x-axis lower limit, x-axis upper limit );`\n* *Plot Data*:`plt::plot({ x-value }, { y-value }, \"Color and Shape\");`\n* *Save Plot*: `plt::save(\"File name and directory\")`;\n* *Close Plot*:   `plt::clf()`;\n\nCheck out this [link](https://github.com/lava/matplotlib-cpp) for more information on the `matplotlib` C++ library. For information regarding the plot color and shape refer to the LineSpec and LineColor section of the [MATLAB](https://www.mathworks.com/help/matlab/ref/plot.html?requestedDomain=true) documentation. \n\n### Then, compile the program\n```sh\n$ cd RoboND-OccupancyGridMappingAlgorithm/\n$ rm -rf Images/* #Delete the folder content and not the folder itself!\n$ g++ main.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7\n```\n\n### Finally run the program\n```sh\n$ ./app\n```\nIf you get a warning regarding the `matplotlib` library, just ignore it.\n\nNow, wait for the program to generate the map and store it in the `/home/workspace/RoboND-OccupancyGridMappingAlgorithm/Images` directory!\n\n### Generated Map\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 551840,
+              "key": "8174a634-f73f-4d6a-9890-e1d0408962bd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/February/5a8e27fa_map/map.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8174a634-f73f-4d6a-9890-e1d0408962bd",
+              "caption": "",
+              "alt": "",
+              "width": 800,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 551839,
+              "key": "2a5eef61-15b9-46bb-b476-648f34a0825b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Map Legend\n* <span style=\"color:green\">Green: Unkown/Undiscovered zone</span>\n* <span style=\"color:red\">Red: Free zone</span>\n* <span style=\"color:black\">Black: Occupied zone</span>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 616779,
+          "key": "f7f16a9e-3594-4065-b3b6-f88b52094b6d",
+          "title": "Udacity Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7f16a9e-3594-4065-b3b6-f88b52094b6d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616782,
+              "key": "5b8def90-9ce7-48e6-94e3-1595b45cd550",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewc95eb4d2",
+              "pool_id": "autonomousgpu",
+              "view_id": "c95eb4d2-134b-4933-b44e-79890ac58d73",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "go to desktop"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 527779,
+          "key": "a03f13e8-29a5-429b-ac5b-bcb08a19422a",
+          "title": "Multi Sensor Fusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a03f13e8-29a5-429b-ac5b-bcb08a19422a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550939,
+              "key": "3416425c-9691-4705-be0b-207c7ece9f2a",
+              "title": "Multi Sensor Fusion ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d9-a8Z0E8rg",
+                "china_cdn_id": "d9-a8Z0E8rg.mp4"
+              }
+            },
+            {
+              "id": 550823,
+              "key": "eaff5a8e-629e-4826-94f5-5ffb16a37751",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Give these two maps **m1** and **m2**:\n<h1 style=\"text-align: center;\"><u>map1</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>map2</u></div><br/>0.9 0.6 &nbsp;&nbsp;&nbsp;&nbsp; 0.3 0.4<br />0.1 0.5 &nbsp;&nbsp;&nbsp;&nbsp; 0.4 0.3</h1>\nApply sensor fusion to combine the measurements of **m1** and **m2** in a resulting map. Scroll down to the C++ quiz section and code the `sensorFusion` function.\n```C++\nvoid sensorFusion(double m1[][mapWidth], double m2[][mapWidth])\n{\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 550804,
+              "key": "943c7cca-abbc-4d53-abcc-17dd68580f88",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "943c7cca-abbc-4d53-abcc-17dd68580f88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5031384507351040",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\nusing namespace std;\n\nconst int mapWidth =  2;\nconst int mapHeight = 2;\n\nvoid sensorFusion(double m1[][mapWidth], double m2[][mapWidth])\n{\n    //*#############TODO: Code the Sensor Fusion Function############*//\n    // Fuse the measurments of the two maps and print the resulting \n    //map in a matrix form:\n    //a  b\n    //c  d\n\n\n\n}\n\nint main()\n{\n\n    double m1[mapHeight][mapWidth] = { { 0.9, 0.6 }, { 0.1, 0.5 } };\n    double m2[mapHeight][mapWidth] = { { 0.3, 0.4 }, { 0.4, 0.3 } };\n    sensorFusion(m1, m2);\n\n    return 0;\n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <math.h>\nusing namespace std;\n\nconst int mapWidth =  2;\nconst int mapHeight = 2;\n\nvoid sensorFusion(double m1[][mapWidth], double m2[][mapWidth])\n{\n    for (int x = 0; x < mapHeight; x++) {\n        for (int y = 0; y < mapWidth; y++) {\n            double p = 1 - (1 - m1[x][y]) * (1 - m2[x][y]);\n            cout << p << \" \";\n        }\n        cout << endl;\n    }\n}\n\nint main()\n{\n\n    double m1[mapHeight][mapWidth] = { { 0.9, 0.6 }, { 0.1, 0.5 } };\n    double m2[mapHeight][mapWidth] = { { 0.3, 0.4 }, { 0.4, 0.3 } };\n    sensorFusion(m1, m2);\n\n    return 0;\n}\n",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 534687,
+          "key": "61345027-2054-4415-9167-752764ae4f81",
+          "title": "Introduction to 3D Mapping",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "61345027-2054-4415-9167-752764ae4f81",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 550759,
+              "key": "7d48a3fd-129c-48ee-b573-dad18660017e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nSo far, you’ve heard about two dimensional maps, describing a slice of the 3D world. In resource constrained systems, it can be very computationally expensive to build and maintain these maps. 3D representations are even more costly. That being said, robots live in the 3D world, and we want to represent that world and the 3D structures within it as accurately and reliably as possible. 3D mapping would give us the most reliable collision avoidance, and motion and path planning, especially for flying robots or mobile robots with manipulators.\n\nFirst, let’s talk briefly about how we collect this 3D data, then we will move on to how it is represented. \nTo create 3D maps, robots sense the environment by taking 3D range measurements. This can be done using numerous technologies.\n\n3D lidar can be used, which is a single sensor with an array of laser beams stacked horizontally. \nAlternatively, a 2D lidar can be tilted (horizontally moving up and down) or rotated (360 degrees) to obtain 3D coverage.\n\nAn RGBD camera is a single visual camera combined with a laser rangefinder or infrared depth sensor, and allows for the determination of the depth of the image, and ultimately the distance from an object. \nA stereo camera is a pair of offset cameras, and can be used to directly infer the distance of close objects, in the same way as humans do with their two eyes.\n\nA single camera system is cheaper and smaller, but the software algorithms needed for monocular SLAM are much more complex. Depth cannot be directly inferred from the sensor data of a single image from a single camera. Instead, it is calculated by analysing data from a sequence of frames in a video.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 534688,
+          "key": "2869af94-b9aa-4431-92ef-47f81d03b5ac",
+          "title": "3D Data Representations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2869af94-b9aa-4431-92ef-47f81d03b5ac",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551816,
+              "key": "25de3080-86ce-41af-b894-0d74a02aa3c7",
+              "title": "3D Data Representations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hvkGrM-jZXA",
+                "china_cdn_id": "hvkGrM-jZXA.mp4"
+              }
+            },
+            {
+              "id": 551854,
+              "key": "7b735e48-4806-42ac-856b-1c74d03a8f18",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 550760,
+              "key": "1d3f081b-1279-4f48-a71f-9e0e9d3f1918",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Some of the desired characteristics of an optimal representation:\n\n- Probabilistic data representations can be used to accommodate for sensor noise and dynamic environments.\n \n- It is important to be able to distinguish data that represents an area that is free space versus an area that is unknown or not yet mapped. This will enable the robot to plan an unobstructed path and build a complete map.\n \n- Memory on a mobile robot is typically a limited resource, so memory efficiency is very important. The map should also be accessible in the robot’s main memory, while mapping a large area over a long period of time. To accomplish this, we need a data representation that is compact and allows for efficient updates and queries. \n\n\n<strong>2.5D maps</strong>, also known as height maps, store the surface of the entire environment as the maximum height measured at every point. They are memory efficient, with constant access time.\nThis type of mapping is not very useful if you have terrain with trees or overhang structures, where the robot could move underneath. Also, height maps are non-probabilistic. Similar to point clouds, there is also no distinction between free and unknown space.\n\n<strong>Elevation maps</strong> are 2D grids that store an estimated height, or elevation, for each cell. A Kalman filter is used to estimate the height, and can also incorporate the uncertainty of the measurement process itself, which typically increases with the measured distance. One problem with elevation maps is the vertical wall - you can tell there is a vertical object but don’t know exactly how tall it is.\n\n<strong>Extended elevation maps</strong> store a set of estimated heights for every cell, and include cells that contain gaps. You can check whether the variance of the height of all data points within each cell is large. If so, you can investigate whether the corresponding set of points contains a gap exceeding the height of the robot (known as a “gap cell”), and ultimately use gap cells to determine traversability.\n\nIn <strong>multi-level surface (MLS)</strong> map representations, each 2D cell stores “patches”, of which there can be multiple per cell. Each patch contains 3 key pieces of information - the height mean, the height variance, and the depth value.  The height mean is the estimated height of the individual vertical area, also referred to as an interval. The uncertainty of the height is stored as the height variance, with the assumption that the error is represented by a Gaussian distribution. The depth value is defined by the difference between height of the surface patch and the height of the lowest measurement that is considered as belonging to that vertical object (ex the depth of the floor would be 0). Individual surfaces can be directly calculated, allowing the robot to deal with vertical and overhanging objects. This method also works very well with multi-level traversable surfaces, such as a bridge that you could travel over top of, or underneath, or a structure like a parking garage. An MLS map isn’t a volumetric representation, but a discretization in the vertical dimension. Unknown areas are not represented, and localization for this method is not straightforward.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527781,
+          "key": "5c4463e2-1bd3-487e-aeb5-83e91d95a16b",
+          "title": "Octomap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5c4463e2-1bd3-487e-aeb5-83e91d95a16b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 551815,
+              "key": "02e3d457-4225-4087-b927-0ae4ca6658a1",
+              "title": "Octomap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9s9ibmsQ4lQ",
+                "china_cdn_id": "9s9ibmsQ4lQ.mp4"
+              }
+            },
+            {
+              "id": 551852,
+              "key": "50374432-4d04-4672-8d7f-ada05e80b163",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 550761,
+              "key": "71976c8a-4575-47b0-b288-3fb198c7ad99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Octomap GitHub Documentation](https://octomap.github.io/)\n\n[Octomap on ROS Wiki](http://wiki.ros.org/octomap)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 527784,
+          "key": "ef7ddcaf-0899-4517-9e1d-f174edbea146",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ef7ddcaf-0899-4517-9e1d-f174edbea146",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 693482,
+              "key": "4590e61a-cc6d-4715-83af-46ce76c3f3ca",
+              "title": "18 L Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aw6c0C8dCK8",
+                "china_cdn_id": "aw6c0C8dCK8.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

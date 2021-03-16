@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.790
+After learning about mapping,
+
+00:00:01.790 --> 00:00:03.634
+you will move along to learn about SLAM.
+
+00:00:03.634 --> 00:00:06.355
+Simultaneous Localization and Mapping.
+
+00:00:06.355 --> 00:00:10.050
+In SLAM, a robot must construct a map of the environment,
+
+00:00:10.050 --> 00:00:14.609
+while simultaneously localizing itself relative to this map.
+
+00:00:14.609 --> 00:00:18.225
+This problem is more challenging than localization and mapping,
+
+00:00:18.225 --> 00:00:22.535
+since neither the map nor the robots poses are provided.
+
+00:00:22.536 --> 00:00:25.080
+With noise in the robot's motions and measurements,
+
+00:00:25.079 --> 00:00:27.375
+the map and robot's pose will be uncertain,
+
+00:00:27.375 --> 00:00:29.655
+and the errors in the robot's pose estimates,
+
+00:00:29.655 --> 00:00:31.800
+and map will be correlated.
+
+00:00:31.800 --> 00:00:36.484
+The accuracy of the map depends on the accuracy of the localization and vice versa.
+
+00:00:36.484 --> 00:00:38.369
+SLAM is often called the chicken or the egg
+
+00:00:38.369 --> 00:00:41.309
+problem because the map is needed for localization,
+
+00:00:41.310 --> 00:00:43.455
+and the robot's pose needed for mapping.
+
+00:00:43.454 --> 00:00:45.677
+SLAM truly is a challenge,
+
+00:00:45.677 --> 00:00:48.187
+but it's fundamental to mobile robotics.
+
+00:00:48.188 --> 00:00:50.020
+For robots to be useful to society,
+
+00:00:50.020 --> 00:00:53.405
+they must be able to move in environments that they've never seen before.
+
+00:00:53.405 --> 00:00:57.344
+For instance, one of SLAM's applications is the robot vacuum cleaner.
+
+00:00:57.344 --> 00:00:59.609
+Such a vacuum comes equipped with sensors that help it
+
+00:00:59.609 --> 00:01:02.524
+map the room and estimate its pose as vacuums.
+
+00:01:02.524 --> 00:01:05.189
+That's right, because it wouldn't be feasible to provide
+
+00:01:05.189 --> 00:01:08.304
+the robot with a map of all the furniture every time,
+
+00:01:08.305 --> 00:01:10.185
+especially not in my house,
+
+00:01:10.185 --> 00:01:13.115
+where things seem to shift every day.
+
+00:01:13.114 --> 00:01:17.339
+Other applications of SLAM include self driving vehicles, be on the roads,
+
+00:01:17.340 --> 00:01:20.108
+or an underground mines, aerial surveillance,
+
+00:01:20.108 --> 00:01:22.957
+and even robots mapping the surface of Mars.
+
+00:01:22.956 --> 00:01:26.599
+SLAM algorithms generally fall into five categories.
+
+00:01:26.599 --> 00:01:28.697
+Extended kalman filter or EKF,
+
+00:01:28.697 --> 00:01:32.489
+sparse extended information filter or SEIF,
+
+00:01:32.489 --> 00:01:37.169
+extended information form or EIF, FastSLAM, and GraphSLAM.
+
+00:01:37.170 --> 00:01:41.109
+In this module, you'll be introduced to the FastSLAM algorithm which uses
+
+00:01:41.109 --> 00:01:43.019
+the particle filter approach along with the low
+
+00:01:43.019 --> 00:01:46.349
+dimensional extended kalman filter to solve the SLAM problem.
+
+00:01:46.349 --> 00:01:48.479
+You'll then adapt this algorithm to grid maps,
+
+00:01:48.480 --> 00:01:51.570
+which will results in a grid based fastSLAM algorithm.
+
+00:01:51.569 --> 00:01:54.140
+Finally, you will learn graphSLAM.
+
+00:01:54.141 --> 00:01:56.094
+GraphSLAM uses constraints to represent
+
+00:01:56.094 --> 00:01:59.789
+relationships between robot poses and the environment,
+
+00:01:59.790 --> 00:02:02.085
+and then tries to resolve all of these constraints
+
+00:02:02.084 --> 00:02:05.239
+to create the most likely map given the data.
+
+00:02:05.239 --> 00:02:07.859
+You'll also learn about a graphSLAM implementation
+
+00:02:07.859 --> 00:02:10.164
+called real time appearance based mapping,
+
+00:02:10.164 --> 00:02:13.370
+or RTABmap which will then be using in your next project.
+

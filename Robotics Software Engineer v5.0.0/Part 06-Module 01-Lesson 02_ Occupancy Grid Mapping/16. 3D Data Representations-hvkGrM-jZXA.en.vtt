@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.839
+In this lesson, we will discuss 3D data representations,
+
+00:00:03.839 --> 00:00:08.134
+including some of the desired characteristics of an optimal representation.
+
+00:00:08.134 --> 00:00:11.169
+Probabilistic data representations can be used to
+
+00:00:11.169 --> 00:00:14.304
+accommodate for sensor noise and dynamic environments.
+
+00:00:14.304 --> 00:00:16.809
+It is important to be able to distinguish data
+
+00:00:16.809 --> 00:00:19.209
+that represents an area that is free space,
+
+00:00:19.210 --> 00:00:22.774
+versus an area that is unknown or not yet mapped.
+
+00:00:22.774 --> 00:00:25.644
+This will enable the robot to plan an unobstructed path,
+
+00:00:25.644 --> 00:00:27.460
+and build a complete map.
+
+00:00:27.460 --> 00:00:30.969
+Memory on a mobile robot is typically a limited resource.
+
+00:00:30.969 --> 00:00:33.820
+So memory efficiency is very important.
+
+00:00:33.820 --> 00:00:37.231
+The map should also be accessible in the robot's main memory,
+
+00:00:37.231 --> 00:00:40.644
+while mapping a large area over a long period of time.
+
+00:00:40.645 --> 00:00:45.015
+To accomplish this, we need a data representation that is compact,
+
+00:00:45.015 --> 00:00:47.744
+and allows for efficient updates and queries.
+
+00:00:47.744 --> 00:00:51.179
+Some data representations of 3D environments that you'll learn
+
+00:00:51.179 --> 00:00:54.390
+about are point clouds, voxels and octrees.
+
+00:00:54.390 --> 00:00:57.045
+Also, you can read about elevation maps,
+
+00:00:57.045 --> 00:01:00.359
+and multilevel surface maps in the references provided.
+
+00:01:00.359 --> 00:01:05.004
+A 3D point cloud is a set of data points corresponding to range measurements,
+
+00:01:05.004 --> 00:01:07.665
+each at defined x y z coordinates.
+
+00:01:07.665 --> 00:01:10.859
+A disadvantage with point cloud data is that information
+
+00:01:10.859 --> 00:01:13.709
+only exists about where things are in the world.
+
+00:01:13.709 --> 00:01:17.504
+The data looks the same whether the space is unoccupied or unknown.
+
+00:01:17.504 --> 00:01:21.082
+Point clouds also store a large amount of measurement points.
+
+00:01:21.082 --> 00:01:23.609
+And with each scan, you need to allocate more memory,
+
+00:01:23.609 --> 00:01:26.362
+So they are not memory-efficient.
+
+00:01:26.362 --> 00:01:27.629
+Our 3D voxel grid is
+
+00:01:27.629 --> 00:01:32.295
+a volumetric data representation using a grid of cubic volumes of equal size.
+
+00:01:32.295 --> 00:01:35.085
+This is a probabilistic representation.
+
+00:01:35.084 --> 00:01:37.829
+So you can estimate whether the voxel grid is occupied,
+
+00:01:37.829 --> 00:01:39.825
+free, or unknown space.
+
+00:01:39.825 --> 00:01:42.900
+One drawback of a 3D voxel grid is that the size of
+
+00:01:42.900 --> 00:01:45.885
+the area must be known or approximated before measurement,
+
+00:01:45.885 --> 00:01:48.060
+which may not always be possible.
+
+00:01:48.060 --> 00:01:52.150
+A second drawback is that the complete map must be allocated in memory.
+
+00:01:52.150 --> 00:01:55.730
+So the overall memory requirement is high.
+
+00:01:55.730 --> 00:01:58.980
+Octrees are a memory efficient tree based data representation.
+
+00:01:58.980 --> 00:02:00.420
+On the left, you will see
+
+00:02:00.420 --> 00:02:04.695
+the volumetric representation and on the right, the tree-based representations.
+
+00:02:04.694 --> 00:02:09.504
+These trees can be dynamically expanded to different resolutions and different areas,
+
+00:02:09.504 --> 00:02:13.379
+where every voxel can be subdivided into eight voxels recursively.
+
+00:02:13.379 --> 00:02:16.590
+The size of the map doesn't need to be known beforehand,
+
+00:02:16.590 --> 00:02:20.580
+because mapped volumes aren't initialized until you need to add new measurements.
+
+00:02:20.580 --> 00:02:25.290
+Octrees have been used to adapt occupancy grid mapping from 2D to 3D,
+
+00:02:25.289 --> 00:02:30.289
+introducing probabilistic representation of occupied versus freespace.
+

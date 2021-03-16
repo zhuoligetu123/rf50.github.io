@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.259
+Our tab mapping uses the memory management technique to limit the number of
+
+00:00:04.259 --> 00:00:08.527
+locations considered as candidates during loop closure detection.
+
+00:00:08.528 --> 00:00:10.980
+The overall strategy is to keep the most recent and
+
+00:00:10.980 --> 00:00:15.068
+frequently observed locations and the robots working memory or WM,
+
+00:00:15.067 --> 00:00:18.524
+and transfer the others into a long-term memory or LTM.
+
+00:00:18.524 --> 00:00:20.849
+When a new image is acquired,
+
+00:00:20.850 --> 00:00:24.179
+a new node is created in the Short-Term Memory or STM.
+
+00:00:24.179 --> 00:00:25.704
+When creating a node,
+
+00:00:25.704 --> 00:00:28.289
+recall that features are extracted and compared
+
+00:00:28.289 --> 00:00:31.019
+to the vocabulary to find all of the words in the image,
+
+00:00:31.019 --> 00:00:33.375
+creating a bag of words for this node.
+
+00:00:33.375 --> 00:00:36.119
+The STM has a fixed size of S,
+
+00:00:36.119 --> 00:00:39.967
+and nodes in the STM are not considered during loop closure detection,
+
+00:00:39.968 --> 00:00:42.675
+because they are generally very similar to one another.
+
+00:00:42.674 --> 00:00:45.284
+When STM reaches S nodes,
+
+00:00:45.284 --> 00:00:49.679
+the oldest node is moved to WM to be considered for loop closure detection.
+
+00:00:49.679 --> 00:00:53.689
+So, the WM is where the loop closure magic happens.
+
+00:00:53.689 --> 00:00:57.269
+So, what else determines which nodes make it to WM to be considered?
+
+00:00:57.270 --> 00:01:00.045
+In STM, there is a way to update step.
+
+00:01:00.045 --> 00:01:02.550
+The heuristic is based on the fact that the robot
+
+00:01:02.549 --> 00:01:05.280
+should remember areas where it's spent most of its time in.
+
+00:01:05.280 --> 00:01:07.799
+So the longer the robot is in the location,
+
+00:01:07.799 --> 00:01:09.569
+the larger the weight of that node.
+
+00:01:09.569 --> 00:01:12.352
+If two consecutive areas are similar,
+
+00:01:12.352 --> 00:01:14.594
+the weight of the first node is increased by one,
+
+00:01:14.594 --> 00:01:17.474
+and no new node is created for the second image.
+
+00:01:17.474 --> 00:01:21.329
+The compromise made between search time and space is driven
+
+00:01:21.329 --> 00:01:25.090
+by the environment and the experiences the robot has.
+
+00:01:25.090 --> 00:01:27.299
+WM size depends on the fixed time limit
+
+00:01:27.299 --> 00:01:30.899
+t. When the time required to process new data reaches t,
+
+00:01:30.900 --> 00:01:35.600
+some nodes of the graph are transferred from WM to LTM.
+
+00:01:35.599 --> 00:01:39.269
+As a result, WM size's kept nearly constant.
+
+00:01:39.269 --> 00:01:44.265
+Oldest and less weighted nodes in WM are transfered to LTM before others.
+
+00:01:44.265 --> 00:01:47.805
+So, WM is made up of nodes seen for a longer period of time.
+
+00:01:47.805 --> 00:01:52.275
+LTM is not used for loop closure dejection and graph optimization.
+
+00:01:52.275 --> 00:01:54.510
+If loop closure is detected,
+
+00:01:54.510 --> 00:01:59.070
+neighbors in the LTM of an old node can be transferred back to the WM,
+
+00:01:59.069 --> 00:02:01.809
+which is a process called retrieval.
+

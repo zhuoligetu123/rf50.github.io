@@ -1,0 +1,106 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.359
+Graph slam has a graph within it's name because it uses
+
+00:00:03.359 --> 00:00:07.139
+graphs to represent the robot's poses and the environment.
+
+00:00:07.139 --> 00:00:11.419
+Let's build a very simple graph to better understand how they work.
+
+00:00:11.419 --> 00:00:16.964
+A robot suppose, it's position and orientation can be represented by a node like so.
+
+00:00:16.964 --> 00:00:19.875
+This is let's suppose a timestep zero.
+
+00:00:19.875 --> 00:00:23.073
+Usually, the first node is arbitrarily constrained to zero,
+
+00:00:23.074 --> 00:00:26.785
+zero or it's equivalent in greater dimensions.
+
+00:00:26.785 --> 00:00:28.725
+The robots pose a timestep one,
+
+00:00:28.725 --> 00:00:30.734
+can be represented by another node.
+
+00:00:30.734 --> 00:00:33.344
+And the two would be connected by an edge,
+
+00:00:33.344 --> 00:00:35.634
+sometimes called an arc.
+
+00:00:35.634 --> 00:00:40.384
+This edge is a soft spatial constraint between the two robot poses.
+
+00:00:40.384 --> 00:00:43.094
+These constraints are called soft because,
+
+00:00:43.094 --> 00:00:44.649
+as we have seen before,
+
+00:00:44.649 --> 00:00:47.445
+motion and measurement data is uncertain.
+
+00:00:47.445 --> 00:00:50.924
+The constraints will have some amount of error present.
+
+00:00:50.924 --> 00:00:53.969
+Soft constraints come in two forms.
+
+00:00:53.969 --> 00:00:58.079
+Motion constraints between two successive robot poses and
+
+00:00:58.079 --> 00:01:03.079
+measurement constraints between a robot pose and a feature in the environment.
+
+00:01:03.079 --> 00:01:07.939
+The constraint seen between x0 and x1 is a motion constraint.
+
+00:01:07.939 --> 00:01:12.759
+If the robot were to sense it's environments and encounter a feature m1,
+
+00:01:12.760 --> 00:01:15.550
+a soft measurement constraint would be added.
+
+00:01:15.549 --> 00:01:19.640
+Here, the star represents a feature in the environment.
+
+00:01:19.640 --> 00:01:24.210
+This could be a landmark specifically placed for the purpose of localization and mapping,
+
+00:01:24.209 --> 00:01:29.894
+or an identifiable element of the environment such as a corner or an edge.
+
+00:01:29.894 --> 00:01:33.584
+Note that the notation that I have chosen to use has solid edges
+
+00:01:33.584 --> 00:01:38.879
+representing motion constraints and dashed edges representing measurement constraints.
+
+00:01:38.879 --> 00:01:42.254
+I find that this notation makes the graph easier to comprehend.
+
+00:01:42.254 --> 00:01:46.949
+As before, the robot poses are labeled x1 and x2,
+
+00:01:46.950 --> 00:01:50.519
+while the features will be labeled m1 and m2.
+
+00:01:50.519 --> 00:01:52.545
+As the robot moves around,
+
+00:01:52.545 --> 00:01:54.930
+more and more nodes are added to the graph.
+
+00:01:54.930 --> 00:02:00.780
+And over time, the graph constructed by the mobile robot becomes very large in size.
+
+00:02:00.780 --> 00:02:05.070
+Luckily, graph slam is able to handle large numbers of features.
+

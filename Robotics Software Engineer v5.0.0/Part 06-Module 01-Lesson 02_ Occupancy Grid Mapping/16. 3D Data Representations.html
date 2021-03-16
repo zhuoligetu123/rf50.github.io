@@ -1,0 +1,328 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   3D Data Representations
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Occupancy Grid Mapping
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Importance of Mapping.html">
+       02. Importance of Mapping
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Challenges and Difficulties.html">
+       03. Challenges and Difficulties
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Mapping with Known Poses.html">
+       04. Mapping with Known Poses
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Posterior Probability.html">
+       05. Posterior Probability
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Grid Cells.html">
+       06. Grid Cells
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Computing the Posterior .html">
+       07. Computing the Posterior
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Filtering.html">
+       08. Filtering
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Binary Bayes Filter Algorithm.html">
+       09. Binary Bayes Filter Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Occupancy Grid Mapping Algorithm.html">
+       10. Occupancy Grid Mapping Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inverse Sensor Model.html">
+       11. Inverse Sensor Model
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Generate the Map.html">
+       12. Generate the Map
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Udacity Workspace.html">
+       13. Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Multi Sensor Fusion.html">
+       14. Multi Sensor Fusion
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Introduction to 3D Mapping.html">
+       15. Introduction to 3D Mapping
+      </a>
+     </li>
+     <li class="">
+      <a href="16. 3D Data Representations.html">
+       16. 3D Data Representations
+      </a>
+     </li>
+     <li class="">
+      <a href="17. Octomap.html">
+       17. Octomap
+      </a>
+     </li>
+     <li class="">
+      <a href="18. Outro.html">
+       18. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          16. 3D Data Representations
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+         <p>
+          3D Data Representations
+         </p>
+        </h3>
+        <video controls="">
+         <source src="16. 3D Data Representations-hvkGrM-jZXA.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="16. 3D Data Representations-hvkGrM-jZXA.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          Some of the desired characteristics of an optimal representation:
+         </p>
+         <ul>
+          <li>
+           <p>
+            Probabilistic data representations can be used to accommodate for sensor noise and dynamic environments.
+           </p>
+          </li>
+          <li>
+           <p>
+            It is important to be able to distinguish data that represents an area that is free space versus an area that is unknown or not yet mapped. This will enable the robot to plan an unobstructed path and build a complete map.
+           </p>
+          </li>
+          <li>
+           <p>
+            Memory on a mobile robot is typically a limited resource, so memory efficiency is very important. The map should also be accessible in the robot’s main memory, while mapping a large area over a long period of time. To accomplish this, we need a data representation that is compact and allows for efficient updates and queries.
+           </p>
+          </li>
+         </ul>
+         <p>
+          <strong>
+           2.5D maps
+          </strong>
+          , also known as height maps, store the surface of the entire environment as the maximum height measured at every point. They are memory efficient, with constant access time.
+          <br/>
+          This type of mapping is not very useful if you have terrain with trees or overhang structures, where the robot could move underneath. Also, height maps are non-probabilistic. Similar to point clouds, there is also no distinction between free and unknown space.
+         </p>
+         <p>
+          <strong>
+           Elevation maps
+          </strong>
+          are 2D grids that store an estimated height, or elevation, for each cell. A Kalman filter is used to estimate the height, and can also incorporate the uncertainty of the measurement process itself, which typically increases with the measured distance. One problem with elevation maps is the vertical wall - you can tell there is a vertical object but don’t know exactly how tall it is.
+         </p>
+         <p>
+          <strong>
+           Extended elevation maps
+          </strong>
+          store a set of estimated heights for every cell, and include cells that contain gaps. You can check whether the variance of the height of all data points within each cell is large. If so, you can investigate whether the corresponding set of points contains a gap exceeding the height of the robot (known as a “gap cell”), and ultimately use gap cells to determine traversability.
+         </p>
+         <p>
+          In
+          <strong>
+           multi-level surface (MLS)
+          </strong>
+          map representations, each 2D cell stores “patches”, of which there can be multiple per cell. Each patch contains 3 key pieces of information - the height mean, the height variance, and the depth value.  The height mean is the estimated height of the individual vertical area, also referred to as an interval. The uncertainty of the height is stored as the height variance, with the assumption that the error is represented by a Gaussian distribution. The depth value is defined by the difference between height of the surface patch and the height of the lowest measurement that is considered as belonging to that vertical object (ex the depth of the floor would be 0). Individual surfaces can be directly calculated, allowing the robot to deal with vertical and overhanging objects. This method also works very well with multi-level traversable surfaces, such as a bridge that you could travel over top of, or underneath, or a structure like a parking garage. An MLS map isn’t a volumetric representation, but a discretization in the vertical dimension. Unknown areas are not represented, and localization for this method is not straightforward.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="17. Octomap.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('16. 3D Data Representations')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.285
+Congratulations. In the first half of this lesson,
+
+00:00:03.285 --> 00:00:05.445
+you learned the fundamentals of graph SLAM,
+
+00:00:05.445 --> 00:00:07.217
+how a graph is constructed,
+
+00:00:07.216 --> 00:00:08.968
+how do we evaluate the constraints,
+
+00:00:08.970 --> 00:00:11.235
+and how graph optimization is done.
+
+00:00:11.233 --> 00:00:15.059
+You also learned about a specialized SLAM approach, called RTAB-Map,
+
+00:00:15.060 --> 00:00:17.820
+the importance of loop closure and how the process is
+
+00:00:17.820 --> 00:00:20.820
+optimized using bag of words, and memory management.
+
+00:00:20.820 --> 00:00:25.274
+We haven't fully deconstructed all of the algorithms of this complex SLAM approach,
+
+00:00:25.274 --> 00:00:28.079
+but this knowledge will take you forward and equip you to
+
+00:00:28.079 --> 00:00:31.829
+utilize RTAB-Map as an advanced ROS package in your projects.
+
+00:00:31.829 --> 00:00:36.289
+You've gone through a lot of difficult content in this lesson, and we're proud of you.
+
+00:00:36.289 --> 00:00:40.100
+In fact, we feel that you deserve a puppy.
+

@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.429
+So far, you've learned the key features and challenges of the SLAM problem.
+
+00:00:05.429 --> 00:00:07.469
+Now, you will learn how to overcome
+
+00:00:07.469 --> 00:00:11.875
+these challenges and solve the online and full SLAM problems.
+
+00:00:11.875 --> 00:00:15.615
+But before we dive into any state-of-the-art SLAM algorithm,
+
+00:00:15.615 --> 00:00:19.263
+let's recap what we have learned from localization.
+
+00:00:19.263 --> 00:00:21.230
+While solving the localization problem,
+
+00:00:21.230 --> 00:00:26.804
+we use different approaches to estimate a robot's pose inside an environment.
+
+00:00:26.804 --> 00:00:28.949
+One of these approaches was
+
+00:00:28.949 --> 00:00:34.589
+the particle filter approach implemented in the Monte Carlo localization algorithm.
+
+00:00:34.590 --> 00:00:37.054
+Each of these particles have the robot pose
+
+00:00:37.054 --> 00:00:40.650
+along with the important weight of the particle.
+
+00:00:40.649 --> 00:00:46.320
+Using this approach, we were able to accurately estimate any robot's pose.
+
+00:00:46.320 --> 00:00:48.480
+Now, let's imagine that you modified
+
+00:00:48.479 --> 00:00:53.754
+the particle filter approach by adding another dimension to each particle.
+
+00:00:53.755 --> 00:00:58.795
+The new particle will now hold the robot's pose, as well as the map.
+
+00:00:58.795 --> 00:01:02.420
+Would that solve the SLAM problem? Not really.
+
+00:01:02.420 --> 00:01:05.640
+This approach will fade and that's because the map is
+
+00:01:05.640 --> 00:01:10.034
+modeled with many variables resulting in high dimensionality.
+
+00:01:10.034 --> 00:01:13.769
+Thus, the particle filter approach to SLAM in
+
+00:01:13.769 --> 00:01:18.000
+this current form will scale exponentially and doomed to fail.
+

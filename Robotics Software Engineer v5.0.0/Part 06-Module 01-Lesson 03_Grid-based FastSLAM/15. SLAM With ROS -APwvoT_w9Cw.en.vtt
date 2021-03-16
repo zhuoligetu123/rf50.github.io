@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.779
+I hope you had a chance to interface with turtlebot with
+
+00:00:02.779 --> 00:00:06.855
+a G-mapping package to build the map of the Willow Garage environment.
+
+00:00:06.855 --> 00:00:09.554
+If not, follow along with this video,
+
+00:00:09.554 --> 00:00:13.699
+as I'll walk you through the steps of performing snap with your turtlebot.
+
+00:00:13.699 --> 00:00:19.489
+Feel free to pause this video at any time and refer to the steps in the instructed notes.
+
+00:00:19.489 --> 00:00:22.189
+Now, let's jump back in our virtual machine.
+
+00:00:22.190 --> 00:00:24.929
+First, I'll open the terminal,
+
+00:00:24.929 --> 00:00:28.844
+navigate the source directory of my catkin work space,
+
+00:00:28.844 --> 00:00:31.219
+and clone the package.
+
+00:00:31.219 --> 00:00:36.104
+Then, install its system dependencies and finally,
+
+00:00:36.104 --> 00:00:38.944
+with the catkin workspace.
+
+00:00:38.945 --> 00:00:45.649
+Now that you have all the required packages in your workspace, let's launch the nodes.
+
+00:00:45.649 --> 00:00:50.074
+In this terminal, source your workspace.
+
+00:00:50.075 --> 00:00:52.475
+And as we did earlier,
+
+00:00:52.475 --> 00:00:58.289
+launch the turtlebot gazebo node in a Willow Garage environment.
+
+00:00:58.289 --> 00:01:02.015
+Open another terminal, again source your workspace,
+
+00:01:02.015 --> 00:01:05.144
+and launch the keyboard teleop node,
+
+00:01:05.144 --> 00:01:07.179
+don't move your robot yet.
+
+00:01:07.180 --> 00:01:09.425
+To understand the G-mapping node,
+
+00:01:09.424 --> 00:01:11.494
+open a third terminal,
+
+00:01:11.495 --> 00:01:16.280
+source the workspace, and run the node.
+
+00:01:16.280 --> 00:01:21.394
+Your node should now be registering the first scan.
+
+00:01:21.394 --> 00:01:23.549
+Now, in a new terminal, run rviz,
+
+00:01:23.549 --> 00:01:29.134
+to subscribe to different published topics and visualize the map.
+
+00:01:29.135 --> 00:01:34.085
+In rviz, change the fixed frame to base link,
+
+00:01:34.084 --> 00:01:40.679
+then change the reference frame to odom.
+
+00:01:44.799 --> 00:01:53.137
+Add the RobotModel. To visualize the environment, add
+
+00:01:53.138 --> 00:02:01.365
+a Camera and change the topic to the RGB1.
+
+00:02:01.365 --> 00:02:04.090
+Finally,
+
+00:02:04.090 --> 00:02:12.396
+add the Map and select the map topic.
+
+00:02:12.396 --> 00:02:16.929
+The first section of the map is now appearing.
+
+00:02:16.930 --> 00:02:20.115
+Now, map the Willow Garage environment
+
+00:02:20.115 --> 00:02:24.314
+by driving your robot around with a keyboard teleop commands.
+
+00:02:24.314 --> 00:02:27.314
+After you are satisfied with the result,
+
+00:02:27.314 --> 00:02:34.509
+navigate your desktop and save a copy of the map by running the map server command.
+
+00:02:34.509 --> 00:02:37.169
+Feel free to experiment SLAM with
+
+00:02:37.169 --> 00:02:41.000
+different environments and share the image of the map with your classmates.
+

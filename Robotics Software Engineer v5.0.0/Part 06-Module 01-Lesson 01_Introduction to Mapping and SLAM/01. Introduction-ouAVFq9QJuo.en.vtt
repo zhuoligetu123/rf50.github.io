@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+Welcome to the mapping and SLAM module where you will learn how
+
+00:00:03.120 --> 00:00:06.110
+robots build map of their environment and how they perform SLAM,
+
+00:00:06.110 --> 00:00:09.509
+which is Simultaneous Localization and Mapping.
+
+00:00:09.509 --> 00:00:12.394
+You've already learned localization. So, you're halfway there.
+
+00:00:12.394 --> 00:00:13.980
+And after learning mapping,
+
+00:00:13.980 --> 00:00:16.350
+we believe that you'll be well-prepared to take on
+
+00:00:16.350 --> 00:00:20.355
+a bigger challenge of Simultaneous Localization and Mapping.
+
+00:00:20.355 --> 00:00:22.600
+Erika will be joining us in this module to go
+
+00:00:22.600 --> 00:00:24.950
+into more detail regarding mapping and SLAM.
+
+00:00:24.949 --> 00:00:26.419
+Hello.
+
+00:00:26.420 --> 00:00:27.720
+I'm so excited to be joining you.
+
+00:00:27.719 --> 00:00:30.329
+As you recall, in localization,
+
+00:00:30.329 --> 00:00:33.129
+the robot is provided the map of its environment.
+
+00:00:33.130 --> 00:00:35.480
+The robot also has access to its movement and
+
+00:00:35.479 --> 00:00:38.474
+sensor data and using the three of these together,
+
+00:00:38.475 --> 00:00:39.750
+it must estimate its pose.
+
+00:00:39.750 --> 00:00:43.350
+But what if map of the environment doesn't exist?
+
+00:00:43.350 --> 00:00:45.401
+There are many applications where there isn't a known map,
+
+00:00:45.401 --> 00:00:48.300
+either because the area is unexplored or
+
+00:00:48.299 --> 00:00:51.638
+because the surroundings change often and the map may not be up to date.
+
+00:00:51.639 --> 00:00:53.483
+In such a case,
+
+00:00:53.482 --> 00:00:55.579
+the robot will have to construct a map.
+
+00:00:55.579 --> 00:00:57.449
+This leads us to robotic mapping.
+
+00:00:57.450 --> 00:00:59.900
+Mapping assumes that a robot knows its pose,
+
+00:00:59.899 --> 00:01:03.420
+and as usual, has access to its movement and sensor data.
+
+00:01:03.420 --> 00:01:05.370
+The robot must produce a map of the environment
+
+00:01:05.370 --> 00:01:08.210
+using the known trajectory and measurement data.
+
+00:01:08.209 --> 00:01:11.879
+However, even such a case can be quite uncommon in the real world.
+
+00:01:11.879 --> 00:01:16.119
+Often, you neither have a map nor know the robot's pose.
+
+00:01:16.120 --> 00:01:17.700
+This is where SLAM comes in.
+
+00:01:17.700 --> 00:01:21.510
+With access only to robot's own movement and sensory data,
+
+00:01:21.510 --> 00:01:23.940
+the bot must build a map of its environment while
+
+00:01:23.939 --> 00:01:27.549
+simultaneously localizing itself relative to the map.
+
+00:01:27.549 --> 00:01:31.349
+We never said that building the foundation for autonomous robots is easy.
+
+00:01:31.349 --> 00:01:34.849
+But we do think that after working through these upcoming lessons,
+
+00:01:34.849 --> 00:01:40.000
+you will be able to grasp these concepts and apply mapping and SLAM algorithms yourself.
+

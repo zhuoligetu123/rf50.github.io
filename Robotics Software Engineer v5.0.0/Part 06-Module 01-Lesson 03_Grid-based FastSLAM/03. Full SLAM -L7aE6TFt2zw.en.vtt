@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.734
+So far, we've covered the Online SLAM problem.
+
+00:00:03.734 --> 00:00:10.080
+Now, it's time to dive deeper in the Full SLAM problem also known as off-line SLAM.
+
+00:00:10.080 --> 00:00:12.615
+While solving the Full SLAM problem,
+
+00:00:12.615 --> 00:00:15.730
+you will estimate the entire path up to time t
+
+00:00:15.730 --> 00:00:20.699
+instead of an instantaneous pose given all the measurements and controls.
+
+00:00:20.699 --> 00:00:24.660
+Now, let's model this graphical representation of
+
+00:00:24.660 --> 00:00:30.024
+the Full SLAM problem in a probability function. Here's the result.
+
+00:00:30.024 --> 00:00:34.381
+P of X1 up to time t and m,
+
+00:00:34.381 --> 00:00:42.265
+giving z1 to t and u one to T. This function estimates the posterior over the entire path
+
+00:00:42.265 --> 00:00:46.134
+along the map given all the measurements and controls up to time
+
+00:00:46.134 --> 00:00:50.934
+t. Now that you've seen both the Online and Full SLAM problem,
+
+00:00:50.935 --> 00:00:54.850
+let's compare them, and see if a relation exists between them.
+
+00:00:54.850 --> 00:00:59.950
+Clearly, the difference between the two forms of SLAM is in their poses.
+
+00:00:59.950 --> 00:01:03.325
+One represents a posterior over the entire path,
+
+00:01:03.325 --> 00:01:07.965
+while the other this represents a posterior over the current pose.
+
+00:01:07.965 --> 00:01:11.909
+Now, is there any relation between these two forms of SLAM?
+
+00:01:11.909 --> 00:01:15.390
+Yes. A relation between the Online SLAM problem,
+
+00:01:15.390 --> 00:01:18.629
+and the Full SLAM exists by integrating
+
+00:01:18.629 --> 00:01:22.560
+the previous poses from the Full SLAM problem once at a time,
+
+00:01:22.560 --> 00:01:25.320
+you obtain the Online SLAM problem.
+

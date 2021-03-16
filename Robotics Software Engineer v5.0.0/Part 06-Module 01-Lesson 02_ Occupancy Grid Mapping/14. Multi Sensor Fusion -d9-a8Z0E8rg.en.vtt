@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.298
+So far, we've covered mapping for robots equipped with only one sensor,
+
+00:00:05.298 --> 00:00:07.944
+such as mobile robots equipped with
+
+00:00:07.944 --> 00:00:12.809
+an ultrasonic sensor or LIDAR sensor or even an RGB-D sensor.
+
+00:00:12.810 --> 00:00:18.510
+Sometimes the mobile robot might be equipped with a combination of these sensors.
+
+00:00:18.510 --> 00:00:23.054
+Mapping with a mobile robot equipped with a combination of these sensors,
+
+00:00:23.054 --> 00:00:25.600
+leads to a more precise map.
+
+00:00:25.600 --> 00:00:28.780
+But how would you combine the information from a LIDAR and
+
+00:00:28.780 --> 00:00:32.814
+RGB-D sensor or any other combination into a single map.
+
+00:00:32.814 --> 00:00:36.429
+Well, an intuitive approach would be to implement
+
+00:00:36.429 --> 00:00:41.005
+the Occupancy Grid Mapping Algorithm and sold for each sensor model.
+
+00:00:41.005 --> 00:00:42.609
+But this will fail,
+
+00:00:42.609 --> 00:00:46.917
+since each and every sensor has different characteristics.
+
+00:00:46.917 --> 00:00:48.145
+In addition to that,
+
+00:00:48.145 --> 00:00:51.025
+sensors are sensitive to different obstacles.
+
+00:00:51.024 --> 00:00:55.750
+For example, an RGB-D camera might detect an obstacle at
+
+00:00:55.750 --> 00:01:01.954
+a particular location but this object might not be seen by the laser beams of a LIDAR,
+
+00:01:01.954 --> 00:01:05.829
+and thus the LIDAR will process it as a free space.
+
+00:01:05.829 --> 00:01:10.069
+The best approach to the multi sensor fusion problem is to build
+
+00:01:10.069 --> 00:01:15.589
+separate maps for each sensor type independently of each other and then integrate them.
+
+00:01:15.590 --> 00:01:21.725
+Here you can see two independent 2 by 2 maps created by each sensor.
+
+00:01:21.724 --> 00:01:24.004
+Within the same environment,
+
+00:01:24.004 --> 00:01:29.329
+both maps do not look the same since each sensor has a different sensitivity.
+
+00:01:29.329 --> 00:01:36.581
+Now let's denote the map built by the kth sensor as MK and combine the maps.
+
+00:01:36.581 --> 00:01:39.750
+If the measurements are independent of each other,
+
+00:01:39.750 --> 00:01:43.572
+you can easily combine the maps using De Morgan's Law.
+
+00:01:43.572 --> 00:01:49.276
+The resultant map now combines the estimated occupancy values of each cell.
+
+00:01:49.277 --> 00:01:51.314
+To obtain the most likely map,
+
+00:01:51.314 --> 00:01:54.344
+we need to compute the maximum value of each cell.
+
+00:01:54.344 --> 00:02:01.004
+Another approach would be to perform a null operation between values of each cell.
+
+00:02:01.004 --> 00:02:06.560
+The resulting map now perfectly combines the measurement from different sensors.
+

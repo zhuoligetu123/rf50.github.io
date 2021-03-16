@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.744
+In the Occupancy Grid Mapping Algorithm,
+
+00:00:02.744 --> 00:00:06.705
+you saw the inverse sensor model which is the probability of the map
+
+00:00:06.705 --> 00:00:11.565
+giving the measurements and the poses in its log odds representation.
+
+00:00:11.565 --> 00:00:14.250
+As a reminder, the advantage of using
+
+00:00:14.250 --> 00:00:19.800
+log odds representation is to avoid any numerical instabilities near zero or one.
+
+00:00:19.800 --> 00:00:22.860
+To demonstrate that, let's recover the probability of
+
+00:00:22.860 --> 00:00:27.045
+the map giving the data from the log odds representation.
+
+00:00:27.045 --> 00:00:32.820
+Now, you can see how the probability of the map is bounded between zero and one.
+
+00:00:32.820 --> 00:00:37.310
+Mobile robots equipped with range finder sensors instantaneously
+
+00:00:37.310 --> 00:00:42.000
+detect obstacles and return measurements in a conical field of view.
+
+00:00:42.000 --> 00:00:45.770
+At the border of this cone robots can only sense portion of
+
+00:00:45.770 --> 00:00:49.670
+the cells and thus, probabilities are weak.
+
+00:00:49.670 --> 00:00:51.455
+Due to weak probabilities,
+
+00:00:51.455 --> 00:00:56.435
+it's hard and complex to compute the state of the cells at the border of the cone.
+
+00:00:56.435 --> 00:01:01.040
+To simplify this problem and estimate the state of the cells within,
+
+00:01:01.040 --> 00:01:04.040
+at the border and outside of the measurement cone
+
+00:01:04.040 --> 00:01:07.400
+an inverse sensor model algorithm is introduced.
+
+00:01:07.400 --> 00:01:14.525
+With this algorithm, you can estimate if the current cell is free, occupied or unknown.
+
+00:01:14.525 --> 00:01:18.395
+The inverse sensor model algorithm takes each cell,
+
+00:01:18.395 --> 00:01:22.195
+the poses and measurements as parameters.
+
+00:01:22.195 --> 00:01:26.630
+First, the range for the center of mass of the cell is computed.
+
+00:01:26.630 --> 00:01:32.945
+Here, x_i and y_i are the center of mass of the cell m_i.
+
+00:01:32.945 --> 00:01:36.280
+R is the range for the center of mass,
+
+00:01:36.280 --> 00:01:40.775
+computed with respect to the center of mass and robot position.
+
+00:01:40.775 --> 00:01:44.270
+Next, the beam index k is computed with
+
+00:01:44.270 --> 00:01:48.155
+respect to the center of mass of the cell and the robot pose.
+
+00:01:48.155 --> 00:01:50.950
+Now, two parameters are introduced.
+
+00:01:50.950 --> 00:01:55.020
+Beta is the opening angle of the mean and alpha,
+
+00:01:55.020 --> 00:01:57.135
+it's the width of the region.
+
+00:01:57.135 --> 00:02:00.320
+If a cell lies outside the measurement range of
+
+00:02:00.320 --> 00:02:04.825
+the sensor beam or more than alpha over two behind it's detected range,
+
+00:02:04.825 --> 00:02:10.370
+then the state of this cell is considered as unknown and it's
+
+00:02:10.370 --> 00:02:16.205
+initial or prior state l0 and it's log odds form is returned.
+
+00:02:16.205 --> 00:02:20.630
+Now, the cell is considered as occupied if it ranges
+
+00:02:20.630 --> 00:02:25.535
+between negative and positive alpha over two of the detected range.
+
+00:02:25.535 --> 00:02:29.600
+Finally, the cell is considered as free if the range of
+
+00:02:29.600 --> 00:02:34.410
+this cell is shorter than the measured range by more than alpha over two.
+

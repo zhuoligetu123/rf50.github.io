@@ -1,0 +1,384 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Inference
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      GraphSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Graphs.html">
+       02. Graphs
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Constraints.html">
+       03. Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Front-End vs Back-End.html">
+       04. Front-End vs Back-End
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Maximum Likelihood Estimation.html">
+       05. Maximum Likelihood Estimation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MLE Example.html">
+       06. MLE Example
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Numerical Solution to MLE.html">
+       07. Numerical Solution to MLE
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mid-Lesson Overview.html">
+       08. Mid-Lesson Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="09. 1-D to n-D.html">
+       09. 1-D to n-D
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Information Matrix and Vector.html">
+       10. Information Matrix and Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inference.html">
+       11. Inference
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Nonlinear Constraints.html">
+       12. Nonlinear Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Graph-SLAM at a Glance.html">
+       13. Graph-SLAM at a Glance
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to 3D SLAM With RTAB-Map.html">
+       14. Intro to 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="15. 3D SLAM With RTAB-Map.html">
+       15. 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Visual Bag-of-Words.html">
+       16. Visual Bag-of-Words
+      </a>
+     </li>
+     <li class="">
+      <a href="17. RTAB-Map Memory Management.html">
+       17. RTAB-Map Memory Management
+      </a>
+     </li>
+     <li class="">
+      <a href="18. RTAB-Map Optimization and Output.html">
+       18. RTAB-Map Optimization and Output
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Outro.html">
+       19. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          11. Inference
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="inference">
+          Inference
+         </h1>
+         <p>
+          Once the information matrix and information vector have been populated, the path and map can be recovered by the following operation,
+         </p>
+         <div class="mathquill">
+          \mu = \Omega^{-1}\xi
+         </div>
+         <p>
+          The result is a vector,
+          <span class="mathquill ud-math">
+           \mu
+          </span>
+          defined over all poses and features, containing the best estimate for each. This operation is
+          <em>
+           very
+          </em>
+          similar to what you encountered before in the simple one-dimensional case, with a bit of added structure. Just as before, all constraints are considered when computing the solution.
+         </p>
+         <p>
+          Completing the above operation requires solving a system of equations. In small systems, this is an easily realizable task, but as the size of the graph and matrix grows - efficiency becomes a concern.
+         </p>
+         <p>
+          The efficiency of this operation, specifically the matrix inversion, depends greatly on the topology of the system.
+         </p>
+         <h2 id="linear-graph">
+          Linear Graph
+         </h2>
+         <p>
+          If the robot moves through the environment once, without ever returning to a previously visited location, then the topology is linear. Such a graph will produce a rather sparse matrix that, with some effort, can be reordered to move all non-zero elements to near the diagonal. This will allow the above equation to be completed in linear time.
+         </p>
+         <h2 id="cyclical-graph">
+          Cyclical Graph
+         </h2>
+         <p>
+          A more common topology is cyclical, in which a robot revisits a location that it has been to before, after some time has passed. In such a case, features in the environment will be linked to multiple poses - ones that are not consecutive, but spaced far apart. The further apart in time that these poses are - the more problematic, as such a matrix cannot be reordered to move non-zero cells closer to the diagonal. The result is a matrix that is more computationally challenging to recover.
+         </p>
+         <p>
+          However, all hope is not lost - a variable elimination algorithm can be used to simplify the matrix, allowing for the inversion and product to be computed quicker.
+         </p>
+         <h2 id="variable-elimination">
+          Variable Elimination
+         </h2>
+         <p>
+          Variable elimination can be applied iteratively to remove all cyclical constraints. Just like it sounds, variable elimination entails removing a variable (ex. feature) entirely from the graph and matrix. This can be done by adjusting existing links or adding new links to accommodate for those links that will be removed.
+         </p>
+         <p>
+          If you recall the spring analogy, variable elimination removes features, but keeps the
+          <em>
+           net
+          </em>
+          forces in the springs unaltered by adjusting the tension on other springs or adding new springs where needed.
+         </p>
+         <p>
+          This process is demonstrated in the following two images. The first image shows the graph, matrix, and vector as they were presented in the previous video.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c11-01-inference-images-v1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          The second image shows the elimination of
+          <span class="mathquill ud-math">
+           m_1
+          </span>
+          . You can see that in this process the matrix will have five cells reset to zero (indicated in red), and four cells will have their values adjusted (indicated in green) to accommodate the variable elimination. Similarly, the information vector will have one cell removed and two adjusted.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/l4c11-02-inference-images-v1.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          This process is repeated for all of the features, and in the end the matrix is defined over all robot poses. At this point, the same procedure as before can be applied,
+          <span class="mathquill ud-math">
+           \mu = \Omega^{-1}\xi
+          </span>
+          .
+         </p>
+         <p>
+          Performing variable elimination on the information matrix/vector prior to performing inference is less computationally intense than attempting to solve the inference problem directly on the unaltered data.
+         </p>
+         <p>
+          In practice, the analytical inference method described above is seldom applied, as numerical methods are able to converge on a sufficiently accurate estimate in a fraction of the time. More will be said on this topic later, but first it is important to explore how nonlinear constraints are handled in GraphSLAM.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="12. Nonlinear Constraints.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Inference')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

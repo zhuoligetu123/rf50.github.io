@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.575
+Congratulations. You've done a fantastic job by completing this lesson.
+
+00:00:04.575 --> 00:00:08.929
+You've learned the two essential key features of the SLAM problem.
+
+00:00:08.929 --> 00:00:11.279
+The first feature lies in two forms,
+
+00:00:11.279 --> 00:00:14.564
+which are the OnlineSLAM and the FootSLAM problem.
+
+00:00:14.564 --> 00:00:20.369
+The second feature to the SLAM problem is related to its continuous discrete nature.
+
+00:00:20.370 --> 00:00:23.143
+Then, you were exposed to the challenges of SLAM.
+
+00:00:23.143 --> 00:00:25.630
+The continuous nature of the SLAM problem
+
+00:00:25.629 --> 00:00:28.980
+posed a big challenge because of the high dimension of posterior.
+
+00:00:28.980 --> 00:00:33.390
+In addition, the discrete nature of the SLAM problem poses
+
+00:00:33.390 --> 00:00:38.835
+another challenge because of a large number of correspondence values that exists.
+
+00:00:38.835 --> 00:00:42.670
+Moving on, you were introduced to the FastSLAM algorithm.
+
+00:00:42.670 --> 00:00:45.579
+We choose the particle filter approach along with
+
+00:00:45.579 --> 00:00:51.009
+a low-dimensional extended Kalman filter estimation to solve the SLAM problem.
+
+00:00:51.009 --> 00:00:54.379
+You've also learned how to overcome some drawbacks to
+
+00:00:54.380 --> 00:00:57.315
+the FastSLAM algorithm by adapting it to grid
+
+00:00:57.314 --> 00:01:00.754
+maps which resulted in the grid based FastSLAM algorithm.
+
+00:01:00.755 --> 00:01:04.180
+You saw how the grid based FastSLAM algorithm implements part of
+
+00:01:04.180 --> 00:01:08.145
+the MCL algorithm along with the occupancy grid mapping algorithm.
+
+00:01:08.144 --> 00:01:11.454
+And finally, you've moved to simulation where you implemented
+
+00:01:11.454 --> 00:01:14.079
+a G-mapping ROS package based on the grid
+
+00:01:14.079 --> 00:01:18.140
+based FastSLAM algorithm to map the environment and estimate the robot path.
+
+00:01:18.141 --> 00:01:20.045
+That's it for now.
+
+00:01:20.045 --> 00:01:23.000
+Stay tuned for another SLAM algorithm in the upcoming lesson.
+

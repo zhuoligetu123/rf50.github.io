@@ -1,0 +1,184 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.110
+Mapping with mobile robots is a challenging problem for two main reasons.
+
+00:00:06.110 --> 00:00:09.640
+First, the map and poses are both unknown to the robot.
+
+00:00:09.640 --> 00:00:17.460
+In localization lessons, we assumed the known map and aim to estimate the robots pose.
+
+00:00:17.460 --> 00:00:19.769
+Now, the map is unknown to us,
+
+00:00:19.769 --> 00:00:23.730
+so we'll either have to assume known poses and estimate the map or
+
+00:00:23.730 --> 00:00:28.615
+assume unknown poses and estimate the map and the poses relative to it.
+
+00:00:28.614 --> 00:00:31.554
+Estimating the map on unknown poses is
+
+00:00:31.554 --> 00:00:35.604
+a challenging problem because of the large number of variables.
+
+00:00:35.604 --> 00:00:39.509
+This can be solved using the occupancy grid mapping algorithm.
+
+00:00:39.509 --> 00:00:44.460
+Even more challenging, is to estimate the map and the poses relative to it,
+
+00:00:44.460 --> 00:00:48.329
+which will be covered under SLAM in the upcoming lessons.
+
+00:00:48.329 --> 00:00:51.030
+Second, the hypothesis space is huge.
+
+00:00:51.030 --> 00:00:57.060
+The hypothesis space is the space of all possible maps that can be formed during mapping.
+
+00:00:57.060 --> 00:01:02.760
+This space is highly dimensional since maps are defined over a continuous space,
+
+00:01:02.759 --> 00:01:05.340
+especially, when the robots are deployed in
+
+00:01:05.340 --> 00:01:09.750
+open environments where they'll have to sense an infinite number of objects.
+
+00:01:09.750 --> 00:01:15.480
+The occupancy grid mapping algorithm presents a discrete approximation of the map.
+
+00:01:15.480 --> 00:01:18.130
+But even under this discrete approximation,
+
+00:01:18.129 --> 00:01:21.479
+the space of all possible maps would still be high.
+
+00:01:21.480 --> 00:01:25.463
+So the challenge is to estimate the full posterior map,
+
+00:01:25.462 --> 00:01:27.719
+for maps with high dimensional spaces.
+
+00:01:27.719 --> 00:01:30.569
+The base filtering approach that we use in
+
+00:01:30.569 --> 00:01:33.779
+localization to estimate the posterior pose will
+
+00:01:33.780 --> 00:01:36.750
+diverge and an extension to it should be
+
+00:01:36.750 --> 00:01:41.329
+used in mapping to accommodate for the huge hypothesis space.
+
+00:01:41.329 --> 00:01:43.995
+Moving on to difficulties in mapping.
+
+00:01:43.995 --> 00:01:45.765
+To map an environment,
+
+00:01:45.765 --> 00:01:48.459
+we need information about walls and objects.
+
+00:01:48.459 --> 00:01:53.339
+For example, we can deploy a mobile robot with a laser range finder sensor,
+
+00:01:53.340 --> 00:01:56.469
+like the one you used for localization project.
+
+00:01:56.469 --> 00:01:59.114
+The robot collects sensory information
+
+00:01:59.114 --> 00:02:02.319
+which permits it to detect obstacles in the environment.
+
+00:02:02.319 --> 00:02:04.779
+By using one of the mapping algorithms,
+
+00:02:04.780 --> 00:02:08.044
+we can group this data into a resulting map.
+
+00:02:08.044 --> 00:02:12.699
+In this example, we see that there are several possible data represented by
+
+00:02:12.699 --> 00:02:18.594
+instantaneous maps that the robot has to combine in order to estimate the actual map.
+
+00:02:18.594 --> 00:02:21.759
+This problem is not as easy as you might think,
+
+00:02:21.759 --> 00:02:25.590
+as there are many difficulties while mapping an environment.
+
+00:02:25.590 --> 00:02:28.515
+The first difficulty is the size of the environment.
+
+00:02:28.514 --> 00:02:34.049
+Mapping large areas is hard because of the large amount of data to be processed.
+
+00:02:34.050 --> 00:02:36.360
+The robots on-board micro-controller has to
+
+00:02:36.360 --> 00:02:39.315
+collect all the instantaneous poses and obstacles,
+
+00:02:39.314 --> 00:02:44.599
+then form a resulting map and localize the robot with respect to this map.
+
+00:02:44.599 --> 00:02:47.519
+Also, the mapping problem becomes even more
+
+00:02:47.520 --> 00:02:52.530
+difficult when the size of the map is larger than the robot's perceptual range.
+
+00:02:52.530 --> 00:02:54.645
+But that's only part of the problem.
+
+00:02:54.645 --> 00:02:56.925
+Noise always exists in perception sensors,
+
+00:02:56.925 --> 00:02:59.625
+audiometry sensors, and actuators.
+
+00:02:59.625 --> 00:03:04.335
+During mapping, we must always filter the noise from these sensors and actuators.
+
+00:03:04.335 --> 00:03:10.740
+With large noise, mappings becomes more difficult and challenging as this noise adds up.
+
+00:03:10.740 --> 00:03:14.844
+Perceptual ambiguity is another difficulty in mapping.
+
+00:03:14.844 --> 00:03:18.180
+The ambiguity occurs when two places looks alike,
+
+00:03:18.180 --> 00:03:20.250
+and the robot must correlate between
+
+00:03:20.250 --> 00:03:25.034
+these two places which the robot travel through at different points in time.
+
+00:03:25.034 --> 00:03:29.669
+Another difficulty in mapping occurs when a robot travels in a cyclic manner,
+
+00:03:29.669 --> 00:03:33.119
+for example, going back and forth in a corridor.
+
+00:03:33.120 --> 00:03:35.520
+When traveling in cycles,
+
+00:03:35.520 --> 00:03:38.523
+robot audiometry incrementally accumulates error.
+
+00:03:38.522 --> 00:03:40.395
+And at the end of the cycle,
+
+00:03:40.395 --> 00:03:42.000
+the error is quite large.
+

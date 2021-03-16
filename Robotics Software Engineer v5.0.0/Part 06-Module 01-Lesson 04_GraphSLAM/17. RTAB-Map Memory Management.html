@@ -1,0 +1,372 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   RTAB-Map Memory Management
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      GraphSLAM
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Graphs.html">
+       02. Graphs
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Constraints.html">
+       03. Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Front-End vs Back-End.html">
+       04. Front-End vs Back-End
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Maximum Likelihood Estimation.html">
+       05. Maximum Likelihood Estimation
+      </a>
+     </li>
+     <li class="">
+      <a href="06. MLE Example.html">
+       06. MLE Example
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Numerical Solution to MLE.html">
+       07. Numerical Solution to MLE
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Mid-Lesson Overview.html">
+       08. Mid-Lesson Overview
+      </a>
+     </li>
+     <li class="">
+      <a href="09. 1-D to n-D.html">
+       09. 1-D to n-D
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Information Matrix and Vector.html">
+       10. Information Matrix and Vector
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inference.html">
+       11. Inference
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Nonlinear Constraints.html">
+       12. Nonlinear Constraints
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Graph-SLAM at a Glance.html">
+       13. Graph-SLAM at a Glance
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Intro to 3D SLAM With RTAB-Map.html">
+       14. Intro to 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="15. 3D SLAM With RTAB-Map.html">
+       15. 3D SLAM With RTAB-Map
+      </a>
+     </li>
+     <li class="">
+      <a href="16. Visual Bag-of-Words.html">
+       16. Visual Bag-of-Words
+      </a>
+     </li>
+     <li class="">
+      <a href="17. RTAB-Map Memory Management.html">
+       17. RTAB-Map Memory Management
+      </a>
+     </li>
+     <li class="">
+      <a href="18. RTAB-Map Optimization and Output.html">
+       18. RTAB-Map Optimization and Output
+      </a>
+     </li>
+     <li class="">
+      <a href="19. Outro.html">
+       19. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          17. RTAB-Map Memory Management
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+         <p>
+          RTAB-Map Memory Management
+         </p>
+        </h3>
+        <video controls="">
+         <source src="17. RTAB-Map Memory Management-Cs4mO5y4xYY.mp4" type="video/mp4"/>
+         <track default="true" kind="subtitles" label="en" src="17. RTAB-Map Memory Management-Cs4mO5y4xYY.en.vtt" srclang="en"/>
+        </video>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <p>
+          RTAB-Map uses a memory management technique to limit the number of locations considered as candidates during loop closure detection. This technique is a key feature of RTAB-Map and allows for loop closure to be done in real time.
+         </p>
+         <p>
+          The overall strategy is to keep the most recent and frequently observed locations in the robot’s
+          <strong>
+           Working Memory (WM)
+          </strong>
+          , and transfer the others into
+          <strong>
+           Long-Term Memory (LTM)
+          </strong>
+          .
+         </p>
+         <ul>
+          <li>
+           <p>
+            When a new image is acquired, a new node is created in the
+            <strong>
+             Short Term Memory (STM)
+            </strong>
+            .
+           </p>
+          </li>
+          <li>
+           <p>
+            When creating a node, recall that features are extracted and compared to the vocabulary to find all of the words in the image, creating a bag-of-words for this node.
+           </p>
+          </li>
+          <li>
+           <p>
+            Nodes are assigned a weight in the STM based on how long the robot spent in the location - where a longer time means a higher weighting.
+           </p>
+          </li>
+          <li>
+           <p>
+            The STM has a fixed size of S. When STM reaches S nodes, the oldest node is moved to WM to be considered for loop closure detection.
+           </p>
+          </li>
+          <li>
+           <p>
+            Loop closure  happens in the WM.
+           </p>
+          </li>
+          <li>
+           <p>
+            WM size depends on a fixed time limit T. When the time required to process new data reaches T, some nodes of graph are transferred from WM to LTM - as a result, WM size is kept nearly constant.
+           </p>
+          </li>
+          <li>
+           <p>
+            Oldest and less weighted nodes in WM are transferred to LTM before others, so WM is made up of nodes seen for longer periods of time.
+           </p>
+          </li>
+          <li>
+           <p>
+            LTM is not used for loop closure detection and graph optimization.
+           </p>
+          </li>
+          <li>
+           <p>
+            If loop closure is detected, neighbours in LTM of an old node can be transferred back to the WM (a process called retrieval).
+           </p>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/screenshot-from-2018-02-27-14-32-35.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="18. RTAB-Map Optimization and Output.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('17. RTAB-Map Memory Management')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>

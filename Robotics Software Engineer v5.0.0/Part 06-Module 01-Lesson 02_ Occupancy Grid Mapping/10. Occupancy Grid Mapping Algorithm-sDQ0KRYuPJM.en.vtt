@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+The occupancy grid mapping algorithm implements
+
+00:00:03.120 --> 00:00:07.575
+a binary base filter to estimate the occupancy value of each cell.
+
+00:00:07.575 --> 00:00:12.615
+Initially, the algorithm takes the previous occupancy values of the cells,
+
+00:00:12.615 --> 00:00:16.305
+the poses, and the measurements as parameters.
+
+00:00:16.305 --> 00:00:20.415
+The occupancy grid map now loops through all the grid cells.
+
+00:00:20.415 --> 00:00:22.165
+For each of the cells,
+
+00:00:22.165 --> 00:00:27.190
+the algorithm tests if the cells are currently being sensed by the range finder sensors.
+
+00:00:27.190 --> 00:00:29.400
+To better understand this condition,
+
+00:00:29.400 --> 00:00:31.485
+let's take a look at this example.
+
+00:00:31.485 --> 00:00:35.565
+Here, you can see a mobile robot sensing the environment.
+
+00:00:35.565 --> 00:00:41.365
+The cells that fall under the measurement cones are highlighted in white and black color.
+
+00:00:41.365 --> 00:00:43.470
+While looping through all the cells,
+
+00:00:43.470 --> 00:00:44.870
+the algorithm will consider
+
+00:00:44.870 --> 00:00:47.390
+those white and black cells as
+
+00:00:47.390 --> 00:00:50.915
+sets falling under the perceptual field of the measurements.
+
+00:00:50.915 --> 00:00:54.560
+Now, the algorithm will update the cells that fall under
+
+00:00:54.560 --> 00:00:56.540
+the measurement cones by computing
+
+00:00:56.540 --> 00:01:00.405
+their new belief using the binary base filter algorithm.
+
+00:01:00.405 --> 00:01:03.935
+As we've seen earlier in the binary base filter algorithm,
+
+00:01:03.935 --> 00:01:07.040
+the new state of the cell is computed by adding
+
+00:01:07.040 --> 00:01:10.460
+the previous belief to the inverse sensor model.
+
+00:01:10.460 --> 00:01:14.570
+The inverse sensor model represents the log odd ratio of
+
+00:01:14.570 --> 00:01:19.085
+the probability of the posterior map giving the measurements and the poses,
+
+00:01:19.085 --> 00:01:22.520
+and subtracting the initial belief which is
+
+00:01:22.520 --> 00:01:25.965
+the initial state of the map in its log odds form.
+
+00:01:25.965 --> 00:01:29.540
+For the cells that do not fall under the measurement cone,
+
+00:01:29.540 --> 00:01:32.675
+their occupancy value remains unchanged.
+
+00:01:32.675 --> 00:01:37.520
+Now, the algorithm returns the updated occupancy values of the cells,
+
+00:01:37.520 --> 00:01:41.430
+and another cycle of iteration starts.
+

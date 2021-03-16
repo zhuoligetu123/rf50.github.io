@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.588
+To estimate the posterior map,
+
+00:00:02.588 --> 00:00:05.160
+the occupancy grid will uniformly partition
+
+00:00:05.160 --> 00:00:09.015
+the two-dimensional space in a finite number of grid cells.
+
+00:00:09.015 --> 00:00:11.400
+Each of these grid cells will hold
+
+00:00:11.400 --> 00:00:15.630
+the miner random value that corresponds to the location it covers.
+
+00:00:15.630 --> 00:00:17.928
+Based on the measurements data,
+
+00:00:17.928 --> 00:00:21.960
+this grid space will be filled with zeros and ones.
+
+00:00:21.960 --> 00:00:25.163
+If the laser range finder sensor detects an obstacle,
+
+00:00:25.163 --> 00:00:29.100
+the cell will be considered as occupied and its value will be one.
+
+00:00:29.100 --> 00:00:30.675
+And for free spaces,
+
+00:00:30.675 --> 00:00:35.039
+the cell will be considered as unoccupied and its value will be zero.
+
+00:00:35.039 --> 00:00:39.704
+Now, to find out the number of maps that can be generated out of grid cells,
+
+00:00:39.704 --> 00:00:43.469
+let's pick the first two cells and work out their combinations.
+
+00:00:43.469 --> 00:00:47.250
+The first combination is a map with two free spaces.
+
+00:00:47.250 --> 00:00:50.939
+Proceeding, the second combination is a map with
+
+00:00:50.939 --> 00:00:55.140
+one free space on the left side and one obstacle on the right side.
+
+00:00:55.140 --> 00:00:57.899
+Next, by flipping the second map,
+
+00:00:57.899 --> 00:01:00.554
+we get the third combination.
+
+00:01:00.554 --> 00:01:04.965
+And finally, the fourth combination is a map with two obstacles.
+
+00:01:04.965 --> 00:01:08.010
+Thus, the total number of maps that can be
+
+00:01:08.010 --> 00:01:11.715
+formed out of these two grid cells is equal to four.
+
+00:01:11.715 --> 00:01:15.510
+To generalize, the number of maps that can be formed out of
+
+00:01:15.510 --> 00:01:19.950
+grid cells is equal to two to the power of number of cells.
+
+00:01:19.950 --> 00:01:25.125
+Now, imagine if you have a 2D space with tens of thousands of grid cells.
+
+00:01:25.125 --> 00:01:29.200
+The number of maps generated will be even larger.
+

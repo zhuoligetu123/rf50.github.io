@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.174
+Here's the Gmapping ROS package,
+
+00:00:02.174 --> 00:00:05.040
+which uses the grid-based fast SLAM algorithm.
+
+00:00:05.040 --> 00:00:09.509
+Now, let's take a closer look at the properties of this package.
+
+00:00:09.509 --> 00:00:12.719
+Gmapping contains a single node,
+
+00:00:12.720 --> 00:00:14.730
+the slam gmapping one.
+
+00:00:14.730 --> 00:00:18.719
+This node subscribes to the transforms tf,
+
+00:00:18.719 --> 00:00:21.254
+relating the different frames of the laser,
+
+00:00:21.254 --> 00:00:26.504
+robot base, and odometry as well as the robot laser scans.
+
+00:00:26.504 --> 00:00:31.265
+The slam gmapping node will publish the occupancy grid map characteristic,
+
+00:00:31.265 --> 00:00:33.804
+the 2D occupancy grid map,
+
+00:00:33.804 --> 00:00:37.405
+and the entropy of distribution over robot pose.
+
+00:00:37.405 --> 00:00:39.520
+Before you proceed with this lab,
+
+00:00:39.520 --> 00:00:42.880
+access the gmapping package documentation using the link in
+
+00:00:42.880 --> 00:00:48.910
+the instructor nodes and focus on the package different topics, services, and parameters.
+
+00:00:48.909 --> 00:00:51.774
+To experiment with the gmapping package,
+
+00:00:51.774 --> 00:00:55.314
+we need to interface it with the robot deployed in an environment.
+
+00:00:55.314 --> 00:00:58.929
+For that need, we'll deploy the turtlebot robot in
+
+00:00:58.929 --> 00:01:01.240
+a willow garage environment and map that
+
+00:01:01.240 --> 00:01:05.900
+environment by tele-operating the robot using keyboard commands.
+
+00:01:05.900 --> 00:01:11.670
+You've already seen the turtlebot which comes equipped with an RGB-D camera.
+
+00:01:11.670 --> 00:01:15.570
+You might be thinking that this robot is not a good fit for
+
+00:01:15.569 --> 00:01:19.634
+us since gmapping subscribe to laser scan measurements,
+
+00:01:19.635 --> 00:01:23.475
+and the turtlebot is not equipped with a laser finder sensor.
+
+00:01:23.474 --> 00:01:27.584
+Well, you'll be amazed to see that the turtlebot generates
+
+00:01:27.584 --> 00:01:33.089
+laser measurements based on the depth images captured from its RGB-D camera.
+
+00:01:33.090 --> 00:01:37.380
+To prove it to you, I'll be opening the turtlebot gazebo launch file.
+
+00:01:37.379 --> 00:01:40.649
+If you look closer at these nodes you will notice that
+
+00:01:40.650 --> 00:01:44.820
+the RGB-D depth images are being converted to laser measurements.
+
+00:01:44.819 --> 00:01:50.099
+So a turtlebot can now be easily interfaced with the gmapping package.
+
+00:01:50.099 --> 00:01:56.625
+To get going, we need to interface three different packages: the turtlebot gazebo,
+
+00:01:56.625 --> 00:01:59.730
+the turtlebot teleop, and the gmapping.
+
+00:01:59.730 --> 00:02:05.655
+Two of these packages are already installed in your catkin workspace from localization.
+
+00:02:05.655 --> 00:02:11.205
+Luckily, the gmapping package can easily be interfaced with the other packages,
+
+00:02:11.205 --> 00:02:13.875
+without remapping any of the topics.
+
+00:02:13.875 --> 00:02:18.830
+Now, I will deploy the turtlebot in a willow garage environment.
+
+00:02:18.830 --> 00:02:21.884
+To do so, I will open the terminal,
+
+00:02:21.883 --> 00:02:24.684
+navigate to my catkin workspace,
+
+00:02:24.685 --> 00:02:30.280
+source it, and launch the nodes.
+
+00:02:30.280 --> 00:02:37.909
+Here, you can see the turtlebot deployed in an environment with multiple rooms.
+

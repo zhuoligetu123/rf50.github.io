@@ -1,0 +1,446 @@
+<!-- udacimak v1.4.4 -->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Generate the Map
+  </title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../assets/css/plyr.css" rel="stylesheet"/>
+  <link href="../assets/css/katex.min.css" rel="stylesheet"/>
+  <link href="../assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+  <link href="../assets/css/styles.css" rel="stylesheet"/>
+  <link href="../assets/img/udacimak.png" rel="shortcut icon" type="image/png">
+  </link>
+ </head>
+ <body>
+  <div class="wrapper">
+   <nav id="sidebar">
+    <div class="sidebar-header">
+     <h3>
+      Occupancy Grid Mapping
+     </h3>
+    </div>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled components">
+     <li class="">
+      <a href="01. Introduction.html">
+       01. Introduction
+      </a>
+     </li>
+     <li class="">
+      <a href="02. Importance of Mapping.html">
+       02. Importance of Mapping
+      </a>
+     </li>
+     <li class="">
+      <a href="03. Challenges and Difficulties.html">
+       03. Challenges and Difficulties
+      </a>
+     </li>
+     <li class="">
+      <a href="04. Mapping with Known Poses.html">
+       04. Mapping with Known Poses
+      </a>
+     </li>
+     <li class="">
+      <a href="05. Posterior Probability.html">
+       05. Posterior Probability
+      </a>
+     </li>
+     <li class="">
+      <a href="06. Grid Cells.html">
+       06. Grid Cells
+      </a>
+     </li>
+     <li class="">
+      <a href="07. Computing the Posterior .html">
+       07. Computing the Posterior
+      </a>
+     </li>
+     <li class="">
+      <a href="08. Filtering.html">
+       08. Filtering
+      </a>
+     </li>
+     <li class="">
+      <a href="09. Binary Bayes Filter Algorithm.html">
+       09. Binary Bayes Filter Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="10. Occupancy Grid Mapping Algorithm.html">
+       10. Occupancy Grid Mapping Algorithm
+      </a>
+     </li>
+     <li class="">
+      <a href="11. Inverse Sensor Model.html">
+       11. Inverse Sensor Model
+      </a>
+     </li>
+     <li class="">
+      <a href="12. Generate the Map.html">
+       12. Generate the Map
+      </a>
+     </li>
+     <li class="">
+      <a href="13. Udacity Workspace.html">
+       13. Udacity Workspace
+      </a>
+     </li>
+     <li class="">
+      <a href="14. Multi Sensor Fusion.html">
+       14. Multi Sensor Fusion
+      </a>
+     </li>
+     <li class="">
+      <a href="15. Introduction to 3D Mapping.html">
+       15. Introduction to 3D Mapping
+      </a>
+     </li>
+     <li class="">
+      <a href="16. 3D Data Representations.html">
+       16. 3D Data Representations
+      </a>
+     </li>
+     <li class="">
+      <a href="17. Octomap.html">
+       17. Octomap
+      </a>
+     </li>
+     <li class="">
+      <a href="18. Outro.html">
+       18. Outro
+      </a>
+     </li>
+    </ul>
+    <ul class="sidebar-list list-unstyled CTAs">
+     <li>
+      <a class="article" href="../index.html">
+       Back to Home
+      </a>
+     </li>
+    </ul>
+   </nav>
+   <div id="content">
+    <header class="container-fluild header">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <div class="align-items-middle">
+         <button class="btn btn-toggle-sidebar" id="sidebarCollapse" type="button">
+          <div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+         </button>
+         <h1 style="display: inline-block">
+          12. Generate the Map
+         </h1>
+        </div>
+       </div>
+      </div>
+     </div>
+    </header>
+    <main class="container">
+     <div class="row">
+      <div class="col-12">
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h1 id="mapping">
+          Mapping
+         </h1>
+         <p>
+          So far, you’ve coded the Occupancy Grid Mapping algorithm in C++ and generated an occupancy grid map 2D vector. Now, you'll code a visualization function that will loop through each cell. Then, you'll differentiate between occupied, free, and unknown cells depending on their log odds value. And, finally, you'll plot each cell on a graph to generate the map.
+         </p>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h2 id="udacity-workspace">
+          Udacity Workspace
+         </h2>
+         <p>
+          For this quiz, you will need to use the
+          <a href="https://classroom.udacity.com/nanodegrees/nd209/parts/dad7b7cc-9cce-4be4-876e-30935216c8fa/modules/451b7eed-6813-422a-a4d0-ce5db5ee1bca/lessons/411e2410-8f65-4764-a02a-e219ac36c776/concepts/fc59506b-6059-45a2-9d4d-204f7343988a?contentVersion=1.0.0&amp;contentLocale=en-us" rel="noopener noreferrer" target="_blank">
+           Udacity Workspace
+          </a>
+          . So, move to the next concept, enable the GPU, and  Go To Desktop. Then follow these instructions:
+         </p>
+         <h3 id="clone-the-lab-from-github">
+          Clone the Lab from GitHub
+         </h3>
+         <pre><code class="sh language-sh">$ cd /home/workspace/
+$ git clone https://github.com/udacity/RoboND-OccupancyGridMappingAlgorithm</code></pre>
+         <h3 id="next-edit-maincpp">
+          Next, edit
+          <code>
+           main.cpp
+          </code>
+         </h3>
+         <p>
+          Code the visualization function which will plot the state of each grid cell using the matplotlib python library
+         </p>
+         <pre><code class="C++ language-C++">void visualization()
+{
+    //TODO: Initialize a plot named Map of size 300x150
+
+    //TODO: Loop over the log odds values of the cells and plot each cell state. 
+    //Unkown state: green color, occupied state: black color, and free state: red color 
+
+    //TODO: Save the image and close the plot 
+}</code></pre>
+         <p>
+          Here are some helpful commands you can use to generate plots with the
+          <code>
+           matplotlib
+          </code>
+          library:
+         </p>
+         <ul>
+          <li>
+           <em>
+            Set Title
+           </em>
+           :
+           <code>
+            plt::title("Your Title");
+           </code>
+          </li>
+          <li>
+           <em>
+            Set Limits
+           </em>
+           :
+           <code>
+            plt::xlim(x-axis lower limit, x-axis upper limit );
+           </code>
+          </li>
+          <li>
+           <em>
+            Plot Data
+           </em>
+           :
+           <code>
+            plt::plot({ x-value }, { y-value }, "Color and Shape");
+           </code>
+          </li>
+          <li>
+           <em>
+            Save Plot
+           </em>
+           :
+           <code>
+            plt::save("File name and directory")
+           </code>
+           ;
+          </li>
+          <li>
+           <em>
+            Close Plot
+           </em>
+           :
+           <code>
+            plt::clf()
+           </code>
+           ;
+          </li>
+         </ul>
+         <p>
+          Check out this
+          <a href="https://github.com/lava/matplotlib-cpp" rel="noopener noreferrer" target="_blank">
+           link
+          </a>
+          for more information on the
+          <code>
+           matplotlib
+          </code>
+          C++ library. For information regarding the plot color and shape refer to the LineSpec and LineColor section of the
+          <a href="https://www.mathworks.com/help/matlab/ref/plot.html?requestedDomain=true" rel="noopener noreferrer" target="_blank">
+           MATLAB
+          </a>
+          documentation.
+         </p>
+         <h3 id="then-compile-the-program">
+          Then, compile the program
+         </h3>
+         <pre><code class="sh language-sh">$ cd RoboND-OccupancyGridMappingAlgorithm/
+$ rm -rf Images/* #Delete the folder content and not the folder itself!
+$ g++ main.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7</code></pre>
+         <h3 id="finally-run-the-program">
+          Finally run the program
+         </h3>
+         <pre><code class="sh language-sh">$ ./app</code></pre>
+         <p>
+          If you get a warning regarding the
+          <code>
+           matplotlib
+          </code>
+          library, just ignore it.
+         </p>
+         <p>
+          Now, wait for the program to generate the map and store it in the
+          <code>
+           /home/workspace/RoboND-OccupancyGridMappingAlgorithm/Images
+          </code>
+          directory!
+         </p>
+         <h3 id="generated-map">
+          Generated Map
+         </h3>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <figure class="figure">
+          <img alt="" class="img img-fluid" src="img/map.png"/>
+          <figcaption class="figure-caption">
+          </figcaption>
+         </figure>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+       <div class="ud-atom">
+        <h3>
+        </h3>
+        <div>
+         <h3 id="map-legend">
+          Map Legend
+         </h3>
+         <ul>
+          <li>
+           <span style="color:green">
+            Green: Unkown/Undiscovered zone
+           </span>
+          </li>
+          <li>
+           <span style="color:red">
+            Red: Free zone
+           </span>
+          </li>
+          <li>
+           <span style="color:black">
+            Black: Occupied zone
+           </span>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="divider">
+       </div>
+      </div>
+      <div class="col-12">
+       <p class="text-right">
+        <a class="btn btn-outline-primary mt-4" href="13. Udacity Workspace.html" role="button">
+         Next Concept
+        </a>
+       </p>
+      </div>
+     </div>
+    </main>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+       <div class="col-12">
+        <p class="text-center">
+         udacity2.0 If you need the newest courses Plase add me wechat: udacity6
+        </p>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="../assets/js/jquery-3.3.1.min.js">
+  </script>
+  <script src="../assets/js/plyr.polyfilled.min.js">
+  </script>
+  <script src="../assets/js/bootstrap.min.js">
+  </script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js">
+  </script>
+  <script src="../assets/js/katex.min.js">
+  </script>
+  <script>
+   // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('12. Generate the Map')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+ </body>
+</html>
